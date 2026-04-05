@@ -3,102 +3,326 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukoon - Quotes for the Soul</title>
-    <meta name="description" content="Bilingual quotes on kindness, strength, courage, wisdom, faith, humor, healing and more. Curated with love for every soul.">
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Quotes - Sukoon</title>
+    <meta name="description" content="Bilingual quotes for the soul. Wisdom, kindness, courage, strength, and healing -- in English and Hindi.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        .daily-quote-section {
-            text-align: center;
-            padding: 3rem 1.5rem 2rem;
-            max-width: 700px;
-            margin: 0 auto;
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
         }
-        .daily-quote-card {
-            background: var(--bg-card);
-            border: 1px solid rgba(124,158,247,0.2);
-            border-radius: var(--radius-xl);
-            padding: 2.5rem 2rem;
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 72px;
+            background: rgba(250, 250, 247, 0.82);
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: #111827;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 10px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+        }
+        .topbar-nav { display: flex; gap: 0.2rem; }
+        .topbar-nav a {
+            padding: 0.45rem 0.8rem; border-radius: 10px;
+            font-size: 0.84rem; font-weight: 500; color: #6B7280;
+            transition: all 0.2s;
+        }
+        .topbar-nav a:hover { background: rgba(79,70,229,0.07); color: #4F46E5; }
+        .topbar-nav a.active { background: rgba(79,70,229,0.1); color: #4F46E5; font-weight: 600; }
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .lang-select {
+            padding: 0.35rem 0.6rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08); background: #fff;
+            font-size: 0.8rem; color: #6B7280; cursor: pointer; outline: none;
+        }
+        .mobile-nav-toggle {
+            display: none; background: none; border: none;
+            font-size: 1.3rem; color: #374151; cursor: pointer; padding: 0.25rem;
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            padding: 9rem 1.5rem 3rem;
+            text-align: center;
             position: relative;
             overflow: hidden;
+            background: #FAFAF7;
         }
-        .daily-quote-card::before {
+        .hero-mesh {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 70% 50% at 30% 40%, rgba(79,70,229,0.06) 0%, transparent 55%),
+                radial-gradient(ellipse 50% 50% at 75% 25%, rgba(245,158,11,0.05) 0%, transparent 45%),
+                radial-gradient(ellipse 60% 60% at 50% 75%, rgba(16,185,129,0.05) 0%, transparent 50%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 600px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.2rem; border-radius: 100px;
+            background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.12);
+            font-size: 0.78rem; font-weight: 500; color: #D97706;
+            margin-bottom: 1.5rem; letter-spacing: 0.03em;
+        }
+        .hero-badge svg { width: 14px; height: 14px; }
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem; font-weight: 400; color: #111827;
+            line-height: 1.15; margin-bottom: 0.75rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.05rem; color: #6B7280; line-height: 1.7;
+            max-width: 480px; margin: 0 auto 0.5rem;
+        }
+        .hero-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.88rem; color: #9CA3AF;
+        }
+
+        /* ===================== QUOTE OF THE MOMENT ===================== */
+        .qotm-section {
+            padding: 0 1.5rem 3rem;
+            max-width: 720px;
+            margin: -1rem auto 0;
+            position: relative; z-index: 2;
+        }
+        .qotm-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 24px;
+            padding: 2.5rem 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+        }
+        .qotm-card::before {
             content: '';
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse 400px 250px at 50% 0%, rgba(124,158,247,0.08) 0%, transparent 70%);
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #F59E0B, #EC4899, #4F46E5);
         }
-        .daily-quote-card > * { position: relative; z-index: 1; }
-        .daily-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 1rem;
+        .qotm-label {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #D97706;
+            margin-bottom: 1.25rem;
         }
-        .daily-quote-text {
-            font-family: var(--font-display);
-            font-size: 1.3rem;
-            line-height: 1.7;
+        .qotm-mark {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem; color: rgba(79,70,229,0.12);
+            line-height: 1; margin-bottom: 0.5rem;
+        }
+        .qotm-en {
+            font-family: 'DM Serif Display', serif;
             font-style: italic;
-            margin-bottom: 0.8rem;
+            font-size: 1.35rem; color: #111827;
+            line-height: 1.5; margin-bottom: 0.75rem;
+            max-width: 540px; margin-left: auto; margin-right: auto;
         }
-        .daily-quote-hindi {
-            font-family: var(--font-hindi);
-            font-size: 1rem;
-            color: var(--text-dim);
-            line-height: 1.7;
+        .qotm-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.85rem; color: #9CA3AF;
+            margin-bottom: 0.5rem; line-height: 1.55;
+        }
+        .qotm-author {
+            font-size: 0.82rem; color: #6B7280; font-weight: 500;
+            margin-bottom: 1.5rem;
+        }
+        .qotm-refresh {
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            padding: 0.6rem 1.3rem; border-radius: 12px;
+            background: #111827; color: #fff;
+            font-size: 0.82rem; font-weight: 500;
+            border: none; cursor: pointer; transition: all 0.25s;
+        }
+        .qotm-refresh:hover { background: #374151; transform: translateY(-1px); }
+        .qotm-refresh svg { width: 14px; height: 14px; }
+
+        /* ===================== FILTER BAR ===================== */
+        .filter-section {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 1.5rem 2rem;
+        }
+        .filter-bar {
+            display: flex; flex-wrap: wrap; gap: 0.4rem;
+            justify-content: center;
+        }
+        .filter-pill {
+            padding: 0.45rem 1rem; border-radius: 100px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.08);
+            font-size: 0.8rem; font-weight: 500; color: #6B7280;
+            cursor: pointer; transition: all 0.2s;
+            white-space: nowrap;
+        }
+        .filter-pill:hover { border-color: rgba(79,70,229,0.3); color: #4F46E5; }
+        .filter-pill.active {
+            background: #4F46E5; color: #fff;
+            border-color: #4F46E5;
+        }
+
+        /* ===================== QUOTES GRID ===================== */
+        .quotes-section {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 1.5rem 5rem;
+        }
+        .quotes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.25rem;
+        }
+        .quote-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 2rem 1.75rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .quote-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.06);
+        }
+        .quote-card.hidden { display: none; }
+        .quote-mark {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3rem; line-height: 1;
+            color: rgba(79,70,229,0.1);
+            margin-bottom: 0.25rem;
+        }
+        .quote-en {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.08rem; color: #111827;
+            line-height: 1.55; margin-bottom: 1rem;
+        }
+        .quote-hi-wrap {
+            border-left: 2px solid rgba(79,70,229,0.15);
+            padding-left: 1rem;
             margin-bottom: 1rem;
         }
-        .daily-quote-author {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
+        .quote-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.82rem; color: #9CA3AF;
+            line-height: 1.6;
         }
-        .daily-refresh {
-            margin-top: 1.2rem;
-            background: none;
-            border: 1px solid var(--border);
-            color: var(--text-muted);
-            padding: 0.4rem 1rem;
-            border-radius: 8px;
-            font-size: 0.78rem;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font-body);
+        .quote-author {
+            font-size: 0.8rem; color: #6B7280;
+            font-weight: 500; margin-bottom: 0.75rem;
         }
-        .daily-refresh:hover { background: rgba(255,255,255,0.06); color: var(--text); }
-
+        .quote-footer {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 0.5rem;
+        }
+        .quote-tags {
+            display: flex; flex-wrap: wrap; gap: 0.3rem;
+        }
+        .quote-tag {
+            padding: 0.2rem 0.55rem; border-radius: 6px;
+            font-size: 0.68rem; font-weight: 500;
+            background: rgba(79,70,229,0.05); color: #6B7280;
+        }
         .copy-btn {
-            position: absolute;
-            top: 1rem;
-            right: 1rem;
-            background: rgba(255,255,255,0.04);
-            border: 1px solid var(--border);
-            color: var(--text-dim);
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
+            display: flex; align-items: center; gap: 0.35rem;
+            padding: 0.4rem 0.8rem; border-radius: 8px;
+            background: rgba(0,0,0,0.03);
+            border: 1px solid rgba(0,0,0,0.06);
+            font-size: 0.74rem; font-weight: 500; color: #6B7280;
+            cursor: pointer; transition: all 0.2s;
+            white-space: nowrap; flex-shrink: 0;
         }
-        .copy-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
-        .copy-btn.copied { color: var(--accent-green); border-color: rgba(107,203,119,0.3); }
+        .copy-btn:hover { background: rgba(79,70,229,0.06); color: #4F46E5; border-color: rgba(79,70,229,0.2); }
+        .copy-btn.copied { background: rgba(16,185,129,0.08); color: #10B981; border-color: rgba(16,185,129,0.2); }
+        .copy-btn svg { width: 13px; height: 13px; }
 
-        .quote-card { position: relative; }
+        /* No results */
+        .no-results {
+            text-align: center; padding: 4rem 1rem;
+            grid-column: 1 / -1;
+            display: none;
+        }
+        .no-results.show { display: block; }
+        .no-results-icon { font-size: 2rem; color: #D1D5DB; margin-bottom: 0.75rem; }
+        .no-results-text { font-size: 0.95rem; color: #9CA3AF; }
 
-        .quotes-section-title {
-            font-family: var(--font-display);
-            font-size: 1.4rem;
+        /* ===================== FOOTER ===================== */
+        .footer {
+            padding: 3.5rem 1.5rem 2rem;
+            background: #F5F5F0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: #111827;
+            margin-bottom: 0.5rem;
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        }
+        .footer-brand .brand-mark { width: 26px; height: 26px; border-radius: 8px; font-size: 0.7rem; }
+        .footer-mission { font-size: 0.88rem; color: #6B7280; margin-bottom: 0.25rem; }
+        .footer-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.8rem; color: #9CA3AF; margin-bottom: 1rem;
+        }
+        .footer-privacy {
+            font-size: 0.76rem; color: #10B981;
+            background: rgba(16,185,129,0.06);
+            display: inline-block;
+            padding: 0.35rem 1rem; border-radius: 100px;
             margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-            color: var(--text-muted);
+        }
+        .footer-nav {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 0.5rem 1.25rem; margin-bottom: 1.5rem;
+        }
+        .footer-nav a { font-size: 0.84rem; color: #6B7280; transition: color 0.2s; }
+        .footer-nav a:hover { color: #4F46E5; }
+        .footer-copy { font-size: 0.74rem; color: #9CA3AF; }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .topbar { padding: 0 1rem; height: 64px; }
+            .topbar-nav {
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(250,250,247,0.97);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                flex-direction: column; padding: 1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            }
+            .topbar-nav.open { display: flex; }
+            .topbar-nav a { padding: 0.75rem 1rem; width: 100%; text-align: left; font-size: 1rem; }
+            .mobile-nav-toggle { display: block; }
+            .hero { padding: 7.5rem 1.25rem 2rem; }
+            .hero h1 { font-size: 2.2rem; }
+            .quotes-grid { grid-template-columns: 1fr; }
+            .qotm-card { padding: 2rem 1.5rem 1.5rem; }
+            .qotm-en { font-size: 1.15rem; }
+            .filter-bar { justify-content: flex-start; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.9rem; }
+            .quote-en { font-size: 1rem; }
         }
     </style>
 </head>
@@ -107,7 +331,10 @@
     <!-- TOPBAR -->
     <header class="topbar">
         <a href="/" class="topbar-brand">
-            <span class="logo-icon">&#x1F54A;</span> Sukoon
+            <span class="brand-mark">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.18-9 7.1 0 2.34 1.44 4.42 3.67 5.74L5 21l4.39-2.11c.84.18 1.72.28 2.61.28 4.97 0 9-3.18 9-7.1S16.97 3 12 3z"/></svg>
+            </span>
+            Sukoon
         </a>
         <nav class="topbar-nav" id="mainNav">
             <a href="/breathe.html">Breathe</a>
@@ -115,6 +342,7 @@
             <a href="/sounds.html">Sounds</a>
             <a href="/journal.html">Journal</a>
             <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a>
             <a href="/quotes.html" class="active">Quotes</a>
             <a href="/videos.html">Videos</a>
         </nav>
@@ -123,450 +351,344 @@
                 <option value="en">EN</option>
                 <option value="hi">HI</option>
                 <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
             </select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </div>
     </header>
 
     <main>
-        <!-- PAGE HEADER -->
-        <div class="page-header">
-            <h1>&#x2728; Quotes for the Soul</h1>
-            <p class="subtitle">Words that heal, inspire, and awaken. In English and Hindi.</p>
-            <p class="subtitle-hindi">शब्द जो ठीक करें, प्रेरित करें, और जगाएँ।</p>
-        </div>
-
-        <!-- DAILY QUOTE -->
-        <div class="daily-quote-section">
-            <div class="daily-quote-card">
-                <div class="daily-label">&#x1F31F; Quote of the Moment</div>
-                <div class="daily-quote-text" id="dailyQuoteText"></div>
-                <div class="daily-quote-hindi" id="dailyQuoteHindi"></div>
-                <div class="daily-quote-author" id="dailyQuoteAuthor"></div>
-                <button class="daily-refresh" onclick="showRandomDaily()">&#x1F504; New Quote</button>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-mesh"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
+                    Bilingual Wisdom
+                </div>
+                <h1>Quotes for the Soul</h1>
+                <p class="hero-subtitle">Words that heal, inspire, and awaken. In English and Hindi, for every heart that needs light.</p>
+                <p class="hero-hindi">&#2358;&#2348;&#2381;&#2342; &#2332;&#2379; &#2311;&#2354;&#2366;&#2332; &#2325;&#2352;&#2375;&#2306;, &#2346;&#2381;&#2352;&#2375;&#2352;&#2367;&#2340; &#2325;&#2352;&#2375;&#2306;, &#2324;&#2352; &#2332;&#2327;&#2366;&#2319;&#2306;&#2404;</p>
             </div>
-        </div>
+        </section>
 
-        <!-- FILTER BAR -->
-        <section class="section">
-            <div class="filter-bar">
-                <button class="filter-btn active" data-filter="all">All</button>
-                <button class="filter-btn" data-filter="kindness">Kindness</button>
-                <button class="filter-btn" data-filter="strength">Strength</button>
-                <button class="filter-btn" data-filter="courage">Courage</button>
-                <button class="filter-btn" data-filter="wisdom">Wisdom</button>
-                <button class="filter-btn" data-filter="self-talk">Self-Talk</button>
-                <button class="filter-btn" data-filter="islamic">Islamic</button>
-                <button class="filter-btn" data-filter="family">Family</button>
-                <button class="filter-btn" data-filter="humor">Humor</button>
-                <button class="filter-btn" data-filter="peace">Peace</button>
-                <button class="filter-btn" data-filter="healing">Healing</button>
+        <!-- ===== QUOTE OF THE MOMENT ===== -->
+        <section class="qotm-section">
+            <div class="qotm-card">
+                <div class="qotm-label">Quote of the Moment</div>
+                <div class="qotm-mark">&ldquo;</div>
+                <p class="qotm-en" id="qotmEN"></p>
+                <p class="qotm-hi" id="qotmHI"></p>
+                <p class="qotm-author" id="qotmAuthor"></p>
+                <button class="qotm-refresh" id="qotmRefresh">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
+                    Another Quote
+                </button>
             </div>
+        </section>
 
-            <!-- QUOTES GRID -->
+        <!-- ===== FILTER BAR ===== -->
+        <section class="filter-section">
+            <div class="filter-bar" id="filterBar">
+                <button class="filter-pill active" data-cat="all">All</button>
+                <button class="filter-pill" data-cat="kindness">Kindness</button>
+                <button class="filter-pill" data-cat="strength">Strength</button>
+                <button class="filter-pill" data-cat="courage">Courage</button>
+                <button class="filter-pill" data-cat="wisdom">Wisdom</button>
+                <button class="filter-pill" data-cat="self-talk">Self-Talk</button>
+                <button class="filter-pill" data-cat="islamic">Islamic</button>
+                <button class="filter-pill" data-cat="family">Family</button>
+                <button class="filter-pill" data-cat="humor">Humor</button>
+                <button class="filter-pill" data-cat="peace">Peace</button>
+                <button class="filter-pill" data-cat="healing">Healing</button>
+            </div>
+        </section>
+
+        <!-- ===== QUOTES GRID ===== -->
+        <section class="quotes-section">
             <div class="quotes-grid" id="quotesGrid">
-
-                <!-- KINDNESS -->
-                <div class="quote-card reveal" data-category="kindness">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Be kind. Everyone is healing from things they don't speak about.</div>
-                    <div class="quote-text-hindi">दयालु बनो। हर कोई उन ज़ख्मों से ठीक हो रहा है जिनके बारे में वो बात नहीं करते।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Kindness</span>
-                        <span class="quote-tag">Healing</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="kindness">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Never blame anyone in your life. Good people give you happiness. Bad people give you experience.</div>
-                    <div class="quote-text-hindi">अपनी ज़िंदगी में किसी को दोष मत दो। अच्छे लोग खुशी देते हैं। बुरे लोग अनुभव देते हैं।</div>
-                    <div class="quote-author">APJ Abdul Kalam</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Kindness</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <!-- STRENGTH -->
-                <div class="quote-card reveal" data-category="strength">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">The light that you discover in your life is proportionate to the amount of darkness you are willing to confront.</div>
-                    <div class="quote-text-hindi">आपकी ज़िंदगी में जो रोशनी आप पाते हैं, वो उस अंधेरे के अनुपात में होती है जिसका आप सामना करने को तैयार हैं।</div>
-                    <div class="quote-author">Jordan Peterson</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Strength</span>
-                        <span class="quote-tag">Courage</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="strength">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Don't burn your opportunities for a temporary comfort.</div>
-                    <div class="quote-text-hindi">अपने मौकों को अस्थायी आराम के लिए मत जलाओ।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Strength</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="strength">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">A man's wealth is not measured by how much he earns, but by how much he spends on others. By this measure, a father is the richest man in the world.</div>
-                    <div class="quote-text-hindi">किसी आदमी की दौलत इससे नहीं मापी जाती कि वो कितना कमाता है, बल्कि इससे कि वो दूसरों पर कितना खर्च करता है। इस पैमाने से, एक पिता दुनिया का सबसे अमीर इंसान है।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Strength</span>
-                        <span class="quote-tag">Family</span>
-                    </div>
-                </div>
-
-                <!-- COURAGE -->
-                <div class="quote-card reveal" data-category="courage">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">If you cannot call wrong as wrong, then you are in the final stage of slavery.</div>
-                    <div class="quote-text-hindi">अगर आप गलत को गलत नहीं कह सकते, तो आप गुलामी की आखिरी स्टेज में हैं।</div>
-                    <div class="quote-author">Che Guevara</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Courage</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="courage">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Leaving a toxic workplace is an act of bravery, not an act of defeat.</div>
-                    <div class="quote-text-hindi">एक ज़हरीली कार्यस्थल को छोड़ना बहादुरी का काम है, हार नहीं।</div>
-                    <div class="quote-author">Sibel Terhaar</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Courage</span>
-                        <span class="quote-tag">Healing</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="courage">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Complaining about a problem without proposing a solution is called whining.</div>
-                    <div class="quote-text-hindi">बिना समाधान सुझाए किसी समस्या की शिकायत करना -- इसे रोना कहते हैं।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Courage</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <!-- WISDOM -->
-                <div class="quote-card reveal" data-category="wisdom">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">The most valuable lessons in life cannot be taught, they must be experienced.</div>
-                    <div class="quote-text-hindi">ज़िंदगी के सबसे कीमती सबक सिखाए नहीं जा सकते, उन्हें जीना पड़ता है।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="wisdom">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">If you kill a cockroach you are a hero, if you kill a butterfly you are bad. Morality has aesthetic standards.</div>
-                    <div class="quote-text-hindi">अगर आप एक कॉकरोच मारते हो तो हीरो हो, तितली मारते हो तो बुरे हो। नैतिकता के भी सौंदर्य मानक हैं।</div>
-                    <div class="quote-author">Nietzsche</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Wisdom</span>
-                        <span class="quote-tag">Humor</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="wisdom">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">A bottle of water can be 50 cents at a supermarket, $2 at the gym... Same water. Only the place changed its value.</div>
-                    <div class="quote-text-hindi">पानी की एक बोतल सुपरमार्केट में 50 सेंट, जिम में $2... वही पानी। बस जगह ने उसकी कीमत बदल दी।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Wisdom</span>
-                        <span class="quote-tag">Self-Talk</span>
-                    </div>
-                </div>
-
-                <!-- SELF-TALK -->
-                <div class="quote-card reveal" data-category="self-talk">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Don't speak negatively about yourself, even as a joke. Your body doesn't know the difference.</div>
-                    <div class="quote-text-hindi">अपने बारे में नकारात्मक बात मत करो, मज़ाक में भी नहीं। आपका शरीर फ़र्क नहीं समझता।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Self-Talk</span>
-                        <span class="quote-tag">Healing</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="self-talk">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Sadness is caused by intelligence.</div>
-                    <div class="quote-text-hindi">उदासी बुद्धिमत्ता की वजह से होती है।</div>
-                    <div class="quote-author">Charles Bukowski</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Self-Talk</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="self-talk">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">What we think is happening: Everyone watching me. What is actually happening: Everyone worrying about their own problems.</div>
-                    <div class="quote-text-hindi">हम सोचते हैं: सब मुझे देख रहे हैं। असल में: सब अपनी-अपनी परेशानियों में उलझे हैं।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Self-Talk</span>
-                        <span class="quote-tag">Peace</span>
-                    </div>
-                </div>
-
-                <!-- ISLAMIC -->
-                <div class="quote-card reveal" data-category="islamic">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Desire makes slaves out of kings, while patience makes kings out of slaves.</div>
-                    <div class="quote-text-hindi">ख्वाहिश बादशाहों को गुलाम बना देती है, जबकि सब्र गुलामों को बादशाह बना देता है।</div>
-                    <div class="quote-author">Imam Al-Ghazali</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Islamic</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="islamic">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">If you remove the stones from someone else's path, Allah will remove the obstacles from your own path.</div>
-                    <div class="quote-text-hindi">अगर तुम किसी और के रास्ते से पत्थर हटाओगे, तो अल्लाह तुम्हारे रास्ते से रुकावटें हटा देगा।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Islamic</span>
-                        <span class="quote-tag">Kindness</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="islamic">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Destiny will definitely work out beautifully. Allah's plan is better than what you want.</div>
-                    <div class="quote-text-hindi">तकदीर ज़रूर सुंदर तरीके से पूरी होगी। अल्लाह का प्लान उससे बेहतर है जो तुम चाहते हो।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Islamic</span>
-                        <span class="quote-tag">Peace</span>
-                    </div>
-                </div>
-
-                <!-- FAMILY -->
-                <div class="quote-card reveal" data-category="family">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Forgive your parents. They too had a childhood they didn't heal from. Now that you're aware, break the cycle.</div>
-                    <div class="quote-text-hindi">अपने माता-पिता को माफ़ करो। उनका भी एक बचपन था जिससे वो ठीक नहीं हुए। अब जब तुम्हें समझ है, इस चक्र को तोड़ो।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Family</span>
-                        <span class="quote-tag">Healing</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="family">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">To be in your children's memories tomorrow, you have to be in their lives today.</div>
-                    <div class="quote-text-hindi">कल अपने बच्चों की यादों में होने के लिए, आज उनकी ज़िंदगी में होना ज़रूरी है।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Family</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <!-- HUMOR -->
-                <div class="quote-card reveal" data-category="humor">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">A woman has two missions in her life: To calm a man down when he is angry. And to make him angry when he is calm.</div>
-                    <div class="quote-text-hindi">एक औरत की ज़िंदगी में दो मिशन होते हैं: जब आदमी गुस्से में हो तो शांत करना। और जब शांत हो तो गुस्सा दिलाना।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Humor</span>
-                        <span class="quote-tag">Family</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="humor">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Life is like a kulfi -- taste it or waste it, it's melting anyway.</div>
-                    <div class="quote-text-hindi">ज़िंदगी कुल्फी जैसी है -- चखो या बर्बाद करो, पिघल तो रही है।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Humor</span>
-                        <span class="quote-tag">Wisdom</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="humor">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Of course you weren't spreading rumours -- the charge is you were spreading facts!</div>
-                    <div class="quote-text-hindi">बेशक आप अफ़वाहें नहीं फैला रहे थे -- आरोप यह है कि आप सच फैला रहे थे!</div>
-                    <div class="quote-author">R.K. Laxman</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Humor</span>
-                    </div>
-                </div>
-
-                <!-- PEACE -->
-                <div class="quote-card reveal" data-category="peace">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">When we discriminate You from I, the universal brotherhood dies.</div>
-                    <div class="quote-text-hindi">जब हम 'तू' और 'मैं' में भेद करते हैं, तो विश्व बंधुत्व मर जाता है।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Peace</span>
-                        <span class="quote-tag">Kindness</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="peace">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">The wound is the place where the light enters you.</div>
-                    <div class="quote-text-hindi">ज़ख्म ही वो जगह है जहाँ से रोशनी तुम्हारे अंदर आती है।</div>
-                    <div class="quote-author">Rumi</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Peace</span>
-                        <span class="quote-tag">Healing</span>
-                    </div>
-                </div>
-
-                <!-- HEALING -->
-                <div class="quote-card reveal" data-category="healing">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Healing doesn't mean the damage never existed. It means the damage no longer controls your life.</div>
-                    <div class="quote-text-hindi">ठीक होने का मतलब यह नहीं कि नुकसान कभी हुआ ही नहीं। इसका मतलब है कि अब वो नुकसान आपकी ज़िंदगी को नियंत्रित नहीं करता।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Healing</span>
-                    </div>
-                </div>
-
-                <div class="quote-card reveal" data-category="healing">
-                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
-                    <div class="quote-mark">&ldquo;</div>
-                    <div class="quote-text">Forgiveness is not weakness, it is strength.</div>
-                    <div class="quote-text-hindi">माफ़ी कमज़ोरी नहीं, ताक़त है।</div>
-                    <div class="quote-tags">
-                        <span class="quote-tag">Healing</span>
-                        <span class="quote-tag">Strength</span>
-                    </div>
-                </div>
-
+                <!-- Quotes rendered by JS -->
             </div>
         </section>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-        <div class="footer-brand">&#x1F54A; Sukoon</div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <span class="brand-mark">
+                <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.18-9 7.1 0 2.34 1.44 4.42 3.67 5.74L5 21l4.39-2.11c.84.18 1.72.28 2.61.28 4.97 0 9-3.18 9-7.1S16.97 3 12 3z"/></svg>
+            </span>
+            Sukoon
+        </div>
         <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
-        <p class="footer-mission-hindi">दुनिया की हर आत्मा के लिए मुफ़्त मानसिक सुकून।</p>
-        <p class="footer-privacy">&#x1F512; Your data stays on your device. We don't collect, store, or sell anything.</p>
-        <div class="footer-links">
+        <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
+        <div class="footer-privacy">No data collected. No accounts. No tracking.</div>
+        <nav class="footer-nav">
             <a href="/breathe.html">Breathe</a>
             <a href="/meditate.html">Meditate</a>
             <a href="/sounds.html">Sounds</a>
             <a href="/journal.html">Journal</a>
             <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a>
             <a href="/quotes.html">Quotes</a>
             <a href="/videos.html">Videos</a>
-            <a href="/privacy.html">Privacy</a>
-        </div>
-        <p class="footer-copy">Sukoon &copy; 2026. The world needs love, not war. | दुनिया को प्यार चाहिए, नफ़रत नहीं।</p>
+        </nav>
+        <p class="footer-copy">&copy; 2025 Sukoon. Made with love for humanity.</p>
     </footer>
 
     <script>
-        // Mobile nav toggle
-        document.getElementById('mobileToggle').addEventListener('click', () => {
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', function() {
             document.getElementById('mainNav').classList.toggle('open');
         });
+        document.querySelectorAll('#mainNav a').forEach(function(link) {
+            link.addEventListener('click', function() { document.getElementById('mainNav').classList.remove('open'); });
+        });
 
-        // Scroll reveal
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        // === QUOTES DATA ===
+        var quotes = [
+            {
+                en: "Be kind. Everyone is healing from things they don't speak about.",
+                hi: "\u0926\u092F\u093E\u0932\u0941 \u092C\u0928\u094B\u0964 \u0939\u0930 \u0915\u094B\u0908 \u0909\u0928 \u091C\u093C\u0916\u094D\u092E\u094B\u0902 \u0938\u0947 \u0909\u092D\u0930 \u0930\u0939\u093E \u0939\u0948 \u091C\u093F\u0928\u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0935\u094B \u092C\u094B\u0932\u0924\u0947 \u0928\u0939\u0940\u0902\u0964",
+                author: "", cats: ["kindness", "healing"]
+            },
+            {
+                en: "Never blame anyone in your life. Good people give you happiness. Bad people give you experience. Worst people give you a lesson. Best people give you memories.",
+                hi: "\u0905\u092A\u0928\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u092E\u0947\u0902 \u0915\u093F\u0938\u0940 \u0915\u094B \u0926\u094B\u0937 \u0928 \u0926\u094B\u0964 \u0905\u091A\u094D\u091B\u0947 \u0932\u094B\u0917 \u0916\u0941\u0936\u0940 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964 \u092C\u0941\u0930\u0947 \u0932\u094B\u0917 \u0905\u0928\u0941\u092D\u0935\u0964 \u0938\u092C\u0938\u0947 \u092C\u0941\u0930\u0947 \u0938\u092C\u0915\u0964 \u0938\u092C\u0938\u0947 \u0905\u091A\u094D\u091B\u0947 \u092F\u093E\u0926\u0947\u0902\u0964",
+                author: "APJ Abdul Kalam", cats: ["wisdom", "strength"]
+            },
+            {
+                en: "The light you discover is proportionate to the darkness you confront.",
+                hi: "\u091C\u093F\u0924\u0928\u0947 \u0905\u0902\u0927\u0947\u0930\u0947 \u0915\u093E \u0938\u093E\u092E\u0928\u093E \u0915\u0930\u094B\u0917\u0947, \u0909\u0924\u0928\u093E \u0939\u0940 \u0930\u094B\u0936\u0928\u0940 \u092A\u093E\u0913\u0917\u0947\u0964",
+                author: "Jordan Peterson", cats: ["courage", "strength"]
+            },
+            {
+                en: "If you cannot call wrong as wrong, you are in the final stage of slavery.",
+                hi: "\u0905\u0917\u0930 \u0906\u092A \u0917\u093C\u0932\u0924 \u0915\u094B \u0917\u093C\u0932\u0924 \u0928\u0939\u0940\u0902 \u0915\u0939 \u0938\u0915\u0924\u0947, \u0924\u094B \u0906\u092A \u0917\u093C\u0941\u0932\u093E\u092E\u0940 \u0915\u0940 \u0906\u0916\u093C\u093F\u0930\u0940 \u0938\u094D\u091F\u0947\u091C \u092E\u0947\u0902 \u0939\u0948\u0902\u0964",
+                author: "Che Guevara", cats: ["courage", "strength"]
+            },
+            {
+                en: "Desire makes slaves out of kings, patience makes kings out of slaves.",
+                hi: "\u0907\u091A\u094D\u091B\u093E \u0930\u093E\u091C\u093E\u0913\u0902 \u0915\u094B \u0917\u093C\u0941\u0932\u093E\u092E \u092C\u0928\u093E\u0924\u0940 \u0939\u0948, \u0938\u092C\u094D\u0930 \u0917\u093C\u0941\u0932\u093E\u092E\u094B\u0902 \u0915\u094B \u0930\u093E\u091C\u093E\u0964",
+                author: "Al-Ghazali", cats: ["islamic", "wisdom"]
+            },
+            {
+                en: "Sadness is caused by intelligence. The more you understand, the more you suffer.",
+                hi: "\u0926\u0941\u0916 \u092C\u0941\u0926\u094D\u0927\u093F \u0938\u0947 \u0906\u0924\u093E \u0939\u0948\u0964 \u091C\u093F\u0924\u0928\u093E \u0938\u092E\u091D\u094B\u0917\u0947, \u0909\u0924\u0928\u093E \u0926\u0941\u0916 \u092A\u093E\u0913\u0917\u0947\u0964",
+                author: "Charles Bukowski", cats: ["wisdom", "self-talk"]
+            },
+            {
+                en: "If you kill a cockroach you are a hero. Kill a butterfly and you are bad. Morals have an aesthetic basis.",
+                hi: "\u090F\u0915 \u0915\u0949\u0915\u0930\u094B\u091A \u092E\u093E\u0930\u094B \u0924\u094B \u0939\u0940\u0930\u094B\u0964 \u0924\u093F\u0924\u0932\u0940 \u092E\u093E\u0930\u094B \u0924\u094B \u0916\u0932\u0928\u093E\u092F\u0915\u0964 \u0928\u0948\u0924\u093F\u0915\u0924\u093E \u0915\u093E \u0906\u0927\u093E\u0930 \u0938\u094C\u0902\u0926\u0930\u094D\u092F \u0939\u0948\u0964",
+                author: "Friedrich Nietzsche", cats: ["wisdom", "humor"]
+            },
+            {
+                en: "Life is like a kulfi -- taste it or waste it, it's melting anyway.",
+                hi: "\u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u0915\u0941\u0932\u094D\u092B\u093C\u0940 \u091C\u0948\u0938\u0940 \u0939\u0948 -- \u091A\u0916\u094B \u092F\u093E \u092C\u0930\u094D\u092C\u093E\u0926 \u0915\u0930\u094B, \u092A\u093F\u0918\u0932 \u0924\u094B \u0930\u0939\u0940 \u0939\u0940 \u0939\u0948\u0964",
+                author: "", cats: ["humor", "wisdom"]
+            },
+            {
+                en: "The wound is the place where the light enters you.",
+                hi: "\u0918\u093E\u0935 \u0935\u0939 \u091C\u0917\u0939 \u0939\u0948 \u091C\u0939\u093E\u0901 \u0938\u0947 \u0930\u094B\u0936\u0928\u0940 \u0906\u092A\u0915\u0947 \u0905\u0902\u0926\u0930 \u0906\u0924\u0940 \u0939\u0948\u0964",
+                author: "Rumi", cats: ["healing", "wisdom", "islamic"]
+            },
+            {
+                en: "Forgive your parents. They too had a childhood they didn't heal from.",
+                hi: "\u0905\u092A\u0928\u0947 \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u0915\u094B \u092E\u093E\u092B\u093C \u0915\u0930\u094B\u0964 \u0909\u0928\u0915\u093E \u092D\u0940 \u090F\u0915 \u092C\u091A\u092A\u0928 \u0925\u093E \u091C\u093F\u0938\u0938\u0947 \u0935\u094B \u0909\u092D\u0930 \u0928\u0939\u0940\u0902 \u092A\u093E\u090F\u0964",
+                author: "", cats: ["family", "healing"]
+            },
+            {
+                en: "Your calm mind is the ultimate weapon against your challenges.",
+                hi: "\u0906\u092A\u0915\u093E \u0936\u093E\u0902\u0924 \u092E\u0928 \u0906\u092A\u0915\u0940 \u091A\u0941\u0928\u094C\u0924\u093F\u092F\u094B\u0902 \u0915\u0947 \u0916\u093F\u0932\u093E\u092B\u093C \u0938\u092C\u0938\u0947 \u0936\u0915\u094D\u0924\u093F\u0936\u093E\u0932\u0940 \u0939\u0925\u093F\u092F\u093E\u0930 \u0939\u0948\u0964",
+                author: "Bryant McGill", cats: ["peace", "strength"]
+            },
+            {
+                en: "Do not lose hope, nor be sad. You will surely be tested, but Allah is with the patient.",
+                hi: "\u0909\u092E\u094D\u092E\u0940\u0926 \u092E\u0924 \u0916\u094B\u0913 \u0914\u0930 \u0928 \u0909\u0926\u093E\u0938 \u0939\u094B\u0964 \u0924\u0941\u092E\u094D\u0939\u093E\u0930\u0940 \u092A\u0930\u0940\u0915\u094D\u0937\u093E \u0939\u094B\u0917\u0940, \u092A\u0930 \u0905\u0932\u094D\u0932\u093E\u0939 \u0938\u092C\u094D\u0930 \u0915\u0930\u0928\u0947 \u0935\u093E\u0932\u094B\u0902 \u0915\u0947 \u0938\u093E\u0925 \u0939\u0948\u0964",
+                author: "Quran 2:153", cats: ["islamic", "strength", "peace"]
+            },
+            {
+                en: "Holding on to anger is like drinking poison and expecting the other person to die.",
+                hi: "\u0917\u0941\u0938\u094D\u0938\u093E \u092A\u0915\u0921\u093C\u0928\u093E \u091C\u093C\u0939\u0930 \u092A\u0940\u0928\u0947 \u091C\u0948\u0938\u093E \u0939\u0948 \u0914\u0930 \u0909\u092E\u094D\u092E\u0940\u0926 \u0915\u0930\u0928\u093E \u0915\u093F \u0926\u0942\u0938\u0930\u093E \u092E\u0930\u0947\u0917\u093E\u0964",
+                author: "Buddha", cats: ["wisdom", "peace", "healing"]
+            },
+            {
+                en: "The strongest people are not those who show strength in front of us, but those who win battles we know nothing about.",
+                hi: "\u0938\u092C\u0938\u0947 \u092E\u091C\u093C\u092C\u0942\u0924 \u0935\u094B \u0928\u0939\u0940\u0902 \u091C\u094B \u0939\u092E\u093E\u0930\u0947 \u0938\u093E\u092E\u0928\u0947 \u0924\u093E\u0915\u0924 \u0926\u093F\u0916\u093E\u0924\u0947 \u0939\u0948\u0902, \u092C\u0932\u094D\u0915\u093F \u0935\u094B \u091C\u094B \u0909\u0928 \u0932\u0921\u093C\u093E\u0907\u092F\u094B\u0902 \u092E\u0947\u0902 \u091C\u0940\u0924\u0924\u0947 \u0939\u0948\u0902 \u091C\u093F\u0928\u0915\u0947 \u092C\u093E\u0930\u0947 \u0939\u092E \u0915\u0941\u091B \u0928\u0939\u0940\u0902 \u091C\u093E\u0928\u0924\u0947\u0964",
+                author: "", cats: ["strength", "courage"]
+            },
+            {
+                en: "Sometimes the bravest thing you can do is ask for help.",
+                hi: "\u0915\u092D\u0940-\u0915\u092D\u0940 \u0938\u092C\u0938\u0947 \u092C\u0939\u093E\u0926\u0941\u0930 \u0915\u093E\u092E \u092E\u0926\u0926 \u092E\u093E\u0901\u0917\u0928\u093E \u0939\u094B\u0924\u093E \u0939\u0948\u0964",
+                author: "", cats: ["courage", "self-talk"]
+            },
+            {
+                en: "You are allowed to be both a masterpiece and a work in progress simultaneously.",
+                hi: "\u0906\u092A \u090F\u0915 \u0938\u093E\u0925 \u0936\u093E\u0939\u0915\u093E\u0930 \u092D\u0940 \u0939\u094B \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0905\u0927\u0942\u0930\u0940 \u092D\u0940\u0964",
+                author: "Sophia Bush", cats: ["self-talk", "healing"]
+            },
+            {
+                en: "Your children don't need a perfect parent. They need a happy one.",
+                hi: "\u0906\u092A\u0915\u0947 \u092C\u091A\u094D\u091A\u094B\u0902 \u0915\u094B \u092A\u0930\u092B\u0947\u0915\u094D\u091F \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u0928\u0939\u0940\u0902, \u0916\u0941\u0936 \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u091A\u093E\u0939\u093F\u090F\u0964",
+                author: "", cats: ["family", "kindness"]
+            },
+            {
+                en: "Talk to yourself like you would to someone you love.",
+                hi: "\u0905\u092A\u0928\u0947 \u0906\u092A \u0938\u0947 \u0910\u0938\u0947 \u092C\u093E\u0924 \u0915\u0930\u094B \u091C\u0948\u0938\u0947 \u0915\u093F\u0938\u0940 \u092A\u094D\u092F\u093E\u0930\u0947 \u0938\u0947 \u0915\u0930\u0924\u0947 \u0939\u094B\u0964",
+                author: "Brene Brown", cats: ["self-talk", "kindness"]
+            },
+            {
+                en: "And verily, with hardship comes ease.",
+                hi: "\u0914\u0930 \u092C\u0947\u0936\u0915, \u092E\u0941\u0936\u094D\u0915\u093F\u0932 \u0915\u0947 \u0938\u093E\u0925 \u0906\u0938\u093E\u0928\u0940 \u0939\u0948\u0964",
+                author: "Quran 94:6", cats: ["islamic", "strength", "peace"]
+            },
+            {
+                en: "The only person you should try to be better than is the person you were yesterday.",
+                hi: "\u0906\u092A\u0915\u094B \u0938\u093F\u0930\u094D\u092B\u093C \u0915\u0932 \u0915\u0947 \u0905\u092A\u0928\u0947 \u0906\u092A \u0938\u0947 \u092C\u0947\u0939\u0924\u0930 \u092C\u0928\u0928\u093E \u0939\u0948\u0964",
+                author: "", cats: ["self-talk", "strength"]
+            },
+            {
+                en: "Home is not a place. It is the people who love you when you have nothing to offer.",
+                hi: "\u0918\u0930 \u0915\u094B\u0908 \u091C\u0917\u0939 \u0928\u0939\u0940\u0902\u0964 \u0918\u0930 \u0935\u094B \u0932\u094B\u0917 \u0939\u0948\u0902 \u091C\u094B \u0906\u092A\u0938\u0947 \u0924\u092C \u092D\u0940 \u092A\u094D\u092F\u093E\u0930 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902 \u091C\u092C \u0906\u092A\u0915\u0947 \u092A\u093E\u0938 \u0926\u0947\u0928\u0947 \u0915\u094B \u0915\u0941\u091B \u0928 \u0939\u094B\u0964",
+                author: "", cats: ["family", "kindness"]
+            },
+            {
+                en: "Worrying does not take away tomorrow's troubles. It takes away today's peace.",
+                hi: "\u091A\u093F\u0902\u0924\u093E \u0915\u0932 \u0915\u0940 \u092E\u0941\u0938\u0940\u092C\u0924 \u0928\u0939\u0940\u0902 \u0939\u091F\u093E\u0924\u0940\u0964 \u092F\u0939 \u0906\u091C \u0915\u0940 \u0936\u093E\u0902\u0924\u093F \u091B\u0940\u0928 \u0932\u0947\u0924\u0940 \u0939\u0948\u0964",
+                author: "", cats: ["peace", "wisdom"]
+            },
+            {
+                en: "You don't have to defend your boundaries. You just have to set them.",
+                hi: "\u0906\u092A\u0915\u094B \u0905\u092A\u0928\u0940 \u0938\u0940\u092E\u093E\u0913\u0902 \u0915\u0940 \u0930\u0915\u094D\u0937\u093E \u0928\u0939\u0940\u0902 \u0915\u0930\u0928\u0940\u0964 \u092C\u0938 \u0909\u0928\u094D\u0939\u0947\u0902 \u0924\u092F \u0915\u0930\u0928\u093E \u0939\u0948\u0964",
+                author: "", cats: ["self-talk", "strength"]
+            },
+            {
+                en: "Not everything that weighs you down is yours to carry.",
+                hi: "\u0939\u0930 \u092C\u094B\u091D \u091C\u094B \u0906\u092A\u0915\u094B \u0926\u092C\u093E\u0924\u0940 \u0939\u0948, \u0935\u094B \u0906\u092A\u0915\u0940 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964",
+                author: "", cats: ["peace", "healing"]
+            },
+            {
+                en: "Patience with family is love. Patience with others is respect. Patience with self is confidence.",
+                hi: "\u092A\u0930\u093F\u0935\u093E\u0930 \u0938\u0947 \u0938\u092C\u094D\u0930 \u092A\u094D\u092F\u093E\u0930 \u0939\u0948\u0964 \u0926\u0942\u0938\u0930\u094B\u0902 \u0938\u0947 \u0938\u092C\u094D\u0930 \u0938\u092E\u094D\u092E\u093E\u0928\u0964 \u0916\u0941\u0926 \u0938\u0947 \u0938\u092C\u094D\u0930 \u0906\u0924\u094D\u092E\u0935\u093F\u0936\u094D\u0935\u093E\u0938\u0964",
+                author: "", cats: ["family", "islamic", "wisdom"]
+            },
+            {
+                en: "A smile is the best makeup any face can wear.",
+                hi: "\u092E\u0941\u0938\u094D\u0915\u093E\u0928 \u0938\u092C\u0938\u0947 \u0905\u091A\u094D\u091B\u093E \u0936\u094D\u0930\u0943\u0902\u0917\u093E\u0930 \u0939\u0948 \u091C\u094B \u0915\u094B\u0908 \u091A\u0947\u0939\u0930\u093E \u092A\u0939\u0928 \u0938\u0915\u0924\u093E \u0939\u0948\u0964",
+                author: "Marilyn Monroe", cats: ["kindness", "humor"]
+            },
+            {
+                en: "Your heart knows the way. Run in that direction.",
+                hi: "\u0906\u092A\u0915\u093E \u0926\u093F\u0932 \u0930\u093E\u0938\u094D\u0924\u093E \u091C\u093E\u0928\u0924\u093E \u0939\u0948\u0964 \u0909\u0938 \u0926\u093F\u0936\u093E \u092E\u0947\u0902 \u0926\u094C\u0921\u093C\u094B\u0964",
+                author: "Rumi", cats: ["courage", "islamic"]
+            },
+            {
+                en: "The broken will always be able to love harder than most. Once you've been in the dark, you learn to appreciate everything that shines.",
+                hi: "\u091F\u0942\u091F\u0947 \u0939\u0941\u090F \u0932\u094B\u0917 \u0939\u092E\u0947\u0936\u093E \u0938\u092C\u0938\u0947 \u0917\u0939\u0930\u093E \u092A\u094D\u092F\u093E\u0930 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u091C\u092C \u0906\u092A \u0905\u0902\u0927\u0947\u0930\u0947 \u092E\u0947\u0902 \u0930\u0939 \u091A\u0941\u0915\u0947 \u0939\u094B, \u0924\u094B \u0939\u0930 \u091A\u092E\u0915\u0924\u0940 \u091A\u0940\u091C\u093C \u0915\u0940 \u0915\u0926\u094D\u0930 \u0915\u0930\u0924\u0947 \u0939\u094B\u0964",
+                author: "", cats: ["healing", "strength"]
+            }
+        ];
 
-        // --- FILTER FUNCTIONALITY ---
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const quoteCards = document.querySelectorAll('.quote-card');
+        // === RENDER QUOTES ===
+        var grid = document.getElementById('quotesGrid');
+        function renderQuotes() {
+            grid.innerHTML = '';
+            quotes.forEach(function(q, i) {
+                var cats = q.cats.join(' ');
+                var card = document.createElement('div');
+                card.className = 'quote-card';
+                card.setAttribute('data-category', cats);
 
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                const filter = btn.dataset.filter;
+                var authorLine = q.author ? '<p class="quote-author">-- ' + q.author + '</p>' : '';
+                var tags = q.cats.map(function(c) {
+                    return '<span class="quote-tag">' + c.charAt(0).toUpperCase() + c.slice(1) + '</span>';
+                }).join('');
 
-                quoteCards.forEach(card => {
-                    if (filter === 'all' || card.dataset.category === filter) {
-                        card.style.display = '';
-                        card.classList.add('visible');
-                    } else {
-                        card.style.display = 'none';
-                    }
+                card.innerHTML =
+                    '<div class="quote-mark">&ldquo;</div>' +
+                    '<p class="quote-en">' + q.en + '</p>' +
+                    '<div class="quote-hi-wrap"><p class="quote-hi">' + q.hi + '</p></div>' +
+                    authorLine +
+                    '<div class="quote-footer">' +
+                        '<div class="quote-tags">' + tags + '</div>' +
+                        '<button class="copy-btn" data-idx="' + i + '">' +
+                            '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg>' +
+                            'Copy' +
+                        '</button>' +
+                    '</div>';
+                grid.appendChild(card);
+            });
+        }
+        renderQuotes();
+
+        // === FILTER ===
+        var filterBar = document.getElementById('filterBar');
+        var activeFilter = 'all';
+
+        filterBar.addEventListener('click', function(e) {
+            var pill = e.target.closest('.filter-pill');
+            if (!pill) return;
+            filterBar.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
+            pill.classList.add('active');
+            activeFilter = pill.getAttribute('data-cat');
+            applyFilter();
+        });
+
+        function applyFilter() {
+            var cards = grid.querySelectorAll('.quote-card');
+            var visibleCount = 0;
+            cards.forEach(function(card) {
+                var cats = card.getAttribute('data-category');
+                if (activeFilter === 'all' || cats.indexOf(activeFilter) !== -1) {
+                    card.classList.remove('hidden');
+                    visibleCount++;
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+            // No-results not needed with 24+ quotes covering all categories
+        }
+
+        // === COPY ===
+        grid.addEventListener('click', function(e) {
+            var btn = e.target.closest('.copy-btn');
+            if (!btn) return;
+            var idx = parseInt(btn.getAttribute('data-idx'));
+            var q = quotes[idx];
+            var text = q.en + '\n\n' + q.hi;
+            if (q.author) text += '\n-- ' + q.author;
+            text += '\n\n~ Sukoon';
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(text).then(function() {
+                    btn.classList.add('copied');
+                    btn.innerHTML =
+                        '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5"/></svg>' +
+                        'Copied';
+                    setTimeout(function() {
+                        btn.classList.remove('copied');
+                        btn.innerHTML =
+                            '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg>' +
+                            'Copy';
+                    }, 2000);
                 });
-            });
+            }
         });
 
-        // --- COPY QUOTE ---
-        function copyQuote(btn) {
-            const card = btn.closest('.quote-card');
-            const text = card.querySelector('.quote-text').textContent;
-            const hindi = card.querySelector('.quote-text-hindi').textContent;
-            const authorEl = card.querySelector('.quote-author');
-            const author = authorEl ? '\n-- ' + authorEl.textContent : '';
-            const full = text + '\n\n' + hindi + author + '\n\n-- Sukoon (sukoon.app)';
-
-            navigator.clipboard.writeText(full).then(() => {
-                btn.classList.add('copied');
-                btn.innerHTML = '&#x2714;';
-                setTimeout(() => {
-                    btn.classList.remove('copied');
-                    btn.innerHTML = '&#x1F4CB;';
-                }, 2000);
-            });
+        // === QUOTE OF THE MOMENT ===
+        var qotmIdx = -1;
+        function showQotm() {
+            var next;
+            do { next = Math.floor(Math.random() * quotes.length); } while (next === qotmIdx && quotes.length > 1);
+            qotmIdx = next;
+            var q = quotes[qotmIdx];
+            document.getElementById('qotmEN').textContent = q.en;
+            document.getElementById('qotmHI').textContent = q.hi;
+            document.getElementById('qotmAuthor').textContent = q.author ? '-- ' + q.author : '';
         }
-
-        // --- DAILY RANDOM QUOTE ---
-        const allQuotes = [];
-        quoteCards.forEach(card => {
-            const text = card.querySelector('.quote-text').textContent;
-            const hindi = card.querySelector('.quote-text-hindi').textContent;
-            const authorEl = card.querySelector('.quote-author');
-            allQuotes.push({
-                text: text,
-                hindi: hindi,
-                author: authorEl ? authorEl.textContent : ''
-            });
-        });
-
-        function showRandomDaily() {
-            const q = allQuotes[Math.floor(Math.random() * allQuotes.length)];
-            document.getElementById('dailyQuoteText').textContent = '\u201C' + q.text + '\u201D';
-            document.getElementById('dailyQuoteHindi').textContent = q.hindi;
-            document.getElementById('dailyQuoteAuthor').textContent = q.author ? '-- ' + q.author : '';
-        }
-
-        showRandomDaily();
+        showQotm();
+        document.getElementById('qotmRefresh').addEventListener('click', showQotm);
     </script>
 </body>
 </html>

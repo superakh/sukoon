@@ -5,20 +5,314 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sukoon - Videos for the Soul</title>
     <meta name="description" content="Inspirational videos, calm music, and guided meditations. Curated with love for your mental wellness.">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        .video-section { margin-bottom: 3rem; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 72px;
+            background: rgba(250, 250, 247, 0.78);
+            backdrop-filter: blur(20px) saturate(1.8);
+            -webkit-backdrop-filter: blur(20px) saturate(1.8);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem;
+            color: #111827;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            white-space: nowrap;
+        }
+        .logo-icon { font-size: 1.5rem; }
+
+        .topbar-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+        .topbar-nav a {
+            padding: 0.4rem 0.75rem;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6B7280;
+            transition: background 0.2s, color 0.2s;
+        }
+        .topbar-nav a:hover { background: rgba(79,70,229,0.08); color: #4F46E5; }
+        .topbar-nav a.active { background: rgba(79,70,229,0.1); color: #4F46E5; font-weight: 600; }
+
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+
+        .lang-select {
+            padding: 0.35rem 0.6rem;
+            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: #FFFFFF;
+            font-size: 0.8rem;
+            color: #6B7280;
+            cursor: pointer;
+            outline: none;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #111827;
+            cursor: pointer;
+            padding: 0.25rem;
+        }
+
+        /* ===================== PAGE HEADER ===================== */
+        .page-header {
+            text-align: center;
+            padding: 7rem 1.5rem 3rem;
+            background: linear-gradient(175deg, rgba(79,70,229,0.06) 0%, rgba(16,185,129,0.04) 50%, rgba(245,158,11,0.03) 100%);
+        }
+        .page-header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: #111827;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+        .page-header .subtitle {
+            font-size: clamp(1rem, 2.5vw, 1.15rem);
+            color: #374151;
+            font-weight: 300;
+            max-width: 560px;
+            margin: 0 auto 0.5rem;
+        }
+        .page-header .subtitle-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.9rem;
+            color: #9CA3AF;
+        }
+
+        /* ===================== SECTIONS ===================== */
+        .section {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 1.5rem 4rem;
+        }
+
+        .video-section { margin-bottom: 3.5rem; }
+
         .video-section-title {
-            font-family: var(--font-display);
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.3rem, 3vw, 1.7rem);
+            color: #111827;
+            margin-bottom: 1.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             display: flex;
             align-items: center;
             gap: 0.6rem;
         }
-        .video-section-title .section-icon { font-size: 1.4rem; }
+        .video-section-title .section-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+        .icon-indigo { background: rgba(79,70,229,0.08); }
+        .icon-emerald { background: rgba(16,185,129,0.08); }
+
+        .video-section-title .hindi-label {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            font-weight: 400;
+            margin-left: auto;
+        }
+
+        /* ===================== VIDEO GRID ===================== */
+        .videos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .video-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(24px);
+            transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.3s ease,
+                        opacity 0.6s ease;
+        }
+        .video-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 20px 48px rgba(0,0,0,0.08);
+        }
+        .video-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .video-embed {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #F3F4F6;
+        }
+        .video-embed iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .video-info {
+            padding: 1.25rem 1.5rem 1.5rem;
+        }
+        .video-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+        .video-desc {
+            font-size: 0.88rem;
+            color: #374151;
+            line-height: 1.6;
+            margin-bottom: 0.4rem;
+        }
+        .video-desc-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .site-footer {
+            padding: 3.5rem 1.5rem 2.5rem;
+            background: #F5F5F0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #111827;
+            margin-bottom: 0.5rem;
+        }
+        .footer-mission {
+            font-size: 0.9rem;
+            color: #6B7280;
+            margin-bottom: 0.25rem;
+        }
+        .footer-mission-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.82rem;
+            color: #9CA3AF;
+            margin-bottom: 1rem;
+        }
+        .footer-privacy {
+            font-size: 0.78rem;
+            color: #10B981;
+            background: rgba(16,185,129,0.06);
+            display: inline-block;
+            padding: 0.4rem 1.25rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+        .footer-links a {
+            font-size: 0.85rem;
+            color: #6B7280;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: #4F46E5; }
+        .footer-copy {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .topbar { padding: 0 1rem; }
+            .topbar-nav {
+                display: none;
+                position: fixed;
+                top: 72px;
+                left: 0; right: 0;
+                background: rgba(250, 250, 247, 0.97);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            }
+            .topbar-nav.open { display: flex; }
+            .topbar-nav a {
+                padding: 0.75rem 1rem;
+                width: 100%;
+                text-align: left;
+                font-size: 1rem;
+            }
+            .mobile-nav-toggle { display: block; }
+            .page-header { padding: 6.5rem 1.25rem 2.5rem; }
+            .videos-grid {
+                grid-template-columns: 1fr;
+                max-width: 520px;
+                margin: 0 auto;
+            }
+            .video-section-title .hindi-label { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .section { padding: 0 1rem 3rem; }
+            .video-info { padding: 1rem 1.25rem 1.25rem; }
+            .video-title { font-size: 1rem; }
+        }
     </style>
 </head>
 <body>
@@ -53,9 +347,9 @@
     <main>
         <!-- PAGE HEADER -->
         <div class="page-header">
-            <h1>&#x1F3AC; Videos for the Soul</h1>
+            <h1>Videos for the Soul</h1>
             <p class="subtitle">Inspirational stories, calm music, and guided meditations. Press play and breathe.</p>
-            <p class="subtitle-hindi">प्रेरणादायक कहानियाँ, शांत संगीत, और ध्यान। प्ले करें और साँस लें।</p>
+            <p class="subtitle-hindi">&#2346;&#2381;&#2352;&#2375;&#2352;&#2339;&#2366;&#2342;&#2366;&#2351;&#2325; &#2325;&#2361;&#2366;&#2344;&#2367;&#2351;&#2366;&#2305;, &#2358;&#2366;&#2306;&#2340; &#2360;&#2306;&#2327;&#2368;&#2340;, &#2324;&#2352; &#2343;&#2381;&#2351;&#2366;&#2344;&#2404; &#2346;&#2381;&#2354;&#2375; &#2325;&#2352;&#2375;&#2306; &#2324;&#2352; &#2360;&#2366;&#2305;&#2360; &#2354;&#2375;&#2306;&#2404;</p>
         </div>
 
         <section class="section">
@@ -63,8 +357,9 @@
             <!-- INSPIRATIONAL -->
             <div class="video-section">
                 <h2 class="video-section-title">
-                    <span class="section-icon">&#x1F31F;</span> Inspirational
-                    <span style="font-family:var(--font-hindi); font-size:0.9rem; color:var(--text-dim); margin-left:0.5rem;">प्रेरणादायक</span>
+                    <span class="section-icon icon-indigo">&#x2728;</span>
+                    Inspirational
+                    <span class="hindi-label">&#2346;&#2381;&#2352;&#2375;&#2352;&#2339;&#2366;&#2342;&#2366;&#2351;&#2325;</span>
                 </h2>
                 <div class="videos-grid">
 
@@ -73,9 +368,9 @@
                             <iframe src="https://www.youtube.com/embed/dozqnoDFa8E" title="The World Needs Love Not War" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
                         </div>
                         <div class="video-info">
-                            <div class="video-title">The World Needs Love Not War</div>
+                            <div class="video-title">The World Needs Love, Not War</div>
                             <div class="video-desc">A powerful reminder that compassion and unity are the only way forward for humanity.</div>
-                            <div class="video-desc-hindi">एक शक्तिशाली याद -- करुणा और एकता ही इंसानियत का रास्ता है।</div>
+                            <div class="video-desc-hindi">&#2319;&#2325; &#2358;&#2325;&#2381;&#2340;&#2367;&#2358;&#2366;&#2354;&#2368; &#2351;&#2366;&#2342; -- &#2325;&#2352;&#2369;&#2339;&#2366; &#2324;&#2352; &#2319;&#2325;&#2340;&#2366; &#2361;&#2368; &#2311;&#2306;&#2360;&#2366;&#2344;&#2367;&#2351;&#2340; &#2325;&#2366; &#2352;&#2366;&#2360;&#2381;&#2340;&#2366; &#2361;&#2376;&#2404;</div>
                         </div>
                     </div>
 
@@ -86,7 +381,7 @@
                         <div class="video-info">
                             <div class="video-title">A Story That Will Touch Your Heart</div>
                             <div class="video-desc">Sometimes the smallest act of kindness can change someone's entire world.</div>
-                            <div class="video-desc-hindi">कभी-कभी दयालुता का एक छोटा सा काम किसी की पूरी दुनिया बदल सकता है।</div>
+                            <div class="video-desc-hindi">&#2325;&#2349;&#2368;-&#2325;&#2349;&#2368; &#2342;&#2351;&#2366;&#2354;&#2369;&#2340;&#2366; &#2325;&#2366; &#2319;&#2325; &#2331;&#2379;&#2335;&#2366; &#2360;&#2366; &#2325;&#2366;&#2350; &#2325;&#2367;&#2360;&#2368; &#2325;&#2368; &#2346;&#2370;&#2352;&#2368; &#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2348;&#2342;&#2354; &#2360;&#2325;&#2340;&#2366; &#2361;&#2376;&#2404;</div>
                         </div>
                     </div>
 
@@ -97,7 +392,7 @@
                         <div class="video-info">
                             <div class="video-title">Kindness Boomerang</div>
                             <div class="video-desc">One act of kindness leads to another. Watch the chain reaction of good deeds.</div>
-                            <div class="video-desc-hindi">एक दयालुता दूसरी को जन्म देती है। अच्छाई की चेन रिएक्शन देखिए।</div>
+                            <div class="video-desc-hindi">&#2319;&#2325; &#2342;&#2351;&#2366;&#2354;&#2369;&#2340;&#2366; &#2342;&#2370;&#2360;&#2352;&#2368; &#2325;&#2379; &#2332;&#2344;&#2381;&#2350; &#2342;&#2375;&#2340;&#2368; &#2361;&#2376;&#2404; &#2309;&#2330;&#2381;&#2331;&#2366;&#2312; &#2325;&#2368; &#2330;&#2375;&#2344; &#2352;&#2367;&#2319;&#2325;&#2381;&#2358;&#2344; &#2342;&#2375;&#2326;&#2367;&#2319;&#2404;</div>
                         </div>
                     </div>
 
@@ -108,18 +403,19 @@
                         <div class="video-info">
                             <div class="video-title">Gratitude - Louie Schwartzberg</div>
                             <div class="video-desc">A breathtaking visual meditation on the beauty of everyday life and the power of gratitude.</div>
-                            <div class="video-desc-hindi">रोज़मर्रा की ज़िंदगी की खूबसूरती और शुक्र की ताक़त पर एक अद्भुत दृश्य ध्यान।</div>
+                            <div class="video-desc-hindi">&#2352;&#2379;&#2332;&#2364;&#2350;&#2352;&#2381;&#2352;&#2366; &#2325;&#2368; &#2332;&#2364;&#2367;&#2306;&#2342;&#2327;&#2368; &#2325;&#2368; &#2326;&#2370;&#2348;&#2360;&#2370;&#2352;&#2340;&#2368; &#2324;&#2352; &#2358;&#2369;&#2325;&#2381;&#2352; &#2325;&#2368; &#2340;&#2366;&#2325;&#2364;&#2340; &#2346;&#2352; &#2319;&#2325; &#2309;&#2342;&#2381;&#2349;&#2369;&#2340; &#2342;&#2371;&#2358;&#2381;&#2351; &#2343;&#2381;&#2351;&#2366;&#2344;&#2404;</div>
                         </div>
                     </div>
 
                 </div>
             </div>
 
-            <!-- CALM / MEDITATION -->
+            <!-- CALM MUSIC & MEDITATION -->
             <div class="video-section">
                 <h2 class="video-section-title">
-                    <span class="section-icon">&#x1F3B6;</span> Calm Music &amp; Meditation
-                    <span style="font-family:var(--font-hindi); font-size:0.9rem; color:var(--text-dim); margin-left:0.5rem;">शांत संगीत और ध्यान</span>
+                    <span class="section-icon icon-emerald">&#x266B;</span>
+                    Calm Music &amp; Meditation
+                    <span class="hindi-label">&#2358;&#2366;&#2306;&#2340; &#2360;&#2306;&#2327;&#2368;&#2340; &#2324;&#2352; &#2343;&#2381;&#2351;&#2366;&#2344;</span>
                 </h2>
                 <div class="videos-grid">
 
@@ -130,7 +426,7 @@
                         <div class="video-info">
                             <div class="video-title">Relaxing Music for Stress Relief</div>
                             <div class="video-desc">Gentle melodies to dissolve tension and bring calm. Perfect for work or winding down.</div>
-                            <div class="video-desc-hindi">तनाव दूर करने वाली कोमल धुनें। काम या आराम के लिए बिल्कुल सही।</div>
+                            <div class="video-desc-hindi">&#2340;&#2344;&#2366;&#2357; &#2342;&#2370;&#2352; &#2325;&#2352;&#2344;&#2375; &#2357;&#2366;&#2354;&#2368; &#2325;&#2379;&#2350;&#2354; &#2343;&#2369;&#2344;&#2375;&#2306;&#2404; &#2325;&#2366;&#2350; &#2351;&#2366; &#2310;&#2352;&#2366;&#2350; &#2325;&#2375; &#2354;&#2367;&#2319; &#2348;&#2367;&#2354;&#2381;&#2325;&#2369;&#2354; &#2360;&#2361;&#2368;&#2404;</div>
                         </div>
                     </div>
 
@@ -141,7 +437,7 @@
                         <div class="video-info">
                             <div class="video-title">10-Minute Guided Meditation</div>
                             <div class="video-desc">A short guided session to center yourself. Great for beginners and busy days.</div>
-                            <div class="video-desc-hindi">खुद को केंद्रित करने के लिए एक छोटा गाइडेड सेशन। शुरुआत करने वालों के लिए बेहतरीन।</div>
+                            <div class="video-desc-hindi">&#2326;&#2369;&#2342; &#2325;&#2379; &#2325;&#2375;&#2306;&#2342;&#2381;&#2352;&#2367;&#2340; &#2325;&#2352;&#2344;&#2375; &#2325;&#2375; &#2354;&#2367;&#2319; &#2319;&#2325; &#2331;&#2379;&#2335;&#2366; &#2327;&#2366;&#2311;&#2337;&#2375;&#2337; &#2360;&#2375;&#2358;&#2344;&#2404; &#2358;&#2369;&#2352;&#2369;&#2310;&#2340; &#2325;&#2352;&#2344;&#2375; &#2357;&#2366;&#2354;&#2379;&#2306; &#2325;&#2375; &#2354;&#2367;&#2319; &#2348;&#2375;&#2361;&#2340;&#2352;&#2368;&#2344;&#2404;</div>
                         </div>
                     </div>
 
@@ -152,7 +448,7 @@
                         <div class="video-info">
                             <div class="video-title">Beautiful Quran Recitation</div>
                             <div class="video-desc">A soul-stirring recitation that brings deep peace and spiritual calm.</div>
-                            <div class="video-desc-hindi">एक दिल को छू लेने वाली तिलावत जो गहरी शांति और रूहानी सुकून लाती है।</div>
+                            <div class="video-desc-hindi">&#2319;&#2325; &#2342;&#2367;&#2354; &#2325;&#2379; &#2331;&#2370; &#2354;&#2375;&#2344;&#2375; &#2357;&#2366;&#2354;&#2368; &#2340;&#2367;&#2354;&#2366;&#2357;&#2340; &#2332;&#2379; &#2327;&#2361;&#2352;&#2368; &#2358;&#2366;&#2306;&#2340;&#2367; &#2324;&#2352; &#2352;&#2370;&#2361;&#2366;&#2344;&#2368; &#2360;&#2369;&#2325;&#2370;&#2344; &#2354;&#2366;&#2340;&#2368; &#2361;&#2376;&#2404;</div>
                         </div>
                     </div>
 
@@ -163,7 +459,7 @@
                         <div class="video-info">
                             <div class="video-title">Rain Sounds for Deep Sleep</div>
                             <div class="video-desc">Let the sound of rain carry you to deep, restful sleep. No music, just nature.</div>
-                            <div class="video-desc-hindi">बारिश की आवाज़ आपको गहरी, आरामदायक नींद में ले जाए। सिर्फ़ प्रकृति।</div>
+                            <div class="video-desc-hindi">&#2348;&#2366;&#2352;&#2367;&#2358; &#2325;&#2368; &#2310;&#2357;&#2366;&#2332;&#2364; &#2310;&#2346;&#2325;&#2379; &#2327;&#2361;&#2352;&#2368;, &#2310;&#2352;&#2366;&#2350;&#2342;&#2366;&#2351;&#2325; &#2344;&#2368;&#2306;&#2342; &#2350;&#2375;&#2306; &#2354;&#2375; &#2332;&#2366;&#2319;&#2404; &#2360;&#2367;&#2352;&#2381;&#2347;&#2364; &#2346;&#2381;&#2352;&#2325;&#2371;&#2340;&#2367;&#2404;</div>
                         </div>
                     </div>
 
@@ -177,7 +473,7 @@
     <footer class="site-footer">
         <div class="footer-brand">&#x1F54A; Sukoon</div>
         <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
-        <p class="footer-mission-hindi">दुनिया की हर आत्मा के लिए मुफ़्त मानसिक सुकून।</p>
+        <p class="footer-mission-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
         <p class="footer-privacy">&#x1F512; Your data stays on your device. We don't collect, store, or sell anything.</p>
         <div class="footer-links">
             <a href="/breathe.html">Breathe</a>
@@ -189,7 +485,7 @@
             <a href="/videos.html">Videos</a>
             <a href="/privacy.html">Privacy</a>
         </div>
-        <p class="footer-copy">Sukoon &copy; 2026. The world needs love, not war. | दुनिया को प्यार चाहिए, नफ़रत नहीं।</p>
+        <p class="footer-copy">Sukoon &copy; 2026. The world needs love, not war. | &#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2379; &#2346;&#2381;&#2351;&#2366;&#2352; &#2330;&#2366;&#2361;&#2367;&#2319;, &#2344;&#2347;&#2364;&#2352;&#2340; &#2344;&#2361;&#2368;&#2306;&#2404;</p>
     </footer>
 
     <script>
@@ -197,6 +493,7 @@
         document.getElementById('mobileToggle').addEventListener('click', () => {
             document.getElementById('mainNav').classList.toggle('open');
         });
+
         // Scroll reveal
         const observer = new IntersectionObserver(entries => {
             entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });

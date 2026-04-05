@@ -4,178 +4,1030 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Breathe - Sukoon</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="Free guided breathing exercises: 4-7-8, box breathing, deep relax, and energize techniques. Visual animations and soothing tones.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #374151;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 72px;
+            background: rgba(250, 250, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav a {
+            padding: 8px 14px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6B7280;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .nav a:hover {
+            background: rgba(79, 70, 229, 0.06);
+            color: #4F46E5;
+        }
+
+        .nav a.active {
+            background: #4F46E5;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lang-picker {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #6B7280;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 28px;
+        }
+
+        .lang-picker:hover { border-color: rgba(79, 70, 229, 0.3); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #374151;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 247, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 16px 24px 24px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 4px;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .mobile-nav-overlay.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav-overlay a {
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #374151;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .mobile-nav-overlay a:hover,
+        .mobile-nav-overlay a.active {
+            background: rgba(79, 70, 229, 0.06);
+            color: #4F46E5;
+        }
+
+        @media (max-width: 900px) {
+            .nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .topbar { padding: 0 1.25rem; }
+        }
+
+        /* ===================== BREATHE PAGE ===================== */
+        .breathe-page {
+            min-height: 100vh;
+            padding-top: 72px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Gradient mesh background */
+        .breathe-page::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: -10%;
+            width: 55%;
+            height: 55%;
+            background: radial-gradient(ellipse, rgba(79, 70, 229, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .breathe-page::after {
+            content: '';
+            position: fixed;
+            bottom: -10%;
+            right: -10%;
+            width: 50%;
+            height: 50%;
+            background: radial-gradient(ellipse, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .breathe-mesh-3 {
+            position: fixed;
+            top: 40%;
+            right: 20%;
+            width: 35%;
+            height: 35%;
+            background: radial-gradient(ellipse, rgba(245, 158, 11, 0.03) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .breathe-content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 640px;
+            padding: 40px 24px 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        /* ===================== TECHNIQUE SELECTOR ===================== */
+        .technique-selector {
+            display: flex;
+            gap: 6px;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+
+        .technique-btn {
+            padding: 10px 20px;
+            border-radius: 100px;
+            border: 1.5px solid rgba(0,0,0,0.08);
+            background: #FFFFFF;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #6B7280;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            white-space: nowrap;
+        }
+
+        .technique-btn:hover {
+            border-color: rgba(79, 70, 229, 0.25);
+            color: #4F46E5;
+        }
+
+        .technique-btn.active {
+            background: #4F46E5;
+            color: #FFFFFF;
+            border-color: #4F46E5;
+            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+        }
+
+        /* ===================== BREATHING CIRCLE ===================== */
+        .circle-container {
+            position: relative;
+            width: 280px;
+            height: 280px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .circle-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(79, 70, 229, 0.06);
+        }
+
+        .circle-ring-1 {
+            width: 280px;
+            height: 280px;
+            top: 0;
+            left: 0;
+        }
+
+        .circle-ring-2 {
+            width: 240px;
+            height: 240px;
+            top: 20px;
+            left: 20px;
+            border-color: rgba(79, 70, 229, 0.04);
+        }
+
+        .circle-ring-3 {
+            width: 200px;
+            height: 200px;
+            top: 40px;
+            left: 40px;
+            border-color: rgba(79, 70, 229, 0.03);
+        }
+
+        .breath-circle {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 45% 40%, #FFFFFF 0%, rgba(79, 70, 229, 0.08) 60%, rgba(79, 70, 229, 0.15) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 4px 24px rgba(79, 70, 229, 0.08), 0 0 0 1px rgba(79, 70, 229, 0.04);
+            /* transition is set dynamically by JS based on technique timing */
+            transition: transform 4s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .breath-circle.expanded {
+            transform: scale(1.7);
+        }
+
+        .breath-circle.hold {
+            /* Keep current scale during hold phases */
+        }
+
+        .phase-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .phase-text-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.7rem;
+            color: #9CA3AF;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        /* ===================== TIMER ===================== */
+        .session-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 300;
+            color: #111827;
+            letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 8px;
+        }
+
+        .cycle-counter {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #9CA3AF;
+            margin-bottom: 32px;
+            min-height: 20px;
+        }
+
+        /* ===================== DURATION SELECTOR ===================== */
+        .duration-selector {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 28px;
+        }
+
+        .duration-btn {
+            padding: 8px 18px;
+            border-radius: 100px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #6B7280;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .duration-btn:hover {
+            border-color: rgba(79, 70, 229, 0.25);
+            color: #4F46E5;
+        }
+
+        .duration-btn.active {
+            background: rgba(79, 70, 229, 0.08);
+            color: #4F46E5;
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+
+        /* ===================== START / STOP ===================== */
+        .control-btns {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 48px;
+        }
+
+        .btn-start {
+            padding: 16px 40px;
+            border-radius: 14px;
+            background: #4F46E5;
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(79, 70, 229, 0.2), 0 8px 24px rgba(79, 70, 229, 0.15);
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .btn-start:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25), 0 12px 32px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-stop {
+            padding: 16px 40px;
+            border-radius: 14px;
+            background: transparent;
+            color: #374151;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border: 1.5px solid rgba(0,0,0,0.12);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            display: none;
+        }
+
+        .btn-stop:hover {
+            border-color: rgba(239, 68, 68, 0.3);
+            color: #EF4444;
+            background: rgba(239, 68, 68, 0.03);
+        }
+
+        .btn-stop.visible { display: inline-flex; }
+        .btn-start.hidden { display: none; }
+
+        /* ===================== INFO CARD ===================== */
+        .info-card {
+            width: 100%;
+            max-width: 480px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 28px 28px 24px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .info-card:hover {
+            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+        }
+
+        .info-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #4F46E5;
+            margin-bottom: 8px;
+        }
+
+        .info-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.25rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+        }
+
+        .info-desc {
+            font-size: 0.875rem;
+            color: #6B7280;
+            line-height: 1.65;
+            margin-bottom: 8px;
+        }
+
+        .info-hindi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            line-height: 1.6;
+        }
+
+        .info-timing {
+            display: flex;
+            gap: 16px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+
+        .timing-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+        }
+
+        .timing-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .timing-label {
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #9CA3AF;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #F3F4F6;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding: 56px 24px 32px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .footer-mission {
+            font-size: 0.95rem;
+            color: #6B7280;
+            max-width: 480px;
+            margin: 0 auto 8px;
+            line-height: 1.6;
+        }
+
+        .footer-mission-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            margin-bottom: 24px;
+        }
+
+        .footer-privacy {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(16, 185, 129, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 28px;
+        }
+
+        .footer-privacy svg { width: 12px; height: 12px; }
+
+        .footer-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .footer-nav a {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #6B7280;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .footer-nav a:hover {
+            color: #4F46E5;
+            background: rgba(79, 70, 229, 0.04);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .breathe-content { padding: 32px 20px 40px; }
+            .circle-container { width: 240px; height: 240px; }
+            .circle-ring-1 { width: 240px; height: 240px; }
+            .circle-ring-2 { width: 204px; height: 204px; top: 18px; left: 18px; }
+            .circle-ring-3 { width: 168px; height: 168px; top: 36px; left: 36px; }
+            .breath-circle { width: 120px; height: 120px; }
+            .phase-text { font-size: 0.95rem; }
+            .session-timer { font-size: 2rem; }
+            .technique-selector { gap: 4px; }
+            .technique-btn { padding: 8px 14px; font-size: 0.75rem; }
+            .info-card { padding: 24px 20px 20px; }
+        }
+
+        @media (max-width: 400px) {
+            .circle-container { width: 200px; height: 200px; }
+            .circle-ring-1 { width: 200px; height: 200px; }
+            .circle-ring-2 { width: 170px; height: 170px; top: 15px; left: 15px; }
+            .circle-ring-3 { width: 140px; height: 140px; top: 30px; left: 30px; }
+            .breath-circle { width: 100px; height: 100px; }
+            .phase-text { font-size: 0.85rem; }
+        }
+    </style>
 </head>
 <body>
+
+    <!-- TOPBAR -->
     <header class="topbar">
-        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
-        <nav class="topbar-nav" id="mainNav">
+        <a href="/" class="brand">Sukoon</a>
+        <nav class="nav">
             <a href="/breathe.html" class="active">Breathe</a>
             <a href="/meditate.html">Meditate</a>
             <a href="/sounds.html">Sounds</a>
             <a href="/journal.html">Journal</a>
             <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a>
+            <a href="/wisdom.html">Wisdom</a>
+            <a href="/quotes.html">Quotes</a>
             <a href="/videos.html">Videos</a>
         </nav>
-        <div class="topbar-right">
-            <select class="lang-select" id="langPicker"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option><option value="es">ES</option><option value="fr">FR</option></select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        <div class="topbar-actions">
+            <select class="lang-picker">
+                <option>EN</option>
+                <option>HI</option>
+                <option>UR</option>
+                <option>AR</option>
+                <option>ES</option>
+                <option>FR</option>
+            </select>
+            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
         </div>
     </header>
-    <main>
-        <div class="page-header">
-            <h1>Breathe</h1>
-            <p class="subtitle">Calm your mind. One breath at a time.</p>
-            <p class="subtitle-hindi">अपने मन को शांत करो। एक साँस।</p>
-        </div>
 
-        <div class="breathe-container">
+    <!-- Mobile nav -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <a href="/breathe.html" class="active">Breathe</a>
+        <a href="/meditate.html">Meditate</a>
+        <a href="/sounds.html">Sounds</a>
+        <a href="/journal.html">Journal</a>
+        <a href="/friend.html">AI Friend</a>
+        <a href="/wisdom.html">Wisdom</a>
+        <a href="/quotes.html">Quotes</a>
+        <a href="/videos.html">Videos</a>
+    </div>
+
+    <!-- BREATHE PAGE -->
+    <main class="breathe-page">
+        <div class="breathe-mesh-3"></div>
+        <div class="breathe-content">
+
+            <!-- Technique selector -->
             <div class="technique-selector">
                 <button class="technique-btn active" data-technique="478">4-7-8 Calm</button>
                 <button class="technique-btn" data-technique="box">Box Breathing</button>
-                <button class="technique-btn" data-technique="deep">Deep Calm</button>
+                <button class="technique-btn" data-technique="relax">Deep Relax</button>
                 <button class="technique-btn" data-technique="energize">Energize</button>
             </div>
 
-            <div class="breathe-circle-outer">
-                <div class="breathe-circle" id="breatheCircle">
-                    <span class="breathe-text" id="breatheText">Start</span>
+            <!-- Breathing circle -->
+            <div class="circle-container">
+                <div class="circle-ring circle-ring-1"></div>
+                <div class="circle-ring circle-ring-2"></div>
+                <div class="circle-ring circle-ring-3"></div>
+                <div class="breath-circle" id="breathCircle">
+                    <div class="phase-text" id="phaseText">Ready</div>
+                    <div class="phase-text-hi" id="phaseHindi">तैयार</div>
                 </div>
             </div>
 
-            <div class="breathe-timer" id="sessionTimer">0:00</div>
+            <!-- Timer -->
+            <div class="session-timer" id="sessionTimer">0:00</div>
+            <div class="cycle-counter" id="cycleCounter"></div>
 
-            <div class="breathe-controls">
-                <button class="btn btn-primary btn-lg" id="startBtn">Begin</button>
-                <button class="btn btn-secondary" id="stopBtn" style="display:none;">Stop</button>
+            <!-- Duration selector -->
+            <div class="duration-selector">
+                <button class="duration-btn" data-duration="60">1 min</button>
+                <button class="duration-btn active" data-duration="180">3 min</button>
+                <button class="duration-btn" data-duration="300">5 min</button>
+                <button class="duration-btn" data-duration="600">10 min</button>
             </div>
 
-            <div style="margin-top:2rem; text-align:center;">
-                <p style="color:var(--text-dim); font-size:0.85rem;" id="techniqueDesc">
-                    Inhale 4s, hold 7s, exhale 8s. Reduces anxiety and promotes sleep.
-                </p>
-                <p style="font-family:var(--font-hindi); color:var(--text-dim); font-size:0.82rem; margin-top:0.3rem;" id="techniqueDescHindi">
-                    4 सेकंड साँस लें, 7 सेकंड रोकें, 8 सेकंड छोड़ें। चिंता कम करता है।
-                </p>
+            <!-- Start / Stop -->
+            <div class="control-btns">
+                <button class="btn-start" id="btnStart">Begin Session</button>
+                <button class="btn-stop" id="btnStop">End Session</button>
             </div>
+
+            <!-- Info card -->
+            <div class="info-card">
+                <div class="info-label">TECHNIQUE</div>
+                <div class="info-title" id="infoTitle">4-7-8 Calm</div>
+                <div class="info-desc" id="infoDesc">Developed by Dr. Andrew Weil, the 4-7-8 technique is a natural tranquilizer for the nervous system. Inhale for 4 seconds, hold for 7, exhale for 8. Proven to reduce anxiety and promote sleep.</div>
+                <div class="info-hindi" id="infoHindi">4-7-8 तकनीक तंत्रिका तंत्र के लिए एक प्राकृतिक शांतिकारक है। 4 सेकंड श्वास लें, 7 रोकें, 8 छोड़ें।</div>
+                <div class="info-timing" id="infoTiming">
+                    <div class="timing-item"><div class="timing-number">4s</div><div class="timing-label">Inhale</div></div>
+                    <div class="timing-item"><div class="timing-number">7s</div><div class="timing-label">Hold</div></div>
+                    <div class="timing-item"><div class="timing-number">8s</div><div class="timing-label">Exhale</div></div>
+                </div>
+            </div>
+
         </div>
     </main>
 
-    <footer class="site-footer">
-        <p class="footer-privacy">&#x1F512; No data collected. Just breathe.</p>
-        <p class="footer-copy">Sukoon &copy; 2026</p>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">Sukoon</div>
+            <p class="footer-mission">Free mental wellness tools for every soul on Earth.</p>
+            <p class="footer-mission-hi">पृथ्वी पर हर आत्मा के लिए मुफ़्त मानसिक स्वास्थ्य उपकरण।</p>
+            <div class="footer-privacy">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
+                Zero data collection
+            </div>
+            <nav class="footer-nav">
+                <a href="/breathe.html">Breathe</a>
+                <a href="/meditate.html">Meditate</a>
+                <a href="/sounds.html">Sounds</a>
+                <a href="/journal.html">Journal</a>
+                <a href="/friend.html">AI Friend</a>
+                <a href="/wisdom.html">Wisdom</a>
+                <a href="/quotes.html">Quotes</a>
+                <a href="/videos.html">Videos</a>
+                <a href="/privacy.html">Privacy</a>
+            </nav>
+            <p class="footer-copy">&copy; 2025 Sukoon. Free and open for all humanity.</p>
+        </div>
     </footer>
 
     <script>
-        // Techniques: { inhale, hold, exhale, holdAfter } in seconds
-        const techniques = {
-            '478': { name: '4-7-8 Calm', inhale: 4, hold: 7, exhale: 8, holdAfter: 0,
-                desc: 'Inhale 4s, hold 7s, exhale 8s. Reduces anxiety and promotes sleep.',
-                descHi: '4 सेकंड साँस लें, 7 सेकंड रोकें, 8 सेकंड छोड़ें। चिंता कम करता है।' },
-            'box': { name: 'Box Breathing', inhale: 4, hold: 4, exhale: 4, holdAfter: 4,
-                desc: 'Equal 4s cycles: inhale, hold, exhale, hold. Used by Navy SEALs for focus.',
-                descHi: 'बराबर 4 सेकंड: साँस लें, रोकें, छोड़ें, रोकें। फ़ोकस के लिए।' },
-            'deep': { name: 'Deep Calm', inhale: 6, hold: 2, exhale: 8, holdAfter: 0,
-                desc: 'Long exhale activates parasympathetic nervous system. Deep relaxation.',
-                descHi: 'लंबी साँस छोड़ने से गहरी शांति आती है।' },
-            'energize': { name: 'Energize', inhale: 3, hold: 1, exhale: 3, holdAfter: 1,
-                desc: 'Short, rhythmic breathing to boost energy and alertness.',
-                descHi: 'छोटी, लयबद्ध साँस से ऊर्जा और सतर्कता बढ़ती है।' }
+    (function() {
+        'use strict';
+
+        // ===================== TECHNIQUES =====================
+        var techniques = {
+            '478': {
+                name: '4-7-8 Calm',
+                phases: [
+                    { name: 'Breathe In', hindi: '\u0936\u094D\u0935\u093E\u0938 \u0932\u0947\u0902', duration: 4, expand: true },
+                    { name: 'Hold', hindi: '\u0930\u094B\u0915\u0947\u0902', duration: 7, expand: false },
+                    { name: 'Breathe Out', hindi: '\u0936\u094D\u0935\u093E\u0938 \u091B\u094B\u0921\u093C\u0947\u0902', duration: 8, expand: false }
+                ],
+                desc: 'Developed by Dr. Andrew Weil, the 4-7-8 technique is a natural tranquilizer for the nervous system. Inhale for 4 seconds, hold for 7, exhale for 8. Proven to reduce anxiety and promote sleep.',
+                hindi: '4-7-8 \u0924\u0915\u0928\u0940\u0915 \u0924\u0902\u0924\u094D\u0930\u093F\u0915\u093E \u0924\u0902\u0924\u094D\u0930 \u0915\u0947 \u0932\u093F\u090F \u090F\u0915 \u092A\u094D\u0930\u093E\u0915\u0943\u0924\u093F\u0915 \u0936\u093E\u0902\u0924\u093F\u0915\u093E\u0930\u0915 \u0939\u0948\u0964 4 \u0938\u0947\u0915\u0902\u0921 \u0936\u094D\u0935\u093E\u0938 \u0932\u0947\u0902, 7 \u0930\u094B\u0915\u0947\u0902, 8 \u091B\u094B\u0921\u093C\u0947\u0902\u0964',
+                timing: [
+                    { num: '4s', label: 'Inhale' },
+                    { num: '7s', label: 'Hold' },
+                    { num: '8s', label: 'Exhale' }
+                ]
+            },
+            'box': {
+                name: 'Box Breathing',
+                phases: [
+                    { name: 'Breathe In', hindi: '\u0936\u094D\u0935\u093E\u0938 \u0932\u0947\u0902', duration: 4, expand: true },
+                    { name: 'Hold', hindi: '\u0930\u094B\u0915\u0947\u0902', duration: 4, expand: false },
+                    { name: 'Breathe Out', hindi: '\u0936\u094D\u0935\u093E\u0938 \u091B\u094B\u0921\u093C\u0947\u0902', duration: 4, expand: false },
+                    { name: 'Hold', hindi: '\u0930\u094B\u0915\u0947\u0902', duration: 4, expand: false }
+                ],
+                desc: 'Used by Navy SEALs for focus and calm under pressure. Four equal phases of 4 seconds each: inhale, hold, exhale, hold. Balances the autonomic nervous system.',
+                hindi: '\u092C\u0949\u0915\u094D\u0938 \u092C\u094D\u0930\u0940\u0926\u093F\u0902\u0917 -- \u0928\u0947\u0935\u0940 \u0938\u0940\u0932\u094D\u0938 \u0926\u094D\u0935\u093E\u0930\u093E \u0909\u092A\u092F\u094B\u0917 \u0915\u0940 \u091C\u093E\u0924\u0940 \u0939\u0948\u0964 4 \u0938\u092E\u093E\u0928 \u091A\u0930\u0923: \u0936\u094D\u0935\u093E\u0938, \u0930\u094B\u0915, \u091B\u094B\u0921\u093C, \u0930\u094B\u0915\u0964',
+                timing: [
+                    { num: '4s', label: 'Inhale' },
+                    { num: '4s', label: 'Hold' },
+                    { num: '4s', label: 'Exhale' },
+                    { num: '4s', label: 'Hold' }
+                ]
+            },
+            'relax': {
+                name: 'Deep Relax',
+                phases: [
+                    { name: 'Breathe In', hindi: '\u0936\u094D\u0935\u093E\u0938 \u0932\u0947\u0902', duration: 5, expand: true },
+                    { name: 'Hold', hindi: '\u0930\u094B\u0915\u0947\u0902', duration: 3, expand: false },
+                    { name: 'Breathe Out', hindi: '\u0927\u0940\u0930\u0947 \u091B\u094B\u0921\u093C\u0947\u0902', duration: 10, expand: false }
+                ],
+                desc: 'Extended exhale activates the parasympathetic nervous system. The long 10-second exhale deeply relaxes the body and mind. Ideal before sleep or during high stress.',
+                hindi: '\u0932\u0902\u092C\u0940 \u0936\u094D\u0935\u093E\u0938 \u091B\u094B\u0921\u093C\u0928\u0947 \u0938\u0947 \u092A\u0948\u0930\u093E\u0938\u093F\u0902\u092A\u0948\u0925\u0947\u091F\u093F\u0915 \u0924\u0902\u0924\u094D\u0930\u093F\u0915\u093E \u0924\u0902\u0924\u094D\u0930 \u0938\u0915\u094D\u0930\u093F\u092F \u0939\u094B\u0924\u093E \u0939\u0948\u0964 \u0928\u0940\u0902\u0926 \u0938\u0947 \u092A\u0939\u0932\u0947 \u092F\u093E \u0924\u0928\u093E\u0935 \u0915\u0947 \u0938\u092E\u092F \u0909\u092A\u092F\u094B\u0917\u0940\u0964',
+                timing: [
+                    { num: '5s', label: 'Inhale' },
+                    { num: '3s', label: 'Hold' },
+                    { num: '10s', label: 'Exhale' }
+                ]
+            },
+            'energize': {
+                name: 'Energize',
+                phases: [
+                    { name: 'Breathe In', hindi: '\u0924\u0947\u091C\u093C \u0936\u094D\u0935\u093E\u0938', duration: 2, expand: true },
+                    { name: 'Breathe Out', hindi: '\u0924\u0947\u091C\u093C \u091B\u094B\u0921\u093C\u0947\u0902', duration: 2, expand: false }
+                ],
+                desc: 'Quick rhythmic breathing to boost alertness and energy. Inspired by Kapalabhati pranayama. Short, powerful cycles flood the body with oxygen. Best used in the morning or before focused work.',
+                hindi: '\u0915\u092A\u093E\u0932\u092D\u093E\u0924\u093F \u092A\u094D\u0930\u093E\u0923\u093E\u092F\u093E\u092E \u0938\u0947 \u092A\u094D\u0930\u0947\u0930\u093F\u0924\u0964 \u0924\u0947\u091C\u093C \u0932\u092F\u092C\u0926\u094D\u0927 \u0936\u094D\u0935\u093E\u0938 \u0938\u0947 \u0936\u0930\u0940\u0930 \u092E\u0947\u0902 \u0914\u0915\u094D\u0938\u0940\u091C\u0928 \u092D\u0930\u0947\u0902\u0964 \u0938\u0941\u092C\u0939 \u092F\u093E \u0915\u093E\u092E \u0938\u0947 \u092A\u0939\u0932\u0947 \u0909\u092A\u092F\u094B\u0917\u0940\u0964',
+                timing: [
+                    { num: '2s', label: 'Inhale' },
+                    { num: '2s', label: 'Exhale' }
+                ]
+            }
         };
 
-        let currentTechnique = '478';
-        let isRunning = false;
-        let intervalId = null;
-        let sessionSeconds = 0;
-        let timerInterval = null;
+        // ===================== STATE =====================
+        var currentTechnique = '478';
+        var selectedDuration = 180; // seconds
+        var isRunning = false;
+        var sessionTimeElapsed = 0;
+        var cycleCount = 0;
+        var currentPhaseIndex = 0;
+        var phaseTimer = null;
+        var sessionInterval = null;
+        var audioCtx = null;
 
-        const circle = document.getElementById('breatheCircle');
-        const text = document.getElementById('breatheText');
-        const timer = document.getElementById('sessionTimer');
-        const startBtn = document.getElementById('startBtn');
-        const stopBtn = document.getElementById('stopBtn');
+        // ===================== DOM =====================
+        var breathCircle = document.getElementById('breathCircle');
+        var phaseText = document.getElementById('phaseText');
+        var phaseHindi = document.getElementById('phaseHindi');
+        var sessionTimer = document.getElementById('sessionTimer');
+        var cycleCounter = document.getElementById('cycleCounter');
+        var btnStart = document.getElementById('btnStart');
+        var btnStop = document.getElementById('btnStop');
+        var infoTitle = document.getElementById('infoTitle');
+        var infoDesc = document.getElementById('infoDesc');
+        var infoHindi = document.getElementById('infoHindi');
+        var infoTiming = document.getElementById('infoTiming');
 
-        // Technique selector
-        document.querySelectorAll('.technique-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (isRunning) stopBreathing();
-                document.querySelectorAll('.technique-btn').forEach(b => b.classList.remove('active'));
+        // ===================== TECHNIQUE BUTTONS =====================
+        var techBtns = document.querySelectorAll('.technique-btn');
+        techBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (isRunning) return;
+                techBtns.forEach(function(b) { b.classList.remove('active'); });
                 btn.classList.add('active');
-                currentTechnique = btn.dataset.technique;
-                const t = techniques[currentTechnique];
-                document.getElementById('techniqueDesc').textContent = t.desc;
-                document.getElementById('techniqueDescHindi').textContent = t.descHi;
+                currentTechnique = btn.getAttribute('data-technique');
+                updateInfoCard();
             });
         });
 
-        function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+        // ===================== DURATION BUTTONS =====================
+        var durBtns = document.querySelectorAll('.duration-btn');
+        durBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                if (isRunning) return;
+                durBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                selectedDuration = parseInt(btn.getAttribute('data-duration'));
+            });
+        });
 
-        async function runCycle() {
-            const t = techniques[currentTechnique];
-            // Inhale
-            circle.className = 'breathe-circle inhale';
-            circle.style.transitionDuration = t.inhale + 's';
-            text.textContent = 'Breathe In';
-            await sleep(t.inhale * 1000);
-            if (!isRunning) return;
+        // ===================== UPDATE INFO CARD =====================
+        function updateInfoCard() {
+            var tech = techniques[currentTechnique];
+            infoTitle.textContent = tech.name;
+            infoDesc.textContent = tech.desc;
+            infoHindi.textContent = tech.hindi;
 
-            // Hold
-            if (t.hold > 0) {
-                text.textContent = 'Hold';
-                await sleep(t.hold * 1000);
-                if (!isRunning) return;
-            }
+            var timingHtml = '';
+            tech.timing.forEach(function(t) {
+                timingHtml += '<div class="timing-item"><div class="timing-number">' + t.num + '</div><div class="timing-label">' + t.label + '</div></div>';
+            });
+            infoTiming.innerHTML = timingHtml;
+        }
 
-            // Exhale
-            circle.className = 'breathe-circle exhale';
-            circle.style.transitionDuration = t.exhale + 's';
-            text.textContent = 'Breathe Out';
-            await sleep(t.exhale * 1000);
-            if (!isRunning) return;
-
-            // Hold after exhale
-            if (t.holdAfter > 0) {
-                text.textContent = 'Hold';
-                await sleep(t.holdAfter * 1000);
-                if (!isRunning) return;
+        // ===================== AUDIO =====================
+        function playTone(freq, duration) {
+            try {
+                if (!audioCtx) {
+                    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                }
+                var osc = audioCtx.createOscillator();
+                var gain = audioCtx.createGain();
+                osc.connect(gain);
+                gain.connect(audioCtx.destination);
+                osc.frequency.value = freq;
+                osc.type = 'sine';
+                gain.gain.setValueAtTime(0, audioCtx.currentTime);
+                gain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.05);
+                gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + duration);
+                osc.start(audioCtx.currentTime);
+                osc.stop(audioCtx.currentTime + duration);
+            } catch(e) {
+                // Audio not supported, silent fail
             }
         }
 
-        async function startBreathing() {
+        // ===================== FORMAT TIME =====================
+        function formatTime(seconds) {
+            var m = Math.floor(seconds / 60);
+            var s = seconds % 60;
+            return m + ':' + (s < 10 ? '0' : '') + s;
+        }
+
+        // ===================== RUN PHASE =====================
+        function runPhase() {
+            var tech = techniques[currentTechnique];
+            var phase = tech.phases[currentPhaseIndex];
+
+            // Update text
+            phaseText.textContent = phase.name;
+            phaseHindi.textContent = phase.hindi;
+
+            // Set transition duration for this phase
+            breathCircle.style.transitionDuration = phase.duration + 's';
+
+            // Play tone
+            if (phase.name === 'Breathe In') {
+                playTone(528, 0.4);
+            } else if (phase.name === 'Breathe Out' || phase.name.indexOf('Out') !== -1) {
+                playTone(396, 0.5);
+            } else if (phase.name === 'Hold') {
+                playTone(432, 0.2);
+            }
+
+            // Animate circle
+            if (phase.expand) {
+                breathCircle.classList.add('expanded');
+            } else if (phase.name.indexOf('Out') !== -1 || phase.name.indexOf('\u091B\u094B\u0921') !== -1) {
+                breathCircle.classList.remove('expanded');
+            }
+            // Hold phases: keep current scale
+
+            // Schedule next phase
+            phaseTimer = setTimeout(function() {
+                currentPhaseIndex++;
+                if (currentPhaseIndex >= tech.phases.length) {
+                    currentPhaseIndex = 0;
+                    cycleCount++;
+                    cycleCounter.textContent = 'Cycle ' + cycleCount;
+                }
+                if (isRunning) {
+                    runPhase();
+                }
+            }, phase.duration * 1000);
+        }
+
+        // ===================== START SESSION =====================
+        function startSession() {
+            if (isRunning) return;
             isRunning = true;
-            startBtn.style.display = 'none';
-            stopBtn.style.display = 'inline-flex';
-            sessionSeconds = 0;
-            timerInterval = setInterval(() => {
-                sessionSeconds++;
-                const m = Math.floor(sessionSeconds / 60);
-                const s = sessionSeconds % 60;
-                timer.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+            sessionTimeElapsed = 0;
+            cycleCount = 0;
+            currentPhaseIndex = 0;
+
+            btnStart.classList.add('hidden');
+            btnStop.classList.add('visible');
+
+            // Disable technique and duration buttons
+            techBtns.forEach(function(b) { b.style.pointerEvents = 'none'; b.style.opacity = '0.5'; });
+            durBtns.forEach(function(b) { b.style.pointerEvents = 'none'; b.style.opacity = '0.5'; });
+
+            cycleCounter.textContent = '';
+            sessionTimer.textContent = formatTime(0);
+
+            // Start session timer
+            sessionInterval = setInterval(function() {
+                sessionTimeElapsed++;
+                sessionTimer.textContent = formatTime(sessionTimeElapsed);
+                if (sessionTimeElapsed >= selectedDuration) {
+                    stopSession();
+                }
             }, 1000);
 
-            while (isRunning) {
-                await runCycle();
+            // Start breathing phases
+            runPhase();
+        }
+
+        // ===================== STOP SESSION =====================
+        function stopSession() {
+            isRunning = false;
+
+            clearTimeout(phaseTimer);
+            clearInterval(sessionInterval);
+
+            btnStart.classList.remove('hidden');
+            btnStop.classList.remove('visible');
+
+            // Re-enable buttons
+            techBtns.forEach(function(b) { b.style.pointerEvents = ''; b.style.opacity = ''; });
+            durBtns.forEach(function(b) { b.style.pointerEvents = ''; b.style.opacity = ''; });
+
+            // Reset circle
+            breathCircle.style.transitionDuration = '1s';
+            breathCircle.classList.remove('expanded');
+
+            // Show complete state
+            if (sessionTimeElapsed >= selectedDuration) {
+                phaseText.textContent = 'Complete';
+                phaseHindi.textContent = '\u092A\u0942\u0930\u094D\u0923';
+                playTone(528, 0.8);
+                cycleCounter.textContent = cycleCount + ' cycles completed';
+            } else {
+                phaseText.textContent = 'Ready';
+                phaseHindi.textContent = '\u0924\u0948\u092F\u093E\u0930';
+                cycleCounter.textContent = '';
             }
         }
 
-        function stopBreathing() {
-            isRunning = false;
-            clearInterval(timerInterval);
-            circle.className = 'breathe-circle';
-            circle.style.transitionDuration = '0.5s';
-            text.textContent = 'Start';
-            startBtn.style.display = 'inline-flex';
-            stopBtn.style.display = 'none';
-        }
+        // ===================== EVENT LISTENERS =====================
+        btnStart.addEventListener('click', startSession);
+        btnStop.addEventListener('click', stopSession);
 
-        startBtn.addEventListener('click', startBreathing);
-        stopBtn.addEventListener('click', stopBreathing);
+        // ===================== MOBILE MENU =====================
+        var menuBtn = document.getElementById('menuBtn');
+        var mobileNav = document.getElementById('mobileNav');
+        var menuOpen = false;
 
-        // Mobile nav
-        document.getElementById('mobileToggle').addEventListener('click', () => {
-            document.getElementById('mainNav').classList.toggle('open');
+        menuBtn.addEventListener('click', function() {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                mobileNav.classList.add('open');
+                menuBtn.textContent = '\u2715';
+            } else {
+                mobileNav.classList.remove('open');
+                menuBtn.textContent = '\u2630';
+            }
         });
+
+        // Initialize
+        updateInfoCard();
+
+    })();
     </script>
+
 </body>
 </html>

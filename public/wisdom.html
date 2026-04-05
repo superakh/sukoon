@@ -4,255 +4,673 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Soul Wisdom - Sukoon</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <meta name="description" content="Ancient spiritual wisdom, daily affirmations, and practices for inner peace. Bilingual English-Hindi soul teachings.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        .wisdom-hero {
-            text-align: center; padding: 4rem 1.5rem 2rem;
-            background: radial-gradient(ellipse 600px 400px at 50% 30%, rgba(167,139,250,0.08) 0%, transparent 70%);
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 72px;
+            background: rgba(250, 250, 247, 0.82);
+            backdrop-filter: blur(20px) saturate(1.2);
+            -webkit-backdrop-filter: blur(20px) saturate(1.2);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: #111827;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 10px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; font-size: 0.85rem;
+        }
+        .topbar-nav { display: flex; gap: 0.2rem; }
+        .topbar-nav a {
+            padding: 0.45rem 0.8rem; border-radius: 10px;
+            font-size: 0.84rem; font-weight: 500; color: #6B7280;
+            transition: all 0.2s;
+        }
+        .topbar-nav a:hover { background: rgba(79,70,229,0.07); color: #4F46E5; }
+        .topbar-nav a.active { background: rgba(79,70,229,0.1); color: #4F46E5; font-weight: 600; }
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .lang-select {
+            padding: 0.35rem 0.6rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08); background: #fff;
+            font-size: 0.8rem; color: #6B7280; cursor: pointer; outline: none;
+        }
+        .mobile-nav-toggle {
+            display: none; background: none; border: none;
+            font-size: 1.3rem; color: #374151; cursor: pointer; padding: 0.25rem;
+        }
+
+        /* ===================== HERO ===================== */
+        .hero {
+            padding: 10rem 1.5rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: #FAFAF7;
+        }
+        .hero-mesh {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 30%, rgba(79,70,229,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(236,72,153,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 70% 70% at 50% 80%, rgba(16,185,129,0.06) 0%, transparent 50%),
+                radial-gradient(ellipse 40% 40% at 70% 60%, rgba(245,158,11,0.05) 0%, transparent 40%);
+        }
+        .hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+        .hero-badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1.2rem; border-radius: 100px;
+            background: rgba(79,70,229,0.06); border: 1px solid rgba(79,70,229,0.1);
+            font-size: 0.78rem; font-weight: 500; color: #4F46E5;
+            margin-bottom: 1.5rem; letter-spacing: 0.03em;
+        }
+        .hero-badge svg { width: 14px; height: 14px; }
+        .hero h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 3.5rem; font-weight: 400; color: #111827;
+            line-height: 1.15; margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+        .hero-subtitle {
+            font-size: 1.15rem; color: #6B7280; line-height: 1.7;
+            max-width: 520px; margin: 0 auto 0.5rem;
+        }
+        .hero-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.92rem; color: #9CA3AF; margin-bottom: 2rem;
+        }
+        .hero-line {
+            width: 48px; height: 2px; border-radius: 2px;
+            background: linear-gradient(90deg, #4F46E5, #EC4899);
+            margin: 0 auto;
+        }
+
+        /* ===================== SECTIONS ===================== */
+        .section {
+            padding: 5rem 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .section-label {
+            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #4F46E5;
+            margin-bottom: 0.75rem;
+        }
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem; color: #111827; margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .section-subtitle {
+            font-size: 0.95rem; color: #6B7280; margin-bottom: 3rem;
+            max-width: 560px;
+        }
+
+        /* ===================== AFFIRMATION CARD ===================== */
+        .affirmation-section {
+            padding: 0 1.5rem 4rem;
+            max-width: 700px;
+            margin: -2rem auto 0;
+            position: relative;
+            z-index: 2;
+        }
+        .affirmation-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 24px;
+            padding: 3rem 2.5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+        }
+        .affirmation-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 3px;
+            background: linear-gradient(90deg, #4F46E5, #EC4899, #F59E0B, #10B981);
+            border-radius: 24px 24px 0 0;
+        }
+        .affirmation-label {
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #9CA3AF;
+            margin-bottom: 1.5rem;
+        }
+        .affirmation-icon {
+            width: 44px; height: 44px; border-radius: 14px;
+            background: linear-gradient(135deg, rgba(79,70,229,0.08), rgba(236,72,153,0.08));
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+        .affirmation-icon svg { width: 22px; height: 22px; color: #4F46E5; }
+        .affirmation-text {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            font-size: 1.55rem; color: #111827;
+            line-height: 1.5; margin-bottom: 1rem;
+            max-width: 500px; margin-left: auto; margin-right: auto;
+        }
+        .affirmation-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.88rem; color: #9CA3AF;
+            margin-bottom: 2rem; line-height: 1.6;
+        }
+        .new-thought-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.7rem 1.5rem; border-radius: 12px;
+            background: #111827; color: #fff;
+            font-size: 0.84rem; font-weight: 500;
+            border: none; cursor: pointer;
+            transition: all 0.25s;
+        }
+        .new-thought-btn:hover { background: #374151; transform: translateY(-1px); }
+        .new-thought-btn svg { width: 15px; height: 15px; }
+
+        /* ===================== WISDOM CARDS ===================== */
+        .wisdom-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
         }
         .wisdom-card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 2.5rem 2rem;
-            text-align: center; transition: var(--transition);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 2rem 1.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
         }
-        .wisdom-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
-        .wisdom-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
-        .wisdom-card h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.8rem; }
-        .wisdom-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
-        .wisdom-card .hindi { font-family: var(--font-hindi); color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem; }
+        .wisdom-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.06);
+        }
+        .wisdom-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem;
+        }
+        .wisdom-icon.indigo { background: rgba(79,70,229,0.08); color: #4F46E5; }
+        .wisdom-icon.emerald { background: rgba(16,185,129,0.08); color: #10B981; }
+        .wisdom-icon.amber { background: rgba(245,158,11,0.08); color: #F59E0B; }
+        .wisdom-icon.rose { background: rgba(236,72,153,0.08); color: #EC4899; }
+        .wisdom-icon.sky { background: rgba(14,165,233,0.08); color: #0EA5E9; }
+        .wisdom-icon.violet { background: rgba(139,92,246,0.08); color: #8B5CF6; }
+        .wisdom-card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem; color: #111827;
+            margin-bottom: 0.75rem; line-height: 1.35;
+        }
+        .wisdom-card-desc {
+            font-size: 0.88rem; color: #6B7280;
+            line-height: 1.65; margin-bottom: 0.6rem;
+        }
+        .wisdom-card-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.78rem; color: #9CA3AF;
+            line-height: 1.6;
+        }
 
+        /* ===================== PRACTICE CARDS ===================== */
+        .practice-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
         .practice-card {
-            background: var(--bg-card); border: 1px solid var(--border);
-            border-radius: var(--radius-lg); padding: 2rem;
-            margin-bottom: 1.5rem; transition: var(--transition);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 2rem 1.75rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
         }
-        .practice-card:hover { border-color: rgba(167,139,250,0.3); }
-        .practice-card h3 { color: var(--accent-purple); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
-        .practice-card .steps { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
-        .practice-card .steps li { margin-bottom: 0.5rem; }
-        .practice-card .hindi-steps { font-family: var(--font-hindi); color: var(--text-dim); font-size: 0.88rem; line-height: 1.8; margin-top: 1rem; border-left: 2px solid rgba(167,139,250,0.2); padding-left: 1rem; }
-
-        .affirmation-box {
-            background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(124,158,247,0.05));
-            border: 1px solid rgba(167,139,250,0.15);
-            border-radius: var(--radius-xl); padding: 3rem 2rem;
-            text-align: center; max-width: 600px; margin: 3rem auto;
+        .practice-header {
+            display: flex; align-items: center; gap: 0.75rem;
+            margin-bottom: 1.5rem;
         }
-        .affirmation-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-purple); font-weight: 600; margin-bottom: 1.2rem; }
-        .affirmation-box .affirmation-en { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); line-height: 1.5; margin-bottom: 0.8rem; }
-        .affirmation-box .affirmation-hi { font-family: var(--font-hindi); font-size: 1.1rem; color: var(--text-dim); }
-        .affirmation-box button { margin-top: 1.5rem; }
+        .practice-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .practice-icon.morning { background: rgba(245,158,11,0.1); color: #F59E0B; }
+        .practice-icon.midday { background: rgba(79,70,229,0.08); color: #4F46E5; }
+        .practice-icon.evening { background: rgba(139,92,246,0.08); color: #8B5CF6; }
+        .practice-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem; color: #111827;
+        }
+        .practice-time { font-size: 0.75rem; color: #9CA3AF; }
+        .practice-steps { list-style: none; }
+        .practice-step {
+            display: flex; gap: 0.75rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .practice-step:last-child { border-bottom: none; }
+        .step-num {
+            width: 24px; height: 24px; border-radius: 8px;
+            background: rgba(79,70,229,0.06);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.7rem; font-weight: 600; color: #4F46E5;
+            flex-shrink: 0; margin-top: 0.1rem;
+        }
+        .step-content { flex: 1; }
+        .step-en { font-size: 0.86rem; color: #374151; line-height: 1.5; }
+        .step-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.75rem; color: #9CA3AF; line-height: 1.5;
+        }
 
-        .thought-grid {
-            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 1.5rem; margin-top: 2rem;
+        /* ===================== TALKS SECTION ===================== */
+        .talks-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.25rem;
+        }
+        .talk-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+        }
+        .talk-embed {
+            width: 100%; aspect-ratio: 16/9; border: none;
+        }
+        .talk-info { padding: 1.25rem 1.5rem 1.5rem; }
+        .talk-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.05rem; color: #111827;
+            margin-bottom: 0.5rem; line-height: 1.35;
+        }
+        .talk-desc {
+            font-size: 0.84rem; color: #6B7280;
+            line-height: 1.6; margin-bottom: 0.4rem;
+        }
+        .talk-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.76rem; color: #9CA3AF; line-height: 1.55;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            padding: 3.5rem 1.5rem 2rem;
+            background: #F5F5F0;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: #111827;
+            margin-bottom: 0.5rem;
+            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        }
+        .footer-brand .brand-mark { width: 26px; height: 26px; border-radius: 8px; font-size: 0.7rem; }
+        .footer-mission { font-size: 0.88rem; color: #6B7280; margin-bottom: 0.25rem; }
+        .footer-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.8rem; color: #9CA3AF; margin-bottom: 1rem;
+        }
+        .footer-privacy {
+            font-size: 0.76rem; color: #10B981;
+            background: rgba(16,185,129,0.06);
+            display: inline-block;
+            padding: 0.35rem 1rem; border-radius: 100px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-nav {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 0.5rem 1.25rem; margin-bottom: 1.5rem;
+        }
+        .footer-nav a { font-size: 0.84rem; color: #6B7280; transition: color 0.2s; }
+        .footer-nav a:hover { color: #4F46E5; }
+        .footer-copy { font-size: 0.74rem; color: #9CA3AF; }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 1024px) {
+            .wisdom-grid { grid-template-columns: repeat(2, 1fr); }
+            .talks-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 768px) {
+            .topbar { padding: 0 1rem; height: 64px; }
+            .topbar-nav {
+                display: none; position: fixed; top: 64px; left: 0; right: 0;
+                background: rgba(250,250,247,0.97);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                flex-direction: column; padding: 1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+            }
+            .topbar-nav.open { display: flex; }
+            .topbar-nav a { padding: 0.75rem 1rem; width: 100%; text-align: left; font-size: 1rem; }
+            .mobile-nav-toggle { display: block; }
+            .hero { padding: 8rem 1.25rem 3rem; }
+            .hero h1 { font-size: 2.4rem; }
+            .affirmation-card { padding: 2rem 1.5rem; }
+            .affirmation-text { font-size: 1.25rem; }
+            .wisdom-grid { grid-template-columns: 1fr; }
+            .practice-grid { grid-template-columns: 1fr; }
+            .talks-grid { grid-template-columns: 1fr; }
+            .section { padding: 3.5rem 1.25rem; }
+            .section-title { font-size: 1.75rem; }
+        }
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 2rem; }
+            .hero-subtitle { font-size: 1rem; }
+            .affirmation-text { font-size: 1.12rem; }
         }
     </style>
 </head>
 <body>
+
+    <!-- TOPBAR -->
     <header class="topbar">
-        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <a href="/" class="topbar-brand">
+            <span class="brand-mark">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.18-9 7.1 0 2.34 1.44 4.42 3.67 5.74L5 21l4.39-2.11c.84.18 1.72.28 2.61.28 4.97 0 9-3.18 9-7.1S16.97 3 12 3z"/></svg>
+            </span>
+            Sukoon
+        </a>
         <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html">Breathe</a><a href="/meditate.html">Meditate</a><a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a><a href="/friend.html">AI Friend</a>
-            <a href="/quotes.html">Quotes</a><a href="/videos.html">Videos</a>
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html" class="active">Wisdom</a>
+            <a href="/quotes.html">Quotes</a>
+            <a href="/videos.html">Videos</a>
         </nav>
         <div class="topbar-right">
-            <select class="lang-select"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option></select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+            <select class="lang-select" id="langPicker">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+            </select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
+                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
         </div>
     </header>
+
     <main>
-        <div class="wisdom-hero">
-            <span style="font-size:3rem; display:block; margin-bottom:1rem;">&#x2728;</span>
-            <h1 style="font-family:var(--font-display); font-size:clamp(2rem,5vw,3.2rem); background:linear-gradient(135deg, var(--text), var(--accent-purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Soul Wisdom</h1>
-            <p style="color:var(--text-muted); font-size:1.05rem; margin-top:0.5rem;">Ancient wisdom for the modern soul. Inspired by spiritual teachers across traditions.</p>
-            <p style="font-family:var(--font-hindi); color:var(--text-dim); font-size:0.95rem; margin-top:0.3rem;">आधुनिक आत्मा के लिए प्राचीन ज्ञान।</p>
-        </div>
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <div class="hero-mesh"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 7.66l-.71-.71M4.05 4.05l-.71-.71"/></svg>
+                    Spiritual Teachings
+                </div>
+                <h1>Soul Wisdom</h1>
+                <p class="hero-subtitle">Ancient wisdom for the modern soul. Timeless truths to guide your inner journey toward lasting peace.</p>
+                <p class="hero-hindi">&#2310;&#2343;&#2369;&#2344;&#2367;&#2325; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2346;&#2381;&#2352;&#2366;&#2330;&#2368;&#2344; &#2332;&#2381;&#2334;&#2366;&#2344;</p>
+                <div class="hero-line"></div>
+            </div>
+        </section>
 
-        <!-- MORNING AFFIRMATION -->
-        <div class="affirmation-box reveal">
-            <div class="label">&#x2600; Soul Affirmation</div>
-            <p class="affirmation-en" id="affirmEn"></p>
-            <p class="affirmation-hi" id="affirmHi"></p>
-            <button class="btn btn-secondary" onclick="newAffirmation()">&#x21bb; New Thought</button>
-        </div>
+        <!-- ===== AFFIRMATION ===== -->
+        <section class="affirmation-section">
+            <div class="affirmation-card">
+                <div class="affirmation-label">Today's Affirmation</div>
+                <div class="affirmation-icon">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
+                </div>
+                <p class="affirmation-text" id="affirmationEN"></p>
+                <p class="affirmation-hindi" id="affirmationHI"></p>
+                <button class="new-thought-btn" id="newThoughtBtn" aria-label="New affirmation">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
+                    New Thought
+                </button>
+            </div>
+        </section>
 
-        <!-- CORE TEACHINGS -->
+        <!-- ===== FOUNDATIONS ===== -->
         <section class="section">
-            <h2 style="font-family:var(--font-display); text-align:center; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Foundations of Inner Peace</h2>
-            <p style="text-align:center; color:var(--text-dim); font-family:var(--font-hindi); margin-bottom:2.5rem;">आंतरिक शांति की नींव</p>
+            <div class="section-label">Core Teachings</div>
+            <h2 class="section-title">Foundations of Inner Peace</h2>
+            <p class="section-subtitle">Six timeless principles that form the bedrock of spiritual understanding and emotional freedom.</p>
 
-            <div class="thought-grid">
-                <div class="wisdom-card reveal">
-                    <div class="icon">&#x1F4A0;</div>
-                    <h3>You Are a Soul, Not a Body</h3>
-                    <p>You are a peaceful, powerful soul using this body as an instrument. When you identify with the soul, fear and ego dissolve. You become the observer, not the reactor.</p>
-                    <p class="hindi">आप एक शांतिपूर्ण, शक्तिशाली आत्मा हैं जो इस शरीर को उपकरण की तरह इस्तेमाल कर रही है। जब आप आत्मा से जुड़ते हैं, भय और अहंकार गायब हो जाते हैं।</p>
+            <div class="wisdom-grid">
+                <div class="wisdom-card">
+                    <div class="wisdom-icon indigo">
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
+                    </div>
+                    <h3 class="wisdom-card-title">You Are a Soul, Not a Body</h3>
+                    <p class="wisdom-card-desc">Your body is a vehicle, not your identity. The real you is consciousness itself -- timeless, boundless, and untouched by circumstance. When you know this, fear dissolves.</p>
+                    <p class="wisdom-card-hindi">&#2310;&#2346; &#2358;&#2352;&#2368;&#2352; &#2344;&#2361;&#2368;&#2306;, &#2310;&#2340;&#2381;&#2350;&#2366; &#2361;&#2376;&#2306;&#2404; &#2310;&#2346;&#2325;&#2366; &#2358;&#2352;&#2368;&#2352; &#2319;&#2325; &#2357;&#2366;&#2361;&#2344; &#2361;&#2376;, &#2310;&#2346;&#2325;&#2368; &#2346;&#2361;&#2330;&#2366;&#2344; &#2344;&#2361;&#2368;&#2306;&#2404;</p>
                 </div>
-                <div class="wisdom-card reveal">
-                    <div class="icon">&#x1F4AD;</div>
-                    <h3>Every Thought Creates Your Reality</h3>
-                    <p>Your thoughts are seeds. Negative thoughts grow into anxiety, anger, and pain. Choose your thoughts carefully -- they become your feelings, your words, your life.</p>
-                    <p class="hindi">आपके विचार बीज हैं। नकारात्मक विचार चिंता, क्रोध और दर्द बनते हैं। अपने विचार सावधानी से चुनें -- वही आपकी भावनाएँ, शब्द और ज़िन्दगी बनते हैं।</p>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-icon emerald">
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
+                    </div>
+                    <h3 class="wisdom-card-title">Every Thought Creates Your Reality</h3>
+                    <p class="wisdom-card-desc">Your mind is a garden. Every thought is a seed. Negative thoughts grow weeds of anxiety; positive thoughts bloom into peace. Guard what you allow to enter.</p>
+                    <p class="wisdom-card-hindi">&#2361;&#2352; &#2357;&#2367;&#2330;&#2366;&#2352; &#2319;&#2325; &#2348;&#2368;&#2332; &#2361;&#2376;&#2404; &#2344;&#2325;&#2366;&#2352;&#2366;&#2340;&#2381;&#2350;&#2325; &#2357;&#2367;&#2330;&#2366;&#2352; &#2330;&#2367;&#2306;&#2340;&#2366; &#2325;&#2375; &#2332;&#2306;&#2327;&#2354; &#2348;&#2344;&#2340;&#2375; &#2361;&#2376;&#2306;&#2404;</p>
                 </div>
-                <div class="wisdom-card reveal">
-                    <div class="icon">&#x1F3AF;</div>
-                    <h3>Respond, Don't React</h3>
-                    <p>Between stimulus and response, there is a space. In that space lies your freedom. A reaction is automatic. A response is conscious. Choose response.</p>
-                    <p class="hindi">उत्तेजना और प्रतिक्रिया के बीच एक जगह है। उस जगह में आपकी आज़ादी है। प्रतिक्रिया स्वचालित है। उत्तर सचेत है। उत्तर चुनें।</p>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-icon amber">
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h3 class="wisdom-card-title">Respond, Don't React</h3>
+                    <p class="wisdom-card-desc">Between stimulus and response, there is a space. In that space lies your freedom. A reaction is unconscious; a response is chosen with awareness and wisdom.</p>
+                    <p class="wisdom-card-hindi">&#2346;&#2381;&#2352;&#2340;&#2367;&#2325;&#2381;&#2352;&#2367;&#2351;&#2366; &#2344;&#2361;&#2368;&#2306;, &#2346;&#2381;&#2352;&#2340;&#2369;&#2340;&#2381;&#2340;&#2352; &#2330;&#2369;&#2344;&#2375;&#2306;&#2404; &#2313;&#2340;&#2381;&#2340;&#2375;&#2332;&#2344;&#2366; &#2324;&#2352; &#2346;&#2381;&#2352;&#2340;&#2367;&#2325;&#2381;&#2352;&#2367;&#2351;&#2366; &#2325;&#2375; &#2348;&#2368;&#2330; &#2360;&#2381;&#2357;&#2340;&#2306;&#2340;&#2381;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404;</p>
                 </div>
-                <div class="wisdom-card reveal">
-                    <div class="icon">&#x1F49B;</div>
-                    <h3>Acceptance is Power</h3>
-                    <p>Stop fighting what is. Accept people as they are, situations as they come. Acceptance is not weakness -- it's the highest form of emotional intelligence.</p>
-                    <p class="hindi">जो है उससे लड़ना बंद करें। लोगों को जैसे हैं वैसे स्वीकार करें। स्वीकृति कमज़ोरी नहीं -- यह भावनात्मक बुद्धिमत्ता का उच्चतम रूप है।</p>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-icon rose">
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg>
+                    </div>
+                    <h3 class="wisdom-card-title">Acceptance is Power</h3>
+                    <p class="wisdom-card-desc">What you resist, persists. Acceptance is not surrender -- it is the courageous act of seeing reality clearly and choosing peace over suffering.</p>
+                    <p class="wisdom-card-hindi">&#2360;&#2381;&#2357;&#2368;&#2325;&#2366;&#2352; &#2360;&#2350;&#2352;&#2381;&#2346;&#2339; &#2344;&#2361;&#2368;&#2306; &#2361;&#2376; -- &#2351;&#2361; &#2360;&#2330;&#2381;&#2330;&#2366;&#2312; &#2325;&#2379; &#2360;&#2381;&#2346;&#2359;&#2381;&#2335; &#2342;&#2375;&#2326;&#2344;&#2375; &#2325;&#2366; &#2360;&#2366;&#2361;&#2360; &#2361;&#2376;&#2404;</p>
                 </div>
-                <div class="wisdom-card reveal">
-                    <div class="icon">&#x1F331;</div>
-                    <h3>Detach with Love</h3>
-                    <p>Love people, but don't be dependent on their behavior for your happiness. Your peace should come from within, not from external validation.</p>
-                    <p class="hindi">लोगों से प्यार करें, लेकिन अपनी खुशी के लिए उनके व्यवहार पर निर्भर न रहें। आपकी शांति भीतर से आनी चाहिए, बाहरी मान्यता से नहीं।</p>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-icon sky">
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"/></svg>
+                    </div>
+                    <h3 class="wisdom-card-title">Detach with Love</h3>
+                    <p class="wisdom-card-desc">Attachment breeds anxiety. True love is holding gently -- caring deeply without clinging. Let people and outcomes be free, and you will be free too.</p>
+                    <p class="wisdom-card-hindi">&#2354;&#2327;&#2366;&#2357; &#2330;&#2367;&#2306;&#2340;&#2366; &#2346;&#2376;&#2342;&#2366; &#2325;&#2352;&#2340;&#2366; &#2361;&#2376;&#2404; &#2360;&#2330;&#2381;&#2330;&#2366; &#2346;&#2381;&#2352;&#2375;&#2350; &#2348;&#2367;&#2344;&#2366; &#2330;&#2367;&#2346;&#2325;&#2375; &#2361;&#2376;&#2404;</p>
                 </div>
-                <div class="wisdom-card reveal">
-                    <div class="icon">&#x1F30A;</div>
-                    <h3>Let Go of Control</h3>
-                    <p>You cannot control other people, the weather, the economy, or the past. You can only control your thoughts and your response. Let everything else go.</p>
-                    <p class="hindi">आप दूसरे लोगों, मौसम, अर्थव्यवस्था या अतीत को नियंत्रित नहीं कर सकते। आप सिर्फ़ अपने विचारों और प्रतिक्रिया को नियंत्रित कर सकते हैं। बाकी सब छोड़ दें।</p>
+
+                <div class="wisdom-card">
+                    <div class="wisdom-icon violet">
+                        <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.594 3.94c.09-.542.56-.94 1.11-.94h2.593c.55 0 1.02.398 1.11.94l.213 1.281c.063.374.313.686.645.87.074.04.147.083.22.127.324.196.72.257 1.075.124l1.217-.456a1.125 1.125 0 011.37.49l1.296 2.247a1.125 1.125 0 01-.26 1.431l-1.003.827c-.293.24-.438.613-.431.992a6.759 6.759 0 010 .255c-.007.378.138.75.43.99l1.005.828c.424.35.534.954.26 1.43l-1.298 2.247a1.125 1.125 0 01-1.369.491l-1.217-.456c-.355-.133-.75-.072-1.076.124a6.57 6.57 0 01-.22.128c-.331.183-.581.495-.644.869l-.213 1.28c-.09.543-.56.941-1.11.941h-2.594c-.55 0-1.02-.398-1.11-.94l-.213-1.281c-.062-.374-.312-.686-.644-.87a6.52 6.52 0 01-.22-.127c-.325-.196-.72-.257-1.076-.124l-1.217.456a1.125 1.125 0 01-1.369-.49l-1.297-2.247a1.125 1.125 0 01.26-1.431l1.004-.827c.292-.24.437-.613.43-.992a6.932 6.932 0 010-.255c.007-.378-.138-.75-.43-.99l-1.004-.828a1.125 1.125 0 01-.26-1.43l1.297-2.247a1.125 1.125 0 011.37-.491l1.216.456c.356.133.751.072 1.076-.124.072-.044.146-.087.22-.128.332-.183.582-.495.644-.869l.214-1.281z"/><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                    </div>
+                    <h3 class="wisdom-card-title">Let Go of Control</h3>
+                    <p class="wisdom-card-desc">The need to control everything is rooted in fear. Surrender to the flow of life. What is meant for you will not miss you. Trust the process of existence.</p>
+                    <p class="wisdom-card-hindi">&#2344;&#2367;&#2351;&#2306;&#2340;&#2381;&#2352;&#2339; &#2325;&#2368; &#2332;&#2352;&#2370;&#2352;&#2340; &#2349;&#2351; &#2360;&#2375; &#2310;&#2340;&#2368; &#2361;&#2376;&#2404; &#2332;&#2368;&#2357;&#2344; &#2325;&#2375; &#2346;&#2381;&#2352;&#2357;&#2366;&#2361; &#2346;&#2352; &#2349;&#2352;&#2379;&#2360;&#2366; &#2325;&#2352;&#2379;&#2404;</p>
                 </div>
             </div>
         </section>
 
-        <!-- DAILY PRACTICES -->
-        <section class="section">
-            <h2 style="font-family:var(--font-display); text-align:center; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Daily Soul Practices</h2>
-            <p style="text-align:center; color:var(--text-dim); font-family:var(--font-hindi); margin-bottom:2.5rem;">दैनिक आत्म-अभ्यास</p>
+        <!-- ===== DAILY PRACTICES ===== -->
+        <section class="section" style="background: rgba(79,70,229,0.015); border-radius: 0; max-width: 100%; padding-left: 1.5rem; padding-right: 1.5rem;">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <div class="section-label">Rituals</div>
+                <h2 class="section-title">Daily Practices</h2>
+                <p class="section-subtitle">Simple sacred rituals for morning, midday, and evening to anchor your soul in peace throughout the day.</p>
 
-            <div style="max-width:700px; margin:0 auto;">
-                <div class="practice-card reveal">
-                    <h3>&#x1F305; Morning: Amrit Vela (4-5 AM Meditation)</h3>
-                    <ol class="steps">
-                        <li>Wake before the world. The early morning hours carry the highest spiritual energy.</li>
-                        <li>Sit comfortably. Close your eyes. Focus on the center of your forehead -- the seat of the soul.</li>
-                        <li>Affirm: "I am a peaceful soul. I am a powerful being of light."</li>
-                        <li>Visualize a point of golden light above you -- the Supreme Source of peace.</li>
-                        <li>Sit in this awareness for 10-30 minutes. Let peace flow into every cell.</li>
-                    </ol>
-                    <div class="hindi-steps">
-                        सुबह दुनिया से पहले जागें। सुबह के घंटों में सबसे ज़्यादा आध्यात्मिक ऊर्जा होती है। आराम से बैठें। आँखें बंद करें। माथे के केंद्र पर ध्यान दें। कहें: "मैं एक शांतिपूर्ण आत्मा हूँ। मैं प्रकाश का शक्तिशाली प्राणी हूँ।"
+                <div class="practice-grid">
+                    <!-- Morning -->
+                    <div class="practice-card">
+                        <div class="practice-header">
+                            <div class="practice-icon morning">
+                                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+                            </div>
+                            <div>
+                                <div class="practice-name">Morning Awakening</div>
+                                <div class="practice-time">Upon waking</div>
+                            </div>
+                        </div>
+                        <ol class="practice-steps">
+                            <li class="practice-step"><span class="step-num">1</span><div class="step-content"><div class="step-en">Sit in silence for 2 minutes. Simply observe your breath.</div><div class="step-hi">2 &#2350;&#2367;&#2344;&#2335; &#2330;&#2369;&#2346;&#2330;&#2366;&#2346; &#2348;&#2376;&#2336;&#2375;&#2306;&#2404; &#2348;&#2360; &#2360;&#2366;&#2306;&#2360; &#2342;&#2375;&#2326;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">2</span><div class="step-content"><div class="step-en">Affirm: "I am a peaceful soul. Today I choose calm."</div><div class="step-hi">&#2325;&#2361;&#2375;&#2306;: "&#2350;&#2376;&#2306; &#2319;&#2325; &#2358;&#2366;&#2306;&#2340; &#2310;&#2340;&#2381;&#2350;&#2366; &#2361;&#2370;&#2305;&#2404; &#2310;&#2332; &#2350;&#2376;&#2306; &#2358;&#2366;&#2306;&#2340;&#2367; &#2330;&#2369;&#2344;&#2340;&#2366; &#2361;&#2370;&#2305;&#2404;"</div></div></li>
+                            <li class="practice-step"><span class="step-num">3</span><div class="step-content"><div class="step-en">Set one intention for the day. Write it down.</div><div class="step-hi">&#2342;&#2367;&#2344; &#2325;&#2375; &#2354;&#2367;&#2319; &#2319;&#2325; &#2360;&#2306;&#2325;&#2354;&#2381;&#2346; &#2354;&#2367;&#2326;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">4</span><div class="step-content"><div class="step-en">Express gratitude for 3 things. Feel each one deeply.</div><div class="step-hi">3 &#2330;&#2368;&#2332;&#2364;&#2379;&#2306; &#2325;&#2375; &#2354;&#2367;&#2319; &#2310;&#2349;&#2366;&#2352; &#2350;&#2366;&#2344;&#2375;&#2306;&#2404;</div></div></li>
+                        </ol>
                     </div>
-                </div>
 
-                <div class="practice-card reveal">
-                    <h3>&#x1F4AD; Midday: Traffic Control of Thoughts</h3>
-                    <ol class="steps">
-                        <li>Every hour, pause for 60 seconds.</li>
-                        <li>Ask yourself: "What am I thinking right now? Is this thought serving me?"</li>
-                        <li>If the thought is negative, gently replace it: "I choose peace instead of this."</li>
-                        <li>Take 3 deep breaths. Return to your work with renewed clarity.</li>
-                    </ol>
-                    <div class="hindi-steps">
-                        हर घंटे, 60 सेकंड रुकें। अपने आप से पूछें: "मैं अभी क्या सोच रहा हूँ? क्या यह विचार मेरी मदद कर रहा है?" अगर नकारात्मक है, तो धीरे से बदलें: "मैं इसके बजाय शांति चुनता हूँ।"
+                    <!-- Midday -->
+                    <div class="practice-card">
+                        <div class="practice-header">
+                            <div class="practice-icon midday">
+                                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            </div>
+                            <div>
+                                <div class="practice-name">Midday Reset</div>
+                                <div class="practice-time">12:00 - 1:00 PM</div>
+                            </div>
+                        </div>
+                        <ol class="practice-steps">
+                            <li class="practice-step"><span class="step-num">1</span><div class="step-content"><div class="step-en">Pause all activity. Close your eyes for 60 seconds.</div><div class="step-hi">&#2360;&#2348; &#2325;&#2369;&#2331; &#2352;&#2379;&#2325;&#2375;&#2306;&#2404; 60 &#2360;&#2375;&#2325;&#2306;&#2337; &#2310;&#2305;&#2326;&#2375;&#2306; &#2348;&#2306;&#2342; &#2325;&#2352;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">2</span><div class="step-content"><div class="step-en">Ask yourself: "Am I at peace right now?" Listen honestly.</div><div class="step-hi">&#2346;&#2370;&#2331;&#2375;&#2306;: "&#2325;&#2381;&#2351;&#2366; &#2350;&#2376;&#2306; &#2309;&#2349;&#2368; &#2358;&#2366;&#2306;&#2340;&#2367; &#2350;&#2375;&#2306; &#2361;&#2370;&#2305;?" &#2312;&#2350;&#2366;&#2344;&#2342;&#2366;&#2352;&#2368; &#2360;&#2375; &#2360;&#2369;&#2344;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">3</span><div class="step-content"><div class="step-en">Take 5 deep breaths. Release tension from shoulders and jaw.</div><div class="step-hi">5 &#2327;&#2361;&#2352;&#2368; &#2360;&#2366;&#2306;&#2360; &#2354;&#2375;&#2306;&#2404; &#2325;&#2306;&#2343;&#2379;&#2306; &#2324;&#2352; &#2332;&#2348;&#2337;&#2364;&#2375; &#2360;&#2375; &#2340;&#2344;&#2366;&#2357; &#2331;&#2379;&#2337;&#2364;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">4</span><div class="step-content"><div class="step-en">Choose one thing to let go of from the morning.</div><div class="step-hi">&#2360;&#2369;&#2348;&#2361; &#2325;&#2368; &#2319;&#2325; &#2330;&#2368;&#2332;&#2364; &#2331;&#2379;&#2337;&#2364;&#2344;&#2375; &#2325;&#2366; &#2347;&#2376;&#2360;&#2354;&#2366; &#2325;&#2352;&#2375;&#2306;&#2404;</div></div></li>
+                        </ol>
                     </div>
-                </div>
 
-                <div class="practice-card reveal">
-                    <h3>&#x1F319; Evening: Gratitude & Forgiveness</h3>
-                    <ol class="steps">
-                        <li>Before sleep, sit quietly for 5 minutes.</li>
-                        <li>List 3 things you're grateful for today -- even the smallest.</li>
-                        <li>Forgive anyone who caused you pain today. Say: "I release this. I am free."</li>
-                        <li>Forgive yourself for any mistakes. You are learning. You are growing.</li>
-                        <li>Affirm: "Tomorrow I wake up as a better version of myself."</li>
-                    </ol>
-                    <div class="hindi-steps">
-                        सोने से पहले 5 मिनट शांति से बैठें। आज के लिए 3 चीज़ें लिखें जिनके लिए आप कृतज्ञ हैं। जिसने दुख दिया उसे माफ़ करें। कहें: "मैं इसे छोड़ता हूँ। मैं मुक्त हूँ।" अपनी गलतियों के लिए खुद को माफ़ करें।
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- RECOMMENDED TALKS -->
-        <section class="section">
-            <h2 style="font-family:var(--font-display); text-align:center; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Talks for the Soul</h2>
-            <p style="text-align:center; color:var(--text-dim); font-family:var(--font-hindi); margin-bottom:2.5rem;">आत्मा के लिए प्रवचन</p>
-
-            <div class="videos-grid" style="max-width:1000px; margin:0 auto;">
-                <div class="video-card reveal">
-                    <div class="video-embed">
-                        <iframe src="https://www.youtube.com/embed/P4ramoioWnw" title="Sister Shivani" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <p class="video-title">Control Your Thoughts - Sister Shivani</p>
-                        <p class="video-desc">Learn how to take charge of your inner dialogue and create lasting peace.</p>
-                        <p class="video-desc-hindi">अपने विचारों पर नियंत्रण रखना सीखें और स्थायी शांति बनाएँ।</p>
-                    </div>
-                </div>
-                <div class="video-card reveal">
-                    <div class="video-embed">
-                        <iframe src="https://www.youtube.com/embed/5dlSiAqlMZQ" title="Healing Inner Child" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <p class="video-title">Healing Your Inner Child</p>
-                        <p class="video-desc">Understanding how childhood wounds shape our adult behavior and how to heal them.</p>
-                        <p class="video-desc-hindi">बचपन के ज़ख़्म कैसे हमारे बड़े होने को प्रभावित करते हैं और उन्हें कैसे ठीक करें।</p>
-                    </div>
-                </div>
-                <div class="video-card reveal">
-                    <div class="video-embed">
-                        <iframe src="https://www.youtube.com/embed/Hc1obYGOaRg" title="Morning Meditation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    </div>
-                    <div class="video-info">
-                        <p class="video-title">Brahma Kumaris Guided Meditation</p>
-                        <p class="video-desc">A peaceful guided meditation to start your day with clarity and inner strength.</p>
-                        <p class="video-desc-hindi">शांतिपूर्ण निर्देशित ध्यान -- अपने दिन की शुरुआत स्पष्टता और आंतरिक शक्ति से करें।</p>
+                    <!-- Evening -->
+                    <div class="practice-card">
+                        <div class="practice-header">
+                            <div class="practice-icon evening">
+                                <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
+                            </div>
+                            <div>
+                                <div class="practice-name">Evening Reflection</div>
+                                <div class="practice-time">Before sleep</div>
+                            </div>
+                        </div>
+                        <ol class="practice-steps">
+                            <li class="practice-step"><span class="step-num">1</span><div class="step-content"><div class="step-en">Review the day without judgment. Just observe what happened.</div><div class="step-hi">&#2348;&#2367;&#2344;&#2366; &#2344;&#2367;&#2352;&#2381;&#2339;&#2351; &#2325;&#2375; &#2342;&#2367;&#2344; &#2325;&#2368; &#2360;&#2350;&#2368;&#2325;&#2381;&#2359;&#2366; &#2325;&#2352;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">2</span><div class="step-content"><div class="step-en">Forgive anyone who caused you pain today, including yourself.</div><div class="step-hi">&#2332;&#2367;&#2360;&#2344;&#2375; &#2310;&#2332; &#2342;&#2352;&#2381;&#2342; &#2342;&#2367;&#2351;&#2366;, &#2313;&#2360;&#2375; &#2350;&#2366;&#2347;&#2364; &#2325;&#2352;&#2375;&#2306; -- &#2326;&#2369;&#2342; &#2325;&#2379; &#2349;&#2368;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">3</span><div class="step-content"><div class="step-en">Write down one lesson the day taught you.</div><div class="step-hi">&#2310;&#2332; &#2325;&#2366; &#2319;&#2325; &#2360;&#2348;&#2325; &#2354;&#2367;&#2326;&#2375;&#2306;&#2404;</div></div></li>
+                            <li class="practice-step"><span class="step-num">4</span><div class="step-content"><div class="step-en">Surrender the day to existence. Sleep in peace.</div><div class="step-hi">&#2342;&#2367;&#2344; &#2325;&#2379; &#2309;&#2360;&#2381;&#2340;&#2367;&#2340;&#2381;&#2357; &#2325;&#2379; &#2360;&#2350;&#2352;&#2381;&#2346;&#2367;&#2340; &#2325;&#2352;&#2375;&#2306;&#2404; &#2358;&#2366;&#2306;&#2340;&#2367; &#2360;&#2375; &#2360;&#2379;&#2319;&#2306;&#2404;</div></div></li>
+                        </ol>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- ===== TALKS FOR THE SOUL ===== -->
+        <section class="section">
+            <div class="section-label">Listen</div>
+            <h2 class="section-title">Talks for the Soul</h2>
+            <p class="section-subtitle">Curated talks that illuminate the path to self-understanding and lasting inner peace.</p>
+
+            <div class="talks-grid">
+                <div class="talk-card">
+                    <iframe class="talk-embed" src="https://www.youtube.com/embed/36m1o-tM05g" title="The Power of Vulnerability" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+                    <div class="talk-info">
+                        <h3 class="talk-title">The Power of Vulnerability</h3>
+                        <p class="talk-desc">A groundbreaking talk on how embracing vulnerability leads to deeper connection and authentic living.</p>
+                        <p class="talk-hindi">&#2325;&#2376;&#2360;&#2375; &#2325;&#2350;&#2332;&#2364;&#2379;&#2352;&#2368; &#2325;&#2379; &#2309;&#2346;&#2344;&#2366;&#2344;&#2366; &#2327;&#2361;&#2352;&#2375; &#2332;&#2369;&#2337;&#2364;&#2366;&#2357; &#2324;&#2352; &#2360;&#2330;&#2381;&#2330;&#2375; &#2332;&#2368;&#2357;&#2344; &#2325;&#2368; &#2323;&#2352; &#2354;&#2375; &#2332;&#2366;&#2340;&#2366; &#2361;&#2376;&#2404;</p>
+                    </div>
+                </div>
+                <div class="talk-card">
+                    <iframe class="talk-embed" src="https://www.youtube.com/embed/MnDtvWaKMKs" title="How to Practice Emotional Hygiene" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+                    <div class="talk-info">
+                        <h3 class="talk-title">Emotional First Aid</h3>
+                        <p class="talk-desc">Why we need to practice emotional hygiene -- treating psychological wounds with the same care as physical ones.</p>
+                        <p class="talk-hindi">&#2361;&#2350;&#2375;&#2306; &#2349;&#2366;&#2357;&#2344;&#2366;&#2340;&#2381;&#2350;&#2325; &#2360;&#2381;&#2357;&#2330;&#2381;&#2331;&#2340;&#2366; &#2325;&#2381;&#2351;&#2379;&#2306; &#2309;&#2346;&#2344;&#2366;&#2344;&#2368; &#2330;&#2366;&#2361;&#2367;&#2319; -- &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2328;&#2366;&#2357;&#2379;&#2306; &#2325;&#2366; &#2313;&#2340;&#2344;&#2368; &#2361;&#2368; &#2342;&#2375;&#2326;&#2349;&#2366;&#2354; &#2325;&#2352;&#2375;&#2306;&#2404;</p>
+                    </div>
+                </div>
+                <div class="talk-card">
+                    <iframe class="talk-embed" src="https://www.youtube.com/embed/iCvmsMzlF7o" title="The Happy Secret to Better Work" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
+                    <div class="talk-info">
+                        <h3 class="talk-title">The Happiness Advantage</h3>
+                        <p class="talk-desc">Discover why happiness fuels success and not the other way around. Rewire your brain for positivity.</p>
+                        <p class="talk-hindi">&#2332;&#2366;&#2344;&#2367;&#2319; &#2326;&#2369;&#2358;&#2368; &#2360;&#2347;&#2354;&#2340;&#2366; &#2325;&#2376;&#2360;&#2375; &#2354;&#2366;&#2340;&#2368; &#2361;&#2376; -- &#2344; &#2325;&#2367; &#2360;&#2347;&#2354;&#2340;&#2366; &#2326;&#2369;&#2358;&#2368;&#2404;</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="footer-brand">&#x1F54A; Sukoon</div>
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <span class="brand-mark">
+                <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.18-9 7.1 0 2.34 1.44 4.42 3.67 5.74L5 21l4.39-2.11c.84.18 1.72.28 2.61.28 4.97 0 9-3.18 9-7.1S16.97 3 12 3z"/></svg>
+            </span>
+            Sukoon
+        </div>
         <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
-        <p class="footer-privacy">&#x1F512; No data collected. Just wisdom.</p>
-        <p class="footer-copy">Sukoon &copy; 2026</p>
+        <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
+        <div class="footer-privacy">No data collected. No accounts. No tracking.</div>
+        <nav class="footer-nav">
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a>
+            <a href="/quotes.html">Quotes</a>
+            <a href="/videos.html">Videos</a>
+        </nav>
+        <p class="footer-copy">&copy; 2025 Sukoon. Made with love for humanity.</p>
     </footer>
 
     <script>
-        const affirmations = [
-            { en: "I am a peaceful soul. My original nature is peace.", hi: "मैं एक शांतिपूर्ण आत्मा हूँ। मेरा मूल स्वभाव शांति है।" },
-            { en: "I create my feelings. No one else has that power unless I give it to them.", hi: "मैं अपनी भावनाएँ खुद बनाता हूँ। किसी और के पास यह शक्ति नहीं जब तक मैं न दूँ।" },
-            { en: "I choose to respond with love today. I am bigger than any situation.", hi: "आज मैं प्यार से जवाब देना चुनता हूँ। मैं किसी भी स्थिति से बड़ा हूँ।" },
-            { en: "My happiness is my responsibility. It does not depend on others.", hi: "मेरी खुशी मेरी ज़िम्मेदारी है। यह दूसरों पर निर्भर नहीं करती।" },
-            { en: "I forgive everyone. I free myself from the chains of resentment.", hi: "मैं सबको माफ़ करता हूँ। मैं खुद को नाराज़गी की ज़ंजीरों से आज़ाद करता हूँ।" },
-            { en: "Every soul I meet today is on their own journey. I send them light.", hi: "आज जो भी आत्मा मिले, वो अपनी यात्रा पर है। मैं उन्हें प्रकाश भेजता हूँ।" },
-            { en: "I let go of the need to control. I trust the flow of life.", hi: "मैं नियंत्रण की ज़रूरत छोड़ता हूँ। मुझे जीवन की धारा पर भरोसा है।" },
-            { en: "Silence is not emptiness. It is full of answers.", hi: "मौन खालीपन नहीं है। यह उत्तरों से भरा है।" },
-            { en: "I am not what happened to me. I am what I choose to become.", hi: "मैं वो नहीं हूँ जो मेरे साथ हुआ। मैं वो हूँ जो मैं बनना चुनता हूँ।" },
-            { en: "Before reacting, I pause. In the pause, I find my power.", hi: "प्रतिक्रिया से पहले मैं रुकता हूँ। रुकने में ही मेरी शक्ति है।" },
-            { en: "I radiate peace. Wherever I go, the atmosphere becomes calmer.", hi: "मैं शांति विकीर्ण करता हूँ। मैं जहाँ भी जाता हूँ, वातावरण शांत हो जाता है।" },
-            { en: "I bless those who challenge me. They are my greatest teachers.", hi: "मैं उन्हें आशीर्वाद देता हूँ जो मुझे चुनौती देते हैं। वे मेरे सबसे बड़े शिक्षक हैं।" }
-        ];
-
-        function newAffirmation() {
-            const a = affirmations[Math.floor(Math.random() * affirmations.length)];
-            document.getElementById('affirmEn').textContent = a.en;
-            document.getElementById('affirmHi').textContent = a.hi;
-        }
-        newAffirmation();
-
-        // Scroll reveal
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
         // Mobile nav
-        document.getElementById('mobileToggle').addEventListener('click', () => {
+        document.getElementById('mobileToggle').addEventListener('click', function() {
             document.getElementById('mainNav').classList.toggle('open');
         });
+        document.querySelectorAll('#mainNav a').forEach(function(link) {
+            link.addEventListener('click', function() { document.getElementById('mainNav').classList.remove('open'); });
+        });
+
+        // Affirmations
+        var affirmations = [
+            { en: "I am not this body. I am a peaceful, powerful soul.", hi: "\u092E\u0948\u0902 \u092F\u0939 \u0936\u0930\u0940\u0930 \u0928\u0939\u0940\u0902\u0964 \u092E\u0948\u0902 \u0936\u093E\u0902\u0924, \u0936\u0915\u094D\u0924\u093F\u0936\u093E\u0932\u0940 \u0906\u0924\u094D\u092E\u093E \u0939\u0942\u0901\u0964" },
+            { en: "I choose peace over proving my point.", hi: "\u092E\u0948\u0902 \u0905\u092A\u0928\u0940 \u092C\u093E\u0924 \u0938\u093E\u092C\u093F\u0924 \u0915\u0930\u0928\u0947 \u0938\u0947 \u091C\u093C\u094D\u092F\u093E\u0926\u093E \u0936\u093E\u0902\u0924\u093F \u091A\u0941\u0928\u0924\u093E \u0939\u0942\u0901\u0964" },
+            { en: "I release what I cannot control and trust what is.", hi: "\u091C\u094B \u092E\u0947\u0930\u0947 \u0928\u093F\u092F\u0902\u0924\u094D\u0930\u0923 \u092E\u0947\u0902 \u0928\u0939\u0940\u0902, \u0909\u0938\u0947 \u092E\u0948\u0902 \u091B\u094B\u0921\u093C\u0924\u093E \u0939\u0942\u0901\u0964" },
+            { en: "My thoughts shape my world. I choose them wisely.", hi: "\u092E\u0947\u0930\u0947 \u0935\u093F\u091A\u093E\u0930 \u092E\u0947\u0930\u0940 \u0926\u0941\u0928\u093F\u092F\u093E \u092C\u0928\u093E\u0924\u0947 \u0939\u0948\u0902\u0964 \u092E\u0948\u0902 \u0909\u0928\u094D\u0939\u0947\u0902 \u0938\u092E\u091D\u0926\u093E\u0930\u0940 \u0938\u0947 \u091A\u0941\u0928\u0924\u093E \u0939\u0942\u0901\u0964" },
+            { en: "Silence is my sanctuary. In stillness, I find answers.", hi: "\u092E\u094C\u0928 \u092E\u0947\u0930\u093E \u0906\u0936\u094D\u0930\u092F \u0939\u0948\u0964 \u0938\u094D\u0925\u093F\u0930\u0924\u093E \u092E\u0947\u0902 \u0909\u0924\u094D\u0924\u0930 \u092E\u093F\u0932\u0924\u0947 \u0939\u0948\u0902\u0964" },
+            { en: "I forgive not because they deserve it, but because I deserve peace.", hi: "\u092E\u0948\u0902 \u0907\u0938\u0932\u093F\u090F \u092E\u093E\u092B\u093C \u0915\u0930\u0924\u093E \u0939\u0942\u0901 \u0915\u094D\u092F\u094B\u0902\u0915\u093F \u092E\u0941\u091D\u0947 \u0936\u093E\u0902\u0924\u093F \u091A\u093E\u0939\u093F\u090F\u0964" },
+            { en: "I am exactly where I need to be on my journey.", hi: "\u092E\u0948\u0902 \u0905\u092A\u0928\u0940 \u092F\u093E\u0924\u094D\u0930\u093E \u092E\u0947\u0902 \u0920\u0940\u0915 \u0935\u0939\u0940\u0902 \u0939\u0942\u0901 \u091C\u0939\u093E\u0901 \u092E\u0941\u091D\u0947 \u0939\u094B\u0928\u093E \u091A\u093E\u0939\u093F\u090F\u0964" },
+            { en: "I do not need anyone's approval to be at peace with myself.", hi: "\u0906\u0924\u094D\u092E-\u0936\u093E\u0902\u0924\u093F \u0915\u0947 \u0932\u093F\u090F \u092E\u0941\u091D\u0947 \u0915\u093F\u0938\u0940 \u0915\u0940 \u092E\u0902\u091C\u0942\u0930\u0940 \u0928\u0939\u0940\u0902 \u091A\u093E\u0939\u093F\u090F\u0964" },
+            { en: "The universe is not punishing me. It is redirecting me.", hi: "\u092C\u094D\u0930\u0939\u094D\u092E\u093E\u0902\u0921 \u092E\u0941\u091D\u0947 \u0938\u091C\u093C\u093E \u0928\u0939\u0940\u0902 \u0926\u0947 \u0930\u0939\u093E, \u0926\u093F\u0936\u093E \u0926\u0947 \u0930\u0939\u093E \u0939\u0948\u0964" },
+            { en: "Kindness is strength, not weakness.", hi: "\u0926\u092F\u093E \u0915\u092E\u091C\u093C\u094B\u0930\u0940 \u0928\u0939\u0940\u0902, \u0924\u093E\u0915\u0924 \u0939\u0948\u0964" },
+            { en: "I let go of the need to be right and embrace the need to be free.", hi: "\u092E\u0948\u0902 \u0938\u0939\u0940 \u0939\u094B\u0928\u0947 \u0915\u0940 \u091C\u093C\u0930\u0942\u0930\u0924 \u091B\u094B\u0921\u093C\u0924\u093E \u0939\u0942\u0901 \u0914\u0930 \u0938\u094D\u0935\u0924\u0902\u0924\u094D\u0930 \u0939\u094B\u0928\u0947 \u0915\u094B \u0905\u092A\u0928\u093E\u0924\u093E \u0939\u0942\u0901\u0964" },
+            { en: "I am the sky. Everything else is just the weather.", hi: "\u092E\u0948\u0902 \u0906\u0915\u093E\u0936 \u0939\u0942\u0901\u0964 \u092C\u093E\u0915\u0940 \u0938\u092C \u092C\u0938 \u092E\u094C\u0938\u092E \u0939\u0948\u0964" },
+            { en: "Healing is not linear. I honor my own pace.", hi: "\u0909\u092A\u091A\u093E\u0930 \u0938\u0940\u0927\u0940 \u0930\u0947\u0916\u093E \u092E\u0947\u0902 \u0928\u0939\u0940\u0902 \u091A\u0932\u0924\u093E\u0964 \u092E\u0948\u0902 \u0905\u092A\u0928\u0940 \u0930\u092B\u093C\u094D\u0924\u093E\u0930 \u0915\u093E \u0938\u092E\u094D\u092E\u093E\u0928 \u0915\u0930\u0924\u093E \u0939\u0942\u0901\u0964" },
+            { en: "What I seek is seeking me. I trust the timing of my life.", hi: "\u091C\u094B \u092E\u0948\u0902 \u0922\u0942\u0901\u0922\u0924\u093E \u0939\u0942\u0901, \u0935\u094B \u092E\u0941\u091D\u0947 \u0922\u0942\u0901\u0922 \u0930\u0939\u093E \u0939\u0948\u0964" }
+        ];
+
+        var currentAffirmation = -1;
+        function showAffirmation() {
+            var next;
+            do { next = Math.floor(Math.random() * affirmations.length); } while (next === currentAffirmation && affirmations.length > 1);
+            currentAffirmation = next;
+            document.getElementById('affirmationEN').textContent = affirmations[next].en;
+            document.getElementById('affirmationHI').textContent = affirmations[next].hi;
+        }
+        showAffirmation();
+        document.getElementById('newThoughtBtn').addEventListener('click', showAffirmation);
     </script>
 </body>
 </html>

@@ -4,173 +4,799 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meditate - Sukoon</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 72px;
+            background: rgba(250,250,247,0.8);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem; color: #111827;
+            display: flex; align-items: center; gap: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .topbar-brand svg { width: 28px; height: 28px; }
+        .topbar-nav { display: flex; gap: 0.2rem; }
+        .topbar-nav a {
+            padding: 0.42rem 0.82rem; border-radius: 10px;
+            font-size: 0.84rem; font-weight: 500; color: #6B7280;
+            transition: all 0.2s ease;
+        }
+        .topbar-nav a:hover { background: rgba(79,70,229,0.06); color: #4F46E5; }
+        .topbar-nav a.active {
+            background: #4F46E5; color: #fff; font-weight: 600;
+        }
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .lang-select {
+            padding: 0.38rem 0.65rem; border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08); background: #fff;
+            font-size: 0.8rem; color: #6B7280; cursor: pointer;
+            font-family: 'Inter', sans-serif; outline: none;
+        }
+        .mobile-toggle {
+            display: none; background: none; border: none;
+            color: #111827; cursor: pointer;
+            width: 40px; height: 40px; border-radius: 10px;
+            align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .mobile-toggle:hover { background: rgba(0,0,0,0.04); }
+        @media (max-width: 900px) {
+            .mobile-toggle { display: flex; }
+            .topbar { padding: 0 1.25rem; }
+            .topbar-nav {
+                display: none; flex-direction: column;
+                position: absolute; top: 72px; left: 0; right: 0;
+                background: rgba(250,250,247,0.97);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                padding: 0.5rem 0.75rem; gap: 0.1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            }
+            .topbar-nav.open { display: flex; }
+            .topbar-nav.open a { padding: 0.75rem 1rem; font-size: 0.95rem; border-radius: 12px; }
+        }
+
+        /* ===================== FULL-PAGE MEDITATION ===================== */
+        .meditate-page {
+            min-height: 100vh; min-height: 100dvh;
+            padding-top: 72px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+
+        /* Gradient mesh */
+        .mesh-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background:
+                radial-gradient(ellipse 80% 55% at 20% 15%, rgba(79,70,229,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 65% 60% at 85% 25%, rgba(16,185,129,0.05) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 55% at 50% 85%, rgba(245,158,11,0.04) 0%, transparent 55%),
+                radial-gradient(ellipse 55% 65% at 8% 75%, rgba(236,72,153,0.035) 0%, transparent 50%),
+                linear-gradient(180deg, #FAFAF7 0%, #F5F3EF 100%);
+        }
+        .mesh-orb {
+            position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.1;
+            animation: orbDrift 28s ease-in-out infinite;
+        }
+        .mesh-orb:nth-child(1) { width: 420px; height: 420px; background: #4F46E5; top: 2%; left: 8%; }
+        .mesh-orb:nth-child(2) { width: 360px; height: 360px; background: #10B981; bottom: 10%; right: 8%; animation-delay: 9s; }
+        .mesh-orb:nth-child(3) { width: 300px; height: 300px; background: #F59E0B; top: 55%; left: 55%; animation-delay: 18s; }
+        @keyframes orbDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(20px, -12px) scale(1.04); }
+            66% { transform: translate(-14px, 10px) scale(0.96); }
+        }
+
+        .med-content {
+            position: relative; z-index: 2;
+            display: flex; flex-direction: column;
+            align-items: center; text-align: center;
+            padding: 1.5rem 1.5rem 2.5rem;
+            width: 100%; max-width: 580px;
+        }
+
+        /* Streak badge */
+        .streak-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            background: #fff; border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 100px; padding: 0.42rem 1rem;
+            font-size: 0.78rem; font-weight: 600; color: #4F46E5;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.02);
+            margin-bottom: 1.75rem;
+            letter-spacing: 0.01em;
+        }
+        .streak-badge svg { width: 15px; height: 15px; flex-shrink: 0; }
+        .streak-num { font-variant-numeric: tabular-nums; }
+
+        /* Duration row */
+        .dur-row {
+            display: flex; gap: 0.4rem; flex-wrap: wrap;
+            justify-content: center; margin-bottom: 2.25rem;
+        }
+        .dur-pill {
+            padding: 0.5rem 1.05rem; border-radius: 100px;
+            font-size: 0.8rem; font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.07); background: #fff;
+            color: #374151; cursor: pointer;
+            transition: all 0.22s ease;
+            font-family: 'Inter', sans-serif;
+            user-select: none;
+        }
+        .dur-pill:hover { border-color: rgba(79,70,229,0.25); color: #4F46E5; }
+        .dur-pill.active {
+            background: #4F46E5; border-color: #4F46E5;
+            color: #fff; box-shadow: 0 2px 10px rgba(79,70,229,0.25);
+        }
+
+        /* SVG timer ring */
+        .ring-wrap {
+            position: relative;
+            width: 280px; height: 280px;
+            margin-bottom: 2rem;
+        }
+        .ring-svg {
+            width: 100%; height: 100%;
+            transform: rotate(-90deg);
+        }
+        .ring-track { fill: none; stroke: rgba(79,70,229,0.07); stroke-width: 3; }
+        .ring-fill {
+            fill: none; stroke: url(#ringGrad); stroke-width: 3;
+            stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .ring-inner {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .timer-time {
+            font-size: clamp(4rem, 12vw, 7rem);
+            font-weight: 200; color: #111827;
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em; line-height: 1;
+        }
+        .timer-state {
+            font-size: 0.72rem; color: #9CA3AF;
+            font-weight: 600; margin-top: 0.6rem;
+            text-transform: uppercase; letter-spacing: 0.12em;
+        }
+
+        /* Sound selector */
+        .snd-row {
+            display: flex; gap: 0.45rem; margin-bottom: 2rem;
+            flex-wrap: wrap; justify-content: center;
+        }
+        .snd-pill {
+            padding: 0.48rem 0.95rem; border-radius: 100px;
+            font-size: 0.78rem; font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.07); background: #fff;
+            color: #374151; cursor: pointer;
+            transition: all 0.22s ease;
+            display: flex; align-items: center; gap: 0.35rem;
+            font-family: 'Inter', sans-serif;
+        }
+        .snd-pill svg { width: 14px; height: 14px; opacity: 0.45; transition: opacity 0.2s; }
+        .snd-pill:hover { border-color: rgba(16,185,129,0.3); color: #10B981; }
+        .snd-pill:hover svg { opacity: 0.7; }
+        .snd-pill.active {
+            background: #10B981; border-color: #10B981;
+            color: #fff; box-shadow: 0 2px 10px rgba(16,185,129,0.22);
+        }
+        .snd-pill.active svg { opacity: 1; }
+
+        /* Controls */
+        .ctrls { display: flex; gap: 0.65rem; margin-bottom: 2.5rem; align-items: center; }
+        .btn-main {
+            padding: 0.82rem 2.4rem; border-radius: 100px;
+            background: #4F46E5; color: #fff;
+            font-size: 0.92rem; font-weight: 600;
+            border: none; cursor: pointer;
+            transition: all 0.22s ease;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 2px 10px rgba(79,70,229,0.22);
+        }
+        .btn-main:hover { background: #4338CA; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(79,70,229,0.28); }
+        .btn-main:active { transform: translateY(0); }
+        .btn-ghost {
+            padding: 0.7rem 1.4rem; border-radius: 100px;
+            background: #fff; color: #374151;
+            font-size: 0.82rem; font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.07); cursor: pointer;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .btn-ghost:hover { border-color: rgba(0,0,0,0.14); background: #F9FAFB; }
+
+        /* Prompt area */
+        .prompt-wrap {
+            min-height: 88px; display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .pmt-en {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic; font-size: 1.2rem;
+            color: #374151; line-height: 1.55;
+            max-width: 400px;
+            opacity: 1; transition: opacity 0.7s ease;
+        }
+        .pmt-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.85rem; color: #9CA3AF;
+            font-weight: 300; margin-top: 0.35rem;
+            opacity: 1; transition: opacity 0.7s ease;
+        }
+        .pmt-en.fade, .pmt-hi.fade { opacity: 0; }
+
+        /* ===================== SESSION COMPLETE OVERLAY ===================== */
+        .done-overlay {
+            position: fixed; inset: 0; z-index: 5000;
+            background: rgba(250,250,247,0.93);
+            backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 2rem;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.55s ease;
+        }
+        .done-overlay.show { opacity: 1; pointer-events: auto; }
+        .done-icon {
+            width: 80px; height: 80px; margin-bottom: 1.8rem;
+            position: relative;
+        }
+        .done-icon svg { width: 100%; height: 100%; }
+        .done-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem; color: #111827; margin-bottom: 0.4rem;
+        }
+        .done-sub {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1rem; color: #9CA3AF; font-weight: 300;
+            margin-bottom: 2.5rem;
+        }
+        .done-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; }
+        .done-stat { display: flex; flex-direction: column; align-items: center; }
+        .done-val {
+            font-size: 2rem; font-weight: 200; color: #4F46E5;
+            font-variant-numeric: tabular-nums;
+        }
+        .done-lbl {
+            font-size: 0.7rem; color: #9CA3AF; text-transform: uppercase;
+            letter-spacing: 0.08em; font-weight: 600; margin-top: 0.3rem;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #F3F4F6; padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            position: relative; z-index: 2;
+            display: none; /* hidden in immersive mode, shown after session */
+        }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem; color: #111827; margin-bottom: 0.75rem;
+        }
+        .footer-desc {
+            font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px;
+        }
+        .footer-desc-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.78rem; color: #9CA3AF; margin-top: 0.35rem;
+            font-weight: 300;
+        }
+        .footer-priv {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            margin-top: 1rem; font-size: 0.7rem; color: #9CA3AF;
+            background: rgba(0,0,0,0.03); padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+        }
+        .footer-priv svg { width: 12px; height: 12px; }
+        .footer-hd {
+            font-size: 0.68rem; text-transform: uppercase;
+            letter-spacing: 0.1em; color: #9CA3AF;
+            font-weight: 600; margin-bottom: 1rem;
+        }
+        .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
+        .footer-links a { font-size: 0.85rem; color: #6B7280; transition: color 0.2s; }
+        .footer-links a:hover { color: #4F46E5; }
+        .footer-btm {
+            max-width: 1100px; margin: 2rem auto 0;
+            padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center; font-size: 0.75rem; color: #9CA3AF;
+        }
+        @media (max-width: 768px) {
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 500px) {
+            .ring-wrap { width: 220px; height: 220px; }
+            .dur-row { gap: 0.3rem; }
+            .dur-pill { padding: 0.42rem 0.8rem; font-size: 0.76rem; }
+            .done-stats { gap: 1.5rem; }
+            .done-title { font-size: 2.2rem; }
+            .ctrls { flex-wrap: wrap; justify-content: center; }
+            .snd-pill { padding: 0.42rem 0.78rem; font-size: 0.75rem; }
+            .pmt-en { font-size: 1.05rem; }
+        }
+    </style>
 </head>
 <body>
-    <header class="topbar">
-        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
-        <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html" class="active">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
-        </nav>
-        <div class="topbar-right">
-            <select class="lang-select"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option><option value="es">ES</option><option value="fr">FR</option></select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
-        </div>
-    </header>
-    <main>
-        <div class="page-header">
-            <h1>Meditate</h1>
-            <p class="subtitle">Find your stillness. Be present.</p>
-            <p class="subtitle-hindi">अपनी शांति पाएँ। वर्तमान में रहें।</p>
+
+<!-- ===================== TOPBAR ===================== -->
+<nav class="topbar">
+    <a href="index.html" class="topbar-brand">
+        <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#4F46E5" stroke-width="1.5"/><path d="M14 7c0 3.87-3.13 7-7 7 3.87 0 7 3.13 7 7 0-3.87 3.13-7 7-7-3.87 0-7-3.13-7-7z" fill="#4F46E5" opacity="0.7"/></svg>
+        Sukoon
+    </a>
+    <div class="topbar-nav" id="topNav">
+        <a href="breathe.html">Breathe</a>
+        <a href="meditate.html" class="active">Meditate</a>
+        <a href="sounds.html">Sounds</a>
+        <a href="journal.html">Journal</a>
+        <a href="friend.html">AI Friend</a>
+        <a href="wisdom.html">Wisdom</a>
+        <a href="quotes.html">Quotes</a>
+        <a href="videos.html">Videos</a>
+    </div>
+    <div class="topbar-right">
+        <select class="lang-select" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="hi">HI</option>
+        </select>
+        <button class="mobile-toggle" id="menuBtn" aria-label="Toggle navigation">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- ===================== MAIN ===================== -->
+<main class="meditate-page">
+    <div class="mesh-bg">
+        <div class="mesh-orb"></div>
+        <div class="mesh-orb"></div>
+        <div class="mesh-orb"></div>
+    </div>
+
+    <div class="med-content">
+
+        <!-- Streak -->
+        <div class="streak-badge">
+            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5L9.8 5.8 14.5 6.5 11.2 9.7 12 14.5 8 12.2 4 14.5 4.8 9.7 1.5 6.5 6.2 5.8z" fill="#F59E0B"/></svg>
+            Day <span class="streak-num" id="streakNum">1</span>
         </div>
 
-        <div class="meditate-container">
-            <div class="duration-selector">
-                <button class="duration-btn" data-minutes="1">1 min</button>
-                <button class="duration-btn" data-minutes="3">3 min</button>
-                <button class="duration-btn active" data-minutes="5">5 min</button>
-                <button class="duration-btn" data-minutes="10">10 min</button>
-                <button class="duration-btn" data-minutes="15">15 min</button>
-                <button class="duration-btn" data-minutes="20">20 min</button>
+        <!-- Duration pills -->
+        <div class="dur-row" id="durRow">
+            <button class="dur-pill" data-min="1">1 min</button>
+            <button class="dur-pill" data-min="3">3 min</button>
+            <button class="dur-pill active" data-min="5">5 min</button>
+            <button class="dur-pill" data-min="10">10 min</button>
+            <button class="dur-pill" data-min="15">15 min</button>
+            <button class="dur-pill" data-min="20">20 min</button>
+        </div>
+
+        <!-- SVG circular progress ring -->
+        <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 280 280">
+                <defs>
+                    <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#4F46E5"/>
+                        <stop offset="100%" stop-color="#818CF8"/>
+                    </linearGradient>
+                </defs>
+                <circle class="ring-track" cx="140" cy="140" r="130"/>
+                <circle class="ring-fill" id="ringFill" cx="140" cy="140" r="130"
+                    stroke-dasharray="816.81" stroke-dashoffset="0"/>
+            </svg>
+            <div class="ring-inner">
+                <div class="timer-time" id="timerTime">5:00</div>
+                <div class="timer-state" id="timerState">Ready</div>
             </div>
-
-            <div class="timer-display" id="timerDisplay">5:00</div>
-
-            <div class="timer-controls">
-                <button class="btn btn-primary btn-lg" id="startBtn">&#x1F514; Begin</button>
-                <button class="btn btn-secondary" id="pauseBtn" style="display:none;">Pause</button>
-                <button class="btn btn-secondary" id="resetBtn" style="display:none;">Reset</button>
-            </div>
-
-            <p class="meditation-prompt" id="prompt"></p>
         </div>
-    </main>
 
-    <footer class="site-footer">
-        <p class="footer-privacy">&#x1F512; No data collected. Just stillness.</p>
-        <p class="footer-copy">Sukoon &copy; 2026</p>
-    </footer>
+        <!-- Ambient sound selector -->
+        <div class="snd-row" id="sndRow">
+            <button class="snd-pill active" data-snd="silence">
+                <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="4.5" y1="4.5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.2"/></svg>
+                Silence
+            </button>
+            <button class="snd-pill" data-snd="rain">
+                <svg viewBox="0 0 14 14" fill="none"><path d="M3 6.5v4M7 4.5v6M11 5.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+                Rain
+            </button>
+            <button class="snd-pill" data-snd="ocean">
+                <svg viewBox="0 0 14 14" fill="none"><path d="M1 7.5c2-2 4 0 6-2s4 0 6-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M1 10.5c2-2 4 0 6-2s4 0 6-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/></svg>
+                Ocean
+            </button>
+        </div>
 
-    <script>
-        const prompts = [
-            { en: "You are exactly where you need to be.", hi: "आप ठीक वहीं हैं जहाँ आपको होना चाहिए।" },
-            { en: "Let each breath bring you deeper into peace.", hi: "हर साँस आपको शांति में और गहरा ले जाए।" },
-            { en: "Release what no longer serves you.", hi: "जो अब काम नहीं आता, उसे जाने दो।" },
-            { en: "In stillness, you find your strength.", hi: "शांति में ही आपकी ताक़त छिपी है।" },
-            { en: "This moment is enough. You are enough.", hi: "यह पल काफ़ी है। तुम काफ़ी हो।" },
-            { en: "Observe your thoughts like clouds passing.", hi: "अपने विचारों को बादलों की तरह गुज़रते देखो।" },
-            { en: "You are not your thoughts. You are the sky.", hi: "तुम अपने विचार नहीं हो। तुम आसमान हो।" },
-            { en: "Breathe in peace. Breathe out worry.", hi: "शांति को साँस में भरो। चिंता को बाहर छोड़ो।" }
-        ];
+        <!-- Controls -->
+        <div class="ctrls">
+            <button class="btn-main" id="btnStart">Start</button>
+            <button class="btn-ghost" id="btnPause" style="display:none">Pause</button>
+            <button class="btn-ghost" id="btnReset" style="display:none">Reset</button>
+        </div>
 
-        let totalSeconds = 300; // 5 min default
-        let remainingSeconds = 300;
-        let isRunning = false;
-        let isPaused = false;
-        let timerId = null;
+        <!-- Bilingual prompt -->
+        <div class="prompt-wrap">
+            <div class="pmt-en" id="pmtEn">Close your eyes and arrive in this moment.</div>
+            <div class="pmt-hi" id="pmtHi">&#x0906;&#x0901;&#x0916;&#x0947;&#x0902; &#x092C;&#x0902;&#x0926; &#x0915;&#x0930;&#x0947;&#x0902; &#x0914;&#x0930; &#x0907;&#x0938; &#x092A;&#x0932; &#x092E;&#x0947;&#x0902; &#x0906;&#x090F;&#x0902;&#x0964;</div>
+        </div>
+    </div>
+</main>
 
-        const display = document.getElementById('timerDisplay');
-        const startBtn = document.getElementById('startBtn');
-        const pauseBtn = document.getElementById('pauseBtn');
-        const resetBtn = document.getElementById('resetBtn');
-        const promptEl = document.getElementById('prompt');
+<!-- ===================== SESSION COMPLETE ===================== -->
+<div class="done-overlay" id="doneOverlay">
+    <div class="done-icon">
+        <svg viewBox="0 0 80 80" fill="none">
+            <circle cx="40" cy="40" r="38" fill="#4F46E5" opacity="0.06"/>
+            <circle cx="40" cy="40" r="26" fill="#4F46E5" opacity="0.08"/>
+            <circle cx="40" cy="40" r="14" fill="#4F46E5" opacity="0.12"/>
+            <path d="M40 22c0 9.94-8.06 18-18 18 9.94 0 18 8.06 18 18 0-9.94 8.06-18 18-18-9.94 0-18-8.06-18-18z" fill="#4F46E5" opacity="0.5"/>
+        </svg>
+    </div>
+    <div class="done-title">Namaste</div>
+    <div class="done-sub">&#x0928;&#x092E;&#x0938;&#x094D;&#x0924;&#x0947; &mdash; &#x0906;&#x092A;&#x0915;&#x0940; &#x0938;&#x093E;&#x0927;&#x0928;&#x093E; &#x092A;&#x0942;&#x0930;&#x094D;&#x0923; &#x0939;&#x0941;&#x0908;</div>
+    <div class="done-stats">
+        <div class="done-stat">
+            <div class="done-val" id="doneTime">5:00</div>
+            <div class="done-lbl">Duration</div>
+        </div>
+        <div class="done-stat">
+            <div class="done-val" id="doneStreak">1</div>
+            <div class="done-lbl">Day Streak</div>
+        </div>
+    </div>
+    <button class="btn-main" id="btnContinue">Continue</button>
+</div>
 
-        // Bell sound using Web Audio API
-        function playBell() {
-            const ctx = new (window.AudioContext || window.webkitAudioContext)();
-            const osc = ctx.createOscillator();
-            const gain = ctx.createGain();
-            osc.connect(gain);
-            gain.connect(ctx.destination);
-            osc.frequency.setValueAtTime(528, ctx.currentTime); // 528Hz - healing frequency
-            osc.type = 'sine';
-            gain.gain.setValueAtTime(0.3, ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 3);
-            osc.start(ctx.currentTime);
-            osc.stop(ctx.currentTime + 3);
-        }
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer" id="siteFooter">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">Sukoon</div>
+            <div class="footer-desc">Free mental wellness for every mind. Breathe, meditate, and find your calm &mdash; always free, always private.</div>
+            <div class="footer-desc-hi">&#x0939;&#x0930; &#x092E;&#x0928; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F;</div>
+            <div class="footer-priv">
+                <svg viewBox="0 0 12 12" fill="none"><rect x="1.5" y="5.5" width="9" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1"/><path d="M4 5.5V3.8a2 2 0 014 0V5.5" stroke="currentColor" stroke-width="1"/></svg>
+                No data collected &middot; 100% private
+            </div>
+        </div>
+        <div>
+            <div class="footer-hd">Practice</div>
+            <div class="footer-links">
+                <a href="breathe.html">Breathe</a>
+                <a href="meditate.html">Meditate</a>
+                <a href="sounds.html">Sounds</a>
+                <a href="journal.html">Journal</a>
+            </div>
+        </div>
+        <div>
+            <div class="footer-hd">Explore</div>
+            <div class="footer-links">
+                <a href="friend.html">AI Friend</a>
+                <a href="wisdom.html">Wisdom</a>
+                <a href="quotes.html">Quotes</a>
+                <a href="videos.html">Videos</a>
+                <a href="privacy.html">Privacy</a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-btm">&copy; 2026 Sukoon. Free forever. Built with care for your peace of mind.</div>
+</footer>
 
-        function updateDisplay() {
-            const m = Math.floor(remainingSeconds / 60);
-            const s = remainingSeconds % 60;
-            display.textContent = `${m}:${s.toString().padStart(2, '0')}`;
-        }
+<script>
+(function(){
+    'use strict';
 
-        function showRandomPrompt() {
-            const p = prompts[Math.floor(Math.random() * prompts.length)];
-            promptEl.innerHTML = `${p.en}<br><span style="font-family:var(--font-hindi); font-size:0.95rem; opacity:0.6;">${p.hi}</span>`;
-        }
+    /* ====== Mobile nav ====== */
+    document.getElementById('menuBtn').addEventListener('click', function(){
+        document.getElementById('topNav').classList.toggle('open');
+    });
 
-        // Duration selector
-        document.querySelectorAll('.duration-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                if (isRunning) return;
-                document.querySelectorAll('.duration-btn').forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                totalSeconds = parseInt(btn.dataset.minutes) * 60;
-                remainingSeconds = totalSeconds;
-                updateDisplay();
-            });
+    /* ====== State ====== */
+    var duration = 5 * 60;
+    var remaining = duration;
+    var running = false;
+    var paused = false;
+    var ticker = null;
+    var audioCtx = null;
+    var ambientSrc = null;
+    var ambientGain = null;
+    var curSound = 'silence';
+    var promptIdx = 0;
+    var promptTick = null;
+
+    /* ====== DOM refs ====== */
+    var $time = document.getElementById('timerTime');
+    var $state = document.getElementById('timerState');
+    var $ring = document.getElementById('ringFill');
+    var $start = document.getElementById('btnStart');
+    var $pause = document.getElementById('btnPause');
+    var $reset = document.getElementById('btnReset');
+    var $streak = document.getElementById('streakNum');
+    var $pmtEn = document.getElementById('pmtEn');
+    var $pmtHi = document.getElementById('pmtHi');
+    var $overlay = document.getElementById('doneOverlay');
+    var $doneTime = document.getElementById('doneTime');
+    var $doneStreak = document.getElementById('doneStreak');
+    var CIRC = 2 * Math.PI * 130;
+
+    /* ====== 16 bilingual prompts ====== */
+    var prompts = [
+        {en:"Close your eyes and arrive in this moment.",hi:"\u0906\u0901\u0916\u0947\u0902 \u092C\u0902\u0926 \u0915\u0930\u0947\u0902 \u0914\u0930 \u0907\u0938 \u092A\u0932 \u092E\u0947\u0902 \u0906\u090F\u0902\u0964"},
+        {en:"Breathe in calm, breathe out tension.",hi:"\u0936\u093E\u0902\u0924\u093F \u0938\u093E\u0901\u0938 \u0932\u0947\u0902, \u0924\u0928\u093E\u0935 \u091B\u094B\u0921\u093C\u0947\u0902\u0964"},
+        {en:"You are exactly where you need to be.",hi:"\u0906\u092A \u0920\u0940\u0915 \u0935\u0939\u0940\u0902 \u0939\u0948\u0902 \u091C\u0939\u093E\u0901 \u0906\u092A\u0915\u094B \u0939\u094B\u0928\u093E \u091A\u093E\u0939\u093F\u090F\u0964"},
+        {en:"Let each thought pass like a cloud in the sky.",hi:"\u0939\u0930 \u0935\u093F\u091A\u093E\u0930 \u0915\u094B \u092C\u093E\u0926\u0932 \u0915\u0940 \u0924\u0930\u0939 \u0917\u0941\u091C\u0930\u0928\u0947 \u0926\u0947\u0902\u0964"},
+        {en:"Feel the stillness that lives within you.",hi:"\u0905\u092A\u0928\u0947 \u092D\u0940\u0924\u0930 \u0915\u0940 \u0936\u093E\u0902\u0924\u093F \u092E\u0939\u0938\u0942\u0938 \u0915\u0930\u0947\u0902\u0964"},
+        {en:"Your breath is your anchor to the present.",hi:"\u0906\u092A\u0915\u0940 \u0938\u093E\u0901\u0938 \u0935\u0930\u094D\u0924\u092E\u093E\u0928 \u0938\u0947 \u091C\u094B\u0921\u093C\u0924\u0940 \u0939\u0948\u0964"},
+        {en:"There is nowhere else you need to be right now.",hi:"\u0907\u0938 \u0938\u092E\u092F \u0915\u0939\u0940\u0902 \u0914\u0930 \u0939\u094B\u0928\u0947 \u0915\u0940 \u091C\u0930\u0942\u0930\u0924 \u0928\u0939\u0940\u0902\u0964"},
+        {en:"Observe your breath without changing it.",hi:"\u092C\u093F\u0928\u093E \u092C\u0926\u0932\u0947 \u0905\u092A\u0928\u0940 \u0938\u093E\u0901\u0938 \u0915\u094B \u0926\u0947\u0916\u0947\u0902\u0964"},
+        {en:"Soften your shoulders, relax your jaw.",hi:"\u0915\u0902\u0927\u094B\u0902 \u0914\u0930 \u091C\u092C\u0921\u093C\u0947 \u0915\u094B \u0922\u0940\u0932\u093E \u0915\u0930\u0947\u0902\u0964"},
+        {en:"With every exhale, release a little more.",hi:"\u0939\u0930 \u0938\u093E\u0901\u0938 \u091B\u094B\u0921\u093C\u0924\u0947 \u0938\u092E\u092F \u0925\u094B\u0921\u093C\u093E \u0914\u0930 \u091B\u094B\u0921\u093C\u0947\u0902\u0964"},
+        {en:"Peace is not a destination. It is already here.",hi:"\u0936\u093E\u0902\u0924\u093F \u0915\u094B\u0908 \u092E\u0902\u091C\u093F\u0932 \u0928\u0939\u0940\u0902\u0964 \u092F\u0939 \u092A\u0939\u0932\u0947 \u0938\u0947 \u092F\u0939\u093E\u0901 \u0939\u0948\u0964"},
+        {en:"When the mind wanders, return gently.",hi:"\u091C\u092C \u092E\u0928 \u092D\u091F\u0915\u0947 \u0924\u094B \u0927\u0940\u0930\u0947 \u0938\u0947 \u0932\u094C\u091F\u0947\u0902\u0964"},
+        {en:"Feel the earth beneath you, steady and sure.",hi:"\u0905\u092A\u0928\u0947 \u0928\u0940\u091A\u0947 \u0915\u0940 \u0927\u0930\u0924\u0940 \u0915\u094B \u092E\u0939\u0938\u0942\u0938 \u0915\u0930\u0947\u0902\u0964"},
+        {en:"This moment is a gift you give yourself.",hi:"\u092F\u0939 \u092A\u0932 \u0906\u092A\u0915\u093E \u0905\u092A\u0928\u0947 \u0932\u093F\u090F \u0909\u092A\u0939\u093E\u0930 \u0939\u0948\u0964"},
+        {en:"Silence is the language of the soul.",hi:"\u092E\u094C\u0928 \u0906\u0924\u094D\u092E\u093E \u0915\u0940 \u092D\u093E\u0937\u093E \u0939\u0948\u0964"},
+        {en:"You are not your thoughts. You are the witness.",hi:"\u0906\u092A \u0935\u093F\u091A\u093E\u0930 \u0928\u0939\u0940\u0902, \u0906\u092A \u0938\u093E\u0915\u094D\u0937\u0940 \u0939\u0948\u0902\u0964"}
+    ];
+
+    /* ====== Streak logic ====== */
+    function loadStreak(){
+        var d = JSON.parse(localStorage.getItem('sukoon_med')||'{}');
+        var today = new Date().toDateString();
+        var yesterday = new Date(Date.now()-864e5).toDateString();
+        if(d.lastDate===today) return d.streak||1;
+        if(d.lastDate===yesterday) return d.streak||1;
+        return 0;
+    }
+    function bumpStreak(){
+        var d = JSON.parse(localStorage.getItem('sukoon_med')||'{}');
+        var today = new Date().toDateString();
+        var yesterday = new Date(Date.now()-864e5).toDateString();
+        var s = d.streak||0;
+        if(d.lastDate===today) return s;
+        s = (d.lastDate===yesterday) ? s+1 : 1;
+        localStorage.setItem('sukoon_med',JSON.stringify({streak:s,lastDate:today}));
+        return s;
+    }
+    $streak.textContent = Math.max(loadStreak(),1);
+
+    /* ====== Timer helpers ====== */
+    function fmt(s){ return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
+    function render(){
+        $time.textContent = fmt(remaining);
+        var frac = 1 - remaining/duration;
+        $ring.setAttribute('stroke-dashoffset', (CIRC*(1-frac)).toFixed(2));
+    }
+    render();
+
+    /* ====== Duration pills ====== */
+    document.getElementById('durRow').addEventListener('click',function(e){
+        var p = e.target.closest('.dur-pill');
+        if(!p||running) return;
+        document.querySelectorAll('.dur-pill').forEach(function(b){b.classList.remove('active');});
+        p.classList.add('active');
+        duration = parseInt(p.dataset.min)*60;
+        remaining = duration;
+        render();
+        $state.textContent = 'Ready';
+    });
+
+    /* ====== Web Audio init ====== */
+    function initAC(){
+        if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+        if(audioCtx.state==='suspended') audioCtx.resume();
+    }
+
+    /* 528Hz singing bowl bell */
+    function bell(){
+        initAC();
+        var t = audioCtx.currentTime;
+        [[528,0.3,3.5],[1056,0.1,2.6],[1584,0.04,1.8],[792,0.06,2.2]].forEach(function(h){
+            var o = audioCtx.createOscillator();
+            var g = audioCtx.createGain();
+            o.type='sine'; o.frequency.setValueAtTime(h[0],t);
+            g.gain.setValueAtTime(h[1],t);
+            g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);
+            o.connect(g); g.connect(audioCtx.destination);
+            o.start(t); o.stop(t+h[2]);
         });
+    }
 
-        function startMeditation() {
-            isRunning = true;
-            isPaused = false;
-            playBell();
-            showRandomPrompt();
-            startBtn.style.display = 'none';
-            pauseBtn.style.display = 'inline-flex';
-            resetBtn.style.display = 'inline-flex';
+    /* Ambient noise generators */
+    function makeNoise(type){
+        initAC(); killAmbient();
+        if(type==='silence') return;
+        var sr = audioCtx.sampleRate;
+        var len = sr*4;
+        var buf = audioCtx.createBuffer(2,len,sr);
+        for(var ch=0;ch<2;ch++){
+            var d=buf.getChannelData(ch);
+            for(var i=0;i<len;i++) d[i]=Math.random()*2-1;
+        }
+        var src = audioCtx.createBufferSource();
+        src.buffer=buf; src.loop=true;
+        ambientGain = audioCtx.createGain();
+        ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);
+        ambientGain.gain.linearRampToValueAtTime(0.16,audioCtx.currentTime+2.5);
 
-            // Change prompt every 30 seconds
-            const promptInterval = setInterval(() => {
-                if (!isRunning) { clearInterval(promptInterval); return; }
-                if (!isPaused) showRandomPrompt();
-            }, 30000);
+        if(type==='rain'){
+            var bp = audioCtx.createBiquadFilter();
+            bp.type='bandpass'; bp.frequency.value=900; bp.Q.value=0.6;
+            var hp = audioCtx.createBiquadFilter();
+            hp.type='highpass'; hp.frequency.value=250;
+            // subtle modulation
+            var lfo = audioCtx.createOscillator();
+            var lg = audioCtx.createGain();
+            lfo.type='sine'; lfo.frequency.value=0.3; lg.gain.value=150;
+            lfo.connect(lg); lg.connect(bp.frequency); lfo.start();
+            src.connect(bp); bp.connect(hp); hp.connect(ambientGain);
+        } else if(type==='ocean'){
+            var lp = audioCtx.createBiquadFilter();
+            lp.type='lowpass'; lp.frequency.value=380; lp.Q.value=1.2;
+            var lfo2 = audioCtx.createOscillator();
+            var lg2 = audioCtx.createGain();
+            lfo2.type='sine'; lfo2.frequency.value=0.1; lg2.gain.value=250;
+            lfo2.connect(lg2); lg2.connect(lp.frequency); lfo2.start();
+            src.connect(lp); lp.connect(ambientGain);
+        }
+        ambientGain.connect(audioCtx.destination);
+        src.start();
+        ambientSrc = src;
+    }
+    function killAmbient(){
+        if(ambientSrc){
+            try{
+                if(ambientGain){
+                    ambientGain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.8);
+                    var s=ambientSrc;
+                    setTimeout(function(){try{s.stop();}catch(e){}},900);
+                } else { ambientSrc.stop(); }
+            }catch(e){}
+            ambientSrc=null; ambientGain=null;
+        }
+    }
 
-            timerId = setInterval(() => {
-                if (!isPaused) {
-                    remainingSeconds--;
-                    updateDisplay();
-                    if (remainingSeconds <= 0) {
-                        clearInterval(timerId);
-                        clearInterval(promptInterval);
-                        playBell();
-                        setTimeout(() => playBell(), 1500);
-                        promptEl.innerHTML = 'Namaste. &#x1F64F;<br><span style="font-family:var(--font-hindi); font-size:0.95rem; opacity:0.6;">नमस्ते। आपका ध्यान पूरा हुआ।</span>';
-                        resetMeditation();
-                    }
+    /* Sound pills */
+    document.getElementById('sndRow').addEventListener('click',function(e){
+        var p = e.target.closest('.snd-pill');
+        if(!p) return;
+        document.querySelectorAll('.snd-pill').forEach(function(b){b.classList.remove('active');});
+        p.classList.add('active');
+        curSound = p.dataset.snd;
+        if(running && !paused) makeNoise(curSound);
+    });
+
+    /* ====== Prompt rotation ====== */
+    function showPrompt(i){
+        $pmtEn.classList.add('fade');
+        $pmtHi.classList.add('fade');
+        setTimeout(function(){
+            var p = prompts[i%prompts.length];
+            $pmtEn.textContent = p.en;
+            $pmtHi.textContent = p.hi;
+            $pmtEn.classList.remove('fade');
+            $pmtHi.classList.remove('fade');
+        },700);
+    }
+    function startPrompts(){
+        promptIdx = Math.floor(Math.random()*prompts.length);
+        showPrompt(promptIdx);
+        promptTick = setInterval(function(){
+            promptIdx++;
+            showPrompt(promptIdx);
+        },30000);
+    }
+    function stopPrompts(){ if(promptTick){clearInterval(promptTick);promptTick=null;} }
+
+    /* ====== Timer controls ====== */
+    function go(){
+        initAC();
+        running=true; paused=false;
+        $state.textContent='Meditating';
+        $start.style.display='none';
+        $pause.style.display=''; $reset.style.display='';
+        $pause.textContent='Pause';
+        bell();
+        makeNoise(curSound);
+        startPrompts();
+        ticker = setInterval(function(){
+            remaining--;
+            render();
+            if(remaining<=0){
+                clearInterval(ticker); ticker=null;
+                running=false;
+                bell();
+                killAmbient();
+                stopPrompts();
+                complete();
+            }
+        },1000);
+    }
+    function togglePause(){
+        if(!paused){
+            paused=true; clearInterval(ticker); ticker=null;
+            $state.textContent='Paused';
+            $pause.textContent='Resume';
+            killAmbient(); stopPrompts();
+        } else {
+            paused=false;
+            $state.textContent='Meditating';
+            $pause.textContent='Pause';
+            makeNoise(curSound); startPrompts();
+            ticker = setInterval(function(){
+                remaining--;
+                render();
+                if(remaining<=0){
+                    clearInterval(ticker); ticker=null;
+                    running=false;
+                    bell(); killAmbient(); stopPrompts();
+                    complete();
                 }
-            }, 1000);
+            },1000);
         }
-
-        function resetMeditation() {
-            isRunning = false; isPaused = false;
-            clearInterval(timerId);
-            remainingSeconds = totalSeconds;
-            updateDisplay();
-            startBtn.style.display = 'inline-flex';
-            pauseBtn.style.display = 'none';
-            resetBtn.style.display = 'none';
-        }
-
-        startBtn.addEventListener('click', startMeditation);
-        pauseBtn.addEventListener('click', () => {
-            isPaused = !isPaused;
-            pauseBtn.textContent = isPaused ? 'Resume' : 'Pause';
+    }
+    function reset(){
+        running=false; paused=false;
+        if(ticker){clearInterval(ticker);ticker=null;}
+        remaining=duration; render();
+        $state.textContent='Ready';
+        $start.style.display='';
+        $pause.style.display='none'; $reset.style.display='none';
+        $pause.textContent='Pause';
+        killAmbient(); stopPrompts();
+    }
+    function complete(){
+        var s = bumpStreak();
+        $doneTime.textContent = fmt(duration);
+        $doneStreak.textContent = s;
+        $streak.textContent = s;
+        requestAnimationFrame(function(){
+            $overlay.classList.add('show');
         });
-        resetBtn.addEventListener('click', resetMeditation);
+        $start.style.display='';
+        $pause.style.display='none'; $reset.style.display='none';
+        remaining=duration; render();
+        $state.textContent='Complete';
+    }
 
-        // Mobile nav
-        document.getElementById('mobileToggle').addEventListener('click', () => {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-    </script>
+    $start.addEventListener('click', go);
+    $pause.addEventListener('click', togglePause);
+    $reset.addEventListener('click', reset);
+    document.getElementById('btnContinue').addEventListener('click',function(){
+        $overlay.classList.remove('show');
+        $state.textContent='Ready';
+    });
+})();
+</script>
 </body>
 </html>

@@ -33,36 +33,50 @@ router.post('/', async (req, res) => {
   try {
     const { messages, language } = req.body;
 
-    if (!process.env.ANTHROPIC_API_KEY) {
+    if (!process.env.OPENROUTER_API_KEY) {
       return res.status(500).json({
-        error: 'AI Friend is not configured yet. Please set ANTHROPIC_API_KEY.'
+        error: 'AI Friend is not configured yet. Please set OPENROUTER_API_KEY in the .env file.'
       });
     }
-
-    const Anthropic = require('@anthropic-ai/sdk');
-    const client = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
 
     const langInstruction = language && language !== 'en'
       ? `\n\nIMPORTANT: The user prefers ${language}. Respond primarily in that language, with warmth and cultural sensitivity.`
       : '';
 
-    const response = await client.messages.create({
-      model: 'claude-sonnet-4-20250514',
-      max_tokens: 1024,
-      system: SYSTEM_PROMPT + langInstruction,
-      messages: messages.map(m => ({
-        role: m.role,
-        content: m.content
-      }))
+    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://sukoon.app',
+        'X-Title': 'Sukoon - AI Friend'
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-haiku-4.5',
+        max_tokens: 1024,
+        messages: [
+          { role: 'system', content: SYSTEM_PROMPT + langInstruction },
+          ...messages.map(m => ({ role: m.role, content: m.content }))
+        ]
+      })
     });
 
-    res.json({
-      message: response.content[0].text
-    });
+    if (!response.ok) {
+      const errBody = await response.text();
+      console.error('OpenRouter error:', response.status, errBody);
+      return res.status(500).json({
+        error: 'I had trouble responding. Please try again in a moment.'
+      });
+    }
+
+    const data = await response.json();
+    const reply = data.choices?.[0]?.message?.content || 'I\'m here for you. Could you try again?';
+
+    res.json({ message: reply });
   } catch (error) {
     console.error('Chat error:', error.message);
     res.status(500).json({
-      error: 'I had trouble responding. Please try again in a moment.'
+      error: 'I had trouble connecting. Please try again in a moment. You are not alone. 💜'
     });
   }
 });
