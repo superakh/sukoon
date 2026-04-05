@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sukoon - Quotes for the Soul</title>
+    <meta name="description" content="Bilingual quotes on kindness, strength, courage, wisdom, faith, humor, healing and more. Curated with love for every soul.">
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .daily-quote-section {
+            text-align: center;
+            padding: 3rem 1.5rem 2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        .daily-quote-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(124,158,247,0.2);
+            border-radius: var(--radius-xl);
+            padding: 2.5rem 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .daily-quote-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 400px 250px at 50% 0%, rgba(124,158,247,0.08) 0%, transparent 70%);
+        }
+        .daily-quote-card > * { position: relative; z-index: 1; }
+        .daily-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .daily-quote-text {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 0.8rem;
+        }
+        .daily-quote-hindi {
+            font-family: var(--font-hindi);
+            font-size: 1rem;
+            color: var(--text-dim);
+            line-height: 1.7;
+            margin-bottom: 1rem;
+        }
+        .daily-quote-author {
+            font-size: 0.82rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .daily-refresh {
+            margin-top: 1.2rem;
+            background: none;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 0.4rem 1rem;
+            border-radius: 8px;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: var(--font-body);
+        }
+        .daily-refresh:hover { background: rgba(255,255,255,0.06); color: var(--text); }
+
+        .copy-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+        .copy-btn:hover { background: rgba(255,255,255,0.08); color: var(--text); }
+        .copy-btn.copied { color: var(--accent-green); border-color: rgba(107,203,119,0.3); }
+
+        .quote-card { position: relative; }
+
+        .quotes-section-title {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <a href="/" class="topbar-brand">
+            <span class="logo-icon">&#x1F54A;</span> Sukoon
+        </a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/quotes.html" class="active">Quotes</a>
+            <a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select" id="langPicker">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- PAGE HEADER -->
+        <div class="page-header">
+            <h1>&#x2728; Quotes for the Soul</h1>
+            <p class="subtitle">Words that heal, inspire, and awaken. In English and Hindi.</p>
+            <p class="subtitle-hindi">शब्द जो ठीक करें, प्रेरित करें, और जगाएँ।</p>
+        </div>
+
+        <!-- DAILY QUOTE -->
+        <div class="daily-quote-section">
+            <div class="daily-quote-card">
+                <div class="daily-label">&#x1F31F; Quote of the Moment</div>
+                <div class="daily-quote-text" id="dailyQuoteText"></div>
+                <div class="daily-quote-hindi" id="dailyQuoteHindi"></div>
+                <div class="daily-quote-author" id="dailyQuoteAuthor"></div>
+                <button class="daily-refresh" onclick="showRandomDaily()">&#x1F504; New Quote</button>
+            </div>
+        </div>
+
+        <!-- FILTER BAR -->
+        <section class="section">
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="kindness">Kindness</button>
+                <button class="filter-btn" data-filter="strength">Strength</button>
+                <button class="filter-btn" data-filter="courage">Courage</button>
+                <button class="filter-btn" data-filter="wisdom">Wisdom</button>
+                <button class="filter-btn" data-filter="self-talk">Self-Talk</button>
+                <button class="filter-btn" data-filter="islamic">Islamic</button>
+                <button class="filter-btn" data-filter="family">Family</button>
+                <button class="filter-btn" data-filter="humor">Humor</button>
+                <button class="filter-btn" data-filter="peace">Peace</button>
+                <button class="filter-btn" data-filter="healing">Healing</button>
+            </div>
+
+            <!-- QUOTES GRID -->
+            <div class="quotes-grid" id="quotesGrid">
+
+                <!-- KINDNESS -->
+                <div class="quote-card reveal" data-category="kindness">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Be kind. Everyone is healing from things they don't speak about.</div>
+                    <div class="quote-text-hindi">दयालु बनो। हर कोई उन ज़ख्मों से ठीक हो रहा है जिनके बारे में वो बात नहीं करते।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Kindness</span>
+                        <span class="quote-tag">Healing</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="kindness">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Never blame anyone in your life. Good people give you happiness. Bad people give you experience.</div>
+                    <div class="quote-text-hindi">अपनी ज़िंदगी में किसी को दोष मत दो। अच्छे लोग खुशी देते हैं। बुरे लोग अनुभव देते हैं।</div>
+                    <div class="quote-author">APJ Abdul Kalam</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Kindness</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <!-- STRENGTH -->
+                <div class="quote-card reveal" data-category="strength">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">The light that you discover in your life is proportionate to the amount of darkness you are willing to confront.</div>
+                    <div class="quote-text-hindi">आपकी ज़िंदगी में जो रोशनी आप पाते हैं, वो उस अंधेरे के अनुपात में होती है जिसका आप सामना करने को तैयार हैं।</div>
+                    <div class="quote-author">Jordan Peterson</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Strength</span>
+                        <span class="quote-tag">Courage</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="strength">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Don't burn your opportunities for a temporary comfort.</div>
+                    <div class="quote-text-hindi">अपने मौकों को अस्थायी आराम के लिए मत जलाओ।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Strength</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="strength">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">A man's wealth is not measured by how much he earns, but by how much he spends on others. By this measure, a father is the richest man in the world.</div>
+                    <div class="quote-text-hindi">किसी आदमी की दौलत इससे नहीं मापी जाती कि वो कितना कमाता है, बल्कि इससे कि वो दूसरों पर कितना खर्च करता है। इस पैमाने से, एक पिता दुनिया का सबसे अमीर इंसान है।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Strength</span>
+                        <span class="quote-tag">Family</span>
+                    </div>
+                </div>
+
+                <!-- COURAGE -->
+                <div class="quote-card reveal" data-category="courage">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">If you cannot call wrong as wrong, then you are in the final stage of slavery.</div>
+                    <div class="quote-text-hindi">अगर आप गलत को गलत नहीं कह सकते, तो आप गुलामी की आखिरी स्टेज में हैं।</div>
+                    <div class="quote-author">Che Guevara</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Courage</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="courage">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Leaving a toxic workplace is an act of bravery, not an act of defeat.</div>
+                    <div class="quote-text-hindi">एक ज़हरीली कार्यस्थल को छोड़ना बहादुरी का काम है, हार नहीं।</div>
+                    <div class="quote-author">Sibel Terhaar</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Courage</span>
+                        <span class="quote-tag">Healing</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="courage">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Complaining about a problem without proposing a solution is called whining.</div>
+                    <div class="quote-text-hindi">बिना समाधान सुझाए किसी समस्या की शिकायत करना -- इसे रोना कहते हैं।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Courage</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <!-- WISDOM -->
+                <div class="quote-card reveal" data-category="wisdom">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">The most valuable lessons in life cannot be taught, they must be experienced.</div>
+                    <div class="quote-text-hindi">ज़िंदगी के सबसे कीमती सबक सिखाए नहीं जा सकते, उन्हें जीना पड़ता है।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="wisdom">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">If you kill a cockroach you are a hero, if you kill a butterfly you are bad. Morality has aesthetic standards.</div>
+                    <div class="quote-text-hindi">अगर आप एक कॉकरोच मारते हो तो हीरो हो, तितली मारते हो तो बुरे हो। नैतिकता के भी सौंदर्य मानक हैं।</div>
+                    <div class="quote-author">Nietzsche</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Wisdom</span>
+                        <span class="quote-tag">Humor</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="wisdom">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">A bottle of water can be 50 cents at a supermarket, $2 at the gym... Same water. Only the place changed its value.</div>
+                    <div class="quote-text-hindi">पानी की एक बोतल सुपरमार्केट में 50 सेंट, जिम में $2... वही पानी। बस जगह ने उसकी कीमत बदल दी।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Wisdom</span>
+                        <span class="quote-tag">Self-Talk</span>
+                    </div>
+                </div>
+
+                <!-- SELF-TALK -->
+                <div class="quote-card reveal" data-category="self-talk">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Don't speak negatively about yourself, even as a joke. Your body doesn't know the difference.</div>
+                    <div class="quote-text-hindi">अपने बारे में नकारात्मक बात मत करो, मज़ाक में भी नहीं। आपका शरीर फ़र्क नहीं समझता।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Self-Talk</span>
+                        <span class="quote-tag">Healing</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="self-talk">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Sadness is caused by intelligence.</div>
+                    <div class="quote-text-hindi">उदासी बुद्धिमत्ता की वजह से होती है।</div>
+                    <div class="quote-author">Charles Bukowski</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Self-Talk</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="self-talk">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">What we think is happening: Everyone watching me. What is actually happening: Everyone worrying about their own problems.</div>
+                    <div class="quote-text-hindi">हम सोचते हैं: सब मुझे देख रहे हैं। असल में: सब अपनी-अपनी परेशानियों में उलझे हैं।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Self-Talk</span>
+                        <span class="quote-tag">Peace</span>
+                    </div>
+                </div>
+
+                <!-- ISLAMIC -->
+                <div class="quote-card reveal" data-category="islamic">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Desire makes slaves out of kings, while patience makes kings out of slaves.</div>
+                    <div class="quote-text-hindi">ख्वाहिश बादशाहों को गुलाम बना देती है, जबकि सब्र गुलामों को बादशाह बना देता है।</div>
+                    <div class="quote-author">Imam Al-Ghazali</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Islamic</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="islamic">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">If you remove the stones from someone else's path, Allah will remove the obstacles from your own path.</div>
+                    <div class="quote-text-hindi">अगर तुम किसी और के रास्ते से पत्थर हटाओगे, तो अल्लाह तुम्हारे रास्ते से रुकावटें हटा देगा।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Islamic</span>
+                        <span class="quote-tag">Kindness</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="islamic">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Destiny will definitely work out beautifully. Allah's plan is better than what you want.</div>
+                    <div class="quote-text-hindi">तकदीर ज़रूर सुंदर तरीके से पूरी होगी। अल्लाह का प्लान उससे बेहतर है जो तुम चाहते हो।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Islamic</span>
+                        <span class="quote-tag">Peace</span>
+                    </div>
+                </div>
+
+                <!-- FAMILY -->
+                <div class="quote-card reveal" data-category="family">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Forgive your parents. They too had a childhood they didn't heal from. Now that you're aware, break the cycle.</div>
+                    <div class="quote-text-hindi">अपने माता-पिता को माफ़ करो। उनका भी एक बचपन था जिससे वो ठीक नहीं हुए। अब जब तुम्हें समझ है, इस चक्र को तोड़ो।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Family</span>
+                        <span class="quote-tag">Healing</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="family">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">To be in your children's memories tomorrow, you have to be in their lives today.</div>
+                    <div class="quote-text-hindi">कल अपने बच्चों की यादों में होने के लिए, आज उनकी ज़िंदगी में होना ज़रूरी है।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Family</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <!-- HUMOR -->
+                <div class="quote-card reveal" data-category="humor">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">A woman has two missions in her life: To calm a man down when he is angry. And to make him angry when he is calm.</div>
+                    <div class="quote-text-hindi">एक औरत की ज़िंदगी में दो मिशन होते हैं: जब आदमी गुस्से में हो तो शांत करना। और जब शांत हो तो गुस्सा दिलाना।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Humor</span>
+                        <span class="quote-tag">Family</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="humor">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Life is like a kulfi -- taste it or waste it, it's melting anyway.</div>
+                    <div class="quote-text-hindi">ज़िंदगी कुल्फी जैसी है -- चखो या बर्बाद करो, पिघल तो रही है।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Humor</span>
+                        <span class="quote-tag">Wisdom</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="humor">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Of course you weren't spreading rumours -- the charge is you were spreading facts!</div>
+                    <div class="quote-text-hindi">बेशक आप अफ़वाहें नहीं फैला रहे थे -- आरोप यह है कि आप सच फैला रहे थे!</div>
+                    <div class="quote-author">R.K. Laxman</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Humor</span>
+                    </div>
+                </div>
+
+                <!-- PEACE -->
+                <div class="quote-card reveal" data-category="peace">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">When we discriminate You from I, the universal brotherhood dies.</div>
+                    <div class="quote-text-hindi">जब हम 'तू' और 'मैं' में भेद करते हैं, तो विश्व बंधुत्व मर जाता है।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Peace</span>
+                        <span class="quote-tag">Kindness</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="peace">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">The wound is the place where the light enters you.</div>
+                    <div class="quote-text-hindi">ज़ख्म ही वो जगह है जहाँ से रोशनी तुम्हारे अंदर आती है।</div>
+                    <div class="quote-author">Rumi</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Peace</span>
+                        <span class="quote-tag">Healing</span>
+                    </div>
+                </div>
+
+                <!-- HEALING -->
+                <div class="quote-card reveal" data-category="healing">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Healing doesn't mean the damage never existed. It means the damage no longer controls your life.</div>
+                    <div class="quote-text-hindi">ठीक होने का मतलब यह नहीं कि नुकसान कभी हुआ ही नहीं। इसका मतलब है कि अब वो नुकसान आपकी ज़िंदगी को नियंत्रित नहीं करता।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Healing</span>
+                    </div>
+                </div>
+
+                <div class="quote-card reveal" data-category="healing">
+                    <button class="copy-btn" title="Copy quote" onclick="copyQuote(this)">&#x1F4CB;</button>
+                    <div class="quote-mark">&ldquo;</div>
+                    <div class="quote-text">Forgiveness is not weakness, it is strength.</div>
+                    <div class="quote-text-hindi">माफ़ी कमज़ोरी नहीं, ताक़त है।</div>
+                    <div class="quote-tags">
+                        <span class="quote-tag">Healing</span>
+                        <span class="quote-tag">Strength</span>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-brand">&#x1F54A; Sukoon</div>
+        <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-mission-hindi">दुनिया की हर आत्मा के लिए मुफ़्त मानसिक सुकून।</p>
+        <p class="footer-privacy">&#x1F512; Your data stays on your device. We don't collect, store, or sell anything.</p>
+        <div class="footer-links">
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/quotes.html">Quotes</a>
+            <a href="/videos.html">Videos</a>
+            <a href="/privacy.html">Privacy</a>
+        </div>
+        <p class="footer-copy">Sukoon &copy; 2026. The world needs love, not war. | दुनिया को प्यार चाहिए, नफ़रत नहीं।</p>
+    </footer>
+
+    <script>
+        // Mobile nav toggle
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- FILTER FUNCTIONALITY ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const quoteCards = document.querySelectorAll('.quote-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.dataset.filter;
+
+                quoteCards.forEach(card => {
+                    if (filter === 'all' || card.dataset.category === filter) {
+                        card.style.display = '';
+                        card.classList.add('visible');
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // --- COPY QUOTE ---
+        function copyQuote(btn) {
+            const card = btn.closest('.quote-card');
+            const text = card.querySelector('.quote-text').textContent;
+            const hindi = card.querySelector('.quote-text-hindi').textContent;
+            const authorEl = card.querySelector('.quote-author');
+            const author = authorEl ? '\n-- ' + authorEl.textContent : '';
+            const full = text + '\n\n' + hindi + author + '\n\n-- Sukoon (sukoon.app)';
+
+            navigator.clipboard.writeText(full).then(() => {
+                btn.classList.add('copied');
+                btn.innerHTML = '&#x2714;';
+                setTimeout(() => {
+                    btn.classList.remove('copied');
+                    btn.innerHTML = '&#x1F4CB;';
+                }, 2000);
+            });
+        }
+
+        // --- DAILY RANDOM QUOTE ---
+        const allQuotes = [];
+        quoteCards.forEach(card => {
+            const text = card.querySelector('.quote-text').textContent;
+            const hindi = card.querySelector('.quote-text-hindi').textContent;
+            const authorEl = card.querySelector('.quote-author');
+            allQuotes.push({
+                text: text,
+                hindi: hindi,
+                author: authorEl ? authorEl.textContent : ''
+            });
+        });
+
+        function showRandomDaily() {
+            const q = allQuotes[Math.floor(Math.random() * allQuotes.length)];
+            document.getElementById('dailyQuoteText').textContent = '\u201C' + q.text + '\u201D';
+            document.getElementById('dailyQuoteHindi').textContent = q.hindi;
+            document.getElementById('dailyQuoteAuthor').textContent = q.author ? '-- ' + q.author : '';
+        }
+
+        showRandomDaily();
+    </script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a><a href="/meditate.html">Meditate</a><a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a><a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a><a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="privacy-container">
+            <div class="page-header">
+                <h1>Privacy & Trust</h1>
+                <p class="subtitle">Your peace of mind is our only priority.</p>
+                <p class="subtitle-hindi">आपकी मानसिक शांति ही हमारी एकमात्र प्राथमिकता है।</p>
+            </div>
+
+            <div class="privacy-badge-large">
+                <span class="badge-icon">&#x1F512;</span>
+                <div>
+                    <strong>Zero Data Collection. Zero Tracking. Zero Compromise.</strong><br>
+                    Sukoon does not collect, store, sell, or share any personal data. Period.
+                </div>
+            </div>
+
+            <h2>Our Promise</h2>
+            <p>Sukoon was built on a simple belief: <strong>mental health tools should be free, private, and accessible to every human on Earth.</strong> We don't want your data. We want you to find peace.</p>
+
+            <h2>What We DON'T Do</h2>
+            <ul>
+                <li><strong>No accounts or sign-ups.</strong> You never need to register. Ever.</li>
+                <li><strong>No email collection.</strong> We don't ask for your email address.</li>
+                <li><strong>No cookies</strong> (except a single cookie to remember your language preference).</li>
+                <li><strong>No analytics or tracking.</strong> No Google Analytics, no Mixpanel, no Meta Pixel, no fingerprinting.</li>
+                <li><strong>No advertising.</strong> No ads. No sponsored content. No affiliate links.</li>
+                <li><strong>No data selling.</strong> We have nothing to sell because we collect nothing.</li>
+            </ul>
+
+            <h2>Your Journal & Mood Data</h2>
+            <p>When you use the Mood Tracker and Journal, your entries are stored using <strong>IndexedDB</strong> -- a storage system built into your web browser. This means:</p>
+            <ul>
+                <li>Your journal entries <strong>never leave your device</strong>.</li>
+                <li>They are <strong>not sent to any server</strong> -- not ours, not anyone else's.</li>
+                <li>Only you can see them. Only you can delete them.</li>
+                <li>You can <strong>export your data as JSON</strong> anytime -- it's your data, your choice.</li>
+                <li>If you clear your browser data, your journal entries will be erased.</li>
+            </ul>
+
+            <h2>AI Friend Conversations</h2>
+            <p>When you talk to the AI Friend:</p>
+            <ul>
+                <li>Your conversation is processed in <strong>real-time and not stored on our server</strong>.</li>
+                <li>Messages are sent to an AI model (Anthropic Claude) to generate responses.</li>
+                <li>The conversation exists only in your <strong>browser session</strong>.</li>
+                <li>When you close the tab or refresh the page, <strong>the conversation is gone forever</strong>.</li>
+                <li>We do not log, record, or analyze any conversations.</li>
+            </ul>
+
+            <h2>GDPR Compliance</h2>
+            <p>Sukoon is designed to be GDPR-compliant by default because we follow the simplest privacy principle: <strong>don't collect data in the first place.</strong></p>
+            <ul>
+                <li><strong>Right to Access:</strong> Your journal data is already on your device. You can export it anytime.</li>
+                <li><strong>Right to Deletion:</strong> Clear your browser data to delete everything. We have nothing to delete on our end.</li>
+                <li><strong>Right to Portability:</strong> The JSON export feature lets you take your data anywhere.</li>
+                <li><strong>Data Minimization:</strong> We collect zero personal data. You can't minimize below zero.</li>
+            </ul>
+
+            <h2>Open Source Transparency</h2>
+            <p>Sukoon's code is open and transparent. You can inspect exactly what data flows where. There are no hidden trackers, no backdoors, no surprises.</p>
+
+            <h2>Children's Privacy</h2>
+            <p>Sukoon does not knowingly collect any data from children under 13. Since we don't collect data from anyone, this is inherently true. However, if you are a minor, we encourage you to use Sukoon with a parent or guardian's knowledge.</p>
+
+            <h2>Contact</h2>
+            <p>If you have any questions about our privacy practices, reach out to us. We're humans who care about your wellbeing.</p>
+
+            <div class="privacy-badge-large" style="margin-top:3rem;">
+                <span class="badge-icon">&#x1F49A;</span>
+                <div>
+                    <strong>Built with love, not with data.</strong><br>
+                    Sukoon exists because we believe every soul deserves peace -- for free, with full privacy.
+                    <br><span style="font-family:var(--font-hindi); font-size:0.9rem; opacity:0.7; margin-top:0.3rem; display:inline-block;">प्यार से बना, डेटा से नहीं। हर आत्मा शांति की हक़दार है।</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">&#x1F54A; Sukoon</div>
+        <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-copy">Sukoon &copy; 2026</p>
+    </footer>
+
+    <script>
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

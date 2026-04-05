@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meditate - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html" class="active">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a>
+            <a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option><option value="es">ES</option><option value="fr">FR</option></select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-header">
+            <h1>Meditate</h1>
+            <p class="subtitle">Find your stillness. Be present.</p>
+            <p class="subtitle-hindi">अपनी शांति पाएँ। वर्तमान में रहें।</p>
+        </div>
+
+        <div class="meditate-container">
+            <div class="duration-selector">
+                <button class="duration-btn" data-minutes="1">1 min</button>
+                <button class="duration-btn" data-minutes="3">3 min</button>
+                <button class="duration-btn active" data-minutes="5">5 min</button>
+                <button class="duration-btn" data-minutes="10">10 min</button>
+                <button class="duration-btn" data-minutes="15">15 min</button>
+                <button class="duration-btn" data-minutes="20">20 min</button>
+            </div>
+
+            <div class="timer-display" id="timerDisplay">5:00</div>
+
+            <div class="timer-controls">
+                <button class="btn btn-primary btn-lg" id="startBtn">&#x1F514; Begin</button>
+                <button class="btn btn-secondary" id="pauseBtn" style="display:none;">Pause</button>
+                <button class="btn btn-secondary" id="resetBtn" style="display:none;">Reset</button>
+            </div>
+
+            <p class="meditation-prompt" id="prompt"></p>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-privacy">&#x1F512; No data collected. Just stillness.</p>
+        <p class="footer-copy">Sukoon &copy; 2026</p>
+    </footer>
+
+    <script>
+        const prompts = [
+            { en: "You are exactly where you need to be.", hi: "आप ठीक वहीं हैं जहाँ आपको होना चाहिए।" },
+            { en: "Let each breath bring you deeper into peace.", hi: "हर साँस आपको शांति में और गहरा ले जाए।" },
+            { en: "Release what no longer serves you.", hi: "जो अब काम नहीं आता, उसे जाने दो।" },
+            { en: "In stillness, you find your strength.", hi: "शांति में ही आपकी ताक़त छिपी है।" },
+            { en: "This moment is enough. You are enough.", hi: "यह पल काफ़ी है। तुम काफ़ी हो।" },
+            { en: "Observe your thoughts like clouds passing.", hi: "अपने विचारों को बादलों की तरह गुज़रते देखो।" },
+            { en: "You are not your thoughts. You are the sky.", hi: "तुम अपने विचार नहीं हो। तुम आसमान हो।" },
+            { en: "Breathe in peace. Breathe out worry.", hi: "शांति को साँस में भरो। चिंता को बाहर छोड़ो।" }
+        ];
+
+        let totalSeconds = 300; // 5 min default
+        let remainingSeconds = 300;
+        let isRunning = false;
+        let isPaused = false;
+        let timerId = null;
+
+        const display = document.getElementById('timerDisplay');
+        const startBtn = document.getElementById('startBtn');
+        const pauseBtn = document.getElementById('pauseBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const promptEl = document.getElementById('prompt');
+
+        // Bell sound using Web Audio API
+        function playBell() {
+            const ctx = new (window.AudioContext || window.webkitAudioContext)();
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.frequency.setValueAtTime(528, ctx.currentTime); // 528Hz - healing frequency
+            osc.type = 'sine';
+            gain.gain.setValueAtTime(0.3, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 3);
+            osc.start(ctx.currentTime);
+            osc.stop(ctx.currentTime + 3);
+        }
+
+        function updateDisplay() {
+            const m = Math.floor(remainingSeconds / 60);
+            const s = remainingSeconds % 60;
+            display.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+        }
+
+        function showRandomPrompt() {
+            const p = prompts[Math.floor(Math.random() * prompts.length)];
+            promptEl.innerHTML = `${p.en}<br><span style="font-family:var(--font-hindi); font-size:0.95rem; opacity:0.6;">${p.hi}</span>`;
+        }
+
+        // Duration selector
+        document.querySelectorAll('.duration-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (isRunning) return;
+                document.querySelectorAll('.duration-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                totalSeconds = parseInt(btn.dataset.minutes) * 60;
+                remainingSeconds = totalSeconds;
+                updateDisplay();
+            });
+        });
+
+        function startMeditation() {
+            isRunning = true;
+            isPaused = false;
+            playBell();
+            showRandomPrompt();
+            startBtn.style.display = 'none';
+            pauseBtn.style.display = 'inline-flex';
+            resetBtn.style.display = 'inline-flex';
+
+            // Change prompt every 30 seconds
+            const promptInterval = setInterval(() => {
+                if (!isRunning) { clearInterval(promptInterval); return; }
+                if (!isPaused) showRandomPrompt();
+            }, 30000);
+
+            timerId = setInterval(() => {
+                if (!isPaused) {
+                    remainingSeconds--;
+                    updateDisplay();
+                    if (remainingSeconds <= 0) {
+                        clearInterval(timerId);
+                        clearInterval(promptInterval);
+                        playBell();
+                        setTimeout(() => playBell(), 1500);
+                        promptEl.innerHTML = 'Namaste. &#x1F64F;<br><span style="font-family:var(--font-hindi); font-size:0.95rem; opacity:0.6;">नमस्ते। आपका ध्यान पूरा हुआ।</span>';
+                        resetMeditation();
+                    }
+                }
+            }, 1000);
+        }
+
+        function resetMeditation() {
+            isRunning = false; isPaused = false;
+            clearInterval(timerId);
+            remainingSeconds = totalSeconds;
+            updateDisplay();
+            startBtn.style.display = 'inline-flex';
+            pauseBtn.style.display = 'none';
+            resetBtn.style.display = 'none';
+        }
+
+        startBtn.addEventListener('click', startMeditation);
+        pauseBtn.addEventListener('click', () => {
+            isPaused = !isPaused;
+            pauseBtn.textContent = isPaused ? 'Resume' : 'Pause';
+        });
+        resetBtn.addEventListener('click', resetMeditation);
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

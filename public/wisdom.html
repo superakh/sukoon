@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soul Wisdom - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <style>
+        .wisdom-hero {
+            text-align: center; padding: 4rem 1.5rem 2rem;
+            background: radial-gradient(ellipse 600px 400px at 50% 30%, rgba(167,139,250,0.08) 0%, transparent 70%);
+        }
+        .wisdom-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 2.5rem 2rem;
+            text-align: center; transition: var(--transition);
+        }
+        .wisdom-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+        .wisdom-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+        .wisdom-card h3 { font-family: var(--font-display); font-size: 1.2rem; margin-bottom: 0.8rem; }
+        .wisdom-card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+        .wisdom-card .hindi { font-family: var(--font-hindi); color: var(--text-dim); font-size: 0.85rem; margin-top: 0.5rem; }
+
+        .practice-card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: var(--radius-lg); padding: 2rem;
+            margin-bottom: 1.5rem; transition: var(--transition);
+        }
+        .practice-card:hover { border-color: rgba(167,139,250,0.3); }
+        .practice-card h3 { color: var(--accent-purple); font-size: 1.1rem; margin-bottom: 0.8rem; display: flex; align-items: center; gap: 0.5rem; }
+        .practice-card .steps { color: var(--text-muted); font-size: 0.92rem; line-height: 1.8; }
+        .practice-card .steps li { margin-bottom: 0.5rem; }
+        .practice-card .hindi-steps { font-family: var(--font-hindi); color: var(--text-dim); font-size: 0.88rem; line-height: 1.8; margin-top: 1rem; border-left: 2px solid rgba(167,139,250,0.2); padding-left: 1rem; }
+
+        .affirmation-box {
+            background: linear-gradient(135deg, rgba(167,139,250,0.08), rgba(124,158,247,0.05));
+            border: 1px solid rgba(167,139,250,0.15);
+            border-radius: var(--radius-xl); padding: 3rem 2rem;
+            text-align: center; max-width: 600px; margin: 3rem auto;
+        }
+        .affirmation-box .label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--accent-purple); font-weight: 600; margin-bottom: 1.2rem; }
+        .affirmation-box .affirmation-en { font-family: var(--font-display); font-size: 1.5rem; color: var(--text); line-height: 1.5; margin-bottom: 0.8rem; }
+        .affirmation-box .affirmation-hi { font-family: var(--font-hindi); font-size: 1.1rem; color: var(--text-dim); }
+        .affirmation-box button { margin-top: 1.5rem; }
+
+        .thought-grid {
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem; margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a><a href="/meditate.html">Meditate</a><a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a><a href="/friend.html">AI Friend</a>
+            <a href="/quotes.html">Quotes</a><a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option></select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="wisdom-hero">
+            <span style="font-size:3rem; display:block; margin-bottom:1rem;">&#x2728;</span>
+            <h1 style="font-family:var(--font-display); font-size:clamp(2rem,5vw,3.2rem); background:linear-gradient(135deg, var(--text), var(--accent-purple)); -webkit-background-clip:text; -webkit-text-fill-color:transparent;">Soul Wisdom</h1>
+            <p style="color:var(--text-muted); font-size:1.05rem; margin-top:0.5rem;">Ancient wisdom for the modern soul. Inspired by spiritual teachers across traditions.</p>
+            <p style="font-family:var(--font-hindi); color:var(--text-dim); font-size:0.95rem; margin-top:0.3rem;">आधुनिक आत्मा के लिए प्राचीन ज्ञान।</p>
+        </div>
+
+        <!-- MORNING AFFIRMATION -->
+        <div class="affirmation-box reveal">
+            <div class="label">&#x2600; Soul Affirmation</div>
+            <p class="affirmation-en" id="affirmEn"></p>
+            <p class="affirmation-hi" id="affirmHi"></p>
+            <button class="btn btn-secondary" onclick="newAffirmation()">&#x21bb; New Thought</button>
+        </div>
+
+        <!-- CORE TEACHINGS -->
+        <section class="section">
+            <h2 style="font-family:var(--font-display); text-align:center; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Foundations of Inner Peace</h2>
+            <p style="text-align:center; color:var(--text-dim); font-family:var(--font-hindi); margin-bottom:2.5rem;">आंतरिक शांति की नींव</p>
+
+            <div class="thought-grid">
+                <div class="wisdom-card reveal">
+                    <div class="icon">&#x1F4A0;</div>
+                    <h3>You Are a Soul, Not a Body</h3>
+                    <p>You are a peaceful, powerful soul using this body as an instrument. When you identify with the soul, fear and ego dissolve. You become the observer, not the reactor.</p>
+                    <p class="hindi">आप एक शांतिपूर्ण, शक्तिशाली आत्मा हैं जो इस शरीर को उपकरण की तरह इस्तेमाल कर रही है। जब आप आत्मा से जुड़ते हैं, भय और अहंकार गायब हो जाते हैं।</p>
+                </div>
+                <div class="wisdom-card reveal">
+                    <div class="icon">&#x1F4AD;</div>
+                    <h3>Every Thought Creates Your Reality</h3>
+                    <p>Your thoughts are seeds. Negative thoughts grow into anxiety, anger, and pain. Choose your thoughts carefully -- they become your feelings, your words, your life.</p>
+                    <p class="hindi">आपके विचार बीज हैं। नकारात्मक विचार चिंता, क्रोध और दर्द बनते हैं। अपने विचार सावधानी से चुनें -- वही आपकी भावनाएँ, शब्द और ज़िन्दगी बनते हैं।</p>
+                </div>
+                <div class="wisdom-card reveal">
+                    <div class="icon">&#x1F3AF;</div>
+                    <h3>Respond, Don't React</h3>
+                    <p>Between stimulus and response, there is a space. In that space lies your freedom. A reaction is automatic. A response is conscious. Choose response.</p>
+                    <p class="hindi">उत्तेजना और प्रतिक्रिया के बीच एक जगह है। उस जगह में आपकी आज़ादी है। प्रतिक्रिया स्वचालित है। उत्तर सचेत है। उत्तर चुनें।</p>
+                </div>
+                <div class="wisdom-card reveal">
+                    <div class="icon">&#x1F49B;</div>
+                    <h3>Acceptance is Power</h3>
+                    <p>Stop fighting what is. Accept people as they are, situations as they come. Acceptance is not weakness -- it's the highest form of emotional intelligence.</p>
+                    <p class="hindi">जो है उससे लड़ना बंद करें। लोगों को जैसे हैं वैसे स्वीकार करें। स्वीकृति कमज़ोरी नहीं -- यह भावनात्मक बुद्धिमत्ता का उच्चतम रूप है।</p>
+                </div>
+                <div class="wisdom-card reveal">
+                    <div class="icon">&#x1F331;</div>
+                    <h3>Detach with Love</h3>
+                    <p>Love people, but don't be dependent on their behavior for your happiness. Your peace should come from within, not from external validation.</p>
+                    <p class="hindi">लोगों से प्यार करें, लेकिन अपनी खुशी के लिए उनके व्यवहार पर निर्भर न रहें। आपकी शांति भीतर से आनी चाहिए, बाहरी मान्यता से नहीं।</p>
+                </div>
+                <div class="wisdom-card reveal">
+                    <div class="icon">&#x1F30A;</div>
+                    <h3>Let Go of Control</h3>
+                    <p>You cannot control other people, the weather, the economy, or the past. You can only control your thoughts and your response. Let everything else go.</p>
+                    <p class="hindi">आप दूसरे लोगों, मौसम, अर्थव्यवस्था या अतीत को नियंत्रित नहीं कर सकते। आप सिर्फ़ अपने विचारों और प्रतिक्रिया को नियंत्रित कर सकते हैं। बाकी सब छोड़ दें।</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAILY PRACTICES -->
+        <section class="section">
+            <h2 style="font-family:var(--font-display); text-align:center; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Daily Soul Practices</h2>
+            <p style="text-align:center; color:var(--text-dim); font-family:var(--font-hindi); margin-bottom:2.5rem;">दैनिक आत्म-अभ्यास</p>
+
+            <div style="max-width:700px; margin:0 auto;">
+                <div class="practice-card reveal">
+                    <h3>&#x1F305; Morning: Amrit Vela (4-5 AM Meditation)</h3>
+                    <ol class="steps">
+                        <li>Wake before the world. The early morning hours carry the highest spiritual energy.</li>
+                        <li>Sit comfortably. Close your eyes. Focus on the center of your forehead -- the seat of the soul.</li>
+                        <li>Affirm: "I am a peaceful soul. I am a powerful being of light."</li>
+                        <li>Visualize a point of golden light above you -- the Supreme Source of peace.</li>
+                        <li>Sit in this awareness for 10-30 minutes. Let peace flow into every cell.</li>
+                    </ol>
+                    <div class="hindi-steps">
+                        सुबह दुनिया से पहले जागें। सुबह के घंटों में सबसे ज़्यादा आध्यात्मिक ऊर्जा होती है। आराम से बैठें। आँखें बंद करें। माथे के केंद्र पर ध्यान दें। कहें: "मैं एक शांतिपूर्ण आत्मा हूँ। मैं प्रकाश का शक्तिशाली प्राणी हूँ।"
+                    </div>
+                </div>
+
+                <div class="practice-card reveal">
+                    <h3>&#x1F4AD; Midday: Traffic Control of Thoughts</h3>
+                    <ol class="steps">
+                        <li>Every hour, pause for 60 seconds.</li>
+                        <li>Ask yourself: "What am I thinking right now? Is this thought serving me?"</li>
+                        <li>If the thought is negative, gently replace it: "I choose peace instead of this."</li>
+                        <li>Take 3 deep breaths. Return to your work with renewed clarity.</li>
+                    </ol>
+                    <div class="hindi-steps">
+                        हर घंटे, 60 सेकंड रुकें। अपने आप से पूछें: "मैं अभी क्या सोच रहा हूँ? क्या यह विचार मेरी मदद कर रहा है?" अगर नकारात्मक है, तो धीरे से बदलें: "मैं इसके बजाय शांति चुनता हूँ।"
+                    </div>
+                </div>
+
+                <div class="practice-card reveal">
+                    <h3>&#x1F319; Evening: Gratitude & Forgiveness</h3>
+                    <ol class="steps">
+                        <li>Before sleep, sit quietly for 5 minutes.</li>
+                        <li>List 3 things you're grateful for today -- even the smallest.</li>
+                        <li>Forgive anyone who caused you pain today. Say: "I release this. I am free."</li>
+                        <li>Forgive yourself for any mistakes. You are learning. You are growing.</li>
+                        <li>Affirm: "Tomorrow I wake up as a better version of myself."</li>
+                    </ol>
+                    <div class="hindi-steps">
+                        सोने से पहले 5 मिनट शांति से बैठें। आज के लिए 3 चीज़ें लिखें जिनके लिए आप कृतज्ञ हैं। जिसने दुख दिया उसे माफ़ करें। कहें: "मैं इसे छोड़ता हूँ। मैं मुक्त हूँ।" अपनी गलतियों के लिए खुद को माफ़ करें।
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- RECOMMENDED TALKS -->
+        <section class="section">
+            <h2 style="font-family:var(--font-display); text-align:center; font-size:clamp(1.5rem,3vw,2rem); margin-bottom:0.5rem;">Talks for the Soul</h2>
+            <p style="text-align:center; color:var(--text-dim); font-family:var(--font-hindi); margin-bottom:2.5rem;">आत्मा के लिए प्रवचन</p>
+
+            <div class="videos-grid" style="max-width:1000px; margin:0 auto;">
+                <div class="video-card reveal">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/P4ramoioWnw" title="Sister Shivani" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Control Your Thoughts - Sister Shivani</p>
+                        <p class="video-desc">Learn how to take charge of your inner dialogue and create lasting peace.</p>
+                        <p class="video-desc-hindi">अपने विचारों पर नियंत्रण रखना सीखें और स्थायी शांति बनाएँ।</p>
+                    </div>
+                </div>
+                <div class="video-card reveal">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/5dlSiAqlMZQ" title="Healing Inner Child" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Healing Your Inner Child</p>
+                        <p class="video-desc">Understanding how childhood wounds shape our adult behavior and how to heal them.</p>
+                        <p class="video-desc-hindi">बचपन के ज़ख़्म कैसे हमारे बड़े होने को प्रभावित करते हैं और उन्हें कैसे ठीक करें।</p>
+                    </div>
+                </div>
+                <div class="video-card reveal">
+                    <div class="video-embed">
+                        <iframe src="https://www.youtube.com/embed/Hc1obYGOaRg" title="Morning Meditation" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                    <div class="video-info">
+                        <p class="video-title">Brahma Kumaris Guided Meditation</p>
+                        <p class="video-desc">A peaceful guided meditation to start your day with clarity and inner strength.</p>
+                        <p class="video-desc-hindi">शांतिपूर्ण निर्देशित ध्यान -- अपने दिन की शुरुआत स्पष्टता और आंतरिक शक्ति से करें।</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-brand">&#x1F54A; Sukoon</div>
+        <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-privacy">&#x1F512; No data collected. Just wisdom.</p>
+        <p class="footer-copy">Sukoon &copy; 2026</p>
+    </footer>
+
+    <script>
+        const affirmations = [
+            { en: "I am a peaceful soul. My original nature is peace.", hi: "मैं एक शांतिपूर्ण आत्मा हूँ। मेरा मूल स्वभाव शांति है।" },
+            { en: "I create my feelings. No one else has that power unless I give it to them.", hi: "मैं अपनी भावनाएँ खुद बनाता हूँ। किसी और के पास यह शक्ति नहीं जब तक मैं न दूँ।" },
+            { en: "I choose to respond with love today. I am bigger than any situation.", hi: "आज मैं प्यार से जवाब देना चुनता हूँ। मैं किसी भी स्थिति से बड़ा हूँ।" },
+            { en: "My happiness is my responsibility. It does not depend on others.", hi: "मेरी खुशी मेरी ज़िम्मेदारी है। यह दूसरों पर निर्भर नहीं करती।" },
+            { en: "I forgive everyone. I free myself from the chains of resentment.", hi: "मैं सबको माफ़ करता हूँ। मैं खुद को नाराज़गी की ज़ंजीरों से आज़ाद करता हूँ।" },
+            { en: "Every soul I meet today is on their own journey. I send them light.", hi: "आज जो भी आत्मा मिले, वो अपनी यात्रा पर है। मैं उन्हें प्रकाश भेजता हूँ।" },
+            { en: "I let go of the need to control. I trust the flow of life.", hi: "मैं नियंत्रण की ज़रूरत छोड़ता हूँ। मुझे जीवन की धारा पर भरोसा है।" },
+            { en: "Silence is not emptiness. It is full of answers.", hi: "मौन खालीपन नहीं है। यह उत्तरों से भरा है।" },
+            { en: "I am not what happened to me. I am what I choose to become.", hi: "मैं वो नहीं हूँ जो मेरे साथ हुआ। मैं वो हूँ जो मैं बनना चुनता हूँ।" },
+            { en: "Before reacting, I pause. In the pause, I find my power.", hi: "प्रतिक्रिया से पहले मैं रुकता हूँ। रुकने में ही मेरी शक्ति है।" },
+            { en: "I radiate peace. Wherever I go, the atmosphere becomes calmer.", hi: "मैं शांति विकीर्ण करता हूँ। मैं जहाँ भी जाता हूँ, वातावरण शांत हो जाता है।" },
+            { en: "I bless those who challenge me. They are my greatest teachers.", hi: "मैं उन्हें आशीर्वाद देता हूँ जो मुझे चुनौती देते हैं। वे मेरे सबसे बड़े शिक्षक हैं।" }
+        ];
+
+        function newAffirmation() {
+            const a = affirmations[Math.floor(Math.random() * affirmations.length)];
+            document.getElementById('affirmEn').textContent = a.en;
+            document.getElementById('affirmHi').textContent = a.hi;
+        }
+        newAffirmation();
+
+        // Scroll reveal
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

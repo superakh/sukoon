@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Friend - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a><a href="/meditate.html">Meditate</a><a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a><a href="/friend.html" class="active">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a><a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select" id="langPicker"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option><option value="es">ES</option><option value="fr">FR</option></select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-header" style="padding-bottom:1rem;">
+            <h1>&#x1F49C; AI Friend</h1>
+            <p class="subtitle">I'm here to listen. No judgment. No records.</p>
+            <p class="subtitle-hindi">मैं सुनने के लिए हूँ। कोई जज नहीं। कोई रिकॉर्ड नहीं।</p>
+        </div>
+
+        <div class="chat-container">
+            <!-- Disclaimer -->
+            <div class="chat-disclaimer">
+                <strong>Important:</strong> I am an AI companion, not a therapist. If you are in crisis, please contact a helpline:
+                <strong>988</strong> (US) | <strong>9152987821</strong> (India iCall) | <strong>116 123</strong> (UK Samaritans)
+                <br>
+                <span style="color:var(--accent-green); font-size:0.78rem;">&#x1F512; This conversation is NOT saved or shared. When you close this window, it's gone forever.</span>
+            </div>
+
+            <!-- Messages -->
+            <div class="chat-messages" id="chatMessages">
+                <div class="chat-msg assistant">
+                    <p>Assalamu Alaikum. Namaste. Hello. &#x1F64F;</p>
+                    <p style="margin-top:0.5rem;">I'm here whenever you're ready to talk. There's no rush, no judgment, and nothing you say leaves this space. How are you feeling today?</p>
+                    <p class="hindi" style="margin-top:0.5rem;">मैं यहाँ हूँ जब भी आप बात करना चाहें। कोई जल्दी नहीं, कोई जज नहीं। आज आप कैसा महसूस कर रहे हैं?</p>
+                </div>
+            </div>
+
+            <!-- Input -->
+            <div class="chat-input-area">
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type whatever is on your heart..." autocomplete="off">
+                <button class="chat-send" id="sendBtn">Send</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const chatMessages = document.getElementById('chatMessages');
+        const chatInput = document.getElementById('chatInput');
+        const sendBtn = document.getElementById('sendBtn');
+        const langPicker = document.getElementById('langPicker');
+
+        // Conversation history (session only - never saved to server)
+        let messages = [];
+
+        function addMessage(role, content) {
+            const div = document.createElement('div');
+            div.className = `chat-msg ${role}`;
+            div.innerHTML = `<p>${content.replace(/\n/g, '<br>')}</p>`;
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showTyping() {
+            const div = document.createElement('div');
+            div.className = 'chat-msg assistant';
+            div.id = 'typingIndicator';
+            div.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+            chatMessages.appendChild(div);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function removeTyping() {
+            const el = document.getElementById('typingIndicator');
+            if (el) el.remove();
+        }
+
+        async function sendMessage() {
+            const text = chatInput.value.trim();
+            if (!text) return;
+
+            addMessage('user', text);
+            chatInput.value = '';
+            sendBtn.disabled = true;
+
+            messages.push({ role: 'user', content: text });
+            showTyping();
+
+            try {
+                const res = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        messages: messages,
+                        language: langPicker.value
+                    })
+                });
+
+                removeTyping();
+
+                if (!res.ok) {
+                    const err = await res.json();
+                    addMessage('assistant', err.error || 'I had trouble responding. Please try again.');
+                    return;
+                }
+
+                const data = await res.json();
+                messages.push({ role: 'assistant', content: data.message });
+                addMessage('assistant', data.message);
+            } catch (err) {
+                removeTyping();
+                addMessage('assistant', 'I\'m having trouble connecting right now. Please try again in a moment. You are not alone. &#x1F49C;');
+            } finally {
+                sendBtn.disabled = false;
+                chatInput.focus();
+            }
+        }
+
+        sendBtn.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+        });
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

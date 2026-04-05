@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Journal - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a><a href="/meditate.html">Meditate</a><a href="/sounds.html">Sounds</a>
+            <a href="/journal.html" class="active">Journal</a><a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a><a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select"><option value="en">EN</option><option value="hi">HI</option></select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-header">
+            <h1>Mood & Journal</h1>
+            <p class="subtitle">How are you feeling today? Your thoughts stay on YOUR device.</p>
+            <p class="subtitle-hindi">आज आप कैसा महसूस कर रहे हैं? आपके विचार आपके डिवाइस पर ही रहेंगे।</p>
+        </div>
+
+        <div class="journal-container">
+            <!-- GDPR Notice -->
+            <div style="background:rgba(107,203,119,0.06); border:1px solid rgba(107,203,119,0.15); border-radius:var(--radius); padding:1rem 1.5rem; margin-bottom:2rem; text-align:center;">
+                <p style="color:var(--accent-green); font-size:0.85rem; font-weight:500;">
+                    &#x1F512; Your journal is stored only on this device using IndexedDB. Nothing is sent to any server. Ever.
+                </p>
+            </div>
+
+            <!-- Mood Selector -->
+            <h3 style="text-align:center; color:var(--text-muted); font-size:0.9rem; margin-bottom:0.5rem;">How are you feeling?</h3>
+            <div class="mood-selector">
+                <button class="mood-btn" data-mood="1" data-label="Awful" title="Awful">&#x1F629;</button>
+                <button class="mood-btn" data-mood="2" data-label="Bad" title="Bad">&#x1F61E;</button>
+                <button class="mood-btn" data-mood="3" data-label="Okay" title="Okay">&#x1F610;</button>
+                <button class="mood-btn" data-mood="4" data-label="Good" title="Good">&#x1F60A;</button>
+                <button class="mood-btn" data-mood="5" data-label="Great" title="Great">&#x1F60D;</button>
+            </div>
+            <p style="text-align:center; color:var(--text-dim); font-size:0.85rem;" id="moodLabel">&nbsp;</p>
+
+            <!-- Journal Entry -->
+            <textarea class="journal-textarea" id="journalText" placeholder="Write whatever is on your mind... No one will see this but you.&#10;&#10;जो मन में हो लिख दो... यह सिर्फ़ आपके लिए है।"></textarea>
+
+            <div style="display:flex; gap:0.8rem; margin-top:1rem; justify-content:center;">
+                <button class="btn btn-primary" id="saveBtn" disabled>Save Entry</button>
+                <button class="btn btn-secondary" id="exportBtn">Export Data</button>
+            </div>
+            <p style="text-align:center; color:var(--accent-green); font-size:0.82rem; margin-top:0.8rem; display:none;" id="savedMsg">Saved to your device &#x2714;</p>
+
+            <!-- Mood History -->
+            <div class="mood-history">
+                <h3 style="font-size:0.9rem; color:var(--text-muted);">Your Mood - Last 30 Days</h3>
+                <div class="mood-chart" id="moodChart"></div>
+                <div style="display:flex; justify-content:space-between; margin-top:0.5rem;">
+                    <span style="font-size:0.7rem; color:var(--text-dim);">30 days ago</span>
+                    <span style="font-size:0.7rem; color:var(--text-dim);">Today</span>
+                </div>
+            </div>
+
+            <!-- Past Entries -->
+            <div style="margin-top:2rem;" id="pastEntries"></div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-privacy">&#x1F512; All data stored locally on your device.</p>
+        <p class="footer-copy">Sukoon &copy; 2026</p>
+    </footer>
+
+    <script>
+        // IndexedDB helper
+        const DB_NAME = 'sukoon_journal';
+        const DB_VERSION = 1;
+
+        function openDB() {
+            return new Promise((resolve, reject) => {
+                const req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = (e) => {
+                    const db = e.target.result;
+                    if (!db.objectStoreNames.contains('entries')) {
+                        const store = db.createObjectStore('entries', { keyPath: 'id', autoIncrement: true });
+                        store.createIndex('date', 'date', { unique: false });
+                    }
+                };
+                req.onsuccess = () => resolve(req.result);
+                req.onerror = () => reject(req.error);
+            });
+        }
+
+        async function saveEntry(mood, text) {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction('entries', 'readwrite');
+                tx.objectStore('entries').add({
+                    mood, text,
+                    date: new Date().toISOString().split('T')[0],
+                    timestamp: Date.now()
+                });
+                tx.oncomplete = resolve;
+                tx.onerror = () => reject(tx.error);
+            });
+        }
+
+        async function getEntries(limit = 30) {
+            const db = await openDB();
+            return new Promise((resolve, reject) => {
+                const tx = db.transaction('entries', 'readonly');
+                const store = tx.objectStore('entries');
+                const req = store.getAll();
+                req.onsuccess = () => {
+                    const all = req.result.sort((a, b) => b.timestamp - a.timestamp);
+                    resolve(limit ? all.slice(0, limit) : all);
+                };
+                req.onerror = () => reject(req.error);
+            });
+        }
+
+        async function exportAllData() {
+            const entries = await getEntries(null);
+            const blob = new Blob([JSON.stringify(entries, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url; a.download = `sukoon-journal-${new Date().toISOString().split('T')[0]}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        // Mood selector
+        let selectedMood = null;
+        document.querySelectorAll('.mood-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+                btn.classList.add('selected');
+                selectedMood = parseInt(btn.dataset.mood);
+                document.getElementById('moodLabel').textContent = btn.dataset.label;
+                document.getElementById('saveBtn').disabled = false;
+            });
+        });
+
+        // Save
+        document.getElementById('saveBtn').addEventListener('click', async () => {
+            if (!selectedMood) return;
+            const text = document.getElementById('journalText').value;
+            await saveEntry(selectedMood, text);
+            document.getElementById('savedMsg').style.display = 'block';
+            document.getElementById('journalText').value = '';
+            document.querySelectorAll('.mood-btn').forEach(b => b.classList.remove('selected'));
+            selectedMood = null;
+            document.getElementById('saveBtn').disabled = true;
+            setTimeout(() => document.getElementById('savedMsg').style.display = 'none', 3000);
+            renderMoodChart();
+            renderPastEntries();
+        });
+
+        // Export
+        document.getElementById('exportBtn').addEventListener('click', exportAllData);
+
+        // Mood chart
+        const moodColors = { 1: '#EF4444', 2: '#F97316', 3: '#EAB308', 4: '#22C55E', 5: '#3B82F6' };
+
+        async function renderMoodChart() {
+            const entries = await getEntries(30);
+            const chart = document.getElementById('moodChart');
+            chart.innerHTML = '';
+
+            // Fill 30 days
+            const today = new Date();
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                const entry = entries.find(e => e.date === dateStr);
+                const bar = document.createElement('div');
+                bar.className = 'mood-bar';
+                if (entry) {
+                    bar.style.height = `${entry.mood * 20 + 10}%`;
+                    bar.style.background = moodColors[entry.mood];
+                    bar.title = `${dateStr}: ${['','Awful','Bad','Okay','Good','Great'][entry.mood]}`;
+                } else {
+                    bar.style.height = '4px';
+                    bar.style.background = 'rgba(255,255,255,0.05)';
+                }
+                chart.appendChild(bar);
+            }
+        }
+
+        // Past entries
+        async function renderPastEntries() {
+            const entries = await getEntries(5);
+            const container = document.getElementById('pastEntries');
+            if (entries.length === 0) { container.innerHTML = ''; return; }
+            container.innerHTML = '<h3 style="font-size:0.9rem; color:var(--text-muted); margin-bottom:1rem;">Recent Entries</h3>';
+            entries.forEach(entry => {
+                if (!entry.text) return;
+                const moods = ['','&#x1F629;','&#x1F61E;','&#x1F610;','&#x1F60A;','&#x1F60D;'];
+                const div = document.createElement('div');
+                div.style.cssText = 'background:var(--bg-card); border:1px solid var(--border); border-radius:var(--radius); padding:1.2rem; margin-bottom:0.8rem;';
+                div.innerHTML = `
+                    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.5rem;">
+                        <span style="font-size:1.3rem;">${moods[entry.mood]}</span>
+                        <span style="font-size:0.75rem; color:var(--text-dim);">${entry.date}</span>
+                    </div>
+                    <p style="font-size:0.9rem; color:var(--text-muted); line-height:1.6;">${entry.text}</p>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Init
+        renderMoodChart();
+        renderPastEntries();
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

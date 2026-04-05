@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ambient Sounds - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html" class="active">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a>
+            <a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select"><option value="en">EN</option><option value="hi">HI</option></select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-header">
+            <h1>Ambient Sounds</h1>
+            <p class="subtitle">Layer calming sounds for sleep, focus, or relaxation.</p>
+            <p class="subtitle-hindi">नींद, फ़ोकस या आराम के लिए शांत आवाज़ें।</p>
+        </div>
+
+        <div class="sounds-container">
+            <div class="sound-card" id="sound-rain">
+                <span class="sound-icon">&#x1F327;</span>
+                <div class="sound-info"><h3>Rain</h3><p>Gentle rainfall on a quiet evening</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="rain">
+            </div>
+            <div class="sound-card" id="sound-ocean">
+                <span class="sound-icon">&#x1F30A;</span>
+                <div class="sound-info"><h3>Ocean Waves</h3><p>Rhythmic waves on a sandy shore</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="ocean">
+            </div>
+            <div class="sound-card" id="sound-birds">
+                <span class="sound-icon">&#x1F426;</span>
+                <div class="sound-info"><h3>Forest Birds</h3><p>Morning birdsong in a peaceful forest</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="birds">
+            </div>
+            <div class="sound-card" id="sound-thunder">
+                <span class="sound-icon">&#x26C8;</span>
+                <div class="sound-info"><h3>Thunder</h3><p>Distant thunder rolling across the sky</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="thunder">
+            </div>
+            <div class="sound-card" id="sound-fire">
+                <span class="sound-icon">&#x1F525;</span>
+                <div class="sound-info"><h3>Fireplace</h3><p>Crackling fire on a cold night</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="fire">
+            </div>
+            <div class="sound-card" id="sound-wind">
+                <span class="sound-icon">&#x1F32C;</span>
+                <div class="sound-info"><h3>Wind</h3><p>Soft breeze through the trees</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="wind">
+            </div>
+            <div class="sound-card" id="sound-creek">
+                <span class="sound-icon">&#x1F4A7;</span>
+                <div class="sound-info"><h3>Creek</h3><p>A babbling brook in the mountains</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="creek">
+            </div>
+            <div class="sound-card" id="sound-night">
+                <span class="sound-icon">&#x1F31B;</span>
+                <div class="sound-info"><h3>Night Crickets</h3><p>Summer night with crickets chirping</p></div>
+                <input type="range" class="sound-slider" min="0" max="100" value="0" data-sound="night">
+            </div>
+
+            <!-- Pre-made mixes -->
+            <div style="margin-top: 2.5rem;">
+                <h3 style="text-align:center; margin-bottom:1rem; color:var(--text-muted); font-size:0.9rem; text-transform:uppercase; letter-spacing:0.1em;">Quick Mixes</h3>
+                <div style="display:flex; gap:0.8rem; flex-wrap:wrap; justify-content:center;">
+                    <button class="btn btn-secondary" onclick="applyMix({rain:70,thunder:30})">&#x1F327; Rainy Night</button>
+                    <button class="btn btn-secondary" onclick="applyMix({ocean:80,birds:20})">&#x1F3D6; Beach Morning</button>
+                    <button class="btn btn-secondary" onclick="applyMix({birds:60,creek:50,wind:20})">&#x1F332; Forest Walk</button>
+                    <button class="btn btn-secondary" onclick="applyMix({fire:70,rain:40,wind:15})">&#x1F3E0; Cozy Cabin</button>
+                    <button class="btn btn-secondary" onclick="applyMix({night:60,wind:25})">&#x1F30C; Starry Night</button>
+                </div>
+            </div>
+
+            <!-- Sleep Timer -->
+            <div class="sleep-timer-section">
+                <h3 style="margin-bottom:1rem;">&#x23F0; Sleep Timer</h3>
+                <div style="display:flex; gap:0.5rem; justify-content:center; flex-wrap:wrap;">
+                    <button class="duration-btn" onclick="setSleepTimer(15)">15 min</button>
+                    <button class="duration-btn" onclick="setSleepTimer(30)">30 min</button>
+                    <button class="duration-btn" onclick="setSleepTimer(60)">1 hour</button>
+                    <button class="duration-btn" onclick="setSleepTimer(120)">2 hours</button>
+                    <button class="duration-btn" onclick="setSleepTimer(0)">Off</button>
+                </div>
+                <p style="color:var(--text-dim); font-size:0.82rem; margin-top:0.8rem;" id="sleepTimerStatus">Timer off</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-privacy">&#x1F512; No data collected. Just sounds.</p>
+        <p class="footer-copy">Sukoon &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Web Audio API based ambient sound generator
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        const activeSounds = {};
+
+        // Generate ambient sounds using noise + filters
+        function createNoiseSource() {
+            const bufferSize = audioCtx.sampleRate * 2;
+            const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) data[i] = Math.random() * 2 - 1;
+            const source = audioCtx.createBufferSource();
+            source.buffer = buffer;
+            source.loop = true;
+            return source;
+        }
+
+        const soundConfigs = {
+            rain: { type: 'noise', filterFreq: 3000, filterQ: 0.5, filterType: 'lowpass' },
+            ocean: { type: 'noise', filterFreq: 800, filterQ: 0.3, filterType: 'lowpass', lfo: true, lfoRate: 0.08 },
+            birds: { type: 'noise', filterFreq: 6000, filterQ: 2, filterType: 'bandpass' },
+            thunder: { type: 'noise', filterFreq: 200, filterQ: 0.5, filterType: 'lowpass' },
+            fire: { type: 'noise', filterFreq: 4000, filterQ: 1, filterType: 'highpass' },
+            wind: { type: 'noise', filterFreq: 600, filterQ: 0.3, filterType: 'lowpass', lfo: true, lfoRate: 0.05 },
+            creek: { type: 'noise', filterFreq: 5000, filterQ: 1.5, filterType: 'bandpass', lfo: true, lfoRate: 0.3 },
+            night: { type: 'noise', filterFreq: 8000, filterQ: 3, filterType: 'bandpass' }
+        };
+
+        function startSound(name, volume) {
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+            if (activeSounds[name]) {
+                activeSounds[name].gain.gain.setTargetAtTime(volume / 100, audioCtx.currentTime, 0.5);
+                return;
+            }
+            const config = soundConfigs[name];
+            const source = createNoiseSource();
+            const filter = audioCtx.createBiquadFilter();
+            filter.type = config.filterType;
+            filter.frequency.value = config.filterFreq;
+            filter.Q.value = config.filterQ;
+            const gain = audioCtx.createGain();
+            gain.gain.value = volume / 100;
+
+            source.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            if (config.lfo) {
+                const lfo = audioCtx.createOscillator();
+                const lfoGain = audioCtx.createGain();
+                lfo.frequency.value = config.lfoRate;
+                lfoGain.gain.value = config.filterFreq * 0.3;
+                lfo.connect(lfoGain);
+                lfoGain.connect(filter.frequency);
+                lfo.start();
+                activeSounds[name] = { source, filter, gain, lfo };
+            } else {
+                activeSounds[name] = { source, filter, gain };
+            }
+            source.start();
+            document.getElementById(`sound-${name}`).classList.add('playing');
+        }
+
+        function stopSound(name) {
+            if (!activeSounds[name]) return;
+            activeSounds[name].gain.gain.setTargetAtTime(0, audioCtx.currentTime, 0.3);
+            setTimeout(() => {
+                try {
+                    activeSounds[name].source.stop();
+                    if (activeSounds[name].lfo) activeSounds[name].lfo.stop();
+                } catch(e) {}
+                delete activeSounds[name];
+                document.getElementById(`sound-${name}`).classList.remove('playing');
+            }, 500);
+        }
+
+        // Slider handlers
+        document.querySelectorAll('.sound-slider').forEach(slider => {
+            slider.addEventListener('input', (e) => {
+                const name = e.target.dataset.sound;
+                const vol = parseInt(e.target.value);
+                if (vol > 0) startSound(name, vol);
+                else stopSound(name);
+            });
+        });
+
+        // Quick mixes
+        function applyMix(mix) {
+            // Reset all
+            document.querySelectorAll('.sound-slider').forEach(s => {
+                const name = s.dataset.sound;
+                if (!mix[name]) { s.value = 0; stopSound(name); }
+            });
+            // Apply mix
+            Object.entries(mix).forEach(([name, vol]) => {
+                const slider = document.querySelector(`[data-sound="${name}"]`);
+                if (slider) { slider.value = vol; startSound(name, vol); }
+            });
+        }
+
+        // Sleep timer
+        let sleepTimeout = null;
+        function setSleepTimer(minutes) {
+            if (sleepTimeout) clearTimeout(sleepTimeout);
+            document.querySelectorAll('.sleep-timer-section .duration-btn').forEach(b => b.classList.remove('active'));
+            if (minutes === 0) {
+                document.getElementById('sleepTimerStatus').textContent = 'Timer off';
+                return;
+            }
+            event.target.classList.add('active');
+            document.getElementById('sleepTimerStatus').textContent = `Sounds will stop in ${minutes} minutes`;
+            sleepTimeout = setTimeout(() => {
+                // Fade all sounds
+                document.querySelectorAll('.sound-slider').forEach(s => { s.value = 0; stopSound(s.dataset.sound); });
+                document.getElementById('sleepTimerStatus').textContent = 'Timer off. Sweet dreams.';
+            }, minutes * 60 * 1000);
+        }
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>

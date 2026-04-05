@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breathe - Sukoon</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="topbar">
+        <a href="/" class="topbar-brand"><span class="logo-icon">&#x1F54A;</span> Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html" class="active">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a><a href="/quotes.html">Quotes</a>
+            <a href="/videos.html">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select" id="langPicker"><option value="en">EN</option><option value="hi">HI</option><option value="ur">UR</option><option value="ar">AR</option><option value="es">ES</option><option value="fr">FR</option></select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">&#9776;</button>
+        </div>
+    </header>
+    <main>
+        <div class="page-header">
+            <h1>Breathe</h1>
+            <p class="subtitle">Calm your mind. One breath at a time.</p>
+            <p class="subtitle-hindi">अपने मन को शांत करो। एक साँस।</p>
+        </div>
+
+        <div class="breathe-container">
+            <div class="technique-selector">
+                <button class="technique-btn active" data-technique="478">4-7-8 Calm</button>
+                <button class="technique-btn" data-technique="box">Box Breathing</button>
+                <button class="technique-btn" data-technique="deep">Deep Calm</button>
+                <button class="technique-btn" data-technique="energize">Energize</button>
+            </div>
+
+            <div class="breathe-circle-outer">
+                <div class="breathe-circle" id="breatheCircle">
+                    <span class="breathe-text" id="breatheText">Start</span>
+                </div>
+            </div>
+
+            <div class="breathe-timer" id="sessionTimer">0:00</div>
+
+            <div class="breathe-controls">
+                <button class="btn btn-primary btn-lg" id="startBtn">Begin</button>
+                <button class="btn btn-secondary" id="stopBtn" style="display:none;">Stop</button>
+            </div>
+
+            <div style="margin-top:2rem; text-align:center;">
+                <p style="color:var(--text-dim); font-size:0.85rem;" id="techniqueDesc">
+                    Inhale 4s, hold 7s, exhale 8s. Reduces anxiety and promotes sleep.
+                </p>
+                <p style="font-family:var(--font-hindi); color:var(--text-dim); font-size:0.82rem; margin-top:0.3rem;" id="techniqueDescHindi">
+                    4 सेकंड साँस लें, 7 सेकंड रोकें, 8 सेकंड छोड़ें। चिंता कम करता है।
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p class="footer-privacy">&#x1F512; No data collected. Just breathe.</p>
+        <p class="footer-copy">Sukoon &copy; 2026</p>
+    </footer>
+
+    <script>
+        // Techniques: { inhale, hold, exhale, holdAfter } in seconds
+        const techniques = {
+            '478': { name: '4-7-8 Calm', inhale: 4, hold: 7, exhale: 8, holdAfter: 0,
+                desc: 'Inhale 4s, hold 7s, exhale 8s. Reduces anxiety and promotes sleep.',
+                descHi: '4 सेकंड साँस लें, 7 सेकंड रोकें, 8 सेकंड छोड़ें। चिंता कम करता है।' },
+            'box': { name: 'Box Breathing', inhale: 4, hold: 4, exhale: 4, holdAfter: 4,
+                desc: 'Equal 4s cycles: inhale, hold, exhale, hold. Used by Navy SEALs for focus.',
+                descHi: 'बराबर 4 सेकंड: साँस लें, रोकें, छोड़ें, रोकें। फ़ोकस के लिए।' },
+            'deep': { name: 'Deep Calm', inhale: 6, hold: 2, exhale: 8, holdAfter: 0,
+                desc: 'Long exhale activates parasympathetic nervous system. Deep relaxation.',
+                descHi: 'लंबी साँस छोड़ने से गहरी शांति आती है।' },
+            'energize': { name: 'Energize', inhale: 3, hold: 1, exhale: 3, holdAfter: 1,
+                desc: 'Short, rhythmic breathing to boost energy and alertness.',
+                descHi: 'छोटी, लयबद्ध साँस से ऊर्जा और सतर्कता बढ़ती है।' }
+        };
+
+        let currentTechnique = '478';
+        let isRunning = false;
+        let intervalId = null;
+        let sessionSeconds = 0;
+        let timerInterval = null;
+
+        const circle = document.getElementById('breatheCircle');
+        const text = document.getElementById('breatheText');
+        const timer = document.getElementById('sessionTimer');
+        const startBtn = document.getElementById('startBtn');
+        const stopBtn = document.getElementById('stopBtn');
+
+        // Technique selector
+        document.querySelectorAll('.technique-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (isRunning) stopBreathing();
+                document.querySelectorAll('.technique-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentTechnique = btn.dataset.technique;
+                const t = techniques[currentTechnique];
+                document.getElementById('techniqueDesc').textContent = t.desc;
+                document.getElementById('techniqueDescHindi').textContent = t.descHi;
+            });
+        });
+
+        function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+        async function runCycle() {
+            const t = techniques[currentTechnique];
+            // Inhale
+            circle.className = 'breathe-circle inhale';
+            circle.style.transitionDuration = t.inhale + 's';
+            text.textContent = 'Breathe In';
+            await sleep(t.inhale * 1000);
+            if (!isRunning) return;
+
+            // Hold
+            if (t.hold > 0) {
+                text.textContent = 'Hold';
+                await sleep(t.hold * 1000);
+                if (!isRunning) return;
+            }
+
+            // Exhale
+            circle.className = 'breathe-circle exhale';
+            circle.style.transitionDuration = t.exhale + 's';
+            text.textContent = 'Breathe Out';
+            await sleep(t.exhale * 1000);
+            if (!isRunning) return;
+
+            // Hold after exhale
+            if (t.holdAfter > 0) {
+                text.textContent = 'Hold';
+                await sleep(t.holdAfter * 1000);
+                if (!isRunning) return;
+            }
+        }
+
+        async function startBreathing() {
+            isRunning = true;
+            startBtn.style.display = 'none';
+            stopBtn.style.display = 'inline-flex';
+            sessionSeconds = 0;
+            timerInterval = setInterval(() => {
+                sessionSeconds++;
+                const m = Math.floor(sessionSeconds / 60);
+                const s = sessionSeconds % 60;
+                timer.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+            }, 1000);
+
+            while (isRunning) {
+                await runCycle();
+            }
+        }
+
+        function stopBreathing() {
+            isRunning = false;
+            clearInterval(timerInterval);
+            circle.className = 'breathe-circle';
+            circle.style.transitionDuration = '0.5s';
+            text.textContent = 'Start';
+            startBtn.style.display = 'inline-flex';
+            stopBtn.style.display = 'none';
+        }
+
+        startBtn.addEventListener('click', startBreathing);
+        stopBtn.addEventListener('click', stopBreathing);
+
+        // Mobile nav
+        document.getElementById('mobileToggle').addEventListener('click', () => {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+    </script>
+</body>
+</html>
