@@ -608,9 +608,23 @@
         document.getElementById('topNav').classList.toggle('open');
     });
 
-    /* ====== Audio context ====== */
+    /* ====== Audio Engine (uses pre-generated WAV files) ====== */
     var audioCtx = null;
     var masterGain = null;
+    var audioBuffers = {}; // cached decoded buffers
+    var channels = {}; // active channels
+
+    /* Sound file map */
+    var soundFiles = {
+        rain: '/audio/rain.wav',
+        ocean: '/audio/ocean.wav',
+        birds: '/audio/birds.wav',
+        thunder: '/audio/thunder.wav',
+        fire: '/audio/fire.wav',
+        wind: '/audio/wind.wav',
+        creek: '/audio/creek.wav',
+        crickets: '/audio/crickets.wav'
+    };
 
     function initAC(){
         if(!audioCtx){
@@ -622,421 +636,59 @@
         if(audioCtx.state==='suspended') audioCtx.resume();
     }
 
-    /* ====== Noise buffer cache ====== */
-    var noiseBuffers = {};
-    function getNoiseBuffer(duration){
-        duration = duration || 4;
-        var key = 'nb_' + duration;
-        if(noiseBuffers[key]) return noiseBuffers[key];
-        var sr = audioCtx.sampleRate;
-        var len = sr * duration;
-        var buf = audioCtx.createBuffer(2, len, sr);
-        for(var ch=0; ch<2; ch++){
-            var d = buf.getChannelData(ch);
-            for(var i=0; i<len; i++) d[i] = Math.random()*2-1;
-        }
-        noiseBuffers[key] = buf;
-        return buf;
-    }
-
-    /* Helper: create a looping noise source */
-    function makeNoise(dur){
-        var src = audioCtx.createBufferSource();
-        src.buffer = getNoiseBuffer(dur || 4);
-        src.loop = true;
-        return src;
-    }
-
-    /* Helper: schedule random gain crackles (for fire, rain drops) */
-    function scheduleRandomGain(gainNode, minVal, maxVal, minMs, maxMs, duration){
-        var t = audioCtx.currentTime;
-        var end = t + (duration || 60);
-        while(t < end){
-            var val = minVal + Math.random() * (maxVal - minVal);
-            var hold = (minMs + Math.random() * (maxMs - minMs)) / 1000;
-            gainNode.gain.setValueAtTime(val, t);
-            t += hold;
+    /* Fetch and decode audio file, cache the buffer */
+    async function loadBuffer(id){
+        if(audioBuffers[id]) return audioBuffers[id];
+        var url = soundFiles[id];
+        if(!url) return null;
+        try {
+            var resp = await fetch(url);
+            var arrayBuf = await resp.arrayBuffer();
+            var decoded = await audioCtx.decodeAudioData(arrayBuf);
+            audioBuffers[id] = decoded;
+            return decoded;
+        } catch(e){
+            console.warn('Failed to load sound:', id, e);
+            return null;
         }
     }
 
-    /* ====== Sound definitions ====== */
-    var channels = {}; // keyed by sound id
-
-    function buildChannel(id){
+    /* Build a channel: load WAV, create looping buffer source */
+    async function buildChannel(id){
         initAC();
-        var t = audioCtx.currentTime;
-        /* Each channel gets its own output gain */
+        var buf = await loadBuffer(id);
+        if(!buf) return;
+
+        var src = audioCtx.createBufferSource();
+        src.buffer = buf;
+        src.loop = true;
+
         var gain = audioCtx.createGain();
-        gain.gain.setValueAtTime(0, t);
-        /* Collect all source nodes so stopChannel can stop them */
-        var sources = [];
-        var extras = []; /* oscillators, intervals, etc. to clean up */
+        gain.gain.setValueAtTime(0, audioCtx.currentTime);
 
-        /* ========================================
-           RAIN: dual noise layers + random drops + slow LFO
-           ======================================== */
-        if(id === 'rain'){
-            /* Layer 1: ambient rumble - lowpass at 2000Hz */
-            var n1 = makeNoise(4); sources.push(n1);
-            var lp1 = audioCtx.createBiquadFilter();
-            lp1.type = 'lowpass'; lp1.frequency.value = 2000; lp1.Q.value = 0.5;
-            var g1 = audioCtx.createGain(); g1.gain.value = 0.6;
-            n1.connect(lp1); lp1.connect(g1); g1.connect(gain);
-
-            /* Layer 2: patter - bandpass at 4000Hz */
-            var n2 = makeNoise(6); sources.push(n2);
-            var bp2 = audioCtx.createBiquadFilter();
-            bp2.type = 'bandpass'; bp2.frequency.value = 4000; bp2.Q.value = 0.5;
-            var g2 = audioCtx.createGain(); g2.gain.value = 0.35;
-            n2.connect(bp2); bp2.connect(g2); g2.connect(gain);
-
-            /* Random drop texture via scheduled gain on patter layer */
-            scheduleRandomGain(g2, 0.15, 0.5, 30, 80, 120);
-
-            /* Slow intensity LFO at 0.03Hz for natural variation */
-            var lfoSlow = audioCtx.createOscillator();
-            lfoSlow.type = 'sine'; lfoSlow.frequency.value = 0.03;
-            var lfoGain = audioCtx.createGain(); lfoGain.gain.value = 0.25;
-            lfoSlow.connect(lfoGain); lfoGain.connect(gain.gain);
-            lfoSlow.start(t); extras.push(lfoSlow);
-        }
-
-        /* ========================================
-           OCEAN: wave wash + foam/hiss + deep rumble
-           ======================================== */
-        else if(id === 'ocean'){
-            /* Layer 1: base wave wash - noise through lowpass 500Hz */
-            var nBase = makeNoise(6); sources.push(nBase);
-            var lpBase = audioCtx.createBiquadFilter();
-            lpBase.type = 'lowpass'; lpBase.frequency.value = 500; lpBase.Q.value = 0.7;
-            var gBase = audioCtx.createGain(); gBase.gain.value = 0.0;
-            nBase.connect(lpBase); lpBase.connect(gBase); gBase.connect(gain);
-
-            /* Wave rhythm LFO: triangle at 0.08Hz, amplitude 0 to 1 */
-            var waveLfo = audioCtx.createOscillator();
-            waveLfo.type = 'triangle'; waveLfo.frequency.value = 0.08;
-            var waveLfoG = audioCtx.createGain(); waveLfoG.gain.value = 0.5;
-            waveLfo.connect(waveLfoG); waveLfoG.connect(gBase.gain);
-            /* Offset so gain swings 0..1: set base to 0.5, LFO adds +-0.5 */
-            gBase.gain.setValueAtTime(0.5, t);
-            waveLfo.start(t); extras.push(waveLfo);
-
-            /* Layer 2: foam/hiss - bandpass 1500Hz, SAME rhythm but delayed 2s */
-            var nFoam = makeNoise(6); sources.push(nFoam);
-            var bpFoam = audioCtx.createBiquadFilter();
-            bpFoam.type = 'bandpass'; bpFoam.frequency.value = 1500; bpFoam.Q.value = 0.6;
-            var gFoam = audioCtx.createGain(); gFoam.gain.value = 0.0;
-            nFoam.connect(bpFoam); bpFoam.connect(gFoam); gFoam.connect(gain);
-
-            /* Phase-shifted wave LFO for foam (delayed 2s = start later) */
-            var foamLfo = audioCtx.createOscillator();
-            foamLfo.type = 'triangle'; foamLfo.frequency.value = 0.08;
-            var foamLfoG = audioCtx.createGain(); foamLfoG.gain.value = 0.3;
-            foamLfo.connect(foamLfoG); foamLfoG.connect(gFoam.gain);
-            gFoam.gain.setValueAtTime(0.3, t);
-            foamLfo.start(t + 2); extras.push(foamLfo);
-
-            /* Layer 3: deep rumble - very low noise at 100Hz */
-            var nDeep = makeNoise(8); sources.push(nDeep);
-            var lpDeep = audioCtx.createBiquadFilter();
-            lpDeep.type = 'lowpass'; lpDeep.frequency.value = 100; lpDeep.Q.value = 0.5;
-            var gDeep = audioCtx.createGain(); gDeep.gain.value = 0.35;
-            nDeep.connect(lpDeep); lpDeep.connect(gDeep); gDeep.connect(gain);
-        }
-
-        /* ========================================
-           BIRDS: real oscillator chirps, NOT filtered noise
-           ======================================== */
-        else if(id === 'birds'){
-            var birdFreqs = [2000, 2800, 3500, 4200];
-            var chirpRates = [4, 6, 3.5, 7.5]; /* square LFO Hz for on/off */
-            var vibratoRates = [7, 10, 5.5, 12]; /* vibrato LFO Hz */
-            var vibratoDepths = [80, 100, 60, 120]; /* vibrato depth in Hz */
-            var birdVolumes = [0.12, 0.09, 0.08, 0.06];
-
-            for(var b = 0; b < birdFreqs.length; b++){
-                /* Main tone oscillator */
-                var osc = audioCtx.createOscillator();
-                osc.type = 'sine';
-                osc.frequency.value = birdFreqs[b];
-                sources.push(osc);
-
-                /* Vibrato: small sine LFO modulating frequency */
-                var vibLfo = audioCtx.createOscillator();
-                vibLfo.type = 'sine';
-                vibLfo.frequency.value = vibratoRates[b];
-                var vibG = audioCtx.createGain();
-                vibG.gain.value = vibratoDepths[b];
-                vibLfo.connect(vibG);
-                vibG.connect(osc.frequency);
-                vibLfo.start(t);
-                extras.push(vibLfo);
-
-                /* Chirp on/off: square wave LFO modulating gain */
-                var chirpGain = audioCtx.createGain();
-                chirpGain.gain.value = 0.0;
-                var chirpLfo = audioCtx.createOscillator();
-                chirpLfo.type = 'square';
-                chirpLfo.frequency.value = chirpRates[b];
-                var chirpLfoG = audioCtx.createGain();
-                chirpLfoG.gain.value = birdVolumes[b];
-                chirpLfo.connect(chirpLfoG);
-                chirpLfoG.connect(chirpGain.gain);
-                chirpGain.gain.setValueAtTime(birdVolumes[b] * 0.5, t);
-                chirpLfo.start(t);
-                extras.push(chirpLfo);
-
-                /* Slow envelope so birds fade in and out naturally */
-                var envLfo = audioCtx.createOscillator();
-                envLfo.type = 'sine';
-                envLfo.frequency.value = 0.15 + b * 0.08;
-                var envG = audioCtx.createGain();
-                envG.gain.value = birdVolumes[b] * 0.4;
-                envLfo.connect(envG);
-                envG.connect(chirpGain.gain);
-                envLfo.start(t);
-                extras.push(envLfo);
-
-                osc.connect(chirpGain);
-                chirpGain.connect(gain);
-            }
-        }
-
-        /* ========================================
-           THUNDER: deep rumble + mid rumble + burst layer
-           ======================================== */
-        else if(id === 'thunder'){
-            /* Layer 1: very low rumble at 80Hz */
-            var nLow = makeNoise(8); sources.push(nLow);
-            var lpLow = audioCtx.createBiquadFilter();
-            lpLow.type = 'lowpass'; lpLow.frequency.value = 80; lpLow.Q.value = 0.5;
-            var gLow = audioCtx.createGain(); gLow.gain.value = 0.7;
-            nLow.connect(lpLow); lpLow.connect(gLow); gLow.connect(gain);
-
-            /* Layer 2: mid rumble at 200Hz */
-            var nMid = makeNoise(6); sources.push(nMid);
-            var lpMid = audioCtx.createBiquadFilter();
-            lpMid.type = 'lowpass'; lpMid.frequency.value = 200; lpMid.Q.value = 0.6;
-            var gMid = audioCtx.createGain(); gMid.gain.value = 0.4;
-            nMid.connect(lpMid); lpMid.connect(gMid); gMid.connect(gain);
-
-            /* Slow rolling LFO at 0.02Hz */
-            var thunderLfo = audioCtx.createOscillator();
-            thunderLfo.type = 'sine'; thunderLfo.frequency.value = 0.02;
-            var thunderLfoG = audioCtx.createGain(); thunderLfoG.gain.value = 0.35;
-            thunderLfo.connect(thunderLfoG); thunderLfoG.connect(gain.gain);
-            thunderLfo.start(t); extras.push(thunderLfo);
-
-            /* Layer 3: occasional burst - noise with scheduled attack/decay */
-            var nBurst = makeNoise(4); sources.push(nBurst);
-            var lpBurst = audioCtx.createBiquadFilter();
-            lpBurst.type = 'lowpass'; lpBurst.frequency.value = 300; lpBurst.Q.value = 0.3;
-            var gBurst = audioCtx.createGain(); gBurst.gain.value = 0.0;
-            nBurst.connect(lpBurst); lpBurst.connect(gBurst); gBurst.connect(gain);
-
-            /* Schedule random thunder bursts over 120 seconds */
-            var bt = t + 3 + Math.random() * 5;
-            for(var bi = 0; bi < 15; bi++){
-                var intensity = 0.3 + Math.random() * 0.5;
-                gBurst.gain.setValueAtTime(0.0, bt);
-                gBurst.gain.linearRampToValueAtTime(intensity, bt + 0.1);
-                gBurst.gain.exponentialRampToValueAtTime(0.001, bt + 1.5 + Math.random() * 2);
-                bt += 5 + Math.random() * 10;
-            }
-        }
-
-        /* ========================================
-           FIRE: crackle base + random pops + warm hum + sparks
-           ======================================== */
-        else if(id === 'fire'){
-            /* Layer 1: crackling base - bandpass at 800Hz */
-            var nCrackle = makeNoise(4); sources.push(nCrackle);
-            var bpCrackle = audioCtx.createBiquadFilter();
-            bpCrackle.type = 'bandpass'; bpCrackle.frequency.value = 800; bpCrackle.Q.value = 0.8;
-            var gCrackle = audioCtx.createGain(); gCrackle.gain.value = 0.3;
-            nCrackle.connect(bpCrackle); bpCrackle.connect(gCrackle); gCrackle.connect(gain);
-
-            /* Random pops and crackles via scheduled gain changes */
-            scheduleRandomGain(gCrackle, 0.05, 0.6, 30, 180, 120);
-
-            /* Layer 2: warm low hum - lowpass at 300Hz */
-            var nWarm = makeNoise(6); sources.push(nWarm);
-            var lpWarm = audioCtx.createBiquadFilter();
-            lpWarm.type = 'lowpass'; lpWarm.frequency.value = 300; lpWarm.Q.value = 0.5;
-            var gWarm = audioCtx.createGain(); gWarm.gain.value = 0.2;
-            nWarm.connect(lpWarm); lpWarm.connect(gWarm); gWarm.connect(gain);
-
-            /* Layer 3: high sparkle crackle - bandpass at 2000Hz */
-            var nSpark = makeNoise(4); sources.push(nSpark);
-            var bpSpark = audioCtx.createBiquadFilter();
-            bpSpark.type = 'bandpass'; bpSpark.frequency.value = 2000; bpSpark.Q.value = 1.2;
-            var gSpark = audioCtx.createGain(); gSpark.gain.value = 0.05;
-            nSpark.connect(bpSpark); bpSpark.connect(gSpark); gSpark.connect(gain);
-
-            /* Random sparks - fast tiny pops */
-            scheduleRandomGain(gSpark, 0.0, 0.25, 10, 60, 120);
-        }
-
-        /* ========================================
-           WIND: gusting filter sweep + breathing gain + high whistle
-           ======================================== */
-        else if(id === 'wind'){
-            /* Main wind body - lowpass at 400Hz */
-            var nWind = makeNoise(6); sources.push(nWind);
-            var lpWind = audioCtx.createBiquadFilter();
-            lpWind.type = 'lowpass'; lpWind.frequency.value = 400; lpWind.Q.value = 0.3;
-            var gWind = audioCtx.createGain(); gWind.gain.value = 0.7;
-            nWind.connect(lpWind); lpWind.connect(gWind); gWind.connect(gain);
-
-            /* Very slow gusting LFO: sweeps filter freq 200-800Hz at 0.05Hz */
-            var gustLfo = audioCtx.createOscillator();
-            gustLfo.type = 'sine'; gustLfo.frequency.value = 0.05;
-            var gustG = audioCtx.createGain(); gustG.gain.value = 300;
-            gustLfo.connect(gustG); gustG.connect(lpWind.frequency);
-            gustLfo.start(t); extras.push(gustLfo);
-
-            /* Breathing gain LFO at 0.15Hz */
-            var breathLfo = audioCtx.createOscillator();
-            breathLfo.type = 'sine'; breathLfo.frequency.value = 0.15;
-            var breathG = audioCtx.createGain(); breathG.gain.value = 0.2;
-            breathLfo.connect(breathG); breathG.connect(gWind.gain);
-            breathLfo.start(t); extras.push(breathLfo);
-
-            /* High whistle layer - highpass at 3000Hz, very quiet */
-            var nWhistle = makeNoise(4); sources.push(nWhistle);
-            var hpWhistle = audioCtx.createBiquadFilter();
-            hpWhistle.type = 'highpass'; hpWhistle.frequency.value = 3000; hpWhistle.Q.value = 0.5;
-            var gWhistle = audioCtx.createGain(); gWhistle.gain.value = 0.06;
-            nWhistle.connect(hpWhistle); hpWhistle.connect(gWhistle); gWhistle.connect(gain);
-        }
-
-        /* ========================================
-           CREEK: bubble base + second bubble layer + flow
-           ======================================== */
-        else if(id === 'creek'){
-            /* Layer 1: bubble base - bandpass 3000Hz Q=1.5 */
-            var nBubble = makeNoise(4); sources.push(nBubble);
-            var bpBubble = audioCtx.createBiquadFilter();
-            bpBubble.type = 'bandpass'; bpBubble.frequency.value = 3000; bpBubble.Q.value = 1.5;
-            var gBubble = audioCtx.createGain(); gBubble.gain.value = 0.0;
-            nBubble.connect(bpBubble); bpBubble.connect(gBubble); gBubble.connect(gain);
-
-            /* Fast bubbling LFO at 3Hz */
-            var bubLfo = audioCtx.createOscillator();
-            bubLfo.type = 'sine'; bubLfo.frequency.value = 3;
-            var bubLfoG = audioCtx.createGain(); bubLfoG.gain.value = 0.2;
-            bubLfo.connect(bubLfoG); bubLfoG.connect(gBubble.gain);
-            gBubble.gain.setValueAtTime(0.25, t);
-            bubLfo.start(t); extras.push(bubLfo);
-
-            /* Layer 2: second bubble variety - bandpass 1500Hz Q=1 */
-            var nBub2 = makeNoise(6); sources.push(nBub2);
-            var bpBub2 = audioCtx.createBiquadFilter();
-            bpBub2.type = 'bandpass'; bpBub2.frequency.value = 1500; bpBub2.Q.value = 1.0;
-            var gBub2 = audioCtx.createGain(); gBub2.gain.value = 0.0;
-            nBub2.connect(bpBub2); bpBub2.connect(gBub2); gBub2.connect(gain);
-
-            /* Different bubbling rate at 1.5Hz */
-            var bub2Lfo = audioCtx.createOscillator();
-            bub2Lfo.type = 'sine'; bub2Lfo.frequency.value = 1.5;
-            var bub2LfoG = audioCtx.createGain(); bub2LfoG.gain.value = 0.15;
-            bub2Lfo.connect(bub2LfoG); bub2LfoG.connect(gBub2.gain);
-            gBub2.gain.setValueAtTime(0.2, t);
-            bub2Lfo.start(t); extras.push(bub2Lfo);
-
-            /* Layer 3: general water flow - lowpass 800Hz */
-            var nFlow = makeNoise(8); sources.push(nFlow);
-            var lpFlow = audioCtx.createBiquadFilter();
-            lpFlow.type = 'lowpass'; lpFlow.frequency.value = 800; lpFlow.Q.value = 0.4;
-            var gFlow = audioCtx.createGain(); gFlow.gain.value = 0.18;
-            nFlow.connect(lpFlow); lpFlow.connect(gFlow); gFlow.connect(gain);
-        }
-
-        /* ========================================
-           CRICKETS: oscillator chirps + ambient night texture
-           ======================================== */
-        else if(id === 'crickets'){
-            /* Oscillator 1: 4000Hz, square LFO gate at 5Hz */
-            var cOsc1 = audioCtx.createOscillator();
-            cOsc1.type = 'sine'; cOsc1.frequency.value = 4000;
-            sources.push(cOsc1);
-            var cGate1 = audioCtx.createGain(); cGate1.gain.value = 0.0;
-            var cLfo1 = audioCtx.createOscillator();
-            cLfo1.type = 'square'; cLfo1.frequency.value = 5;
-            var cLfoG1 = audioCtx.createGain(); cLfoG1.gain.value = 0.06;
-            cLfo1.connect(cLfoG1); cLfoG1.connect(cGate1.gain);
-            cGate1.gain.setValueAtTime(0.04, t);
-            cLfo1.start(t); extras.push(cLfo1);
-            cOsc1.connect(cGate1); cGate1.connect(gain);
-
-            /* Oscillator 2: 4800Hz, square LFO gate at 3Hz */
-            var cOsc2 = audioCtx.createOscillator();
-            cOsc2.type = 'sine'; cOsc2.frequency.value = 4800;
-            sources.push(cOsc2);
-            var cGate2 = audioCtx.createGain(); cGate2.gain.value = 0.0;
-            var cLfo2 = audioCtx.createOscillator();
-            cLfo2.type = 'square'; cLfo2.frequency.value = 3;
-            var cLfoG2 = audioCtx.createGain(); cLfoG2.gain.value = 0.04;
-            cLfo2.connect(cLfoG2); cLfoG2.connect(cGate2.gain);
-            cGate2.gain.setValueAtTime(0.03, t);
-            cLfo2.start(t); extras.push(cLfo2);
-            cOsc2.connect(cGate2); cGate2.connect(gain);
-
-            /* Ambient night texture: very faint high noise */
-            var nNight = makeNoise(4); sources.push(nNight);
-            var hpNight = audioCtx.createBiquadFilter();
-            hpNight.type = 'highpass'; hpNight.frequency.value = 6000; hpNight.Q.value = 0.3;
-            var gNight = audioCtx.createGain(); gNight.gain.value = 0.04;
-            nNight.connect(hpNight); hpNight.connect(gNight); gNight.connect(gain);
-
-            /* Slow breathing envelope at 0.1Hz */
-            var cEnvLfo = audioCtx.createOscillator();
-            cEnvLfo.type = 'sine'; cEnvLfo.frequency.value = 0.1;
-            var cEnvG = audioCtx.createGain(); cEnvG.gain.value = 0.3;
-            cEnvLfo.connect(cEnvG); cEnvG.connect(gain.gain);
-            cEnvLfo.start(t); extras.push(cEnvLfo);
-        }
-
-        /* Fallback: plain noise */
-        else {
-            var nPlain = makeNoise(4); sources.push(nPlain);
-            nPlain.connect(gain);
-        }
-
+        src.connect(gain);
         gain.connect(masterGain);
-        /* Start all sources */
-        for(var si = 0; si < sources.length; si++){
-            sources[si].start(t);
-        }
-        channels[id] = { sources: sources, extras: extras, gain: gain, vol: 0 };
+        src.start(0);
+
+        channels[id] = { src: src, gain: gain, vol: 0 };
     }
 
     function stopChannel(id){
         var ch = channels[id];
         if(!ch) return;
-        try {
-            for(var i = 0; i < ch.sources.length; i++){
-                try { ch.sources[i].stop(); } catch(e){}
-            }
-            for(var j = 0; j < ch.extras.length; j++){
-                try { ch.extras[j].stop(); } catch(e){}
-            }
-            ch.gain.disconnect();
-        } catch(e){}
+        try { ch.src.stop(); ch.gain.disconnect(); } catch(e){}
         delete channels[id];
     }
 
-    function setChannelVol(id, v){
+    async function setChannelVol(id, v){
         initAC();
-        if(!channels[id]) buildChannel(id);
+        if(!channels[id]) await buildChannel(id);
         var ch = channels[id];
+        if(!ch) return;
         ch.vol = v;
-        var target = v / 100 * 0.25; /* max per-channel = 0.25 */
+        var target = v / 100 * 0.3; /* max per-channel gain */
         ch.gain.gain.linearRampToValueAtTime(target, audioCtx.currentTime + 0.15);
-        /* If volume is 0, stop the channel to free resources */
-        if(v === 0){
-            stopChannel(id);
-        }
+        if(v === 0) stopChannel(id);
         /* Update card state */
         var card = document.querySelector('.snd-card[data-id="'+id+'"]');
         if(card){
