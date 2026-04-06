@@ -1147,5 +1147,355 @@
         quoteAuthor.style.transition = 'opacity 0.25s ease';
     </script>
     <script src="/js/i18n.js"></script>
+
+    <!-- ===================== ONBOARDING OVERLAY ===================== -->
+    <style>
+        .sukoon-onboard {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(250, 250, 247, 0.55);
+            backdrop-filter: blur(28px) saturate(1.4);
+            -webkit-backdrop-filter: blur(28px) saturate(1.4);
+            opacity: 1;
+            transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1);
+        }
+        .sukoon-onboard.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sukoon-onboard-step {
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-width: 560px;
+            padding: 40px 28px;
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+        }
+        .sukoon-onboard-step.active {
+            display: flex;
+        }
+        .sukoon-onboard-step.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Step 1: Breathing */
+        .onboard-breath-ring {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 3px solid rgba(79, 70, 229, 0.18);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+        .onboard-breath-circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.35), rgba(139, 92, 246, 0.25));
+            animation: onboard-breathe 6s ease-in-out infinite;
+        }
+        @keyframes onboard-breathe {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(2.1); opacity: 1; }
+        }
+        .onboard-breath-ring::after {
+            content: '';
+            position: absolute;
+            inset: -8px;
+            border-radius: 50%;
+            border: 1.5px solid rgba(79, 70, 229, 0.08);
+            animation: onboard-breathe-outer 6s ease-in-out infinite;
+        }
+        @keyframes onboard-breathe-outer {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.15); opacity: 0.7; }
+        }
+        .onboard-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        .onboard-title-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 1rem;
+            color: #9CA3AF;
+            margin-bottom: 8px;
+        }
+        .onboard-sub {
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.6;
+            max-width: 380px;
+        }
+
+        /* Step 2: Goal cards */
+        .onboard-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 36px;
+            width: 100%;
+            max-width: 420px;
+        }
+        .onboard-card {
+            background: #FFFFFF;
+            border: 1.5px solid rgba(0,0,0,0.06);
+            border-radius: 18px;
+            padding: 28px 20px 22px;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            user-select: none;
+            -webkit-user-select: none;
+        }
+        .onboard-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 28px rgba(79, 70, 229, 0.1);
+            border-color: rgba(79, 70, 229, 0.2);
+        }
+        .onboard-card.selected {
+            border-color: #4F46E5;
+            background: rgba(79, 70, 229, 0.04);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12), 0 8px 28px rgba(79, 70, 229, 0.1);
+            transform: translateY(-3px) scale(1.02);
+        }
+        .onboard-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .onboard-card-icon svg { width: 24px; height: 24px; }
+        .onboard-card:nth-child(1) .onboard-card-icon { background: rgba(99, 102, 241, 0.1); color: #6366F1; }
+        .onboard-card:nth-child(2) .onboard-card-icon { background: rgba(236, 72, 153, 0.1); color: #EC4899; }
+        .onboard-card:nth-child(3) .onboard-card-icon { background: rgba(245, 158, 11, 0.1); color: #F59E0B; }
+        .onboard-card:nth-child(4) .onboard-card-icon { background: rgba(16, 185, 129, 0.1); color: #10B981; }
+        .onboard-card-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #111827;
+        }
+        .onboard-card-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        /* Step 3: Complete */
+        .onboard-check {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(79, 70, 229, 0.08));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 28px;
+            animation: onboard-pulse-check 2s ease-in-out infinite;
+        }
+        .onboard-check svg { width: 32px; height: 32px; color: #10B981; }
+        @keyframes onboard-pulse-check {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.06); }
+        }
+        .onboard-complete-msg {
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.7;
+            max-width: 380px;
+            margin-top: 4px;
+        }
+
+        /* Step dots */
+        .onboard-dots {
+            display: flex;
+            gap: 8px;
+            margin-top: 40px;
+        }
+        .onboard-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+        }
+        .onboard-dot.active {
+            background: #4F46E5;
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 500px) {
+            .onboard-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
+            .onboard-card { padding: 20px 14px 16px; }
+            .onboard-breath-ring { width: 130px; height: 130px; }
+            .onboard-breath-circle { width: 48px; height: 48px; }
+        }
+    </style>
+
+    <div class="sukoon-onboard" id="sukoonOnboard">
+        <!-- Step 1: Breathing -->
+        <div class="sukoon-onboard-step active" id="onboardStep1">
+            <div class="onboard-breath-ring">
+                <div class="onboard-breath-circle"></div>
+            </div>
+            <div class="onboard-title">Welcome. Take a deep breath.</div>
+            <div class="onboard-title-hi">स्वागत है। एक गहरी साँस लीजिए।</div>
+            <div class="onboard-dots">
+                <div class="onboard-dot active"></div>
+                <div class="onboard-dot"></div>
+                <div class="onboard-dot"></div>
+            </div>
+        </div>
+
+        <!-- Step 2: Goal -->
+        <div class="sukoon-onboard-step" id="onboardStep2">
+            <div class="onboard-title">What brings you here?</div>
+            <div class="onboard-title-hi">आप यहाँ क्यों आए हैं?</div>
+            <div class="onboard-sub">Choose what matters most to you right now.</div>
+            <div class="onboard-cards">
+                <div class="onboard-card" data-goal="sleep">
+                    <div class="onboard-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+                    </div>
+                    <div class="onboard-card-label">Sleep better</div>
+                    <div class="onboard-card-hi">बेहतर नींद</div>
+                </div>
+                <div class="onboard-card" data-goal="anxiety">
+                    <div class="onboard-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    </div>
+                    <div class="onboard-card-label">Reduce anxiety</div>
+                    <div class="onboard-card-hi">चिंता कम करें</div>
+                </div>
+                <div class="onboard-card" data-goal="focus">
+                    <div class="onboard-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                    </div>
+                    <div class="onboard-card-label">Improve focus</div>
+                    <div class="onboard-card-hi">ध्यान बढ़ाएँ</div>
+                </div>
+                <div class="onboard-card" data-goal="growth">
+                    <div class="onboard-card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M5 12l7-7 7 7"/><path d="M8 22h8"/><path d="M7 16c-1.5 0-3-1-3-3 0-1.5 1-3 3-3"/><path d="M17 16c1.5 0 3-1 3-3 0-1.5-1-3-3-3"/></svg>
+                    </div>
+                    <div class="onboard-card-label">Personal growth</div>
+                    <div class="onboard-card-hi">व्यक्तिगत विकास</div>
+                </div>
+            </div>
+            <div class="onboard-dots">
+                <div class="onboard-dot"></div>
+                <div class="onboard-dot active"></div>
+                <div class="onboard-dot"></div>
+            </div>
+        </div>
+
+        <!-- Step 3: Done -->
+        <div class="sukoon-onboard-step" id="onboardStep3">
+            <div class="onboard-check">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div class="onboard-title">You're all set.</div>
+            <div class="onboard-title-hi">आप तैयार हैं।</div>
+            <div class="onboard-complete-msg">
+                Sukoon is your quiet corner of the internet. Everything here is free, private, and made with care. No account needed -- ever.
+            </div>
+            <div class="onboard-dots">
+                <div class="onboard-dot"></div>
+                <div class="onboard-dot"></div>
+                <div class="onboard-dot active"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+        if (localStorage.getItem('sukoon-onboarded')) {
+            var overlay = document.getElementById('sukoonOnboard');
+            if (overlay) overlay.remove();
+            return;
+        }
+
+        var step1 = document.getElementById('onboardStep1');
+        var step2 = document.getElementById('onboardStep2');
+        var step3 = document.getElementById('onboardStep3');
+        var overlay = document.getElementById('sukoonOnboard');
+
+        function showStep(el) {
+            el.classList.add('active');
+            requestAnimationFrame(function() {
+                requestAnimationFrame(function() {
+                    el.classList.add('visible');
+                });
+            });
+        }
+
+        function hideStep(el, cb) {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(-12px)';
+            setTimeout(function() {
+                el.classList.remove('active', 'visible');
+                el.style.opacity = '';
+                el.style.transform = '';
+                if (cb) cb();
+            }, 400);
+        }
+
+        // Start: show step 1 after a beat
+        setTimeout(function() { step1.classList.add('visible'); }, 200);
+
+        // Auto-advance to step 2 after breathing pause
+        setTimeout(function() {
+            hideStep(step1, function() {
+                showStep(step2);
+            });
+        }, 5500);
+
+        // Goal card selection
+        var cards = document.querySelectorAll('.onboard-card');
+        cards.forEach(function(card) {
+            card.addEventListener('click', function() {
+                cards.forEach(function(c) { c.classList.remove('selected'); });
+                card.classList.add('selected');
+                var goal = card.getAttribute('data-goal');
+                localStorage.setItem('sukoon-goal', goal);
+
+                setTimeout(function() {
+                    hideStep(step2, function() {
+                        showStep(step3);
+                        // Auto-dismiss after showing completion
+                        setTimeout(function() {
+                            localStorage.setItem('sukoon-onboarded', 'true');
+                            overlay.classList.add('fade-out');
+                            setTimeout(function() { overlay.remove(); }, 800);
+                        }, 2800);
+                    });
+                }, 600);
+            });
+        });
+    })();
+    </script>
 </body>
 </html>

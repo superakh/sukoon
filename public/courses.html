@@ -1,0 +1,1677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guided Courses - Sukoon</title>
+    <meta name="description" content="Structured meditation programs to guide your journey. Mindfulness, anxiety relief, better sleep, focus training, grief healing, and self-love.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 72px;
+            background: rgba(250,250,247,0.8);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem; color: #111827;
+            display: flex; align-items: center; gap: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+        .topbar-brand svg { width: 28px; height: 28px; }
+        .topbar-nav { display: flex; gap: 0.2rem; }
+        .topbar-nav a {
+            padding: 0.42rem 0.82rem; border-radius: 10px;
+            font-size: 0.84rem; font-weight: 500; color: #6B7280;
+            transition: all 0.2s ease;
+        }
+        .topbar-nav a:hover { background: rgba(79,70,229,0.06); color: #4F46E5; }
+        .topbar-nav a.active {
+            background: #4F46E5; color: #fff; font-weight: 600;
+        }
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .lang-select {
+            padding: 0.38rem 0.65rem; border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08); background: #fff;
+            font-size: 0.8rem; color: #6B7280; cursor: pointer;
+            font-family: 'Inter', sans-serif; outline: none;
+        }
+        .mobile-toggle {
+            display: none; background: none; border: none;
+            color: #111827; cursor: pointer;
+            width: 40px; height: 40px; border-radius: 10px;
+            align-items: center; justify-content: center;
+            transition: background 0.2s;
+        }
+        .mobile-toggle:hover { background: rgba(0,0,0,0.04); }
+        @media (max-width: 900px) {
+            .mobile-toggle { display: flex; }
+            .topbar { padding: 0 1.25rem; }
+            .topbar-nav {
+                display: none; flex-direction: column;
+                position: absolute; top: 72px; left: 0; right: 0;
+                background: rgba(250,250,247,0.97);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                padding: 0.5rem 0.75rem; gap: 0.1rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+            }
+            .topbar-nav.open { display: flex; }
+            .topbar-nav.open a { padding: 0.75rem 1rem; font-size: 0.95rem; border-radius: 12px; }
+        }
+
+        /* ===================== PAGE CONTENT ===================== */
+        .page-wrap {
+            padding: 112px 2rem 4rem;
+            max-width: 1120px; margin: 0 auto;
+        }
+
+        /* Header */
+        .page-header {
+            text-align: center; margin-bottom: 3.5rem;
+        }
+        .page-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2.4rem, 5vw, 3.5rem);
+            font-weight: 400; color: #111827;
+            letter-spacing: -0.02em; line-height: 1.15;
+            margin-bottom: 0.75rem;
+        }
+        .page-sub {
+            font-size: 1.05rem; color: #6B7280;
+            max-width: 480px; margin: 0 auto 0.35rem;
+            line-height: 1.6;
+        }
+        .page-sub-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.88rem; color: #9CA3AF;
+            font-weight: 300;
+        }
+
+        /* ===================== FEATURED HERO CARD ===================== */
+        .featured-card {
+            position: relative;
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 50%, #6366F1 100%);
+            border-radius: 24px;
+            padding: 3rem 3.5rem;
+            margin-bottom: 3.5rem;
+            overflow: hidden;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .featured-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 60px rgba(79,70,229,0.3);
+        }
+        .featured-card::before {
+            content: '';
+            position: absolute; top: -50%; right: -20%;
+            width: 60%; height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .featured-card::after {
+            content: '';
+            position: absolute; bottom: -30%; left: -10%;
+            width: 50%; height: 120%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.05) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .featured-inner { position: relative; z-index: 1; }
+        .featured-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.35rem 0.85rem; border-radius: 100px;
+            background: rgba(255,255,255,0.18);
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            margin-bottom: 1.2rem;
+            backdrop-filter: blur(8px);
+        }
+        .featured-badge-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #34D399;
+            animation: pulseDot 2s ease-in-out infinite;
+        }
+        @keyframes pulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+        .featured-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 400; line-height: 1.2;
+            margin-bottom: 0.6rem;
+        }
+        .featured-desc {
+            font-size: 1rem; opacity: 0.85;
+            max-width: 480px; line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        .featured-progress-area { margin-bottom: 1.5rem; }
+        .featured-progress-label {
+            font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            opacity: 0.75; margin-bottom: 0.5rem;
+        }
+        .featured-progress-bar {
+            width: 100%; max-width: 340px; height: 6px;
+            background: rgba(255,255,255,0.2); border-radius: 100px;
+            overflow: hidden;
+        }
+        .featured-progress-fill {
+            height: 100%; background: #fff; border-radius: 100px;
+            transition: width 0.6s ease;
+        }
+        .featured-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.82rem 2rem; border-radius: 100px;
+            background: #fff; color: #4F46E5;
+            font-size: 0.92rem; font-weight: 600;
+            border: none; cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.22s ease;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+        .featured-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+        }
+        .featured-btn svg { width: 16px; height: 16px; }
+        @media (max-width: 640px) {
+            .featured-card { padding: 2rem 1.5rem; border-radius: 20px; }
+        }
+
+        /* ===================== COURSE GRID ===================== */
+        .section-label {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: #9CA3AF; margin-bottom: 1.2rem;
+        }
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.25rem;
+            margin-bottom: 4rem;
+        }
+        @media (max-width: 700px) {
+            .course-grid { grid-template-columns: 1fr; }
+        }
+
+        .course-card {
+            background: #fff;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 18px;
+            padding: 1.75rem;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.25s ease;
+        }
+        .course-card:hover {
+            border-color: rgba(79,70,229,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+        .course-card-accent {
+            position: absolute; top: 0; left: 0; right: 0; height: 4px;
+        }
+
+        .course-card-head {
+            display: flex; align-items: flex-start;
+            justify-content: space-between; margin-bottom: 0.8rem;
+        }
+        .course-card-icon {
+            width: 44px; height: 44px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.3rem; flex-shrink: 0;
+        }
+        .course-card-meta {
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .course-card-days {
+            font-size: 0.7rem; font-weight: 600; color: #6B7280;
+            background: rgba(0,0,0,0.04); padding: 0.25rem 0.6rem;
+            border-radius: 100px;
+        }
+        .course-card-level {
+            font-size: 0.65rem; font-weight: 700; color: #4F46E5;
+            text-transform: uppercase; letter-spacing: 0.06em;
+            padding: 0.25rem 0.6rem; border-radius: 100px;
+            background: rgba(79,70,229,0.06);
+        }
+        .course-card-level.intermediate { color: #D97706; background: rgba(217,119,6,0.08); }
+        .course-card-level.all { color: #059669; background: rgba(5,150,105,0.08); }
+
+        .course-card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem; color: #111827;
+            line-height: 1.3; margin-bottom: 0.2rem;
+        }
+        .course-card-title-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.78rem; color: #9CA3AF;
+            font-weight: 300; margin-bottom: 0.55rem;
+        }
+        .course-card-desc {
+            font-size: 0.88rem; color: #6B7280;
+            line-height: 1.55; margin-bottom: 1.1rem;
+        }
+
+        /* Progress indicator */
+        .course-progress {
+            display: flex; align-items: center; gap: 0.6rem;
+        }
+        .course-progress-bar {
+            flex: 1; height: 4px;
+            background: rgba(0,0,0,0.06); border-radius: 100px;
+            overflow: hidden;
+        }
+        .course-progress-fill {
+            height: 100%; border-radius: 100px;
+            background: #4F46E5;
+            transition: width 0.5s ease;
+        }
+        .course-progress-text {
+            font-size: 0.7rem; font-weight: 600; color: #9CA3AF;
+            white-space: nowrap;
+        }
+        .course-progress-text.complete { color: #059669; }
+
+        /* ===================== SESSION PLAYER OVERLAY ===================== */
+        .player-overlay {
+            position: fixed; inset: 0; z-index: 5000;
+            background: rgba(250,250,247,0.97);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.45s ease;
+        }
+        .player-overlay.show { opacity: 1; pointer-events: auto; }
+
+        .player-close {
+            position: absolute; top: 1.25rem; right: 1.5rem;
+            background: rgba(0,0,0,0.04); border: none;
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: #6B7280;
+            transition: all 0.2s ease;
+        }
+        .player-close:hover { background: rgba(0,0,0,0.08); color: #111827; }
+        .player-close svg { width: 20px; height: 20px; }
+
+        /* Setup screen */
+        .player-setup {
+            display: flex; flex-direction: column;
+            align-items: center; text-align: center;
+            padding: 2rem;
+            max-width: 520px; width: 100%;
+        }
+        .player-setup.hide { display: none; }
+
+        .player-course-label {
+            font-size: 0.7rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            color: #4F46E5; margin-bottom: 0.5rem;
+        }
+        .player-day-label {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem; color: #111827;
+            margin-bottom: 0.3rem;
+        }
+        .player-session-title {
+            font-size: 0.95rem; color: #6B7280;
+            margin-bottom: 2rem;
+        }
+
+        .player-option-group {
+            width: 100%; margin-bottom: 1.5rem;
+        }
+        .player-option-label {
+            font-size: 0.68rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: #9CA3AF; margin-bottom: 0.6rem;
+        }
+        .player-pills {
+            display: flex; gap: 0.4rem;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .player-pill {
+            padding: 0.5rem 1.1rem; border-radius: 100px;
+            font-size: 0.82rem; font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.08); background: #fff;
+            color: #374151; cursor: pointer;
+            transition: all 0.22s ease;
+            font-family: 'Inter', sans-serif;
+        }
+        .player-pill:hover { border-color: rgba(79,70,229,0.25); color: #4F46E5; }
+        .player-pill.active {
+            background: #4F46E5; border-color: #4F46E5;
+            color: #fff; box-shadow: 0 2px 10px rgba(79,70,229,0.25);
+        }
+        .player-pill-ambient.active {
+            background: #10B981; border-color: #10B981;
+            box-shadow: 0 2px 10px rgba(16,185,129,0.22);
+        }
+
+        .player-begin-btn {
+            margin-top: 1rem;
+            padding: 0.9rem 3rem; border-radius: 100px;
+            background: #4F46E5; color: #fff;
+            font-size: 1rem; font-weight: 600;
+            border: none; cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 4px 16px rgba(79,70,229,0.25);
+            transition: all 0.22s ease;
+        }
+        .player-begin-btn:hover {
+            background: #4338CA; transform: translateY(-1px);
+            box-shadow: 0 6px 24px rgba(79,70,229,0.3);
+        }
+
+        /* Active session screen */
+        .player-session {
+            display: none; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center;
+            padding: 2rem; width: 100%;
+            min-height: 100vh; min-height: 100dvh;
+            position: relative;
+        }
+        .player-session.show { display: flex; }
+
+        .session-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background: linear-gradient(170deg, #1a1a2e 0%, #16213e 40%, #0f3460 100%);
+            transition: background 0.8s ease;
+        }
+        .session-bg-orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(100px); opacity: 0.15;
+            animation: sessionOrb 20s ease-in-out infinite;
+        }
+        .session-bg-orb:nth-child(1) {
+            width: 500px; height: 500px;
+            background: #4F46E5; top: 10%; left: 15%;
+        }
+        .session-bg-orb:nth-child(2) {
+            width: 400px; height: 400px;
+            background: #7C3AED; bottom: 15%; right: 15%;
+            animation-delay: 7s;
+        }
+        .session-bg-orb:nth-child(3) {
+            width: 350px; height: 350px;
+            background: #10B981; top: 50%; left: 50%;
+            animation-delay: 14s;
+        }
+        @keyframes sessionOrb {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -20px) scale(1.05); }
+            66% { transform: translate(-20px, 15px) scale(0.95); }
+        }
+
+        .session-content {
+            position: relative; z-index: 1;
+            display: flex; flex-direction: column;
+            align-items: center;
+            max-width: 580px; width: 100%;
+        }
+        .session-course-name {
+            font-size: 0.68rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: rgba(255,255,255,0.45);
+            margin-bottom: 2.5rem;
+        }
+        .session-timer {
+            font-size: clamp(4rem, 12vw, 6.5rem);
+            font-weight: 200; color: rgba(255,255,255,0.9);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: -0.04em; line-height: 1;
+            margin-bottom: 2.5rem;
+            transition: opacity 0.5s ease;
+        }
+        .session-prompt-wrap {
+            min-height: 120px;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+        .session-prompt {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic;
+            font-size: clamp(1.1rem, 2.8vw, 1.35rem);
+            color: rgba(255,255,255,0.85);
+            line-height: 1.65; max-width: 460px;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+        .session-prompt.fade { opacity: 0; }
+
+        .session-dots {
+            display: flex; gap: 0.4rem;
+            margin-bottom: 2rem;
+        }
+        .session-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.4s ease;
+        }
+        .session-dot.active { background: rgba(255,255,255,0.7); transform: scale(1.3); }
+        .session-dot.done { background: rgba(79,70,229,0.6); }
+
+        .session-pause-btn {
+            padding: 0.65rem 1.8rem; border-radius: 100px;
+            background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7);
+            font-size: 0.8rem; font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.1); cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+            backdrop-filter: blur(8px);
+        }
+        .session-pause-btn:hover {
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+        }
+
+        /* ===================== SESSION COMPLETE SCREEN ===================== */
+        .player-complete {
+            display: none; flex-direction: column;
+            align-items: center; justify-content: center;
+            text-align: center; padding: 2rem;
+            max-width: 520px; width: 100%;
+        }
+        .player-complete.show { display: flex; }
+
+        .complete-icon {
+            width: 80px; height: 80px; margin-bottom: 1.5rem;
+        }
+        .complete-icon svg { width: 100%; height: 100%; }
+
+        .complete-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.6rem; color: #111827;
+            margin-bottom: 0.3rem;
+        }
+        .complete-sub {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.95rem; color: #9CA3AF;
+            font-weight: 300; margin-bottom: 2rem;
+        }
+        .complete-quote {
+            font-family: 'DM Serif Display', serif;
+            font-style: italic; font-size: 1.1rem;
+            color: #374151; line-height: 1.6;
+            max-width: 420px; margin-bottom: 0.4rem;
+        }
+        .complete-quote-author {
+            font-size: 0.78rem; color: #9CA3AF;
+            margin-bottom: 2.5rem;
+        }
+        .complete-actions {
+            display: flex; gap: 0.75rem;
+            flex-wrap: wrap; justify-content: center;
+        }
+        .complete-btn-primary {
+            padding: 0.82rem 2rem; border-radius: 100px;
+            background: #4F46E5; color: #fff;
+            font-size: 0.9rem; font-weight: 600;
+            border: none; cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 0 2px 10px rgba(79,70,229,0.22);
+            transition: all 0.22s ease;
+        }
+        .complete-btn-primary:hover { background: #4338CA; transform: translateY(-1px); }
+        .complete-btn-ghost {
+            padding: 0.75rem 1.5rem; border-radius: 100px;
+            background: #fff; color: #374151;
+            font-size: 0.85rem; font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.08); cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s ease;
+        }
+        .complete-btn-ghost:hover { border-color: rgba(0,0,0,0.14); background: #F9FAFB; }
+        .complete-next {
+            margin-top: 1.5rem;
+            font-size: 0.78rem; color: #9CA3AF;
+        }
+        .complete-next strong { color: #6B7280; }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #F3F4F6; padding: 3rem 2rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+        .footer-inner {
+            max-width: 1100px; margin: 0 auto;
+            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem; color: #111827; margin-bottom: 0.75rem;
+        }
+        .footer-desc {
+            font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px;
+        }
+        .footer-desc-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.78rem; color: #9CA3AF; margin-top: 0.35rem;
+            font-weight: 300;
+        }
+        .footer-priv {
+            display: inline-flex; align-items: center; gap: 0.35rem;
+            margin-top: 1rem; font-size: 0.7rem; color: #9CA3AF;
+            background: rgba(0,0,0,0.03); padding: 0.3rem 0.7rem;
+            border-radius: 100px;
+        }
+        .footer-priv svg { width: 12px; height: 12px; }
+        .footer-col-title {
+            font-size: 0.68rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: #9CA3AF; margin-bottom: 1rem;
+        }
+        .footer-links { list-style: none; }
+        .footer-links li { margin-bottom: 0.6rem; }
+        .footer-links a {
+            font-size: 0.88rem; color: #6B7280;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover { color: #4F46E5; }
+        .footer-bottom {
+            max-width: 1100px; margin: 2rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(0,0,0,0.04);
+            font-size: 0.75rem; color: #9CA3AF;
+            text-align: center;
+        }
+        @media (max-width: 700px) {
+            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===================== TOPBAR ===================== -->
+<nav class="topbar">
+    <a href="index.html" class="topbar-brand">
+        <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#4F46E5" stroke-width="1.5"/><path d="M14 7c0 3.87-3.13 7-7 7 3.87 0 7 3.13 7 7 0-3.87 3.13-7 7-7-3.87 0-7-3.13-7-7z" fill="#4F46E5" opacity="0.7"/></svg>
+        Sukoon
+    </a>
+    <div class="topbar-nav" id="topNav">
+        <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
+        <a href="meditate.html" data-i18n="nav.meditate">Meditate</a>
+        <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
+        <a href="courses.html" class="active" data-i18n="nav.courses">Courses</a>
+        <a href="journal.html" data-i18n="nav.journal">Journal</a>
+        <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
+        <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+        <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
+        <a href="videos.html" data-i18n="nav.videos">Videos</a>
+    </div>
+    <div class="topbar-right">
+        <select class="lang-select" aria-label="Language">
+            <option value="en">EN</option>
+            <option value="hi">HI</option>
+            <option value="ur">UR</option>
+            <option value="ar">AR</option>
+            <option value="es">ES</option>
+            <option value="fr">FR</option>
+        </select>
+        <button class="mobile-toggle" id="menuBtn" aria-label="Toggle navigation">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        </button>
+    </div>
+</nav>
+
+<!-- ===================== MAIN ===================== -->
+<main class="page-wrap">
+
+    <!-- Header -->
+    <div class="page-header">
+        <h1 class="page-title">Guided Courses</h1>
+        <p class="page-sub">Structured paths to inner peace. One day at a time.</p>
+        <p class="page-sub-hi">&#x0936;&#x093E;&#x0902;&#x0924;&#x093F; &#x0915;&#x0947; &#x0938;&#x0941;&#x0935;&#x094D;&#x092F;&#x0935;&#x0938;&#x094D;&#x0925;&#x093F;&#x0924; &#x092E;&#x093E;&#x0930;&#x094D;&#x0917;&#x0964; &#x090F;&#x0915; &#x0926;&#x093F;&#x0928; &#x090F;&#x0915; &#x0915;&#x0926;&#x092E;&#x0964;</p>
+    </div>
+
+    <!-- Featured Course Hero -->
+    <div class="featured-card" id="featuredCard">
+        <div class="featured-inner">
+            <div class="featured-badge">
+                <span class="featured-badge-dot"></span>
+                Recommended Start
+            </div>
+            <div class="featured-title">Your First 7 Days of Mindfulness</div>
+            <div class="featured-desc">A gentle introduction to mindfulness. No experience needed. Just you, your breath, and a few quiet minutes each day.</div>
+            <div class="featured-progress-area">
+                <div class="featured-progress-label" id="featuredProgressLabel">Day 1 of 7</div>
+                <div class="featured-progress-bar">
+                    <div class="featured-progress-fill" id="featuredProgressFill" style="width:0%"></div>
+                </div>
+            </div>
+            <button class="featured-btn" id="featuredBtn">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M5.5 3l6 5-6 5V3z" fill="currentColor"/></svg>
+                Begin
+            </button>
+        </div>
+    </div>
+
+    <!-- Course Library -->
+    <div class="section-label">All Courses</div>
+    <div class="course-grid" id="courseGrid"></div>
+
+</main>
+
+<!-- ===================== SESSION PLAYER OVERLAY ===================== -->
+<div class="player-overlay" id="playerOverlay">
+    <button class="player-close" id="playerClose">
+        <svg viewBox="0 0 20 20" fill="none"><path d="M5 5l10 10M15 5L5 15" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+    </button>
+
+    <!-- Setup Screen -->
+    <div class="player-setup" id="playerSetup">
+        <div class="player-course-label" id="playerCourseLabel"></div>
+        <div class="player-day-label" id="playerDayLabel"></div>
+        <div class="player-session-title" id="playerSessionTitle"></div>
+
+        <div class="player-option-group">
+            <div class="player-option-label">Duration</div>
+            <div class="player-pills" id="durationPills">
+                <button class="player-pill" data-dur="300">5 min</button>
+                <button class="player-pill active" data-dur="600">10 min</button>
+                <button class="player-pill" data-dur="900">15 min</button>
+            </div>
+        </div>
+
+        <div class="player-option-group">
+            <div class="player-option-label">Ambient Sound</div>
+            <div class="player-pills" id="ambientPills">
+                <button class="player-pill player-pill-ambient active" data-amb="silence">Silence</button>
+                <button class="player-pill player-pill-ambient" data-amb="rain">Rain</button>
+                <button class="player-pill player-pill-ambient" data-amb="ocean">Ocean</button>
+            </div>
+        </div>
+
+        <button class="player-begin-btn" id="playerBeginBtn">Begin Session</button>
+    </div>
+
+    <!-- Active Session Screen -->
+    <div class="player-session" id="playerSession">
+        <div class="session-bg">
+            <div class="session-bg-orb"></div>
+            <div class="session-bg-orb"></div>
+            <div class="session-bg-orb"></div>
+        </div>
+        <div class="session-content">
+            <div class="session-course-name" id="sessionCourseName"></div>
+            <div class="session-timer" id="sessionTimer">10:00</div>
+            <div class="session-prompt-wrap">
+                <div class="session-prompt" id="sessionPrompt"></div>
+            </div>
+            <div class="session-dots" id="sessionDots"></div>
+            <button class="session-pause-btn" id="sessionPauseBtn">Pause</button>
+        </div>
+    </div>
+
+    <!-- Complete Screen -->
+    <div class="player-complete" id="playerComplete">
+        <div class="complete-icon">
+            <svg viewBox="0 0 80 80" fill="none">
+                <circle cx="40" cy="40" r="38" stroke="#4F46E5" stroke-width="2" opacity="0.15"/>
+                <circle cx="40" cy="40" r="28" stroke="#4F46E5" stroke-width="1.5" opacity="0.25"/>
+                <path d="M28 40l8 8 16-16" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="complete-title">Session Complete</div>
+        <div class="complete-sub" id="completeSub">&#x0938;&#x0924;&#x094D;&#x0930; &#x0938;&#x092E;&#x093E;&#x092A;&#x094D;&#x0924;</div>
+        <div class="complete-quote" id="completeQuote"></div>
+        <div class="complete-quote-author" id="completeAuthor"></div>
+        <div class="complete-actions">
+            <button class="complete-btn-primary" id="completeMarkBtn">Mark Complete</button>
+            <button class="complete-btn-ghost" id="completeCloseBtn">Back to Courses</button>
+        </div>
+        <div class="complete-next" id="completeNext"></div>
+    </div>
+</div>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="footer">
+    <div class="footer-inner">
+        <div>
+            <div class="footer-brand">Sukoon</div>
+            <div class="footer-desc">Free mental wellness for every soul. No accounts. No tracking. Just peace.</div>
+            <div class="footer-desc-hi">&#x0939;&#x0930; &#x0906;&#x0924;&#x094D;&#x092E;&#x093E; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x093C;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F;</div>
+            <a href="privacy.html" class="footer-priv">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M6 1L2 3.5V6c0 2.5 1.7 4.3 4 5 2.3-.7 4-2.5 4-5V3.5L6 1z" stroke="currentColor" stroke-width="1"/></svg>
+                Privacy-first. Always free.
+            </a>
+        </div>
+        <div>
+            <div class="footer-col-title">Tools</div>
+            <ul class="footer-links">
+                <li><a href="breathe.html">Breathe</a></li>
+                <li><a href="meditate.html">Meditate</a></li>
+                <li><a href="sounds.html">Sounds</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="journal.html">Journal</a></li>
+            </ul>
+        </div>
+        <div>
+            <div class="footer-col-title">More</div>
+            <ul class="footer-links">
+                <li><a href="friend.html">AI Friend</a></li>
+                <li><a href="wisdom.html">Wisdom</a></li>
+                <li><a href="quotes.html">Quotes</a></li>
+                <li><a href="videos.html">Videos</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-bottom">Made with stillness. Sukoon is free, forever.</div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+
+/* ===================== MOBILE MENU ===================== */
+var menuBtn = document.getElementById('menuBtn');
+var topNav = document.getElementById('topNav');
+menuBtn.addEventListener('click', function(){ topNav.classList.toggle('open'); });
+
+/* ===================== COURSE DATA ===================== */
+var COURSES = {
+    "start-here": {
+        id: "start-here",
+        title: "Start Here",
+        titleHi: "\u092F\u0939\u093E\u0901 \u0938\u0947 \u0936\u0941\u0930\u0942 \u0915\u0930\u0947\u0902",
+        days: 7,
+        level: "Beginner",
+        desc: "Your first steps into mindfulness",
+        icon: "\u2728",
+        color: "#4F46E5",
+        colorLight: "rgba(79,70,229,0.08)",
+        sessions: {
+            1: { title: "Arriving", prompts: [
+                "Welcome. Find a comfortable position. You can sit or lie down. There is no wrong way to do this.",
+                "Gently close your eyes. Take a deep breath in through your nose... and slowly release it through your mouth.",
+                "Notice how your body feels right now. You don't need to change anything. Just notice.",
+                "Bring your attention to your breathing. Feel the air entering your nostrils... filling your lungs... and leaving again.",
+                "Your mind will wander. That's perfectly normal. When it does, gently guide your attention back to your breath. No judgment.",
+                "Feel the weight of your body against the surface beneath you. You are supported. You are held.",
+                "With each breath, let go of one small tension. Your shoulders... your jaw... your hands.",
+                "You have given yourself this gift of stillness. Even one minute of mindfulness creates ripples of calm throughout your day.",
+                "When you're ready, slowly open your eyes. Carry this calm with you. You did beautifully today."
+            ]},
+            2: { title: "The Anchor", prompts: [
+                "Welcome back. You showed up again. That matters more than you know.",
+                "Close your eyes and settle in. Let your body find its natural resting position.",
+                "Today we'll use the breath as an anchor. Whenever your mind drifts, the breath is always here to return to.",
+                "Breathe in for a slow count of four... hold for a moment... and breathe out for a count of six. Let the exhale be longer than the inhale.",
+                "Notice the tiny pause between the inhale and the exhale. That brief moment of stillness is where peace lives.",
+                "Your mind has wandered. That's not failure, that's awareness. You noticed. Gently return to the breath.",
+                "Imagine your thoughts are clouds passing through a vast sky. The sky doesn't try to hold onto clouds. It lets them pass.",
+                "Feel the rhythm of your breathing. It asks nothing of you. It simply continues, faithfully, moment after moment.",
+                "Take one last deep breath. Feel how different your body feels now compared to when you began. This shift is real. You created it."
+            ]},
+            3: { title: "Body Scan", prompts: [
+                "Welcome to Day 3. Today we'll explore a body scan. A gentle way to listen to what your body is telling you.",
+                "Close your eyes and take three slow breaths to settle in. Let the outside world fade.",
+                "Bring your attention to the top of your head. Notice any sensation there. Tingling, warmth, tightness. Just observe.",
+                "Slowly move your attention down to your face. Your forehead, your eyes, your cheeks, your jaw. Soften each area as you notice it.",
+                "Let your awareness flow into your neck and shoulders. These carry so much of our stress. Breathe into any tension you find.",
+                "Move down through your arms to your fingertips. Feel the life in your hands. The subtle pulse, the warmth.",
+                "Bring attention to your chest and belly. Feel the rise and fall. Your body knows how to breathe. Trust it.",
+                "Continue down through your hips, your legs, all the way to your toes. Your whole body is alive and present.",
+                "Now hold your entire body in awareness, as one whole. You are complete. You are here. And that is enough."
+            ]},
+            4: { title: "Thoughts as Visitors", prompts: [
+                "Welcome to Day 4. By now, you've noticed that thoughts keep arriving, uninvited. Today we'll learn to greet them differently.",
+                "Close your eyes. Settle into your breathing. Let it be natural and unforced.",
+                "As you sit quietly, a thought will appear. Perhaps a worry, a memory, or a plan. When it does, silently say to yourself: 'Thought.'",
+                "You don't need to follow the thought, argue with it, or push it away. Just label it. 'Thought.' And return to your breath.",
+                "Imagine you are sitting on a riverbank, watching leaves float by on the water. Each leaf carries a thought. You watch them pass.",
+                "Some thoughts feel important, urgent even. That's okay. For now, you are simply practicing the art of not engaging. Just watching.",
+                "Notice that between thoughts, there are small gaps of silence. These gaps are your natural state. Pure awareness, at rest.",
+                "You are not your thoughts. You are the one who notices them. This is a profound difference. Let it settle in.",
+                "Gently come back. You've learned something powerful today: that you can observe your mind without being controlled by it."
+            ]},
+            5: { title: "Kindness to Self", prompts: [
+                "Welcome to Day 5. You've been consistent, and that takes quiet courage. Today, we turn our attention toward kindness.",
+                "Close your eyes. Take a few settling breaths. Let your body soften.",
+                "Place your hand on your heart if that feels comfortable. Feel its steady rhythm. This heart has carried you through everything.",
+                "Silently repeat after me: May I be happy. May I be healthy. May I be safe. May I live with ease.",
+                "If those words feel awkward, that's okay. Kindness toward ourselves can feel unfamiliar. Practice it like any other skill.",
+                "Think of something you've been hard on yourself about recently. Now imagine a dear friend telling you that same thing. What would you say to them?",
+                "Offer yourself that same compassion now. You are doing your best. Your best is enough.",
+                "Breathe in warmth. Breathe out criticism. Breathe in gentleness. Breathe out harshness. Let this exchange soften you from the inside.",
+                "Carry this kindness with you. You deserve the same compassion you so freely give to others."
+            ]},
+            6: { title: "Mindful Listening", prompts: [
+                "Welcome to Day 6. Today, we practice listening. Not to words, but to the world around you.",
+                "Close your eyes and become still. Instead of focusing on your breath, open your ears to whatever is present.",
+                "What do you hear? Perhaps distant traffic, birdsong, the hum of an appliance. Don't label or judge. Just listen.",
+                "Notice how sounds come and go on their own. You don't have to hold onto any of them. They arrive, they pass.",
+                "Try to hear the silence between sounds. That quiet underneath everything. It's always there, waiting to be noticed.",
+                "Now zoom in to the closest sound you can find. Perhaps your own breathing. The rustle of fabric as your chest moves.",
+                "When you listen this deeply, the ordinary becomes extraordinary. Every moment is filled with a richness we usually miss.",
+                "Your ability to be fully present in this moment, hearing what is actually here, is the essence of mindfulness.",
+                "Slowly widen your awareness back to your body, your breath. Open your eyes when ready. Listen deeply to the rest of your day."
+            ]},
+            7: { title: "Your Own Way", prompts: [
+                "Welcome to Day 7. Your final day of this course. But really, this is just the beginning.",
+                "Close your eyes. Take three deep breaths. Feel how much more naturally you settle in compared to Day 1.",
+                "Today, there is no technique. No instruction to follow. Simply sit with yourself and breathe.",
+                "You know how to anchor in the breath. You know how to scan your body. You know how to watch thoughts pass. Use whatever feels right.",
+                "This is what mindfulness really is. Not a rigid practice, but a way of being. Present, open, gentle.",
+                "As you sit in this silence, reflect on the past seven days. You showed up. Seven times. That is a beautiful thing.",
+                "Imagine carrying this stillness into your daily life. A pause before reacting. A breath during stress. A moment of kindness toward yourself.",
+                "You don't need an app or a course to be mindful. You only need the willingness to be here, right now. You already have everything you need.",
+                "Take one final deep breath. This course is complete, but your practice is just beginning. Well done. You've planted a seed of lasting peace."
+            ]}
+        }
+    },
+    "calm-anxiety": {
+        id: "calm-anxiety",
+        title: "Calm Anxiety",
+        titleHi: "\u091A\u093F\u0902\u0924\u093E \u0936\u093E\u0902\u0924 \u0915\u0930\u0947\u0902",
+        days: 7,
+        level: "Intermediate",
+        desc: "Tools to quiet the anxious mind",
+        icon: "\ud83c\udf3f",
+        color: "#059669",
+        colorLight: "rgba(5,150,105,0.08)",
+        sessions: {
+            1: { title: "Understanding Anxiety", prompts: [
+                "Welcome. If you're here, you may be carrying some worry or unease. That's okay. You've come to the right place.",
+                "Close your eyes. Notice what anxiety feels like in your body right now. Is it in your chest? Your stomach? Your throat? Just notice.",
+                "Anxiety is not your enemy. It's your nervous system trying to protect you. Today we begin learning to work with it, not against it.",
+                "Take a slow breath in for four counts. Hold for four. Out for six. This longer exhale activates your body's calming response.",
+                "Continue this breathing pattern. In for four... hold for four... out for six. Each cycle sends a signal of safety to your brain.",
+                "Notice how after just a few breaths, something shifts. The grip loosens, even slightly. That slight shift is real. It's enough.",
+                "Anxiety often pulls us into the future, into 'what if.' Right now, bring yourself back to this exact moment. In this moment, you are safe.",
+                "Place a hand on your belly. Feel it rise and fall. This physical connection grounds you in the present, where anxiety has less power.",
+                "You've taken the first step. Anxiety doesn't disappear overnight, but you now have a tool. Your breath. It's always with you."
+            ]},
+            2: { title: "The 5-4-3-2-1 Ground", prompts: [
+                "Welcome back. Today we learn a grounding technique that pulls you out of anxious spirals and into the present moment.",
+                "Close your eyes for a moment and take three centering breaths. Let your body begin to settle.",
+                "Now gently open your eyes. Look around and notice five things you can see. Really see them. The color, the shape, the texture.",
+                "Close your eyes again. Notice four things you can feel. The chair beneath you, the fabric of your clothes, the temperature of the air, your feet on the ground.",
+                "Listen for three things you can hear. Near or far. Let each sound anchor you deeper into this moment.",
+                "Notice two things you can smell. Even subtle scents count. The air itself has a quality to it.",
+                "Finally, notice one thing you can taste. Perhaps the lingering trace of something you drank, or simply the taste of stillness.",
+                "Your senses are doorways to the present. Anxiety lives in the imagined future. Your senses live only in the now.",
+                "Whenever anxiety rises, you can run through this grounding sequence. Five, four, three, two, one. It takes less than a minute, and it works."
+            ]},
+            3: { title: "The Worry Container", prompts: [
+                "Welcome to Day 3. Today we'll work with a visualization for managing worries that feel overwhelming.",
+                "Close your eyes. Breathe slowly and settle in. Give yourself permission to let go of being productive for these few minutes.",
+                "Imagine a container. It can be anything: a wooden box, a glass jar, a treasure chest. See it clearly in your mind.",
+                "Now, think of one worry that's been weighing on you. See it as an object. It could be a tangled ball, a heavy stone, a swirling cloud.",
+                "Gently place that worry into your container. You're not ignoring it. You're saying: I'll attend to you, but not right now.",
+                "If more worries arise, give each one a form. Place each into the container, one by one. The container can hold everything.",
+                "Now close the lid. The container is strong. Your worries are held, safely, while you give yourself this moment of peace.",
+                "Take a few slow breaths. Feel the space that opens up when you set your burdens down, even temporarily.",
+                "Your worries will still be there when you're ready. But you've practiced something powerful: the ability to choose when to carry them."
+            ]},
+            4: { title: "Releasing Tension", prompts: [
+                "Welcome to Day 4. Anxiety lives in the body as much as in the mind. Today we release it from both.",
+                "Close your eyes. Take a breath and notice where you're holding tension. Everyone has their spots. Find yours.",
+                "We'll practice progressive relaxation. Squeeze your hands into tight fists. Hold for five seconds. Now release. Feel the difference.",
+                "Raise your shoulders up to your ears. Hold them there, tight. Feel the tension build. Now drop them. Let them fall completely.",
+                "Tighten your face. Scrunch everything. Eyes, nose, mouth, forehead. Hold. Now relax completely. Let your face become soft and open.",
+                "Tense your legs, pressing your feet into the floor. Hold for five seconds. Release. Feel warmth flowing through your muscles.",
+                "Now tense your entire body. Every muscle. Hold for five... four... three... two... one. Release everything at once.",
+                "Breathe into this feeling of total release. This is what your body feels like without the armor of anxiety. Remember this feeling.",
+                "You can tense and release any time you notice anxiety building. It takes seconds and reminds your body that it's safe to let go."
+            ]},
+            5: { title: "Rewriting the Story", prompts: [
+                "Welcome to Day 5. Today we work with the stories anxiety tells us. The 'what ifs' and worst-case scenarios.",
+                "Close your eyes. Breathe slowly. Let your body settle while we turn attention to the patterns of your mind.",
+                "Think of a worry that's been recurring. Not the biggest one, something manageable. Hold it gently in your awareness.",
+                "Notice the story your mind tells about this worry. It probably starts with 'what if' and ends with something catastrophic.",
+                "Now ask yourself: Is this story absolutely true? Have I confused possibility with probability? Most of what we fear never happens.",
+                "Try rewriting the story. Same situation, but imagine the best possible outcome. Or even just an okay outcome. Feel how your body responds.",
+                "Anxiety is a storyteller. It writes dramas. You can choose to listen, or you can choose to write a different story.",
+                "Take a few breaths. Each exhale is a release of the old story. Each inhale invites a newer, kinder narrative.",
+                "You don't have to believe every thought your mind produces. You are the author. And you can always revise."
+            ]},
+            6: { title: "The Calm Place", prompts: [
+                "Welcome to Day 6. Today we build an inner sanctuary, a calm place you can visit whenever anxiety feels overwhelming.",
+                "Close your eyes. Breathe slowly until you feel settled. Let the rhythm of your breath carry you inward.",
+                "Imagine a place where you feel completely safe and at peace. It could be real or imagined. A beach, a forest, a quiet room, a mountain meadow.",
+                "See this place in vivid detail. What colors surround you? What does the light look like? Is it warm or cool?",
+                "What sounds are present in your calm place? Perhaps waves, wind through trees, birds, or perfect silence. Let these sounds wash over you.",
+                "Feel the ground beneath you. The textures, the temperature. Breathe in the air of this place. Clean, calm, renewing.",
+                "In this place, there is nothing to fix, nowhere to be, nothing to fear. You are simply here, and here is enough.",
+                "Spend a few more breaths in your sanctuary. Know that it exists inside you always. No one can take it away.",
+                "When anxiety rises in your daily life, close your eyes for ten seconds and visit this place. It's always waiting for you."
+            ]},
+            7: { title: "Living with Openness", prompts: [
+                "Welcome to Day 7. You've built a toolkit of skills this week. Today, we bring them together.",
+                "Close your eyes. Settle in with your breath. Notice how much easier it is to arrive here compared to Day 1.",
+                "You've learned to breathe through anxiety, to ground yourself, to contain worries, to release tension, to rewrite stories, and to find your calm place.",
+                "Today, we practice acceptance. Not giving up, but stopping the fight against what we feel. Anxiety arises. That's human. You can let it be.",
+                "Imagine anxiety as a wave in the ocean. You don't have to stop the wave. You learn to surf it. It rises, it crests, it passes.",
+                "Say to yourself: I am not my anxiety. I am the awareness that notices it. I am the sky, not the weather.",
+                "Breathe in courage. Breathe out resistance. Breathe in openness. Breathe out control. Let yourself be exactly as you are.",
+                "Carry this openness forward. Some days will be harder. That's okay. You have tools. You have breath. You have yourself.",
+                "This course is complete. You are braver than you know. When anxiety visits, welcome it gently, then let it pass. You've got this."
+            ]}
+        }
+    },
+    "better-sleep": {
+        id: "better-sleep",
+        title: "Better Sleep",
+        titleHi: "\u092C\u0947\u0939\u0924\u0930 \u0928\u0940\u0902\u0926",
+        days: 5,
+        level: "Beginner",
+        desc: "Wind down and sleep deeply",
+        icon: "\ud83c\udf19",
+        color: "#6366F1",
+        colorLight: "rgba(99,102,241,0.08)",
+        sessions: {
+            1: { title: "Permission to Rest", prompts: [
+                "Welcome. The day is done. Whatever happened today, you've carried enough. It's time to set it all down.",
+                "Lie comfortably. Let your body become heavy against the mattress. There is nothing left to do tonight.",
+                "Close your eyes. Take a slow breath in, and let a long, slow breath out. Like a sigh of relief.",
+                "Scan down through your body. Starting at your head, moving to your toes. Wherever you find tension, breathe into it and let it melt.",
+                "Your jaw holds so much tension. Let it drop slightly open. Unclench your teeth. Soften your tongue against the roof of your mouth.",
+                "Let your shoulders sink. They've been carrying the weight of the day. They can rest now. They've earned it.",
+                "Tonight, give yourself full permission to rest. Not as a reward, but as a need. Your body heals when you sleep. Let it heal.",
+                "With each breath, you sink a little deeper. The mattress holds you. Gravity gently pulls you down. You are safe.",
+                "There is nowhere to go. Nothing to solve. Only this breath. And the next. And the sweet, heavy pull of sleep."
+            ]},
+            2: { title: "The Body Melts", prompts: [
+                "Welcome to Night 2. Tonight we'll guide your body into deep relaxation, one piece at a time.",
+                "Settle in. Close your eyes. Take three breaths that are longer than usual. Let each exhale be a sigh of letting go.",
+                "Bring your attention to your feet. Imagine warmth spreading through them. Your toes relax, the arches soften, the ankles loosen.",
+                "The warmth travels up through your calves and shins. Your muscles release. Your legs become heavy, warm, still.",
+                "It moves through your thighs, your hips. These large muscles hold tension all day from standing and sitting. Let them go completely.",
+                "The warmth spreads into your belly and lower back. Your core softens. Your breathing becomes deeper, slower, effortless.",
+                "Up through your chest, your upper back, your shoulders. Everything dissolving into warmth and heaviness.",
+                "Into your arms, your hands, your fingers. Down through your neck, your jaw, your face. Every muscle surrenders.",
+                "Your entire body is warm, heavy, and deeply relaxed. You are floating on the edge of sleep. Let yourself drift."
+            ]},
+            3: { title: "Quiet Mind", prompts: [
+                "Welcome to Night 3. The body is learning to rest. Tonight, we help the mind follow.",
+                "Lie still. Eyes closed. Begin with five slow breaths. Count each one. This simple act brings you into the present.",
+                "The mind often replays the day at night. If thoughts arise, imagine placing each one on a cloud and watching it float away.",
+                "Now imagine a chalkboard in your mind. On it, write the number ten. See it clearly. Now erase it slowly. Write nine.",
+                "Continue erasing and rewriting. Eight... seven... six. There is no rush. Each number brings you deeper into stillness.",
+                "Five... four... three. The numbers are getting harder to see. The chalk is fainter. Your mind is quieting.",
+                "Two... one. The board is clean. The room in your mind is quiet. There is nothing on the chalkboard. Nothing needs to be written.",
+                "Rest in this emptiness. It is not void, it is peaceful. The mind, like a lake at night, is completely still.",
+                "Let this stillness carry you into sleep. You don't need to try. Sleep comes to a quiet mind like dawn comes to the night."
+            ]},
+            4: { title: "Sleep Sanctuary", prompts: [
+                "Welcome to Night 4. Tonight, we create a space in your imagination that is devoted entirely to deep rest.",
+                "Close your eyes. Breathe slowly. Let the world outside this room fade completely.",
+                "Imagine you are in the most comfortable room you can conceive. Soft light, perfect temperature, the most inviting bed imaginable.",
+                "The sheets are cool and smooth. The pillows are exactly right. The air carries a faint, soothing scent. Perhaps lavender, perhaps rain.",
+                "Outside the window of this room, it's nighttime. Stars are scattered across a dark sky. The world is quiet and still.",
+                "A gentle breeze moves through the room, barely perceptible. It carries away any remaining tension, any lingering thought.",
+                "In this room, time slows down. There are no clocks, no alarms, no deadlines. There is only rest, stretching out endlessly before you.",
+                "Feel yourself sinking deeper into this imagined bed. The line between imagination and sleep is blurring. That's perfect.",
+                "You are safe. You are warm. You are held. Let sleep take you now. It's been waiting patiently all day."
+            ]},
+            5: { title: "Grateful Rest", prompts: [
+                "Welcome to Night 5, our final evening together. Tonight, we drift off with a heart full of gratitude.",
+                "Settle in. Close your eyes. Let your breathing become slow and rhythmic, like a gentle tide.",
+                "Think of one thing from today that you're grateful for. It can be small. A warm meal, a kind word, a moment of sunshine.",
+                "Hold that gratitude in your chest. Feel it as warmth. Gratitude is one of the most calming emotions the brain can produce.",
+                "Think of someone you love. Picture their face. Send them a silent wish for peaceful sleep tonight, wherever they are.",
+                "Now extend that wish to yourself. May I sleep deeply. May I wake refreshed. May my dreams be kind.",
+                "Over these five nights, you've learned to release your body, quiet your mind, and create space for deep rest. These skills are yours forever.",
+                "Your body knows how to sleep. It's been doing it your whole life. Trust it. Let it do what it knows. You just have to stop trying.",
+                "The night is yours. The quiet is yours. Sleep is coming. Let it arrive like an old friend. Goodnight."
+            ]}
+        }
+    },
+    "sharp-focus": {
+        id: "sharp-focus",
+        title: "Sharp Focus",
+        titleHi: "\u0924\u0940\u0935\u094D\u0930 \u090F\u0915\u093E\u0917\u094D\u0930\u0924\u093E",
+        days: 5,
+        level: "Intermediate",
+        desc: "Train your attention like a muscle",
+        icon: "\ud83c\udfaf",
+        color: "#D97706",
+        colorLight: "rgba(217,119,6,0.08)",
+        sessions: {
+            1: { title: "Single Point", prompts: [
+                "Welcome. Focus is a skill, not a talent. And like any skill, it can be trained. Today, we begin.",
+                "Sit upright. A straight spine naturally supports alertness. Close your eyes and take three energizing breaths.",
+                "We'll start with single-point focus. Choose one thing to focus on: the sensation of air at your nostrils as you breathe.",
+                "Keep your attention right there. The tip of your nostrils. Feel the cool air entering and the warm air leaving. That's your only task.",
+                "When your attention drifts, and it will, that's not failure. The moment you notice the drift and return, that's the exercise. That's the rep.",
+                "Think of it like lifting weights. Your mind wanders, you bring it back. That's one rep. Each rep strengthens your focus.",
+                "Continue for the next breaths. Air in, air out, at the nostrils. Nothing else matters right now. Just this point of sensation.",
+                "If you managed even thirty seconds of unbroken focus, that's significant. Most people can't do five seconds. You're building something real.",
+                "Open your eyes. You've completed your first focus session. Tomorrow, we go deeper. Your attention is already sharper than when you sat down."
+            ]},
+            2: { title: "The Counting Game", prompts: [
+                "Welcome to Day 2. Today we add structure to our focus practice with a counting technique used by meditators for centuries.",
+                "Sit tall. Close your eyes. Take a moment to arrive. Let the busy mind start to settle.",
+                "Begin counting your breaths. Inhale, exhale, that's one. Inhale, exhale, two. Count up to ten.",
+                "If you lose count or get distracted, start over from one. No frustration. Restarting is the practice.",
+                "The goal isn't to reach ten. The goal is to notice when you've lost count. That noticing is pure awareness. That's the muscle growing.",
+                "Continue counting. One... two... three. Each number is an anchor. Each restart is a strengthening.",
+                "Notice how the mind generates thoughts automatically, like a machine. You can't stop it, but you can choose not to follow each thought.",
+                "With practice, you'll reach ten regularly. Then twenty. Then you won't need the numbers at all. But for now, count.",
+                "Release the counting. Take a free breath. You've just trained your prefrontal cortex, the brain's focus center. It's literally getting stronger."
+            ]},
+            3: { title: "Open Awareness", prompts: [
+                "Welcome to Day 3. We've practiced narrow focus. Today, we go wide. Open, panoramic awareness.",
+                "Sit comfortably. Close your eyes. Instead of focusing on one thing, try to be aware of everything at once.",
+                "Notice sounds, sensations, the feeling of the air, the weight of your body, all simultaneously. Don't zoom in on any single thing.",
+                "This is like the difference between a spotlight and a floodlight. Yesterday was the spotlight. Today is the floodlight.",
+                "In this open awareness, thoughts may arise. Let them exist in the periphery. Don't pursue them, but don't push them away either.",
+                "Notice how the mind wants to grab onto something specific. A sound, an itch, a thought. Resist that pull. Stay wide.",
+                "This panoramic awareness is what athletes call 'the zone.' Musicians call it 'flow.' It's a state of total presence without fixation.",
+                "Practice holding this open awareness for the remaining time. Wide, spacious, accepting. Everything noticed, nothing grasped.",
+                "Well done. You now have two modes of attention at your disposal: narrow focus and open awareness. True mental agility uses both."
+            ]},
+            4: { title: "Distraction Training", prompts: [
+                "Welcome to Day 4. Today we practice focus under fire. Real-world conditions where distractions are everywhere.",
+                "Sit and close your eyes. Begin your breath counting from Day 2. One... two... three.",
+                "This time, I'll intentionally interrupt your counting with thoughts. Your job is to acknowledge them and continue counting. Don't restart.",
+                "Keep counting. Now notice: what did you have for breakfast today? Let that thought pass. Return to counting.",
+                "Continue. Now notice: what's on your to-do list? See it briefly. Then let it dissolve. Back to the breath. Keep counting.",
+                "This is real-world focus. Not the absence of distraction, but the ability to stay on task despite distraction. This is what matters.",
+                "Think of your attention like a dog on a leash. The dog sees squirrels constantly. Your job isn't to remove the squirrels. It's to hold the leash.",
+                "Keep counting through whatever arises. Sounds outside. Body sensations. Emotions. The count continues.",
+                "Excellent. You're learning that focus isn't about a quiet environment. It's about a trained mind. And yours is getting stronger."
+            ]},
+            5: { title: "Focus in Motion", prompts: [
+                "Welcome to Day 5, our final session. Today, we practice carrying focus into the rest of your life.",
+                "Sit and close your eyes. Begin with a minute of single-point focus on your breath. Anchor yourself.",
+                "Now, think of a task you need to do today. Something that requires your focus. Imagine beginning that task.",
+                "See yourself working on it with the same quality of attention you bring to this meditation. Fully present. One thing at a time.",
+                "When distractions arise in your imagined work, practice the same skill: notice, release, return. Over and over.",
+                "The bridge between meditation and daily life is intention. Before starting any task, take one conscious breath and set the intention to be present.",
+                "You now have a complete focus toolkit. Single-point for deep work. Open awareness for creative thinking. Distraction resilience for noisy environments.",
+                "Remember: focus is a muscle. Meditation is the gym. Come back to these practices whenever you feel scattered. A few minutes is all you need.",
+                "Open your eyes. You have trained your attention this week in a way most people never will. Use this gift wisely. Your focus is your superpower."
+            ]}
+        }
+    },
+    "healing-grief": {
+        id: "healing-grief",
+        title: "Healing Grief",
+        titleHi: "\u0926\u0941\u0916 \u0938\u0947 \u0909\u092A\u091A\u093E\u0930",
+        days: 5,
+        level: "All levels",
+        desc: "Finding peace after loss",
+        icon: "\ud83e\ude77",
+        color: "#7C3AED",
+        colorLight: "rgba(124,58,237,0.08)",
+        sessions: {
+            1: { title: "Making Space for Pain", prompts: [
+                "Welcome. If you're here, you may be hurting. I'm sorry for what you've lost. Whatever it is, your grief is valid.",
+                "Close your eyes if you can. Take a breath. You don't need to feel anything specific right now. Just be here.",
+                "Grief can feel like a weight on your chest, a fog in your mind, or an emptiness that nothing fills. However it shows up for you is okay.",
+                "Today, we simply make space. Not to fix, not to move past, but to allow. Your pain deserves a place to exist.",
+                "Breathe into the heaviest part of your body. Not to change it, but to say: I see you. I feel you. You matter.",
+                "Grief is not a problem to solve. It is love with nowhere to go. And love, even when it hurts, is precious.",
+                "If tears come, let them. They are not weakness. They are the body's way of carrying what the mind cannot.",
+                "For the remaining time, simply be with whatever is here. No agenda, no outcome. Just you and your honest heart.",
+                "Gently come back. You've done something brave today. You sat with your pain instead of running from it. That takes tremendous strength."
+            ]},
+            2: { title: "Remembering with Love", prompts: [
+                "Welcome back. Grief often comes in waves. Whatever wave brought you here today, you're in the right place.",
+                "Close your eyes. Breathe gently. Let yourself settle into this quiet moment.",
+                "Think of the person, the relationship, or the thing you have lost. Hold the memory gently, like something precious.",
+                "Remember a moment that made you smile. A laugh you shared, a look, a small kindness. Let that memory be vivid.",
+                "Feel the warmth of that memory in your body. Grief and love live in the same place. You can hold both at once.",
+                "It's possible to feel deep sadness and deep gratitude simultaneously. Both are true. Both deserve space.",
+                "Say silently to your memory: Thank you. Thank you for existing. Thank you for touching my life.",
+                "The people and things we love change us permanently. That change doesn't end with loss. It lives on, in you.",
+                "When you're ready, gently return. The love you carry is not a wound to heal from. It is a gift you received. And it stays."
+            ]},
+            3: { title: "Waves of Grief", prompts: [
+                "Welcome to Day 3. Today we work with the wave nature of grief, how it comes and goes unpredictably.",
+                "Close your eyes. Breathe. Notice how you feel right now, in this moment. There's no right answer.",
+                "Grief comes in waves. Some days you feel almost normal. Then a song, a scent, a random memory, and the wave crashes again.",
+                "When a wave comes, your instinct might be to fight it or suppress it. Today, we practice riding it instead.",
+                "Imagine you are standing in the ocean. A wave is approaching. Instead of bracing against it, you let it lift you. You float.",
+                "The wave rises, carries you, and then sets you down again. You're still standing. You survived. You always do.",
+                "Between waves, there is calm water. You are learning to rest in the calm and surrender to the waves when they come.",
+                "There is no timeline for grief. It doesn't follow a schedule. Be patient with yourself. Healing is not linear.",
+                "You are learning to live with loss, not to forget it. And living with it means allowing it to move through you, wave by wave."
+            ]},
+            4: { title: "The Unfinished", prompts: [
+                "Welcome to Day 4. Today we gently address the things left unsaid. The conversations that never happened.",
+                "Close your eyes. Breathe slowly. This may bring up strong feelings. You're safe here. Take what you need.",
+                "Is there something you wish you had said? To the person, to the situation, to yourself? Let that unspoken thing rise to the surface.",
+                "In the safety of this space, say it now. In your mind. Whatever it is. I love you. I'm sorry. I forgive you. I miss you.",
+                "Let the words hang in the silence. They have been heard. Maybe not by ears, but by the universe, by your own heart.",
+                "Now ask: is there anything you need to hear? Perhaps an apology, reassurance, or simply the words 'it's going to be okay.'",
+                "Give yourself permission to hear those words now. Imagine them being spoken to you with tenderness and truth. Receive them.",
+                "Unfinished doesn't mean unresolved. You can find your own closure, not by forgetting, but by honoring what was and what could have been.",
+                "Breathe gently. You've been very brave. What was left unsaid has now been given a voice. And that is a kind of healing."
+            ]},
+            5: { title: "Carrying Light Forward", prompts: [
+                "Welcome to Day 5, our final session. Today is about integration. Carrying your love and your loss forward, together.",
+                "Close your eyes. Breathe into the familiar rhythm of these sessions. You've been doing deep work this week.",
+                "Your grief has changed you. That is neither good nor bad. It simply is. You are a different person now than before your loss.",
+                "But within that change, something beautiful remains: the love that caused the grief. That love has not diminished. It cannot.",
+                "Imagine the person or thing you lost as a light. Not gone, but transformed. A light that now lives inside you.",
+                "This light influences how you see the world, how you treat others, how you understand the preciousness of time.",
+                "You will carry this light forward. Into new relationships, new experiences, new joys. It doesn't replace the old. It joins it.",
+                "Say gently to yourself: I am not broken. I am a person who has loved deeply. And I will love deeply again.",
+                "Take a final breath. You are whole. You are changed. You are carrying forward something sacred. Go gently, and trust the path ahead."
+            ]}
+        }
+    },
+    "self-love": {
+        id: "self-love",
+        title: "Self-Love",
+        titleHi: "\u0906\u0924\u094D\u092E-\u092A\u094D\u0930\u0947\u092E",
+        days: 7,
+        level: "All levels",
+        desc: "The most important relationship is with yourself",
+        icon: "\u2764\ufe0f",
+        color: "#EC4899",
+        colorLight: "rgba(236,72,153,0.08)",
+        sessions: {
+            1: { title: "Meeting Yourself", prompts: [
+                "Welcome. This course is about the most important relationship you'll ever have: the one with yourself.",
+                "Close your eyes. Take a few deep breaths. Feel your body. This body that carries you, works for you, heals for you, every single day.",
+                "When was the last time you spoke kindly to yourself? Not to someone else, but to you, in the privacy of your own mind?",
+                "Today, we begin simply. Silently say: Hello. I'm here. I'm listening.",
+                "Notice what comes up. Perhaps discomfort. Self-compassion can feel strange when you're not used to it. That's perfectly normal.",
+                "Think about how you speak to a friend who is struggling. The warmth, the patience, the encouragement. You deserve that same voice.",
+                "Place a hand on your heart. Feel it beating. This heart has kept you alive through everything. Whisper a silent 'thank you.'",
+                "Self-love is not selfish. It's the foundation from which all other love flows. You cannot pour from an empty cup.",
+                "For the rest of today, notice how you talk to yourself. Just notice. No need to change anything yet. Awareness is the first step."
+            ]},
+            2: { title: "The Inner Critic", prompts: [
+                "Welcome back. Today we meet the inner critic, that voice inside that's never quite satisfied with you.",
+                "Close your eyes. Settle into your breath. Let your body relax.",
+                "Think of something you've criticized yourself for recently. A mistake, a perceived flaw, a moment you're not proud of. Let it surface.",
+                "Notice the voice of the inner critic. What does it sound like? Is it harsh? Disappointed? Exhausted? Just observe its tone.",
+                "Now imagine that critical voice as a character. Perhaps a tired, frightened version of yourself, trying to protect you from failure.",
+                "Say to that voice, gently: I hear you. Thank you for trying to protect me. But I don't need this kind of protection anymore.",
+                "Replace the critic's words with something true and kind. Instead of 'you're not enough,' try 'you're doing your best, and that matters.'",
+                "This is not about silencing the critic forever. It's about giving yourself a second voice: one of compassion, balance, and truth.",
+                "Breathe gently. You've started a conversation with yourself that most people never have. That takes quiet courage."
+            ]},
+            3: { title: "Body Gratitude", prompts: [
+                "Welcome to Day 3. Today we practice gratitude for the body you live in. Not how it looks, but what it does.",
+                "Close your eyes. Take a centering breath. Bring your attention to your physical self.",
+                "Begin with your hands. These hands have held loved ones, created things, wiped away tears. Thank your hands.",
+                "Move to your legs and feet. They've carried you through every day of your life. Through joy and through difficulty. Thank them.",
+                "Your eyes have shown you sunsets, faces you love, words that changed your thinking. Whether they work perfectly or not, thank them.",
+                "Your heart beats about one hundred thousand times a day without you asking. Your lungs breathe without permission. Thank this body for its loyalty.",
+                "Society teaches us to criticize our bodies. Today, we rebel against that. Not with anger, but with gratitude.",
+                "Say to your body: I'm grateful for you. I'm sorry for the times I spoke harshly about you. You have served me well.",
+                "Carry this gratitude forward. When you pass a mirror today, try pausing and saying one kind thing to your reflection."
+            ]},
+            4: { title: "Setting Boundaries", prompts: [
+                "Welcome to Day 4. Self-love requires boundaries. Today we explore what that means from a place of calm, not anger.",
+                "Close your eyes. Breathe deeply. Let your body settle into stillness.",
+                "Think of a situation where your energy has been drained by someone or something. Where you've given more than you have.",
+                "Boundaries are not walls built from anger. They are fences built from self-respect. They say: I matter too.",
+                "Imagine a gentle, warm light surrounding your body. This is your boundary. Things that nourish you pass through easily. Things that deplete you are softened at the edge.",
+                "Practice saying, in your mind: I am allowed to say no. I am allowed to protect my peace. This does not make me selfish.",
+                "Think of one small boundary you could set this week. Not a dramatic confrontation, just a gentle 'not this time.'",
+                "People who truly care about you will respect your boundaries. Those who don't were benefiting from your lack of them.",
+                "Breathe. You are worthy of protection. And the person most responsible for protecting you is you."
+            ]},
+            5: { title: "Forgiving Yourself", prompts: [
+                "Welcome to Day 5. This may be the most important session. Today, we practice forgiving ourselves.",
+                "Close your eyes. Breathe gently. This is safe space. What arises here stays between you and your own heart.",
+                "Think of something you carry guilt or shame about. Something you wish you'd done differently. Let it surface without judgment.",
+                "You made the best decision you could with the information, maturity, and resources you had at the time. That's not an excuse. It's the truth.",
+                "Holding onto guilt doesn't undo what happened. It only punishes the present version of you, who is already wiser.",
+                "Say to yourself: I forgive myself. Not because what happened doesn't matter, but because I deserve to stop carrying this weight.",
+                "Forgiveness is not a single moment. It's a practice. You may need to forgive yourself for the same thing many times. That's okay.",
+                "Imagine setting down a heavy stone you've been carrying. Feel the relief in your shoulders, your back, your spirit. You can set it down.",
+                "Breathe. You are human. Humans make mistakes. And humans deserve grace. Including you. Especially you."
+            ]},
+            6: { title: "Joy as Medicine", prompts: [
+                "Welcome to Day 6. Self-love isn't only about healing wounds. It's also about allowing joy. Unapologetically.",
+                "Close your eyes. Smile gently, even if you don't feel like it. Research shows that smiling, even artificially, shifts your brain chemistry.",
+                "Think of something that brings you pure, simple joy. Not something productive or impressive. Just something that makes you happy.",
+                "Maybe it's a song, a food, a place, a person's laugh, or the feeling of sun on your skin. Let that joy fill your chest.",
+                "Many of us feel guilty for being happy, especially when others are suffering. But your joy does not take away from anyone else's. It adds to the world's supply.",
+                "Give yourself permission to enjoy things fully. To laugh loudly. To delight in small pleasures. To be ridiculous sometimes.",
+                "Joy is not frivolous. It is medicine. It heals your nervous system, strengthens your immune response, and connects you to others.",
+                "Imagine your future self, happy and at ease. That person is not a fantasy. They are the natural result of the work you're doing right now.",
+                "Go find something joyful today. Not because you earned it, but because you exist, and that alone is reason enough to celebrate."
+            ]},
+            7: { title: "Enough", prompts: [
+                "Welcome to Day 7. Our final session. The word for today is simple but profound: enough.",
+                "Close your eyes. Take a slow, full breath. Feel the air nourish every cell. You are alive. That is remarkable.",
+                "You are enough. Not when you achieve more. Not when you look different. Not when someone finally approves. Right now, as you are.",
+                "This doesn't mean you stop growing. It means you grow from a place of wholeness, not from a place of lacking.",
+                "Say to yourself: I am enough. Let it land. If it feels untrue, say it again. I am enough. Water a seed enough times, and it blooms.",
+                "You don't need to earn rest. You don't need to earn love. You don't need to earn your place in this world. You belong here by birthright.",
+                "Think of the journey you've taken this week. You met yourself. You questioned your inner critic. You thanked your body. You set boundaries. You forgave. You chose joy.",
+                "That is the path of self-love. Not a destination but a daily practice. Some days you'll forget. That's okay. You can always return.",
+                "Take one last deep breath. You are enough. You have always been enough. And you will carry this truth with you, not as a belief, but as a knowing. Namaste."
+            ]}
+        }
+    }
+};
+
+/* Day session titles (for player label) */
+var SESSION_TITLES = {};
+Object.keys(COURSES).forEach(function(cid) {
+    SESSION_TITLES[cid] = {};
+    var c = COURSES[cid];
+    for (var d = 1; d <= c.days; d++) {
+        SESSION_TITLES[cid][d] = c.sessions[d].title;
+    }
+});
+
+/* Reflection quotes */
+var QUOTES = [
+    { text: "The present moment is filled with joy and happiness. If you are attentive, you will see it.", author: "Thich Nhat Hanh" },
+    { text: "Peace comes from within. Do not seek it without.", author: "Buddha" },
+    { text: "The quieter you become, the more you can hear.", author: "Rumi" },
+    { text: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", author: "Buddha" },
+    { text: "Almost everything will work again if you unplug it for a few minutes, including you.", author: "Anne Lamott" },
+    { text: "Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.", author: "Thich Nhat Hanh" },
+    { text: "In today's rush, we all think too much, seek too much, want too much. And forget about the joy of just being.", author: "Eckhart Tolle" },
+    { text: "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", author: "Buddha" },
+    { text: "Quiet the mind, and the soul will speak.", author: "Ma Jaya Sati Bhagavati" },
+    { text: "Within you, there is a stillness and a sanctuary to which you can retreat at any time.", author: "Hermann Hesse" },
+    { text: "Every morning we are born again. What we do today is what matters most.", author: "Buddha" },
+    { text: "The soul always knows what to do to heal itself. The challenge is to silence the mind.", author: "Caroline Myss" }
+];
+
+/* ===================== HELPERS ===================== */
+function getCourseDay(id) {
+    return parseInt(localStorage.getItem('sukoon-course-' + id + '-day') || '1', 10);
+}
+function setCourseDay(id, d) {
+    localStorage.setItem('sukoon-course-' + id + '-day', String(d));
+}
+function isDayDone(id, d) {
+    return localStorage.getItem('sukoon-course-' + id + '-day-' + d + '-done') === 'true';
+}
+function markDayDone(id, d) {
+    localStorage.setItem('sukoon-course-' + id + '-day-' + d + '-done', 'true');
+}
+function getCompletedDays(id) {
+    var count = 0;
+    var c = COURSES[id];
+    for (var d = 1; d <= c.days; d++) { if (isDayDone(id, d)) count++; }
+    return count;
+}
+function isCourseComplete(id) {
+    return getCompletedDays(id) >= COURSES[id].days;
+}
+
+/* ===================== RENDER FEATURED CARD ===================== */
+function renderFeatured() {
+    var c = COURSES['start-here'];
+    var day = getCourseDay(c.id);
+    var done = getCompletedDays(c.id);
+    var pct = Math.round((done / c.days) * 100);
+    var $label = document.getElementById('featuredProgressLabel');
+    var $fill = document.getElementById('featuredProgressFill');
+    var $btn = document.getElementById('featuredBtn');
+
+    if (isCourseComplete(c.id)) {
+        $label.textContent = 'Complete!';
+        $fill.style.width = '100%';
+        $btn.innerHTML = '<svg viewBox="0 0 16 16" fill="none"><path d="M4 8l3 3 5-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg> Restart';
+    } else {
+        $label.textContent = 'Day ' + day + ' of ' + c.days;
+        $fill.style.width = pct + '%';
+        $btn.innerHTML = '<svg viewBox="0 0 16 16" fill="none"><path d="M5.5 3l6 5-6 5V3z" fill="currentColor"/></svg> ' + (day === 1 && !isDayDone(c.id, 1) ? 'Begin' : 'Continue Day ' + day);
+    }
+}
+
+document.getElementById('featuredCard').addEventListener('click', function() {
+    var c = COURSES['start-here'];
+    if (isCourseComplete(c.id)) {
+        setCourseDay(c.id, 1);
+        for (var d = 1; d <= c.days; d++) localStorage.removeItem('sukoon-course-' + c.id + '-day-' + d + '-done');
+    }
+    openPlayer(c.id, getCourseDay(c.id));
+});
+
+/* ===================== RENDER COURSE GRID ===================== */
+function renderGrid() {
+    var grid = document.getElementById('courseGrid');
+    grid.innerHTML = '';
+    var order = ['start-here','calm-anxiety','better-sleep','sharp-focus','healing-grief','self-love'];
+    order.forEach(function(cid) {
+        var c = COURSES[cid];
+        var day = getCourseDay(c.id);
+        var done = getCompletedDays(c.id);
+        var pct = Math.round((done / c.days) * 100);
+        var complete = isCourseComplete(c.id);
+
+        var levelClass = c.level === 'Intermediate' ? ' intermediate' : (c.level === 'All levels' ? ' all' : '');
+
+        var card = document.createElement('div');
+        card.className = 'course-card';
+        card.innerHTML =
+            '<div class="course-card-accent" style="background:' + c.color + '"></div>' +
+            '<div class="course-card-head">' +
+                '<div class="course-card-icon" style="background:' + c.colorLight + '">' + c.icon + '</div>' +
+                '<div class="course-card-meta">' +
+                    '<span class="course-card-days">' + c.days + ' days</span>' +
+                    '<span class="course-card-level' + levelClass + '">' + c.level + '</span>' +
+                '</div>' +
+            '</div>' +
+            '<div class="course-card-title">' + c.title + '</div>' +
+            '<div class="course-card-title-hi">' + c.titleHi + '</div>' +
+            '<div class="course-card-desc">' + c.desc + '</div>' +
+            '<div class="course-progress">' +
+                '<div class="course-progress-bar"><div class="course-progress-fill" style="width:' + pct + '%;background:' + c.color + '"></div></div>' +
+                '<span class="course-progress-text' + (complete ? ' complete' : '') + '">' + (complete ? 'Done' : done + '/' + c.days) + '</span>' +
+            '</div>';
+
+        card.addEventListener('click', function() {
+            if (isCourseComplete(c.id)) {
+                setCourseDay(c.id, 1);
+                for (var d = 1; d <= c.days; d++) localStorage.removeItem('sukoon-course-' + c.id + '-day-' + d + '-done');
+                renderGrid();
+                renderFeatured();
+            }
+            openPlayer(c.id, getCourseDay(c.id));
+        });
+        grid.appendChild(card);
+    });
+}
+
+/* ===================== PLAYER ===================== */
+var playerState = {
+    courseId: null,
+    day: 0,
+    duration: 600,
+    ambient: 'silence',
+    timer: null,
+    remaining: 0,
+    paused: false,
+    promptIndex: 0,
+    promptTimer: null,
+    audioCtx: null,
+    ambientSource: null,
+    ambientGain: null
+};
+
+var $overlay = document.getElementById('playerOverlay');
+var $setup = document.getElementById('playerSetup');
+var $session = document.getElementById('playerSession');
+var $complete = document.getElementById('playerComplete');
+
+function openPlayer(courseId, day) {
+    var c = COURSES[courseId];
+    playerState.courseId = courseId;
+    playerState.day = day;
+
+    document.getElementById('playerCourseLabel').textContent = c.title;
+    document.getElementById('playerDayLabel').textContent = 'Day ' + day + ' of ' + c.days;
+    document.getElementById('playerSessionTitle').textContent = c.sessions[day].title;
+
+    $setup.classList.remove('hide');
+    $session.classList.remove('show');
+    $complete.classList.remove('show');
+    $overlay.classList.add('show');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePlayer() {
+    stopSession();
+    $overlay.classList.remove('show');
+    document.body.style.overflow = '';
+    renderGrid();
+    renderFeatured();
+}
+
+document.getElementById('playerClose').addEventListener('click', closePlayer);
+document.getElementById('completeCloseBtn').addEventListener('click', closePlayer);
+
+/* Duration pills */
+document.getElementById('durationPills').addEventListener('click', function(e) {
+    var pill = e.target.closest('.player-pill');
+    if (!pill) return;
+    this.querySelectorAll('.player-pill').forEach(function(p) { p.classList.remove('active'); });
+    pill.classList.add('active');
+    playerState.duration = parseInt(pill.dataset.dur, 10);
+});
+
+/* Ambient pills */
+document.getElementById('ambientPills').addEventListener('click', function(e) {
+    var pill = e.target.closest('.player-pill');
+    if (!pill) return;
+    this.querySelectorAll('.player-pill').forEach(function(p) { p.classList.remove('active'); });
+    pill.classList.add('active');
+    playerState.ambient = pill.dataset.amb;
+});
+
+/* ===================== BELL SOUND (Web Audio 528Hz) ===================== */
+function playBell() {
+    var ctx = playerState.audioCtx;
+    if (!ctx) return;
+    var osc = ctx.createOscillator();
+    var gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.value = 528;
+    gain.gain.setValueAtTime(0.35, ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 3.5);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(ctx.currentTime);
+    osc.stop(ctx.currentTime + 4);
+}
+
+/* ===================== AMBIENT SOUND ===================== */
+function startAmbient() {
+    if (playerState.ambient === 'silence') return;
+    var ctx = playerState.audioCtx;
+    if (!ctx) return;
+
+    var file = '/audio/' + playerState.ambient + '.wav';
+    fetch(file).then(function(res) {
+        if (!res.ok) throw new Error('No ambient file');
+        return res.arrayBuffer();
+    }).then(function(buf) {
+        return ctx.decodeAudioData(buf);
+    }).then(function(audioBuffer) {
+        var src = ctx.createBufferSource();
+        src.buffer = audioBuffer;
+        src.loop = true;
+        var gain = ctx.createGain();
+        gain.gain.value = 0.2;
+        src.connect(gain);
+        gain.connect(ctx.destination);
+        src.start();
+        playerState.ambientSource = src;
+        playerState.ambientGain = gain;
+    }).catch(function() { /* no ambient file available */ });
+}
+
+function stopAmbient() {
+    if (playerState.ambientSource) {
+        try { playerState.ambientSource.stop(); } catch(e) {}
+        playerState.ambientSource = null;
+    }
+}
+
+/* ===================== BEGIN SESSION ===================== */
+document.getElementById('playerBeginBtn').addEventListener('click', function() {
+    // Init audio context on user gesture
+    if (!playerState.audioCtx) {
+        playerState.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+
+    var c = COURSES[playerState.courseId];
+    var prompts = c.sessions[playerState.day].prompts;
+    var duration = playerState.duration;
+
+    $setup.classList.add('hide');
+    $session.classList.add('show');
+
+    document.getElementById('sessionCourseName').textContent = c.title + '  \u2022  Day ' + playerState.day + ' of ' + c.days;
+
+    // Build dots
+    var dotsHtml = '';
+    for (var i = 0; i < prompts.length; i++) dotsHtml += '<div class="session-dot"></div>';
+    document.getElementById('sessionDots').innerHTML = dotsHtml;
+
+    playerState.remaining = duration;
+    playerState.paused = false;
+    playerState.promptIndex = 0;
+    document.getElementById('sessionPauseBtn').textContent = 'Pause';
+
+    // Play opening bell
+    playBell();
+
+    // Start ambient
+    startAmbient();
+
+    // Show first prompt after short delay (after bell)
+    setTimeout(function() {
+        showPrompt(prompts, 0);
+    }, 1500);
+
+    // Timer
+    updateTimerDisplay();
+    playerState.timer = setInterval(function() {
+        if (playerState.paused) return;
+        playerState.remaining--;
+        updateTimerDisplay();
+        if (playerState.remaining <= 0) {
+            endSession();
+        }
+    }, 1000);
+
+    // Prompt rotation
+    var promptInterval = Math.floor((duration * 1000) / prompts.length);
+    if (promptInterval < 8000) promptInterval = 8000; // minimum 8s per prompt
+    playerState.promptTimer = setInterval(function() {
+        if (playerState.paused) return;
+        var nextIdx = playerState.promptIndex + 1;
+        if (nextIdx < prompts.length) {
+            showPrompt(prompts, nextIdx);
+        }
+    }, promptInterval);
+});
+
+function showPrompt(prompts, idx) {
+    var $prompt = document.getElementById('sessionPrompt');
+    $prompt.classList.add('fade');
+    setTimeout(function() {
+        playerState.promptIndex = idx;
+        $prompt.textContent = prompts[idx];
+        $prompt.classList.remove('fade');
+        // Update dots
+        var dots = document.querySelectorAll('.session-dot');
+        dots.forEach(function(d, i) {
+            d.classList.remove('active', 'done');
+            if (i < idx) d.classList.add('done');
+            if (i === idx) d.classList.add('active');
+        });
+    }, 800);
+}
+
+function updateTimerDisplay() {
+    var r = playerState.remaining;
+    var m = Math.floor(r / 60);
+    var s = r % 60;
+    document.getElementById('sessionTimer').textContent = m + ':' + String(s).padStart(2, '0');
+}
+
+/* Pause */
+document.getElementById('sessionPauseBtn').addEventListener('click', function() {
+    playerState.paused = !playerState.paused;
+    this.textContent = playerState.paused ? 'Resume' : 'Pause';
+});
+
+/* ===================== END SESSION ===================== */
+function endSession() {
+    clearInterval(playerState.timer);
+    clearInterval(playerState.promptTimer);
+    playerState.timer = null;
+    playerState.promptTimer = null;
+
+    // Play closing bell
+    playBell();
+
+    // Fade out ambient
+    if (playerState.ambientGain) {
+        playerState.ambientGain.gain.linearRampToValueAtTime(0, playerState.audioCtx.currentTime + 2);
+        setTimeout(stopAmbient, 2500);
+    }
+
+    // Show complete screen after a moment
+    setTimeout(function() {
+        $session.classList.remove('show');
+        $complete.classList.add('show');
+
+        var q = QUOTES[Math.floor(Math.random() * QUOTES.length)];
+        document.getElementById('completeQuote').textContent = '\u201C' + q.text + '\u201D';
+        document.getElementById('completeAuthor').textContent = '\u2014 ' + q.author;
+
+        var c = COURSES[playerState.courseId];
+        var nextDay = playerState.day + 1;
+        if (nextDay <= c.days) {
+            document.getElementById('completeNext').innerHTML = 'Next: <strong>Day ' + nextDay + ' \u2014 ' + c.sessions[nextDay].title + '</strong>';
+        } else {
+            document.getElementById('completeNext').innerHTML = '<strong>Course Complete!</strong>';
+        }
+    }, 2000);
+}
+
+function stopSession() {
+    clearInterval(playerState.timer);
+    clearInterval(playerState.promptTimer);
+    playerState.timer = null;
+    playerState.promptTimer = null;
+    stopAmbient();
+}
+
+/* Mark Complete */
+document.getElementById('completeMarkBtn').addEventListener('click', function() {
+    var cid = playerState.courseId;
+    var day = playerState.day;
+    markDayDone(cid, day);
+
+    var c = COURSES[cid];
+    var nextDay = day + 1;
+    if (nextDay <= c.days && !isDayDone(cid, nextDay)) {
+        setCourseDay(cid, nextDay);
+    } else if (isCourseComplete(cid)) {
+        // Course finished
+    }
+
+    closePlayer();
+});
+
+/* ===================== INIT ===================== */
+renderFeatured();
+renderGrid();
+
+})();
+</script>
+<script src="/js/i18n.js"></script>
+</body>
+</html>

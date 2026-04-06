@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress - Sukoon</title>
+    <meta name="description" content="Your wellness journey at a glance. Track mindful minutes, streaks, mood trends, and milestones. Everything stays on your device.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #111827;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 72px;
+            background: rgba(250,250,247,0.82);
+            backdrop-filter: blur(20px) saturate(1.4);
+            -webkit-backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: #111827;
+            display: flex; align-items: center; gap: 0.5rem;
+            white-space: nowrap;
+        }
+        .brand-mark {
+            width: 32px; height: 32px; border-radius: 10px;
+            background: linear-gradient(135deg, #4F46E5, #7C3AED);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .brand-mark svg { width: 18px; height: 18px; }
+        .topbar-nav { display: flex; align-items: center; gap: 2px; }
+        .topbar-nav a {
+            padding: 0.45rem 0.85rem; border-radius: 10px;
+            font-size: 0.85rem; font-weight: 500; color: #6B7280;
+            transition: all 0.2s ease;
+        }
+        .topbar-nav a:hover { background: rgba(79,70,229,0.06); color: #4F46E5; }
+        .topbar-nav a.active {
+            background: rgba(79,70,229,0.08); color: #4F46E5; font-weight: 600;
+        }
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .lang-select {
+            padding: 0.4rem 0.65rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08); background: #fff;
+            font-size: 0.8rem; font-weight: 600; color: #6B7280;
+            cursor: pointer; outline: none; font-family: 'Inter', sans-serif;
+        }
+        .lang-select:focus { border-color: #4F46E5; }
+        .mobile-nav-toggle {
+            display: none; background: none; border: none;
+            color: #111827; cursor: pointer; padding: 4px;
+        }
+        .mobile-nav-toggle svg { width: 24px; height: 24px; }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: flex; align-items: center; }
+            .topbar { padding: 0 1rem; }
+            .topbar-nav { display: none; }
+            .topbar-nav.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 72px; left: 0; right: 0;
+                background: rgba(250,250,247,0.98);
+                backdrop-filter: blur(20px);
+                padding: 0.75rem;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+            }
+            .topbar-nav.open a { padding: 0.85rem 1rem; font-size: 0.95rem; width: 100%; }
+        }
+
+        /* ===================== MAIN ===================== */
+        main {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: calc(72px + 40px) 20px 60px;
+        }
+
+        /* ===================== PRIVACY NOTICE ===================== */
+        .privacy-notice {
+            display: flex; align-items: center; gap: 12px;
+            padding: 14px 20px;
+            background: rgba(16,185,129,0.06);
+            border: 1px solid rgba(16,185,129,0.15);
+            border-radius: 14px;
+            margin-bottom: 40px;
+        }
+        .privacy-notice svg { flex-shrink: 0; color: #10B981; }
+        .privacy-notice p { font-size: 0.84rem; color: #374151; line-height: 1.5; }
+        .privacy-notice .hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.78rem; color: #9CA3AF; display: block; margin-top: 2px;
+        }
+
+        /* ===================== PAGE HEADER ===================== */
+        .page-header { text-align: center; margin-bottom: 40px; }
+        .page-header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 4.5vw, 2.4rem);
+            color: #111827; margin-bottom: 8px;
+        }
+        .page-header .subtitle {
+            font-size: 1rem; color: #6B7280; max-width: 460px; margin: 0 auto;
+        }
+        .page-header .subtitle-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.85rem; color: #9CA3AF; margin-top: 4px;
+        }
+
+        /* ===================== OVERVIEW CARDS ===================== */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+        .overview-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            padding: 28px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .overview-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 4px;
+        }
+        .overview-card.card-minutes::before { background: linear-gradient(90deg, #4F46E5, #818CF8); }
+        .overview-card.card-streak::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .overview-card.card-sessions::before { background: linear-gradient(90deg, #10B981, #34D399); }
+        .card-icon {
+            width: 44px; height: 44px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .card-minutes .card-icon { background: rgba(79,70,229,0.08); }
+        .card-streak .card-icon { background: rgba(245,158,11,0.08); }
+        .card-sessions .card-icon { background: rgba(16,185,129,0.08); }
+        .card-icon svg { width: 22px; height: 22px; }
+        .card-number {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.8rem; color: #111827;
+            line-height: 1; margin-bottom: 6px;
+            font-variant-numeric: tabular-nums;
+        }
+        .card-label {
+            font-size: 0.78rem; font-weight: 600; color: #9CA3AF;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+
+        /* ===================== SECTIONS ===================== */
+        .section { margin-bottom: 40px; }
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: #111827;
+            margin-bottom: 6px;
+        }
+        .section-subtitle {
+            font-size: 0.88rem; color: #6B7280;
+            margin-bottom: 24px;
+        }
+        .section-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            padding: 28px 24px;
+        }
+
+        /* ===================== STREAK CALENDAR ===================== */
+        .calendar-grid {
+            display: flex; gap: 6px; flex-wrap: wrap;
+            justify-content: center;
+        }
+        .cal-day {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: rgba(0,0,0,0.03);
+            position: relative;
+            cursor: default;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+        .cal-day:hover {
+            transform: scale(1.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            z-index: 2;
+        }
+        .cal-day.today {
+            outline: 2px solid #4F46E5;
+            outline-offset: 1px;
+        }
+        .cal-day.level-1 { background: rgba(79,70,229,0.12); }
+        .cal-day.level-2 { background: rgba(79,70,229,0.28); }
+        .cal-day.level-3 { background: rgba(79,70,229,0.5); }
+        .cal-day.level-4 { background: rgba(79,70,229,0.75); }
+        .cal-day.level-5 { background: #4F46E5; }
+        .cal-tooltip {
+            position: absolute;
+            bottom: calc(100% + 8px); left: 50%;
+            transform: translateX(-50%);
+            background: #111827; color: #fff;
+            padding: 6px 12px; border-radius: 8px;
+            font-size: 0.72rem; font-weight: 500;
+            white-space: nowrap;
+            pointer-events: none; opacity: 0;
+            transition: opacity 0.2s;
+            z-index: 10;
+        }
+        .cal-tooltip::after {
+            content: ''; position: absolute;
+            top: 100%; left: 50%; transform: translateX(-50%);
+            border: 5px solid transparent;
+            border-top-color: #111827;
+        }
+        .cal-day:hover .cal-tooltip { opacity: 1; }
+        .cal-labels {
+            display: flex; justify-content: space-between;
+            margin-top: 12px; padding: 0 2px;
+        }
+        .cal-label-text {
+            font-size: 0.7rem; color: #9CA3AF; font-weight: 500;
+        }
+        .cal-legend {
+            display: flex; align-items: center; gap: 8px;
+            justify-content: center; margin-top: 16px;
+        }
+        .cal-legend-label { font-size: 0.7rem; color: #9CA3AF; }
+        .cal-legend-squares { display: flex; gap: 3px; }
+        .cal-legend-sq {
+            width: 14px; height: 14px; border-radius: 3px;
+        }
+
+        /* ===================== MOOD CHART ===================== */
+        .mood-chart-wrap { position: relative; }
+        .mood-chart-svg { width: 100%; height: auto; display: block; }
+        .mood-stats {
+            display: flex; gap: 24px; margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0,0,0,0.04);
+        }
+        .mood-stat { text-align: center; flex: 1; }
+        .mood-stat-value {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem; color: #111827;
+        }
+        .mood-stat-label {
+            font-size: 0.72rem; font-weight: 600; color: #9CA3AF;
+            text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .mood-stat-change {
+            font-size: 0.72rem; font-weight: 600; margin-top: 2px;
+        }
+        .mood-stat-change.up { color: #10B981; }
+        .mood-stat-change.down { color: #EF4444; }
+        .mood-stat-change.same { color: #9CA3AF; }
+        .mood-empty {
+            text-align: center; padding: 40px 20px; color: #9CA3AF;
+        }
+        .mood-empty svg { width: 48px; height: 48px; color: #D1D5DB; margin: 0 auto 12px; display: block; }
+        .mood-empty p { font-size: 0.9rem; }
+        .mood-empty .mood-empty-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.8rem; color: #C4C4C0; margin-top: 4px;
+        }
+
+        /* ===================== BADGES ===================== */
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 14px;
+        }
+        .badge-card {
+            background: #FAFAF7;
+            border: 1.5px solid rgba(0,0,0,0.06);
+            border-radius: 16px;
+            padding: 24px 16px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            position: relative;
+        }
+        .badge-card.earned {
+            background: #FFFFFF;
+            border-color: rgba(79,70,229,0.15);
+            box-shadow: 0 0 20px rgba(79,70,229,0.06), 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .badge-card.earned:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(79,70,229,0.1), 0 4px 16px rgba(0,0,0,0.06);
+        }
+        .badge-card.locked { opacity: 0.55; }
+        .badge-icon {
+            width: 52px; height: 52px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 12px;
+            position: relative;
+        }
+        .badge-card.earned .badge-icon {
+            animation: badgePulse 3s ease-in-out infinite;
+        }
+        @keyframes badgePulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(79,70,229,0.15); }
+            50% { box-shadow: 0 0 0 8px rgba(79,70,229,0); }
+        }
+        .badge-icon svg { width: 24px; height: 24px; }
+        .badge-card.locked .badge-icon {
+            background: rgba(0,0,0,0.04);
+        }
+        .badge-card.locked .badge-icon svg { opacity: 0; }
+        .badge-card.locked .badge-icon::after {
+            content: '?';
+            position: absolute;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem; color: #D1D5DB;
+        }
+        .badge-name {
+            font-size: 0.88rem; font-weight: 600; color: #111827;
+            margin-bottom: 4px;
+        }
+        .badge-card.locked .badge-name { color: #9CA3AF; }
+        .badge-desc {
+            font-size: 0.72rem; color: #9CA3AF; line-height: 1.4;
+        }
+
+        /* ===================== ACTIVITY LOG ===================== */
+        .log-list { list-style: none; }
+        .log-item {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(0,0,0,0.04);
+        }
+        .log-item:last-child { border-bottom: none; }
+        .log-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            margin-top: 7px; flex-shrink: 0;
+        }
+        .log-dot.meditation { background: #4F46E5; }
+        .log-dot.breathing { background: #10B981; }
+        .log-dot.journal { background: #F59E0B; }
+        .log-dot.focus { background: #EC4899; }
+        .log-dot.sounds { background: #8B5CF6; }
+        .log-dot.other { background: #6B7280; }
+        .log-text { font-size: 0.88rem; color: #374151; flex: 1; }
+        .log-time {
+            font-size: 0.72rem; color: #9CA3AF;
+            white-space: nowrap; margin-top: 2px;
+        }
+        .log-empty {
+            text-align: center; padding: 32px 20px;
+            color: #9CA3AF; font-size: 0.9rem;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            padding: 3.5rem 1.5rem 2rem;
+            background: #F3F2EE;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem; color: #111827;
+            margin-bottom: 0.5rem;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+        }
+        .footer-mission { font-size: 0.9rem; color: #6B7280; margin-bottom: 0.25rem; }
+        .footer-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.82rem; color: #9CA3AF; margin-bottom: 1rem;
+        }
+        .footer-privacy {
+            font-size: 0.78rem; color: #10B981;
+            background: rgba(16,185,129,0.06);
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 0.4rem 1.1rem; border-radius: 50px;
+            margin-bottom: 1.5rem;
+        }
+        .footer-privacy svg { width: 14px; height: 14px; }
+        .footer-nav {
+            display: flex; justify-content: center; flex-wrap: wrap;
+            gap: 0.5rem 1.25rem; margin-bottom: 1.5rem;
+        }
+        .footer-nav a { font-size: 0.85rem; color: #6B7280; transition: color 0.2s; }
+        .footer-nav a:hover { color: #4F46E5; }
+        .footer-copy { font-size: 0.75rem; color: #9CA3AF; }
+
+        /* ===================== TOAST ===================== */
+        .toast {
+            position: fixed; bottom: 32px; left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #111827; color: #fff;
+            padding: 14px 28px; border-radius: 14px;
+            font-size: 0.88rem; font-weight: 500;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+            z-index: 9999; opacity: 0;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            display: flex; align-items: center; gap: 10px;
+            pointer-events: none;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+        .toast svg { width: 20px; height: 20px; color: #10B981; flex-shrink: 0; }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 700px) {
+            main { padding-left: 16px; padding-right: 16px; }
+            .overview-grid { grid-template-columns: 1fr; gap: 12px; }
+            .overview-card { padding: 22px 20px; }
+            .card-number { font-size: 2.2rem; }
+            .cal-day { width: 28px; height: 28px; border-radius: 6px; }
+            .calendar-grid { gap: 4px; }
+            .badges-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .badge-card { padding: 18px 12px; }
+            .mood-stats { flex-direction: column; gap: 12px; }
+            .section-card { padding: 22px 18px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <a href="/" class="topbar-brand">
+            <span class="brand-mark">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z"/><circle cx="12" cy="9" r="2"/></svg>
+            </span>
+            Sukoon
+        </a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/progress.html" class="active" data-i18n="nav.progress">Progress</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select" id="langPicker">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Privacy Notice -->
+        <div class="privacy-notice">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <p>
+                <span data-i18n="progress.gdpr">All your progress data is stored only on this device. Nothing is sent to any server.</span>
+                <span class="hi">&#2310;&#2346;&#2325;&#2368; &#2360;&#2366;&#2352;&#2368; &#2346;&#2381;&#2352;&#2327;&#2340;&#2367; &#2325;&#2375;&#2357;&#2354; &#2311;&#2360; &#2337;&#2367;&#2357;&#2366;&#2311;&#2360; &#2346;&#2352; &#2360;&#2381;&#2335;&#2379;&#2352; &#2361;&#2379;&#2340;&#2368; &#2361;&#2376;&#2404;</span>
+            </p>
+        </div>
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 data-i18n="progress.title">Your Wellness Journey</h1>
+            <p class="subtitle" data-i18n="progress.subtitle">See how far you've come. Every moment of mindfulness counts.</p>
+            <p class="subtitle-hi">&#2342;&#2375;&#2326;&#2367;&#2319; &#2310;&#2346; &#2325;&#2367;&#2340;&#2344;&#2368; &#2342;&#2370;&#2352; &#2310; &#2330;&#2369;&#2325;&#2375; &#2361;&#2376;&#2306;&#2404;</p>
+        </div>
+
+        <!-- Section 1: Overview Cards -->
+        <div class="overview-grid">
+            <div class="overview-card card-minutes">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div class="card-number" id="totalMinutes">0</div>
+                <div class="card-label" data-i18n="progress.mindful_minutes">Mindful Minutes</div>
+            </div>
+            <div class="overview-card card-streak">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <div class="card-number" id="currentStreak">0</div>
+                <div class="card-label" data-i18n="progress.current_streak">Current Streak</div>
+            </div>
+            <div class="overview-card card-sessions">
+                <div class="card-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+                <div class="card-number" id="totalSessions">0</div>
+                <div class="card-label" data-i18n="progress.total_sessions">Sessions</div>
+            </div>
+        </div>
+
+        <!-- Section 2: Streak Calendar -->
+        <div class="section">
+            <h2 class="section-title" data-i18n="progress.streak_title">Streak Calendar</h2>
+            <p class="section-subtitle" data-i18n="progress.streak_sub">Your last 30 days of activity</p>
+            <div class="section-card">
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="cal-labels" id="calLabels"></div>
+                <div class="cal-legend">
+                    <span class="cal-legend-label">Less</span>
+                    <div class="cal-legend-squares">
+                        <div class="cal-legend-sq" style="background:rgba(0,0,0,0.03)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.12)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.28)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.5)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.75)"></div>
+                        <div class="cal-legend-sq" style="background:#4F46E5"></div>
+                    </div>
+                    <span class="cal-legend-label">More</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Mood Trends -->
+        <div class="section">
+            <h2 class="section-title" data-i18n="progress.mood_title">Mood Trends</h2>
+            <p class="section-subtitle" data-i18n="progress.mood_sub">Your emotional journey over the last 30 days</p>
+            <div class="section-card">
+                <div class="mood-chart-wrap" id="moodChartWrap"></div>
+            </div>
+        </div>
+
+        <!-- Section 4: Badges -->
+        <div class="section">
+            <h2 class="section-title" data-i18n="progress.badges_title">Badges</h2>
+            <p class="section-subtitle" data-i18n="progress.badges_sub">Milestones on your wellness path</p>
+            <div class="badges-grid" id="badgesGrid"></div>
+        </div>
+
+        <!-- Section 5: Activity Log -->
+        <div class="section">
+            <h2 class="section-title" data-i18n="progress.log_title">Recent Activity</h2>
+            <p class="section-subtitle" data-i18n="progress.log_sub">Your last 10 activities</p>
+            <div class="section-card">
+                <ul class="log-list" id="logList"></ul>
+            </div>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand">
+            <span class="brand-mark" style="width:28px;height:28px;border-radius:8px;">
+                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M12 3c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z"/><circle cx="12" cy="9" r="2"/></svg>
+            </span>
+            Sukoon
+        </div>
+        <p class="footer-mission" data-i18n="footer.mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
+        <div class="footer-privacy">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            <span data-i18n="footer.privacy_line">No data collected.</span> No accounts. No tracking.
+        </div>
+        <nav class="footer-nav">
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/progress.html" data-i18n="nav.progress">Progress</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+        </nav>
+        <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* ================================================================
+           ACTIVITY LOGGING SYSTEM
+           Stored in localStorage as 'sukoon_activity_log' (JSON array)
+           Each entry: { type, text, minutes, timestamp }
+           Also tracks per-day counts in 'sukoon_daily_YYYY-MM-DD' keys
+           ================================================================ */
+
+        var LOG_KEY = 'sukoon_activity_log';
+        var STATS_KEY = 'sukoon_progress_stats';
+
+        function getLog() {
+            try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); } catch(e) { return []; }
+        }
+
+        function saveLog(log) {
+            try { localStorage.setItem(LOG_KEY, JSON.stringify(log)); } catch(e) {}
+        }
+
+        function getStats() {
+            try { return JSON.parse(localStorage.getItem(STATS_KEY) || '{}'); } catch(e) { return {}; }
+        }
+
+        function saveStats(stats) {
+            try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch(e) {}
+        }
+
+        function todayKey() {
+            var d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        }
+
+        function getDailyCount(dateKey) {
+            try { return parseInt(localStorage.getItem('sukoon_daily_' + dateKey) || '0', 10); } catch(e) { return 0; }
+        }
+
+        function bumpDailyCount(dateKey) {
+            var c = getDailyCount(dateKey) + 1;
+            try { localStorage.setItem('sukoon_daily_' + dateKey, String(c)); } catch(e) {}
+            return c;
+        }
+
+        // Global helper that other pages can call
+        window.sukoonLog = function(type, minutes) {
+            var log = getLog();
+            var stats = getStats();
+            var textMap = {
+                meditation: 'Meditated for ' + minutes + ' min',
+                breathing: 'Completed breathing session (' + minutes + ' min)',
+                focus: 'Completed focus session (' + minutes + ' min)',
+                journal: 'Wrote in journal',
+                sounds: 'Listened to sleep sounds',
+                friend: 'Talked to AI Friend',
+                wisdom: 'Read wisdom content',
+                quotes: 'Read daily quote',
+                videos: 'Watched wellness video'
+            };
+
+            var entry = {
+                type: type || 'other',
+                text: textMap[type] || ('Completed ' + type + ' session'),
+                minutes: minutes || 0,
+                timestamp: new Date().toISOString()
+            };
+
+            log.unshift(entry);
+            if (log.length > 200) log = log.slice(0, 200);
+            saveLog(log);
+
+            // Update aggregated stats
+            stats.totalMinutes = (stats.totalMinutes || 0) + (minutes || 0);
+            stats.totalSessions = (stats.totalSessions || 0) + 1;
+
+            // Track features used for Explorer badge
+            if (!stats.featuresUsed) stats.featuresUsed = {};
+            stats.featuresUsed[type] = true;
+
+            // Track per-type counts
+            if (!stats.typeCounts) stats.typeCounts = {};
+            stats.typeCounts[type] = (stats.typeCounts[type] || 0) + 1;
+
+            saveStats(stats);
+
+            // Bump daily activity count
+            bumpDailyCount(todayKey());
+
+            // Update streak
+            updateStreak();
+        };
+
+        function updateStreak() {
+            var stats = getStats();
+            var today = todayKey();
+            var yesterday = (function() {
+                var d = new Date(); d.setDate(d.getDate() - 1);
+                return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+            })();
+
+            if (stats.lastActiveDate === today) return;
+
+            if (stats.lastActiveDate === yesterday) {
+                stats.currentStreak = (stats.currentStreak || 0) + 1;
+            } else {
+                stats.currentStreak = 1;
+            }
+            stats.lastActiveDate = today;
+
+            if (!stats.maxStreak || stats.currentStreak > stats.maxStreak) {
+                stats.maxStreak = stats.currentStreak;
+            }
+
+            saveStats(stats);
+        }
+
+        /* ================================================================
+           IMPORT DATA FROM EXISTING PAGES
+           - sukoon_med (meditation streaks from meditate.html)
+           - SukoonJournal IndexedDB (journal entries)
+           ================================================================ */
+
+        function importLegacyMeditationData() {
+            try {
+                var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
+                if (med.streak && med.lastDate) {
+                    var stats = getStats();
+                    // If user has meditation streak data but no progress stats yet, seed it
+                    if (!stats.lastActiveDate && med.lastDate) {
+                        var d = new Date(med.lastDate);
+                        if (!isNaN(d.getTime())) {
+                            var key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+                            stats.lastActiveDate = key;
+                            stats.currentStreak = Math.max(stats.currentStreak || 0, med.streak || 0);
+                            stats.maxStreak = Math.max(stats.maxStreak || 0, med.streak || 0);
+                            saveStats(stats);
+                        }
+                    }
+                }
+            } catch(e) {}
+        }
+
+        /* ================================================================
+           IndexedDB: Read journal entries for mood data
+           ================================================================ */
+
+        var DB_NAME = 'SukoonJournal';
+        var DB_VERSION = 1;
+        var STORE_NAME = 'entries';
+
+        function openJournalDB(cb) {
+            try {
+                var req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = function(e) {
+                    var store = e.target.result.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                    store.createIndex('date', 'date', { unique: false });
+                    store.createIndex('mood', 'mood', { unique: false });
+                };
+                req.onsuccess = function(e) { cb(e.target.result); };
+                req.onerror = function() { cb(null); };
+            } catch(e) { cb(null); }
+        }
+
+        function getJournalEntries(db, cb) {
+            if (!db) { cb([]); return; }
+            try {
+                var tx = db.transaction(STORE_NAME, 'readonly');
+                var req = tx.objectStore(STORE_NAME).getAll();
+                req.onsuccess = function() { cb(req.result || []); };
+                req.onerror = function() { cb([]); };
+            } catch(e) { cb([]); }
+        }
+
+        /* ================================================================
+           RENDER: Overview Cards
+           ================================================================ */
+
+        function renderOverview(journalCount) {
+            var stats = getStats();
+            var log = getLog();
+
+            var totalMinutes = stats.totalMinutes || 0;
+            var totalSessions = stats.totalSessions || 0;
+            var currentStreak = stats.currentStreak || 0;
+
+            // Also count minutes from meditation legacy data if no stats yet
+            if (totalMinutes === 0 && totalSessions === 0 && log.length === 0) {
+                // Check if meditation page was used (sukoon_med exists)
+                try {
+                    var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
+                    if (med.streak) { currentStreak = Math.max(currentStreak, med.streak); }
+                } catch(e) {}
+            }
+
+            // Count journal entries as sessions too
+            totalSessions = Math.max(totalSessions, log.length);
+
+            document.getElementById('totalMinutes').textContent = totalMinutes;
+            document.getElementById('currentStreak').textContent = currentStreak;
+            document.getElementById('totalSessions').textContent = totalSessions;
+        }
+
+        /* ================================================================
+           RENDER: Streak Calendar (last 30 days)
+           ================================================================ */
+
+        function renderCalendar(journalEntries) {
+            var grid = document.getElementById('calendarGrid');
+            var labels = document.getElementById('calLabels');
+            grid.innerHTML = '';
+            labels.innerHTML = '';
+
+            var today = new Date();
+            today.setHours(0,0,0,0);
+            var todayStr = todayKey();
+
+            // Build journal date counts
+            var journalDates = {};
+            journalEntries.forEach(function(e) {
+                if (e.date) {
+                    var d = e.date.substring(0, 10);
+                    journalDates[d] = (journalDates[d] || 0) + 1;
+                }
+            });
+
+            var days = [];
+            for (var i = 29; i >= 0; i--) {
+                var d = new Date(today);
+                d.setDate(d.getDate() - i);
+                var key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+                var count = getDailyCount(key) + (journalDates[key] || 0);
+                days.push({ date: d, key: key, count: count });
+            }
+
+            // Max for normalization
+            var maxCount = 1;
+            days.forEach(function(d) { if (d.count > maxCount) maxCount = d.count; });
+
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var weekdays = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+            days.forEach(function(day) {
+                var el = document.createElement('div');
+                el.className = 'cal-day';
+
+                if (day.count > 0) {
+                    var ratio = day.count / maxCount;
+                    if (ratio <= 0.2) el.classList.add('level-1');
+                    else if (ratio <= 0.4) el.classList.add('level-2');
+                    else if (ratio <= 0.6) el.classList.add('level-3');
+                    else if (ratio <= 0.8) el.classList.add('level-4');
+                    else el.classList.add('level-5');
+                }
+
+                if (day.key === todayStr) el.classList.add('today');
+
+                var tooltip = document.createElement('div');
+                tooltip.className = 'cal-tooltip';
+                var dateLabel = weekdays[day.date.getDay()] + ', ' + months[day.date.getMonth()] + ' ' + day.date.getDate();
+                tooltip.textContent = dateLabel + ' - ' + day.count + ' activit' + (day.count === 1 ? 'y' : 'ies');
+                el.appendChild(tooltip);
+
+                grid.appendChild(el);
+            });
+
+            // Labels: first and last date
+            if (days.length >= 2) {
+                var first = days[0].date;
+                var last = days[days.length - 1].date;
+                labels.innerHTML =
+                    '<span class="cal-label-text">' + months[first.getMonth()] + ' ' + first.getDate() + '</span>' +
+                    '<span class="cal-label-text">' + months[last.getMonth()] + ' ' + last.getDate() + ' (Today)</span>';
+            }
+        }
+
+        /* ================================================================
+           RENDER: Mood Trends (SVG line chart)
+           ================================================================ */
+
+        function renderMoodChart(journalEntries) {
+            var wrap = document.getElementById('moodChartWrap');
+
+            // Build 30-day mood map
+            var today = new Date();
+            today.setHours(0,0,0,0);
+
+            var moodByDate = {};
+            journalEntries.forEach(function(e) {
+                if (e.date && e.mood && e.mood >= 1 && e.mood <= 5) {
+                    var key = e.date.substring(0, 10);
+                    if (!moodByDate[key]) moodByDate[key] = [];
+                    moodByDate[key].push(e.mood);
+                }
+            });
+
+            var days = [];
+            var hasData = false;
+            for (var i = 29; i >= 0; i--) {
+                var d = new Date(today);
+                d.setDate(d.getDate() - i);
+                var key = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+                var moods = moodByDate[key];
+                var avg = null;
+                if (moods && moods.length > 0) {
+                    var sum = 0;
+                    moods.forEach(function(m) { sum += m; });
+                    avg = sum / moods.length;
+                    hasData = true;
+                }
+                days.push({ date: d, key: key, mood: avg });
+            }
+
+            if (!hasData) {
+                wrap.innerHTML =
+                    '<div class="mood-empty">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 15h8"/><circle cx="9" cy="10" r="0.5" fill="currentColor"/><circle cx="15" cy="10" r="0.5" fill="currentColor"/></svg>' +
+                    '<p data-i18n="progress.mood_empty">Start tracking your mood in the Journal</p>' +
+                    '<p class="mood-empty-hi">&#2337;&#2366;&#2351;&#2352;&#2368; &#2350;&#2375;&#2306; &#2309;&#2346;&#2344;&#2366; &#2350;&#2370;&#2337; &#2335;&#2381;&#2352;&#2376;&#2325; &#2325;&#2352;&#2344;&#2366; &#2358;&#2369;&#2352;&#2370; &#2325;&#2352;&#2375;&#2306;</p>' +
+                    '</div>';
+                return;
+            }
+
+            // SVG dimensions
+            var W = 780, H = 200;
+            var padL = 36, padR = 16, padT = 20, padB = 36;
+            var chartW = W - padL - padR;
+            var chartH = H - padT - padB;
+
+            var moodColors = {
+                1: '#EF4444', 2: '#F59E0B', 3: '#EAB308', 4: '#10B981', 5: '#4F46E5'
+            };
+
+            function moodColor(val) {
+                if (val <= 1.5) return moodColors[1];
+                if (val <= 2.5) return moodColors[2];
+                if (val <= 3.5) return moodColors[3];
+                if (val <= 4.5) return moodColors[4];
+                return moodColors[5];
+            }
+
+            var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+            // Build SVG
+            var svg = '<svg viewBox="0 0 ' + W + ' ' + H + '" class="mood-chart-svg" xmlns="http://www.w3.org/2000/svg">';
+
+            // Y-axis grid lines and labels
+            for (var y = 1; y <= 5; y++) {
+                var yPos = padT + chartH - ((y - 1) / 4) * chartH;
+                svg += '<line x1="' + padL + '" y1="' + yPos + '" x2="' + (W - padR) + '" y2="' + yPos + '" stroke="rgba(0,0,0,0.04)" stroke-width="1"/>';
+                var labels = { 1: 'Awful', 2: 'Bad', 3: 'Okay', 4: 'Good', 5: 'Great' };
+                svg += '<text x="' + (padL - 6) + '" y="' + (yPos + 3) + '" text-anchor="end" font-size="9" fill="#9CA3AF" font-family="Inter, sans-serif">' + labels[y] + '</text>';
+            }
+
+            // Build line path for connected points
+            var points = [];
+            days.forEach(function(day, idx) {
+                if (day.mood !== null) {
+                    var x = padL + (idx / 29) * chartW;
+                    var yVal = padT + chartH - ((day.mood - 1) / 4) * chartH;
+                    points.push({ x: x, y: yVal, mood: day.mood, date: day.date, idx: idx });
+                }
+            });
+
+            // Area fill under line
+            if (points.length >= 2) {
+                var areaPath = 'M' + points[0].x + ',' + points[0].y;
+                for (var pi = 1; pi < points.length; pi++) {
+                    areaPath += ' L' + points[pi].x + ',' + points[pi].y;
+                }
+                areaPath += ' L' + points[points.length-1].x + ',' + (padT + chartH);
+                areaPath += ' L' + points[0].x + ',' + (padT + chartH) + ' Z';
+                svg += '<path d="' + areaPath + '" fill="url(#moodGrad)" opacity="0.4"/>';
+                svg += '<defs><linearGradient id="moodGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.2"/><stop offset="100%" stop-color="#4F46E5" stop-opacity="0"/></linearGradient></defs>';
+            }
+
+            // Line connecting points
+            if (points.length >= 2) {
+                var linePath = 'M' + points[0].x + ',' + points[0].y;
+                for (var li = 1; li < points.length; li++) {
+                    linePath += ' L' + points[li].x + ',' + points[li].y;
+                }
+                svg += '<path d="' + linePath + '" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>';
+            }
+
+            // Dots
+            points.forEach(function(pt) {
+                var col = moodColor(pt.mood);
+                svg += '<circle cx="' + pt.x + '" cy="' + pt.y + '" r="5" fill="' + col + '" stroke="#fff" stroke-width="2"/>';
+            });
+
+            // X-axis date labels (show every 5th day)
+            days.forEach(function(day, idx) {
+                if (idx % 5 === 0 || idx === 29) {
+                    var x = padL + (idx / 29) * chartW;
+                    var label = months[day.date.getMonth()] + ' ' + day.date.getDate();
+                    svg += '<text x="' + x + '" y="' + (H - 6) + '" text-anchor="middle" font-size="9" fill="#9CA3AF" font-family="Inter, sans-serif">' + label + '</text>';
+                }
+            });
+
+            svg += '</svg>';
+
+            // Calculate weekly averages
+            var thisWeekMoods = [];
+            var lastWeekMoods = [];
+            days.forEach(function(day, idx) {
+                if (day.mood !== null) {
+                    if (idx >= 23) thisWeekMoods.push(day.mood);       // last 7 days
+                    else if (idx >= 16) lastWeekMoods.push(day.mood);  // 7 days before that
+                }
+            });
+
+            var thisWeekAvg = thisWeekMoods.length > 0 ?
+                (thisWeekMoods.reduce(function(a,b){return a+b;},0) / thisWeekMoods.length) : null;
+            var lastWeekAvg = lastWeekMoods.length > 0 ?
+                (lastWeekMoods.reduce(function(a,b){return a+b;},0) / lastWeekMoods.length) : null;
+
+            var statsHTML = '<div class="mood-stats">';
+            statsHTML += '<div class="mood-stat">';
+            statsHTML += '<div class="mood-stat-value">' + (thisWeekAvg !== null ? thisWeekAvg.toFixed(1) : '--') + '</div>';
+            statsHTML += '<div class="mood-stat-label" data-i18n="progress.this_week">This Week Avg</div>';
+            if (thisWeekAvg !== null && lastWeekAvg !== null) {
+                var diff = thisWeekAvg - lastWeekAvg;
+                var arrow = diff > 0.1 ? 'up' : (diff < -0.1 ? 'down' : 'same');
+                var sign = diff > 0 ? '+' : '';
+                statsHTML += '<div class="mood-stat-change ' + arrow + '">' + sign + diff.toFixed(1) + ' vs last week</div>';
+            }
+            statsHTML += '</div>';
+
+            statsHTML += '<div class="mood-stat">';
+            statsHTML += '<div class="mood-stat-value">' + (lastWeekAvg !== null ? lastWeekAvg.toFixed(1) : '--') + '</div>';
+            statsHTML += '<div class="mood-stat-label" data-i18n="progress.last_week">Last Week Avg</div>';
+            statsHTML += '</div>';
+
+            // Overall average
+            var allMoods = [];
+            days.forEach(function(d) { if(d.mood !== null) allMoods.push(d.mood); });
+            var overallAvg = allMoods.length > 0 ?
+                (allMoods.reduce(function(a,b){return a+b;},0) / allMoods.length) : null;
+            statsHTML += '<div class="mood-stat">';
+            statsHTML += '<div class="mood-stat-value">' + (overallAvg !== null ? overallAvg.toFixed(1) : '--') + '</div>';
+            statsHTML += '<div class="mood-stat-label" data-i18n="progress.month_avg">30-Day Avg</div>';
+            statsHTML += '</div>';
+            statsHTML += '</div>';
+
+            wrap.innerHTML = svg + statsHTML;
+        }
+
+        /* ================================================================
+           RENDER: Badges
+           ================================================================ */
+
+        function renderBadges(journalEntries) {
+            var grid = document.getElementById('badgesGrid');
+            var stats = getStats();
+            var log = getLog();
+
+            var totalSessions = stats.totalSessions || 0;
+            var totalMinutes = stats.totalMinutes || 0;
+            var streak = stats.currentStreak || 0;
+            var maxStreak = stats.maxStreak || 0;
+            var typeCounts = stats.typeCounts || {};
+            var featuresUsed = stats.featuresUsed || {};
+
+            var soundsCount = typeCounts.sounds || 0;
+            var journalCount = journalEntries ? journalEntries.length : 0;
+            var featuresCount = Object.keys(featuresUsed).length;
+
+            // Also merge maxStreak from meditation legacy
+            try {
+                var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
+                if (med.streak) maxStreak = Math.max(maxStreak, med.streak);
+            } catch(e) {}
+
+            var badges = [
+                {
+                    id: 'first-step',
+                    name: 'First Step',
+                    desc: 'Completed your first session',
+                    earned: totalSessions >= 1 || journalCount >= 1,
+                    color: '#4F46E5',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
+                },
+                {
+                    id: 'week-one',
+                    name: 'Week One',
+                    desc: '7 day streak achieved',
+                    earned: maxStreak >= 7,
+                    color: '#F59E0B',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>'
+                },
+                {
+                    id: 'month-strong',
+                    name: 'Month Strong',
+                    desc: '30 day streak achieved',
+                    earned: maxStreak >= 30,
+                    color: '#10B981',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>'
+                },
+                {
+                    id: 'century',
+                    name: 'Century',
+                    desc: '100 total sessions completed',
+                    earned: totalSessions >= 100,
+                    color: '#8B5CF6',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
+                },
+                {
+                    id: 'zen-master',
+                    name: 'Zen Master',
+                    desc: '1000 mindful minutes',
+                    earned: totalMinutes >= 1000,
+                    color: '#4F46E5',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'
+                },
+                {
+                    id: 'night-owl',
+                    name: 'Night Owl',
+                    desc: 'Used sleep sounds 10 times',
+                    earned: soundsCount >= 10,
+                    color: '#6366F1',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>'
+                },
+                {
+                    id: 'grateful-heart',
+                    name: 'Grateful Heart',
+                    desc: 'Wrote 10 journal entries',
+                    earned: journalCount >= 10,
+                    color: '#EC4899',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>'
+                },
+                {
+                    id: 'explorer',
+                    name: 'Explorer',
+                    desc: 'Tried all 6 core features',
+                    earned: featuresCount >= 6,
+                    color: '#14B8A6',
+                    icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>'
+                }
+            ];
+
+            grid.innerHTML = '';
+            badges.forEach(function(badge) {
+                var card = document.createElement('div');
+                card.className = 'badge-card ' + (badge.earned ? 'earned' : 'locked');
+
+                var iconBg = badge.earned ?
+                    'background:' + badge.color + '12; ' :
+                    '';
+
+                card.innerHTML =
+                    '<div class="badge-icon" style="' + iconBg + '">' +
+                    (badge.earned ?
+                        '<span style="color:' + badge.color + '">' + badge.icon + '</span>' :
+                        badge.icon) +
+                    '</div>' +
+                    '<div class="badge-name">' + badge.name + '</div>' +
+                    '<div class="badge-desc">' + badge.desc + '</div>';
+
+                grid.appendChild(card);
+            });
+        }
+
+        /* ================================================================
+           RENDER: Activity Log
+           ================================================================ */
+
+        function renderActivityLog() {
+            var list = document.getElementById('logList');
+            var log = getLog();
+            var recent = log.slice(0, 10);
+
+            if (recent.length === 0) {
+                list.innerHTML = '<li class="log-empty" data-i18n="progress.log_empty">No activities yet. Start your wellness journey!</li>';
+                return;
+            }
+
+            list.innerHTML = '';
+            recent.forEach(function(entry) {
+                var li = document.createElement('li');
+                li.className = 'log-item';
+
+                var dotClass = 'other';
+                if (entry.type === 'meditation') dotClass = 'meditation';
+                else if (entry.type === 'breathing') dotClass = 'breathing';
+                else if (entry.type === 'journal') dotClass = 'journal';
+                else if (entry.type === 'focus') dotClass = 'focus';
+                else if (entry.type === 'sounds') dotClass = 'sounds';
+
+                var timeStr = formatTimeAgo(entry.timestamp);
+
+                li.innerHTML =
+                    '<div class="log-dot ' + dotClass + '"></div>' +
+                    '<div class="log-text">' + escapeHTML(entry.text) + '</div>' +
+                    '<div class="log-time">' + timeStr + '</div>';
+
+                list.appendChild(li);
+            });
+        }
+
+        function formatTimeAgo(iso) {
+            try {
+                var d = new Date(iso);
+                var now = new Date();
+                var diff = Math.floor((now - d) / 1000);
+
+                if (diff < 60) return 'Just now';
+                if (diff < 3600) return Math.floor(diff / 60) + 'm ago';
+                if (diff < 86400) return Math.floor(diff / 3600) + 'h ago';
+                if (diff < 172800) return 'Yesterday';
+
+                var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                return months[d.getMonth()] + ' ' + d.getDate();
+            } catch(e) {
+                return '';
+            }
+        }
+
+        function escapeHTML(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        /* ================================================================
+           MOBILE NAV
+           ================================================================ */
+
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+        document.querySelectorAll('#mainNav a').forEach(function(a) {
+            a.addEventListener('click', function() {
+                document.getElementById('mainNav').classList.remove('open');
+            });
+        });
+
+        /* ================================================================
+           INIT: Load all data and render
+           ================================================================ */
+
+        importLegacyMeditationData();
+
+        openJournalDB(function(db) {
+            getJournalEntries(db, function(journalEntries) {
+                renderOverview(journalEntries.length);
+                renderCalendar(journalEntries);
+                renderMoodChart(journalEntries);
+                renderBadges(journalEntries);
+                renderActivityLog();
+            });
+        });
+
+    })();
+    </script>
+    <script src="/js/i18n.js"></script>
+</body>
+</html>

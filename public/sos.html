@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>SOS - Sukoon</title>
+    <meta name="description" content="Instant calm when you need it most. Guided breathing, grounding exercises, and crisis support. You are safe here.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: #374151;
+            background: #FAFAF7;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== AMBIENT BACKGROUND ===================== */
+        .ambient-bg {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 0;
+            pointer-events: none;
+            background: linear-gradient(
+                135deg,
+                rgba(79, 70, 229, 0.04) 0%,
+                rgba(16, 185, 129, 0.03) 25%,
+                rgba(245, 158, 11, 0.02) 50%,
+                rgba(236, 72, 153, 0.03) 75%,
+                rgba(79, 70, 229, 0.04) 100%
+            );
+            background-size: 400% 400%;
+            animation: ambientShift 30s ease-in-out infinite;
+        }
+
+        @keyframes ambientShift {
+            0%, 100% { background-position: 0% 50%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+        }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+            height: 72px;
+            background: rgba(250, 250, 247, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+        }
+
+        .brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .nav a {
+            padding: 8px 14px;
+            border-radius: 100px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #6B7280;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .nav a:hover {
+            background: rgba(79, 70, 229, 0.06);
+            color: #4F46E5;
+        }
+
+        .nav a.active {
+            background: #4F46E5;
+            color: #FFFFFF;
+            font-weight: 600;
+        }
+
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .lang-picker {
+            padding: 8px 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #6B7280;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            -webkit-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            padding-right: 28px;
+        }
+
+        .lang-picker:hover { border-color: rgba(79, 70, 229, 0.3); }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #374151;
+            cursor: pointer;
+            padding: 4px;
+            line-height: 1;
+        }
+
+        .mobile-nav-overlay {
+            display: none;
+            position: fixed;
+            top: 72px;
+            left: 0;
+            right: 0;
+            background: rgba(250, 250, 247, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 16px 24px 24px;
+            z-index: 999;
+            flex-direction: column;
+            gap: 4px;
+            transform: translateY(-10px);
+            opacity: 0;
+            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .mobile-nav-overlay.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .mobile-nav-overlay a {
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #374151;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .mobile-nav-overlay a:hover,
+        .mobile-nav-overlay a.active {
+            background: rgba(79, 70, 229, 0.06);
+            color: #4F46E5;
+        }
+
+        @media (max-width: 900px) {
+            .nav { display: none; }
+            .mobile-menu-btn { display: block; }
+            .topbar { padding: 0 1.25rem; }
+        }
+
+        /* ===================== SHARED SECTION STYLES ===================== */
+        .sos-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 100px 24px 60px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .sos-section:first-of-type {
+            padding-top: 72px;
+        }
+
+        .section-content {
+            max-width: 560px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .section-heading {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .section-heading-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #9CA3AF;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .section-subtext {
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.65;
+            margin-bottom: 24px;
+            max-width: 420px;
+        }
+
+        .btn-next {
+            padding: 14px 36px;
+            border-radius: 14px;
+            background: #FFFFFF;
+            color: #4F46E5;
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border: 1.5px solid rgba(79, 70, 229, 0.2);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            margin-top: 24px;
+        }
+
+        .btn-next:hover {
+            background: rgba(79, 70, 229, 0.04);
+            border-color: rgba(79, 70, 229, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.1);
+        }
+
+        /* ===================== SECTION 1: BREATHING ===================== */
+        .breathing-section {
+            min-height: 100vh;
+            padding-top: 72px;
+        }
+
+        .safe-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+            line-height: 1.3;
+            opacity: 0;
+            animation: fadeInSoft 2s ease 0.5s forwards;
+        }
+
+        .safe-text-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 1.05rem;
+            color: #9CA3AF;
+            margin-bottom: 40px;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeInSoft 2s ease 1s forwards;
+        }
+
+        @keyframes fadeInSoft {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Breathing circle */
+        .circle-container {
+            position: relative;
+            width: 260px;
+            height: 260px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 36px;
+            opacity: 0;
+            animation: fadeInSoft 2s ease 1.5s forwards;
+        }
+
+        .circle-ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(79, 70, 229, 0.06);
+        }
+
+        .circle-ring-1 {
+            width: 260px;
+            height: 260px;
+            top: 0;
+            left: 0;
+        }
+
+        .circle-ring-2 {
+            width: 220px;
+            height: 220px;
+            top: 20px;
+            left: 20px;
+            border-color: rgba(79, 70, 229, 0.04);
+        }
+
+        .circle-ring-3 {
+            width: 180px;
+            height: 180px;
+            top: 40px;
+            left: 40px;
+            border-color: rgba(79, 70, 229, 0.03);
+        }
+
+        .breath-circle {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 45% 40%, #FFFFFF 0%, rgba(79, 70, 229, 0.08) 60%, rgba(79, 70, 229, 0.15) 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            box-shadow: 0 4px 24px rgba(79, 70, 229, 0.08), 0 0 0 1px rgba(79, 70, 229, 0.04);
+            transition: transform 4s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .breath-circle.expanded {
+            transform: scale(1.65);
+        }
+
+        .phase-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.05rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            text-align: center;
+            line-height: 1.3;
+        }
+
+        .phase-text-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.65rem;
+            color: #9CA3AF;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        /* Timer */
+        .breath-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 300;
+            color: #111827;
+            letter-spacing: -0.02em;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 6px;
+            opacity: 0;
+            animation: fadeInSoft 2s ease 2s forwards;
+        }
+
+        .breath-timer-label {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #9CA3AF;
+            margin-bottom: 32px;
+            opacity: 0;
+            animation: fadeInSoft 2s ease 2s forwards;
+        }
+
+        /* ===================== SECTION 2: GROUNDING ===================== */
+        .grounding-step {
+            margin-bottom: 32px;
+            width: 100%;
+        }
+
+        .grounding-prompt {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+
+        .grounding-prompt-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #9CA3AF;
+            margin-bottom: 16px;
+        }
+
+        .grounding-circles {
+            display: flex;
+            gap: 14px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .grounding-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 2px solid rgba(79, 70, 229, 0.15);
+            background: rgba(79, 70, 229, 0.02);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+        }
+
+        .grounding-circle:hover {
+            border-color: rgba(79, 70, 229, 0.3);
+            background: rgba(79, 70, 229, 0.04);
+        }
+
+        .grounding-circle.filled {
+            background: #4F46E5;
+            border-color: #4F46E5;
+            transform: scale(1.15);
+            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.25);
+        }
+
+        .grounding-circle.filled svg {
+            opacity: 1;
+        }
+
+        .grounding-circle svg {
+            width: 20px;
+            height: 20px;
+            stroke: #FFFFFF;
+            stroke-width: 2.5;
+            fill: none;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        @keyframes popIn {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+            100% { transform: scale(1.15); }
+        }
+
+        .grounding-circle.pop {
+            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .grounding-progress {
+            margin-top: 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #4F46E5;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .grounding-progress.visible {
+            opacity: 1;
+        }
+
+        /* ===================== SECTION 3: AFFIRMATIONS ===================== */
+        .affirmation-container {
+            position: relative;
+            width: 100%;
+            max-width: 480px;
+            min-height: 240px;
+            margin-bottom: 24px;
+        }
+
+        .affirmation-card {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            padding: 48px 36px;
+            border-radius: 24px;
+            text-align: center;
+            opacity: 0;
+            transform: scale(0.96);
+            transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+            pointer-events: none;
+            min-height: 240px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .affirmation-card.active {
+            opacity: 1;
+            transform: scale(1);
+            pointer-events: auto;
+        }
+
+        .affirmation-card:nth-child(1) {
+            background: linear-gradient(145deg, rgba(79, 70, 229, 0.06) 0%, rgba(124, 58, 237, 0.08) 100%);
+            border: 1px solid rgba(79, 70, 229, 0.08);
+        }
+
+        .affirmation-card:nth-child(2) {
+            background: linear-gradient(145deg, rgba(16, 185, 129, 0.06) 0%, rgba(5, 150, 105, 0.08) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.08);
+        }
+
+        .affirmation-card:nth-child(3) {
+            background: linear-gradient(145deg, rgba(245, 158, 11, 0.06) 0%, rgba(217, 119, 6, 0.08) 100%);
+            border: 1px solid rgba(245, 158, 11, 0.08);
+        }
+
+        .affirmation-card:nth-child(4) {
+            background: linear-gradient(145deg, rgba(236, 72, 153, 0.06) 0%, rgba(219, 39, 119, 0.08) 100%);
+            border: 1px solid rgba(236, 72, 153, 0.08);
+        }
+
+        .affirmation-card:nth-child(5) {
+            background: linear-gradient(145deg, rgba(14, 165, 233, 0.06) 0%, rgba(2, 132, 199, 0.08) 100%);
+            border: 1px solid rgba(14, 165, 233, 0.08);
+        }
+
+        .affirmation-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            line-height: 1.4;
+            margin-bottom: 16px;
+        }
+
+        .affirmation-text-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.6;
+        }
+
+        .affirmation-dots {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .affirmation-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(79, 70, 229, 0.15);
+            transition: all 0.3s ease;
+        }
+
+        .affirmation-dot.active {
+            background: #4F46E5;
+            transform: scale(1.2);
+        }
+
+        /* ===================== SECTION 4: HELP ===================== */
+        .help-options {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            width: 100%;
+            max-width: 440px;
+            margin-bottom: 32px;
+        }
+
+        .btn-friend {
+            padding: 18px 32px;
+            border-radius: 16px;
+            background: #4F46E5;
+            color: #FFFFFF;
+            font-size: 1rem;
+            font-weight: 600;
+            font-family: 'Inter', sans-serif;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(79, 70, 229, 0.2), 0 8px 24px rgba(79, 70, 229, 0.15);
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .btn-friend:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25), 0 12px 32px rgba(79, 70, 229, 0.2);
+        }
+
+        .btn-friend svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .helplines-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 20px;
+            padding: 28px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            width: 100%;
+            max-width: 440px;
+        }
+
+        .helplines-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+
+        .helpline-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            margin-bottom: 4px;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .helpline-item:hover {
+            background: rgba(16, 185, 129, 0.04);
+        }
+
+        .helpline-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 12px;
+            background: rgba(16, 185, 129, 0.08);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .helpline-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: #10B981;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .helpline-info {
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+        }
+
+        .helpline-name {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #111827;
+        }
+
+        .helpline-number {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #10B981;
+            letter-spacing: 0.02em;
+        }
+
+        .helpline-region {
+            font-size: 0.7rem;
+            color: #9CA3AF;
+            font-weight: 500;
+        }
+
+        .not-alone-text {
+            font-size: 0.95rem;
+            color: #6B7280;
+            line-height: 1.65;
+            max-width: 420px;
+            margin-top: 28px;
+        }
+
+        .not-alone-text-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            margin-top: 6px;
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            background: #F3F4F6;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding: 56px 24px 32px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.75rem;
+            color: #111827;
+            letter-spacing: -0.02em;
+            margin-bottom: 12px;
+        }
+
+        .footer-mission {
+            font-size: 0.95rem;
+            color: #6B7280;
+            max-width: 480px;
+            margin: 0 auto 8px;
+            line-height: 1.6;
+        }
+
+        .footer-mission-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.85rem;
+            color: #9CA3AF;
+            margin-bottom: 24px;
+        }
+
+        .footer-privacy {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 16px;
+            border-radius: 100px;
+            background: rgba(16, 185, 129, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #059669;
+            margin-bottom: 28px;
+        }
+
+        .footer-privacy svg { width: 12px; height: 12px; }
+
+        .footer-nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 32px;
+        }
+
+        .footer-nav a {
+            padding: 6px 14px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #6B7280;
+            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .footer-nav a:hover {
+            color: #4F46E5;
+            background: rgba(79, 70, 229, 0.04);
+        }
+
+        .footer-copy {
+            font-size: 0.75rem;
+            color: #9CA3AF;
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 768px) {
+            .sos-section {
+                padding: 80px 20px 48px;
+            }
+            .safe-text { font-size: 1.6rem; }
+            .section-heading { font-size: 1.5rem; }
+            .circle-container { width: 220px; height: 220px; }
+            .circle-ring-1 { width: 220px; height: 220px; }
+            .circle-ring-2 { width: 184px; height: 184px; top: 18px; left: 18px; }
+            .circle-ring-3 { width: 148px; height: 148px; top: 36px; left: 36px; }
+            .breath-circle { width: 110px; height: 110px; }
+            .phase-text { font-size: 0.9rem; }
+            .breath-timer { font-size: 1.8rem; }
+            .affirmation-text { font-size: 1.25rem; }
+            .affirmation-card { padding: 36px 24px; min-height: 220px; }
+            .grounding-circle { width: 48px; height: 48px; }
+            .helplines-card { padding: 24px 20px; }
+        }
+
+        @media (max-width: 400px) {
+            .circle-container { width: 190px; height: 190px; }
+            .circle-ring-1 { width: 190px; height: 190px; }
+            .circle-ring-2 { width: 160px; height: 160px; top: 15px; left: 15px; }
+            .circle-ring-3 { width: 130px; height: 130px; top: 30px; left: 30px; }
+            .breath-circle { width: 95px; height: 95px; }
+            .phase-text { font-size: 0.8rem; }
+            .safe-text { font-size: 1.4rem; }
+            .affirmation-text { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ambient shifting background -->
+    <div class="ambient-bg"></div>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <a href="/" class="brand">Sukoon</a>
+        <nav class="nav">
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+            <a href="/sos.html" class="active" data-i18n="nav.sos">SOS</a>
+        </nav>
+        <div class="topbar-actions">
+            <select class="lang-picker">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
+        </div>
+    </header>
+
+    <!-- Mobile nav -->
+    <div class="mobile-nav-overlay" id="mobileNav">
+        <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+        <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+        <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+        <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+        <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+        <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+        <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+        <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+        <a href="/sos.html" class="active" data-i18n="nav.sos">SOS</a>
+    </div>
+
+    <!-- ===================== SECTION 1: BREATHING ===================== -->
+    <section class="sos-section breathing-section" id="sectionBreathe">
+        <div class="section-content">
+            <div class="safe-text" data-i18n="sos.safe">You are safe. Breathe with me.</div>
+            <div class="safe-text-hi">&#x0906;&#x092A; &#x0938;&#x0941;&#x0930;&#x0915;&#x094D;&#x0937;&#x093F;&#x0924; &#x0939;&#x0948;&#x0902;&#x0964; &#x092E;&#x0947;&#x0930;&#x0947; &#x0938;&#x093E;&#x0925; &#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;&#x0964;</div>
+
+            <!-- Breathing circle -->
+            <div class="circle-container">
+                <div class="circle-ring circle-ring-1"></div>
+                <div class="circle-ring circle-ring-2"></div>
+                <div class="circle-ring circle-ring-3"></div>
+                <div class="breath-circle" id="breathCircle">
+                    <div class="phase-text" id="phaseText">Inhale</div>
+                    <div class="phase-text-hi" id="phaseHindi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
+                </div>
+            </div>
+
+            <!-- Timer -->
+            <div class="breath-timer" id="breathTimer">0:00</div>
+            <div class="breath-timer-label" data-i18n="sos.breathing_time">Time spent breathing</div>
+
+            <button class="btn-next" id="btnCalmer" onclick="document.getElementById('sectionGround').scrollIntoView({behavior:'smooth'})" data-i18n="sos.feel_calmer">I feel calmer</button>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 2: GROUNDING ===================== -->
+    <section class="sos-section" id="sectionGround">
+        <div class="section-content">
+            <div class="section-heading" data-i18n="sos.grounding_title">Let's ground ourselves</div>
+            <div class="section-heading-hi">&#x0906;&#x0907;&#x090F; &#x0939;&#x092E; &#x0905;&#x092A;&#x0928;&#x0947; &#x0906;&#x092A; &#x0915;&#x094B; &#x0938;&#x094D;&#x0925;&#x093F;&#x0930; &#x0915;&#x0930;&#x0947;&#x0902;</div>
+
+            <!-- 5 things you can SEE -->
+            <div class="grounding-step" data-count="5">
+                <div class="grounding-prompt" data-i18n="sos.ground_see">Name 5 things you can SEE</div>
+                <div class="grounding-prompt-hi">5 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x0926;&#x0947;&#x0916; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="grounding-circles">
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+
+            <!-- 4 things you can TOUCH -->
+            <div class="grounding-step" data-count="4">
+                <div class="grounding-prompt" data-i18n="sos.ground_touch">Name 4 things you can TOUCH</div>
+                <div class="grounding-prompt-hi">4 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x091B;&#x0942; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="grounding-circles">
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+
+            <!-- 3 things you can HEAR -->
+            <div class="grounding-step" data-count="3">
+                <div class="grounding-prompt" data-i18n="sos.ground_hear">Name 3 things you can HEAR</div>
+                <div class="grounding-prompt-hi">3 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x0938;&#x0941;&#x0928; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="grounding-circles">
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+
+            <!-- 2 things you can SMELL -->
+            <div class="grounding-step" data-count="2">
+                <div class="grounding-prompt" data-i18n="sos.ground_smell">Name 2 things you can SMELL</div>
+                <div class="grounding-prompt-hi">2 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x0938;&#x0942;&#x0902;&#x0918; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="grounding-circles">
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+
+            <!-- 1 thing you can TASTE -->
+            <div class="grounding-step" data-count="1">
+                <div class="grounding-prompt" data-i18n="sos.ground_taste">Name 1 thing you can TASTE</div>
+                <div class="grounding-prompt-hi">1 &#x091A;&#x0940;&#x095B; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x091A;&#x0916; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="grounding-circles">
+                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                </div>
+            </div>
+
+            <div class="grounding-progress" id="groundingProgress">0 / 15 completed</div>
+
+            <button class="btn-next" onclick="document.getElementById('sectionAffirm').scrollIntoView({behavior:'smooth'})" data-i18n="sos.next">Next</button>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 3: AFFIRMATIONS ===================== -->
+    <section class="sos-section" id="sectionAffirm">
+        <div class="section-content">
+            <div class="section-heading" data-i18n="sos.affirmation_title">Words for your heart</div>
+            <div class="section-heading-hi">&#x0906;&#x092A;&#x0915;&#x0947; &#x0926;&#x093F;&#x0932; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x0936;&#x092C;&#x094D;&#x0926;</div>
+
+            <div class="affirmation-container" id="affirmationContainer">
+                <div class="affirmation-card active">
+                    <div class="affirmation-text" data-i18n="sos.affirm_1">This feeling is temporary. It will pass.</div>
+                    <div class="affirmation-text-hi">&#x092F;&#x0939; &#x090F;&#x0939;&#x0938;&#x093E;&#x0938; &#x0905;&#x0938;&#x094D;&#x0925;&#x093E;&#x092F;&#x0940; &#x0939;&#x0948;&#x0964; &#x092F;&#x0939; &#x0917;&#x0941;&#x095B;&#x0930; &#x091C;&#x093E;&#x090F;&#x0917;&#x093E;&#x0964;</div>
+                </div>
+                <div class="affirmation-card">
+                    <div class="affirmation-text" data-i18n="sos.affirm_2">You have survived every bad day so far.</div>
+                    <div class="affirmation-text-hi">&#x0906;&#x092A;&#x0928;&#x0947; &#x0905;&#x092C; &#x0924;&#x0915; &#x0939;&#x0930; &#x092C;&#x0941;&#x0930;&#x0947; &#x0926;&#x093F;&#x0928; &#x0915;&#x094B; &#x092A;&#x093E;&#x0930; &#x0915;&#x093F;&#x092F;&#x093E; &#x0939;&#x0948;&#x0964;</div>
+                </div>
+                <div class="affirmation-card">
+                    <div class="affirmation-text" data-i18n="sos.affirm_3">Right now, in this moment, you are okay.</div>
+                    <div class="affirmation-text-hi">&#x0905;&#x092D;&#x0940;, &#x0907;&#x0938; &#x092A;&#x0932; &#x092E;&#x0947;&#x0902;, &#x0906;&#x092A; &#x0920;&#x0940;&#x0915; &#x0939;&#x0948;&#x0902;&#x0964;</div>
+                </div>
+                <div class="affirmation-card">
+                    <div class="affirmation-text" data-i18n="sos.affirm_4">Your feelings are valid. You are not broken.</div>
+                    <div class="affirmation-text-hi">&#x0906;&#x092A;&#x0915;&#x0940; &#x092D;&#x093E;&#x0935;&#x0928;&#x093E;&#x090F;&#x0901; &#x0935;&#x0948;&#x0927; &#x0939;&#x0948;&#x0902;&#x0964; &#x0906;&#x092A; &#x091F;&#x0942;&#x091F;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x0948;&#x0902;&#x0964;</div>
+                </div>
+                <div class="affirmation-card">
+                    <div class="affirmation-text" data-i18n="sos.affirm_5">Breathe. You are stronger than you think.</div>
+                    <div class="affirmation-text-hi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;&#x0964; &#x0906;&#x092A; &#x0905;&#x092A;&#x0928;&#x0940; &#x0938;&#x094B;&#x091A; &#x0938;&#x0947; &#x0915;&#x0939;&#x0940;&#x0902; &#x095B;&#x094D;&#x092F;&#x093E;&#x0926;&#x093E; &#x092E;&#x095B;&#x092C;&#x0942;&#x0924; &#x0939;&#x0948;&#x0902;&#x0964;</div>
+                </div>
+            </div>
+
+            <div class="affirmation-dots" id="affirmationDots">
+                <div class="affirmation-dot active"></div>
+                <div class="affirmation-dot"></div>
+                <div class="affirmation-dot"></div>
+                <div class="affirmation-dot"></div>
+                <div class="affirmation-dot"></div>
+            </div>
+
+            <button class="btn-next" onclick="document.getElementById('sectionHelp').scrollIntoView({behavior:'smooth'})" style="margin-top:36px" data-i18n="sos.next">Next</button>
+        </div>
+    </section>
+
+    <!-- ===================== SECTION 4: TALK OR GET HELP ===================== -->
+    <section class="sos-section" id="sectionHelp">
+        <div class="section-content">
+            <div class="section-heading" data-i18n="sos.help_title">You don't have to do this alone</div>
+            <div class="section-heading-hi">&#x0906;&#x092A;&#x0915;&#x094B; &#x092F;&#x0939; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0915;&#x0930;&#x0928;&#x093E; &#x0939;&#x0948;</div>
+
+            <div class="help-options">
+                <a href="/friend.html" class="btn-friend" data-i18n="sos.talk_friend">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+                    Talk to AI Friend
+                </a>
+            </div>
+
+            <div class="helplines-card">
+                <div class="helplines-title" data-i18n="sos.helplines_title">Call a Helpline</div>
+
+                <a href="tel:988" class="helpline-item">
+                    <div class="helpline-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div class="helpline-info">
+                        <span class="helpline-name" data-i18n="sos.helpline_988">Suicide & Crisis Lifeline</span>
+                        <span class="helpline-number">988</span>
+                        <span class="helpline-region">United States</span>
+                    </div>
+                </a>
+
+                <a href="tel:9152987821" class="helpline-item">
+                    <div class="helpline-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div class="helpline-info">
+                        <span class="helpline-name" data-i18n="sos.helpline_icall">iCall</span>
+                        <span class="helpline-number">9152987821</span>
+                        <span class="helpline-region">India</span>
+                    </div>
+                </a>
+
+                <a href="tel:116123" class="helpline-item">
+                    <div class="helpline-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div class="helpline-info">
+                        <span class="helpline-name" data-i18n="sos.helpline_samaritans">Samaritans</span>
+                        <span class="helpline-number">116 123</span>
+                        <span class="helpline-region">United Kingdom</span>
+                    </div>
+                </a>
+
+                <a href="tel:18602662345" class="helpline-item">
+                    <div class="helpline-icon">
+                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                    <div class="helpline-info">
+                        <span class="helpline-name" data-i18n="sos.helpline_vandrevala">Vandrevala Foundation</span>
+                        <span class="helpline-number">1860-2662-345</span>
+                        <span class="helpline-region">India</span>
+                    </div>
+                </a>
+            </div>
+
+            <p class="not-alone-text" data-i18n="sos.not_alone">You are not alone. Millions of people understand exactly how you feel.</p>
+            <p class="not-alone-text-hi">&#x0906;&#x092A; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x0948;&#x0902;&#x0964;</p>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">Sukoon</div>
+            <p class="footer-mission" data-i18n="footer.mission">Free mental wellness tools for every soul on Earth.</p>
+            <p class="footer-mission-hi">&#x092A;&#x0943;&#x0925;&#x094D;&#x0935;&#x0940; &#x092A;&#x0930; &#x0939;&#x0930; &#x0906;&#x0924;&#x094D;&#x092E;&#x093E; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x093C;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F; &#x0909;&#x092A;&#x0915;&#x0930;&#x0923;&#x0964;</p>
+            <div class="footer-privacy">
+                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
+                <span data-i18n="footer.privacy_line">Zero data collection</span>
+            </div>
+            <nav class="footer-nav">
+                <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+                <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+                <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+                <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+                <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+                <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+                <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+                <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+                <a href="/sos.html" data-i18n="nav.sos">SOS</a>
+                <a href="/privacy.html" data-i18n="nav.privacy">Privacy</a>
+            </nav>
+            <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
+        </div>
+    </footer>
+
+    <script>
+    (function() {
+        'use strict';
+
+        // ===================== AUDIO CONTEXT (subtle tone) =====================
+        var audioCtx = null;
+        function getAudioCtx() {
+            if (!audioCtx) {
+                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            return audioCtx;
+        }
+
+        function playTone(freq, duration) {
+            try {
+                var ctx = getAudioCtx();
+                var osc = ctx.createOscillator();
+                var gain = ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.value = freq;
+                gain.gain.value = 0.06;
+                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+                osc.connect(gain);
+                gain.connect(ctx.destination);
+                osc.start(ctx.currentTime);
+                osc.stop(ctx.currentTime + duration);
+            } catch (e) {
+                // Audio not available, silently continue
+            }
+        }
+
+        // ===================== BREATHING ENGINE (4-7-8, auto-start) =====================
+        var breathCircle = document.getElementById('breathCircle');
+        var phaseText = document.getElementById('phaseText');
+        var phaseHindi = document.getElementById('phaseHindi');
+        var breathTimerEl = document.getElementById('breathTimer');
+
+        var phases = [
+            { name: 'Inhale',  hi: '\u0938\u093E\u0901\u0938 \u0932\u0947\u0902',   duration: 4, expand: true  },
+            { name: 'Hold',    hi: '\u0930\u094B\u0915\u0947\u0902',                  duration: 7, expand: null  },
+            { name: 'Exhale',  hi: '\u091B\u094B\u0921\u093C\u0947\u0902',             duration: 8, expand: false }
+        ];
+
+        var phaseIndex = 0;
+        var phaseTimer = null;
+        var breathStartTime = Date.now();
+        var breathInterval = null;
+
+        function updateBreathTimer() {
+            var elapsed = Math.floor((Date.now() - breathStartTime) / 1000);
+            var mins = Math.floor(elapsed / 60);
+            var secs = elapsed % 60;
+            breathTimerEl.textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+
+        function runBreathPhase() {
+            var phase = phases[phaseIndex];
+
+            phaseText.textContent = phase.name;
+            phaseHindi.textContent = phase.hi;
+
+            // Set transition duration to match phase
+            breathCircle.style.transitionDuration = phase.duration + 's';
+
+            if (phase.expand === true) {
+                breathCircle.classList.add('expanded');
+                playTone(396, 1.5);
+            } else if (phase.expand === false) {
+                breathCircle.classList.remove('expanded');
+                playTone(285, 1.5);
+            }
+            // On hold, keep current state
+
+            phaseTimer = setTimeout(function() {
+                phaseIndex = (phaseIndex + 1) % phases.length;
+                runBreathPhase();
+            }, phase.duration * 1000);
+        }
+
+        // Auto-start breathing on page load
+        function startBreathing() {
+            breathStartTime = Date.now();
+            breathInterval = setInterval(updateBreathTimer, 1000);
+            updateBreathTimer();
+            phaseIndex = 0;
+            runBreathPhase();
+        }
+
+        // Small delay so user sees the page settle, then breathing begins
+        setTimeout(startBreathing, 2000);
+
+        // ===================== GROUNDING EXERCISE =====================
+        var totalCircles = 15;
+        var filledCount = 0;
+        var progressEl = document.getElementById('groundingProgress');
+
+        window.fillCircle = function(el) {
+            if (el.classList.contains('filled')) return;
+
+            el.classList.add('filled', 'pop');
+            filledCount++;
+
+            progressEl.textContent = filledCount + ' / ' + totalCircles + ' completed';
+            progressEl.classList.add('visible');
+
+            // Subtle haptic-like sound
+            playTone(528 + (filledCount * 30), 0.3);
+
+            // Remove pop class after animation
+            setTimeout(function() {
+                el.classList.remove('pop');
+            }, 400);
+        };
+
+        // ===================== AFFIRMATION CAROUSEL =====================
+        var cards = document.querySelectorAll('.affirmation-card');
+        var dots = document.querySelectorAll('.affirmation-dot');
+        var currentCard = 0;
+        var affirmationInterval = null;
+
+        function showCard(index) {
+            cards.forEach(function(card, i) {
+                if (i === index) {
+                    card.classList.add('active');
+                } else {
+                    card.classList.remove('active');
+                }
+            });
+            dots.forEach(function(dot, i) {
+                if (i === index) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+        }
+
+        function nextCard() {
+            currentCard = (currentCard + 1) % cards.length;
+            showCard(currentCard);
+        }
+
+        // Start affirmation rotation
+        affirmationInterval = setInterval(nextCard, 5000);
+
+        // Allow manual dot clicking
+        dots.forEach(function(dot, i) {
+            dot.addEventListener('click', function() {
+                currentCard = i;
+                showCard(currentCard);
+                clearInterval(affirmationInterval);
+                affirmationInterval = setInterval(nextCard, 5000);
+            });
+            dot.style.cursor = 'pointer';
+        });
+
+        // ===================== MOBILE MENU =====================
+        var menuBtn = document.getElementById('menuBtn');
+        var mobileNav = document.getElementById('mobileNav');
+        var menuOpen = false;
+
+        menuBtn.addEventListener('click', function() {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                mobileNav.classList.add('open');
+                menuBtn.textContent = '\u2715';
+            } else {
+                mobileNav.classList.remove('open');
+                menuBtn.textContent = '\u2630';
+            }
+        });
+
+    })();
+    </script>
+    <script src="/js/i18n.js"></script>
+</body>
+</html>
