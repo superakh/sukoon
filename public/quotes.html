@@ -337,20 +337,23 @@
             Sukoon
         </a>
         <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html" class="active">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" class="active" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
         <div class="topbar-right">
             <select class="lang-select" id="langPicker">
                 <option value="en">EN</option>
                 <option value="hi">HI</option>
                 <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
             </select>
             <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -365,10 +368,10 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7.5 8.25h9m-9 3H12m-9.75 1.51c0 1.6 1.123 2.994 2.707 3.227 1.129.166 2.27.293 3.423.379.35.026.67.21.865.501L12 21l2.755-4.133a1.14 1.14 0 01.865-.501 48.172 48.172 0 003.423-.379c1.584-.233 2.707-1.626 2.707-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z"/></svg>
-                    Bilingual Wisdom
+                    <span data-i18n="quotes.badge">Bilingual Wisdom</span>
                 </div>
-                <h1>Quotes for the Soul</h1>
-                <p class="hero-subtitle">Words that heal, inspire, and awaken. In English and Hindi, for every heart that needs light.</p>
+                <h1 data-i18n="quotes.title">Quotes for the Soul</h1>
+                <p class="hero-subtitle" data-i18n="quotes.subtitle">Words that heal, inspire, and awaken. In English and Hindi, for every heart that needs light.</p>
                 <p class="hero-hindi">&#2358;&#2348;&#2381;&#2342; &#2332;&#2379; &#2311;&#2354;&#2366;&#2332; &#2325;&#2352;&#2375;&#2306;, &#2346;&#2381;&#2352;&#2375;&#2352;&#2367;&#2340; &#2325;&#2352;&#2375;&#2306;, &#2324;&#2352; &#2332;&#2327;&#2366;&#2319;&#2306;&#2404;</p>
             </div>
         </section>
@@ -376,14 +379,14 @@
         <!-- ===== QUOTE OF THE MOMENT ===== -->
         <section class="qotm-section">
             <div class="qotm-card">
-                <div class="qotm-label">Quote of the Moment</div>
+                <div class="qotm-label" data-i18n="quotes.daily_label">Quote of the Moment</div>
                 <div class="qotm-mark">&ldquo;</div>
                 <p class="qotm-en" id="qotmEN"></p>
                 <p class="qotm-hi" id="qotmHI"></p>
                 <p class="qotm-author" id="qotmAuthor"></p>
                 <button class="qotm-refresh" id="qotmRefresh">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
-                    Another Quote
+                    <span data-i18n="quotes.refresh">Another Quote</span>
                 </button>
             </div>
         </section>
@@ -391,17 +394,17 @@
         <!-- ===== FILTER BAR ===== -->
         <section class="filter-section">
             <div class="filter-bar" id="filterBar">
-                <button class="filter-pill active" data-cat="all">All</button>
-                <button class="filter-pill" data-cat="kindness">Kindness</button>
-                <button class="filter-pill" data-cat="strength">Strength</button>
-                <button class="filter-pill" data-cat="courage">Courage</button>
-                <button class="filter-pill" data-cat="wisdom">Wisdom</button>
-                <button class="filter-pill" data-cat="self-talk">Self-Talk</button>
-                <button class="filter-pill" data-cat="islamic">Islamic</button>
-                <button class="filter-pill" data-cat="family">Family</button>
-                <button class="filter-pill" data-cat="humor">Humor</button>
-                <button class="filter-pill" data-cat="peace">Peace</button>
-                <button class="filter-pill" data-cat="healing">Healing</button>
+                <button class="filter-pill active" data-cat="all" data-i18n="quotes.filter_all">All</button>
+                <button class="filter-pill" data-cat="kindness" data-i18n="quotes.filter_kindness">Kindness</button>
+                <button class="filter-pill" data-cat="strength" data-i18n="quotes.filter_strength">Strength</button>
+                <button class="filter-pill" data-cat="courage" data-i18n="quotes.filter_courage">Courage</button>
+                <button class="filter-pill" data-cat="wisdom" data-i18n="quotes.filter_wisdom">Wisdom</button>
+                <button class="filter-pill" data-cat="self-talk" data-i18n="quotes.filter_self_talk">Self-Talk</button>
+                <button class="filter-pill" data-cat="islamic" data-i18n="quotes.filter_islamic">Islamic</button>
+                <button class="filter-pill" data-cat="family" data-i18n="quotes.filter_family">Family</button>
+                <button class="filter-pill" data-cat="humor" data-i18n="quotes.filter_humor">Humor</button>
+                <button class="filter-pill" data-cat="peace" data-i18n="quotes.filter_peace">Peace</button>
+                <button class="filter-pill" data-cat="healing" data-i18n="quotes.filter_healing">Healing</button>
             </div>
         </section>
 
@@ -421,20 +424,20 @@
             </span>
             Sukoon
         </div>
-        <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-mission" data-i18n="footer.mission">Free mental wellness for every soul on Earth.</p>
         <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
-        <div class="footer-privacy">No data collected. No accounts. No tracking.</div>
+        <div class="footer-privacy" data-i18n="footer.privacy_full">No data collected. No accounts. No tracking.</div>
         <nav class="footer-nav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
-        <p class="footer-copy">&copy; 2025 Sukoon. Made with love for humanity.</p>
+        <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
     </footer>
 
     <script>
@@ -690,5 +693,6 @@
         showQotm();
         document.getElementById('qotmRefresh').addEventListener('click', showQotm);
     </script>
+    <script src="/js/i18n.js"></script>
 </body>
 </html>

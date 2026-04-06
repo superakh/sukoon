@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const path = require('path');
 const chatRoute = require('./routes/chat');
+const translateRoute = require('./routes/translate');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -13,6 +14,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // API routes
 app.use('/api/chat', chatRoute);
+app.use('/api/translate', translateRoute);
 
 // Health check
 app.get('/api/health', (req, res) => {

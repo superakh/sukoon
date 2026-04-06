@@ -623,23 +623,23 @@
     <header class="topbar">
         <a href="/" class="brand">Sukoon</a>
         <nav class="nav">
-            <a href="/breathe.html" class="active">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" class="active" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
         <div class="topbar-actions">
             <select class="lang-picker">
-                <option>EN</option>
-                <option>HI</option>
-                <option>UR</option>
-                <option>AR</option>
-                <option>ES</option>
-                <option>FR</option>
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
             </select>
             <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
         </div>
@@ -647,14 +647,14 @@
 
     <!-- Mobile nav -->
     <div class="mobile-nav-overlay" id="mobileNav">
-        <a href="/breathe.html" class="active">Breathe</a>
-        <a href="/meditate.html">Meditate</a>
-        <a href="/sounds.html">Sounds</a>
-        <a href="/journal.html">Journal</a>
-        <a href="/friend.html">AI Friend</a>
-        <a href="/wisdom.html">Wisdom</a>
-        <a href="/quotes.html">Quotes</a>
-        <a href="/videos.html">Videos</a>
+        <a href="/breathe.html" class="active" data-i18n="nav.breathe">Breathe</a>
+        <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+        <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+        <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+        <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+        <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+        <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+        <a href="/videos.html" data-i18n="nav.videos">Videos</a>
     </div>
 
     <!-- BREATHE PAGE -->
@@ -664,10 +664,10 @@
 
             <!-- Technique selector -->
             <div class="technique-selector">
-                <button class="technique-btn active" data-technique="478">4-7-8 Calm</button>
-                <button class="technique-btn" data-technique="box">Box Breathing</button>
-                <button class="technique-btn" data-technique="relax">Deep Relax</button>
-                <button class="technique-btn" data-technique="energize">Energize</button>
+                <button class="technique-btn active" data-technique="478" data-i18n="breathe.technique_478">4-7-8 Calm</button>
+                <button class="technique-btn" data-technique="box" data-i18n="breathe.technique_box">Box Breathing</button>
+                <button class="technique-btn" data-technique="relax" data-i18n="breathe.technique_deep">Deep Relax</button>
+                <button class="technique-btn" data-technique="energize" data-i18n="breathe.technique_energize">Energize</button>
             </div>
 
             <!-- Breathing circle -->
@@ -676,7 +676,7 @@
                 <div class="circle-ring circle-ring-2"></div>
                 <div class="circle-ring circle-ring-3"></div>
                 <div class="breath-circle" id="breathCircle">
-                    <div class="phase-text" id="phaseText">Ready</div>
+                    <div class="phase-text" id="phaseText" data-i18n="breathe.ready">Ready</div>
                     <div class="phase-text-hi" id="phaseHindi">तैयार</div>
                 </div>
             </div>
@@ -695,13 +695,13 @@
 
             <!-- Start / Stop -->
             <div class="control-btns">
-                <button class="btn-start" id="btnStart">Begin Session</button>
-                <button class="btn-stop" id="btnStop">End Session</button>
+                <button class="btn-start" id="btnStart" data-i18n="breathe.start">Begin Session</button>
+                <button class="btn-stop" id="btnStop" data-i18n="breathe.stop">End Session</button>
             </div>
 
             <!-- Info card -->
             <div class="info-card">
-                <div class="info-label">TECHNIQUE</div>
+                <div class="info-label" data-i18n="breathe.technique_label">TECHNIQUE</div>
                 <div class="info-title" id="infoTitle">4-7-8 Calm</div>
                 <div class="info-desc" id="infoDesc">Developed by Dr. Andrew Weil, the 4-7-8 technique is a natural tranquilizer for the nervous system. Inhale for 4 seconds, hold for 7, exhale for 8. Proven to reduce anxiety and promote sleep.</div>
                 <div class="info-hindi" id="infoHindi">4-7-8 तकनीक तंत्रिका तंत्र के लिए एक प्राकृतिक शांतिकारक है। 4 सेकंड श्वास लें, 7 रोकें, 8 छोड़ें।</div>
@@ -719,24 +719,24 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">Sukoon</div>
-            <p class="footer-mission">Free mental wellness tools for every soul on Earth.</p>
+            <p class="footer-mission" data-i18n="footer.mission">Free mental wellness tools for every soul on Earth.</p>
             <p class="footer-mission-hi">पृथ्वी पर हर आत्मा के लिए मुफ़्त मानसिक स्वास्थ्य उपकरण।</p>
             <div class="footer-privacy">
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
-                Zero data collection
+                <span data-i18n="footer.privacy_line">Zero data collection</span>
             </div>
             <nav class="footer-nav">
-                <a href="/breathe.html">Breathe</a>
-                <a href="/meditate.html">Meditate</a>
-                <a href="/sounds.html">Sounds</a>
-                <a href="/journal.html">Journal</a>
-                <a href="/friend.html">AI Friend</a>
-                <a href="/wisdom.html">Wisdom</a>
-                <a href="/quotes.html">Quotes</a>
-                <a href="/videos.html">Videos</a>
-                <a href="/privacy.html">Privacy</a>
+                <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+                <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+                <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+                <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+                <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+                <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+                <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+                <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+                <a href="/privacy.html" data-i18n="nav.privacy">Privacy</a>
             </nav>
-            <p class="footer-copy">&copy; 2025 Sukoon. Free and open for all humanity.</p>
+            <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
         </div>
     </footer>
 
@@ -1028,6 +1028,6 @@
 
     })();
     </script>
-
+    <script src="/js/i18n.js"></script>
 </body>
 </html>

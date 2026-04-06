@@ -464,14 +464,14 @@
             Sukoon
         </a>
         <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html" class="active">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" class="active" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
         <div class="topbar-right">
             <select class="lang-select" id="langPicker">
@@ -493,21 +493,21 @@
         <div class="privacy-notice">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
             <p>
-                Your journal is stored only on this device. Nothing is sent to any server.
+                <span data-i18n="journal.gdpr">Your journal is stored only on this device. Nothing is sent to any server.</span>
                 <span class="hi">&#2310;&#2346;&#2325;&#2368; &#2337;&#2366;&#2351;&#2352;&#2368; &#2325;&#2375;&#2357;&#2354; &#2311;&#2360; &#2337;&#2367;&#2357;&#2366;&#2311;&#2360; &#2346;&#2352; &#2360;&#2381;&#2335;&#2379;&#2352; &#2361;&#2379;&#2340;&#2368; &#2361;&#2376;&#2404; &#2325;&#2369;&#2331; &#2349;&#2368; &#2325;&#2367;&#2360;&#2368; &#2360;&#2352;&#2381;&#2357;&#2352; &#2346;&#2352; &#2344;&#2361;&#2368;&#2306; &#2349;&#2375;&#2332;&#2366; &#2332;&#2366;&#2340;&#2366;&#2404;</span>
             </p>
         </div>
 
         <!-- Header -->
         <div class="page-header">
-            <h1>How are you feeling?</h1>
-            <p class="subtitle">Track your mood, write your thoughts. Your private space.</p>
+            <h1 data-i18n="journal.title">How are you feeling?</h1>
+            <p class="subtitle" data-i18n="journal.subtitle">Track your mood, write your thoughts. Your private space.</p>
             <p class="subtitle-hi">&#2310;&#2346; &#2325;&#2376;&#2360;&#2366; &#2350;&#2361;&#2360;&#2370;&#2360; &#2325;&#2352; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306;?</p>
         </div>
 
         <!-- Mood Selector -->
         <div class="mood-section">
-            <div class="mood-label">Choose your mood</div>
+            <div class="mood-label" data-i18n="journal.how_feeling">Choose your mood</div>
             <div class="mood-label-hi">&#2309;&#2346;&#2344;&#2366; &#2350;&#2370;&#2337; &#2330;&#2369;&#2344;&#2375;&#2306;</div>
             <div class="mood-row" id="moodRow">
                 <button class="mood-btn" data-mood="1" type="button" aria-label="Awful">
@@ -521,7 +521,7 @@
                             <line x1="24" y1="10" x2="19" y2="11.5" stroke="#EF4444" stroke-width="1.2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <span class="mood-text">Awful</span>
+                    <span class="mood-text" data-i18n="journal.mood_awful">Awful</span>
                 </button>
                 <button class="mood-btn" data-mood="2" type="button" aria-label="Bad">
                     <div class="mood-circle">
@@ -532,7 +532,7 @@
                             <path d="M11 22c1.2-2 3-3 5-3s3.8 1 5 3" stroke="#F59E0B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
                         </svg>
                     </div>
-                    <span class="mood-text">Bad</span>
+                    <span class="mood-text" data-i18n="journal.mood_bad">Bad</span>
                 </button>
                 <button class="mood-btn" data-mood="3" type="button" aria-label="Okay">
                     <div class="mood-circle">
@@ -543,7 +543,7 @@
                             <line x1="10" y1="21" x2="22" y2="21" stroke="#EAB308" stroke-width="1.5" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <span class="mood-text">Okay</span>
+                    <span class="mood-text" data-i18n="journal.mood_okay">Okay</span>
                 </button>
                 <button class="mood-btn" data-mood="4" type="button" aria-label="Good">
                     <div class="mood-circle">
@@ -554,7 +554,7 @@
                             <path d="M10 19c1.5 2.5 3.5 3.5 6 3.5s4.5-1 6-3.5" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" fill="none"/>
                         </svg>
                     </div>
-                    <span class="mood-text">Good</span>
+                    <span class="mood-text" data-i18n="journal.mood_good">Good</span>
                 </button>
                 <button class="mood-btn" data-mood="5" type="button" aria-label="Great">
                     <div class="mood-circle">
@@ -566,14 +566,14 @@
                             <path d="M9 18h14" stroke="#4F46E5" stroke-width="1.2" stroke-linecap="round"/>
                         </svg>
                     </div>
-                    <span class="mood-text">Great</span>
+                    <span class="mood-text" data-i18n="journal.mood_great">Great</span>
                 </button>
             </div>
         </div>
 
         <!-- Journal Textarea -->
         <div class="journal-section">
-            <label for="journalText">Your thoughts</label>
+            <label for="journalText" data-i18n="journal.your_thoughts">Your thoughts</label>
             <textarea class="journal-textarea" id="journalText" placeholder="Write whatever is on your mind... No one will see this but you.&#10;&#10;&#2332;&#2379; &#2350;&#2344; &#2350;&#2375;&#2306; &#2310;&#2319; &#2357;&#2379; &#2354;&#2367;&#2326;&#2375;&#2306;... &#2351;&#2375; &#2360;&#2367;&#2352;&#2381;&#2347;&#2364; &#2310;&#2346;&#2325;&#2375; &#2354;&#2367;&#2319; &#2361;&#2376;&#2404;"></textarea>
             <div class="char-count"><span id="charCount">0</span> characters</div>
         </div>
@@ -582,21 +582,21 @@
         <div class="action-row">
             <button class="btn btn-primary" id="saveBtn" disabled>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                Save Entry
+                <span data-i18n="journal.save">Save Entry</span>
             </button>
             <button class="btn btn-secondary" id="exportBtn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                Export Data
+                <span data-i18n="journal.export">Export Data</span>
             </button>
         </div>
 
         <!-- Mood History -->
         <div class="history-section">
-            <h2 class="section-title">Mood History</h2>
-            <p class="section-subtitle">Your 30-day emotional journey</p>
+            <h2 class="section-title" data-i18n="journal.history">Mood History</h2>
+            <p class="section-subtitle" data-i18n="journal.history_sub">Your 30-day emotional journey</p>
             <div class="chart-card">
                 <div class="chart-header">
-                    <h3>Last 30 Days</h3>
+                    <h3 data-i18n="journal.last_30">Last 30 Days</h3>
                     <div class="chart-legend">
                         <div class="legend-item"><div class="legend-dot" style="background:#EF4444"></div>Awful</div>
                         <div class="legend-item"><div class="legend-dot" style="background:#F59E0B"></div>Bad</div>
@@ -612,10 +612,10 @@
 
         <!-- Recent Entries -->
         <div class="history-section">
-            <h2 class="section-title">Recent Entries</h2>
-            <p class="section-subtitle">Your last 5 journal entries</p>
+            <h2 class="section-title" data-i18n="journal.recent">Recent Entries</h2>
+            <p class="section-subtitle" data-i18n="journal.recent_sub">Your last 5 journal entries</p>
             <div class="entries-card" id="entriesList">
-                <div class="entries-empty">No entries yet. Write your first one above.</div>
+                <div class="entries-empty" data-i18n="journal.empty">No entries yet. Write your first one above.</div>
             </div>
         </div>
     </main>
@@ -628,23 +628,23 @@
             </span>
             Sukoon
         </div>
-        <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-mission" data-i18n="footer.mission">Free mental wellness for every soul on Earth.</p>
         <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
         <div class="footer-privacy">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            No data collected. No accounts. No tracking.
+            <span data-i18n="footer.privacy_line">No data collected.</span> No accounts. No tracking.
         </div>
         <nav class="footer-nav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
-        <p class="footer-copy">&copy; 2025 Sukoon. Made with love for humanity.</p>
+        <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
     </footer>
 
     <!-- Toast -->
@@ -853,5 +853,6 @@
         openDB(function() { refreshUI(); });
     })();
     </script>
+    <script src="/js/i18n.js"></script>
 </body>
 </html>

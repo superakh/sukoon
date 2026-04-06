@@ -806,23 +806,23 @@
     <header class="topbar">
         <a href="/" class="brand">Sukoon</a>
         <nav class="nav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
         <div class="topbar-actions">
             <select class="lang-picker">
-                <option>EN</option>
-                <option>HI</option>
-                <option>UR</option>
-                <option>AR</option>
-                <option>ES</option>
-                <option>FR</option>
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
             </select>
             <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
         </div>
@@ -830,14 +830,14 @@
 
     <!-- Mobile nav -->
     <div class="mobile-nav-overlay" id="mobileNav">
-        <a href="/breathe.html">Breathe</a>
-        <a href="/meditate.html">Meditate</a>
-        <a href="/sounds.html">Sounds</a>
-        <a href="/journal.html">Journal</a>
-        <a href="/friend.html">AI Friend</a>
-        <a href="/wisdom.html">Wisdom</a>
-        <a href="/quotes.html">Quotes</a>
-        <a href="/videos.html">Videos</a>
+        <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+        <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+        <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+        <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+        <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+        <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+        <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+        <a href="/videos.html" data-i18n="nav.videos">Videos</a>
     </div>
 
     <!-- HERO -->
@@ -846,10 +846,10 @@
         <div class="hero-content">
             <div class="hero-label">
                 <span class="hero-label-dot"></span>
-                Free for everyone
+                <span data-i18n="hero.label">Free for everyone</span>
             </div>
-            <h1>Find your peace.</h1>
-            <p class="hero-subtitle">
+            <h1 data-i18n="hero.heading">Find your peace.</h1>
+            <p class="hero-subtitle" data-i18n="hero.subtitle">
                 Sukoon is a free mental wellness platform with breathing exercises, meditation, ambient sounds, mood tracking, and an AI companion. For every soul on Earth.
             </p>
             <p class="hero-subtitle-hi">
@@ -857,11 +857,11 @@
             </p>
             <div class="trust-badge">
                 <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L2 4v4.5c0 3.5 2.5 6 6 7.5 3.5-1.5 6-4 6-7.5V4L8 1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.5 8.5L7 10l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                No account &middot; No tracking &middot; No cost
+                <span data-i18n="hero.trust">No account &middot; No tracking &middot; No cost</span>
             </div>
             <div class="hero-ctas">
-                <a href="/breathe.html" class="btn-primary">Start Breathing <span>&rarr;</span></a>
-                <a href="/friend.html" class="btn-secondary">Talk to a Friend <span>&rarr;</span></a>
+                <a href="/breathe.html" class="btn-primary"><span data-i18n="hero.cta_breathe">Start Breathing</span> <span>&rarr;</span></a>
+                <a href="/friend.html" class="btn-secondary"><span data-i18n="hero.cta_friend">Talk to a Friend</span> <span>&rarr;</span></a>
             </div>
         </div>
     </section>
@@ -871,19 +871,19 @@
         <div class="stats-grid">
             <div class="stat-item">
                 <div class="stat-number">8</div>
-                <div class="stat-label">Tools</div>
+                <div class="stat-label" data-i18n="stats.tools">Tools</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">6</div>
-                <div class="stat-label">Languages</div>
+                <div class="stat-label" data-i18n="stats.languages">Languages</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">0</div>
-                <div class="stat-label">Data Collected</div>
+                <div class="stat-label" data-i18n="stats.data">Data Collected</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">&infin;</div>
-                <div class="stat-label">Peace</div>
+                <div class="stat-label" data-i18n="stats.peace">Peace</div>
             </div>
         </div>
     </section>
@@ -891,9 +891,9 @@
     <!-- FEATURES -->
     <section class="features-section">
         <div class="section-inner">
-            <div class="section-label">FEATURES</div>
-            <h2 class="section-heading">Everything you need to feel better</h2>
-            <p class="section-desc">Simple, beautiful tools designed with clinical mindfulness principles. Each one crafted to help you pause, reflect, and restore balance.</p>
+            <div class="section-label" data-i18n="features.label">FEATURES</div>
+            <h2 class="section-heading" data-i18n="features.heading">Everything you need to feel better</h2>
+            <p class="section-desc" data-i18n="features.sub">Simple, beautiful tools designed with clinical mindfulness principles. Each one crafted to help you pause, reflect, and restore balance.</p>
             <div class="features-grid">
 
                 <!-- Breathe -->
@@ -901,8 +901,8 @@
                     <div class="feature-icon-box">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                     </div>
-                    <div class="feature-title">Breathe</div>
-                    <div class="feature-desc">Guided breathing exercises with 4-7-8, box breathing, and more. Visual circle animation syncs with each phase.</div>
+                    <div class="feature-title" data-i18n="features.card_breathe_title">Breathe</div>
+                    <div class="feature-desc" data-i18n="features.card_breathe_desc">Guided breathing exercises with 4-7-8, box breathing, and more. Visual circle animation syncs with each phase.</div>
                     <div class="feature-hindi">श्वास अभ्यास -- शांति का पहला कदम</div>
                     <div class="feature-arrow">&rarr;</div>
                 </a>
@@ -912,8 +912,8 @@
                     <div class="feature-icon-box">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                     </div>
-                    <div class="feature-title">Meditate</div>
-                    <div class="feature-desc">Timer-based meditation with ambient backgrounds. Set your duration, choose a soundscape, and find stillness.</div>
+                    <div class="feature-title" data-i18n="features.card_meditate_title">Meditate</div>
+                    <div class="feature-desc" data-i18n="features.card_meditate_desc">Timer-based meditation with ambient backgrounds. Set your duration, choose a soundscape, and find stillness.</div>
                     <div class="feature-hindi">ध्यान -- अपने भीतर की शांति खोजें</div>
                     <div class="feature-arrow">&rarr;</div>
                 </a>
@@ -923,8 +923,8 @@
                     <div class="feature-icon-box">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
                     </div>
-                    <div class="feature-title">Sounds</div>
-                    <div class="feature-desc">Mix ambient soundscapes: rain, ocean, forest, birdsong. Layer multiple tracks and adjust each volume.</div>
+                    <div class="feature-title" data-i18n="features.card_sounds_title">Sounds</div>
+                    <div class="feature-desc" data-i18n="features.card_sounds_desc">Mix ambient soundscapes: rain, ocean, forest, birdsong. Layer multiple tracks and adjust each volume.</div>
                     <div class="feature-hindi">प्राकृतिक ध्वनियाँ -- मन को विश्राम दें</div>
                     <div class="feature-arrow">&rarr;</div>
                 </a>
@@ -934,8 +934,8 @@
                     <div class="feature-icon-box">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     </div>
-                    <div class="feature-title">Journal</div>
-                    <div class="feature-desc">Private mood tracking with daily prompts. Write freely, track patterns, and understand your emotional rhythms.</div>
+                    <div class="feature-title" data-i18n="features.card_journal_title">Journal</div>
+                    <div class="feature-desc" data-i18n="features.card_journal_desc">Private mood tracking with daily prompts. Write freely, track patterns, and understand your emotional rhythms.</div>
                     <div class="feature-hindi">डायरी -- अपनी भावनाओं को समझें</div>
                     <div class="feature-arrow">&rarr;</div>
                 </a>
@@ -945,8 +945,8 @@
                     <div class="feature-icon-box">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
                     </div>
-                    <div class="feature-title">AI Friend</div>
-                    <div class="feature-desc">A compassionate AI companion trained in CBT and active listening. Talk anytime, in your language, judgment-free.</div>
+                    <div class="feature-title" data-i18n="features.card_friend_title">AI Friend</div>
+                    <div class="feature-desc" data-i18n="features.card_friend_desc">A compassionate AI companion trained in CBT and active listening. Talk anytime, in your language, judgment-free.</div>
                     <div class="feature-hindi">AI दोस्त -- बिना किसी निर्णय के बात करें</div>
                     <div class="feature-arrow">&rarr;</div>
                 </a>
@@ -956,8 +956,8 @@
                     <div class="feature-icon-box">
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
                     </div>
-                    <div class="feature-title">Wisdom</div>
-                    <div class="feature-desc">Curated insights from Rumi, Kabir, Marcus Aurelius, Thich Nhat Hanh, and timeless philosophical traditions.</div>
+                    <div class="feature-title" data-i18n="features.card_wisdom_title">Wisdom</div>
+                    <div class="feature-desc" data-i18n="features.card_wisdom_desc">Curated insights from Rumi, Kabir, Marcus Aurelius, Thich Nhat Hanh, and timeless philosophical traditions.</div>
                     <div class="feature-hindi">ज्ञान -- सदियों की बुद्धिमत्ता आपके लिए</div>
                     <div class="feature-arrow">&rarr;</div>
                 </a>
@@ -969,13 +969,13 @@
     <!-- QUOTE -->
     <section class="quote-section">
         <div class="quote-card animate-in">
-            <div class="quote-label">TODAY'S THOUGHT</div>
+            <div class="quote-label" data-i18n="quote_section.label">TODAY'S THOUGHT</div>
             <div class="quote-text" id="quoteText">"The mind is everything. What you think, you become."</div>
             <div class="quote-hindi" id="quoteHindi">मन ही सब कुछ है। जो तुम सोचते हो, वही बन जाते हो।</div>
             <div class="quote-author" id="quoteAuthor">-- Buddha</div>
             <button class="quote-refresh" id="quoteRefresh">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1v5h5"/><path d="M15 15v-5h-5"/><path d="M2.3 10.5A6.5 6.5 0 0013.7 5.5"/><path d="M13.7 5.5A6.5 6.5 0 002.3 10.5"/></svg>
-                New thought
+                <span data-i18n="quote_section.refresh">New thought</span>
             </button>
         </div>
     </section>
@@ -984,8 +984,8 @@
     <section class="why-section">
         <div class="why-inner">
             <div class="why-top">
-                <div class="section-label">PHILOSOPHY</div>
-                <h2 class="section-heading">Why Sukoon?</h2>
+                <div class="section-label" data-i18n="why.label">PHILOSOPHY</div>
+                <h2 class="section-heading" data-i18n="why.heading">Why Sukoon?</h2>
                 <p class="why-desc">
                     Mental wellness shouldn't have a paywall. Sukoon exists because peace of mind is a basic human right, not a premium subscription. We built these tools for the student in Delhi, the worker in Dubai, the mother in Lagos, the elder in Osaka. Free, private, and always available.
                 </p>
@@ -998,28 +998,28 @@
                     <div class="pillar-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
                     </div>
-                    <div class="pillar-label">Free Forever</div>
+                    <div class="pillar-label" data-i18n="why.free">Free Forever</div>
                     <div class="pillar-sublabel">हमेशा मुफ़्त</div>
                 </div>
                 <div class="pillar-card animate-in">
                     <div class="pillar-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
                     </div>
-                    <div class="pillar-label">Fully Private</div>
+                    <div class="pillar-label" data-i18n="why.private">Fully Private</div>
                     <div class="pillar-sublabel">पूरी तरह निजी</div>
                 </div>
                 <div class="pillar-card animate-in">
                     <div class="pillar-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 014 10 15 15 0 01-4 10 15 15 0 01-4-10 15 15 0 014-10z"/></svg>
                     </div>
-                    <div class="pillar-label">Multilingual</div>
+                    <div class="pillar-label" data-i18n="why.multi">Multilingual</div>
                     <div class="pillar-sublabel">बहुभाषी</div>
                 </div>
                 <div class="pillar-card animate-in">
                     <div class="pillar-icon">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
                     </div>
-                    <div class="pillar-label">Made with Love</div>
+                    <div class="pillar-label" data-i18n="why.love">Made with Love</div>
                     <div class="pillar-sublabel">प्यार से बनाया</div>
                 </div>
             </div>
@@ -1030,24 +1030,24 @@
     <footer class="footer">
         <div class="footer-inner">
             <div class="footer-brand">Sukoon</div>
-            <p class="footer-mission">Free mental wellness tools for every soul on Earth.</p>
+            <p class="footer-mission" data-i18n="footer.mission">Free mental wellness tools for every soul on Earth.</p>
             <p class="footer-mission-hi">पृथ्वी पर हर आत्मा के लिए मुफ़्त मानसिक स्वास्थ्य उपकरण।</p>
             <div class="footer-privacy">
                 <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
-                Zero data collection
+                <span data-i18n="footer.privacy_line">Zero data collection</span>
             </div>
             <nav class="footer-nav">
-                <a href="/breathe.html">Breathe</a>
-                <a href="/meditate.html">Meditate</a>
-                <a href="/sounds.html">Sounds</a>
-                <a href="/journal.html">Journal</a>
-                <a href="/friend.html">AI Friend</a>
-                <a href="/wisdom.html">Wisdom</a>
-                <a href="/quotes.html">Quotes</a>
-                <a href="/videos.html">Videos</a>
-                <a href="/privacy.html">Privacy</a>
+                <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+                <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+                <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+                <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+                <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+                <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+                <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+                <a href="/videos.html" data-i18n="nav.videos">Videos</a>
+                <a href="/privacy.html" data-i18n="nav.privacy">Privacy</a>
             </nav>
-            <p class="footer-copy">&copy; 2025 Sukoon. Free and open for all humanity.</p>
+            <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
         </div>
     </footer>
 
@@ -1146,6 +1146,6 @@
         quoteHindi.style.transition = 'opacity 0.25s ease';
         quoteAuthor.style.transition = 'opacity 0.25s ease';
     </script>
-
+    <script src="/js/i18n.js"></script>
 </body>
 </html>

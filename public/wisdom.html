@@ -391,20 +391,23 @@
             Sukoon
         </a>
         <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html" class="active">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" class="active" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
         <div class="topbar-right">
             <select class="lang-select" id="langPicker">
                 <option value="en">EN</option>
                 <option value="hi">HI</option>
                 <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
             </select>
             <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
                 <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -419,10 +422,10 @@
             <div class="hero-content">
                 <div class="hero-badge">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v1m0 16v1m8.66-13.66l-.71.71M4.05 19.95l-.71.71M21 12h-1M4 12H3m16.66 7.66l-.71-.71M4.05 4.05l-.71-.71"/></svg>
-                    Spiritual Teachings
+                    <span data-i18n="wisdom.badge">Spiritual Teachings</span>
                 </div>
-                <h1>Soul Wisdom</h1>
-                <p class="hero-subtitle">Ancient wisdom for the modern soul. Timeless truths to guide your inner journey toward lasting peace.</p>
+                <h1 data-i18n="wisdom.title">Soul Wisdom</h1>
+                <p class="hero-subtitle" data-i18n="wisdom.subtitle">Ancient wisdom for the modern soul. Timeless truths to guide your inner journey toward lasting peace.</p>
                 <p class="hero-hindi">&#2310;&#2343;&#2369;&#2344;&#2367;&#2325; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2346;&#2381;&#2352;&#2366;&#2330;&#2368;&#2344; &#2332;&#2381;&#2334;&#2366;&#2344;</p>
                 <div class="hero-line"></div>
             </div>
@@ -431,7 +434,7 @@
         <!-- ===== AFFIRMATION ===== -->
         <section class="affirmation-section">
             <div class="affirmation-card">
-                <div class="affirmation-label">Today's Affirmation</div>
+                <div class="affirmation-label" data-i18n="wisdom.affirmation">Today's Affirmation</div>
                 <div class="affirmation-icon">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
                 </div>
@@ -439,15 +442,15 @@
                 <p class="affirmation-hindi" id="affirmationHI"></p>
                 <button class="new-thought-btn" id="newThoughtBtn" aria-label="New affirmation">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
-                    New Thought
+                    <span data-i18n="wisdom.new_thought">New Thought</span>
                 </button>
             </div>
         </section>
 
         <!-- ===== FOUNDATIONS ===== -->
         <section class="section">
-            <div class="section-label">Core Teachings</div>
-            <h2 class="section-title">Foundations of Inner Peace</h2>
+            <div class="section-label" data-i18n="wisdom.foundations_label">Core Teachings</div>
+            <h2 class="section-title" data-i18n="wisdom.foundations">Foundations of Inner Peace</h2>
             <p class="section-subtitle">Six timeless principles that form the bedrock of spiritual understanding and emotional freedom.</p>
 
             <div class="wisdom-grid">
@@ -510,8 +513,8 @@
         <!-- ===== DAILY PRACTICES ===== -->
         <section class="section" style="background: rgba(79,70,229,0.015); border-radius: 0; max-width: 100%; padding-left: 1.5rem; padding-right: 1.5rem;">
             <div style="max-width: 1200px; margin: 0 auto;">
-                <div class="section-label">Rituals</div>
-                <h2 class="section-title">Daily Practices</h2>
+                <div class="section-label" data-i18n="wisdom.practices_label">Rituals</div>
+                <h2 class="section-title" data-i18n="wisdom.practices">Daily Practices</h2>
                 <p class="section-subtitle">Simple sacred rituals for morning, midday, and evening to anchor your soul in peace throughout the day.</p>
 
                 <div class="practice-grid">
@@ -618,20 +621,20 @@
             </span>
             Sukoon
         </div>
-        <p class="footer-mission">Free mental wellness for every soul on Earth.</p>
+        <p class="footer-mission" data-i18n="footer.mission">Free mental wellness for every soul on Earth.</p>
         <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
-        <div class="footer-privacy">No data collected. No accounts. No tracking.</div>
+        <div class="footer-privacy" data-i18n="footer.privacy_full">No data collected. No accounts. No tracking.</div>
         <nav class="footer-nav">
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/quotes.html">Quotes</a>
-            <a href="/videos.html">Videos</a>
+            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
+            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
+            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
+            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
+            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
+            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
+            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
         </nav>
-        <p class="footer-copy">&copy; 2025 Sukoon. Made with love for humanity.</p>
+        <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
     </footer>
 
     <script>
@@ -672,5 +675,6 @@
         showAffirmation();
         document.getElementById('newThoughtBtn').addEventListener('click', showAffirmation);
     </script>
+    <script src="/js/i18n.js"></script>
 </body>
 </html>

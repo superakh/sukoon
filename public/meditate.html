@@ -356,19 +356,23 @@
         Sukoon
     </a>
     <div class="topbar-nav" id="topNav">
-        <a href="breathe.html">Breathe</a>
-        <a href="meditate.html" class="active">Meditate</a>
-        <a href="sounds.html">Sounds</a>
-        <a href="journal.html">Journal</a>
-        <a href="friend.html">AI Friend</a>
-        <a href="wisdom.html">Wisdom</a>
-        <a href="quotes.html">Quotes</a>
-        <a href="videos.html">Videos</a>
+        <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
+        <a href="meditate.html" class="active" data-i18n="nav.meditate">Meditate</a>
+        <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
+        <a href="journal.html" data-i18n="nav.journal">Journal</a>
+        <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
+        <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+        <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
+        <a href="videos.html" data-i18n="nav.videos">Videos</a>
     </div>
     <div class="topbar-right">
         <select class="lang-select" aria-label="Language">
             <option value="en">EN</option>
             <option value="hi">HI</option>
+            <option value="ur">UR</option>
+            <option value="ar">AR</option>
+            <option value="es">ES</option>
+            <option value="fr">FR</option>
         </select>
         <button class="mobile-toggle" id="menuBtn" aria-label="Toggle navigation">
             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
@@ -389,7 +393,7 @@
         <!-- Streak -->
         <div class="streak-badge">
             <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5L9.8 5.8 14.5 6.5 11.2 9.7 12 14.5 8 12.2 4 14.5 4.8 9.7 1.5 6.5 6.2 5.8z" fill="#F59E0B"/></svg>
-            Day <span class="streak-num" id="streakNum">1</span>
+            <span data-i18n="meditate.streak">Day</span> <span class="streak-num" id="streakNum">1</span>
         </div>
 
         <!-- Duration pills -->
@@ -417,7 +421,7 @@
             </svg>
             <div class="ring-inner">
                 <div class="timer-time" id="timerTime">5:00</div>
-                <div class="timer-state" id="timerState">Ready</div>
+                <div class="timer-state" id="timerState" data-i18n="meditate.ready">Ready</div>
             </div>
         </div>
 
@@ -425,23 +429,23 @@
         <div class="snd-row" id="sndRow">
             <button class="snd-pill active" data-snd="silence">
                 <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="4.5" y1="4.5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.2"/></svg>
-                Silence
+                <span data-i18n="meditate.silence">Silence</span>
             </button>
             <button class="snd-pill" data-snd="rain">
                 <svg viewBox="0 0 14 14" fill="none"><path d="M3 6.5v4M7 4.5v6M11 5.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
-                Rain
+                <span data-i18n="meditate.rain">Rain</span>
             </button>
             <button class="snd-pill" data-snd="ocean">
                 <svg viewBox="0 0 14 14" fill="none"><path d="M1 7.5c2-2 4 0 6-2s4 0 6-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M1 10.5c2-2 4 0 6-2s4 0 6-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/></svg>
-                Ocean
+                <span data-i18n="meditate.ocean">Ocean</span>
             </button>
         </div>
 
         <!-- Controls -->
         <div class="ctrls">
-            <button class="btn-main" id="btnStart">Start</button>
-            <button class="btn-ghost" id="btnPause" style="display:none">Pause</button>
-            <button class="btn-ghost" id="btnReset" style="display:none">Reset</button>
+            <button class="btn-main" id="btnStart" data-i18n="meditate.start">Start</button>
+            <button class="btn-ghost" id="btnPause" style="display:none" data-i18n="meditate.pause">Pause</button>
+            <button class="btn-ghost" id="btnReset" style="display:none" data-i18n="meditate.reset">Reset</button>
         </div>
 
         <!-- Bilingual prompt -->
@@ -462,19 +466,19 @@
             <path d="M40 22c0 9.94-8.06 18-18 18 9.94 0 18 8.06 18 18 0-9.94 8.06-18 18-18-9.94 0-18-8.06-18-18z" fill="#4F46E5" opacity="0.5"/>
         </svg>
     </div>
-    <div class="done-title">Namaste</div>
+    <div class="done-title" data-i18n="meditate.namaste">Namaste</div>
     <div class="done-sub">&#x0928;&#x092E;&#x0938;&#x094D;&#x0924;&#x0947; &mdash; &#x0906;&#x092A;&#x0915;&#x0940; &#x0938;&#x093E;&#x0927;&#x0928;&#x093E; &#x092A;&#x0942;&#x0930;&#x094D;&#x0923; &#x0939;&#x0941;&#x0908;</div>
     <div class="done-stats">
         <div class="done-stat">
             <div class="done-val" id="doneTime">5:00</div>
-            <div class="done-lbl">Duration</div>
+            <div class="done-lbl" data-i18n="meditate.duration">Duration</div>
         </div>
         <div class="done-stat">
             <div class="done-val" id="doneStreak">1</div>
-            <div class="done-lbl">Day Streak</div>
+            <div class="done-lbl" data-i18n="meditate.day_streak">Day Streak</div>
         </div>
     </div>
-    <button class="btn-main" id="btnContinue">Continue</button>
+    <button class="btn-main" id="btnContinue" data-i18n="meditate.continue_btn">Continue</button>
 </div>
 
 <!-- ===================== FOOTER ===================== -->
@@ -482,34 +486,34 @@
     <div class="footer-inner">
         <div>
             <div class="footer-brand">Sukoon</div>
-            <div class="footer-desc">Free mental wellness for every mind. Breathe, meditate, and find your calm &mdash; always free, always private.</div>
+            <div class="footer-desc" data-i18n="footer.mission">Free mental wellness for every mind. Breathe, meditate, and find your calm &mdash; always free, always private.</div>
             <div class="footer-desc-hi">&#x0939;&#x0930; &#x092E;&#x0928; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F;</div>
             <div class="footer-priv">
                 <svg viewBox="0 0 12 12" fill="none"><rect x="1.5" y="5.5" width="9" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1"/><path d="M4 5.5V3.8a2 2 0 014 0V5.5" stroke="currentColor" stroke-width="1"/></svg>
-                No data collected &middot; 100% private
+                <span data-i18n="footer.privacy_line">No data collected</span> &middot; 100% private
             </div>
         </div>
         <div>
-            <div class="footer-hd">Practice</div>
+            <div class="footer-hd" data-i18n="footer.practice">Practice</div>
             <div class="footer-links">
-                <a href="breathe.html">Breathe</a>
-                <a href="meditate.html">Meditate</a>
-                <a href="sounds.html">Sounds</a>
-                <a href="journal.html">Journal</a>
+                <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
+                <a href="meditate.html" data-i18n="nav.meditate">Meditate</a>
+                <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
+                <a href="journal.html" data-i18n="nav.journal">Journal</a>
             </div>
         </div>
         <div>
-            <div class="footer-hd">Explore</div>
+            <div class="footer-hd" data-i18n="footer.explore">Explore</div>
             <div class="footer-links">
-                <a href="friend.html">AI Friend</a>
-                <a href="wisdom.html">Wisdom</a>
-                <a href="quotes.html">Quotes</a>
-                <a href="videos.html">Videos</a>
-                <a href="privacy.html">Privacy</a>
+                <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
+                <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
+                <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
+                <a href="videos.html" data-i18n="nav.videos">Videos</a>
+                <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
             </div>
         </div>
     </div>
-    <div class="footer-btm">&copy; 2026 Sukoon. Free forever. Built with care for your peace of mind.</div>
+    <div class="footer-btm">&copy; 2026 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></div>
 </footer>
 
 <script>
@@ -798,5 +802,6 @@
     });
 })();
 </script>
+<script src="/js/i18n.js"></script>
 </body>
 </html>
