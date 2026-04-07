@@ -608,7 +608,7 @@
         document.getElementById('topNav').classList.toggle('open');
     });
 
-    /* ====== Audio Engine (uses pre-generated WAV files) ====== */
+    /* ====== Audio Engine — Crossfade Looping for Seamless Ambient Sound ====== */
     var audioCtx = null;
     var masterGain = null;
     var audioBuffers = {}; // cached decoded buffers
@@ -625,6 +625,8 @@
         creek: '/audio/creek.wav',
         crickets: '/audio/crickets.wav'
     };
+
+    var CROSSFADE_SEC = 4; // seconds of crossfade overlap
 
     function initAC(){
         if(!audioCtx){
@@ -653,42 +655,124 @@
         }
     }
 
-    /* Build a channel: load WAV, create looping buffer source */
+    /**
+     * Crossfade Looping Engine
+     * Two buffer sources play the same audio, offset so one fades in
+     * as the other fades out — creating seamless, infinite loops
+     * with no audible seam or click.
+     */
+    function startCrossfadeSource(ch, buf, offset) {
+        var src = audioCtx.createBufferSource();
+        src.buffer = buf;
+        src.loop = false; // we handle looping manually via crossfade
+
+        var fadeGain = audioCtx.createGain();
+        fadeGain.gain.setValueAtTime(0, audioCtx.currentTime);
+
+        src.connect(fadeGain);
+        fadeGain.connect(ch.channelGain);
+
+        var duration = buf.duration;
+        var fadeTime = Math.min(CROSSFADE_SEC, duration * 0.4);
+        var now = audioCtx.currentTime;
+
+        // Start playback at given offset
+        src.start(now, offset || 0);
+
+        // Fade in
+        fadeGain.gain.linearRampToValueAtTime(1, now + fadeTime);
+
+        // Schedule fade out before end
+        var fadeOutStart = now + (duration - offset - fadeTime);
+        if (fadeOutStart > now + fadeTime) {
+            fadeGain.gain.setValueAtTime(1, fadeOutStart);
+            fadeGain.gain.linearRampToValueAtTime(0, fadeOutStart + fadeTime);
+        }
+
+        // Schedule next source before this one ends (crossfade overlap)
+        var nextStartDelay = (duration - offset - fadeTime) * 1000;
+        if (nextStartDelay < 500) nextStartDelay = 500;
+
+        var timer = setTimeout(function() {
+            if (channels[ch._id] && channels[ch._id].active) {
+                startCrossfadeSource(ch, buf, 0);
+            }
+        }, nextStartDelay);
+
+        // Clean up source after it ends
+        src.onended = function() {
+            try { fadeGain.disconnect(); } catch(e) {}
+        };
+
+        // Store for cleanup
+        ch.sources.push({ src: src, gain: fadeGain, timer: timer });
+
+        // Limit stored sources (clean up old ones)
+        while (ch.sources.length > 3) {
+            var old = ch.sources.shift();
+            clearTimeout(old.timer);
+            try { old.src.stop(); } catch(e) {}
+            try { old.gain.disconnect(); } catch(e) {}
+        }
+    }
+
+    /* Build a channel with crossfade looping */
     async function buildChannel(id){
         initAC();
         var buf = await loadBuffer(id);
         if(!buf) return;
 
-        var src = audioCtx.createBufferSource();
-        src.buffer = buf;
-        src.loop = true;
+        var channelGain = audioCtx.createGain();
+        channelGain.gain.setValueAtTime(0, audioCtx.currentTime);
+        channelGain.connect(masterGain);
 
-        var gain = audioCtx.createGain();
-        gain.gain.setValueAtTime(0, audioCtx.currentTime);
+        var ch = {
+            _id: id,
+            channelGain: channelGain,
+            sources: [],
+            vol: 0,
+            active: true
+        };
 
-        src.connect(gain);
-        gain.connect(masterGain);
-        src.start(0);
+        channels[id] = ch;
 
-        channels[id] = { src: src, gain: gain, vol: 0 };
+        // Start first source immediately
+        startCrossfadeSource(ch, buf, 0);
+
+        // Start second source offset by half the duration for continuous overlap
+        var halfDur = buf.duration / 2;
+        setTimeout(function() {
+            if (channels[id] && channels[id].active) {
+                startCrossfadeSource(ch, buf, 0);
+            }
+        }, halfDur * 1000);
     }
 
     function stopChannel(id){
         var ch = channels[id];
         if(!ch) return;
+        ch.active = false;
         try {
-            /* Fade out quickly to avoid click */
-            ch.gain.gain.cancelScheduledValues(audioCtx.currentTime);
-            ch.gain.gain.setValueAtTime(ch.gain.gain.value, audioCtx.currentTime);
-            ch.gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
-            /* Stop source after fade */
+            /* Fade out the channel gain smoothly */
+            ch.channelGain.gain.cancelScheduledValues(audioCtx.currentTime);
+            ch.channelGain.gain.setValueAtTime(ch.channelGain.gain.value, audioCtx.currentTime);
+            ch.channelGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.15);
+            /* Stop all sources after fade */
             setTimeout(function(){
-                try { ch.src.stop(); } catch(e){}
-                try { ch.gain.disconnect(); } catch(e){}
-            }, 80);
+                ch.sources.forEach(function(s) {
+                    clearTimeout(s.timer);
+                    try { s.src.stop(); } catch(e){}
+                    try { s.gain.disconnect(); } catch(e){}
+                });
+                try { ch.channelGain.disconnect(); } catch(e){}
+            }, 200);
         } catch(e){
-            try { ch.src.stop(); } catch(e2){}
-            try { ch.gain.disconnect(); } catch(e2){}
+            ch.sources.forEach(function(s) {
+                clearTimeout(s.timer);
+                try { s.src.stop(); } catch(e2){}
+                try { s.gain.disconnect(); } catch(e2){}
+            });
+            try { ch.channelGain.disconnect(); } catch(e2){}
         }
         delete channels[id];
     }
@@ -705,11 +789,11 @@
         var ch = channels[id];
         if(!ch) return;
         ch.vol = v;
-        var target = v / 100 * 0.3;
-        /* Cancel any pending ramps, set current value, then ramp to target */
-        ch.gain.gain.cancelScheduledValues(audioCtx.currentTime);
-        ch.gain.gain.setValueAtTime(ch.gain.gain.value, audioCtx.currentTime);
-        ch.gain.gain.linearRampToValueAtTime(target, audioCtx.currentTime + 0.15);
+        var target = v / 100 * 0.35;
+        /* Smooth volume change */
+        ch.channelGain.gain.cancelScheduledValues(audioCtx.currentTime);
+        ch.channelGain.gain.setValueAtTime(ch.channelGain.gain.value, audioCtx.currentTime);
+        ch.channelGain.gain.linearRampToValueAtTime(target, audioCtx.currentTime + 0.2);
         var card = document.querySelector('.snd-card[data-id="'+id+'"]');
         if(card) card.classList.add('playing');
     }

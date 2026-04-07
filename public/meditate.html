@@ -636,8 +636,11 @@
         });
     }
 
-    /* Ambient sound - uses real audio files */
+    /* Ambient sound - crossfade looping engine for seamless audio */
     var ambientBufferCache = {};
+    var ambientChannel = null;
+    var AMBIENT_CROSSFADE = 4; // seconds
+
     async function loadAmbientBuffer(type){
         if(ambientBufferCache[type]) return ambientBufferCache[type];
         var url = '/audio/' + type + '.wav';
@@ -650,33 +653,68 @@
         } catch(e){ console.warn('Failed to load ambient:', type, e); return null; }
     }
 
+    function startAmbientCrossfade(ch, buf, offset) {
+        var src = audioCtx.createBufferSource();
+        src.buffer = buf; src.loop = false;
+        var fadeG = audioCtx.createGain();
+        fadeG.gain.setValueAtTime(0, audioCtx.currentTime);
+        src.connect(fadeG); fadeG.connect(ch.gain);
+        var dur = buf.duration;
+        var fadeT = Math.min(AMBIENT_CROSSFADE, dur * 0.4);
+        var now = audioCtx.currentTime;
+        src.start(now, offset || 0);
+        fadeG.gain.linearRampToValueAtTime(1, now + fadeT);
+        var fadeOutStart = now + (dur - (offset||0) - fadeT);
+        if(fadeOutStart > now + fadeT){
+            fadeG.gain.setValueAtTime(1, fadeOutStart);
+            fadeG.gain.linearRampToValueAtTime(0, fadeOutStart + fadeT);
+        }
+        var nextDelay = (dur - (offset||0) - fadeT) * 1000;
+        if(nextDelay < 500) nextDelay = 500;
+        var timer = setTimeout(function(){
+            if(ambientChannel && ambientChannel.active) startAmbientCrossfade(ch, buf, 0);
+        }, nextDelay);
+        src.onended = function(){ try{fadeG.disconnect();}catch(e){} };
+        ch.sources.push({src:src, gain:fadeG, timer:timer});
+        while(ch.sources.length > 3){
+            var old = ch.sources.shift();
+            clearTimeout(old.timer);
+            try{old.src.stop();}catch(e){} try{old.gain.disconnect();}catch(e){}
+        }
+    }
+
     async function makeNoise(type){
         initAC(); killAmbient();
         if(type==='silence') return;
         var buf = await loadAmbientBuffer(type);
         if(!buf) return;
-        var src = audioCtx.createBufferSource();
-        src.buffer = buf; src.loop = true;
         ambientGain = audioCtx.createGain();
         ambientGain.gain.setValueAtTime(0, audioCtx.currentTime);
         ambientGain.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 2);
-        src.connect(ambientGain);
         ambientGain.connect(audioCtx.destination);
-        src.start();
-        ambientSrc = src;
+        ambientChannel = { gain: ambientGain, sources: [], active: true };
+        startAmbientCrossfade(ambientChannel, buf, 0);
+        setTimeout(function(){
+            if(ambientChannel && ambientChannel.active) startAmbientCrossfade(ambientChannel, buf, 0);
+        }, (buf.duration / 2) * 1000);
     }
     function killAmbient(){
-        if(ambientSrc){
+        if(ambientChannel){
+            ambientChannel.active = false;
             try{
-                if(ambientGain){
-                    ambientGain.gain.cancelScheduledValues(audioCtx.currentTime);
-                    ambientGain.gain.setValueAtTime(ambientGain.gain.value, audioCtx.currentTime);
-                    ambientGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
-                    var s = ambientSrc;
-                    setTimeout(function(){ try{s.stop();}catch(e){} }, 600);
-                } else { ambientSrc.stop(); }
+                ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+                ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value, audioCtx.currentTime);
+                ambientChannel.gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+                var ch = ambientChannel;
+                setTimeout(function(){
+                    ch.sources.forEach(function(s){
+                        clearTimeout(s.timer);
+                        try{s.src.stop();}catch(e){} try{s.gain.disconnect();}catch(e){}
+                    });
+                    try{ch.gain.disconnect();}catch(e){}
+                }, 600);
             }catch(e){}
-            ambientSrc = null; ambientGain = null;
+            ambientChannel = null; ambientGain = null; ambientSrc = null;
         }
     }
 
