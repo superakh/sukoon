@@ -13,189 +13,270 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #111827;
-            background: #FAFAF7;
+            color: #F1F5F9;
+            background: #0F172A;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            padding-bottom: 80px;
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== TOPBAR ===================== */
+        /* ===================== TOPBAR (Frosted Glass) ===================== */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 72px;
-            background: rgba(250, 250, 247, 0.82);
-            backdrop-filter: blur(20px) saturate(1.2);
-            -webkit-backdrop-filter: blur(20px) saturate(1.2);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0 1.5rem; height: 56px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
         .topbar-brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem; color: #111827;
+            font-size: 1.25rem; color: #F1F5F9;
             display: flex; align-items: center; gap: 0.5rem;
+            letter-spacing: 0.01em;
         }
-        .brand-mark {
-            width: 32px; height: 32px; border-radius: 10px;
-            background: linear-gradient(135deg, #4F46E5, #7C3AED);
-            display: flex; align-items: center; justify-content: center;
-            color: #fff; font-size: 0.85rem;
+        .topbar-brand .moon { font-size: 1.1rem; opacity: 0.85; }
+
+        /* ===================== BOTTOM NAV ===================== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 64px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom);
         }
-        .topbar-nav { display: flex; gap: 0.2rem; }
-        .topbar-nav a {
-            padding: 0.45rem 0.8rem; border-radius: 10px;
-            font-size: 0.84rem; font-weight: 500; color: #6B7280;
-            transition: all 0.2s;
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #64748B;
+            font-size: 0.65rem;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.2s ease;
         }
-        .topbar-nav a:hover { background: rgba(79,70,229,0.07); color: #4F46E5; }
-        .topbar-nav a.active { background: rgba(79,70,229,0.1); color: #4F46E5; font-weight: 600; }
-        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
-        .lang-select {
-            padding: 0.35rem 0.6rem; border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.08); background: #fff;
-            font-size: 0.8rem; color: #6B7280; cursor: pointer; outline: none;
-        }
-        .mobile-nav-toggle {
-            display: none; background: none; border: none;
-            font-size: 1.3rem; color: #374151; cursor: pointer; padding: 0.25rem;
+        .bottom-nav a:hover { color: #94A3B8; }
+        .bottom-nav a.active { color: #7C3AED; }
+
+        /* ===================== DESKTOP SIDEBAR (>900px) ===================== */
+        @media (min-width: 901px) {
+            .bottom-nav {
+                position: fixed;
+                top: 56px;
+                left: 0;
+                bottom: 0;
+                right: auto;
+                width: 80px;
+                height: auto;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 24px 0 24px;
+                gap: 8px;
+                border-top: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.06);
+            }
+            .bottom-nav a {
+                width: 100%;
+                padding: 12px 0;
+                font-size: 0.6rem;
+                gap: 6px;
+            }
+            .bottom-nav a.active {
+                background: rgba(124, 58, 237, 0.08);
+                border-right: 2px solid #7C3AED;
+            }
+            .wisdom-page {
+                margin-left: 80px;
+            }
         }
 
         /* ===================== HERO ===================== */
         .hero {
-            padding: 10rem 1.5rem 5rem;
+            padding: 8rem 1.5rem 4rem;
             text-align: center;
             position: relative;
             overflow: hidden;
-            background: #FAFAF7;
         }
-        .hero-mesh {
+        .hero-glow {
             position: absolute; inset: 0; z-index: 0;
             background:
-                radial-gradient(ellipse 80% 60% at 20% 30%, rgba(79,70,229,0.08) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 20%, rgba(236,72,153,0.06) 0%, transparent 50%),
-                radial-gradient(ellipse 70% 70% at 50% 80%, rgba(16,185,129,0.06) 0%, transparent 50%),
-                radial-gradient(ellipse 40% 40% at 70% 60%, rgba(245,158,11,0.05) 0%, transparent 40%);
+                radial-gradient(ellipse 70% 55% at 25% 35%, rgba(124,58,237,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 55% 45% at 75% 25%, rgba(245,158,11,0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 60% at 50% 85%, rgba(124,58,237,0.06) 0%, transparent 50%);
+            pointer-events: none;
         }
-        .hero-content { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+        .hero-content { position: relative; z-index: 1; max-width: 650px; margin: 0 auto; }
         .hero-badge {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.5rem 1.2rem; border-radius: 100px;
-            background: rgba(79,70,229,0.06); border: 1px solid rgba(79,70,229,0.1);
-            font-size: 0.78rem; font-weight: 500; color: #4F46E5;
-            margin-bottom: 1.5rem; letter-spacing: 0.03em;
+            padding: 0.45rem 1.1rem; border-radius: 100px;
+            background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2);
+            font-size: 0.72rem; font-weight: 500; color: #A78BFA;
+            margin-bottom: 1.5rem; letter-spacing: 0.04em;
         }
-        .hero-badge svg { width: 14px; height: 14px; }
         .hero h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: 3.5rem; font-weight: 400; color: #111827;
-            line-height: 1.15; margin-bottom: 1rem;
+            font-size: 3.5rem; font-weight: 400;
+            line-height: 1.15; margin-bottom: 0.75rem;
             letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #F1F5F9 0%, #A78BFA 45%, #F59E0B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         .hero-subtitle {
-            font-size: 1.15rem; color: #6B7280; line-height: 1.7;
-            max-width: 520px; margin: 0 auto 0.5rem;
+            font-size: 1.1rem; color: #94A3B8; line-height: 1.7;
+            max-width: 480px; margin: 0 auto 0.4rem;
         }
         .hero-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.92rem; color: #9CA3AF; margin-bottom: 2rem;
+            font-size: 0.92rem; color: #64748B; margin-bottom: 2rem;
         }
         .hero-line {
             width: 48px; height: 2px; border-radius: 2px;
-            background: linear-gradient(90deg, #4F46E5, #EC4899);
+            background: linear-gradient(90deg, #7C3AED, #F59E0B);
             margin: 0 auto;
         }
 
         /* ===================== SECTIONS ===================== */
         .section {
-            padding: 5rem 1.5rem;
+            padding: 4.5rem 1.5rem;
             max-width: 1200px;
             margin: 0 auto;
         }
         .section-label {
-            font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #4F46E5;
-            margin-bottom: 0.75rem;
+            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #7C3AED;
+            margin-bottom: 0.6rem;
         }
         .section-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 2.2rem; color: #111827; margin-bottom: 0.5rem;
+            font-size: 2.1rem; color: #F1F5F9; margin-bottom: 0.5rem;
             letter-spacing: -0.01em;
         }
         .section-subtitle {
-            font-size: 0.95rem; color: #6B7280; margin-bottom: 3rem;
-            max-width: 560px;
+            font-size: 0.92rem; color: #94A3B8; margin-bottom: 2.5rem;
+            max-width: 540px; line-height: 1.7;
         }
 
         /* ===================== DAILY INSIGHT CARD ===================== */
         .insight-section {
             padding: 0 1.5rem 4rem;
-            max-width: 700px;
-            margin: -2rem auto 0;
-            position: relative;
-            z-index: 2;
+            max-width: 680px;
+            margin: -1.5rem auto 0;
+            position: relative; z-index: 2;
         }
         .insight-card {
-            background: #FFFFFF;
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
+            background: #1E293B;
+            border-radius: 20px;
+            padding: 2.75rem 2.25rem;
             text-align: center;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            border: 1px solid rgba(255,255,255,0.06);
         }
         .insight-card::before {
             content: '';
             position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #4F46E5, #7C3AED, #EC4899, #F59E0B);
-            border-radius: 24px 24px 0 0;
-        }
-        .insight-card::after {
-            content: '';
-            position: absolute; inset: -1px;
-            border-radius: 24px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(79,70,229,0.15), rgba(236,72,153,0.1), rgba(245,158,11,0.1));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            pointer-events: none;
+            background: linear-gradient(90deg, #7C3AED, #A78BFA, #F59E0B);
+            border-radius: 20px 20px 0 0;
         }
         .insight-label {
-            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #9CA3AF;
-            margin-bottom: 1.5rem;
+            font-size: 0.68rem; font-weight: 600; letter-spacing: 0.12em;
+            text-transform: uppercase; color: #64748B;
+            margin-bottom: 1.25rem;
         }
         .insight-icon {
             width: 48px; height: 48px; border-radius: 14px;
-            background: linear-gradient(135deg, rgba(79,70,229,0.08), rgba(236,72,153,0.08));
+            background: linear-gradient(135deg, rgba(124,58,237,0.15), rgba(245,158,11,0.1));
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.25rem;
         }
-        .insight-icon svg { width: 24px; height: 24px; color: #4F46E5; }
+        .insight-icon svg { width: 24px; height: 24px; color: #A78BFA; }
         .insight-text {
             font-family: 'DM Serif Display', serif;
             font-style: italic;
-            font-size: 1.55rem; color: #111827;
-            line-height: 1.5; margin-bottom: 1rem;
-            max-width: 520px; margin-left: auto; margin-right: auto;
+            font-size: 1.45rem; color: #F1F5F9;
+            line-height: 1.55; margin-bottom: 0.75rem;
+            max-width: 500px; margin-left: auto; margin-right: auto;
         }
         .insight-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.88rem; color: #9CA3AF;
-            margin-bottom: 2rem; line-height: 1.6;
+            font-size: 0.85rem; color: #64748B;
+            margin-bottom: 1.75rem; line-height: 1.6;
         }
         .new-insight-btn {
             display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.7rem 1.5rem; border-radius: 12px;
-            background: #111827; color: #fff;
-            font-size: 0.84rem; font-weight: 500;
-            border: none; cursor: pointer;
+            padding: 0.65rem 1.4rem; border-radius: 12px;
+            background: rgba(124,58,237,0.15); color: #A78BFA;
+            font-size: 0.82rem; font-weight: 500;
+            border: 1px solid rgba(124,58,237,0.25); cursor: pointer;
             transition: all 0.25s;
         }
-        .new-insight-btn:hover { background: #374151; transform: translateY(-1px); }
+        .new-insight-btn:hover { background: rgba(124,58,237,0.25); transform: translateY(-1px); }
         .new-insight-btn svg { width: 15px; height: 15px; }
+
+        /* ===================== APHORISTIC INSIGHTS ===================== */
+        .aphorisms-section {
+            padding: 0 1.5rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .aphorisms-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+        .aphorism-card {
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 16px;
+            padding: 2rem 1.75rem;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        .aphorism-card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(124,58,237,0.2);
+            box-shadow: 0 8px 32px rgba(124,58,237,0.08);
+        }
+        .aphorism-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; width: 3px; height: 100%;
+            background: linear-gradient(180deg, #7C3AED, #F59E0B);
+            border-radius: 3px 0 0 3px;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .aphorism-card:hover::before { opacity: 1; }
+        .aphorism-num {
+            font-size: 0.65rem; font-weight: 600; color: #7C3AED;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            margin-bottom: 0.75rem;
+        }
+        .aphorism-en {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.05rem; color: #E2E8F0;
+            line-height: 1.6; margin-bottom: 0.6rem;
+        }
+        .aphorism-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.78rem; color: #64748B;
+            line-height: 1.55;
+        }
 
         /* ===================== FOUNDATION CARDS ===================== */
         .foundation-grid {
@@ -204,155 +285,191 @@
             gap: 1.25rem;
         }
         .foundation-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.05);
             border-radius: 20px;
             padding: 2rem 1.75rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
             transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
         .foundation-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
+        .foundation-card::after {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .foundation-card:hover::after { opacity: 1; }
+        .foundation-card:nth-child(1)::after { background: linear-gradient(90deg, #7C3AED, #A78BFA); }
+        .foundation-card:nth-child(2)::after { background: linear-gradient(90deg, #10B981, #34D399); }
+        .foundation-card:nth-child(3)::after { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .foundation-card:nth-child(4)::after { background: linear-gradient(90deg, #EC4899, #F472B6); }
+        .foundation-card:nth-child(5)::after { background: linear-gradient(90deg, #0EA5E9, #38BDF8); }
+        .foundation-card:nth-child(6)::after { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
+        .foundation-card:nth-child(7)::after { background: linear-gradient(90deg, #14B8A6, #2DD4BF); }
+        .foundation-card:nth-child(8)::after { background: linear-gradient(90deg, #F97316, #FB923C); }
         .foundation-icon {
-            width: 48px; height: 48px; border-radius: 14px;
+            width: 44px; height: 44px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 1.25rem;
+            margin-bottom: 1.1rem;
         }
-        .foundation-icon.indigo { background: rgba(79,70,229,0.08); color: #4F46E5; }
-        .foundation-icon.emerald { background: rgba(16,185,129,0.08); color: #10B981; }
-        .foundation-icon.amber { background: rgba(245,158,11,0.08); color: #F59E0B; }
-        .foundation-icon.rose { background: rgba(236,72,153,0.08); color: #EC4899; }
-        .foundation-icon.sky { background: rgba(14,165,233,0.08); color: #0EA5E9; }
-        .foundation-icon.violet { background: rgba(139,92,246,0.08); color: #8B5CF6; }
-        .foundation-icon.teal { background: rgba(20,184,166,0.08); color: #14B8A6; }
-        .foundation-icon.orange { background: rgba(249,115,22,0.08); color: #F97316; }
+        .foundation-icon.indigo { background: rgba(124,58,237,0.12); color: #A78BFA; }
+        .foundation-icon.emerald { background: rgba(16,185,129,0.12); color: #34D399; }
+        .foundation-icon.amber { background: rgba(245,158,11,0.12); color: #FBBF24; }
+        .foundation-icon.rose { background: rgba(236,72,153,0.12); color: #F472B6; }
+        .foundation-icon.sky { background: rgba(14,165,233,0.12); color: #38BDF8; }
+        .foundation-icon.violet { background: rgba(139,92,246,0.12); color: #A78BFA; }
+        .foundation-icon.teal { background: rgba(20,184,166,0.12); color: #2DD4BF; }
+        .foundation-icon.orange { background: rgba(249,115,22,0.12); color: #FB923C; }
         .foundation-card-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem; color: #111827;
-            margin-bottom: 0.75rem; line-height: 1.35;
+            font-size: 1.12rem; color: #F1F5F9;
+            margin-bottom: 0.65rem; line-height: 1.35;
         }
         .foundation-card-desc {
-            font-size: 0.88rem; color: #6B7280;
-            line-height: 1.7; margin-bottom: 0.6rem;
+            font-size: 0.86rem; color: #94A3B8;
+            line-height: 1.7; margin-bottom: 0.5rem;
         }
         .foundation-card-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: #9CA3AF;
+            font-size: 0.76rem; color: #64748B;
             line-height: 1.6;
         }
 
         /* ===================== PRACTICE CARDS ===================== */
+        .practice-section {
+            background: rgba(124,58,237,0.03);
+            border-top: 1px solid rgba(255,255,255,0.04);
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
         .practice-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 1.25rem;
         }
         .practice-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.06);
             border-radius: 20px;
-            padding: 2rem 1.75rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            padding: 1.75rem 1.5rem;
         }
         .practice-header {
             display: flex; align-items: center; gap: 0.75rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
         .practice-icon {
-            width: 44px; height: 44px; border-radius: 12px;
+            width: 42px; height: 42px; border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
         }
-        .practice-icon.morning { background: rgba(245,158,11,0.1); color: #F59E0B; }
-        .practice-icon.midday { background: rgba(79,70,229,0.08); color: #4F46E5; }
-        .practice-icon.evening { background: rgba(139,92,246,0.08); color: #8B5CF6; }
+        .practice-icon.morning { background: rgba(245,158,11,0.12); color: #FBBF24; }
+        .practice-icon.midday { background: rgba(124,58,237,0.12); color: #A78BFA; }
+        .practice-icon.evening { background: rgba(139,92,246,0.12); color: #A78BFA; }
         .practice-name {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem; color: #111827;
+            font-size: 1.1rem; color: #F1F5F9;
         }
-        .practice-time { font-size: 0.75rem; color: #9CA3AF; }
+        .practice-time { font-size: 0.72rem; color: #64748B; }
         .practice-steps { list-style: none; }
         .practice-step {
-            display: flex; gap: 0.75rem;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid rgba(0,0,0,0.04);
+            display: flex; gap: 0.7rem;
+            padding: 0.55rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
         }
         .practice-step:last-child { border-bottom: none; }
         .step-num {
-            width: 24px; height: 24px; border-radius: 8px;
-            background: rgba(79,70,229,0.06);
+            width: 22px; height: 22px; border-radius: 7px;
+            background: rgba(124,58,237,0.1);
             display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; font-weight: 600; color: #4F46E5;
+            font-size: 0.68rem; font-weight: 600; color: #A78BFA;
             flex-shrink: 0; margin-top: 0.1rem;
         }
         .step-content { flex: 1; }
-        .step-en { font-size: 0.86rem; color: #374151; line-height: 1.5; }
+        .step-en { font-size: 0.84rem; color: #CBD5E1; line-height: 1.5; }
         .step-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.75rem; color: #9CA3AF; line-height: 1.5;
+            font-size: 0.73rem; color: #64748B; line-height: 1.5;
         }
 
-        /* ===================== DEEP QUESTIONS ===================== */
-        .questions-section {
-            padding: 0 1.5rem 4rem;
-            max-width: 700px;
-            margin: 0 auto;
+        /* ===================== REFLECTION QUESTIONS ===================== */
+        .reflections-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
-        .question-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 24px;
-            padding: 3rem 2.5rem;
-            text-align: center;
+        .reflection-card {
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 18px;
+            padding: 1.75rem 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            min-height: 140px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
-        .question-card::before {
+        .reflection-card::before {
             content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #7C3AED, #4F46E5);
-            border-radius: 24px 24px 0 0;
+            position: absolute; top: 0; left: 0; right: 0; height: 2px;
+            background: linear-gradient(90deg, #7C3AED, #A78BFA);
+            border-radius: 18px 18px 0 0;
         }
-        .question-label {
-            font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em;
-            text-transform: uppercase; color: #9CA3AF;
-            margin-bottom: 0.5rem;
+        .reflection-card:hover {
+            border-color: rgba(124,58,237,0.2);
+            box-shadow: 0 4px 20px rgba(124,58,237,0.08);
         }
-        .question-counter {
-            font-size: 0.75rem; color: #D1D5DB;
-            margin-bottom: 1.5rem;
+        .reflection-prompt {
+            text-align: center;
+            color: #A78BFA;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
         }
-        .question-icon {
-            width: 48px; height: 48px; border-radius: 14px;
-            background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(79,70,229,0.08));
-            display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 1.5rem;
+        .reflection-prompt svg { display: block; margin: 0 auto 0.5rem; opacity: 0.6; }
+        .reflection-question {
+            display: none;
+            text-align: center;
         }
-        .question-icon svg { width: 24px; height: 24px; color: #7C3AED; }
-        .question-text {
+        .reflection-question-text {
             font-family: 'DM Serif Display', serif;
             font-style: italic;
-            font-size: 1.45rem; color: #111827;
-            line-height: 1.5; margin-bottom: 1rem;
-            max-width: 520px; margin-left: auto; margin-right: auto;
+            font-size: 1.05rem; color: #F1F5F9;
+            line-height: 1.5; margin-bottom: 0.5rem;
         }
-        .question-hindi {
+        .reflection-question-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.88rem; color: #9CA3AF;
-            margin-bottom: 2rem; line-height: 1.6;
+            font-size: 0.78rem; color: #64748B;
+            line-height: 1.5; margin-bottom: 0.75rem;
         }
-        .next-question-btn {
-            display: inline-flex; align-items: center; gap: 0.5rem;
-            padding: 0.7rem 1.5rem; border-radius: 12px;
-            background: #111827; color: #fff;
-            font-size: 0.84rem; font-weight: 500;
-            border: none; cursor: pointer;
-            transition: all 0.25s;
+        .reflection-tap-hint {
+            font-size: 0.68rem; color: #475569;
+            letter-spacing: 0.04em;
         }
-        .next-question-btn:hover { background: #374151; transform: translateY(-1px); }
-        .next-question-btn svg { width: 15px; height: 15px; }
+        .reflection-guidance {
+            display: none;
+            text-align: center;
+        }
+        .reflection-guidance-label {
+            font-size: 0.65rem; font-weight: 600; color: #F59E0B;
+            letter-spacing: 0.1em; text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .reflection-guidance-text {
+            font-size: 0.84rem; color: #94A3B8;
+            line-height: 1.6;
+        }
+        .reflection-card.state-question .reflection-prompt { display: none; }
+        .reflection-card.state-question .reflection-question { display: block; }
+        .reflection-card.state-guidance .reflection-prompt { display: none; }
+        .reflection-card.state-guidance .reflection-question { display: none; }
+        .reflection-card.state-guidance .reflection-guidance { display: block; }
 
         /* ===================== TALKS SECTION ===================== */
         .talks-grid {
@@ -361,99 +478,70 @@
             gap: 1.25rem;
         }
         .talk-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 20px;
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 18px;
             overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+        }
+        .talk-card:hover {
+            border-color: rgba(124,58,237,0.15);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
         }
         .talk-embed {
             width: 100%; aspect-ratio: 16/9; border: none;
         }
-        .talk-info { padding: 1.25rem 1.5rem 1.5rem; }
+        .talk-info { padding: 1.1rem 1.35rem 1.35rem; }
         .talk-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem; color: #111827;
-            margin-bottom: 0.5rem; line-height: 1.35;
+            font-size: 1.02rem; color: #F1F5F9;
+            margin-bottom: 0.4rem; line-height: 1.35;
         }
         .talk-desc {
-            font-size: 0.84rem; color: #6B7280;
-            line-height: 1.6; margin-bottom: 0.4rem;
+            font-size: 0.82rem; color: #94A3B8;
+            line-height: 1.6; margin-bottom: 0.35rem;
         }
         .talk-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.76rem; color: #9CA3AF; line-height: 1.55;
+            font-size: 0.74rem; color: #64748B; line-height: 1.55;
         }
 
-        /* ===================== FOOTER ===================== */
-        .footer {
-            padding: 3.5rem 1.5rem 2rem;
-            background: #F5F5F0;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            text-align: center;
+        /* ===================== SCROLL REVEAL ===================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
         }
-        .footer-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem; color: #111827;
-            margin-bottom: 0.5rem;
-            display: flex; align-items: center; justify-content: center; gap: 0.5rem;
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
-        .footer-brand .brand-mark { width: 26px; height: 26px; border-radius: 8px; font-size: 0.7rem; }
-        .footer-mission { font-size: 0.88rem; color: #6B7280; margin-bottom: 0.25rem; }
-        .footer-hindi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.8rem; color: #9CA3AF; margin-bottom: 1rem;
-        }
-        .footer-privacy {
-            font-size: 0.76rem; color: #10B981;
-            background: rgba(16,185,129,0.06);
-            display: inline-block;
-            padding: 0.35rem 1rem; border-radius: 100px;
-            margin-bottom: 1.5rem;
-        }
-        .footer-nav {
-            display: flex; justify-content: center; flex-wrap: wrap;
-            gap: 0.5rem 1.25rem; margin-bottom: 1.5rem;
-        }
-        .footer-nav a { font-size: 0.84rem; color: #6B7280; transition: color 0.2s; }
-        .footer-nav a:hover { color: #4F46E5; }
-        .footer-copy { font-size: 0.74rem; color: #9CA3AF; }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 1024px) {
             .foundation-grid { grid-template-columns: repeat(2, 1fr); }
+            .aphorisms-grid { grid-template-columns: repeat(2, 1fr); }
             .talks-grid { grid-template-columns: repeat(2, 1fr); }
         }
         @media (max-width: 768px) {
-            .topbar { padding: 0 1rem; height: 64px; }
-            .topbar-nav {
-                display: none; position: fixed; top: 64px; left: 0; right: 0;
-                background: rgba(250,250,247,0.97);
-                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-                flex-direction: column; padding: 1rem;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-                box-shadow: 0 8px 24px rgba(0,0,0,0.08);
-            }
-            .topbar-nav.open { display: flex; }
-            .topbar-nav a { padding: 0.75rem 1rem; width: 100%; text-align: left; font-size: 1rem; }
-            .mobile-nav-toggle { display: block; }
-            .hero { padding: 8rem 1.25rem 3rem; }
+            .topbar { padding: 0 1rem; height: 52px; }
+            .hero { padding: 7rem 1.25rem 3rem; }
             .hero h1 { font-size: 2.4rem; }
             .insight-card { padding: 2rem 1.5rem; }
-            .insight-text { font-size: 1.25rem; }
+            .insight-text { font-size: 1.2rem; }
             .foundation-grid { grid-template-columns: 1fr; }
+            .aphorisms-grid { grid-template-columns: 1fr; }
             .practice-grid { grid-template-columns: 1fr; }
             .talks-grid { grid-template-columns: 1fr; }
-            .section { padding: 3.5rem 1.25rem; }
-            .section-title { font-size: 1.75rem; }
-            .question-card { padding: 2rem 1.5rem; }
-            .question-text { font-size: 1.2rem; }
+            .reflections-grid { grid-template-columns: 1fr; }
+            .section { padding: 3rem 1.25rem; }
+            .section-title { font-size: 1.7rem; }
         }
         @media (max-width: 480px) {
             .hero h1 { font-size: 2rem; }
-            .hero-subtitle { font-size: 1rem; }
-            .insight-text { font-size: 1.12rem; }
-            .question-text { font-size: 1.08rem; }
+            .hero-subtitle { font-size: 0.95rem; }
+            .insight-text { font-size: 1.08rem; }
+            .aphorism-en { font-size: 0.95rem; }
         }
     </style>
 </head>
@@ -462,47 +550,47 @@
     <!-- TOPBAR -->
     <header class="topbar">
         <a href="/" class="topbar-brand">
-            <span class="brand-mark">
-                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.18-9 7.1 0 2.34 1.44 4.42 3.67 5.74L5 21l4.39-2.11c.84.18 1.72.28 2.61.28 4.97 0 9-3.18 9-7.1S16.97 3 12 3z"/></svg>
-            </span>
+            <span class="moon">&#9789;</span>
             Sukoon
         </a>
-        <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-            <a href="/wisdom.html" class="active" data-i18n="nav.wisdom">Wisdom</a>
-            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-        </nav>
-        <div class="topbar-right">
-            <select class="lang-select" id="langPicker">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-            </select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
-                <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-            </button>
-        </div>
     </header>
 
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <a href="/">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="/explore.html">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
+            <span>Explore</span>
+        </a>
+        <a href="/breathe.html">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
+            <span>Breathe</span>
+        </a>
+        <a href="/friend.html">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/you.html">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+            <span>You</span>
+        </a>
+    </nav>
+
+    <div class="wisdom-page">
     <main>
         <!-- ===== HERO ===== -->
         <section class="hero">
-            <div class="hero-mesh"></div>
-            <div class="hero-content">
+            <div class="hero-glow"></div>
+            <div class="hero-content reveal">
                 <div class="hero-badge">
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
-                    <span data-i18n="wisdom.badge">First-Principles Thinking</span>
+                    <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456z"/></svg>
+                    First-Principles Thinking
                 </div>
-                <h1 data-i18n="wisdom.title">Soul Wisdom</h1>
-                <p class="hero-subtitle" data-i18n="wisdom.subtitle">Ideas that change how you see everything.</p>
+                <h1>Soul Wisdom</h1>
+                <p class="hero-subtitle">Ideas that change how you see everything.<br>&#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2368; &#2348;&#2369;&#2342;&#2381;&#2343;&#2367;</p>
                 <p class="hero-hindi">&#2357;&#2379; &#2357;&#2367;&#2330;&#2366;&#2352; &#2332;&#2379; &#2360;&#2348; &#2325;&#2369;&#2331; &#2342;&#2375;&#2326;&#2344;&#2375; &#2325;&#2366; &#2344;&#2332;&#2364;&#2352;&#2367;&#2351;&#2366; &#2348;&#2342;&#2354; &#2342;&#2375;&#2306;&#2404;</p>
                 <div class="hero-line"></div>
             </div>
@@ -510,8 +598,8 @@
 
         <!-- ===== DAILY INSIGHT ===== -->
         <section class="insight-section">
-            <div class="insight-card">
-                <div class="insight-label" data-i18n="wisdom.insight_label">Today's Insight</div>
+            <div class="insight-card reveal">
+                <div class="insight-label">Today's Insight / &#2310;&#2332; &#2325;&#2366; &#2357;&#2367;&#2330;&#2366;&#2352;</div>
                 <div class="insight-icon">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.383a14.406 14.406 0 01-3 0M14.25 18v-.192c0-.983.658-1.823 1.508-2.316a7.5 7.5 0 10-7.517 0c.85.493 1.509 1.333 1.509 2.316V18"/></svg>
                 </div>
@@ -519,20 +607,31 @@
                 <p class="insight-hindi" id="insightHI"></p>
                 <button class="new-insight-btn" id="newInsightBtn" aria-label="New insight">
                     <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
-                    <span data-i18n="wisdom.new_insight">New Insight</span>
+                    New Insight
                 </button>
+            </div>
+        </section>
+
+        <!-- ===== 20 APHORISTIC INSIGHTS ===== -->
+        <section class="section">
+            <div class="section-label reveal">Aphoristic Insights / &#2360;&#2370;&#2325;&#2381;&#2340;&#2367;&#2351;&#2366;&#2305;</div>
+            <h2 class="section-title reveal">Twenty Truths Worth Remembering</h2>
+            <p class="section-subtitle reveal">Each one took a lifetime to distil. Read one. Sit with it. Let it work on you before you move to the next.</p>
+
+            <div class="aphorisms-grid" id="aphorismsGrid">
+                <!-- Populated by JS -->
             </div>
         </section>
 
         <!-- ===== FOUNDATIONS ===== -->
         <section class="section">
-            <div class="section-label" data-i18n="wisdom.foundations_label">Foundations</div>
-            <h2 class="section-title" data-i18n="wisdom.foundations">Eight Ideas Worth Sitting With</h2>
-            <p class="section-subtitle">Each one is a doorway. Read slowly. Let it argue with you. That friction is where growth begins.</p>
+            <div class="section-label reveal">Foundations / &#2344;&#2368;&#2306;&#2357;</div>
+            <h2 class="section-title reveal">Eight Ideas Worth Sitting With</h2>
+            <p class="section-subtitle reveal">Each one is a doorway. Read slowly. Let it argue with you. That friction is where growth begins.</p>
 
             <div class="foundation-grid">
                 <!-- 1. You Are the Programmer -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon indigo">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
                     </div>
@@ -542,7 +641,7 @@
                 </div>
 
                 <!-- 2. Happiness Is Subtraction -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon emerald">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>
                     </div>
@@ -552,7 +651,7 @@
                 </div>
 
                 <!-- 3. Choose Your Suffering -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon amber">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"/><path d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"/></svg>
                     </div>
@@ -562,7 +661,7 @@
                 </div>
 
                 <!-- 4. The 1% Principle -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon rose">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"/></svg>
                     </div>
@@ -572,7 +671,7 @@
                 </div>
 
                 <!-- 5. Specific Knowledge -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon sky">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M11.48 3.499a.562.562 0 011.04 0l2.125 5.111a.563.563 0 00.475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 00-.182.557l1.285 5.385a.562.562 0 01-.84.61l-4.725-2.885a.563.563 0 00-.586 0L6.982 20.54a.562.562 0 01-.84-.61l1.285-5.386a.562.562 0 00-.182-.557l-4.204-3.602a.563.563 0 01.321-.988l5.518-.442a.563.563 0 00.475-.345L11.48 3.5z"/></svg>
                     </div>
@@ -582,7 +681,7 @@
                 </div>
 
                 <!-- 6. Long Games With Long People -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon violet">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/></svg>
                     </div>
@@ -592,7 +691,7 @@
                 </div>
 
                 <!-- 7. The Unfinished Chapter -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon teal">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 6.042A8.967 8.967 0 006 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 016 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 016-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0018 18a8.967 8.967 0 00-6 2.292m0-14.25v14.25"/></svg>
                     </div>
@@ -602,7 +701,7 @@
                 </div>
 
                 <!-- 8. Freedom, Not Status -->
-                <div class="foundation-card">
+                <div class="foundation-card reveal">
                     <div class="foundation-icon orange">
                         <svg width="22" height="22" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M2.25 18L9 11.25l4.306 4.307a11.95 11.95 0 015.814-5.519l2.74-1.22m0 0l-5.94-2.28m5.94 2.28l-2.28 5.941"/></svg>
                     </div>
@@ -614,15 +713,15 @@
         </section>
 
         <!-- ===== PRACTICES ===== -->
-        <section class="section" style="background: rgba(79,70,229,0.015); border-radius: 0; max-width: 100%; padding-left: 1.5rem; padding-right: 1.5rem;">
-            <div style="max-width: 1200px; margin: 0 auto;">
-                <div class="section-label" data-i18n="wisdom.practices_label">Practices</div>
-                <h2 class="section-title" data-i18n="wisdom.practices">Three Rituals for Inner Clarity</h2>
-                <p class="section-subtitle">Small daily rituals that compound into a fundamentally different way of being. None take more than ten minutes. All of them work.</p>
+        <section class="practice-section">
+            <div class="section" style="max-width: 1200px; margin: 0 auto;">
+                <div class="section-label reveal">Practices / &#2309;&#2349;&#2381;&#2351;&#2366;&#2360;</div>
+                <h2 class="section-title reveal">Three Rituals for Inner Clarity</h2>
+                <p class="section-subtitle reveal">Small daily rituals that compound into a fundamentally different way of being. None take more than ten minutes. All of them work.</p>
 
                 <div class="practice-grid">
                     <!-- Morning Reset -->
-                    <div class="practice-card">
+                    <div class="practice-card reveal">
                         <div class="practice-header">
                             <div class="practice-icon morning">
                                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
@@ -642,7 +741,7 @@
                     </div>
 
                     <!-- Midday Pause -->
-                    <div class="practice-card">
+                    <div class="practice-card reveal">
                         <div class="practice-header">
                             <div class="practice-icon midday">
                                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -661,7 +760,7 @@
                     </div>
 
                     <!-- Evening Reflection -->
-                    <div class="practice-card">
+                    <div class="practice-card reveal">
                         <div class="practice-header">
                             <div class="practice-icon evening">
                                 <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M21.752 15.002A9.718 9.718 0 0118 15.75c-5.385 0-9.75-4.365-9.75-9.75 0-1.33.266-2.597.748-3.752A9.753 9.753 0 003 11.25C3 16.635 7.365 21 12.75 21a9.753 9.753 0 009.002-5.998z"/></svg>
@@ -682,37 +781,25 @@
             </div>
         </section>
 
-        <!-- ===== DEEP QUESTIONS ===== -->
+        <!-- ===== REFLECTION QUESTIONS (Interactive) ===== -->
         <section class="section">
-            <div class="section-label" data-i18n="wisdom.questions_label">Reflect</div>
-            <h2 class="section-title" data-i18n="wisdom.questions">Deep Questions</h2>
-            <p class="section-subtitle">Sit with one question at a time. Do not rush to answer. The discomfort before the answer is where the real work happens.</p>
-        </section>
+            <div class="section-label reveal">Reflect / &#2330;&#2367;&#2306;&#2340;&#2344;</div>
+            <h2 class="section-title reveal">Eight Questions for the Soul</h2>
+            <p class="section-subtitle reveal">Tap to reveal a question. Tap again to see a reflection guide. Sit with one at a time. The discomfort before the answer is where the real work happens.</p>
 
-        <section class="questions-section">
-            <div class="question-card">
-                <div class="question-label" data-i18n="wisdom.question_prompt">Reflection</div>
-                <div class="question-counter" id="questionCounter"></div>
-                <div class="question-icon">
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>
-                </div>
-                <p class="question-text" id="questionEN"></p>
-                <p class="question-hindi" id="questionHI"></p>
-                <button class="next-question-btn" id="nextQuestionBtn" aria-label="Next question">
-                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/></svg>
-                    <span data-i18n="wisdom.next_question">Next Question</span>
-                </button>
+            <div class="reflections-grid" id="reflectionsGrid">
+                <!-- Populated by JS -->
             </div>
         </section>
 
         <!-- ===== RECOMMENDED TALKS ===== -->
         <section class="section">
-            <div class="section-label" data-i18n="wisdom.talks_label">Listen</div>
-            <h2 class="section-title" data-i18n="wisdom.talks">Talks Worth Your Time</h2>
-            <p class="section-subtitle">Four conversations that leave you thinking differently about life, work, and what really matters.</p>
+            <div class="section-label reveal">Listen / &#2360;&#2369;&#2344;&#2375;&#2306;</div>
+            <h2 class="section-title reveal">Talks Worth Your Time</h2>
+            <p class="section-subtitle reveal">Four conversations that leave you thinking differently about life, work, and what really matters.</p>
 
             <div class="talks-grid">
-                <div class="talk-card">
+                <div class="talk-card reveal">
                     <iframe class="talk-embed" src="https://www.youtube.com/embed/3qHkcs3kG44" title="Naval Ravikant on Happiness" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
                     <div class="talk-info">
                         <h3 class="talk-title">Naval Ravikant on Happiness</h3>
@@ -720,7 +807,7 @@
                         <p class="talk-hindi">&#2326;&#2369;&#2358;&#2368; &#2319;&#2325; &#2361;&#2369;&#2344;&#2352; &#2361;&#2376; &#2332;&#2367;&#2360;&#2375; &#2360;&#2368;&#2326;&#2366; &#2332;&#2366; &#2360;&#2325;&#2340;&#2366; &#2361;&#2376;, &#2325;&#2379;&#2312; &#2350;&#2306;&#2332;&#2364;&#2367;&#2354; &#2344;&#2361;&#2368;&#2306; &#2332;&#2361;&#2366;&#2305; &#2346;&#2361;&#2369;&#2305;&#2330;&#2344;&#2366; &#2361;&#2376;&#2404;</p>
                     </div>
                 </div>
-                <div class="talk-card">
+                <div class="talk-card reveal">
                     <iframe class="talk-embed" src="https://www.youtube.com/embed/36m1o-tM05g" title="The Power of Vulnerability" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
                     <div class="talk-info">
                         <h3 class="talk-title">The Power of Vulnerability</h3>
@@ -728,7 +815,7 @@
                         <p class="talk-hindi">&#2325;&#2376;&#2360;&#2375; &#2309;&#2346;&#2344;&#2368; &#2325;&#2350;&#2332;&#2364;&#2379;&#2352;&#2368; &#2342;&#2367;&#2326;&#2366;&#2344;&#2375; &#2325;&#2366; &#2360;&#2366;&#2361;&#2360; &#2360;&#2330;&#2381;&#2330;&#2375; &#2332;&#2369;&#2337;&#2364;&#2366;&#2357; &#2324;&#2352; &#2352;&#2330;&#2344;&#2366;&#2340;&#2381;&#2350;&#2325;&#2340;&#2366; &#2325;&#2366; &#2332;&#2344;&#2381;&#2350;&#2360;&#2381;&#2341;&#2366;&#2344; &#2361;&#2376;&#2404;</p>
                     </div>
                 </div>
-                <div class="talk-card">
+                <div class="talk-card reveal">
                     <iframe class="talk-embed" src="https://www.youtube.com/embed/MnDtvWaKMKs" title="Emotional First Aid" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
                     <div class="talk-info">
                         <h3 class="talk-title">Emotional First Aid</h3>
@@ -736,7 +823,7 @@
                         <p class="talk-hindi">&#2361;&#2350; &#2328;&#2366;&#2357; &#2346;&#2352; &#2346;&#2335;&#2381;&#2335;&#2368; &#2348;&#2366;&#2305;&#2343;&#2340;&#2375; &#2361;&#2376;&#2306; &#2354;&#2375;&#2325;&#2367;&#2344; &#2335;&#2370;&#2335;&#2368; &#2349;&#2366;&#2357;&#2344;&#2366;&#2323;&#2306; &#2325;&#2379; &#2344;&#2332;&#2364;&#2352;&#2309;&#2306;&#2342;&#2366;&#2332;&#2364; &#2325;&#2352;&#2340;&#2375; &#2361;&#2376;&#2306;&#2404; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2328;&#2366;&#2357;&#2379;&#2306; &#2325;&#2379; &#2349;&#2368; &#2313;&#2340;&#2344;&#2368; &#2361;&#2368; &#2340;&#2340;&#2381;&#2346;&#2352;&#2340;&#2366; &#2360;&#2375; &#2342;&#2375;&#2326;&#2375;&#2306;&#2404;</p>
                     </div>
                 </div>
-                <div class="talk-card">
+                <div class="talk-card reveal">
                     <iframe class="talk-embed" src="https://www.youtube.com/embed/iCvmsMzlF7o" title="The Happiness Advantage" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope" allowfullscreen loading="lazy"></iframe>
                     <div class="talk-info">
                         <h3 class="talk-title">The Happiness Advantage</h3>
@@ -747,41 +834,13 @@
             </div>
         </section>
     </main>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="footer-brand">
-            <span class="brand-mark">
-                <svg width="13" height="13" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3c-4.97 0-9 3.18-9 7.1 0 2.34 1.44 4.42 3.67 5.74L5 21l4.39-2.11c.84.18 1.72.28 2.61.28 4.97 0 9-3.18 9-7.1S16.97 3 12 3z"/></svg>
-            </span>
-            Sukoon
-        </div>
-        <p class="footer-mission" data-i18n="footer.mission">Free mental wellness for every soul on Earth.</p>
-        <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
-        <div class="footer-privacy" data-i18n="footer.privacy_full">No data collected. No accounts. No tracking.</div>
-        <nav class="footer-nav">
-            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-        </nav>
-        <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
-    </footer>
+    </div>
 
     <script>
-        // Mobile nav
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-        document.querySelectorAll('#mainNav a').forEach(function(link) {
-            link.addEventListener('click', function() { document.getElementById('mainNav').classList.remove('open'); });
-        });
+    (function() {
+        'use strict';
 
-        // ===== DAILY INSIGHTS =====
+        // ===== 20 APHORISTIC INSIGHTS =====
         var insights = [
             { en: "Happiness is not something you chase. It is what surfaces when you stop running. Every desire is a quiet contract that says: I will not be at peace until I get this. Tear up enough of those contracts and peace is what remains.", hi: "\u0916\u0941\u0936\u0940 \u0915\u094B\u0908 \u092A\u0940\u091B\u093E \u0915\u0930\u0928\u0947 \u0915\u0940 \u091A\u0940\u091C\u093C \u0928\u0939\u0940\u0902\u0964 \u092F\u0939 \u0924\u092C \u0909\u092D\u0930\u0924\u0940 \u0939\u0948 \u091C\u092C \u0906\u092A \u092D\u093E\u0917\u0928\u093E \u092C\u0902\u0926 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u0939\u0930 \u0907\u091A\u094D\u091B\u093E \u090F\u0915 \u091A\u0941\u092A\u091A\u093E\u092A \u0905\u0928\u0941\u092C\u0902\u0927 \u0939\u0948: \u091C\u092C \u0924\u0915 \u092F\u0939 \u0928\u0939\u0940\u0902 \u092E\u093F\u0932\u0947\u0917\u093E, \u092E\u0948\u0902 \u0936\u093E\u0902\u0924 \u0928\u0939\u0940\u0902 \u0930\u0939\u0942\u0901\u0917\u093E\u0964 \u0915\u093E\u092B\u093C\u0940 \u0905\u0928\u0941\u092C\u0902\u0927 \u0924\u094B\u0921\u093C \u0926\u0947\u0902 -- \u0936\u093E\u0902\u0924\u093F \u0905\u092A\u0928\u0947 \u0906\u092A \u092C\u091A \u091C\u093E\u090F\u0917\u0940\u0964" },
             { en: "You do not rise to the level of your goals. You fall to the level of your systems. The person who builds the right daily habits will always outlast the person with the bigger dream and no structure.", hi: "\u0906\u092A \u0905\u092A\u0928\u0947 \u0932\u0915\u094D\u0937\u094D\u092F\u094B\u0902 \u0915\u0947 \u0938\u094D\u0924\u0930 \u0924\u0915 \u0928\u0939\u0940\u0902 \u0909\u0920\u0924\u0947\u0964 \u0906\u092A \u0905\u092A\u0928\u0940 \u092A\u094D\u0930\u0923\u093E\u0932\u093F\u092F\u094B\u0902 \u0915\u0947 \u0938\u094D\u0924\u0930 \u092A\u0930 \u0917\u093F\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u0938\u0939\u0940 \u0926\u0948\u0928\u093F\u0915 \u0906\u0926\u0924\u0947\u0902 \u092C\u0928\u093E\u0928\u0947 \u0935\u093E\u0932\u093E \u0935\u094D\u092F\u0915\u094D\u0924\u093F \u0939\u092E\u0947\u0936\u093E \u092C\u0921\u093C\u0947 \u0938\u092A\u0928\u0947 \u0914\u0930 \u092C\u093F\u0928\u093E \u0922\u093E\u0902\u091A\u0947 \u0935\u093E\u0932\u0947 \u0938\u0947 \u0906\u0917\u0947 \u0928\u093F\u0915\u0932\u0947\u0917\u093E\u0964" },
@@ -805,6 +864,32 @@
             { en: "The world rewards those who are useful, not those who are smart. Intelligence without output is trivia. Stop trying to sound clever. Start trying to be helpful. That shift alone will change your entire trajectory.", hi: "\u0926\u0941\u0928\u093F\u092F\u093E \u0909\u0928\u094D\u0939\u0947\u0902 \u092A\u0941\u0930\u0938\u094D\u0915\u0943\u0924 \u0915\u0930\u0924\u0940 \u0939\u0948 \u091C\u094B \u0909\u092A\u092F\u094B\u0917\u0940 \u0939\u0948\u0902, \u091C\u094B \u091A\u0924\u0941\u0930 \u0939\u0948\u0902 \u0909\u0928\u094D\u0939\u0947\u0902 \u0928\u0939\u0940\u0902\u0964 \u092C\u093F\u0928\u093E \u0915\u093E\u092E \u0915\u0940 \u092C\u0941\u0926\u094D\u0927\u093F\u092E\u0924\u094D\u0924\u093E \u092C\u0938 \u091F\u094D\u0930\u093F\u0935\u093F\u092F\u093E \u0939\u0948\u0964 \u091A\u0924\u0941\u0930 \u0932\u0917\u0928\u0947 \u0915\u0940 \u0915\u094B\u0936\u093F\u0936 \u092C\u0902\u0926 \u0915\u0930\u0947\u0902\u0964 \u0915\u093E\u092E \u0906\u0928\u0947 \u0915\u0940 \u0915\u094B\u0936\u093F\u0936 \u0936\u0941\u0930\u0942 \u0915\u0930\u0947\u0902\u0964 \u092C\u0938 \u092F\u0939 \u092C\u0926\u0932\u093E\u0935 \u0906\u092A\u0915\u0940 \u092A\u0942\u0930\u0940 \u0926\u093F\u0936\u093E \u092C\u0926\u0932 \u0926\u0947\u0917\u093E\u0964" }
         ];
 
+        // ===== 8 REFLECTION QUESTIONS =====
+        var questions = [
+            { en: "If you could not tell anyone about your achievements, which ones would you still pursue?", hi: "\u0905\u0917\u0930 \u0906\u092A \u0905\u092A\u0928\u0940 \u0909\u092A\u0932\u092C\u094D\u0927\u093F\u092F\u094B\u0902 \u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0915\u093F\u0938\u0940 \u0915\u094B \u0928\u0939\u0940\u0902 \u092C\u0924\u093E \u0938\u0915\u0924\u0947, \u0924\u094B \u0915\u094C\u0928 \u0938\u0940 \u0909\u092A\u0932\u092C\u094D\u0927\u093F\u092F\u093E\u0901 \u0906\u092A \u092B\u093F\u0930 \u092D\u0940 \u0939\u093E\u0938\u093F\u0932 \u0915\u0930\u0928\u093E \u091A\u093E\u0939\u0947\u0902\u0917\u0947?", guidance: "This reveals the difference between intrinsic motivation and external validation. The pursuits that survive this test are your true path." },
+            { en: "If you pressed reset on your entire life today -- same skills, same knowledge, but no obligations -- what would you build?", hi: "\u0905\u0917\u0930 \u0906\u091C \u0906\u092A \u0905\u092A\u0928\u0940 \u092A\u0942\u0930\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u0930\u0940\u0938\u0947\u091F \u0915\u0930 \u0926\u0947\u0902 -- \u0935\u0939\u0940 \u0939\u0941\u0928\u0930, \u0935\u0939\u0940 \u091C\u094D\u091E\u093E\u0928, \u0932\u0947\u0915\u093F\u0928 \u0915\u094B\u0908 \u092C\u0902\u0927\u0928 \u0928\u0939\u0940\u0902 -- \u0924\u094B \u0906\u092A \u0915\u094D\u092F\u093E \u092C\u0928\u093E\u090F\u0902\u0917\u0947?", guidance: "The gap between your answer and your current life shows you where obligation has replaced desire. Close that gap slowly." },
+            { en: "What is the story you keep telling yourself that you have never questioned? What if it is not true?", hi: "\u0935\u094B \u0915\u094C\u0928 \u0938\u0940 \u0915\u0939\u093E\u0928\u0940 \u0939\u0948 \u091C\u094B \u0906\u092A \u092C\u093E\u0930-\u092C\u093E\u0930 \u0905\u092A\u0928\u0947 \u0906\u092A \u0915\u094B \u0938\u0941\u0928\u093E\u0924\u0947 \u0939\u0948\u0902 \u0932\u0947\u0915\u093F\u0928 \u0915\u092D\u0940 \u091C\u093E\u0901\u091A\u0940 \u0928\u0939\u0940\u0902? \u0905\u0917\u0930 \u0935\u094B \u0938\u091A \u0928\u0939\u0940\u0902 \u0939\u0948 \u0924\u094B?", guidance: "Our identity narratives feel like facts but they are stories. Questioning the oldest ones is the beginning of real freedom." },
+            { en: "What would you attempt if you knew that failure would teach you something essential and cost you nothing permanent?", hi: "\u0905\u0917\u0930 \u0906\u092A \u091C\u093E\u0928\u0924\u0947 \u0915\u093F \u0905\u0938\u092B\u0932\u0924\u093E \u0906\u092A\u0915\u094B \u0915\u0941\u091B \u091C\u093C\u0930\u0942\u0930\u0940 \u0938\u093F\u0916\u093E\u090F\u0917\u0940 \u0914\u0930 \u0915\u0941\u091B \u0938\u094D\u0925\u093E\u092F\u0940 \u0928\u0939\u0940\u0902 \u091B\u0940\u0928\u0947\u0917\u0940, \u0924\u094B \u0906\u092A \u0915\u094D\u092F\u093E \u0915\u0930\u0947\u0902\u0917\u0947?", guidance: "What surfaces is what you truly want. Fear of failure is almost always fear of judgment. Remove the audience and the fear dissolves." },
+            { en: "Who in your life do you owe an honest conversation that you have been avoiding? What are you protecting by staying silent?", hi: "\u0906\u092A\u0915\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u092E\u0947\u0902 \u0915\u093F\u0938\u0947 \u0906\u092A\u0938\u0947 \u090F\u0915 \u0908\u092E\u093E\u0928\u0926\u093E\u0930 \u092C\u093E\u0924\u091A\u0940\u0924 \u0915\u093E \u0907\u0902\u0924\u091C\u093C\u093E\u0930 \u0939\u0948 \u091C\u093F\u0938\u0938\u0947 \u0906\u092A \u092C\u091A\u0924\u0947 \u0930\u0939\u0947 \u0939\u0948\u0902? \u091A\u0941\u092A \u0930\u0939\u0915\u0930 \u0906\u092A \u0915\u094D\u092F\u093E \u092C\u091A\u093E \u0930\u0939\u0947 \u0939\u0948\u0902?", guidance: "Silence often protects comfort, not people. The conversation you avoid becomes the wall between you and deeper connection." },
+            { en: "If the life you are living right now became permanent -- nothing changes from today -- would you be at peace with it?", hi: "\u0905\u0917\u0930 \u0906\u092A \u091C\u094B \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u0905\u092D\u0940 \u091C\u0940 \u0930\u0939\u0947 \u0939\u0948\u0902 \u0935\u0939 \u0939\u092E\u0947\u0936\u093E \u0915\u0947 \u0932\u093F\u090F \u0910\u0938\u0940 \u0939\u0940 \u0930\u0939\u0947 -- \u0906\u091C \u0938\u0947 \u0915\u0941\u091B \u0928\u0939\u0940\u0902 \u092C\u0926\u0932\u0947 -- \u0924\u094B \u0915\u094D\u092F\u093E \u0906\u092A\u0915\u094B \u0936\u093E\u0902\u0924\u093F \u0939\u094B\u0917\u0940?", guidance: "Discomfort here is data. It tells you exactly what needs to change. Not someday -- today." },
+            { en: "What are you holding onto that is heavier than it is valuable? What would happen if you set it down?", hi: "\u0906\u092A \u0915\u093F\u0938 \u091A\u0940\u091C\u093C \u0915\u094B \u092A\u0915\u0921\u093C\u0947 \u0939\u0941\u090F \u0939\u0948\u0902 \u091C\u094B \u0909\u0938\u0915\u0940 \u0915\u0940\u092E\u0924 \u0938\u0947 \u0915\u0939\u0940\u0902 \u091C\u093C\u094D\u092F\u093E\u0926\u093E \u092D\u093E\u0930\u0940 \u0939\u0948? \u0905\u0917\u0930 \u0906\u092A \u0907\u0938\u0947 \u0930\u0916 \u0926\u0947\u0902 \u0924\u094B \u0915\u094D\u092F\u093E \u0939\u094B\u0917\u093E?", guidance: "Grudges, outdated goals, dead relationships -- we carry them because putting them down feels like loss. But the weight is the real loss." },
+            { en: "What is the kindest thing someone has ever done for you? Have you passed it forward? What stopped you?", hi: "\u0915\u093F\u0938\u0940 \u0928\u0947 \u0906\u092A\u0915\u0947 \u0932\u093F\u090F \u0938\u092C\u0938\u0947 \u0926\u092F\u093E\u0932\u0941 \u0915\u093E\u092E \u0915\u094D\u092F\u093E \u0915\u093F\u092F\u093E \u0939\u0948? \u0915\u094D\u092F\u093E \u0906\u092A\u0928\u0947 \u0935\u094B \u0906\u0917\u0947 \u092C\u0922\u093C\u093E\u092F\u093E? \u0915\u093F\u0938 \u091A\u0940\u091C\u093C \u0928\u0947 \u0930\u094B\u0915\u093E?", guidance: "Kindness remembered is kindness waiting to be reborn. The chain only breaks when we forget, and we forget more often than we realize." }
+        ];
+
+        // ===== RENDER 20 APHORISTIC INSIGHTS =====
+        var grid = document.getElementById('aphorismsGrid');
+        insights.forEach(function(item, i) {
+            var card = document.createElement('div');
+            card.className = 'aphorism-card reveal';
+            card.style.transitionDelay = (i % 4) * 0.08 + 's';
+            card.innerHTML =
+                '<div class="aphorism-num">Insight ' + (i + 1) + '</div>' +
+                '<p class="aphorism-en">' + item.en + '</p>' +
+                '<p class="aphorism-hi">' + item.hi + '</p>';
+            grid.appendChild(card);
+        });
+
+        // ===== DAILY INSIGHT (random) =====
         var currentInsight = -1;
         function showInsight() {
             var next;
@@ -816,29 +901,51 @@
         showInsight();
         document.getElementById('newInsightBtn').addEventListener('click', showInsight);
 
-        // ===== DEEP QUESTIONS =====
-        var questions = [
-            { en: "If you could not tell anyone about your achievements, which ones would you still pursue?", hi: "\u0905\u0917\u0930 \u0906\u092A \u0905\u092A\u0928\u0940 \u0909\u092A\u0932\u092C\u094D\u0927\u093F\u092F\u094B\u0902 \u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0915\u093F\u0938\u0940 \u0915\u094B \u0928\u0939\u0940\u0902 \u092C\u0924\u093E \u0938\u0915\u0924\u0947, \u0924\u094B \u0915\u094C\u0928 \u0938\u0940 \u0909\u092A\u0932\u092C\u094D\u0927\u093F\u092F\u093E\u0901 \u0906\u092A \u092B\u093F\u0930 \u092D\u0940 \u0939\u093E\u0938\u093F\u0932 \u0915\u0930\u0928\u093E \u091A\u093E\u0939\u0947\u0902\u0917\u0947?" },
-            { en: "If you pressed reset on your entire life today -- same skills, same knowledge, but no obligations -- what would you build?", hi: "\u0905\u0917\u0930 \u0906\u091C \u0906\u092A \u0905\u092A\u0928\u0940 \u092A\u0942\u0930\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u0930\u0940\u0938\u0947\u091F \u0915\u0930 \u0926\u0947\u0902 -- \u0935\u0939\u0940 \u0939\u0941\u0928\u0930, \u0935\u0939\u0940 \u091C\u094D\u091E\u093E\u0928, \u0932\u0947\u0915\u093F\u0928 \u0915\u094B\u0908 \u092C\u0902\u0927\u0928 \u0928\u0939\u0940\u0902 -- \u0924\u094B \u0906\u092A \u0915\u094D\u092F\u093E \u092C\u0928\u093E\u090F\u0902\u0917\u0947?" },
-            { en: "What is the story you keep telling yourself that you have never questioned? What if it is not true?", hi: "\u0935\u094B \u0915\u094C\u0928 \u0938\u0940 \u0915\u0939\u093E\u0928\u0940 \u0939\u0948 \u091C\u094B \u0906\u092A \u092C\u093E\u0930-\u092C\u093E\u0930 \u0905\u092A\u0928\u0947 \u0906\u092A \u0915\u094B \u0938\u0941\u0928\u093E\u0924\u0947 \u0939\u0948\u0902 \u0932\u0947\u0915\u093F\u0928 \u0915\u092D\u0940 \u091C\u093E\u0901\u091A\u0940 \u0928\u0939\u0940\u0902? \u0905\u0917\u0930 \u0935\u094B \u0938\u091A \u0928\u0939\u0940\u0902 \u0939\u0948 \u0924\u094B?" },
-            { en: "What would you attempt if you knew that failure would teach you something essential and cost you nothing permanent?", hi: "\u0905\u0917\u0930 \u0906\u092A \u091C\u093E\u0928\u0924\u0947 \u0915\u093F \u0905\u0938\u092B\u0932\u0924\u093E \u0906\u092A\u0915\u094B \u0915\u0941\u091B \u091C\u093C\u0930\u0942\u0930\u0940 \u0938\u093F\u0916\u093E\u090F\u0917\u0940 \u0914\u0930 \u0915\u0941\u091B \u0938\u094D\u0925\u093E\u092F\u0940 \u0928\u0939\u0940\u0902 \u091B\u0940\u0928\u0947\u0917\u0940, \u0924\u094B \u0906\u092A \u0915\u094D\u092F\u093E \u0915\u0930\u0947\u0902\u0917\u0947?" },
-            { en: "Who in your life do you owe an honest conversation that you have been avoiding? What are you protecting by staying silent?", hi: "\u0906\u092A\u0915\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u092E\u0947\u0902 \u0915\u093F\u0938\u0947 \u0906\u092A\u0938\u0947 \u090F\u0915 \u0908\u092E\u093E\u0928\u0926\u093E\u0930 \u092C\u093E\u0924\u091A\u0940\u0924 \u0915\u093E \u0907\u0902\u0924\u091C\u093C\u093E\u0930 \u0939\u0948 \u091C\u093F\u0938\u0938\u0947 \u0906\u092A \u092C\u091A\u0924\u0947 \u0930\u0939\u0947 \u0939\u0948\u0902? \u091A\u0941\u092A \u0930\u0939\u0915\u0930 \u0906\u092A \u0915\u094D\u092F\u093E \u092C\u091A\u093E \u0930\u0939\u0947 \u0939\u0948\u0902?" },
-            { en: "If the life you are living right now became permanent -- nothing changes from today -- would you be at peace with it?", hi: "\u0905\u0917\u0930 \u0906\u092A \u091C\u094B \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u0905\u092D\u0940 \u091C\u0940 \u0930\u0939\u0947 \u0939\u0948\u0902 \u0935\u0939 \u0939\u092E\u0947\u0936\u093E \u0915\u0947 \u0932\u093F\u090F \u0910\u0938\u0940 \u0939\u0940 \u0930\u0939\u0947 -- \u0906\u091C \u0938\u0947 \u0915\u0941\u091B \u0928\u0939\u0940\u0902 \u092C\u0926\u0932\u0947 -- \u0924\u094B \u0915\u094D\u092F\u093E \u0906\u092A\u0915\u094B \u0936\u093E\u0902\u0924\u093F \u0939\u094B\u0917\u0940?" },
-            { en: "What are you holding onto that is heavier than it is valuable? What would happen if you set it down?", hi: "\u0906\u092A \u0915\u093F\u0938 \u091A\u0940\u091C\u093C \u0915\u094B \u092A\u0915\u0921\u093C\u0947 \u0939\u0941\u090F \u0939\u0948\u0902 \u091C\u094B \u0909\u0938\u0915\u0940 \u0915\u0940\u092E\u0924 \u0938\u0947 \u0915\u0939\u0940\u0902 \u091C\u093C\u094D\u092F\u093E\u0926\u093E \u092D\u093E\u0930\u0940 \u0939\u0948? \u0905\u0917\u0930 \u0906\u092A \u0907\u0938\u0947 \u0930\u0916 \u0926\u0947\u0902 \u0924\u094B \u0915\u094D\u092F\u093E \u0939\u094B\u0917\u093E?" },
-            { en: "What is the kindest thing someone has ever done for you? Have you passed it forward? What stopped you?", hi: "\u0915\u093F\u0938\u0940 \u0928\u0947 \u0906\u092A\u0915\u0947 \u0932\u093F\u090F \u0938\u092C\u0938\u0947 \u0926\u092F\u093E\u0932\u0941 \u0915\u093E\u092E \u0915\u094D\u092F\u093E \u0915\u093F\u092F\u093E \u0939\u0948? \u0915\u094D\u092F\u093E \u0906\u092A\u0928\u0947 \u0935\u094B \u0906\u0917\u0947 \u092C\u0922\u093C\u093E\u092F\u093E? \u0915\u093F\u0938 \u091A\u0940\u091C\u093C \u0928\u0947 \u0930\u094B\u0915\u093E?" }
-        ];
+        // ===== RENDER 8 INTERACTIVE REFLECTION QUESTIONS =====
+        var rGrid = document.getElementById('reflectionsGrid');
+        questions.forEach(function(q, i) {
+            var card = document.createElement('div');
+            card.className = 'reflection-card reveal';
+            card.style.transitionDelay = (i % 4) * 0.1 + 's';
+            card.innerHTML =
+                '<div class="reflection-prompt">' +
+                    '<svg width="28" height="28" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"/></svg>' +
+                    'Tap to reveal / \u091B\u0942\u090F\u0902' +
+                '</div>' +
+                '<div class="reflection-question">' +
+                    '<p class="reflection-question-text">' + q.en + '</p>' +
+                    '<p class="reflection-question-hi">' + q.hi + '</p>' +
+                    '<div class="reflection-tap-hint">Tap again for guidance</div>' +
+                '</div>' +
+                '<div class="reflection-guidance">' +
+                    '<div class="reflection-guidance-label">Guidance</div>' +
+                    '<p class="reflection-guidance-text">' + q.guidance + '</p>' +
+                '</div>';
+            card.addEventListener('click', function() {
+                if (card.classList.contains('state-guidance')) {
+                    card.classList.remove('state-guidance', 'state-question');
+                } else if (card.classList.contains('state-question')) {
+                    card.classList.remove('state-question');
+                    card.classList.add('state-guidance');
+                } else {
+                    card.classList.add('state-question');
+                }
+            });
+            rGrid.appendChild(card);
+        });
 
-        var currentQuestion = -1;
-        function showQuestion() {
-            var next;
-            do { next = Math.floor(Math.random() * questions.length); } while (next === currentQuestion && questions.length > 1);
-            currentQuestion = next;
-            document.getElementById('questionEN').textContent = questions[next].en;
-            document.getElementById('questionHI').textContent = questions[next].hi;
-            document.getElementById('questionCounter').textContent = (next + 1) + ' / ' + questions.length;
-        }
-        showQuestion();
-        document.getElementById('nextQuestionBtn').addEventListener('click', showQuestion);
+        // ===== SCROLL REVEAL =====
+        var reveals = document.querySelectorAll('.reveal');
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+        reveals.forEach(function(el) { observer.observe(el); });
+
+    })();
     </script>
     <script src="/js/i18n.js"></script>
 </body>

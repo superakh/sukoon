@@ -14,12 +14,13 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #374151;
-            background: #FAFAF7;
+            color: #F1F5F9;
+            background: #0F172A;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
+            padding-bottom: 80px;
         }
 
         a { text-decoration: none; color: inherit; }
@@ -30,23 +31,17 @@
             top: 0; left: 0; right: 0; bottom: 0;
             z-index: 0;
             pointer-events: none;
-            background: linear-gradient(
-                135deg,
-                rgba(79, 70, 229, 0.04) 0%,
-                rgba(16, 185, 129, 0.03) 25%,
-                rgba(245, 158, 11, 0.02) 50%,
-                rgba(236, 72, 153, 0.03) 75%,
-                rgba(79, 70, 229, 0.04) 100%
-            );
-            background-size: 400% 400%;
-            animation: ambientShift 30s ease-in-out infinite;
+            background:
+                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(16, 185, 129, 0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse 70% 40% at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
+            background-size: 100% 100%;
+            animation: ambientShift 40s ease-in-out infinite;
         }
 
         @keyframes ambientShift {
-            0%, 100% { background-position: 0% 50%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.05); }
         }
 
         /* ===================== TOPBAR ===================== */
@@ -58,299 +53,233 @@
             z-index: 1000;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
             padding: 0 2rem;
-            height: 72px;
-            background: rgba(250, 250, 247, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            height: 56px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
 
         .brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            color: #111827;
+            font-size: 1.35rem;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
         }
 
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 4px;
+        .brand-moon {
+            margin-right: 4px;
+            font-size: 1.1rem;
         }
 
-        .nav a {
-            padding: 8px 14px;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #6B7280;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .nav a:hover {
-            background: rgba(79, 70, 229, 0.06);
-            color: #4F46E5;
-        }
-
-        .nav a.active {
-            background: #4F46E5;
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        .topbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-picker {
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #6B7280;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            -webkit-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            padding-right: 28px;
-        }
-
-        .lang-picker:hover { border-color: rgba(79, 70, 229, 0.3); }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #374151;
-            cursor: pointer;
-            padding: 4px;
-            line-height: 1;
-        }
-
-        .mobile-nav-overlay {
-            display: none;
+        /* ===================== BOTTOM NAVIGATION ===================== */
+        .bottom-nav {
             position: fixed;
-            top: 72px;
+            bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(250, 250, 247, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 16px 24px 24px;
-            z-index: 999;
-            flex-direction: column;
-            gap: 4px;
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .mobile-nav-overlay.open {
+            z-index: 1000;
             display: flex;
-            transform: translateY(0);
-            opacity: 1;
+            align-items: center;
+            justify-content: space-around;
+            height: 72px;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 0 8px;
+            padding-bottom: env(safe-area-inset-bottom, 0);
         }
 
-        .mobile-nav-overlay a {
-            padding: 14px 16px;
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            padding: 8px 12px;
             border-radius: 12px;
-            font-size: 1rem;
+            font-size: 0.65rem;
             font-weight: 500;
-            color: #374151;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            color: #64748B;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .mobile-nav-overlay a:hover,
-        .mobile-nav-overlay a.active {
-            background: rgba(79, 70, 229, 0.06);
-            color: #4F46E5;
+        .bottom-nav a:hover, .bottom-nav a.active {
+            color: #10B981;
         }
 
-        @media (max-width: 900px) {
-            .nav { display: none; }
-            .mobile-menu-btn { display: block; }
-            .topbar { padding: 0 1.25rem; }
+        .bottom-nav a.active {
+            background: rgba(16, 185, 129, 0.1);
         }
 
-        /* ===================== SHARED SECTION STYLES ===================== */
-        .sos-section {
-            min-height: 100vh;
+        .bottom-nav svg {
+            width: 22px;
+            height: 22px;
+            stroke-width: 1.8;
+            fill: none;
+            stroke: currentColor;
+        }
+
+        /* ===================== DESKTOP SIDEBAR >900px ===================== */
+        @media (min-width: 901px) {
+            .bottom-nav {
+                top: 56px;
+                bottom: 0;
+                left: 0;
+                right: auto;
+                width: 80px;
+                height: auto;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 24px 0;
+                gap: 4px;
+                border-top: none;
+                border-right: 1px solid rgba(255,255,255,0.06);
+            }
+
+            .bottom-nav a {
+                width: 64px;
+                padding: 10px 8px;
+                font-size: 0.6rem;
+            }
+
+            body {
+                padding-left: 80px;
+                padding-bottom: 0;
+            }
+
+            .topbar {
+                left: 80px;
+            }
+        }
+
+        /* ===================== MAIN CONTENT ===================== */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 80px 20px 40px;
+        }
+
+        .section-spacing {
+            margin-bottom: 64px;
+        }
+
+        /* ===================== BREATHING OVERLAY ===================== */
+        .breathing-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 2000;
+            background: rgba(15, 23, 42, 0.97);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 100px 24px 60px;
-            position: relative;
-            z-index: 1;
+            opacity: 1;
+            transition: opacity 0.8s ease;
         }
 
-        .sos-section:first-of-type {
-            padding-top: 72px;
+        .breathing-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
         }
 
-        .section-content {
-            max-width: 560px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+        .breath-header {
             text-align: center;
+            margin-bottom: 48px;
+            opacity: 0;
+            animation: fadeSlideIn 1.5s ease 0.3s forwards;
         }
 
-        .section-heading {
+        .breath-title {
             font-family: 'DM Serif Display', serif;
             font-size: 1.75rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-            margin-bottom: 8px;
-            line-height: 1.3;
-        }
-
-        .section-heading-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #9CA3AF;
-            margin-bottom: 32px;
-            line-height: 1.5;
-        }
-
-        .section-subtext {
-            font-size: 0.95rem;
-            color: #6B7280;
-            line-height: 1.65;
-            margin-bottom: 24px;
-            max-width: 420px;
-        }
-
-        .btn-next {
-            padding: 14px 36px;
-            border-radius: 14px;
-            background: #FFFFFF;
-            color: #4F46E5;
-            font-size: 0.95rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            border: 1.5px solid rgba(79, 70, 229, 0.2);
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            margin-top: 24px;
-        }
-
-        .btn-next:hover {
-            background: rgba(79, 70, 229, 0.04);
-            border-color: rgba(79, 70, 229, 0.4);
-            transform: translateY(-2px);
-            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.1);
-        }
-
-        /* ===================== SECTION 1: BREATHING ===================== */
-        .breathing-section {
-            min-height: 100vh;
-            padding-top: 72px;
-        }
-
-        .safe-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2rem;
-            color: #111827;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
             margin-bottom: 4px;
-            line-height: 1.3;
-            opacity: 0;
-            animation: fadeInSoft 2s ease 0.5s forwards;
         }
 
-        .safe-text-hi {
+        .breath-title-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 1.05rem;
-            color: #9CA3AF;
-            margin-bottom: 40px;
-            line-height: 1.5;
-            opacity: 0;
-            animation: fadeInSoft 2s ease 1s forwards;
+            font-size: 0.95rem;
+            color: #64748B;
         }
 
-        @keyframes fadeInSoft {
-            from { opacity: 0; transform: translateY(8px); }
+        @keyframes fadeSlideIn {
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Breathing circle */
         .circle-container {
             position: relative;
-            width: 260px;
-            height: 260px;
+            width: 240px;
+            height: 240px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 36px;
+            margin-bottom: 40px;
             opacity: 0;
-            animation: fadeInSoft 2s ease 1.5s forwards;
+            animation: fadeSlideIn 1.5s ease 0.8s forwards;
+        }
+
+        .circle-glow {
+            position: absolute;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
+            transition: all 4s cubic-bezier(0.4,0,0.2,1);
+            filter: blur(20px);
+        }
+
+        .circle-glow.expanded {
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
         }
 
         .circle-ring {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(79, 70, 229, 0.06);
+            border: 1px solid rgba(16, 185, 129, 0.1);
         }
 
-        .circle-ring-1 {
-            width: 260px;
-            height: 260px;
-            top: 0;
-            left: 0;
-        }
-
-        .circle-ring-2 {
-            width: 220px;
-            height: 220px;
-            top: 20px;
-            left: 20px;
-            border-color: rgba(79, 70, 229, 0.04);
-        }
-
-        .circle-ring-3 {
-            width: 180px;
-            height: 180px;
-            top: 40px;
-            left: 40px;
-            border-color: rgba(79, 70, 229, 0.03);
-        }
+        .circle-ring-1 { width: 240px; height: 240px; }
+        .circle-ring-2 { width: 200px; height: 200px; border-color: rgba(16, 185, 129, 0.07); }
+        .circle-ring-3 { width: 160px; height: 160px; border-color: rgba(16, 185, 129, 0.04); }
 
         .breath-circle {
-            width: 130px;
-            height: 130px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
-            background: radial-gradient(circle at 45% 40%, #FFFFFF 0%, rgba(79, 70, 229, 0.08) 60%, rgba(79, 70, 229, 0.15) 100%);
+            background: radial-gradient(circle at 45% 40%, rgba(16, 185, 129, 0.3) 0%, rgba(16, 185, 129, 0.12) 60%, rgba(16, 185, 129, 0.06) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.2);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 2;
-            box-shadow: 0 4px 24px rgba(79, 70, 229, 0.08), 0 0 0 1px rgba(79, 70, 229, 0.04);
-            transition: transform 4s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 0 60px rgba(16, 185, 129, 0.15), inset 0 0 30px rgba(16, 185, 129, 0.05);
+            transition: transform 4s cubic-bezier(0.4,0,0.2,1), box-shadow 4s ease;
         }
 
         .breath-circle.expanded {
-            transform: scale(1.65);
+            transform: scale(1.6);
+            box-shadow: 0 0 100px rgba(16, 185, 129, 0.25), inset 0 0 40px rgba(16, 185, 129, 0.08);
         }
 
         .phase-text {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem;
-            color: #111827;
+            font-size: 0.95rem;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
             text-align: center;
             line-height: 1.3;
@@ -358,96 +287,219 @@
 
         .phase-text-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.65rem;
-            color: #9CA3AF;
+            font-size: 0.6rem;
+            color: #94A3B8;
             text-align: center;
             margin-top: 2px;
         }
 
-        /* Timer */
+        .breath-counter {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 300;
+            color: #64748B;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeSlideIn 1.5s ease 1.2s forwards;
+        }
+
         .breath-timer {
             font-family: 'Inter', sans-serif;
-            font-size: 2.25rem;
-            font-weight: 300;
-            color: #111827;
+            font-size: 3rem;
+            font-weight: 200;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
             font-variant-numeric: tabular-nums;
-            margin-bottom: 6px;
+            margin-bottom: 48px;
             opacity: 0;
-            animation: fadeInSoft 2s ease 2s forwards;
+            animation: fadeSlideIn 1.5s ease 1s forwards;
         }
 
-        .breath-timer-label {
-            font-size: 0.75rem;
+        .btn-skip {
+            padding: 12px 32px;
+            border-radius: 100px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: #94A3B8;
+            font-size: 0.85rem;
             font-weight: 500;
-            color: #9CA3AF;
-            margin-bottom: 32px;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
             opacity: 0;
-            animation: fadeInSoft 2s ease 2s forwards;
+            animation: fadeSlideIn 1.5s ease 1.5s forwards;
         }
 
-        /* ===================== SECTION 2: GROUNDING ===================== */
-        .grounding-step {
-            margin-bottom: 32px;
+        .btn-skip:hover {
+            background: rgba(255,255,255,0.1);
+            color: #F1F5F9;
+        }
+
+        /* ===================== SECTION HEADINGS ===================== */
+        .section-label {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #10B981;
+            margin-bottom: 8px;
+        }
+
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.6rem;
+            color: #F1F5F9;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .section-title-hi {
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #64748B;
+            margin-bottom: 24px;
+        }
+
+        /* ===================== GROUNDING EXERCISE ===================== */
+        .grounding-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
             width: 100%;
         }
 
-        .grounding-prompt {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-            margin-bottom: 4px;
+        .grounding-card {
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            -webkit-tap-highlight-color: transparent;
+            user-select: none;
+            overflow: hidden;
         }
 
-        .grounding-prompt-hi {
+        .grounding-card:hover {
+            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(30, 41, 59, 0.9);
+        }
+
+        .grounding-card.active {
+            border-color: rgba(16, 185, 129, 0.3);
+            box-shadow: 0 0 30px rgba(16, 185, 129, 0.06);
+        }
+
+        .grounding-card.completed {
+            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.05);
+        }
+
+        .grounding-card-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .grounding-number {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1.5px solid rgba(16, 185, 129, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem;
+            color: #10B981;
+            flex-shrink: 0;
+            transition: all 0.4s ease;
+        }
+
+        .grounding-card.completed .grounding-number {
+            background: #10B981;
+            border-color: #10B981;
+            color: #0F172A;
+        }
+
+        .grounding-card-text {
+            flex: 1;
+        }
+
+        .grounding-card-en {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #F1F5F9;
+            line-height: 1.4;
+        }
+
+        .grounding-card-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             font-size: 0.8rem;
-            color: #9CA3AF;
-            margin-bottom: 16px;
+            color: #64748B;
+            margin-top: 2px;
+        }
+
+        .grounding-chevron {
+            color: #475569;
+            transition: transform 0.4s ease;
+            flex-shrink: 0;
+        }
+
+        .grounding-card.active .grounding-chevron {
+            transform: rotate(180deg);
+        }
+
+        .grounding-expanded {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.5s ease;
+            padding: 0 0;
+        }
+
+        .grounding-card.active .grounding-expanded {
+            max-height: 200px;
+            padding: 20px 0 4px;
         }
 
         .grounding-circles {
             display: flex;
-            gap: 14px;
+            gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
-        .grounding-circle {
-            width: 52px;
-            height: 52px;
+        .grounding-dot {
+            width: 48px;
+            height: 48px;
             border-radius: 50%;
-            border: 2px solid rgba(79, 70, 229, 0.15);
-            background: rgba(79, 70, 229, 0.02);
+            border: 2px solid rgba(16, 185, 129, 0.2);
+            background: rgba(16, 185, 129, 0.04);
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             display: flex;
             align-items: center;
             justify-content: center;
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
         }
 
-        .grounding-circle:hover {
-            border-color: rgba(79, 70, 229, 0.3);
-            background: rgba(79, 70, 229, 0.04);
+        .grounding-dot:hover {
+            border-color: rgba(16, 185, 129, 0.4);
+            background: rgba(16, 185, 129, 0.08);
         }
 
-        .grounding-circle.filled {
-            background: #4F46E5;
-            border-color: #4F46E5;
-            transform: scale(1.15);
-            box-shadow: 0 4px 16px rgba(79, 70, 229, 0.25);
+        .grounding-dot.filled {
+            background: #10B981;
+            border-color: #10B981;
+            transform: scale(1.12);
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
         }
 
-        .grounding-circle.filled svg {
-            opacity: 1;
-        }
-
-        .grounding-circle svg {
-            width: 20px;
-            height: 20px;
+        .grounding-dot svg {
+            width: 18px;
+            height: 18px;
             stroke: #FFFFFF;
             stroke-width: 2.5;
             fill: none;
@@ -455,199 +507,150 @@
             transition: opacity 0.2s ease;
         }
 
-        @keyframes popIn {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.25); }
-            100% { transform: scale(1.15); }
+        .grounding-dot.filled svg { opacity: 1; }
+
+        .grounding-hint {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #475569;
+            margin-top: 12px;
         }
 
-        .grounding-circle.pop {
-            animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+        /* ===================== AFFIRMATION CARDS ===================== */
+        .affirmation-scroll {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 4px 0 16px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            margin: 0 -20px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
 
-        .grounding-progress {
-            margin-top: 24px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #4F46E5;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .grounding-progress.visible {
-            opacity: 1;
-        }
-
-        /* ===================== SECTION 3: AFFIRMATIONS ===================== */
-        .affirmation-container {
-            position: relative;
-            width: 100%;
-            max-width: 480px;
-            min-height: 240px;
-            margin-bottom: 24px;
-        }
+        .affirmation-scroll::-webkit-scrollbar { display: none; }
 
         .affirmation-card {
-            position: absolute;
-            top: 0; left: 0; right: 0;
-            padding: 48px 36px;
+            min-width: 280px;
+            max-width: 280px;
+            padding: 36px 28px;
             border-radius: 24px;
-            text-align: center;
-            opacity: 0;
-            transform: scale(0.96);
-            transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
-            pointer-events: none;
-            min-height: 240px;
+            scroll-snap-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            flex-shrink: 0;
+            transition: transform 0.4s ease;
         }
 
-        .affirmation-card.active {
-            opacity: 1;
-            transform: scale(1);
-            pointer-events: auto;
-        }
+        .affirmation-card:hover { transform: translateY(-4px); }
 
-        .affirmation-card:nth-child(1) {
-            background: linear-gradient(145deg, rgba(79, 70, 229, 0.06) 0%, rgba(124, 58, 237, 0.08) 100%);
-            border: 1px solid rgba(79, 70, 229, 0.08);
-        }
+        .aff-1 { background: linear-gradient(145deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.15); }
+        .aff-2 { background: linear-gradient(145deg, rgba(124, 58, 237, 0.15), rgba(124, 58, 237, 0.05)); border: 1px solid rgba(124, 58, 237, 0.15); }
+        .aff-3 { background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.05)); border: 1px solid rgba(14, 165, 233, 0.15); }
+        .aff-4 { background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05)); border: 1px solid rgba(245, 158, 11, 0.12); }
+        .aff-5 { background: linear-gradient(145deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05)); border: 1px solid rgba(236, 72, 153, 0.12); }
+        .aff-6 { background: linear-gradient(145deg, rgba(34, 211, 238, 0.15), rgba(34, 211, 238, 0.05)); border: 1px solid rgba(34, 211, 238, 0.12); }
+        .aff-7 { background: linear-gradient(145deg, rgba(16, 185, 129, 0.12), rgba(124, 58, 237, 0.1)); border: 1px solid rgba(16, 185, 129, 0.12); }
+        .aff-8 { background: linear-gradient(145deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.08)); border: 1px solid rgba(251, 191, 36, 0.12); }
 
-        .affirmation-card:nth-child(2) {
-            background: linear-gradient(145deg, rgba(16, 185, 129, 0.06) 0%, rgba(5, 150, 105, 0.08) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.08);
-        }
-
-        .affirmation-card:nth-child(3) {
-            background: linear-gradient(145deg, rgba(245, 158, 11, 0.06) 0%, rgba(217, 119, 6, 0.08) 100%);
-            border: 1px solid rgba(245, 158, 11, 0.08);
-        }
-
-        .affirmation-card:nth-child(4) {
-            background: linear-gradient(145deg, rgba(236, 72, 153, 0.06) 0%, rgba(219, 39, 119, 0.08) 100%);
-            border: 1px solid rgba(236, 72, 153, 0.08);
-        }
-
-        .affirmation-card:nth-child(5) {
-            background: linear-gradient(145deg, rgba(14, 165, 233, 0.06) 0%, rgba(2, 132, 199, 0.08) 100%);
-            border: 1px solid rgba(14, 165, 233, 0.08);
-        }
-
-        .affirmation-text {
-            font-family: 'DM Serif Display', serif;
+        .affirmation-icon {
             font-size: 1.5rem;
-            color: #111827;
+            margin-bottom: 16px;
+            opacity: 0.8;
+        }
+
+        .affirmation-en {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
             line-height: 1.4;
-            margin-bottom: 16px;
+            margin-bottom: 10px;
         }
 
-        .affirmation-text-hi {
+        .affirmation-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #6B7280;
-            line-height: 1.6;
+            font-size: 0.85rem;
+            color: #94A3B8;
+            line-height: 1.5;
         }
 
-        .affirmation-dots {
+        /* ===================== TALK TO SOMEONE ===================== */
+        .talk-btn {
             display: flex;
-            gap: 8px;
+            align-items: center;
             justify-content: center;
-        }
-
-        .affirmation-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(79, 70, 229, 0.15);
-            transition: all 0.3s ease;
-        }
-
-        .affirmation-dot.active {
-            background: #4F46E5;
-            transform: scale(1.2);
-        }
-
-        /* ===================== SECTION 4: HELP ===================== */
-        .help-options {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
+            gap: 12px;
             width: 100%;
-            max-width: 440px;
-            margin-bottom: 32px;
-        }
-
-        .btn-friend {
-            padding: 18px 32px;
-            border-radius: 16px;
-            background: #4F46E5;
+            padding: 22px 32px;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 50%, #5B21B6 100%);
             color: #FFFFFF;
-            font-size: 1rem;
+            font-size: 1.05rem;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
             border: none;
             cursor: pointer;
-            box-shadow: 0 1px 3px rgba(79, 70, 229, 0.2), 0 8px 24px rgba(79, 70, 229, 0.15);
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.3), 0 0 0 1px rgba(124, 58, 237, 0.1);
+            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
             text-decoration: none;
         }
 
-        .btn-friend:hover {
+        .talk-btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25), 0 12px 32px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.2);
         }
 
-        .btn-friend svg {
-            width: 20px;
-            height: 20px;
+        .talk-btn svg {
+            width: 22px;
+            height: 22px;
         }
 
-        .helplines-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 20px;
-            padding: 28px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+        .talk-subtitle {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #64748B;
+            margin-top: 10px;
+        }
+
+        /* ===================== CRISIS HELPLINES ===================== */
+        .helplines-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
             width: 100%;
-            max-width: 440px;
         }
 
-        .helplines-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
-        }
-
-        .helpline-item {
+        .helpline-card {
             display: flex;
             align-items: center;
             gap: 14px;
-            padding: 14px 16px;
-            border-radius: 14px;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            margin-bottom: 4px;
+            padding: 16px 20px;
+            border-radius: 16px;
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s ease;
             text-decoration: none;
             color: inherit;
+            -webkit-tap-highlight-color: transparent;
         }
 
-        .helpline-item:hover {
-            background: rgba(16, 185, 129, 0.04);
+        .helpline-card:hover {
+            border-color: rgba(16, 185, 129, 0.2);
+            background: rgba(30, 41, 59, 0.9);
+            transform: translateX(4px);
         }
 
         .helpline-icon {
-            width: 42px;
-            height: 42px;
-            border-radius: 12px;
-            background: rgba(16, 185, 129, 0.08);
+            width: 44px;
+            height: 44px;
+            border-radius: 14px;
+            background: rgba(16, 185, 129, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -666,601 +669,653 @@
             display: flex;
             flex-direction: column;
             text-align: left;
+            flex: 1;
         }
 
         .helpline-name {
             font-size: 0.85rem;
             font-weight: 600;
-            color: #111827;
+            color: #F1F5F9;
         }
 
         .helpline-number {
-            font-size: 0.8rem;
-            font-weight: 500;
+            font-size: 0.85rem;
+            font-weight: 600;
             color: #10B981;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.03em;
         }
 
         .helpline-region {
-            font-size: 0.7rem;
-            color: #9CA3AF;
+            font-size: 0.65rem;
+            color: #64748B;
             font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-top: 2px;
         }
 
-        .not-alone-text {
-            font-size: 0.95rem;
-            color: #6B7280;
-            line-height: 1.65;
-            max-width: 420px;
-            margin-top: 28px;
-        }
-
-        .not-alone-text-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: #9CA3AF;
-            margin-top: 6px;
-        }
-
-        /* ===================== FOOTER ===================== */
-        .footer {
-            background: #F3F4F6;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding: 56px 24px 32px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-
-        .footer-mission {
-            font-size: 0.95rem;
-            color: #6B7280;
-            max-width: 480px;
-            margin: 0 auto 8px;
-            line-height: 1.6;
-        }
-
-        .footer-mission-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: #9CA3AF;
-            margin-bottom: 24px;
-        }
-
-        .footer-privacy {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            border-radius: 100px;
-            background: rgba(16, 185, 129, 0.06);
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #059669;
-            margin-bottom: 28px;
-        }
-
-        .footer-privacy svg { width: 12px; height: 12px; }
-
-        .footer-nav {
+        .helpline-call {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(16, 185, 129, 0.15);
             display: flex;
             align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 32px;
+            flex-shrink: 0;
         }
 
-        .footer-nav a {
-            padding: 6px 14px;
-            border-radius: 8px;
+        .helpline-call svg {
+            width: 16px;
+            height: 16px;
+            stroke: #10B981;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        /* ===================== QUICK LINKS ===================== */
+        .quick-links {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .quick-link {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 24px 16px;
+            border-radius: 20px;
+            background: #1E293B;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .quick-link:hover {
+            border-color: rgba(16, 185, 129, 0.2);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+
+        .quick-link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .quick-link-icon.green { background: rgba(16, 185, 129, 0.12); }
+        .quick-link-icon.purple { background: rgba(124, 58, 237, 0.12); }
+        .quick-link-icon.blue { background: rgba(14, 165, 233, 0.12); }
+
+        .quick-link-text {
             font-size: 0.8rem;
-            font-weight: 500;
-            color: #6B7280;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            font-weight: 600;
+            color: #F1F5F9;
+            line-height: 1.3;
         }
 
-        .footer-nav a:hover {
-            color: #4F46E5;
-            background: rgba(79, 70, 229, 0.04);
+        /* ===================== FOOTER NOTE ===================== */
+        .footer-note {
+            text-align: center;
+            padding: 40px 20px 20px;
         }
 
-        .footer-copy {
-            font-size: 0.75rem;
-            color: #9CA3AF;
+        .footer-note p {
+            font-size: 0.8rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .footer-note .brand-small {
+            font-family: 'DM Serif Display', serif;
+            color: #64748B;
         }
 
         /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 768px) {
-            .sos-section {
-                padding: 80px 20px 48px;
-            }
-            .safe-text { font-size: 1.6rem; }
-            .section-heading { font-size: 1.5rem; }
-            .circle-container { width: 220px; height: 220px; }
-            .circle-ring-1 { width: 220px; height: 220px; }
-            .circle-ring-2 { width: 184px; height: 184px; top: 18px; left: 18px; }
-            .circle-ring-3 { width: 148px; height: 148px; top: 36px; left: 36px; }
-            .breath-circle { width: 110px; height: 110px; }
-            .phase-text { font-size: 0.9rem; }
-            .breath-timer { font-size: 1.8rem; }
-            .affirmation-text { font-size: 1.25rem; }
-            .affirmation-card { padding: 36px 24px; min-height: 220px; }
-            .grounding-circle { width: 48px; height: 48px; }
-            .helplines-card { padding: 24px 20px; }
+        @media (max-width: 480px) {
+            .breath-title { font-size: 1.5rem; }
+            .section-title { font-size: 1.35rem; }
+            .circle-container { width: 200px; height: 200px; }
+            .circle-ring-1 { width: 200px; height: 200px; }
+            .circle-ring-2 { width: 168px; height: 168px; }
+            .circle-ring-3 { width: 136px; height: 136px; }
+            .breath-circle { width: 100px; height: 100px; }
+            .phase-text { font-size: 0.85rem; }
+            .breath-timer { font-size: 2.5rem; }
+            .affirmation-card { min-width: 250px; max-width: 250px; padding: 28px 20px; }
+            .affirmation-en { font-size: 1.05rem; }
+            .quick-links { grid-template-columns: 1fr; }
+            .quick-link { flex-direction: row; padding: 18px 20px; }
         }
 
-        @media (max-width: 400px) {
-            .circle-container { width: 190px; height: 190px; }
-            .circle-ring-1 { width: 190px; height: 190px; }
-            .circle-ring-2 { width: 160px; height: 160px; top: 15px; left: 15px; }
-            .circle-ring-3 { width: 130px; height: 130px; top: 30px; left: 30px; }
-            .breath-circle { width: 95px; height: 95px; }
-            .phase-text { font-size: 0.8rem; }
-            .safe-text { font-size: 1.4rem; }
-            .affirmation-text { font-size: 1.1rem; }
+        @media (max-width: 360px) {
+            .circle-container { width: 180px; height: 180px; }
+            .circle-ring-1 { width: 180px; height: 180px; }
+            .circle-ring-2 { width: 150px; height: 150px; }
+            .circle-ring-3 { width: 120px; height: 120px; }
+            .breath-circle { width: 85px; height: 85px; }
+        }
+
+        /* ===================== ANIMATIONS ===================== */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
 
-    <!-- Ambient shifting background -->
+    <!-- Ambient background -->
     <div class="ambient-bg"></div>
 
     <!-- TOPBAR -->
     <header class="topbar">
-        <a href="/" class="brand">Sukoon</a>
-        <nav class="nav">
-            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-            <a href="/sos.html" class="active" data-i18n="nav.sos">SOS</a>
-        </nav>
-        <div class="topbar-actions">
-            <select class="lang-picker">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-            </select>
-            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
-        </div>
+        <a href="/" class="brand"><span class="brand-moon">&#9789;</span> Sukoon</a>
     </header>
 
-    <!-- Mobile nav -->
-    <div class="mobile-nav-overlay" id="mobileNav">
-        <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-        <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-        <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-        <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-        <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-        <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-        <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-        <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-        <a href="/sos.html" class="active" data-i18n="nav.sos">SOS</a>
+    <!-- BOTTOM NAVIGATION -->
+    <nav class="bottom-nav">
+        <a href="/">
+            <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="/explore.html">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+            <span>Explore</span>
+        </a>
+        <a href="/breathe.html">
+            <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12s1.5-3 4-3 4 3 4 3-1.5 3-4 3-4-3-4-3z"/></svg>
+            <span>Breathe</span>
+        </a>
+        <a href="/friend.html">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/profile.html">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>You</span>
+        </a>
+    </nav>
+
+    <!-- ===================== BREATHING OVERLAY (Auto-starts) ===================== -->
+    <div class="breathing-overlay" id="breathingOverlay">
+        <div class="breath-header">
+            <div class="breath-title">Breathe with me</div>
+            <div class="breath-title-hi">&#x092E;&#x0947;&#x0930;&#x0947; &#x0938;&#x093E;&#x0925; &#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
+        </div>
+
+        <div class="circle-container">
+            <div class="circle-glow" id="circleGlow"></div>
+            <div class="circle-ring circle-ring-1"></div>
+            <div class="circle-ring circle-ring-2"></div>
+            <div class="circle-ring circle-ring-3"></div>
+            <div class="breath-circle" id="breathCircle">
+                <div class="phase-text" id="phaseText">Inhale</div>
+                <div class="phase-text-hi" id="phaseHindi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
+            </div>
+        </div>
+
+        <div class="breath-timer" id="breathTimer">4</div>
+        <div class="breath-counter" id="breathCounter">Breath 1 of 10</div>
+
+        <button class="btn-skip" id="btnSkip">Skip &mdash; I'm okay</button>
     </div>
 
-    <!-- ===================== SECTION 1: BREATHING ===================== -->
-    <section class="sos-section breathing-section" id="sectionBreathe">
-        <div class="section-content">
-            <div class="safe-text" data-i18n="sos.safe">You are safe. Breathe with me.</div>
-            <div class="safe-text-hi">&#x0906;&#x092A; &#x0938;&#x0941;&#x0930;&#x0915;&#x094D;&#x0937;&#x093F;&#x0924; &#x0939;&#x0948;&#x0902;&#x0964; &#x092E;&#x0947;&#x0930;&#x0947; &#x0938;&#x093E;&#x0925; &#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;&#x0964;</div>
+    <!-- ===================== MAIN CONTENT ===================== -->
+    <div class="main-content">
 
-            <!-- Breathing circle -->
-            <div class="circle-container">
-                <div class="circle-ring circle-ring-1"></div>
-                <div class="circle-ring circle-ring-2"></div>
-                <div class="circle-ring circle-ring-3"></div>
-                <div class="breath-circle" id="breathCircle">
-                    <div class="phase-text" id="phaseText">Inhale</div>
-                    <div class="phase-text-hi" id="phaseHindi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
+        <!-- ===================== GROUNDING EXERCISE ===================== -->
+        <div class="section-spacing fade-in-up" id="groundingSection">
+            <div class="section-label">Grounding Exercise</div>
+            <div class="section-title">5-4-3-2-1 Technique</div>
+            <div class="section-title-hi">&#x092A;&#x093E;&#x0901;&#x091A; &#x0907;&#x0902;&#x0926;&#x094D;&#x0930;&#x093F;&#x092F;&#x094B;&#x0902; &#x0915;&#x0940; &#x0935;&#x093F;&#x0927;&#x093F;</div>
+
+            <div class="grounding-steps">
+                <!-- 5 SEE -->
+                <div class="grounding-card" data-count="5" onclick="toggleGround(this)">
+                    <div class="grounding-card-header">
+                        <div class="grounding-number">5</div>
+                        <div class="grounding-card-text">
+                            <div class="grounding-card-en">Things you can <strong>SEE</strong></div>
+                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x0926;&#x0947;&#x0916;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                        </div>
+                        <div class="grounding-chevron">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="grounding-expanded">
+                        <div class="grounding-circles">
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        </div>
+                        <div class="grounding-hint">Tap each circle as you notice something</div>
+                    </div>
+                </div>
+
+                <!-- 4 TOUCH -->
+                <div class="grounding-card" data-count="4" onclick="toggleGround(this)">
+                    <div class="grounding-card-header">
+                        <div class="grounding-number">4</div>
+                        <div class="grounding-card-text">
+                            <div class="grounding-card-en">Things you can <strong>TOUCH</strong></div>
+                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x091B;&#x0942;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                        </div>
+                        <div class="grounding-chevron">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="grounding-expanded">
+                        <div class="grounding-circles">
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        </div>
+                        <div class="grounding-hint">Tap each circle as you notice something</div>
+                    </div>
+                </div>
+
+                <!-- 3 HEAR -->
+                <div class="grounding-card" data-count="3" onclick="toggleGround(this)">
+                    <div class="grounding-card-header">
+                        <div class="grounding-number">3</div>
+                        <div class="grounding-card-text">
+                            <div class="grounding-card-en">Things you can <strong>HEAR</strong></div>
+                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x0938;&#x0941;&#x0928;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                        </div>
+                        <div class="grounding-chevron">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="grounding-expanded">
+                        <div class="grounding-circles">
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        </div>
+                        <div class="grounding-hint">Tap each circle as you notice something</div>
+                    </div>
+                </div>
+
+                <!-- 2 SMELL -->
+                <div class="grounding-card" data-count="2" onclick="toggleGround(this)">
+                    <div class="grounding-card-header">
+                        <div class="grounding-number">2</div>
+                        <div class="grounding-card-text">
+                            <div class="grounding-card-en">Things you can <strong>SMELL</strong></div>
+                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x0938;&#x0942;&#x0902;&#x0918;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                        </div>
+                        <div class="grounding-chevron">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="grounding-expanded">
+                        <div class="grounding-circles">
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        </div>
+                        <div class="grounding-hint">Tap each circle as you notice something</div>
+                    </div>
+                </div>
+
+                <!-- 1 TASTE -->
+                <div class="grounding-card" data-count="1" onclick="toggleGround(this)">
+                    <div class="grounding-card-header">
+                        <div class="grounding-number">1</div>
+                        <div class="grounding-card-text">
+                            <div class="grounding-card-en">Thing you can <strong>TASTE</strong></div>
+                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x091A;&#x0916;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                        </div>
+                        <div class="grounding-chevron">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+                        </div>
+                    </div>
+                    <div class="grounding-expanded">
+                        <div class="grounding-circles">
+                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+                        </div>
+                        <div class="grounding-hint">Tap the circle as you notice something</div>
+                    </div>
                 </div>
             </div>
-
-            <!-- Timer -->
-            <div class="breath-timer" id="breathTimer">0:00</div>
-            <div class="breath-timer-label" data-i18n="sos.breathing_time">Time spent breathing</div>
-
-            <button class="btn-next" id="btnCalmer" onclick="document.getElementById('sectionGround').scrollIntoView({behavior:'smooth'})" data-i18n="sos.feel_calmer">I feel calmer</button>
         </div>
-    </section>
 
-    <!-- ===================== SECTION 2: GROUNDING ===================== -->
-    <section class="sos-section" id="sectionGround">
-        <div class="section-content">
-            <div class="section-heading" data-i18n="sos.grounding_title">Let's ground ourselves</div>
-            <div class="section-heading-hi">&#x0906;&#x0907;&#x090F; &#x0939;&#x092E; &#x0905;&#x092A;&#x0928;&#x0947; &#x0906;&#x092A; &#x0915;&#x094B; &#x0938;&#x094D;&#x0925;&#x093F;&#x0930; &#x0915;&#x0930;&#x0947;&#x0902;</div>
+        <!-- ===================== AFFIRMATION CARDS ===================== -->
+        <div class="section-spacing fade-in-up">
+            <div class="section-label">Affirmations</div>
+            <div class="section-title">You are going to be okay</div>
+            <div class="section-title-hi">&#x0938;&#x092C; &#x0920;&#x0940;&#x0915; &#x0939;&#x094B; &#x091C;&#x093E;&#x090F;&#x0917;&#x093E;</div>
 
-            <!-- 5 things you can SEE -->
-            <div class="grounding-step" data-count="5">
-                <div class="grounding-prompt" data-i18n="sos.ground_see">Name 5 things you can SEE</div>
-                <div class="grounding-prompt-hi">5 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x0926;&#x0947;&#x0916; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
-                <div class="grounding-circles">
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <div class="affirmation-scroll">
+                <div class="affirmation-card aff-1">
+                    <div class="affirmation-icon">&#x1F33F;</div>
+                    <div class="affirmation-en">This feeling will pass</div>
+                    <div class="affirmation-hi">&#x092F;&#x0939; &#x092D;&#x093E;&#x0935;&#x0928;&#x093E; &#x0917;&#x0941;&#x095B;&#x0930; &#x091C;&#x093E;&#x090F;&#x0917;&#x0940;</div>
+                </div>
+                <div class="affirmation-card aff-2">
+                    <div class="affirmation-icon">&#x1F6E1;&#xFE0F;</div>
+                    <div class="affirmation-en">You are safe right now</div>
+                    <div class="affirmation-hi">&#x0906;&#x092A; &#x0905;&#x092D;&#x0940; &#x0938;&#x0941;&#x0930;&#x0915;&#x094D;&#x0937;&#x093F;&#x0924; &#x0939;&#x0948;&#x0902;</div>
+                </div>
+                <div class="affirmation-card aff-3">
+                    <div class="affirmation-icon">&#x1F91D;</div>
+                    <div class="affirmation-en">You are not alone</div>
+                    <div class="affirmation-hi">&#x0906;&#x092A; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x0948;&#x0902;</div>
+                </div>
+                <div class="affirmation-card aff-4">
+                    <div class="affirmation-icon">&#x2B50;</div>
+                    <div class="affirmation-en">You have survived every bad day so far</div>
+                    <div class="affirmation-hi">&#x0906;&#x092A;&#x0928;&#x0947; &#x0905;&#x092C; &#x0924;&#x0915; &#x0939;&#x0930; &#x092C;&#x0941;&#x0930;&#x0947; &#x0926;&#x093F;&#x0928; &#x0915;&#x094B; &#x092A;&#x093E;&#x0930; &#x0915;&#x093F;&#x092F;&#x093E; &#x0939;&#x0948;</div>
+                </div>
+                <div class="affirmation-card aff-5">
+                    <div class="affirmation-icon">&#x1F497;</div>
+                    <div class="affirmation-en">You deserve kindness, especially from yourself</div>
+                    <div class="affirmation-hi">&#x0906;&#x092A; &#x0926;&#x092F;&#x093E; &#x0915;&#x0947; &#x092A;&#x093E;&#x0924;&#x094D;&#x0930; &#x0939;&#x0948;&#x0902;, &#x0959;&#x093E;&#x0938;&#x0915;&#x0930; &#x0905;&#x092A;&#x0928;&#x0940; &#x0959;&#x0941;&#x0926; &#x0938;&#x0947;</div>
+                </div>
+                <div class="affirmation-card aff-6">
+                    <div class="affirmation-icon">&#x1F30A;</div>
+                    <div class="affirmation-en">Waves always calm down. So will this.</div>
+                    <div class="affirmation-hi">&#x0932;&#x0939;&#x0930;&#x0947;&#x0902; &#x0939;&#x092E;&#x0947;&#x0936;&#x093E; &#x0936;&#x093E;&#x0902;&#x0924; &#x0939;&#x094B;&#x0924;&#x0940; &#x0939;&#x0948;&#x0902;</div>
+                </div>
+                <div class="affirmation-card aff-7">
+                    <div class="affirmation-icon">&#x1F331;</div>
+                    <div class="affirmation-en">Healing is not linear. Every step counts.</div>
+                    <div class="affirmation-hi">&#x0909;&#x092A;&#x091A;&#x093E;&#x0930; &#x0938;&#x0940;&#x0927;&#x093E; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x094B;&#x0924;&#x093E;&#x0964; &#x0939;&#x0930; &#x0915;&#x0926;&#x092E; &#x092E;&#x093E;&#x092F;&#x0928;&#x0947; &#x0930;&#x0916;&#x0924;&#x093E; &#x0939;&#x0948;</div>
+                </div>
+                <div class="affirmation-card aff-8">
+                    <div class="affirmation-icon">&#x2600;&#xFE0F;</div>
+                    <div class="affirmation-en">Tomorrow is a new beginning</div>
+                    <div class="affirmation-hi">&#x0915;&#x0932; &#x090F;&#x0915; &#x0928;&#x092F;&#x0940; &#x0936;&#x0941;&#x0930;&#x0941;&#x0906;&#x0924; &#x0939;&#x0948;</div>
                 </div>
             </div>
-
-            <!-- 4 things you can TOUCH -->
-            <div class="grounding-step" data-count="4">
-                <div class="grounding-prompt" data-i18n="sos.ground_touch">Name 4 things you can TOUCH</div>
-                <div class="grounding-prompt-hi">4 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x091B;&#x0942; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
-                <div class="grounding-circles">
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                </div>
-            </div>
-
-            <!-- 3 things you can HEAR -->
-            <div class="grounding-step" data-count="3">
-                <div class="grounding-prompt" data-i18n="sos.ground_hear">Name 3 things you can HEAR</div>
-                <div class="grounding-prompt-hi">3 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x0938;&#x0941;&#x0928; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
-                <div class="grounding-circles">
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                </div>
-            </div>
-
-            <!-- 2 things you can SMELL -->
-            <div class="grounding-step" data-count="2">
-                <div class="grounding-prompt" data-i18n="sos.ground_smell">Name 2 things you can SMELL</div>
-                <div class="grounding-prompt-hi">2 &#x091A;&#x0940;&#x095B;&#x0947;&#x0902; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x0938;&#x0942;&#x0902;&#x0918; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
-                <div class="grounding-circles">
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                </div>
-            </div>
-
-            <!-- 1 thing you can TASTE -->
-            <div class="grounding-step" data-count="1">
-                <div class="grounding-prompt" data-i18n="sos.ground_taste">Name 1 thing you can TASTE</div>
-                <div class="grounding-prompt-hi">1 &#x091A;&#x0940;&#x095B; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x091C;&#x094B; &#x0906;&#x092A; &#x091A;&#x0916; &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
-                <div class="grounding-circles">
-                    <div class="grounding-circle" onclick="fillCircle(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                </div>
-            </div>
-
-            <div class="grounding-progress" id="groundingProgress">0 / 15 completed</div>
-
-            <button class="btn-next" onclick="document.getElementById('sectionAffirm').scrollIntoView({behavior:'smooth'})" data-i18n="sos.next">Next</button>
         </div>
-    </section>
 
-    <!-- ===================== SECTION 3: AFFIRMATIONS ===================== -->
-    <section class="sos-section" id="sectionAffirm">
-        <div class="section-content">
-            <div class="section-heading" data-i18n="sos.affirmation_title">Words for your heart</div>
-            <div class="section-heading-hi">&#x0906;&#x092A;&#x0915;&#x0947; &#x0926;&#x093F;&#x0932; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x0936;&#x092C;&#x094D;&#x0926;</div>
+        <!-- ===================== TALK TO SOMEONE ===================== -->
+        <div class="section-spacing fade-in-up">
+            <div class="section-label">Talk to Someone</div>
+            <div class="section-title">You don't have to face this alone</div>
+            <div class="section-title-hi">&#x0906;&#x092A;&#x0915;&#x094B; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x091D;&#x0947;&#x0932;&#x0928;&#x093E; &#x0939;&#x0948;</div>
 
-            <div class="affirmation-container" id="affirmationContainer">
-                <div class="affirmation-card active">
-                    <div class="affirmation-text" data-i18n="sos.affirm_1">This feeling is temporary. It will pass.</div>
-                    <div class="affirmation-text-hi">&#x092F;&#x0939; &#x090F;&#x0939;&#x0938;&#x093E;&#x0938; &#x0905;&#x0938;&#x094D;&#x0925;&#x093E;&#x092F;&#x0940; &#x0939;&#x0948;&#x0964; &#x092F;&#x0939; &#x0917;&#x0941;&#x095B;&#x0930; &#x091C;&#x093E;&#x090F;&#x0917;&#x093E;&#x0964;</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-text" data-i18n="sos.affirm_2">You have survived every bad day so far.</div>
-                    <div class="affirmation-text-hi">&#x0906;&#x092A;&#x0928;&#x0947; &#x0905;&#x092C; &#x0924;&#x0915; &#x0939;&#x0930; &#x092C;&#x0941;&#x0930;&#x0947; &#x0926;&#x093F;&#x0928; &#x0915;&#x094B; &#x092A;&#x093E;&#x0930; &#x0915;&#x093F;&#x092F;&#x093E; &#x0939;&#x0948;&#x0964;</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-text" data-i18n="sos.affirm_3">Right now, in this moment, you are okay.</div>
-                    <div class="affirmation-text-hi">&#x0905;&#x092D;&#x0940;, &#x0907;&#x0938; &#x092A;&#x0932; &#x092E;&#x0947;&#x0902;, &#x0906;&#x092A; &#x0920;&#x0940;&#x0915; &#x0939;&#x0948;&#x0902;&#x0964;</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-text" data-i18n="sos.affirm_4">Your feelings are valid. You are not broken.</div>
-                    <div class="affirmation-text-hi">&#x0906;&#x092A;&#x0915;&#x0940; &#x092D;&#x093E;&#x0935;&#x0928;&#x093E;&#x090F;&#x0901; &#x0935;&#x0948;&#x0927; &#x0939;&#x0948;&#x0902;&#x0964; &#x0906;&#x092A; &#x091F;&#x0942;&#x091F;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x0948;&#x0902;&#x0964;</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-text" data-i18n="sos.affirm_5">Breathe. You are stronger than you think.</div>
-                    <div class="affirmation-text-hi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;&#x0964; &#x0906;&#x092A; &#x0905;&#x092A;&#x0928;&#x0940; &#x0938;&#x094B;&#x091A; &#x0938;&#x0947; &#x0915;&#x0939;&#x0940;&#x0902; &#x095B;&#x094D;&#x092F;&#x093E;&#x0926;&#x093E; &#x092E;&#x095B;&#x092C;&#x0942;&#x0924; &#x0939;&#x0948;&#x0902;&#x0964;</div>
-                </div>
-            </div>
-
-            <div class="affirmation-dots" id="affirmationDots">
-                <div class="affirmation-dot active"></div>
-                <div class="affirmation-dot"></div>
-                <div class="affirmation-dot"></div>
-                <div class="affirmation-dot"></div>
-                <div class="affirmation-dot"></div>
-            </div>
-
-            <button class="btn-next" onclick="document.getElementById('sectionHelp').scrollIntoView({behavior:'smooth'})" style="margin-top:36px" data-i18n="sos.next">Next</button>
+            <a href="/friend.html" class="talk-btn">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
+                    <path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/>
+                </svg>
+                Talk to AI Friend
+            </a>
+            <div class="talk-subtitle">A patient, empathetic listener available 24/7</div>
         </div>
-    </section>
 
-    <!-- ===================== SECTION 4: TALK OR GET HELP ===================== -->
-    <section class="sos-section" id="sectionHelp">
-        <div class="section-content">
-            <div class="section-heading" data-i18n="sos.help_title">You don't have to do this alone</div>
-            <div class="section-heading-hi">&#x0906;&#x092A;&#x0915;&#x094B; &#x092F;&#x0939; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0915;&#x0930;&#x0928;&#x093E; &#x0939;&#x0948;</div>
+        <!-- ===================== CRISIS HELPLINES ===================== -->
+        <div class="section-spacing fade-in-up">
+            <div class="section-label">Crisis Helplines</div>
+            <div class="section-title">Reach a real person</div>
+            <div class="section-title-hi">&#x0915;&#x093F;&#x0938;&#x0940; &#x0938;&#x0947; &#x092C;&#x093E;&#x0924; &#x0915;&#x0930;&#x0947;&#x0902;</div>
 
-            <div class="help-options">
-                <a href="/friend.html" class="btn-friend" data-i18n="sos.talk_friend">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-                    Talk to AI Friend
-                </a>
-            </div>
-
-            <div class="helplines-card">
-                <div class="helplines-title" data-i18n="sos.helplines_title">Call a Helpline</div>
-
-                <a href="tel:988" class="helpline-item">
+            <div class="helplines-grid">
+                <!-- India: iCall -->
+                <a href="tel:9152987821" class="helpline-card">
                     <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                     <div class="helpline-info">
-                        <span class="helpline-name" data-i18n="sos.helpline_988">Suicide & Crisis Lifeline</span>
-                        <span class="helpline-number">988</span>
-                        <span class="helpline-region">United States</span>
+                        <div class="helpline-name">iCall</div>
+                        <div class="helpline-number">9152987821</div>
+                        <div class="helpline-region">India</div>
+                    </div>
+                    <div class="helpline-call">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
 
-                <a href="tel:9152987821" class="helpline-item">
+                <!-- India: Vandrevala Foundation -->
+                <a href="tel:9999666555" class="helpline-card">
                     <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                     <div class="helpline-info">
-                        <span class="helpline-name" data-i18n="sos.helpline_icall">iCall</span>
-                        <span class="helpline-number">9152987821</span>
-                        <span class="helpline-region">India</span>
+                        <div class="helpline-name">Vandrevala Foundation</div>
+                        <div class="helpline-number">9999666555</div>
+                        <div class="helpline-region">India &mdash; 24/7</div>
+                    </div>
+                    <div class="helpline-call">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
 
-                <a href="tel:116123" class="helpline-item">
+                <!-- US: 988 -->
+                <a href="tel:988" class="helpline-card">
                     <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                     <div class="helpline-info">
-                        <span class="helpline-name" data-i18n="sos.helpline_samaritans">Samaritans</span>
-                        <span class="helpline-number">116 123</span>
-                        <span class="helpline-region">United Kingdom</span>
+                        <div class="helpline-name">988 Suicide &amp; Crisis Lifeline</div>
+                        <div class="helpline-number">988</div>
+                        <div class="helpline-region">United States</div>
+                    </div>
+                    <div class="helpline-call">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
 
-                <a href="tel:18602662345" class="helpline-item">
+                <!-- UK: Samaritans -->
+                <a href="tel:116123" class="helpline-card">
                     <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                     <div class="helpline-info">
-                        <span class="helpline-name" data-i18n="sos.helpline_vandrevala">Vandrevala Foundation</span>
-                        <span class="helpline-number">1860-2662-345</span>
-                        <span class="helpline-region">India</span>
+                        <div class="helpline-name">Samaritans</div>
+                        <div class="helpline-number">116 123</div>
+                        <div class="helpline-region">United Kingdom &mdash; 24/7</div>
+                    </div>
+                    <div class="helpline-call">
+                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+                    </div>
+                </a>
+
+                <!-- International -->
+                <a href="https://findahelpline.com" target="_blank" rel="noopener" class="helpline-card">
+                    <div class="helpline-icon">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+                    </div>
+                    <div class="helpline-info">
+                        <div class="helpline-name">Find a Helpline</div>
+                        <div class="helpline-number">findahelpline.com</div>
+                        <div class="helpline-region">International Directory</div>
+                    </div>
+                    <div class="helpline-call">
+                        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
                     </div>
                 </a>
             </div>
-
-            <p class="not-alone-text" data-i18n="sos.not_alone">You are not alone. Millions of people understand exactly how you feel.</p>
-            <p class="not-alone-text-hi">&#x0906;&#x092A; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x0948;&#x0902;&#x0964;</p>
         </div>
-    </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">Sukoon</div>
-            <p class="footer-mission" data-i18n="footer.mission">Free mental wellness tools for every soul on Earth.</p>
-            <p class="footer-mission-hi">&#x092A;&#x0943;&#x0925;&#x094D;&#x0935;&#x0940; &#x092A;&#x0930; &#x0939;&#x0930; &#x0906;&#x0924;&#x094D;&#x092E;&#x093E; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x093C;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F; &#x0909;&#x092A;&#x0915;&#x0930;&#x0923;&#x0964;</p>
-            <div class="footer-privacy">
-                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
-                <span data-i18n="footer.privacy_line">Zero data collection</span>
+        <!-- ===================== QUICK LINKS ===================== -->
+        <div class="section-spacing fade-in-up">
+            <div class="section-label">More Support</div>
+            <div class="section-title">Try something calming</div>
+            <div class="section-title-hi">&#x0915;&#x0941;&#x091B; &#x0936;&#x093E;&#x0902;&#x0924; &#x0915;&#x0930;&#x0928;&#x0947; &#x0935;&#x093E;&#x0932;&#x093E; &#x0906;&#x095B;&#x092E;&#x093E;&#x090F;&#x0902;</div>
+
+            <div class="quick-links">
+                <a href="/breathe.html" class="quick-link">
+                    <div class="quick-link-icon green">&#x1F32C;&#xFE0F;</div>
+                    <div class="quick-link-text">Breathing Exercise</div>
+                </a>
+                <a href="/sounds.html" class="quick-link">
+                    <div class="quick-link-icon purple">&#x1F3B6;</div>
+                    <div class="quick-link-text">Calming Sounds</div>
+                </a>
+                <a href="/wisdom.html" class="quick-link">
+                    <div class="quick-link-icon blue">&#x1F4D6;</div>
+                    <div class="quick-link-text">Read Something Peaceful</div>
+                </a>
             </div>
-            <nav class="footer-nav">
-                <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-                <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-                <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-                <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-                <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-                <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-                <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-                <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-                <a href="/sos.html" data-i18n="nav.sos">SOS</a>
-                <a href="/privacy.html" data-i18n="nav.privacy">Privacy</a>
-            </nav>
-            <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
         </div>
-    </footer>
+
+        <!-- Footer note -->
+        <div class="footer-note">
+            <p>You are not alone. Help is always available.<br>
+            <span class="brand-small">&#9789; Sukoon</span> &mdash; peace of mind, always.</p>
+        </div>
+    </div>
 
     <script>
-    (function() {
-        'use strict';
+        // ===================== BREATHING EXERCISE =====================
+        const overlay = document.getElementById('breathingOverlay');
+        const circle = document.getElementById('breathCircle');
+        const glow = document.getElementById('circleGlow');
+        const phaseText = document.getElementById('phaseText');
+        const phaseHindi = document.getElementById('phaseHindi');
+        const timerEl = document.getElementById('breathTimer');
+        const counterEl = document.getElementById('breathCounter');
+        const btnSkip = document.getElementById('btnSkip');
 
-        // ===================== AUDIO CONTEXT (subtle tone) =====================
-        var audioCtx = null;
-        function getAudioCtx() {
-            if (!audioCtx) {
-                audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-            }
-            return audioCtx;
-        }
+        let breathCount = 0;
+        const totalBreaths = 10;
+        let breathInterval = null;
+        let countdownInterval = null;
+        let currentPhase = 0; // 0=inhale, 1=hold, 2=exhale
 
-        function playTone(freq, duration) {
-            try {
-                var ctx = getAudioCtx();
-                var osc = ctx.createOscillator();
-                var gain = ctx.createGain();
-                osc.type = 'sine';
-                osc.frequency.value = freq;
-                gain.gain.value = 0.06;
-                gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-                osc.connect(gain);
-                gain.connect(ctx.destination);
-                osc.start(ctx.currentTime);
-                osc.stop(ctx.currentTime + duration);
-            } catch (e) {
-                // Audio not available, silently continue
-            }
-        }
-
-        // ===================== BREATHING ENGINE (4-7-8, auto-start) =====================
-        var breathCircle = document.getElementById('breathCircle');
-        var phaseText = document.getElementById('phaseText');
-        var phaseHindi = document.getElementById('phaseHindi');
-        var breathTimerEl = document.getElementById('breathTimer');
-
-        var phases = [
-            { name: 'Inhale',  hi: '\u0938\u093E\u0901\u0938 \u0932\u0947\u0902',   duration: 4, expand: true  },
-            { name: 'Hold',    hi: '\u0930\u094B\u0915\u0947\u0902',                  duration: 7, expand: null  },
-            { name: 'Exhale',  hi: '\u091B\u094B\u0921\u093C\u0947\u0902',             duration: 8, expand: false }
+        const phases = [
+            { en: 'Inhale', hi: '\u0938\u093E\u0901\u0938 \u0932\u0947\u0902', duration: 4, expand: true },
+            { en: 'Hold', hi: '\u0930\u094B\u0915\u0947\u0902', duration: 4, expand: true },
+            { en: 'Exhale', hi: '\u091B\u094B\u0921\u093C\u0947\u0902', duration: 4, expand: false }
         ];
 
-        var phaseIndex = 0;
-        var phaseTimer = null;
-        var breathStartTime = Date.now();
-        var breathInterval = null;
-
-        function updateBreathTimer() {
-            var elapsed = Math.floor((Date.now() - breathStartTime) / 1000);
-            var mins = Math.floor(elapsed / 60);
-            var secs = elapsed % 60;
-            breathTimerEl.textContent = mins + ':' + (secs < 10 ? '0' : '') + secs;
+        function startBreathing() {
+            breathCount = 0;
+            currentPhase = 0;
+            updateCounter();
+            runPhase();
         }
 
-        function runBreathPhase() {
-            var phase = phases[phaseIndex];
-
-            phaseText.textContent = phase.name;
+        function runPhase() {
+            const phase = phases[currentPhase];
+            phaseText.textContent = phase.en;
             phaseHindi.textContent = phase.hi;
 
-            // Set transition duration to match phase
-            breathCircle.style.transitionDuration = phase.duration + 's';
-
-            if (phase.expand === true) {
-                breathCircle.classList.add('expanded');
-                playTone(396, 1.5);
-            } else if (phase.expand === false) {
-                breathCircle.classList.remove('expanded');
-                playTone(285, 1.5);
+            if (phase.expand) {
+                circle.classList.add('expanded');
+                glow.classList.add('expanded');
+            } else {
+                circle.classList.remove('expanded');
+                glow.classList.remove('expanded');
             }
-            // On hold, keep current state
 
-            phaseTimer = setTimeout(function() {
-                phaseIndex = (phaseIndex + 1) % phases.length;
-                runBreathPhase();
-            }, phase.duration * 1000);
+            let remaining = phase.duration;
+            timerEl.textContent = remaining;
+
+            if (countdownInterval) clearInterval(countdownInterval);
+            countdownInterval = setInterval(() => {
+                remaining--;
+                timerEl.textContent = remaining;
+
+                if (remaining <= 0) {
+                    clearInterval(countdownInterval);
+                    currentPhase++;
+
+                    if (currentPhase >= phases.length) {
+                        currentPhase = 0;
+                        breathCount++;
+                        updateCounter();
+
+                        if (breathCount >= totalBreaths) {
+                            dismissBreathing();
+                            return;
+                        }
+                    }
+
+                    runPhase();
+                }
+            }, 1000);
         }
 
-        // Auto-start breathing on page load
-        function startBreathing() {
-            breathStartTime = Date.now();
-            breathInterval = setInterval(updateBreathTimer, 1000);
-            updateBreathTimer();
-            phaseIndex = 0;
-            runBreathPhase();
+        function updateCounter() {
+            counterEl.textContent = 'Breath ' + (breathCount + 1) + ' of ' + totalBreaths;
         }
 
-        // Small delay so user sees the page settle, then breathing begins
-        setTimeout(startBreathing, 2000);
+        function dismissBreathing() {
+            if (countdownInterval) clearInterval(countdownInterval);
+            overlay.classList.add('hidden');
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 800);
+        }
+
+        btnSkip.addEventListener('click', dismissBreathing);
+
+        // Auto-start after a gentle 1.5 second delay
+        setTimeout(startBreathing, 1500);
 
         // ===================== GROUNDING EXERCISE =====================
-        var totalCircles = 15;
-        var filledCount = 0;
-        var progressEl = document.getElementById('groundingProgress');
-
-        window.fillCircle = function(el) {
-            if (el.classList.contains('filled')) return;
-
-            el.classList.add('filled', 'pop');
-            filledCount++;
-
-            progressEl.textContent = filledCount + ' / ' + totalCircles + ' completed';
-            progressEl.classList.add('visible');
-
-            // Subtle haptic-like sound
-            playTone(528 + (filledCount * 30), 0.3);
-
-            // Remove pop class after animation
-            setTimeout(function() {
-                el.classList.remove('pop');
-            }, 400);
-        };
-
-        // ===================== AFFIRMATION CAROUSEL =====================
-        var cards = document.querySelectorAll('.affirmation-card');
-        var dots = document.querySelectorAll('.affirmation-dot');
-        var currentCard = 0;
-        var affirmationInterval = null;
-
-        function showCard(index) {
-            cards.forEach(function(card, i) {
-                if (i === index) {
-                    card.classList.add('active');
-                } else {
-                    card.classList.remove('active');
-                }
-            });
-            dots.forEach(function(dot, i) {
-                if (i === index) {
-                    dot.classList.add('active');
-                } else {
-                    dot.classList.remove('active');
-                }
-            });
-        }
-
-        function nextCard() {
-            currentCard = (currentCard + 1) % cards.length;
-            showCard(currentCard);
-        }
-
-        // Start affirmation rotation
-        affirmationInterval = setInterval(nextCard, 5000);
-
-        // Allow manual dot clicking
-        dots.forEach(function(dot, i) {
-            dot.addEventListener('click', function() {
-                currentCard = i;
-                showCard(currentCard);
-                clearInterval(affirmationInterval);
-                affirmationInterval = setInterval(nextCard, 5000);
-            });
-            dot.style.cursor = 'pointer';
-        });
-
-        // ===================== MOBILE MENU =====================
-        var menuBtn = document.getElementById('menuBtn');
-        var mobileNav = document.getElementById('mobileNav');
-        var menuOpen = false;
-
-        menuBtn.addEventListener('click', function() {
-            menuOpen = !menuOpen;
-            if (menuOpen) {
-                mobileNav.classList.add('open');
-                menuBtn.textContent = '\u2715';
-            } else {
-                mobileNav.classList.remove('open');
-                menuBtn.textContent = '\u2630';
+        function toggleGround(card) {
+            const wasActive = card.classList.contains('active');
+            // Close all
+            document.querySelectorAll('.grounding-card').forEach(c => c.classList.remove('active'));
+            // Open clicked if wasn't active
+            if (!wasActive) {
+                card.classList.add('active');
             }
+        }
+
+        function fillDot(dot) {
+            if (dot.classList.contains('filled')) return;
+            dot.classList.add('filled');
+
+            // Check if all dots in this card are filled
+            const card = dot.closest('.grounding-card');
+            const allDots = card.querySelectorAll('.grounding-dot');
+            const filledDots = card.querySelectorAll('.grounding-dot.filled');
+
+            if (filledDots.length === allDots.length) {
+                setTimeout(() => {
+                    card.classList.remove('active');
+                    card.classList.add('completed');
+
+                    // Auto-open next card
+                    const next = card.nextElementSibling;
+                    if (next && next.classList.contains('grounding-card') && !next.classList.contains('completed')) {
+                        setTimeout(() => {
+                            next.classList.add('active');
+                            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                        }, 400);
+                    }
+                }, 500);
+            }
+        }
+
+        // ===================== SCROLL ANIMATIONS =====================
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -40px 0px'
         });
 
-    })();
+        document.querySelectorAll('.fade-in-up').forEach(el => {
+            observer.observe(el);
+        });
     </script>
-    <script src="/js/i18n.js"></script>
 </body>
 </html>

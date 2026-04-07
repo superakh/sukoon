@@ -12,103 +12,135 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #111827;
-            background: #FAFAF7;
+            color: #F1F5F9;
+            background: #0F172A;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
+            padding-bottom: 80px;
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== TOPBAR ===================== */
+        /* ===================== STAGGERED LOAD ANIMATIONS ===================== */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes pulseGlow {
+            0%, 100% { filter: drop-shadow(0 0 8px rgba(124,58,237,0.3)); }
+            50% { filter: drop-shadow(0 0 20px rgba(124,58,237,0.6)); }
+        }
+        @keyframes orbDrift {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(25px, -15px) scale(1.06); }
+            66% { transform: translate(-18px, 12px) scale(0.94); }
+        }
+        @keyframes ringPulse {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 0.8; }
+        }
+        .stagger-1 { animation: fadeSlideUp 0.7s ease both; animation-delay: 0.1s; }
+        .stagger-2 { animation: fadeSlideUp 0.7s ease both; animation-delay: 0.2s; }
+        .stagger-3 { animation: fadeSlideUp 0.7s ease both; animation-delay: 0.35s; }
+        .stagger-4 { animation: fadeSlideUp 0.7s ease both; animation-delay: 0.5s; }
+        .stagger-5 { animation: fadeSlideUp 0.7s ease both; animation-delay: 0.65s; }
+        .stagger-6 { animation: fadeSlideUp 0.7s ease both; animation-delay: 0.8s; }
+
+        /* ===================== TOPBAR (Frosted Glass) ===================== */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 72px;
-            background: rgba(250,250,247,0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 0 1.5rem; height: 60px;
+            background: rgba(15,23,42,0.6);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .topbar-brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem; color: #111827;
-            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 1.35rem; color: #F1F5F9;
+            display: flex; align-items: center; gap: 0.4rem;
             letter-spacing: -0.01em;
         }
-        .topbar-brand svg { width: 28px; height: 28px; }
-        .topbar-nav { display: flex; gap: 0.2rem; }
-        .topbar-nav a {
-            padding: 0.42rem 0.82rem; border-radius: 10px;
-            font-size: 0.84rem; font-weight: 500; color: #6B7280;
-            transition: all 0.2s ease;
+
+        /* ===================== BOTTOM NAVIGATION (Mobile) ===================== */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-around;
+            height: 72px;
+            background: rgba(15,23,42,0.85);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255,255,255,0.06);
+            padding: 0 0.5rem;
+            padding-bottom: env(safe-area-inset-bottom, 0);
         }
-        .topbar-nav a:hover { background: rgba(79,70,229,0.06); color: #4F46E5; }
-        .topbar-nav a.active {
-            background: #4F46E5; color: #fff; font-weight: 600;
+        .bottom-nav a {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 0.25rem; padding: 0.5rem 0.75rem;
+            font-size: 0.65rem; font-weight: 500; color: #64748B;
+            transition: color 0.2s ease;
+            text-decoration: none; position: relative;
+            min-width: 56px;
         }
-        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
-        .lang-select {
-            padding: 0.38rem 0.65rem; border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08); background: #fff;
-            font-size: 0.8rem; color: #6B7280; cursor: pointer;
-            font-family: 'Inter', sans-serif; outline: none;
-        }
-        .mobile-toggle {
-            display: none; background: none; border: none;
-            color: #111827; cursor: pointer;
-            width: 40px; height: 40px; border-radius: 10px;
-            align-items: center; justify-content: center;
-            transition: background 0.2s;
-        }
-        .mobile-toggle:hover { background: rgba(0,0,0,0.04); }
-        @media (max-width: 900px) {
-            .mobile-toggle { display: flex; }
-            .topbar { padding: 0 1.25rem; }
-            .topbar-nav {
-                display: none; flex-direction: column;
-                position: absolute; top: 72px; left: 0; right: 0;
-                background: rgba(250,250,247,0.97);
-                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-                padding: 0.5rem 0.75rem; gap: 0.1rem;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-                box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        .bottom-nav a svg { width: 22px; height: 22px; transition: all 0.2s ease; }
+        .bottom-nav a:hover { color: #94A3B8; }
+        .bottom-nav a.active { color: #7C3AED; }
+        .bottom-nav a.active svg { filter: drop-shadow(0 0 6px rgba(124,58,237,0.4)); }
+
+        /* ===================== DESKTOP SIDEBAR >900px ===================== */
+        @media (min-width: 901px) {
+            .bottom-nav {
+                position: fixed; top: 60px; left: 0; bottom: 0;
+                width: 240px; flex-direction: column;
+                justify-content: flex-start; align-items: stretch;
+                padding: 1.5rem 0.75rem; gap: 0.25rem;
+                border-top: none; border-right: 1px solid rgba(255,255,255,0.06);
+                height: auto;
             }
-            .topbar-nav.open { display: flex; }
-            .topbar-nav.open a { padding: 0.75rem 1rem; font-size: 0.95rem; border-radius: 12px; }
+            .bottom-nav a {
+                flex-direction: row; gap: 0.75rem;
+                padding: 0.75rem 1rem; border-radius: 12px;
+                font-size: 0.88rem; min-width: unset;
+                justify-content: flex-start;
+            }
+            .bottom-nav a:hover { background: rgba(255,255,255,0.04); color: #F1F5F9; }
+            .bottom-nav a.active {
+                background: rgba(124,58,237,0.12); color: #7C3AED;
+            }
+            .meditate-page { margin-left: 240px; }
+            body { padding-bottom: 0; }
         }
 
         /* ===================== FULL-PAGE MEDITATION ===================== */
         .meditate-page {
             min-height: 100vh; min-height: 100dvh;
-            padding-top: 72px;
+            padding-top: 60px;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             position: relative; overflow: hidden;
         }
 
-        /* Gradient mesh */
+        /* Dark gradient mesh */
         .mesh-bg {
             position: absolute; inset: 0; z-index: 0;
             background:
-                radial-gradient(ellipse 80% 55% at 20% 15%, rgba(79,70,229,0.07) 0%, transparent 60%),
-                radial-gradient(ellipse 65% 60% at 85% 25%, rgba(16,185,129,0.05) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 55% at 50% 85%, rgba(245,158,11,0.04) 0%, transparent 55%),
-                radial-gradient(ellipse 55% 65% at 8% 75%, rgba(236,72,153,0.035) 0%, transparent 50%),
-                linear-gradient(180deg, #FAFAF7 0%, #F5F3EF 100%);
+                radial-gradient(ellipse 80% 55% at 20% 15%, rgba(124,58,237,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 65% 60% at 85% 25%, rgba(245,158,11,0.05) 0%, transparent 55%),
+                radial-gradient(ellipse 70% 55% at 50% 85%, rgba(124,58,237,0.04) 0%, transparent 55%),
+                radial-gradient(ellipse 55% 65% at 8% 75%, rgba(245,158,11,0.03) 0%, transparent 50%),
+                linear-gradient(180deg, #0F172A 0%, #0B1120 100%);
         }
         .mesh-orb {
-            position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.1;
+            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.08;
             animation: orbDrift 28s ease-in-out infinite;
         }
-        .mesh-orb:nth-child(1) { width: 420px; height: 420px; background: #4F46E5; top: 2%; left: 8%; }
-        .mesh-orb:nth-child(2) { width: 360px; height: 360px; background: #10B981; bottom: 10%; right: 8%; animation-delay: 9s; }
-        .mesh-orb:nth-child(3) { width: 300px; height: 300px; background: #F59E0B; top: 55%; left: 55%; animation-delay: 18s; }
-        @keyframes orbDrift {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(20px, -12px) scale(1.04); }
-            66% { transform: translate(-14px, 10px) scale(0.96); }
-        }
+        .mesh-orb:nth-child(1) { width: 420px; height: 420px; background: #7C3AED; top: 2%; left: 8%; }
+        .mesh-orb:nth-child(2) { width: 360px; height: 360px; background: #F59E0B; bottom: 10%; right: 8%; animation-delay: 9s; }
+        .mesh-orb:nth-child(3) { width: 300px; height: 300px; background: #7C3AED; top: 55%; left: 55%; animation-delay: 18s; }
 
         .med-content {
             position: relative; z-index: 2;
@@ -118,40 +150,50 @@
             width: 100%; max-width: 580px;
         }
 
-        /* Streak badge */
+        /* ===================== STREAK BADGE ===================== */
         .streak-badge {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: #fff; border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 100px; padding: 0.42rem 1rem;
-            font-size: 0.78rem; font-weight: 600; color: #4F46E5;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.02);
+            display: inline-flex; align-items: center; gap: 0.45rem;
+            background: rgba(30,41,59,0.7);
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 100px; padding: 0.5rem 1.15rem;
+            font-size: 0.8rem; font-weight: 600; color: #F59E0B;
+            backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.05);
             margin-bottom: 1.75rem;
             letter-spacing: 0.01em;
         }
-        .streak-badge svg { width: 15px; height: 15px; flex-shrink: 0; }
-        .streak-num { font-variant-numeric: tabular-nums; }
+        .streak-badge svg { width: 16px; height: 16px; flex-shrink: 0; }
+        .streak-num { font-variant-numeric: tabular-nums; color: #F59E0B; }
+        .streak-label { color: #94A3B8; }
 
-        /* Duration row */
+        /* ===================== DURATION PILLS ===================== */
         .dur-row {
-            display: flex; gap: 0.4rem; flex-wrap: wrap;
+            display: flex; gap: 0.45rem; flex-wrap: wrap;
             justify-content: center; margin-bottom: 2.25rem;
         }
         .dur-pill {
-            padding: 0.5rem 1.05rem; border-radius: 100px;
-            font-size: 0.8rem; font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.07); background: #fff;
-            color: #374151; cursor: pointer;
-            transition: all 0.22s ease;
+            padding: 0.55rem 1.15rem; border-radius: 100px;
+            font-size: 0.82rem; font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.08);
+            background: rgba(30,41,59,0.5);
+            color: #94A3B8; cursor: pointer;
+            transition: all 0.25s ease;
             font-family: 'Inter', sans-serif;
             user-select: none;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
         }
-        .dur-pill:hover { border-color: rgba(79,70,229,0.25); color: #4F46E5; }
+        .dur-pill:hover {
+            border-color: rgba(124,58,237,0.35); color: #C4B5FD;
+            background: rgba(124,58,237,0.08);
+        }
         .dur-pill.active {
-            background: #4F46E5; border-color: #4F46E5;
-            color: #fff; box-shadow: 0 2px 10px rgba(79,70,229,0.25);
+            background: linear-gradient(135deg, #7C3AED, #6D28D9);
+            border-color: #7C3AED;
+            color: #fff;
+            box-shadow: 0 2px 16px rgba(124,58,237,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
         }
 
-        /* SVG timer ring */
+        /* ===================== SVG PROGRESS RING ===================== */
         .ring-wrap {
             position: relative;
             width: 280px; height: 280px;
@@ -160,12 +202,22 @@
         .ring-svg {
             width: 100%; height: 100%;
             transform: rotate(-90deg);
+            filter: drop-shadow(0 0 12px rgba(124,58,237,0.2));
         }
-        .ring-track { fill: none; stroke: rgba(79,70,229,0.07); stroke-width: 3; }
+        .ring-track {
+            fill: none; stroke: rgba(124,58,237,0.08); stroke-width: 3;
+        }
         .ring-fill {
-            fill: none; stroke: url(#ringGrad); stroke-width: 3;
+            fill: none; stroke: url(#ringGrad); stroke-width: 4;
             stroke-linecap: round;
             transition: stroke-dashoffset 0.5s ease;
+            filter: drop-shadow(0 0 6px rgba(124,58,237,0.5));
+        }
+        .ring-glow {
+            fill: none; stroke: url(#ringGrad); stroke-width: 8;
+            stroke-linecap: round; opacity: 0.15;
+            transition: stroke-dashoffset 0.5s ease;
+            filter: blur(4px);
         }
         .ring-inner {
             position: absolute; inset: 0;
@@ -173,79 +225,96 @@
             align-items: center; justify-content: center;
         }
         .timer-time {
-            font-size: clamp(4rem, 12vw, 7rem);
-            font-weight: 200; color: #111827;
+            font-size: clamp(3.5rem, 11vw, 6rem);
+            font-weight: 200; color: #F1F5F9;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.04em; line-height: 1;
         }
         .timer-state {
-            font-size: 0.72rem; color: #9CA3AF;
+            font-size: 0.72rem; color: #64748B;
             font-weight: 600; margin-top: 0.6rem;
-            text-transform: uppercase; letter-spacing: 0.12em;
+            text-transform: uppercase; letter-spacing: 0.14em;
         }
 
-        /* Sound selector */
+        /* ===================== AMBIENT SOUND SELECTOR ===================== */
         .snd-row {
-            display: flex; gap: 0.45rem; margin-bottom: 2rem;
+            display: flex; gap: 0.5rem; margin-bottom: 2rem;
             flex-wrap: wrap; justify-content: center;
         }
-        .snd-pill {
-            padding: 0.48rem 0.95rem; border-radius: 100px;
-            font-size: 0.78rem; font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.07); background: #fff;
-            color: #374151; cursor: pointer;
-            transition: all 0.22s ease;
-            display: flex; align-items: center; gap: 0.35rem;
+        .snd-card {
+            padding: 0.65rem 1.1rem; border-radius: 16px;
+            font-size: 0.8rem; font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.06);
+            background: rgba(30,41,59,0.5);
+            color: #94A3B8; cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex; align-items: center; gap: 0.45rem;
             font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 1px 4px rgba(0,0,0,0.15);
         }
-        .snd-pill svg { width: 14px; height: 14px; opacity: 0.45; transition: opacity 0.2s; }
-        .snd-pill:hover { border-color: rgba(16,185,129,0.3); color: #10B981; }
-        .snd-pill:hover svg { opacity: 0.7; }
-        .snd-pill.active {
-            background: #10B981; border-color: #10B981;
-            color: #fff; box-shadow: 0 2px 10px rgba(16,185,129,0.22);
+        .snd-card svg { width: 16px; height: 16px; opacity: 0.5; transition: all 0.25s; }
+        .snd-card:hover {
+            border-color: rgba(245,158,11,0.3); color: #FBBF24;
+            background: rgba(245,158,11,0.06);
         }
-        .snd-pill.active svg { opacity: 1; }
+        .snd-card:hover svg { opacity: 0.8; }
+        .snd-card.active {
+            background: rgba(245,158,11,0.1);
+            border-color: rgba(245,158,11,0.4);
+            color: #FBBF24;
+            box-shadow: 0 0 20px rgba(245,158,11,0.15), 0 2px 8px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
+        }
+        .snd-card.active svg { opacity: 1; filter: drop-shadow(0 0 4px rgba(245,158,11,0.5)); }
 
-        /* Controls */
+        /* ===================== CONTROLS ===================== */
         .ctrls { display: flex; gap: 0.65rem; margin-bottom: 2.5rem; align-items: center; }
         .btn-main {
-            padding: 0.82rem 2.4rem; border-radius: 100px;
-            background: #4F46E5; color: #fff;
+            padding: 0.85rem 2.6rem; border-radius: 100px;
+            background: linear-gradient(135deg, #7C3AED, #6D28D9);
+            color: #fff;
             font-size: 0.92rem; font-weight: 600;
             border: none; cursor: pointer;
-            transition: all 0.22s ease;
+            transition: all 0.25s ease;
             font-family: 'Inter', sans-serif;
-            box-shadow: 0 2px 10px rgba(79,70,229,0.22);
+            box-shadow: 0 4px 20px rgba(124,58,237,0.35), inset 0 1px 0 rgba(255,255,255,0.15);
         }
-        .btn-main:hover { background: #4338CA; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(79,70,229,0.28); }
+        .btn-main:hover {
+            background: linear-gradient(135deg, #8B5CF6, #7C3AED);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(124,58,237,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
+        }
         .btn-main:active { transform: translateY(0); }
         .btn-ghost {
-            padding: 0.7rem 1.4rem; border-radius: 100px;
-            background: #fff; color: #374151;
-            font-size: 0.82rem; font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.07); cursor: pointer;
-            transition: all 0.2s ease;
+            padding: 0.72rem 1.5rem; border-radius: 100px;
+            background: rgba(30,41,59,0.6); color: #94A3B8;
+            font-size: 0.84rem; font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.08); cursor: pointer;
+            transition: all 0.22s ease;
             font-family: 'Inter', sans-serif;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
         }
-        .btn-ghost:hover { border-color: rgba(0,0,0,0.14); background: #F9FAFB; }
+        .btn-ghost:hover {
+            border-color: rgba(255,255,255,0.15);
+            background: rgba(30,41,59,0.8); color: #F1F5F9;
+        }
 
-        /* Prompt area */
+        /* ===================== BILINGUAL PROMPTS ===================== */
         .prompt-wrap {
             min-height: 88px; display: flex; flex-direction: column;
             align-items: center; justify-content: center;
         }
         .pmt-en {
             font-family: 'DM Serif Display', serif;
-            font-style: italic; font-size: 1.2rem;
-            color: #374151; line-height: 1.55;
+            font-style: italic; font-size: 1.15rem;
+            color: rgba(241,245,249,0.75); line-height: 1.6;
             max-width: 400px;
             opacity: 1; transition: opacity 0.7s ease;
         }
         .pmt-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.85rem; color: #9CA3AF;
-            font-weight: 300; margin-top: 0.35rem;
+            font-size: 0.85rem; color: #64748B;
+            font-weight: 300; margin-top: 0.4rem;
             opacity: 1; transition: opacity 0.7s ease;
         }
         .pmt-en.fade, .pmt-hi.fade { opacity: 0; }
@@ -253,8 +322,8 @@
         /* ===================== SESSION COMPLETE OVERLAY ===================== */
         .done-overlay {
             position: fixed; inset: 0; z-index: 5000;
-            background: rgba(250,250,247,0.93);
-            backdrop-filter: blur(28px); -webkit-backdrop-filter: blur(28px);
+            background: rgba(15,23,42,0.92);
+            backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             text-align: center; padding: 2rem;
@@ -269,81 +338,44 @@
         .done-icon svg { width: 100%; height: 100%; }
         .done-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 2.8rem; color: #111827; margin-bottom: 0.4rem;
+            font-size: 2.8rem; color: #F1F5F9; margin-bottom: 0.4rem;
         }
         .done-sub {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 1rem; color: #9CA3AF; font-weight: 300;
+            font-size: 1rem; color: #64748B; font-weight: 300;
             margin-bottom: 2.5rem;
         }
-        .done-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; }
-        .done-stat { display: flex; flex-direction: column; align-items: center; }
+        .done-stats {
+            display: flex; gap: 2.5rem; margin-bottom: 2.5rem;
+        }
+        .done-stat {
+            display: flex; flex-direction: column; align-items: center;
+            background: rgba(30,41,59,0.5);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 20px; padding: 1.25rem 2rem;
+            backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        }
         .done-val {
-            font-size: 2rem; font-weight: 200; color: #4F46E5;
+            font-size: 2rem; font-weight: 200; color: #7C3AED;
             font-variant-numeric: tabular-nums;
         }
         .done-lbl {
-            font-size: 0.7rem; color: #9CA3AF; text-transform: uppercase;
+            font-size: 0.7rem; color: #64748B; text-transform: uppercase;
             letter-spacing: 0.08em; font-weight: 600; margin-top: 0.3rem;
-        }
-
-        /* ===================== FOOTER ===================== */
-        .footer {
-            background: #F3F4F6; padding: 3rem 2rem 2rem;
-            border-top: 1px solid rgba(0,0,0,0.04);
-            position: relative; z-index: 2;
-            display: none; /* hidden in immersive mode, shown after session */
-        }
-        .footer-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
-        }
-        .footer-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem; color: #111827; margin-bottom: 0.75rem;
-        }
-        .footer-desc {
-            font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px;
-        }
-        .footer-desc-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: #9CA3AF; margin-top: 0.35rem;
-            font-weight: 300;
-        }
-        .footer-priv {
-            display: inline-flex; align-items: center; gap: 0.35rem;
-            margin-top: 1rem; font-size: 0.7rem; color: #9CA3AF;
-            background: rgba(0,0,0,0.03); padding: 0.3rem 0.7rem;
-            border-radius: 100px;
-        }
-        .footer-priv svg { width: 12px; height: 12px; }
-        .footer-hd {
-            font-size: 0.68rem; text-transform: uppercase;
-            letter-spacing: 0.1em; color: #9CA3AF;
-            font-weight: 600; margin-bottom: 1rem;
-        }
-        .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
-        .footer-links a { font-size: 0.85rem; color: #6B7280; transition: color 0.2s; }
-        .footer-links a:hover { color: #4F46E5; }
-        .footer-btm {
-            max-width: 1100px; margin: 2rem auto 0;
-            padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.06);
-            text-align: center; font-size: 0.75rem; color: #9CA3AF;
-        }
-        @media (max-width: 768px) {
-            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
         }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 500px) {
             .ring-wrap { width: 220px; height: 220px; }
             .dur-row { gap: 0.3rem; }
-            .dur-pill { padding: 0.42rem 0.8rem; font-size: 0.76rem; }
-            .done-stats { gap: 1.5rem; }
+            .dur-pill { padding: 0.45rem 0.85rem; font-size: 0.78rem; }
+            .done-stats { gap: 1rem; }
+            .done-stat { padding: 1rem 1.4rem; }
             .done-title { font-size: 2.2rem; }
             .ctrls { flex-wrap: wrap; justify-content: center; }
-            .snd-pill { padding: 0.42rem 0.78rem; font-size: 0.75rem; }
-            .pmt-en { font-size: 1.05rem; }
+            .snd-card { padding: 0.5rem 0.85rem; font-size: 0.76rem; }
+            .pmt-en { font-size: 1.02rem; }
+            .topbar { padding: 0 1rem; }
         }
     </style>
 </head>
@@ -351,33 +383,43 @@
 
 <!-- ===================== TOPBAR ===================== -->
 <nav class="topbar">
-    <a href="index.html" class="topbar-brand">
-        <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#4F46E5" stroke-width="1.5"/><path d="M14 7c0 3.87-3.13 7-7 7 3.87 0 7 3.13 7 7 0-3.87 3.13-7 7-7-3.87 0-7-3.13-7-7z" fill="#4F46E5" opacity="0.7"/></svg>
-        Sukoon
+    <a href="index.html" class="topbar-brand">&#9789; Sukoon</a>
+    <div style="width:1px"></div>
+</nav>
+
+<!-- ===================== BOTTOM NAVIGATION ===================== -->
+<nav class="bottom-nav">
+    <a href="index.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/>
+        </svg>
+        <span>Home</span>
     </a>
-    <div class="topbar-nav" id="topNav">
-        <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
-        <a href="meditate.html" class="active" data-i18n="nav.meditate">Meditate</a>
-        <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
-        <a href="journal.html" data-i18n="nav.journal">Journal</a>
-        <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
-        <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-        <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
-        <a href="videos.html" data-i18n="nav.videos">Videos</a>
-    </div>
-    <div class="topbar-right">
-        <select class="lang-select" aria-label="Language">
-            <option value="en">EN</option>
-            <option value="hi">HI</option>
-            <option value="ur">UR</option>
-            <option value="ar">AR</option>
-            <option value="es">ES</option>
-            <option value="fr">FR</option>
-        </select>
-        <button class="mobile-toggle" id="menuBtn" aria-label="Toggle navigation">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-    </div>
+    <a href="explore.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polygon points="16.24,7.76 14.12,14.12 7.76,16.24 9.88,9.88"/>
+        </svg>
+        <span>Explore</span>
+    </a>
+    <a href="breathe.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22c-4-3-8-6-8-11a8 8 0 0116 0c0 5-4 8-8 11z"/>
+            <circle cx="12" cy="11" r="3"/>
+        </svg>
+        <span>Breathe</span>
+    </a>
+    <a href="friend.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+        </svg>
+        <span>AI Friend</span>
+    </a>
+    <a href="profile.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+        <span>You</span>
+    </a>
 </nav>
 
 <!-- ===================== MAIN ===================== -->
@@ -391,33 +433,42 @@
     <div class="med-content">
 
         <!-- Streak -->
-        <div class="streak-badge">
+        <div class="streak-badge stagger-1">
             <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5L9.8 5.8 14.5 6.5 11.2 9.7 12 14.5 8 12.2 4 14.5 4.8 9.7 1.5 6.5 6.2 5.8z" fill="#F59E0B"/></svg>
-            <span data-i18n="meditate.streak">Day</span> <span class="streak-num" id="streakNum">1</span>
+            <span class="streak-label" data-i18n="meditate.streak">Day</span> <span class="streak-num" id="streakNum">1</span>
         </div>
 
         <!-- Duration pills -->
-        <div class="dur-row" id="durRow">
-            <button class="dur-pill" data-min="1">1 min</button>
-            <button class="dur-pill" data-min="3">3 min</button>
+        <div class="dur-row stagger-2" id="durRow">
             <button class="dur-pill active" data-min="5">5 min</button>
             <button class="dur-pill" data-min="10">10 min</button>
             <button class="dur-pill" data-min="15">15 min</button>
             <button class="dur-pill" data-min="20">20 min</button>
+            <button class="dur-pill" data-min="30">30 min</button>
         </div>
 
-        <!-- SVG circular progress ring -->
-        <div class="ring-wrap">
+        <!-- SVG circular progress ring with gradient + glow -->
+        <div class="ring-wrap stagger-3">
             <svg class="ring-svg" viewBox="0 0 280 280">
                 <defs>
                     <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#4F46E5"/>
-                        <stop offset="100%" stop-color="#818CF8"/>
+                        <stop offset="0%" stop-color="#7C3AED"/>
+                        <stop offset="50%" stop-color="#A855F7"/>
+                        <stop offset="100%" stop-color="#F59E0B"/>
                     </linearGradient>
+                    <filter id="ringGlow">
+                        <feGaussianBlur stdDeviation="3" result="blur"/>
+                        <feMerge>
+                            <feMergeNode in="blur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
                 </defs>
                 <circle class="ring-track" cx="140" cy="140" r="130"/>
-                <circle class="ring-fill" id="ringFill" cx="140" cy="140" r="130"
+                <circle class="ring-glow" id="ringGlow" cx="140" cy="140" r="130"
                     stroke-dasharray="816.81" stroke-dashoffset="0"/>
+                <circle class="ring-fill" id="ringFill" cx="140" cy="140" r="130"
+                    stroke-dasharray="816.81" stroke-dashoffset="0" filter="url(#ringGlow)"/>
             </svg>
             <div class="ring-inner">
                 <div class="timer-time" id="timerTime">5:00</div>
@@ -426,30 +477,30 @@
         </div>
 
         <!-- Ambient sound selector -->
-        <div class="snd-row" id="sndRow">
-            <button class="snd-pill active" data-snd="silence">
-                <svg viewBox="0 0 14 14" fill="none"><circle cx="7" cy="7" r="5.5" stroke="currentColor" stroke-width="1.2"/><line x1="4.5" y1="4.5" x2="9.5" y2="9.5" stroke="currentColor" stroke-width="1.2"/></svg>
+        <div class="snd-row stagger-4" id="sndRow">
+            <button class="snd-card active" data-snd="silence">
+                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="5" x2="11" y2="11" stroke="currentColor" stroke-width="1.3"/></svg>
                 <span data-i18n="meditate.silence">Silence</span>
             </button>
-            <button class="snd-pill" data-snd="rain">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M3 6.5v4M7 4.5v6M11 5.5v5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+            <button class="snd-card" data-snd="rain">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M4 7v5M8 5v7M12 6v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
                 <span data-i18n="meditate.rain">Rain</span>
             </button>
-            <button class="snd-pill" data-snd="ocean">
-                <svg viewBox="0 0 14 14" fill="none"><path d="M1 7.5c2-2 4 0 6-2s4 0 6-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M1 10.5c2-2 4 0 6-2s4 0 6-2" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.4"/></svg>
+            <button class="snd-card" data-snd="ocean">
+                <svg viewBox="0 0 16 16" fill="none"><path d="M1 8c2.5-2.5 5 0 7.5-2.5S13.5 3 16 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M1 11.5c2.5-2.5 5 0 7.5-2.5S13.5 6.5 16 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/></svg>
                 <span data-i18n="meditate.ocean">Ocean</span>
             </button>
         </div>
 
         <!-- Controls -->
-        <div class="ctrls">
+        <div class="ctrls stagger-5">
             <button class="btn-main" id="btnStart" data-i18n="meditate.start">Start</button>
             <button class="btn-ghost" id="btnPause" style="display:none" data-i18n="meditate.pause">Pause</button>
             <button class="btn-ghost" id="btnReset" style="display:none" data-i18n="meditate.reset">Reset</button>
         </div>
 
         <!-- Bilingual prompt -->
-        <div class="prompt-wrap">
+        <div class="prompt-wrap stagger-6">
             <div class="pmt-en" id="pmtEn">Close your eyes and arrive in this moment.</div>
             <div class="pmt-hi" id="pmtHi">&#x0906;&#x0901;&#x0916;&#x0947;&#x0902; &#x092C;&#x0902;&#x0926; &#x0915;&#x0930;&#x0947;&#x0902; &#x0914;&#x0930; &#x0907;&#x0938; &#x092A;&#x0932; &#x092E;&#x0947;&#x0902; &#x0906;&#x090F;&#x0902;&#x0964;</div>
         </div>
@@ -460,10 +511,10 @@
 <div class="done-overlay" id="doneOverlay">
     <div class="done-icon">
         <svg viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="38" fill="#4F46E5" opacity="0.06"/>
-            <circle cx="40" cy="40" r="26" fill="#4F46E5" opacity="0.08"/>
-            <circle cx="40" cy="40" r="14" fill="#4F46E5" opacity="0.12"/>
-            <path d="M40 22c0 9.94-8.06 18-18 18 9.94 0 18 8.06 18 18 0-9.94 8.06-18 18-18-9.94 0-18-8.06-18-18z" fill="#4F46E5" opacity="0.5"/>
+            <circle cx="40" cy="40" r="38" fill="#7C3AED" opacity="0.06"/>
+            <circle cx="40" cy="40" r="26" fill="#7C3AED" opacity="0.1"/>
+            <circle cx="40" cy="40" r="14" fill="#7C3AED" opacity="0.15"/>
+            <path d="M40 22c0 9.94-8.06 18-18 18 9.94 0 18 8.06 18 18 0-9.94 8.06-18 18-18-9.94 0-18-8.06-18-18z" fill="#7C3AED" opacity="0.55"/>
         </svg>
     </div>
     <div class="done-title" data-i18n="meditate.namaste">Namaste</div>
@@ -481,49 +532,9 @@
     <button class="btn-main" id="btnContinue" data-i18n="meditate.continue_btn">Continue</button>
 </div>
 
-<!-- ===================== FOOTER ===================== -->
-<footer class="footer" id="siteFooter">
-    <div class="footer-inner">
-        <div>
-            <div class="footer-brand">Sukoon</div>
-            <div class="footer-desc" data-i18n="footer.mission">Free mental wellness for every mind. Breathe, meditate, and find your calm &mdash; always free, always private.</div>
-            <div class="footer-desc-hi">&#x0939;&#x0930; &#x092E;&#x0928; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F;</div>
-            <div class="footer-priv">
-                <svg viewBox="0 0 12 12" fill="none"><rect x="1.5" y="5.5" width="9" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1"/><path d="M4 5.5V3.8a2 2 0 014 0V5.5" stroke="currentColor" stroke-width="1"/></svg>
-                <span data-i18n="footer.privacy_line">No data collected</span> &middot; 100% private
-            </div>
-        </div>
-        <div>
-            <div class="footer-hd" data-i18n="footer.practice">Practice</div>
-            <div class="footer-links">
-                <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
-                <a href="meditate.html" data-i18n="nav.meditate">Meditate</a>
-                <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
-                <a href="journal.html" data-i18n="nav.journal">Journal</a>
-            </div>
-        </div>
-        <div>
-            <div class="footer-hd" data-i18n="footer.explore">Explore</div>
-            <div class="footer-links">
-                <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
-                <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-                <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
-                <a href="videos.html" data-i18n="nav.videos">Videos</a>
-                <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-btm">&copy; 2026 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></div>
-</footer>
-
 <script>
 (function(){
     'use strict';
-
-    /* ====== Mobile nav ====== */
-    document.getElementById('menuBtn').addEventListener('click', function(){
-        document.getElementById('topNav').classList.toggle('open');
-    });
 
     /* ====== State ====== */
     var duration = 5 * 60;
@@ -542,6 +553,7 @@
     var $time = document.getElementById('timerTime');
     var $state = document.getElementById('timerState');
     var $ring = document.getElementById('ringFill');
+    var $ringGlow = document.getElementById('ringGlow');
     var $start = document.getElementById('btnStart');
     var $pause = document.getElementById('btnPause');
     var $reset = document.getElementById('btnReset');
@@ -599,7 +611,9 @@
     function render(){
         $time.textContent = fmt(remaining);
         var frac = 1 - remaining/duration;
-        $ring.setAttribute('stroke-dashoffset', (CIRC*(1-frac)).toFixed(2));
+        var offset = (CIRC*(1-frac)).toFixed(2);
+        $ring.setAttribute('stroke-dashoffset', offset);
+        $ringGlow.setAttribute('stroke-dashoffset', offset);
     }
     render();
 
@@ -639,7 +653,7 @@
     /* Ambient sound - crossfade looping engine for seamless audio */
     var ambientBufferCache = {};
     var ambientChannel = null;
-    var AMBIENT_CROSSFADE = 4; // seconds
+    var AMBIENT_CROSSFADE = 4;
 
     async function loadAmbientBuffer(type){
         if(ambientBufferCache[type]) return ambientBufferCache[type];
@@ -718,11 +732,11 @@
         }
     }
 
-    /* Sound pills */
+    /* Sound cards */
     document.getElementById('sndRow').addEventListener('click',function(e){
-        var p = e.target.closest('.snd-pill');
+        var p = e.target.closest('.snd-card');
         if(!p) return;
-        document.querySelectorAll('.snd-pill').forEach(function(b){b.classList.remove('active');});
+        document.querySelectorAll('.snd-card').forEach(function(b){b.classList.remove('active');});
         p.classList.add('active');
         curSound = p.dataset.snd;
         if(running && !paused) makeNoise(curSound);

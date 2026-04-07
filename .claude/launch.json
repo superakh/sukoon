@@ -7,8 +7,10 @@
       "runtimeArgs": ["server.js"],
       "port": 3001,
       "env": {
-        "PORT": "3001"
-      }
+        "PORT": "3001",
+        "OPENROUTER_API_KEY": "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"
+      },
+      "cwd": "/Users/mustafamun/Happy Minds SAAS/sukoon"
     }
   ]
 }

@@ -13,169 +13,228 @@
         html { scroll-behavior: smooth; }
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #111827;
-            background: #FAFAF7;
+            color: #F1F5F9;
+            background: #0F172A;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
+            padding-bottom: 80px;
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== TOPBAR ===================== */
+        /* ===================== STICKY TOP HEADER ===================== */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 72px;
-            background: rgba(250,250,247,0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 1.5rem; height: 56px;
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
         }
         .topbar-brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem; color: #111827;
-            display: flex; align-items: center; gap: 0.5rem;
+            font-size: 1.3rem; color: #F1F5F9;
+            display: flex; align-items: center; gap: 0.4rem;
             letter-spacing: -0.01em;
         }
-        .topbar-brand svg { width: 28px; height: 28px; }
-        .topbar-nav { display: flex; gap: 0.2rem; }
-        .topbar-nav a {
-            padding: 0.42rem 0.82rem; border-radius: 10px;
-            font-size: 0.84rem; font-weight: 500; color: #6B7280;
-            transition: all 0.2s ease;
+        .topbar-moon { font-size: 1.2rem; }
+
+        /* ===================== BOTTOM NAV ===================== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0; left: 0; right: 0;
+            height: 64px;
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(124, 58, 237, 0.1);
+            display: flex; align-items: center; justify-content: space-around;
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom);
         }
-        .topbar-nav a:hover { background: rgba(79,70,229,0.06); color: #4F46E5; }
-        .topbar-nav a.active {
-            background: #4F46E5; color: #fff; font-weight: 600;
+        .bottom-nav a {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 4px; text-decoration: none; color: #64748B;
+            font-size: 0.65rem; font-family: 'Inter', sans-serif;
+            transition: color 0.2s ease;
         }
-        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
-        .lang-select {
-            padding: 0.38rem 0.65rem; border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08); background: #fff;
-            font-size: 0.8rem; color: #6B7280; cursor: pointer;
-            font-family: 'Inter', sans-serif; outline: none;
-        }
-        .mobile-toggle {
-            display: none; background: none; border: none;
-            color: #111827; cursor: pointer;
-            width: 40px; height: 40px; border-radius: 10px;
-            align-items: center; justify-content: center;
-            transition: background 0.2s;
-        }
-        .mobile-toggle:hover { background: rgba(0,0,0,0.04); }
-        @media (max-width: 900px) {
-            .mobile-toggle { display: flex; }
-            .topbar { padding: 0 1.25rem; }
-            .topbar-nav {
-                display: none; flex-direction: column;
-                position: absolute; top: 72px; left: 0; right: 0;
-                background: rgba(250,250,247,0.97);
-                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-                padding: 0.5rem 0.75rem; gap: 0.1rem;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-                box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+        .bottom-nav a:hover { color: #94A3B8; }
+        .bottom-nav a.active { color: #7C3AED; }
+
+        /* ===================== DESKTOP SIDEBAR >900px ===================== */
+        @media (min-width: 901px) {
+            .bottom-nav {
+                position: fixed; top: 56px; left: 0; bottom: 0; right: auto;
+                width: 80px; height: auto;
+                flex-direction: column; justify-content: flex-start;
+                padding: 24px 0; gap: 8px;
+                border-top: none;
+                border-right: 1px solid rgba(124, 58, 237, 0.08);
             }
-            .topbar-nav.open { display: flex; }
-            .topbar-nav.open a { padding: 0.75rem 1rem; font-size: 0.95rem; border-radius: 12px; }
+            .bottom-nav a {
+                width: 100%; padding: 12px 0;
+                font-size: 0.6rem; gap: 6px;
+            }
+            .bottom-nav a.active {
+                background: rgba(124, 58, 237, 0.08);
+                border-right: 2px solid #7C3AED;
+            }
+            .sleep-page { margin-left: 80px; }
+        }
+
+        /* ===================== SLEEP PAGE WRAPPER ===================== */
+        .sleep-page {
+            min-height: 100vh;
+            position: relative;
+        }
+
+        /* Ambient background glows */
+        .sleep-page::before {
+            content: '';
+            position: fixed; top: -10%; left: -10%;
+            width: 55%; height: 55%;
+            background: radial-gradient(ellipse, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        }
+        .sleep-page::after {
+            content: '';
+            position: fixed; bottom: -10%; right: -10%;
+            width: 50%; height: 50%;
+            background: radial-gradient(ellipse, rgba(99, 102, 241, 0.04) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
         }
 
         /* ===================== HERO ===================== */
         .sleep-hero {
             position: relative;
-            padding: 140px 2rem 60px;
+            padding: 100px 2rem 60px;
             text-align: center;
-            background: linear-gradient(165deg, #0F0A2E 0%, #1A1145 25%, #151040 50%, #0A0E2A 75%, #060818 100%);
+            background: linear-gradient(165deg, #0F0A2E 0%, #1A1145 25%, #151040 50%, #0A0E2A 75%, #0F172A 100%);
             overflow: hidden;
         }
         .sleep-hero::before {
             content: '';
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background:
-                radial-gradient(ellipse 50% 40% at 20% 30%, rgba(99,102,241,0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 50% at 80% 60%, rgba(79,70,229,0.08) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 40% at 20% 30%, rgba(124,58,237,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 40% 50% at 80% 60%, rgba(99,102,241,0.08) 0%, transparent 70%),
                 radial-gradient(ellipse 60% 30% at 50% 80%, rgba(30,27,75,0.5) 0%, transparent 70%);
             pointer-events: none;
         }
-        /* Subtle stars */
+        /* Stars */
         .sleep-hero::after {
             content: '';
             position: absolute; top: 0; left: 0; right: 0; bottom: 0;
             background-image:
-                radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
-                radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.25) 0%, transparent 100%),
-                radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.35) 0%, transparent 100%),
-                radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.3) 0%, transparent 100%),
-                radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.2) 0%, transparent 100%),
-                radial-gradient(1.5px 1.5px at 40% 65%, rgba(255,255,255,0.3) 0%, transparent 100%),
-                radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.25) 0%, transparent 100%),
-                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.2) 0%, transparent 100%),
-                radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.35) 0%, transparent 100%),
-                radial-gradient(1px 1px at 35% 25%, rgba(255,255,255,0.2) 0%, transparent 100%);
+                radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
+                radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.45) 0%, transparent 100%),
+                radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.35) 0%, transparent 100%),
+                radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.25) 0%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 40% 65%, rgba(255,255,255,0.35) 0%, transparent 100%),
+                radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.3) 0%, transparent 100%),
+                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.25) 0%, transparent 100%),
+                radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
+                radial-gradient(1px 1px at 35% 25%, rgba(255,255,255,0.25) 0%, transparent 100%),
+                radial-gradient(2px 2px at 78% 48%, rgba(245,158,11,0.6) 0%, transparent 100%),
+                radial-gradient(1px 1px at 5% 60%, rgba(245,158,11,0.3) 0%, transparent 100%);
             pointer-events: none;
             animation: twinkle 6s ease-in-out infinite alternate;
         }
         @keyframes twinkle {
-            0% { opacity: 0.6; }
+            0% { opacity: 0.5; }
             100% { opacity: 1; }
         }
         .sleep-hero-content {
             position: relative; z-index: 1;
             max-width: 640px; margin: 0 auto;
         }
-        .sleep-hero-icon {
-            width: 56px; height: 56px; margin: 0 auto 1.5rem;
-            border-radius: 16px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
-            display: flex; align-items: center; justify-content: center;
+        .sleep-hero-moon {
+            font-size: 3.5rem; margin-bottom: 1rem;
+            filter: drop-shadow(0 0 20px rgba(245,158,11,0.3));
+            animation: floatMoon 6s ease-in-out infinite;
         }
-        .sleep-hero-icon svg { width: 28px; height: 28px; color: rgba(199,190,255,0.8); }
+        @keyframes floatMoon {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
         .sleep-hero h1 {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(2.2rem, 5vw, 3.2rem);
-            color: #EEEDF5;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
-            margin-bottom: 0.6rem;
+            margin-bottom: 0.3rem;
             font-weight: 400;
         }
-        .sleep-hero-sub {
-            font-size: 1.05rem; color: rgba(199,190,255,0.6);
-            max-width: 420px; margin: 0 auto 0.4rem;
-            line-height: 1.6;
-        }
-        .sleep-hero-sub-hi {
+        .sleep-hero-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.82rem; color: rgba(199,190,255,0.35);
-            font-weight: 300;
+            font-size: 1.15rem; color: rgba(245,158,11,0.7);
+            font-weight: 400; margin-bottom: 1rem;
+        }
+        .sleep-hero-sub {
+            font-size: 1rem; color: #94A3B8;
+            max-width: 420px; margin: 0 auto;
+            line-height: 1.7;
         }
 
-        /* ===================== PAGE WRAP ===================== */
-        .page-wrap {
+        /* ===================== PAGE CONTENT ===================== */
+        .page-content {
+            position: relative; z-index: 1;
             max-width: 960px; margin: 0 auto;
-            padding: 3rem 2rem 4rem;
+            padding: 3rem 2rem 2rem;
         }
 
         /* ===================== SECTION LABELS ===================== */
         .section-label {
             font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 0.1em; color: #9CA3AF;
-            font-weight: 600; margin-bottom: 1rem;
+            letter-spacing: 0.12em; color: #7C3AED;
+            font-weight: 600; margin-bottom: 0.5rem;
+        }
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.5rem; color: #F1F5F9;
+            margin-bottom: 0.3rem;
+        }
+        .section-subtitle {
+            font-size: 0.85rem; color: #64748B;
+            margin-bottom: 1.5rem;
         }
 
         /* ===================== STORY CARDS GRID ===================== */
         .stories-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
-            margin-bottom: 3rem;
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1.25rem; margin-bottom: 3.5rem;
         }
         .story-card {
-            background: #fff; border: 1px solid rgba(0,0,0,0.06);
+            background: #1E293B;
+            border: 1px solid rgba(124, 58, 237, 0.08);
             border-radius: 20px; overflow: hidden;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
-            transition: all 0.3s ease; cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            opacity: 0; transform: translateY(20px);
+            animation: cardReveal 0.6s ease forwards;
         }
+        .story-card:nth-child(1) { animation-delay: 0.1s; }
+        .story-card:nth-child(2) { animation-delay: 0.2s; }
+        .story-card:nth-child(3) { animation-delay: 0.3s; }
+        .story-card:nth-child(4) { animation-delay: 0.4s; }
+        .story-card:nth-child(5) { animation-delay: 0.5s; }
+        .story-card:nth-child(6) { animation-delay: 0.6s; }
+        .story-card:nth-child(7) { animation-delay: 0.7s; }
+        .story-card:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes cardReveal {
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         .story-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06), 0 12px 32px rgba(0,0,0,0.06);
+            transform: translateY(-4px);
+            box-shadow:
+                0 4px 16px rgba(124, 58, 237, 0.15),
+                0 12px 40px rgba(0,0,0,0.25),
+                0 0 0 1px rgba(124, 58, 237, 0.15);
+            border-color: rgba(124, 58, 237, 0.2);
         }
         .story-cover {
             height: 120px; position: relative;
@@ -185,7 +244,7 @@
         .story-cover-icon {
             position: absolute; top: 1rem; right: 1rem;
             width: 32px; height: 32px; border-radius: 10px;
-            background: rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.1);
             backdrop-filter: blur(8px);
             display: flex; align-items: center; justify-content: center;
         }
@@ -193,7 +252,7 @@
         .story-cover-title {
             font-family: 'DM Serif Display', serif;
             font-size: 1.15rem; color: #fff;
-            text-shadow: 0 1px 4px rgba(0,0,0,0.3);
+            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
             line-height: 1.25;
         }
         .story-body { padding: 1rem 1.25rem 1.25rem; }
@@ -204,108 +263,187 @@
             text-transform: uppercase; letter-spacing: 0.06em;
             margin-bottom: 0.5rem;
         }
-        .story-genre.nature { background: rgba(16,185,129,0.08); color: #059669; }
-        .story-genre.folklore { background: rgba(245,158,11,0.08); color: #D97706; }
-        .story-genre.travel { background: rgba(79,70,229,0.08); color: #4F46E5; }
-        .story-genre.spiritual { background: rgba(168,85,247,0.08); color: #7C3AED; }
+        .story-genre.nature { background: rgba(16,185,129,0.12); color: #34D399; }
+        .story-genre.folklore { background: rgba(245,158,11,0.12); color: #F59E0B; }
+        .story-genre.travel { background: rgba(99,102,241,0.12); color: #818CF8; }
+        .story-genre.spiritual { background: rgba(168,85,247,0.12); color: #C084FC; }
+        .story-genre.fantasy { background: rgba(236,72,153,0.12); color: #F472B6; }
+        .story-title-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.72rem; color: #64748B;
+            font-weight: 300; margin-bottom: 0.3rem;
+        }
         .story-desc {
-            font-size: 0.82rem; color: #6B7280; line-height: 1.5;
+            font-size: 0.82rem; color: #94A3B8; line-height: 1.5;
             margin-bottom: 0.75rem;
         }
         .story-bottom {
             display: flex; align-items: center; justify-content: space-between;
         }
         .story-duration {
-            font-size: 0.72rem; color: #9CA3AF; font-weight: 500;
+            font-size: 0.72rem; color: #64748B; font-weight: 500;
             display: flex; align-items: center; gap: 0.3rem;
         }
         .story-duration svg { width: 13px; height: 13px; }
         .story-begin {
             padding: 0.4rem 1rem; border-radius: 100px;
-            background: #4F46E5; color: #fff;
+            background: #7C3AED; color: #fff;
             font-size: 0.78rem; font-weight: 600;
             border: none; cursor: pointer;
             font-family: 'Inter', sans-serif;
-            transition: all 0.2s;
+            transition: all 0.25s;
         }
-        .story-begin:hover { background: #4338CA; transform: scale(1.03); }
+        .story-begin:hover { background: #6D28D9; transform: scale(1.05); box-shadow: 0 4px 15px rgba(124,58,237,0.3); }
 
         /* Cover gradients per genre */
-        .cover-mountain-lake { background: linear-gradient(135deg, #2D6A4F, #40916C, #74C69D); }
-        .cover-spice-market { background: linear-gradient(135deg, #B45309, #D97706, #F59E0B); }
-        .cover-ocean-lullaby { background: linear-gradient(135deg, #1E3A5F, #2563EB, #60A5FA); }
-        .cover-silk-road { background: linear-gradient(135deg, #78350F, #A16207, #CA8A04); }
-        .cover-tea-garden { background: linear-gradient(135deg, #166534, #22C55E, #86EFAC); }
-        .cover-grandmother { background: linear-gradient(135deg, #7C2D12, #C2410C, #FB923C); }
-        .cover-northern-lights { background: linear-gradient(135deg, #1E1B4B, #4F46E5, #7C3AED, #06B6D4); }
-        .cover-sufi-garden { background: linear-gradient(135deg, #581C87, #7C3AED, #C084FC); }
+        .cover-mountain-lake { background: linear-gradient(135deg, #1E3A5F, #2D6A4F, #40916C); }
+        .cover-spice-market { background: linear-gradient(135deg, #78350F, #B45309, #D97706); }
+        .cover-ocean-lullaby { background: linear-gradient(135deg, #0F172A, #1E3A5F, #2563EB); }
+        .cover-silk-road { background: linear-gradient(135deg, #451A03, #78350F, #A16207); }
+        .cover-tea-garden { background: linear-gradient(135deg, #064E3B, #166534, #22C55E); }
+        .cover-grandmother { background: linear-gradient(135deg, #7C2D12, #9A3412, #C2410C); }
+        .cover-northern-lights { background: linear-gradient(135deg, #1E1B4B, #4F46E5, #7C3AED); }
+        .cover-sufi-garden { background: linear-gradient(135deg, #3B0764, #581C87, #7C3AED); }
 
         /* ===================== AI GENERATOR ===================== */
-        .ai-gen-section {
-            margin-bottom: 3rem;
-        }
+        .ai-gen-section { margin-bottom: 3.5rem; }
         .ai-gen-card {
-            background: #fff; border: 1px solid rgba(0,0,0,0.06);
+            background: #1E293B;
+            border: 1px solid rgba(124, 58, 237, 0.1);
             border-radius: 20px; padding: 2rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.1);
             position: relative; overflow: hidden;
         }
         .ai-gen-card::before {
             content: '';
             position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #4F46E5, #7C3AED, #4F46E5);
+            background: linear-gradient(90deg, #7C3AED, #F59E0B, #7C3AED);
         }
         .ai-gen-top {
             display: flex; align-items: center; gap: 0.75rem;
-            margin-bottom: 1.25rem;
+            margin-bottom: 0.5rem;
         }
         .ai-gen-icon {
             width: 44px; height: 44px; border-radius: 12px;
-            background: rgba(79,70,229,0.06);
+            background: rgba(124, 58, 237, 0.12);
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-        .ai-gen-icon svg { width: 22px; height: 22px; color: #4F46E5; }
+        .ai-gen-icon svg { width: 22px; height: 22px; color: #7C3AED; }
         .ai-gen-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #111827;
+            font-size: 1.25rem; color: #F1F5F9;
         }
         .ai-gen-sub {
-            font-size: 0.82rem; color: #9CA3AF;
+            font-size: 0.82rem; color: #64748B;
+        }
+        .ai-gen-sub-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.75rem; color: #475569;
+            font-weight: 300; margin-bottom: 1.25rem;
         }
         .ai-gen-form {
             display: flex; gap: 0.75rem; align-items: center;
             flex-wrap: wrap;
         }
-        .genre-select {
-            flex: 1; min-width: 200px;
+        .ai-prompt-input {
+            flex: 2; min-width: 200px;
             padding: 0.65rem 1rem; border-radius: 12px;
-            border: 1px solid rgba(0,0,0,0.08); background: #FAFAF7;
-            font-size: 0.88rem; color: #374151;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            background: rgba(15, 23, 42, 0.6);
+            font-size: 0.88rem; color: #F1F5F9;
+            font-family: 'Inter', sans-serif;
+            outline: none; transition: border-color 0.2s;
+        }
+        .ai-prompt-input::placeholder { color: #475569; }
+        .ai-prompt-input:focus { border-color: rgba(124, 58, 237, 0.5); box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08); }
+        .genre-select {
+            flex: 1; min-width: 140px;
+            padding: 0.65rem 1rem; border-radius: 12px;
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            background: rgba(15, 23, 42, 0.6);
+            font-size: 0.88rem; color: #F1F5F9;
             font-family: 'Inter', sans-serif;
             outline: none; cursor: pointer;
             transition: border-color 0.2s;
         }
-        .genre-select:focus { border-color: rgba(79,70,229,0.4); }
+        .genre-select option { background: #1E293B; color: #F1F5F9; }
+        .genre-select:focus { border-color: rgba(124, 58, 237, 0.5); }
         .gen-btn {
             padding: 0.65rem 1.5rem; border-radius: 12px;
-            background: #4F46E5; color: #fff;
+            background: #7C3AED; color: #fff;
             font-size: 0.88rem; font-weight: 600;
             border: none; cursor: pointer;
             font-family: 'Inter', sans-serif;
-            transition: all 0.2s;
+            transition: all 0.25s;
             display: flex; align-items: center; gap: 0.5rem;
             white-space: nowrap;
         }
-        .gen-btn:hover { background: #4338CA; }
+        .gen-btn:hover { background: #6D28D9; box-shadow: 0 4px 15px rgba(124,58,237,0.3); }
         .gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .gen-btn svg { width: 18px; height: 18px; }
+        .gen-loading { display: none; }
+        .gen-btn.loading .gen-label { display: none; }
+        .gen-btn.loading .gen-loading {
+            display: flex; align-items: center; gap: 0.4rem;
+        }
+        .gen-spinner {
+            width: 16px; height: 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-top-color: #fff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ===================== WIND-DOWN SECTION ===================== */
+        .winddown-section { margin-bottom: 3rem; }
+        .winddown-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .winddown-card {
+            background: #1E293B;
+            border: 1px solid rgba(124, 58, 237, 0.08);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex; align-items: center; gap: 1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+        .winddown-card:hover {
+            border-color: rgba(124, 58, 237, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+        }
+        .winddown-icon {
+            width: 48px; height: 48px; border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.4rem;
+        }
+        .winddown-icon.breathe-icon { background: rgba(124, 58, 237, 0.12); }
+        .winddown-icon.meditate-icon { background: rgba(245, 158, 11, 0.12); }
+        .winddown-card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem; color: #F1F5F9;
+            margin-bottom: 0.15rem;
+        }
+        .winddown-card-title-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.72rem; color: #64748B;
+            font-weight: 300; margin-bottom: 0.25rem;
+        }
+        .winddown-card-desc {
+            font-size: 0.78rem; color: #94A3B8; line-height: 1.4;
+        }
 
         /* ===================== STORY READER OVERLAY ===================== */
         .reader-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             z-index: 9999;
-            background: rgba(10,14,23,0.95);
+            background: #0A0E1A;
             display: none; flex-direction: column;
             opacity: 0; transition: opacity 0.5s ease;
         }
@@ -314,18 +452,20 @@
         .reader-topbar {
             display: flex; align-items: center; justify-content: space-between;
             padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
             flex-shrink: 0;
+            background: rgba(10, 14, 26, 0.95);
+            backdrop-filter: blur(16px);
         }
         .reader-title-area {
             display: flex; flex-direction: column; gap: 0.15rem;
         }
         .reader-story-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem; color: rgba(238,237,245,0.9);
+            font-size: 1.1rem; color: #F1F5F9;
         }
         .reader-story-genre {
-            font-size: 0.7rem; color: rgba(199,190,255,0.4);
+            font-size: 0.7rem; color: #7C3AED;
             text-transform: uppercase; letter-spacing: 0.08em;
             font-weight: 500;
         }
@@ -334,28 +474,28 @@
         }
         .reader-progress-bar {
             width: 100%; height: 3px; border-radius: 2px;
-            background: rgba(255,255,255,0.06);
+            background: rgba(124, 58, 237, 0.1);
             overflow: hidden;
         }
         .reader-progress-fill {
             height: 100%; border-radius: 2px;
-            background: rgba(79,70,229,0.6);
+            background: linear-gradient(90deg, #7C3AED, #F59E0B);
             width: 0%; transition: width 0.5s ease;
         }
         .reader-progress-label {
-            font-size: 0.65rem; color: rgba(199,190,255,0.3);
+            font-size: 0.65rem; color: #64748B;
             margin-top: 0.25rem; text-align: center;
         }
         .reader-close {
             width: 40px; height: 40px; border-radius: 12px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.5);
+            background: rgba(124, 58, 237, 0.08);
+            border: 1px solid rgba(124, 58, 237, 0.15);
+            color: #94A3B8;
             display: flex; align-items: center; justify-content: center;
             cursor: pointer; transition: all 0.2s;
             flex-shrink: 0;
         }
-        .reader-close:hover { background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.8); }
+        .reader-close:hover { background: rgba(124, 58, 237, 0.15); color: #F1F5F9; }
         .reader-close svg { width: 20px; height: 20px; }
 
         .reader-body {
@@ -364,7 +504,7 @@
         }
         .reader-body::-webkit-scrollbar { width: 4px; }
         .reader-body::-webkit-scrollbar-track { background: transparent; }
-        .reader-body::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+        .reader-body::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.15); border-radius: 2px; }
 
         .reader-text {
             max-width: 640px; margin: 0 auto;
@@ -372,7 +512,7 @@
         .reader-text p {
             font-family: 'DM Serif Display', serif;
             font-size: 1.3rem; line-height: 1.85;
-            color: rgba(220,218,235,0.8);
+            color: rgba(241, 245, 249, 0.75);
             margin-bottom: 2rem;
             opacity: 0; transform: translateY(12px);
             transition: opacity 1.2s ease, transform 1.2s ease;
@@ -382,7 +522,7 @@
         }
         .reader-loading {
             text-align: center; padding: 4rem 0;
-            font-size: 0.95rem; color: rgba(199,190,255,0.4);
+            font-size: 0.95rem; color: #64748B;
             display: none;
         }
         .reader-loading.show { display: block; }
@@ -397,12 +537,12 @@
             75% { content: '...'; }
         }
 
-        /* Reader bottom bar */
+        /* Reader bottom controls */
         .reader-bottom {
             flex-shrink: 0;
             padding: 0.75rem 2rem;
-            border-top: 1px solid rgba(255,255,255,0.06);
-            background: rgba(10,14,23,0.98);
+            border-top: 1px solid rgba(124, 58, 237, 0.1);
+            background: rgba(10, 14, 26, 0.98);
             display: flex; align-items: center; justify-content: center;
             gap: 2rem; flex-wrap: wrap;
         }
@@ -410,87 +550,60 @@
             display: flex; align-items: center; gap: 0.5rem;
         }
         .reader-controls-label {
-            font-size: 0.65rem; color: rgba(199,190,255,0.3);
+            font-size: 0.65rem; color: #64748B;
             text-transform: uppercase; letter-spacing: 0.08em;
             font-weight: 600; margin-right: 0.25rem;
         }
         .ambient-btn, .timer-btn {
             padding: 0.35rem 0.75rem; border-radius: 100px;
             font-size: 0.72rem; font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.04);
-            color: rgba(199,190,255,0.5);
+            border: 1px solid rgba(124, 58, 237, 0.12);
+            background: rgba(124, 58, 237, 0.04);
+            color: #94A3B8;
             cursor: pointer; font-family: 'Inter', sans-serif;
             transition: all 0.2s;
         }
         .ambient-btn:hover, .timer-btn:hover {
-            border-color: rgba(79,70,229,0.4);
-            color: rgba(199,190,255,0.8);
+            border-color: rgba(124, 58, 237, 0.35);
+            color: #F1F5F9;
         }
         .ambient-btn.active, .timer-btn.active {
-            background: rgba(79,70,229,0.25);
-            border-color: rgba(79,70,229,0.4);
-            color: #C7BEFF;
+            background: rgba(124, 58, 237, 0.2);
+            border-color: rgba(124, 58, 237, 0.4);
+            color: #C4B5FD;
         }
         .timer-countdown {
-            font-size: 0.75rem; color: rgba(79,70,229,0.7);
+            font-size: 0.75rem; color: #7C3AED;
             font-variant-numeric: tabular-nums; font-weight: 300;
             min-width: 40px;
         }
-
-        /* ===================== FOOTER ===================== */
-        .footer {
-            background: #F3F4F6; padding: 3rem 2rem 2rem;
-            border-top: 1px solid rgba(0,0,0,0.04);
+        .auto-advance-btn {
+            padding: 0.35rem 0.75rem; border-radius: 100px;
+            font-size: 0.72rem; font-weight: 500;
+            border: 1px solid rgba(245, 158, 11, 0.15);
+            background: rgba(245, 158, 11, 0.06);
+            color: #94A3B8;
+            cursor: pointer; font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
         }
-        .footer-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 3rem;
-        }
-        .footer-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem; color: #111827; margin-bottom: 0.75rem;
-        }
-        .footer-desc {
-            font-size: 0.85rem; color: #6B7280; line-height: 1.7; max-width: 340px;
-        }
-        .footer-desc-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: #9CA3AF; margin-top: 0.35rem;
-            font-weight: 300;
-        }
-        .footer-priv {
-            display: inline-flex; align-items: center; gap: 0.35rem;
-            margin-top: 1rem; font-size: 0.7rem; color: #9CA3AF;
-            background: rgba(0,0,0,0.03); padding: 0.3rem 0.7rem;
-            border-radius: 100px;
-        }
-        .footer-priv svg { width: 12px; height: 12px; }
-        .footer-hd {
-            font-size: 0.68rem; text-transform: uppercase;
-            letter-spacing: 0.1em; color: #9CA3AF;
-            font-weight: 600; margin-bottom: 1rem;
-        }
-        .footer-links { display: flex; flex-direction: column; gap: 0.6rem; }
-        .footer-links a { font-size: 0.85rem; color: #6B7280; transition: color 0.2s; }
-        .footer-links a:hover { color: #4F46E5; }
-        .footer-btm {
-            max-width: 1100px; margin: 2rem auto 0;
-            padding-top: 1.5rem; border-top: 1px solid rgba(0,0,0,0.06);
-            text-align: center; font-size: 0.75rem; color: #9CA3AF;
+        .auto-advance-btn.active {
+            background: rgba(245, 158, 11, 0.15);
+            border-color: rgba(245, 158, 11, 0.35);
+            color: #F59E0B;
         }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 768px) {
-            .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
             .reader-bottom { gap: 1rem; padding: 0.75rem 1rem; }
+            .winddown-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .stories-grid { grid-template-columns: 1fr; }
-            .page-wrap { padding: 2rem 1.25rem 3rem; }
-            .sleep-hero { padding: 120px 1.25rem 40px; }
+            .page-content { padding: 2rem 1.25rem 2rem; }
+            .sleep-hero { padding: 80px 1.25rem 40px; }
             .ai-gen-card { padding: 1.5rem; }
             .ai-gen-form { flex-direction: column; }
+            .ai-prompt-input { min-width: 100%; }
             .genre-select { min-width: 100%; }
             .gen-btn { width: 100%; justify-content: center; }
             .reader-topbar { padding: 0.75rem 1rem; }
@@ -502,218 +615,261 @@
 </head>
 <body>
 
-<!-- ===================== TOPBAR ===================== -->
-<nav class="topbar">
+<!-- ===================== STICKY TOP HEADER ===================== -->
+<header class="topbar">
     <a href="index.html" class="topbar-brand">
-        <svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="13" stroke="#4F46E5" stroke-width="1.5"/><path d="M14 7c0 3.87-3.13 7-7 7 3.87 0 7 3.13 7 7 0-3.87 3.13-7 7-7-3.87 0-7-3.13-7-7z" fill="#4F46E5" opacity="0.7"/></svg>
+        <span class="topbar-moon">&#9789;</span>
         Sukoon
     </a>
-    <div class="topbar-nav" id="topNav">
-        <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
-        <a href="meditate.html" data-i18n="nav.meditate">Meditate</a>
-        <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
-        <a href="sleep.html" class="active" data-i18n="nav.sleep">Sleep</a>
-        <a href="journal.html" data-i18n="nav.journal">Journal</a>
-        <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
-        <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-        <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
-        <a href="videos.html" data-i18n="nav.videos">Videos</a>
-    </div>
-    <div class="topbar-right">
-        <select class="lang-select" aria-label="Language">
-            <option value="en">EN</option>
-            <option value="hi">HI</option>
-            <option value="ur">UR</option>
-            <option value="ar">AR</option>
-            <option value="es">ES</option>
-            <option value="fr">FR</option>
-        </select>
-        <button class="mobile-toggle" id="menuBtn" aria-label="Toggle navigation">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 5h14M3 10h14M3 15h14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-        </button>
-    </div>
+</header>
+
+<!-- ===================== BOTTOM NAVIGATION ===================== -->
+<nav class="bottom-nav">
+    <a href="/">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+        <span>Home</span>
+    </a>
+    <a href="/explore.html">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
+        <span>Explore</span>
+    </a>
+    <a href="/breathe.html">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
+        <span>Breathe</span>
+    </a>
+    <a href="/friend.html">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg>
+        <span>AI Friend</span>
+    </a>
+    <a href="/you.html">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        <span>You</span>
+    </a>
 </nav>
 
-<!-- ===================== HERO ===================== -->
-<section class="sleep-hero">
-    <div class="sleep-hero-content">
-        <div class="sleep-hero-icon">
-            <svg viewBox="0 0 24 24" fill="none"><path d="M21 12.79A9 9 0 1111.21 3a7 7 0 009.79 9.79z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+<!-- ===================== MAIN PAGE ===================== -->
+<div class="sleep-page">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="sleep-hero">
+        <div class="sleep-hero-content">
+            <div class="sleep-hero-moon">&#127769;</div>
+            <h1>Sleep Stories</h1>
+            <p class="sleep-hero-hi">&#x0928;&#x0940;&#x0902;&#x0926; &#x0915;&#x0940; &#x0915;&#x0939;&#x093E;&#x0928;&#x093F;&#x092F;&#x093E;&#x0901;</p>
+            <p class="sleep-hero-sub">Drift off to sleep with calming stories. Each tale is crafted to guide you gently into rest.</p>
         </div>
-        <h1 data-i18n="sleep.title">Sleep Stories</h1>
-        <p class="sleep-hero-sub" data-i18n="sleep.subtitle">Drift off to sleep with calming stories</p>
-        <p class="sleep-hero-sub-hi">&#x0936;&#x093E;&#x0902;&#x0924;&#x093F;&#x092A;&#x0942;&#x0930;&#x094D;&#x0923; &#x0915;&#x0939;&#x093E;&#x0928;&#x093F;&#x092F;&#x094B;&#x0902; &#x0915;&#x0947; &#x0938;&#x093E;&#x0925; &#x0928;&#x0940;&#x0902;&#x0926; &#x092E;&#x0947;&#x0902; &#x0921;&#x0942;&#x092C; &#x091C;&#x093E;&#x090F;&#x0902;</p>
+    </section>
+
+    <!-- ===================== CONTENT ===================== -->
+    <div class="page-content">
+
+        <!-- Story Library -->
+        <div class="section-label">Story Library</div>
+        <div class="section-title">Bedtime Stories</div>
+        <div class="section-subtitle">Choose a story and let your mind wander to sleep</div>
+
+        <div class="stories-grid" id="storiesGrid">
+
+            <!-- 1. The Mountain Lake -->
+            <div class="story-card" data-story="mountain-lake">
+                <div class="story-cover cover-mountain-lake">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22h20L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 16L9 12l2 3 3-4 3.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></div>
+                    <div class="story-cover-title">The Mountain Lake</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre nature">Nature</span>
+                    <div class="story-title-hi">&#x092A;&#x0939;&#x093E;&#x0921;&#x093C;&#x0940; &#x0915;&#x0940; &#x091D;&#x0940;&#x0932;</div>
+                    <p class="story-desc">A journey to a serene mountain lake at sunset</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. The Spice Market -->
+            <div class="story-card" data-story="spice-market">
+                <div class="story-cover cover-spice-market">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="8" rx="0.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                    <div class="story-cover-title">The Spice Market</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre folklore">Indian Folklore</span>
+                    <div class="story-title-hi">&#x092E;&#x0938;&#x093E;&#x0932;&#x094B;&#x0902; &#x0915;&#x093E; &#x092C;&#x093E;&#x095B;&#x093E;&#x0930;</div>
+                    <p class="story-desc">Walking through a fragrant evening market in Jaipur</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Ocean's Lullaby -->
+            <div class="story-card" data-story="ocean-lullaby">
+                <div class="story-cover cover-ocean-lullaby">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12c2-2.5 4.5-.5 6.5-2.5S13 7 15 9.5s4.5-.5 7-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 16c2-2.5 4.5-.5 6.5-2.5S13 11 15 13.5s4.5-.5 7-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></div>
+                    <div class="story-cover-title">Ocean's Lullaby</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre nature">Nature</span>
+                    <div class="story-title-hi">&#x0938;&#x093E;&#x0917;&#x0930; &#x0915;&#x0940; &#x0932;&#x094B;&#x0930;&#x0940;</div>
+                    <p class="story-desc">Waves gently washing over a moonlit shore</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. The Silk Road Traveler -->
+            <div class="story-card" data-story="silk-road">
+                <div class="story-cover cover-silk-road">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c-2 3-3 6-3 9s1 6 3 9M12 3c2 3 3 6 3 9s-1 6-3 9" stroke="currentColor" stroke-width="1.2"/></svg></div>
+                    <div class="story-cover-title">The Silk Road Traveler</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre travel">Travel</span>
+                    <div class="story-title-hi">&#x0930;&#x0947;&#x0936;&#x092E; &#x092E;&#x093E;&#x0930;&#x094D;&#x0917; &#x0915;&#x093E; &#x092F;&#x093E;&#x0924;&#x094D;&#x0930;&#x0940;</div>
+                    <p class="story-desc">A peaceful caravan crossing ancient deserts under stars</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. The Tea Garden -->
+            <div class="story-card" data-story="tea-garden">
+                <div class="story-cover cover-tea-garden">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12a7 7 0 007 7 7 7 0 007-7M17 12h2a2 2 0 010 4h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 8c0-1.5.5-3 2-3s2 1.5 2 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div>
+                    <div class="story-cover-title">The Tea Garden</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre nature">Nature</span>
+                    <div class="story-title-hi">&#x091A;&#x093E;&#x092F; &#x0915;&#x093E; &#x092C;&#x093E;&#x0917;&#x093C;</div>
+                    <p class="story-desc">Morning mist lifting over rolling green hills</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. Grandmother's Stories -->
+            <div class="story-card" data-story="grandmother">
+                <div class="story-cover cover-grandmother">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 14l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></div>
+                    <div class="story-cover-title">Grandmother's Stories</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre folklore">Indian Folklore</span>
+                    <div class="story-title-hi">&#x0926;&#x093E;&#x0926;&#x0940; &#x0915;&#x0940; &#x0915;&#x0939;&#x093E;&#x0928;&#x093F;&#x092F;&#x093E;&#x0901;</div>
+                    <p class="story-desc">A grandmother telling tales by lamplight</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. The Northern Lights -->
+            <div class="story-card" data-story="northern-lights">
+                <div class="story-cover cover-northern-lights">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M4.22 7.22l2.12 2.12M1 15h3M4.22 22.78l2.12-2.12M12 21v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/><path d="M15 9a6 6 0 11-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+                    <div class="story-cover-title">The Northern Lights</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre nature">Nature</span>
+                    <div class="story-title-hi">&#x0909;&#x0924;&#x094D;&#x0924;&#x0930;&#x0940; &#x0930;&#x094B;&#x0936;&#x0928;&#x0940;</div>
+                    <p class="story-desc">Watching aurora borealis from a cozy cabin</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. The Sufi Garden -->
+            <div class="story-card" data-story="sufi-garden">
+                <div class="story-cover cover-sufi-garden">
+                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c-4.97 0-9-2.69-9-6 0-2.21 1.79-4 4-4 .36 0 .72.05 1.06.14C9.42 8.58 10.58 6 12 6s2.58 2.58 3.94 6.14c.34-.09.7-.14 1.06-.14 2.21 0 4 1.79 4 4 0 3.31-4.03 6-9 6z" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+                    <div class="story-cover-title">The Sufi Garden</div>
+                </div>
+                <div class="story-body">
+                    <span class="story-genre spiritual">Spiritual</span>
+                    <div class="story-title-hi">&#x0938;&#x0942;&#x092B;&#x093C;&#x0940; &#x092C;&#x093E;&#x0917;&#x093C;</div>
+                    <p class="story-desc">A mystic garden where every flower whispers wisdom</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ===================== AI STORY GENERATOR ===================== -->
+        <div class="ai-gen-section">
+            <div class="section-label">AI Story Generator</div>
+            <div class="section-title">Create Your Own Story</div>
+            <div class="section-subtitle">AI generates a unique bedtime story just for you</div>
+            <div class="ai-gen-card">
+                <div class="ai-gen-top">
+                    <div class="ai-gen-icon">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div>
+                        <div class="ai-gen-title">&#x0905;&#x092A;&#x0928;&#x0940; &#x0915;&#x0939;&#x093E;&#x0928;&#x0940; &#x092C;&#x0928;&#x093E;&#x090F;&#x0902;</div>
+                        <div class="ai-gen-sub">Tell us what you'd like, and we'll write it for you</div>
+                    </div>
+                </div>
+                <div class="ai-gen-sub-hi">&#x0915;&#x0943;&#x092A;&#x092F;&#x093E; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x0915;&#x093F; &#x0906;&#x092A; &#x0915;&#x094D;&#x092F;&#x093E; &#x091A;&#x093E;&#x0939;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="ai-gen-form">
+                    <input type="text" class="ai-prompt-input" id="storyPromptInput" placeholder="Create a story about... a moonlit forest, a gentle river..." />
+                    <select class="genre-select" id="genreSelect">
+                        <option value="Nature">Nature</option>
+                        <option value="Travel">Travel</option>
+                        <option value="Fantasy">Fantasy</option>
+                        <option value="Indian Folklore">Indian Folklore</option>
+                        <option value="Spiritual">Spiritual</option>
+                        <option value="Cozy">Cozy</option>
+                    </select>
+                    <button class="gen-btn" id="generateBtn">
+                        <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                        <span class="gen-label">Generate Story</span>
+                        <span class="gen-loading"><span class="gen-spinner"></span> Creating...</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===================== WIND-DOWN SECTION ===================== -->
+        <div class="winddown-section">
+            <div class="section-label">Prepare for Sleep</div>
+            <div class="section-title">Wind Down</div>
+            <div class="section-subtitle">Gentle practices to ease you into rest / &#x0928;&#x0940;&#x0902;&#x0926; &#x0915;&#x0940; &#x0924;&#x0948;&#x092F;&#x093E;&#x0930;&#x0940;</div>
+            <div class="winddown-grid">
+                <a href="breathe.html" class="winddown-card">
+                    <div class="winddown-icon breathe-icon">&#x1F32C;&#xFE0F;</div>
+                    <div>
+                        <div class="winddown-card-title">Breathing Exercises</div>
+                        <div class="winddown-card-title-hi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0915;&#x0940; &#x0915;&#x094D;&#x0930;&#x093F;&#x092F;&#x093E;&#x090F;&#x0902;</div>
+                        <div class="winddown-card-desc">4-7-8 breathing and more to calm your nervous system</div>
+                    </div>
+                </a>
+                <a href="meditate.html" class="winddown-card">
+                    <div class="winddown-icon meditate-icon">&#x1F9D8;</div>
+                    <div>
+                        <div class="winddown-card-title">Sleep Meditation</div>
+                        <div class="winddown-card-title-hi">&#x0928;&#x0940;&#x0902;&#x0926; &#x0915;&#x093E; &#x0927;&#x094D;&#x092F;&#x093E;&#x0928;</div>
+                        <div class="winddown-card-desc">Guided body scan and progressive relaxation</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
     </div>
-</section>
-
-<!-- ===================== MAIN ===================== -->
-<main class="page-wrap">
-
-    <!-- Story Library -->
-    <div class="section-label" data-i18n="sleep.library">Story Library</div>
-    <div class="stories-grid" id="storiesGrid">
-
-        <!-- 1. The Mountain Lake -->
-        <div class="story-card" data-story="mountain-lake">
-            <div class="story-cover cover-mountain-lake">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22h20L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 16L9 12l2 3 3-4 3.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></div>
-                <div class="story-cover-title">The Mountain Lake</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre nature">Nature</span>
-                <p class="story-desc">A journey to a serene mountain lake at sunset</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 2. The Spice Market -->
-        <div class="story-card" data-story="spice-market">
-            <div class="story-cover cover-spice-market">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="8" rx="0.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
-                <div class="story-cover-title">The Spice Market</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre folklore">Indian Folklore</span>
-                <p class="story-desc">Walking through a fragrant evening market in Jaipur</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 3. Ocean's Lullaby -->
-        <div class="story-card" data-story="ocean-lullaby">
-            <div class="story-cover cover-ocean-lullaby">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12c2-2.5 4.5-.5 6.5-2.5S13 7 15 9.5s4.5-.5 7-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 16c2-2.5 4.5-.5 6.5-2.5S13 11 15 13.5s4.5-.5 7-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></div>
-                <div class="story-cover-title">Ocean's Lullaby</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre nature">Nature</span>
-                <p class="story-desc">Waves gently washing over a moonlit shore</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 4. The Silk Road Traveler -->
-        <div class="story-card" data-story="silk-road">
-            <div class="story-cover cover-silk-road">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c-2 3-3 6-3 9s1 6 3 9M12 3c2 3 3 6 3 9s-1 6-3 9" stroke="currentColor" stroke-width="1.2"/></svg></div>
-                <div class="story-cover-title">The Silk Road Traveler</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre travel">Travel</span>
-                <p class="story-desc">A peaceful caravan crossing ancient deserts under stars</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 5. The Tea Garden -->
-        <div class="story-card" data-story="tea-garden">
-            <div class="story-cover cover-tea-garden">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12a7 7 0 007 7 7 7 0 007-7M17 12h2a2 2 0 010 4h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 8c0-1.5.5-3 2-3s2 1.5 2 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div>
-                <div class="story-cover-title">The Tea Garden</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre nature">Nature</span>
-                <p class="story-desc">Morning mist lifting over rolling green hills</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 6. Grandmother's Stories -->
-        <div class="story-card" data-story="grandmother">
-            <div class="story-cover cover-grandmother">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 14l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></div>
-                <div class="story-cover-title">Grandmother's Stories</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre folklore">Indian Folklore</span>
-                <p class="story-desc">A grandmother telling tales by lamplight</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 7. The Northern Lights -->
-        <div class="story-card" data-story="northern-lights">
-            <div class="story-cover cover-northern-lights">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M4.22 7.22l2.12 2.12M1 15h3M4.22 22.78l2.12-2.12M12 21v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/><path d="M15 9a6 6 0 11-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                <div class="story-cover-title">The Northern Lights</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre nature">Nature</span>
-                <p class="story-desc">Watching aurora borealis from a cozy cabin</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-        <!-- 8. The Sufi Garden -->
-        <div class="story-card" data-story="sufi-garden">
-            <div class="story-cover cover-sufi-garden">
-                <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c-4.97 0-9-2.69-9-6 0-2.21 1.79-4 4-4 .36 0 .72.05 1.06.14C9.42 8.58 10.58 6 12 6s2.58 2.58 3.94 6.14c.34-.09.7-.14 1.06-.14 2.21 0 4 1.79 4 4 0 3.31-4.03 6-9 6z" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-                <div class="story-cover-title">The Sufi Garden</div>
-            </div>
-            <div class="story-body">
-                <span class="story-genre spiritual">Spiritual</span>
-                <p class="story-desc">A mystic garden where every flower whispers wisdom</p>
-                <div class="story-bottom">
-                    <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
-                    <button class="story-begin" data-i18n="sleep.begin">Begin</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <!-- AI Story Generator -->
-    <div class="ai-gen-section">
-        <div class="section-label" data-i18n="sleep.ai_gen">AI Story Generator</div>
-        <div class="ai-gen-card">
-            <div class="ai-gen-top">
-                <div class="ai-gen-icon">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                </div>
-                <div>
-                    <div class="ai-gen-title" data-i18n="sleep.create_own">Create Your Own Story</div>
-                    <div class="ai-gen-sub" data-i18n="sleep.create_desc">AI generates a unique bedtime story just for you</div>
-                </div>
-            </div>
-            <div class="ai-gen-form">
-                <select class="genre-select" id="genreSelect">
-                    <option value="Nature">Nature</option>
-                    <option value="Travel">Travel</option>
-                    <option value="Fantasy">Fantasy</option>
-                    <option value="Indian Folklore">Indian Folklore</option>
-                    <option value="Spiritual">Spiritual</option>
-                    <option value="Cozy">Cozy</option>
-                </select>
-                <button class="gen-btn" id="generateBtn">
-                    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                    <span data-i18n="sleep.generate">Generate Story</span>
-                </button>
-            </div>
-        </div>
-    </div>
-
-</main>
+</div>
 
 <!-- ===================== STORY READER OVERLAY ===================== -->
 <div class="reader-overlay" id="readerOverlay">
@@ -738,14 +894,19 @@
     </div>
     <div class="reader-bottom">
         <div class="reader-controls-group">
-            <span class="reader-controls-label" data-i18n="sleep.ambient">Ambient</span>
+            <span class="reader-controls-label">Auto</span>
+            <button class="auto-advance-btn active" id="autoAdvanceBtn">On</button>
+        </div>
+        <div class="reader-controls-group">
+            <span class="reader-controls-label">Ambient</span>
             <button class="ambient-btn active" data-ambient="silence">Silence</button>
             <button class="ambient-btn" data-ambient="rain">Rain</button>
             <button class="ambient-btn" data-ambient="ocean">Ocean</button>
+            <button class="ambient-btn" data-ambient="crickets">Crickets</button>
             <button class="ambient-btn" data-ambient="wind">Wind</button>
         </div>
         <div class="reader-controls-group">
-            <span class="reader-controls-label" data-i18n="sleep.timer">Timer</span>
+            <span class="reader-controls-label">Timer</span>
             <button class="timer-btn" data-timer="15">15m</button>
             <button class="timer-btn" data-timer="30">30m</button>
             <button class="timer-btn" data-timer="45">45m</button>
@@ -754,42 +915,6 @@
         </div>
     </div>
 </div>
-
-<!-- ===================== FOOTER ===================== -->
-<footer class="footer">
-    <div class="footer-inner">
-        <div>
-            <div class="footer-brand">Sukoon</div>
-            <div class="footer-desc" data-i18n="footer.mission">Free mental wellness for every mind. Breathe, meditate, and find your calm &mdash; always free, always private.</div>
-            <div class="footer-desc-hi">&#x0939;&#x0930; &#x092E;&#x0928; &#x0915;&#x0947; &#x0932;&#x093F;&#x090F; &#x092E;&#x0941;&#x092B;&#x094D;&#x0924; &#x092E;&#x093E;&#x0928;&#x0938;&#x093F;&#x0915; &#x0938;&#x094D;&#x0935;&#x093E;&#x0938;&#x094D;&#x0925;&#x094D;&#x092F;</div>
-            <div class="footer-priv">
-                <svg viewBox="0 0 12 12" fill="none"><rect x="1.5" y="5.5" width="9" height="5.5" rx="1.5" stroke="currentColor" stroke-width="1"/><path d="M4 5.5V3.8a2 2 0 014 0V5.5" stroke="currentColor" stroke-width="1"/></svg>
-                <span data-i18n="footer.privacy_line">No data collected</span> &middot; 100% private
-            </div>
-        </div>
-        <div>
-            <div class="footer-hd" data-i18n="footer.practice">Practice</div>
-            <div class="footer-links">
-                <a href="breathe.html" data-i18n="nav.breathe">Breathe</a>
-                <a href="meditate.html" data-i18n="nav.meditate">Meditate</a>
-                <a href="sounds.html" data-i18n="nav.sounds">Sounds</a>
-                <a href="sleep.html" data-i18n="nav.sleep">Sleep</a>
-                <a href="journal.html" data-i18n="nav.journal">Journal</a>
-            </div>
-        </div>
-        <div>
-            <div class="footer-hd" data-i18n="footer.explore">Explore</div>
-            <div class="footer-links">
-                <a href="friend.html" data-i18n="nav.friend">AI Friend</a>
-                <a href="wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-                <a href="quotes.html" data-i18n="nav.quotes">Quotes</a>
-                <a href="videos.html" data-i18n="nav.videos">Videos</a>
-                <a href="privacy.html" data-i18n="nav.privacy">Privacy</a>
-            </div>
-        </div>
-    </div>
-    <div class="footer-btm">&copy; 2026 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></div>
-</footer>
 
 <script>
 (function(){
@@ -1030,6 +1155,7 @@
     var progressFill = document.getElementById('readerProgressFill');
     var progressLabel = document.getElementById('readerProgressLabel');
     var timerCD = document.getElementById('readerTimerCD');
+    var autoAdvanceBtn = document.getElementById('autoAdvanceBtn');
 
     /* ============================================================
        STATE
@@ -1040,6 +1166,7 @@
     var sleepTimerTimeout = null;
     var sleepTimerInterval = null;
     var sleepTimerRemaining = 0;
+    var autoAdvanceEnabled = true;
 
     /* Audio engine for ambient sounds */
     var audioCtx = null;
@@ -1051,6 +1178,7 @@
     var ambientFiles = {
         rain: '/audio/rain.wav',
         ocean: '/audio/ocean.wav',
+        crickets: '/audio/crickets.wav',
         wind: '/audio/wind.wav'
     };
 
@@ -1133,10 +1261,12 @@
         /* Reveal first paragraph immediately */
         revealNext();
 
-        /* Then reveal one every 20 seconds */
-        revealInterval = setInterval(function() {
-            revealNext();
-        }, 20000);
+        /* Then reveal one every 20 seconds if auto-advance is on */
+        if (autoAdvanceEnabled) {
+            revealInterval = setInterval(function() {
+                revealNext();
+            }, 20000);
+        }
     }
 
     function revealNext() {
@@ -1223,11 +1353,6 @@
        EVENT LISTENERS
        ============================================================ */
 
-    /* Mobile nav */
-    document.getElementById('menuBtn').addEventListener('click', function() {
-        document.getElementById('topNav').classList.toggle('open');
-    });
-
     /* Story card clicks */
     document.getElementById('storiesGrid').addEventListener('click', function(e) {
         var btn = e.target.closest('.story-begin');
@@ -1247,6 +1372,20 @@
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && overlay.classList.contains('open')) {
             closeReader();
+        }
+    });
+
+    /* Auto-advance toggle */
+    autoAdvanceBtn.addEventListener('click', function() {
+        autoAdvanceEnabled = !autoAdvanceEnabled;
+        autoAdvanceBtn.classList.toggle('active', autoAdvanceEnabled);
+        autoAdvanceBtn.textContent = autoAdvanceEnabled ? 'On' : 'Off';
+
+        if (autoAdvanceEnabled && !revealInterval && overlay.classList.contains('open')) {
+            revealInterval = setInterval(function() { revealNext(); }, 20000);
+        } else if (!autoAdvanceEnabled && revealInterval) {
+            clearInterval(revealInterval);
+            revealInterval = null;
         }
     });
 
@@ -1273,13 +1412,17 @@
        ============================================================ */
     var generateBtn = document.getElementById('generateBtn');
     var genreSelect = document.getElementById('genreSelect');
+    var storyPromptInput = document.getElementById('storyPromptInput');
 
     generateBtn.addEventListener('click', function() {
         var genre = genreSelect.value;
+        var customPrompt = storyPromptInput.value.trim();
         generateBtn.disabled = true;
+        generateBtn.classList.add('loading');
 
         /* Open reader with loading state */
-        readerTitle.textContent = 'Your ' + genre + ' Story';
+        var storyTitle = customPrompt ? 'Your Story' : 'Your ' + genre + ' Story';
+        readerTitle.textContent = storyTitle;
         readerGenre.textContent = genre + ' (AI Generated)';
         readerText.innerHTML = '';
         readerLoading.classList.add('show');
@@ -1295,7 +1438,9 @@
         document.body.style.overflow = 'hidden';
 
         var systemPrompt = 'You are a sleep story narrator. Write a calming, slow-paced bedtime story in second person present tense. The story should be 10 paragraphs long, rich in sensory details, progressively slower and drowsier. Genre: ' + genre + '. Make it warm, safe, and peaceful. Return ONLY the story text with paragraphs separated by double newlines. No titles, no headings, no labels.';
-        var userPrompt = 'Write me a sleep story in the ' + genre + ' genre.';
+        var userPrompt = customPrompt
+            ? 'Write me a sleep story about: ' + customPrompt + '. Genre: ' + genre + '.'
+            : 'Write me a sleep story in the ' + genre + ' genre.';
 
         fetch('/api/chat', {
             method: 'POST',
@@ -1314,12 +1459,13 @@
         .then(function(data) {
             readerLoading.classList.remove('show');
             generateBtn.disabled = false;
+            generateBtn.classList.remove('loading');
 
             var text = data.reply || data.content || data.message || '';
             var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0; });
 
             if (paragraphs.length === 0) {
-                readerText.innerHTML = '<p class="visible" style="color:rgba(199,190,255,0.4);">Could not generate a story. Please try again.</p>';
+                readerText.innerHTML = '<p class="visible" style="color:#64748B;">Could not generate a story. Please try again.</p>';
                 return;
             }
 
@@ -1332,14 +1478,17 @@
 
             /* Reveal first immediately, then every 20s */
             revealNext();
-            revealInterval = setInterval(function() {
-                revealNext();
-            }, 20000);
+            if (autoAdvanceEnabled) {
+                revealInterval = setInterval(function() {
+                    revealNext();
+                }, 20000);
+            }
         })
         .catch(function(err) {
             console.error('AI generation failed:', err);
             readerLoading.classList.remove('show');
             generateBtn.disabled = false;
+            generateBtn.classList.remove('loading');
             readerText.innerHTML = '<p class="visible" style="color:rgba(239,68,68,0.6);">Unable to generate story. Please check your connection and try again.</p>';
         });
     });

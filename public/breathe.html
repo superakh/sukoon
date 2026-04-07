@@ -14,8 +14,8 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #374151;
-            background: #FAFAF7;
+            color: #F1F5F9;
+            background: #0F172A;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -24,161 +24,118 @@
 
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== TOPBAR ===================== */
+        /* ===================== TOP HEADER ===================== */
         .topbar {
-            position: fixed;
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            z-index: 100;
+            height: 64px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
-            height: 72px;
-            background: rgba(250, 250, 247, 0.8);
+            padding: 0 1.5rem;
+            background: rgba(15, 23, 42, 0.8);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .brand {
+            text-decoration: none;
+            color: #F1F5F9;
             font-family: 'DM Serif Display', serif;
             font-size: 1.5rem;
-            color: #111827;
             letter-spacing: -0.02em;
         }
 
-        .nav {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .nav a {
-            padding: 8px 14px;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #6B7280;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .nav a:hover {
-            background: rgba(79, 70, 229, 0.06);
-            color: #4F46E5;
-        }
-
-        .nav a.active {
-            background: #4F46E5;
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        .topbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-picker {
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #6B7280;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            -webkit-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 10px center;
-            padding-right: 28px;
-        }
-
-        .lang-picker:hover { border-color: rgba(79, 70, 229, 0.3); }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #374151;
-            cursor: pointer;
-            padding: 4px;
-            line-height: 1;
-        }
-
-        .mobile-nav-overlay {
-            display: none;
+        /* ===================== BOTTOM NAV ===================== */
+        .bottom-nav {
             position: fixed;
-            top: 72px;
+            bottom: 0;
             left: 0;
             right: 0;
-            background: rgba(250, 250, 247, 0.98);
+            height: 64px;
+            background: rgba(15, 23, 42, 0.9);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 16px 24px 24px;
-            z-index: 999;
-            flex-direction: column;
-            gap: 4px;
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .mobile-nav-overlay.open {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
             display: flex;
-            transform: translateY(0);
-            opacity: 1;
+            align-items: center;
+            justify-content: space-around;
+            z-index: 1000;
+            padding-bottom: env(safe-area-inset-bottom);
         }
 
-        .mobile-nav-overlay a {
-            padding: 14px 16px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #374151;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        .bottom-nav a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            text-decoration: none;
+            color: #64748B;
+            font-size: 0.65rem;
+            font-family: 'Inter', sans-serif;
+            transition: color 0.2s ease;
         }
 
-        .mobile-nav-overlay a:hover,
-        .mobile-nav-overlay a.active {
-            background: rgba(79, 70, 229, 0.06);
-            color: #4F46E5;
-        }
+        .bottom-nav a:hover { color: #94A3B8; }
+        .bottom-nav a.active { color: #7C3AED; }
 
-        @media (max-width: 900px) {
-            .nav { display: none; }
-            .mobile-menu-btn { display: block; }
-            .topbar { padding: 0 1.25rem; }
+        /* ===================== DESKTOP SIDEBAR (>900px) ===================== */
+        @media (min-width: 901px) {
+            .bottom-nav {
+                position: fixed;
+                top: 64px;
+                left: 0;
+                bottom: 0;
+                right: auto;
+                width: 80px;
+                height: auto;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 24px 0 24px;
+                gap: 8px;
+                border-top: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.06);
+            }
+
+            .bottom-nav a {
+                width: 100%;
+                padding: 12px 0;
+                font-size: 0.6rem;
+                gap: 6px;
+            }
+
+            .bottom-nav a.active {
+                background: rgba(124, 58, 237, 0.08);
+                border-right: 2px solid #7C3AED;
+            }
+
+            .breathe-page {
+                margin-left: 80px;
+            }
         }
 
         /* ===================== BREATHE PAGE ===================== */
         .breathe-page {
             min-height: 100vh;
-            padding-top: 72px;
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-bottom: 80px;
         }
 
-        /* Gradient mesh background */
+        /* Ambient background glows */
         .breathe-page::before {
             content: '';
             position: fixed;
-            top: 0;
+            top: -10%;
             left: -10%;
             width: 55%;
             height: 55%;
-            background: radial-gradient(ellipse, rgba(79, 70, 229, 0.05) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(124, 58, 237, 0.08) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -190,7 +147,7 @@
             right: -10%;
             width: 50%;
             height: 50%;
-            background: radial-gradient(ellipse, rgba(16, 185, 129, 0.04) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -201,7 +158,7 @@
             right: 20%;
             width: 35%;
             height: 35%;
-            background: radial-gradient(ellipse, rgba(245, 158, 11, 0.03) 0%, transparent 70%);
+            background: radial-gradient(ellipse, rgba(245, 158, 11, 0.04) 0%, transparent 70%);
             pointer-events: none;
             z-index: 0;
         }
@@ -221,36 +178,64 @@
         /* ===================== TECHNIQUE SELECTOR ===================== */
         .technique-selector {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             flex-wrap: wrap;
             justify-content: center;
             margin-bottom: 48px;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.1s;
         }
 
         .technique-btn {
             padding: 10px 20px;
             border-radius: 100px;
-            border: 1.5px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             font-size: 0.8rem;
             font-weight: 600;
-            color: #6B7280;
+            color: #94A3B8;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             white-space: nowrap;
         }
 
         .technique-btn:hover {
-            border-color: rgba(79, 70, 229, 0.25);
-            color: #4F46E5;
+            border-color: rgba(124, 58, 237, 0.35);
+            color: #C4B5FD;
+            background: rgba(124, 58, 237, 0.08);
         }
 
         .technique-btn.active {
-            background: #4F46E5;
+            background: #7C3AED;
             color: #FFFFFF;
-            border-color: #4F46E5;
-            box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+            border-color: #7C3AED;
+            box-shadow: 0 2px 12px rgba(124, 58, 237, 0.35), 0 0 24px rgba(124, 58, 237, 0.15);
+        }
+
+        /* Unique accent colors per technique */
+        .technique-btn[data-technique="478"].active {
+            background: #7C3AED;
+            border-color: #7C3AED;
+            box-shadow: 0 2px 12px rgba(124, 58, 237, 0.35), 0 0 24px rgba(124, 58, 237, 0.15);
+        }
+        .technique-btn[data-technique="box"].active {
+            background: #2563EB;
+            border-color: #2563EB;
+            box-shadow: 0 2px 12px rgba(37, 99, 235, 0.35), 0 0 24px rgba(37, 99, 235, 0.15);
+        }
+        .technique-btn[data-technique="relax"].active {
+            background: #059669;
+            border-color: #059669;
+            box-shadow: 0 2px 12px rgba(5, 150, 105, 0.35), 0 0 24px rgba(5, 150, 105, 0.15);
+        }
+        .technique-btn[data-technique="energize"].active {
+            background: #D97706;
+            border-color: #D97706;
+            box-shadow: 0 2px 12px rgba(217, 119, 6, 0.35), 0 0 24px rgba(217, 119, 6, 0.15);
         }
 
         /* ===================== BREATHING CIRCLE ===================== */
@@ -262,12 +247,16 @@
             align-items: center;
             justify-content: center;
             margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.25s;
         }
 
+        /* Outer decorative rings */
         .circle-ring {
             position: absolute;
             border-radius: 50%;
-            border: 1px solid rgba(79, 70, 229, 0.06);
+            border: 1px solid rgba(124, 58, 237, 0.08);
         }
 
         .circle-ring-1 {
@@ -282,7 +271,7 @@
             height: 240px;
             top: 20px;
             left: 20px;
-            border-color: rgba(79, 70, 229, 0.04);
+            border-color: rgba(124, 58, 237, 0.05);
         }
 
         .circle-ring-3 {
@@ -290,26 +279,44 @@
             height: 200px;
             top: 40px;
             left: 40px;
-            border-color: rgba(79, 70, 229, 0.03);
+            border-color: rgba(124, 58, 237, 0.03);
         }
 
+        /* Morphing blob breath circle */
         .breath-circle {
             width: 140px;
             height: 140px;
             border-radius: 50%;
-            background: radial-gradient(circle at 45% 40%, #FFFFFF 0%, rgba(79, 70, 229, 0.08) 60%, rgba(79, 70, 229, 0.15) 100%);
+            background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #6D28D9 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             z-index: 2;
-            box-shadow: 0 4px 24px rgba(79, 70, 229, 0.08), 0 0 0 1px rgba(79, 70, 229, 0.04);
-            /* transition is set dynamically by JS based on technique timing */
-            transition: transform 4s cubic-bezier(0.4,0,0.2,1);
+            box-shadow:
+                0 0 30px rgba(124, 58, 237, 0.25),
+                0 0 60px rgba(124, 58, 237, 0.1),
+                inset 0 -4px 12px rgba(0, 0, 0, 0.15);
+            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1),
+                        box-shadow 4s cubic-bezier(0.4, 0, 0.2, 1),
+                        border-radius 4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: blobMorph 8s ease-in-out infinite;
+        }
+
+        @keyframes blobMorph {
+            0%, 100% { border-radius: 50% 50% 50% 50%; }
+            25% { border-radius: 47% 53% 46% 54%; }
+            50% { border-radius: 53% 47% 54% 46%; }
+            75% { border-radius: 46% 54% 53% 47%; }
         }
 
         .breath-circle.expanded {
             transform: scale(1.7);
+            box-shadow:
+                0 0 50px rgba(124, 58, 237, 0.4),
+                0 0 100px rgba(124, 58, 237, 0.2),
+                0 0 150px rgba(124, 58, 237, 0.08),
+                inset 0 -4px 12px rgba(0, 0, 0, 0.1);
         }
 
         .breath-circle.hold {
@@ -319,18 +326,20 @@
         .phase-text {
             font-family: 'DM Serif Display', serif;
             font-size: 1.1rem;
-            color: #111827;
+            color: #FFFFFF;
             letter-spacing: -0.02em;
             text-align: center;
             line-height: 1.3;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
         }
 
         .phase-text-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             font-size: 0.7rem;
-            color: #9CA3AF;
+            color: rgba(255, 255, 255, 0.65);
             text-align: center;
             margin-top: 2px;
+            text-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
         }
 
         /* ===================== TIMER ===================== */
@@ -338,49 +347,60 @@
             font-family: 'Inter', sans-serif;
             font-size: 2.5rem;
             font-weight: 300;
-            color: #111827;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
             font-variant-numeric: tabular-nums;
             margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.35s;
         }
 
         .cycle-counter {
             font-size: 0.8rem;
             font-weight: 500;
-            color: #9CA3AF;
+            color: #64748B;
             margin-bottom: 32px;
             min-height: 20px;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.4s;
         }
 
         /* ===================== DURATION SELECTOR ===================== */
         .duration-selector {
             display: flex;
-            gap: 6px;
+            gap: 8px;
             margin-bottom: 28px;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.45s;
         }
 
         .duration-btn {
             padding: 8px 18px;
             border-radius: 100px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             font-size: 0.75rem;
             font-weight: 600;
-            color: #6B7280;
+            color: #94A3B8;
             cursor: pointer;
             font-family: 'Inter', sans-serif;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .duration-btn:hover {
-            border-color: rgba(79, 70, 229, 0.25);
-            color: #4F46E5;
+            border-color: rgba(124, 58, 237, 0.3);
+            color: #C4B5FD;
         }
 
         .duration-btn.active {
-            background: rgba(79, 70, 229, 0.08);
-            color: #4F46E5;
-            border-color: rgba(79, 70, 229, 0.2);
+            background: rgba(124, 58, 237, 0.12);
+            color: #C4B5FD;
+            border-color: rgba(124, 58, 237, 0.3);
         }
 
         /* ===================== START / STOP ===================== */
@@ -388,45 +408,48 @@
             display: flex;
             gap: 12px;
             margin-bottom: 48px;
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.5s;
         }
 
         .btn-start {
             padding: 16px 40px;
             border-radius: 14px;
-            background: #4F46E5;
+            background: linear-gradient(135deg, #7C3AED, #6D28D9);
             color: #FFFFFF;
             font-size: 1rem;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
             border: none;
             cursor: pointer;
-            box-shadow: 0 1px 3px rgba(79, 70, 229, 0.2), 0 8px 24px rgba(79, 70, 229, 0.15);
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            box-shadow: 0 2px 8px rgba(124, 58, 237, 0.25), 0 8px 32px rgba(124, 58, 237, 0.2);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .btn-start:hover {
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25), 0 12px 32px rgba(79, 70, 229, 0.2);
+            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35), 0 12px 40px rgba(124, 58, 237, 0.25);
         }
 
         .btn-stop {
             padding: 16px 40px;
             border-radius: 14px;
             background: transparent;
-            color: #374151;
+            color: #94A3B8;
             font-size: 1rem;
             font-weight: 600;
             font-family: 'Inter', sans-serif;
-            border: 1.5px solid rgba(0,0,0,0.12);
+            border: 1.5px solid rgba(255, 255, 255, 0.12);
             cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
             display: none;
         }
 
         .btn-stop:hover {
-            border-color: rgba(239, 68, 68, 0.3);
-            color: #EF4444;
-            background: rgba(239, 68, 68, 0.03);
+            border-color: rgba(239, 68, 68, 0.4);
+            color: #F87171;
+            background: rgba(239, 68, 68, 0.06);
         }
 
         .btn-stop.visible { display: inline-flex; }
@@ -436,46 +459,52 @@
         .info-card {
             width: 100%;
             max-width: 480px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
+            background: rgba(30, 41, 59, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.06);
             border-radius: 20px;
             padding: 28px 28px 24px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 255, 255, 0.02);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            animation: fadeSlideUp 0.6s ease forwards;
+            animation-delay: 0.6s;
         }
 
         .info-card:hover {
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3), 0 0 40px rgba(124, 58, 237, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .info-label {
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.7rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #4F46E5;
+            letter-spacing: 0.12em;
+            color: #7C3AED;
             margin-bottom: 8px;
         }
 
         .info-title {
             font-family: 'DM Serif Display', serif;
             font-size: 1.25rem;
-            color: #111827;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
             margin-bottom: 10px;
         }
 
         .info-desc {
             font-size: 0.875rem;
-            color: #6B7280;
-            line-height: 1.65;
+            color: #94A3B8;
+            line-height: 1.7;
             margin-bottom: 8px;
         }
 
         .info-hindi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             font-size: 0.8rem;
-            color: #9CA3AF;
+            color: #64748B;
             line-height: 1.6;
         }
 
@@ -484,7 +513,7 @@
             gap: 16px;
             margin-top: 16px;
             padding-top: 16px;
-            border-top: 1px solid rgba(0,0,0,0.04);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
         }
 
         .timing-item {
@@ -497,7 +526,7 @@
         .timing-number {
             font-family: 'DM Serif Display', serif;
             font-size: 1.5rem;
-            color: #111827;
+            color: #F1F5F9;
             letter-spacing: -0.02em;
         }
 
@@ -506,90 +535,19 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #9CA3AF;
+            color: #64748B;
         }
 
-        /* ===================== FOOTER ===================== */
-        .footer {
-            background: #F3F4F6;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding: 56px 24px 32px;
-            width: 100%;
-            position: relative;
-            z-index: 1;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-            margin-bottom: 12px;
-        }
-
-        .footer-mission {
-            font-size: 0.95rem;
-            color: #6B7280;
-            max-width: 480px;
-            margin: 0 auto 8px;
-            line-height: 1.6;
-        }
-
-        .footer-mission-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: #9CA3AF;
-            margin-bottom: 24px;
-        }
-
-        .footer-privacy {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            border-radius: 100px;
-            background: rgba(16, 185, 129, 0.06);
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #059669;
-            margin-bottom: 28px;
-        }
-
-        .footer-privacy svg { width: 12px; height: 12px; }
-
-        .footer-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 32px;
-        }
-
-        .footer-nav a {
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #6B7280;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .footer-nav a:hover {
-            color: #4F46E5;
-            background: rgba(79, 70, 229, 0.04);
-        }
-
-        .footer-copy {
-            font-size: 0.75rem;
-            color: #9CA3AF;
+        /* ===================== STAGGERED FADE-IN ===================== */
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(16px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===================== RESPONSIVE ===================== */
@@ -602,7 +560,7 @@
             .breath-circle { width: 120px; height: 120px; }
             .phase-text { font-size: 0.95rem; }
             .session-timer { font-size: 2rem; }
-            .technique-selector { gap: 4px; }
+            .technique-selector { gap: 6px; }
             .technique-btn { padding: 8px 14px; font-size: 0.75rem; }
             .info-card { padding: 24px 20px 20px; }
         }
@@ -619,43 +577,10 @@
 </head>
 <body>
 
-    <!-- TOPBAR -->
+    <!-- TOP HEADER -->
     <header class="topbar">
-        <a href="/" class="brand">Sukoon</a>
-        <nav class="nav">
-            <a href="/breathe.html" class="active" data-i18n="nav.breathe">Breathe</a>
-            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-        </nav>
-        <div class="topbar-actions">
-            <select class="lang-picker">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-            </select>
-            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
-        </div>
+        <a href="/" class="brand">&#9789; Sukoon</a>
     </header>
-
-    <!-- Mobile nav -->
-    <div class="mobile-nav-overlay" id="mobileNav">
-        <a href="/breathe.html" class="active" data-i18n="nav.breathe">Breathe</a>
-        <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-        <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-        <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-        <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-        <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-        <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-        <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-    </div>
 
     <!-- BREATHE PAGE -->
     <main class="breathe-page">
@@ -677,7 +602,7 @@
                 <div class="circle-ring circle-ring-3"></div>
                 <div class="breath-circle" id="breathCircle">
                     <div class="phase-text" id="phaseText" data-i18n="breathe.ready">Ready</div>
-                    <div class="phase-text-hi" id="phaseHindi">तैयार</div>
+                    <div class="phase-text-hi" id="phaseHindi">&zwj;&#2340;&#2376;&#2351;&#2366;&#2352;</div>
                 </div>
             </div>
 
@@ -704,7 +629,7 @@
                 <div class="info-label" data-i18n="breathe.technique_label">TECHNIQUE</div>
                 <div class="info-title" id="infoTitle">4-7-8 Calm</div>
                 <div class="info-desc" id="infoDesc">Developed by Dr. Andrew Weil, the 4-7-8 technique is a natural tranquilizer for the nervous system. Inhale for 4 seconds, hold for 7, exhale for 8. Proven to reduce anxiety and promote sleep.</div>
-                <div class="info-hindi" id="infoHindi">4-7-8 तकनीक तंत्रिका तंत्र के लिए एक प्राकृतिक शांतिकारक है। 4 सेकंड श्वास लें, 7 रोकें, 8 छोड़ें।</div>
+                <div class="info-hindi" id="infoHindi">4-7-8 &#2340;&#2325;&#2344;&#2368;&#2325; &#2340;&#2306;&#2340;&#2381;&#2352;&#2367;&#2325;&#2366; &#2340;&#2306;&#2340;&#2381;&#2352; &#2325;&#2375; &#2354;&#2367;&#2319; &#2319;&#2325; &#2346;&#2381;&#2352;&#2366;&#2325;&#2371;&#2340;&#2367;&#2325; &#2358;&#2366;&#2306;&#2340;&#2367;&#2325;&#2366;&#2352;&#2325; &#2361;&#2376;&#2404; 4 &#2360;&#2375;&#2325;&#2306;&#2337; &#2358;&#2381;&#2357;&#2366;&#2360; &#2354;&#2375;&#2306;, 7 &#2352;&#2379;&#2325;&#2375;&#2306;, 8 &#2331;&#2379;&#2337;&#2364;&#2375;&#2306;&#2404;</div>
                 <div class="info-timing" id="infoTiming">
                     <div class="timing-item"><div class="timing-number">4s</div><div class="timing-label">Inhale</div></div>
                     <div class="timing-item"><div class="timing-number">7s</div><div class="timing-label">Hold</div></div>
@@ -715,30 +640,29 @@
         </div>
     </main>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">Sukoon</div>
-            <p class="footer-mission" data-i18n="footer.mission">Free mental wellness tools for every soul on Earth.</p>
-            <p class="footer-mission-hi">पृथ्वी पर हर आत्मा के लिए मुफ़्त मानसिक स्वास्थ्य उपकरण।</p>
-            <div class="footer-privacy">
-                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
-                <span data-i18n="footer.privacy_line">Zero data collection</span>
-            </div>
-            <nav class="footer-nav">
-                <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-                <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-                <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-                <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-                <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-                <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-                <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-                <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-                <a href="/privacy.html" data-i18n="nav.privacy">Privacy</a>
-            </nav>
-            <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
-        </div>
-    </footer>
+    <!-- BOTTOM NAV -->
+    <nav class="bottom-nav">
+        <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:0.65rem;font-family:Inter,sans-serif">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:0.65rem;font-family:Inter,sans-serif">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
+            <span>Explore</span>
+        </a>
+        <a href="/breathe.html" class="active" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:0.65rem;font-family:Inter,sans-serif">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
+            <span>Breathe</span>
+        </a>
+        <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:0.65rem;font-family:Inter,sans-serif">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;font-size:0.65rem;font-family:Inter,sans-serif">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+            <span>You</span>
+        </a>
+    </nav>
 
     <script>
     (function() {
@@ -869,7 +793,7 @@
             infoTiming.innerHTML = timingHtml;
         }
 
-        // ===================== AUDIO =====================
+        // ===================== AUDIO (528Hz TONES) =====================
         function playTone(freq, duration) {
             try {
                 if (!audioCtx) {
@@ -1006,22 +930,6 @@
         // ===================== EVENT LISTENERS =====================
         btnStart.addEventListener('click', startSession);
         btnStop.addEventListener('click', stopSession);
-
-        // ===================== MOBILE MENU =====================
-        var menuBtn = document.getElementById('menuBtn');
-        var mobileNav = document.getElementById('mobileNav');
-        var menuOpen = false;
-
-        menuBtn.addEventListener('click', function() {
-            menuOpen = !menuOpen;
-            if (menuOpen) {
-                mobileNav.classList.add('open');
-                menuBtn.textContent = '\u2715';
-            } else {
-                mobileNav.classList.remove('open');
-                menuBtn.textContent = '\u2630';
-            }
-        });
 
         // Initialize
         updateInfoCard();

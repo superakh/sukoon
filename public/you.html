@@ -1,0 +1,1878 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>You - Sukoon</title>
+    <meta name="description" content="Your wellness dashboard. Track streaks, mood trends, journal entries, badges, and settings. Everything stays on your device.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+
+        :root {
+            --bg: #0F172A;
+            --bg-card: #1E293B;
+            --bg-card-hover: #253449;
+            --bg-surface: #172033;
+            --text-primary: #F1F5F9;
+            --text-secondary: #94A3B8;
+            --text-muted: #64748B;
+            --border: rgba(255,255,255,0.06);
+            --border-light: rgba(255,255,255,0.1);
+            --accent-purple: #8B5CF6;
+            --accent-amber: #F59E0B;
+            --accent-green: #10B981;
+            --accent-blue: #3B82F6;
+            --accent-pink: #EC4899;
+            --accent-indigo: #6366F1;
+            --glass: rgba(30,41,59,0.7);
+            --glass-border: rgba(255,255,255,0.08);
+            --nav-bg: rgba(15,23,42,0.85);
+        }
+
+        [data-theme="light"] {
+            --bg: #FAFAF7;
+            --bg-card: #FFFFFF;
+            --bg-card-hover: #F8FAFC;
+            --bg-surface: #F1F5F9;
+            --text-primary: #111827;
+            --text-secondary: #6B7280;
+            --text-muted: #9CA3AF;
+            --border: rgba(0,0,0,0.06);
+            --border-light: rgba(0,0,0,0.1);
+            --glass: rgba(255,255,255,0.7);
+            --glass-border: rgba(0,0,0,0.06);
+            --nav-bg: rgba(250,250,247,0.85);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-primary);
+            background: var(--bg);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            padding-bottom: 80px;
+        }
+
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== TOPBAR ===================== */
+        .topbar {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 2rem; height: 72px;
+            background: var(--nav-bg);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-bottom: 1px solid var(--border);
+        }
+        .topbar-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.4rem; color: var(--text-primary);
+            display: flex; align-items: center; gap: 0.5rem;
+            white-space: nowrap;
+        }
+        .topbar-nav { display: flex; align-items: center; gap: 2px; }
+        .topbar-nav a {
+            padding: 0.45rem 0.85rem; border-radius: 10px;
+            font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
+            transition: all 0.2s ease;
+        }
+        .topbar-nav a:hover { background: rgba(139,92,246,0.1); color: var(--accent-purple); }
+        .topbar-nav a.active {
+            background: rgba(139,92,246,0.15); color: var(--accent-purple); font-weight: 600;
+        }
+        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
+        .lang-select {
+            padding: 0.4rem 0.65rem; border-radius: 8px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-card);
+            font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
+            cursor: pointer; outline: none; font-family: 'Inter', sans-serif;
+        }
+        .lang-select:focus { border-color: var(--accent-purple); }
+        .mobile-nav-toggle {
+            display: none; background: none; border: none;
+            color: var(--text-primary); cursor: pointer; padding: 4px;
+        }
+        .mobile-nav-toggle svg { width: 24px; height: 24px; }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle { display: flex; align-items: center; }
+            .topbar { padding: 0 1rem; }
+            .topbar-nav { display: none; }
+            .topbar-nav.open {
+                display: flex; flex-direction: column;
+                position: absolute; top: 72px; left: 0; right: 0;
+                background: var(--nav-bg);
+                backdrop-filter: blur(24px);
+                padding: 0.75rem;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            }
+            .topbar-nav.open a { padding: 0.85rem 1rem; font-size: 0.95rem; width: 100%; }
+        }
+
+        /* ===================== MAIN ===================== */
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: calc(72px + 32px) 20px 40px;
+        }
+
+        /* ===================== PROFILE HEADER ===================== */
+        .profile-header {
+            text-align: center;
+            margin-bottom: 40px;
+            animation: fadeSlideUp 0.6s ease-out;
+        }
+        .profile-header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: var(--text-primary);
+            margin-bottom: 4px;
+            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .profile-header .subtitle-hi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .profile-header .tagline {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-weight: 300;
+        }
+
+        /* ===================== STATS CARDS ===================== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+            margin-bottom: 36px;
+        }
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 22px 16px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(12px);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            animation: fadeSlideUp 0.6s ease-out both;
+        }
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.15s; }
+        .stat-card:nth-child(3) { animation-delay: 0.2s; }
+        .stat-card:nth-child(4) { animation-delay: 0.25s; }
+        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
+        .stat-card::before {
+            content: '';
+            position: absolute; top: 0; left: 0; right: 0;
+            height: 3px;
+        }
+        .stat-card.s-purple::before { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
+        .stat-card.s-amber::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
+        .stat-card.s-green::before { background: linear-gradient(90deg, #10B981, #34D399); }
+        .stat-card.s-blue::before { background: linear-gradient(90deg, #3B82F6, #60A5FA); }
+        .stat-emoji {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .stat-number {
+            font-size: 1.9rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 4px;
+        }
+        .s-purple .stat-number { color: #A78BFA; }
+        .s-amber .stat-number { color: #FBBF24; }
+        .s-green .stat-number { color: #34D399; }
+        .s-blue .stat-number { color: #60A5FA; }
+        .stat-label {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .stat-card { padding: 18px 12px; }
+            .stat-number { font-size: 1.5rem; }
+        }
+
+        /* ===================== SECTION COMMON ===================== */
+        .section {
+            margin-bottom: 36px;
+            animation: fadeSlideUp 0.6s ease-out both;
+        }
+        .section:nth-of-type(2) { animation-delay: 0.2s; }
+        .section:nth-of-type(3) { animation-delay: 0.3s; }
+        .section:nth-of-type(4) { animation-delay: 0.35s; }
+        .section:nth-of-type(5) { animation-delay: 0.4s; }
+        .section:nth-of-type(6) { animation-delay: 0.45s; }
+        .section-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            color: var(--text-primary);
+            margin-bottom: 4px;
+        }
+        .section-subtitle {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+        .card-wrap {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 24px;
+            backdrop-filter: blur(12px);
+        }
+
+        /* ===================== HEATMAP ===================== */
+        .heatmap-container {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .heatmap-grid {
+            display: grid;
+            grid-template-rows: repeat(7, 1fr);
+            grid-auto-flow: column;
+            gap: 3px;
+            min-width: fit-content;
+        }
+        .heatmap-cell {
+            width: 14px; height: 14px;
+            border-radius: 3px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            transition: background 0.2s ease;
+            position: relative;
+        }
+        .heatmap-cell.today { outline: 2px solid var(--accent-purple); outline-offset: 1px; }
+        .heatmap-cell.level-1 { background: #064E3B; border-color: #065F46; }
+        .heatmap-cell.level-2 { background: #047857; border-color: #059669; }
+        .heatmap-cell.level-3 { background: #10B981; border-color: #34D399; }
+        .heatmap-cell.level-4 { background: #34D399; border-color: #6EE7B7; }
+
+        [data-theme="light"] .heatmap-cell.level-1 { background: #D1FAE5; border-color: #A7F3D0; }
+        [data-theme="light"] .heatmap-cell.level-2 { background: #6EE7B7; border-color: #34D399; }
+        [data-theme="light"] .heatmap-cell.level-3 { background: #34D399; border-color: #10B981; }
+        [data-theme="light"] .heatmap-cell.level-4 { background: #10B981; border-color: #059669; }
+
+        .heatmap-legend {
+            display: flex; align-items: center; gap: 6px;
+            margin-top: 12px; font-size: 0.72rem; color: var(--text-muted);
+        }
+        .heatmap-legend .swatch {
+            width: 12px; height: 12px; border-radius: 2px; display: inline-block;
+        }
+        .heatmap-months {
+            display: flex; gap: 0; margin-bottom: 6px;
+            font-size: 0.7rem; color: var(--text-muted);
+        }
+        .heatmap-months span { min-width: 34px; text-align: left; }
+        .heatmap-days {
+            display: flex; flex-direction: column; gap: 3px;
+            margin-right: 6px; font-size: 0.65rem; color: var(--text-muted);
+            justify-content: space-between; padding: 0 0 0 0;
+        }
+        .heatmap-days span { height: 14px; display: flex; align-items: center; }
+        .heatmap-row { display: flex; gap: 0; }
+        .heatmap-cell[data-tip]:hover::after {
+            content: attr(data-tip);
+            position: absolute; bottom: calc(100% + 6px); left: 50%;
+            transform: translateX(-50%);
+            background: #1E293B; color: #F1F5F9; border: 1px solid rgba(255,255,255,0.1);
+            padding: 4px 8px; border-radius: 6px;
+            font-size: 0.65rem; white-space: nowrap; z-index: 10;
+            pointer-events: none;
+        }
+
+        /* ===================== MOOD CHART ===================== */
+        .mood-chart-wrap {
+            position: relative;
+            height: 180px;
+            overflow: hidden;
+        }
+        .mood-chart-wrap svg { width: 100%; height: 100%; }
+        .mood-y-labels {
+            position: absolute; left: 0; top: 0; bottom: 0;
+            display: flex; flex-direction: column;
+            justify-content: space-between;
+            padding: 4px 0;
+            font-size: 1rem;
+            width: 28px;
+        }
+        .mood-trend-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 6px 14px; border-radius: 100px;
+            font-size: 0.78rem; font-weight: 600;
+            margin-top: 12px;
+        }
+        .mood-trend-badge.improving { background: rgba(16,185,129,0.12); color: #34D399; }
+        .mood-trend-badge.declining { background: rgba(239,68,68,0.12); color: #F87171; }
+        .mood-trend-badge.stable { background: rgba(139,92,246,0.12); color: #A78BFA; }
+        .mood-empty {
+            text-align: center; padding: 40px 20px;
+            color: var(--text-muted); font-size: 0.9rem;
+        }
+        .mood-empty span { font-size: 2rem; display: block; margin-bottom: 8px; }
+
+        /* ===================== JOURNAL ===================== */
+        .journal-entry {
+            display: flex; align-items: flex-start; gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .journal-entry:last-child { border-bottom: none; }
+        .journal-mood {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            width: 40px; height: 40px;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 12px;
+            background: var(--bg-surface);
+        }
+        .journal-meta { flex: 1; min-width: 0; }
+        .journal-date {
+            font-size: 0.75rem; font-weight: 600;
+            color: var(--text-muted); text-transform: uppercase;
+            letter-spacing: 0.04em; margin-bottom: 2px;
+        }
+        .journal-text {
+            font-size: 0.88rem; color: var(--text-secondary);
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        .journal-actions {
+            display: flex; gap: 10px; margin-top: 16px;
+        }
+        .btn {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 8px; padding: 12px 24px;
+            border-radius: 12px; border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.88rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            color: #fff;
+        }
+        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(139,92,246,0.35); }
+        .btn-secondary {
+            background: var(--bg-surface);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-light);
+        }
+        .btn-secondary:hover { background: var(--bg-card-hover); }
+        .btn svg { width: 16px; height: 16px; }
+        .journal-empty {
+            text-align: center; padding: 32px 16px;
+            color: var(--text-muted); font-size: 0.88rem;
+        }
+        .journal-empty span { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+        .view-all-btn {
+            display: block; width: 100%; padding: 12px;
+            background: none; border: 1px dashed var(--border-light);
+            border-radius: 10px; color: var(--text-muted);
+            font-family: 'Inter', sans-serif; font-size: 0.82rem;
+            font-weight: 500; cursor: pointer; margin-top: 12px;
+            transition: all 0.2s ease;
+        }
+        .view-all-btn:hover { background: var(--bg-surface); color: var(--text-secondary); }
+
+        /* ===================== BADGES ===================== */
+        .badges-count {
+            font-size: 0.85rem; color: var(--text-muted);
+            margin-bottom: 16px; font-weight: 500;
+        }
+        .badges-count strong { color: var(--accent-purple); }
+        .badges-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 12px;
+        }
+        .badge-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 20px 10px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .badge-card.earned {
+            background: var(--bg-card);
+            border-color: var(--glass-border);
+            box-shadow: 0 0 20px rgba(139,92,246,0.08);
+        }
+        .badge-card.earned:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(139,92,246,0.15);
+        }
+        .badge-card.locked {
+            opacity: 0.4;
+            filter: grayscale(0.8);
+        }
+        .badge-icon-wrap {
+            width: 48px; height: 48px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        .badge-card.earned .badge-icon-wrap {
+            animation: badgeGlow 3s ease-in-out infinite;
+        }
+        @keyframes badgeGlow {
+            0%, 100% { box-shadow: 0 0 0 rgba(139,92,246,0); }
+            50% { box-shadow: 0 0 16px rgba(139,92,246,0.2); }
+        }
+        .badge-card.locked .badge-icon-wrap {
+            background: var(--bg-card);
+        }
+        .badge-card.locked .badge-icon-wrap::after {
+            content: '?';
+            position: absolute;
+            font-size: 1.2rem; font-weight: 700;
+            color: var(--text-muted);
+        }
+        .badge-card.locked .badge-emoji { display: none; }
+        .badge-name {
+            font-size: 0.72rem; font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+            line-height: 1.2;
+        }
+        .badge-card.locked .badge-name { color: var(--text-muted); }
+        .badge-desc {
+            font-size: 0.62rem;
+            color: var(--text-muted);
+            line-height: 1.3;
+        }
+
+        @media (max-width: 600px) {
+            .badges-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+            .badge-card { padding: 14px 6px; }
+            .badge-icon-wrap { width: 40px; height: 40px; font-size: 1.2rem; }
+        }
+        @media (min-width: 601px) and (max-width: 800px) {
+            .badges-grid { grid-template-columns: repeat(4, 1fr); }
+        }
+
+        /* ===================== SETTINGS ===================== */
+        .settings-list {
+            list-style: none;
+        }
+        .setting-row {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border);
+        }
+        .setting-row:last-child { border-bottom: none; }
+        .setting-left {
+            display: flex; align-items: center; gap: 14px;
+        }
+        .setting-icon {
+            width: 38px; height: 38px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            background: var(--bg-surface);
+            flex-shrink: 0;
+        }
+        .setting-label {
+            font-size: 0.9rem; font-weight: 500;
+            color: var(--text-primary);
+        }
+        .setting-desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 1px;
+        }
+
+        /* Toggle switch */
+        .toggle {
+            position: relative;
+            width: 48px; height: 26px;
+            background: var(--bg-surface);
+            border: 1px solid var(--border-light);
+            border-radius: 13px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            flex-shrink: 0;
+        }
+        .toggle.active {
+            background: var(--accent-purple);
+            border-color: var(--accent-purple);
+        }
+        .toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px; left: 3px;
+            width: 18px; height: 18px;
+            border-radius: 50%;
+            background: #fff;
+            transition: transform 0.3s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+        }
+        .toggle.active::after { transform: translateX(22px); }
+
+        .time-input {
+            padding: 6px 12px; border-radius: 8px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-surface);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            outline: none;
+        }
+        .time-input:focus { border-color: var(--accent-purple); }
+
+        .btn-export {
+            padding: 8px 18px; border-radius: 10px;
+            border: 1px solid var(--border-light);
+            background: var(--bg-surface);
+            color: var(--accent-green);
+            font-family: 'Inter', sans-serif;
+            font-size: 0.82rem; font-weight: 600;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .btn-export:hover { background: rgba(16,185,129,0.1); }
+
+        .about-text {
+            font-size: 0.82rem; color: var(--text-secondary);
+            line-height: 1.6; margin-top: 8px;
+        }
+        .version-tag {
+            display: inline-block; padding: 3px 10px;
+            border-radius: 6px; background: var(--bg-surface);
+            font-size: 0.7rem; font-weight: 600;
+            color: var(--text-muted); margin-top: 6px;
+        }
+
+        /* ===================== BOTTOM NAV ===================== */
+        .bottom-nav {
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 64px; z-index: 1000;
+            display: none;
+            background: var(--nav-bg);
+            backdrop-filter: blur(24px) saturate(1.4);
+            -webkit-backdrop-filter: blur(24px) saturate(1.4);
+            border-top: 1px solid var(--border);
+            align-items: center; justify-content: space-around;
+            padding: 0 8px;
+        }
+        .nav-item {
+            display: flex; flex-direction: column; align-items: center;
+            gap: 2px; padding: 6px 0; min-width: 56px;
+            color: var(--text-muted); transition: color 0.2s ease;
+            font-size: 0.65rem; font-weight: 500;
+        }
+        .nav-item svg { width: 22px; height: 22px; }
+        .nav-item.active { color: var(--accent-purple); }
+        .nav-item:hover { color: var(--accent-purple); }
+
+        @media (max-width: 768px) {
+            .bottom-nav { display: flex; }
+            body { padding-bottom: 80px; }
+        }
+
+        /* ===================== FOOTER ===================== */
+        .footer {
+            text-align: center;
+            padding: 40px 20px 100px;
+            color: var(--text-muted);
+            font-size: 0.78rem;
+        }
+        .footer-brand {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem; color: var(--text-secondary);
+            margin-bottom: 8px;
+        }
+        .footer a { color: var(--accent-purple); }
+        .footer a:hover { text-decoration: underline; }
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeSlideUp {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===================== TOAST ===================== */
+        .toast {
+            position: fixed; bottom: 90px; left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            color: var(--text-primary);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-size: 0.85rem; font-weight: 500;
+            display: flex; align-items: center; gap: 8px;
+            opacity: 0; pointer-events: none;
+            transition: all 0.3s ease;
+            z-index: 2000;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        .toast.show {
+            opacity: 1; transform: translateX(-50%) translateY(0);
+            pointer-events: auto;
+        }
+        .toast svg { width: 18px; height: 18px; color: var(--accent-green); flex-shrink: 0; }
+
+        /* ===================== DESKTOP SIDEBAR LAYOUT ===================== */
+        @media (min-width: 901px) {
+            .bottom-nav { display: none !important; }
+            body { padding-bottom: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOPBAR -->
+    <header class="topbar">
+        <a href="/" class="topbar-brand">&#9789; Sukoon</a>
+        <nav class="topbar-nav" id="mainNav">
+            <a href="/">Home</a>
+            <a href="/breathe.html">Breathe</a>
+            <a href="/meditate.html">Meditate</a>
+            <a href="/sounds.html">Sounds</a>
+            <a href="/journal.html">Journal</a>
+            <a href="/friend.html">AI Friend</a>
+            <a href="/wisdom.html">Wisdom</a>
+            <a href="/progress.html">Progress</a>
+            <a href="/you.html" class="active">You</a>
+        </nav>
+        <div class="topbar-right">
+            <select class="lang-select" id="langSelect" aria-label="Language">
+                <option value="en">EN</option>
+                <option value="hi">HI</option>
+                <option value="ur">UR</option>
+                <option value="ar">AR</option>
+                <option value="es">ES</option>
+                <option value="fr">FR</option>
+            </select>
+            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+
+        <!-- Profile Header -->
+        <div class="profile-header">
+            <h1>Your Journey</h1>
+            <div class="subtitle-hi">&#2310;&#2346;&#2325;&#2368; &#2351;&#2366;&#2340;&#2381;&#2352;&#2366;</div>
+            <p class="tagline">Every moment of peace matters</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+            <div class="stat-card s-purple">
+                <span class="stat-emoji">&#128293;</span>
+                <div class="stat-number" id="statStreak">0</div>
+                <div class="stat-label">Day Streak</div>
+            </div>
+            <div class="stat-card s-amber">
+                <span class="stat-emoji">&#129496;</span>
+                <div class="stat-number" id="statSessions">0</div>
+                <div class="stat-label">Sessions</div>
+            </div>
+            <div class="stat-card s-green">
+                <span class="stat-emoji">&#9201;</span>
+                <div class="stat-number" id="statMinutes">0</div>
+                <div class="stat-label">Minutes</div>
+            </div>
+            <div class="stat-card s-blue">
+                <span class="stat-emoji">&#128197;</span>
+                <div class="stat-number" id="statDays">0</div>
+                <div class="stat-label">Days Active</div>
+            </div>
+        </div>
+
+        <!-- Streak Heatmap -->
+        <div class="section">
+            <h2 class="section-title">Activity Heatmap</h2>
+            <p class="section-subtitle">Your last 12 weeks of wellness practice</p>
+            <div class="card-wrap">
+                <div id="heatmapMonths" class="heatmap-months"></div>
+                <div style="display:flex; gap:0;">
+                    <div id="heatmapDays" class="heatmap-days"></div>
+                    <div class="heatmap-container" style="flex:1; overflow-x:auto;">
+                        <div id="heatmapGrid" class="heatmap-grid"></div>
+                    </div>
+                </div>
+                <div class="heatmap-legend">
+                    <span>Less</span>
+                    <span class="swatch" style="background:var(--bg-surface); border:1px solid var(--border);"></span>
+                    <span class="swatch" style="background:#064E3B;"></span>
+                    <span class="swatch" style="background:#047857;"></span>
+                    <span class="swatch" style="background:#10B981;"></span>
+                    <span class="swatch" style="background:#34D399;"></span>
+                    <span>More</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mood Trends -->
+        <div class="section">
+            <h2 class="section-title">Mood Trends</h2>
+            <p class="section-subtitle">Your emotional landscape over the last 30 days</p>
+            <div class="card-wrap">
+                <div id="moodChartContainer">
+                    <div class="mood-empty" id="moodEmpty" style="display:none;">
+                        <span>&#128522;</span>
+                        Start journaling to see your mood trends appear here.
+                    </div>
+                    <div id="moodChartArea" style="display:none;">
+                        <div class="mood-chart-wrap">
+                            <div class="mood-y-labels">
+                                <span>&#128522;</span>
+                                <span>&#128578;</span>
+                                <span>&#128528;</span>
+                                <span>&#128543;</span>
+                                <span>&#128546;</span>
+                            </div>
+                            <div style="margin-left:32px; height:100%;">
+                                <svg id="moodSvg" viewBox="0 0 600 170" preserveAspectRatio="none"></svg>
+                            </div>
+                        </div>
+                        <div id="moodTrendBadge"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Journal Section -->
+        <div class="section">
+            <h2 class="section-title">Recent Entries</h2>
+            <p class="section-subtitle">Your latest journal reflections</p>
+            <div class="card-wrap">
+                <div id="journalList"></div>
+                <div id="journalAllWrap" style="display:none;">
+                    <button class="view-all-btn" id="viewAllBtn">View All Entries</button>
+                </div>
+                <div class="journal-actions">
+                    <a href="/journal.html" class="btn btn-primary">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                        Write in Journal
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Badges & Milestones -->
+        <div class="section">
+            <h2 class="section-title">Badges &amp; Milestones</h2>
+            <p class="section-subtitle">Celebrate your wellness achievements</p>
+            <div class="badges-count" id="badgesCount"></div>
+            <div class="badges-grid" id="badgesGrid"></div>
+        </div>
+
+        <!-- Settings -->
+        <div class="section">
+            <h2 class="section-title">Settings</h2>
+            <p class="section-subtitle">Personalize your Sukoon experience</p>
+            <div class="card-wrap">
+                <ul class="settings-list">
+                    <!-- Theme -->
+                    <li class="setting-row">
+                        <div class="setting-left">
+                            <div class="setting-icon">&#127769;</div>
+                            <div>
+                                <div class="setting-label">Dark Theme</div>
+                                <div class="setting-desc">Switch between dark and light modes</div>
+                            </div>
+                        </div>
+                        <div class="toggle active" id="themeToggle" role="switch" aria-label="Toggle theme" tabindex="0"></div>
+                    </li>
+                    <!-- Language -->
+                    <li class="setting-row">
+                        <div class="setting-left">
+                            <div class="setting-icon">&#127760;</div>
+                            <div>
+                                <div class="setting-label">Language</div>
+                                <div class="setting-desc">Choose your preferred language</div>
+                            </div>
+                        </div>
+                        <select class="lang-select" id="settingsLang" aria-label="Language setting">
+                            <option value="en">English</option>
+                            <option value="hi">Hindi</option>
+                            <option value="ur">Urdu</option>
+                            <option value="ar">Arabic</option>
+                            <option value="es">Spanish</option>
+                            <option value="fr">French</option>
+                        </select>
+                    </li>
+                    <!-- Daily Reminder -->
+                    <li class="setting-row">
+                        <div class="setting-left">
+                            <div class="setting-icon">&#128276;</div>
+                            <div>
+                                <div class="setting-label">Daily Reminder</div>
+                                <div class="setting-desc" id="reminderStatus">Get a gentle nudge to practice</div>
+                            </div>
+                        </div>
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <input type="time" class="time-input" id="reminderTime" value="09:00">
+                            <div class="toggle" id="reminderToggle" role="switch" aria-label="Toggle daily reminder" tabindex="0"></div>
+                        </div>
+                    </li>
+                    <!-- Export Data -->
+                    <li class="setting-row">
+                        <div class="setting-left">
+                            <div class="setting-icon">&#128230;</div>
+                            <div>
+                                <div class="setting-label">Export Data</div>
+                                <div class="setting-desc">Download all your data as JSON</div>
+                            </div>
+                        </div>
+                        <button class="btn-export" id="exportBtn">Export</button>
+                    </li>
+                    <!-- Privacy -->
+                    <li class="setting-row">
+                        <div class="setting-left">
+                            <div class="setting-icon">&#128274;</div>
+                            <div>
+                                <div class="setting-label">Privacy Policy</div>
+                                <div class="setting-desc">No data leaves your device, ever</div>
+                            </div>
+                        </div>
+                        <a href="/privacy.html" style="color:var(--accent-purple); font-size:0.85rem; font-weight:500;">View &rarr;</a>
+                    </li>
+                    <!-- About -->
+                    <li class="setting-row" style="border-bottom:none;">
+                        <div style="width:100%;">
+                            <div class="setting-left" style="margin-bottom:8px;">
+                                <div class="setting-icon">&#9789;</div>
+                                <div>
+                                    <div class="setting-label">About Sukoon</div>
+                                </div>
+                            </div>
+                            <p class="about-text">
+                                Sukoon means peace. We believe every soul on Earth deserves free access to mental wellness tools.
+                                No accounts, no tracking, no ads. Everything stays on your device.
+                                Built with love for humanity.
+                            </p>
+                            <span class="version-tag">v2.0.0</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-brand">&#9789; Sukoon</div>
+        <p>Free mental wellness for every soul on Earth.</p>
+        <p style="margin-top:4px;">&copy; 2025 Sukoon. The world needs love, not war.</p>
+    </footer>
+
+    <!-- BOTTOM NAV (mobile) -->
+    <nav class="bottom-nav">
+        <a href="/" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="/breathe.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
+            <span>Breathe</span>
+        </a>
+        <a href="/journal.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            <span>Journal</span>
+        </a>
+        <a href="/friend.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/you.html" class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>You</span>
+        </a>
+    </nav>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+        <span id="toastMsg">Done</span>
+    </div>
+
+    <script>
+    (function() {
+        'use strict';
+
+        /* ================================================================
+           DATA LAYER - reads from existing Sukoon localStorage + IndexedDB
+           ================================================================ */
+
+        var LOG_KEY = 'sukoon_activity_log';
+        var STATS_KEY = 'sukoon_progress_stats';
+        var DB_NAME = 'SukoonJournal';
+        var DB_VERSION = 1;
+        var STORE_NAME = 'entries';
+
+        function getLog() {
+            try { return JSON.parse(localStorage.getItem(LOG_KEY) || '[]'); } catch(e) { return []; }
+        }
+
+        function getStats() {
+            try { return JSON.parse(localStorage.getItem(STATS_KEY) || '{}'); } catch(e) { return {}; }
+        }
+
+        function saveStats(stats) {
+            try { localStorage.setItem(STATS_KEY, JSON.stringify(stats)); } catch(e) {}
+        }
+
+        function todayKey() {
+            var d = new Date();
+            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        }
+
+        function dateKey(d) {
+            return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
+        }
+
+        function getDailyCount(dk) {
+            try { return parseInt(localStorage.getItem('sukoon_daily_' + dk) || '0', 10); } catch(e) { return 0; }
+        }
+
+        /* ================================================================
+           GLOBAL HELPER: window.sukoonLog
+           Other pages can call this to log activity
+           ================================================================ */
+        window.sukoonLog = function(type, minutes) {
+            var log = getLog();
+            var stats = getStats();
+            var textMap = {
+                meditation: 'Meditated for ' + minutes + ' min',
+                breathing: 'Completed breathing session (' + minutes + ' min)',
+                focus: 'Completed focus session (' + minutes + ' min)',
+                journal: 'Wrote in journal',
+                sounds: 'Listened to sleep sounds',
+                friend: 'Talked to AI Friend',
+                wisdom: 'Read wisdom content',
+                quotes: 'Read daily quote',
+                videos: 'Watched wellness video'
+            };
+
+            var entry = {
+                type: type || 'other',
+                text: textMap[type] || ('Completed ' + type + ' session'),
+                minutes: minutes || 0,
+                timestamp: new Date().toISOString()
+            };
+
+            log.unshift(entry);
+            if (log.length > 200) log = log.slice(0, 200);
+            try { localStorage.setItem(LOG_KEY, JSON.stringify(log)); } catch(e) {}
+
+            stats.totalMinutes = (stats.totalMinutes || 0) + (minutes || 0);
+            stats.totalSessions = (stats.totalSessions || 0) + 1;
+
+            if (!stats.featuresUsed) stats.featuresUsed = {};
+            stats.featuresUsed[type] = true;
+
+            if (!stats.typeCounts) stats.typeCounts = {};
+            stats.typeCounts[type] = (stats.typeCounts[type] || 0) + 1;
+
+            saveStats(stats);
+
+            // Bump daily count
+            var tk = todayKey();
+            var c = getDailyCount(tk) + 1;
+            try { localStorage.setItem('sukoon_daily_' + tk, String(c)); } catch(e) {}
+
+            // Update streak
+            updateStreak();
+        };
+
+        function updateStreak() {
+            var stats = getStats();
+            var today = todayKey();
+            var yd = new Date(); yd.setDate(yd.getDate() - 1);
+            var yesterday = dateKey(yd);
+
+            if (stats.lastActiveDate === today) return;
+
+            if (stats.lastActiveDate === yesterday) {
+                stats.currentStreak = (stats.currentStreak || 0) + 1;
+            } else {
+                stats.currentStreak = 1;
+            }
+            stats.lastActiveDate = today;
+
+            if (!stats.maxStreak || stats.currentStreak > stats.maxStreak) {
+                stats.maxStreak = stats.currentStreak;
+            }
+            saveStats(stats);
+        }
+
+        /* ================================================================
+           IndexedDB: Read journal entries
+           ================================================================ */
+
+        function openJournalDB(cb) {
+            try {
+                var req = indexedDB.open(DB_NAME, DB_VERSION);
+                req.onupgradeneeded = function(e) {
+                    var store = e.target.result.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
+                    store.createIndex('date', 'date', { unique: false });
+                    store.createIndex('mood', 'mood', { unique: false });
+                };
+                req.onsuccess = function(e) { cb(e.target.result); };
+                req.onerror = function() { cb(null); };
+            } catch(e) { cb(null); }
+        }
+
+        function getJournalEntries(db, cb) {
+            if (!db) { cb([]); return; }
+            try {
+                var tx = db.transaction(STORE_NAME, 'readonly');
+                var req = tx.objectStore(STORE_NAME).getAll();
+                req.onsuccess = function() { cb(req.result || []); };
+                req.onerror = function() { cb([]); };
+            } catch(e) { cb([]); }
+        }
+
+        /* ================================================================
+           MOBILE NAV
+           ================================================================ */
+
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('open');
+        });
+        document.querySelectorAll('#mainNav a').forEach(function(a) {
+            a.addEventListener('click', function() { document.getElementById('mainNav').classList.remove('open'); });
+        });
+
+        /* ================================================================
+           RENDER: Stats Cards
+           ================================================================ */
+
+        function renderStats(journalEntries) {
+            var stats = getStats();
+            var log = getLog();
+            var streak = stats.currentStreak || 0;
+            var totalSessions = stats.totalSessions || 0;
+            var totalMinutes = stats.totalMinutes || 0;
+
+            // Merge legacy meditation data
+            try {
+                var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
+                if (med.streak) streak = Math.max(streak, med.streak);
+            } catch(e) {}
+
+            // Count unique active days from daily keys and log entries
+            var activeDays = {};
+            log.forEach(function(entry) {
+                if (entry.timestamp) {
+                    var d = entry.timestamp.substring(0, 10);
+                    activeDays[d] = true;
+                }
+            });
+            // Also scan daily count keys
+            for (var i = 0; i < 365; i++) {
+                var dt = new Date();
+                dt.setDate(dt.getDate() - i);
+                var dk = dateKey(dt);
+                if (getDailyCount(dk) > 0) activeDays[dk] = true;
+            }
+            // Also count journal days
+            if (journalEntries) {
+                journalEntries.forEach(function(e) {
+                    if (e.date) activeDays[e.date.substring(0, 10)] = true;
+                });
+            }
+
+            var daysActive = Object.keys(activeDays).length;
+
+            document.getElementById('statStreak').textContent = streak;
+            document.getElementById('statSessions').textContent = totalSessions;
+            document.getElementById('statMinutes').textContent = totalMinutes;
+            document.getElementById('statDays').textContent = daysActive;
+        }
+
+        /* ================================================================
+           RENDER: Streak Heatmap (last 12 weeks = 84 days)
+           ================================================================ */
+
+        function renderHeatmap(journalEntries) {
+            var grid = document.getElementById('heatmapGrid');
+            var monthsRow = document.getElementById('heatmapMonths');
+            var daysCol = document.getElementById('heatmapDays');
+            grid.innerHTML = '';
+            monthsRow.innerHTML = '';
+            daysCol.innerHTML = '';
+
+            var today = new Date();
+            today.setHours(0, 0, 0, 0);
+            var todayStr = todayKey();
+
+            // Build journal date counts
+            var journalDates = {};
+            if (journalEntries) {
+                journalEntries.forEach(function(e) {
+                    if (e.date) {
+                        var d = e.date.substring(0, 10);
+                        journalDates[d] = (journalDates[d] || 0) + 1;
+                    }
+                });
+            }
+
+            // Build activity counts from log entries
+            var logDates = {};
+            var log = getLog();
+            log.forEach(function(entry) {
+                if (entry.timestamp) {
+                    var d = entry.timestamp.substring(0, 10);
+                    logDates[d] = (logDates[d] || 0) + 1;
+                }
+            });
+
+            // Day labels
+            var dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
+            dayLabels.forEach(function(label) {
+                var span = document.createElement('span');
+                span.textContent = label;
+                daysCol.appendChild(span);
+            });
+
+            // Calculate start date (go back to make today land in the last column)
+            var totalDays = 84;
+            var endDate = new Date(today);
+            var dayOfWeek = endDate.getDay(); // 0=Sun
+            // We want the grid to end on today's column
+            // Calculate how many cells we need
+            var startDate = new Date(today);
+            startDate.setDate(startDate.getDate() - totalDays + 1);
+            // Adjust to start on a Sunday
+            var startDay = startDate.getDay();
+            if (startDay !== 0) {
+                startDate.setDate(startDate.getDate() - startDay);
+            }
+
+            // Calculate total cells needed
+            var totalCells = 0;
+            var d = new Date(startDate);
+            while (d <= today) {
+                totalCells++;
+                d.setDate(d.getDate() + 1);
+            }
+            // Pad to complete the last week
+            var remainder = totalCells % 7;
+            if (remainder !== 0) totalCells += (7 - remainder);
+
+            var weeks = Math.ceil(totalCells / 7);
+
+            // Build month labels
+            var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+            var seenMonths = {};
+            var cellWidth = 17; // 14px cell + 3px gap
+            d = new Date(startDate);
+            for (var w = 0; w < weeks; w++) {
+                var weekStart = new Date(d);
+                weekStart.setDate(weekStart.getDate() + w * 7);
+                var m = weekStart.getMonth();
+                if (!seenMonths[m]) {
+                    seenMonths[m] = true;
+                    var mSpan = document.createElement('span');
+                    mSpan.textContent = monthNames[m];
+                    mSpan.style.marginLeft = (w * cellWidth) + 'px';
+                    mSpan.style.position = 'absolute';
+                    monthsRow.appendChild(mSpan);
+                }
+            }
+            monthsRow.style.position = 'relative';
+            monthsRow.style.height = '16px';
+            monthsRow.style.marginLeft = '0';
+
+            // Build heatmap cells
+            grid.style.gridTemplateRows = 'repeat(7, 14px)';
+            d = new Date(startDate);
+            for (var i = 0; i < totalCells; i++) {
+                var dk = dateKey(d);
+                var count = getDailyCount(dk) + (journalDates[dk] || 0) + (logDates[dk] || 0);
+
+                var cell = document.createElement('div');
+                cell.className = 'heatmap-cell';
+
+                if (d > today) {
+                    cell.style.opacity = '0.2';
+                } else {
+                    if (count >= 5) cell.classList.add('level-4');
+                    else if (count >= 3) cell.classList.add('level-3');
+                    else if (count >= 2) cell.classList.add('level-2');
+                    else if (count >= 1) cell.classList.add('level-1');
+
+                    if (dk === todayStr) cell.classList.add('today');
+                    cell.setAttribute('data-tip', dk + ': ' + count + ' activities');
+                }
+
+                grid.appendChild(cell);
+                d.setDate(d.getDate() + 1);
+            }
+        }
+
+        /* ================================================================
+           RENDER: Mood Trends (last 30 days)
+           ================================================================ */
+
+        function renderMoodChart(journalEntries) {
+            var emptyEl = document.getElementById('moodEmpty');
+            var chartArea = document.getElementById('moodChartArea');
+
+            // Filter entries with moods from last 30 days
+            var now = new Date();
+            var thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+
+            var moodEntries = journalEntries.filter(function(e) {
+                if (!e.mood || !e.date) return false;
+                var entryDate = new Date(e.date);
+                return entryDate >= thirtyDaysAgo && entryDate <= now;
+            }).sort(function(a, b) {
+                return new Date(a.date) - new Date(b.date);
+            });
+
+            if (moodEntries.length < 2) {
+                emptyEl.style.display = 'block';
+                chartArea.style.display = 'none';
+                return;
+            }
+
+            emptyEl.style.display = 'none';
+            chartArea.style.display = 'block';
+
+            var svg = document.getElementById('moodSvg');
+            svg.innerHTML = '';
+
+            var svgW = 600;
+            var svgH = 170;
+            var padding = { left: 10, right: 10, top: 15, bottom: 25 };
+            var chartW = svgW - padding.left - padding.right;
+            var chartH = svgH - padding.top - padding.bottom;
+
+            // Group by date and average moods
+            var dateMap = {};
+            moodEntries.forEach(function(e) {
+                var d = e.date.substring(0, 10);
+                if (!dateMap[d]) dateMap[d] = [];
+                dateMap[d].push(e.mood);
+            });
+
+            var dates = Object.keys(dateMap).sort();
+            var points = dates.map(function(d, i) {
+                var vals = dateMap[d];
+                var avg = vals.reduce(function(a, b) { return a + b; }, 0) / vals.length;
+                return { date: d, mood: avg };
+            });
+
+            if (points.length < 2) {
+                emptyEl.style.display = 'block';
+                chartArea.style.display = 'none';
+                return;
+            }
+
+            // Scale
+            var xScale = function(i) { return padding.left + (i / (points.length - 1)) * chartW; };
+            var yScale = function(m) { return padding.top + chartH - ((m - 1) / 4) * chartH; };
+
+            // Grid lines
+            for (var g = 1; g <= 5; g++) {
+                var lineEl = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                lineEl.setAttribute('x1', padding.left);
+                lineEl.setAttribute('y1', yScale(g));
+                lineEl.setAttribute('x2', svgW - padding.right);
+                lineEl.setAttribute('y2', yScale(g));
+                lineEl.setAttribute('stroke', 'rgba(148,163,184,0.1)');
+                lineEl.setAttribute('stroke-width', '1');
+                svg.appendChild(lineEl);
+            }
+
+            // Area fill
+            var areaPath = 'M' + xScale(0) + ',' + yScale(points[0].mood);
+            points.forEach(function(p, i) {
+                if (i > 0) areaPath += ' L' + xScale(i) + ',' + yScale(p.mood);
+            });
+            areaPath += ' L' + xScale(points.length - 1) + ',' + (svgH - padding.bottom);
+            areaPath += ' L' + xScale(0) + ',' + (svgH - padding.bottom) + ' Z';
+
+            var area = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            area.setAttribute('d', areaPath);
+            area.setAttribute('fill', 'url(#moodGrad)');
+            area.setAttribute('opacity', '0.3');
+
+            // Gradient definition
+            var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+            var grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
+            grad.setAttribute('id', 'moodGrad');
+            grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
+            grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
+            var stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop1.setAttribute('offset', '0%'); stop1.setAttribute('stop-color', '#8B5CF6');
+            var stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
+            stop2.setAttribute('offset', '100%'); stop2.setAttribute('stop-color', 'transparent');
+            grad.appendChild(stop1); grad.appendChild(stop2);
+            defs.appendChild(grad);
+            svg.appendChild(defs);
+            svg.appendChild(area);
+
+            // Line
+            var linePath = 'M' + xScale(0) + ',' + yScale(points[0].mood);
+            points.forEach(function(p, i) {
+                if (i > 0) linePath += ' L' + xScale(i) + ',' + yScale(p.mood);
+            });
+
+            var line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+            line.setAttribute('d', linePath);
+            line.setAttribute('fill', 'none');
+            line.setAttribute('stroke', '#8B5CF6');
+            line.setAttribute('stroke-width', '2.5');
+            line.setAttribute('stroke-linecap', 'round');
+            line.setAttribute('stroke-linejoin', 'round');
+            svg.appendChild(line);
+
+            // Dots
+            points.forEach(function(p, i) {
+                var circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', xScale(i));
+                circle.setAttribute('cy', yScale(p.mood));
+                circle.setAttribute('r', '4');
+                circle.setAttribute('fill', '#8B5CF6');
+                circle.setAttribute('stroke', '#0F172A');
+                circle.setAttribute('stroke-width', '2');
+                svg.appendChild(circle);
+
+                // Date labels on x-axis (show every few)
+                if (i === 0 || i === points.length - 1 || points.length <= 7 || i % Math.ceil(points.length / 6) === 0) {
+                    var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                    text.setAttribute('x', xScale(i));
+                    text.setAttribute('y', svgH - 4);
+                    text.setAttribute('text-anchor', 'middle');
+                    text.setAttribute('fill', '#64748B');
+                    text.setAttribute('font-size', '9');
+                    text.setAttribute('font-family', 'Inter, sans-serif');
+                    var parts = p.date.split('-');
+                    text.textContent = parseInt(parts[2]) + '/' + parseInt(parts[1]);
+                    svg.appendChild(text);
+                }
+            });
+
+            // Trend calculation
+            var firstHalf = points.slice(0, Math.floor(points.length / 2));
+            var secondHalf = points.slice(Math.floor(points.length / 2));
+            var avgFirst = firstHalf.reduce(function(a, b) { return a + b.mood; }, 0) / firstHalf.length;
+            var avgSecond = secondHalf.reduce(function(a, b) { return a + b.mood; }, 0) / secondHalf.length;
+            var diff = avgSecond - avgFirst;
+
+            var trendEl = document.getElementById('moodTrendBadge');
+            if (diff > 0.3) {
+                trendEl.innerHTML = '<span class="mood-trend-badge improving"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg> Improving trend</span>';
+            } else if (diff < -0.3) {
+                trendEl.innerHTML = '<span class="mood-trend-badge declining"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/></svg> Take extra care of yourself</span>';
+            } else {
+                trendEl.innerHTML = '<span class="mood-trend-badge stable"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><line x1="5" y1="12" x2="19" y2="12"/></svg> Stable mood</span>';
+            }
+        }
+
+        /* ================================================================
+           RENDER: Journal Entries
+           ================================================================ */
+
+        function renderJournal(journalEntries) {
+            var list = document.getElementById('journalList');
+            var allWrap = document.getElementById('journalAllWrap');
+            list.innerHTML = '';
+
+            if (!journalEntries || journalEntries.length === 0) {
+                list.innerHTML = '<div class="journal-empty"><span>&#128214;</span>Your journal is waiting. Write your first entry to see it here.</div>';
+                return;
+            }
+
+            var moodFaces = { 1: '\uD83D\uDE22', 2: '\uD83D\uDE1E', 3: '\uD83D\uDE10', 4: '\uD83D\uDE42', 5: '\uD83D\uDE0A' };
+            var sorted = journalEntries.slice().sort(function(a, b) {
+                return (b.timestamp || 0) - (a.timestamp || 0);
+            });
+
+            var showCount = 5;
+            var allShown = false;
+
+            function renderEntries(count) {
+                list.innerHTML = '';
+                var toShow = sorted.slice(0, count);
+                toShow.forEach(function(entry) {
+                    var div = document.createElement('div');
+                    div.className = 'journal-entry';
+
+                    var moodEmoji = moodFaces[entry.mood] || '\uD83D\uDE10';
+                    var dateStr = '';
+                    if (entry.date) {
+                        var dp = entry.date.split('-');
+                        var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+                        dateStr = months[parseInt(dp[1]) - 1] + ' ' + parseInt(dp[2]) + ', ' + dp[0];
+                    }
+                    var preview = entry.text || '(No text)';
+
+                    div.innerHTML =
+                        '<div class="journal-mood">' + moodEmoji + '</div>' +
+                        '<div class="journal-meta">' +
+                            '<div class="journal-date">' + dateStr + '</div>' +
+                            '<div class="journal-text">' + escapeHtml(preview) + '</div>' +
+                        '</div>';
+
+                    list.appendChild(div);
+                });
+            }
+
+            renderEntries(showCount);
+
+            if (sorted.length > showCount) {
+                allWrap.style.display = 'block';
+                var btn = document.getElementById('viewAllBtn');
+                btn.textContent = 'View All ' + sorted.length + ' Entries';
+                btn.addEventListener('click', function() {
+                    if (!allShown) {
+                        renderEntries(sorted.length);
+                        btn.textContent = 'Show Less';
+                        allShown = true;
+                    } else {
+                        renderEntries(showCount);
+                        btn.textContent = 'View All ' + sorted.length + ' Entries';
+                        allShown = false;
+                    }
+                });
+            }
+        }
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.textContent = str;
+            return div.innerHTML;
+        }
+
+        /* ================================================================
+           RENDER: Badges & Milestones
+           ================================================================ */
+
+        function renderBadges(journalEntries) {
+            var grid = document.getElementById('badgesGrid');
+            var stats = getStats();
+            var log = getLog();
+
+            var totalSessions = stats.totalSessions || 0;
+            var totalMinutes = stats.totalMinutes || 0;
+            var streak = stats.currentStreak || 0;
+            var maxStreak = stats.maxStreak || 0;
+            var typeCounts = stats.typeCounts || {};
+            var featuresUsed = stats.featuresUsed || {};
+
+            var journalCount = journalEntries ? journalEntries.length : 0;
+            var friendCount = typeCounts.friend || 0;
+
+            // Merge legacy meditation data
+            try {
+                var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
+                if (med.streak) maxStreak = Math.max(maxStreak, med.streak);
+            } catch(e) {}
+
+            // Check time-based badges from log
+            var hasNightSession = false;
+            var hasEarlySession = false;
+            log.forEach(function(entry) {
+                if (entry.timestamp) {
+                    var h = new Date(entry.timestamp).getHours();
+                    if (h >= 22 || h < 4) hasNightSession = true;
+                    if (h >= 4 && h < 7) hasEarlySession = true;
+                }
+            });
+
+            // Sound usage - check if all 8 different sounds were used
+            var soundsExplored = 0;
+            try {
+                var soundKeys = ['rain','ocean','fire','forest','wind','birds','thunder','bowls'];
+                soundKeys.forEach(function(s) {
+                    if (localStorage.getItem('sukoon_sound_' + s) || (typeCounts['sound_' + s])) soundsExplored++;
+                });
+                // Also count total unique sounds from featuresUsed
+                if (typeCounts.sounds >= 8) soundsExplored = Math.max(soundsExplored, 8);
+            } catch(e) {}
+
+            // Course completion check
+            var courseCompleted = false;
+            try {
+                var courseData = localStorage.getItem('sukoon_courses');
+                if (courseData) {
+                    var courses = JSON.parse(courseData);
+                    if (courses && courses.completed && courses.completed.length > 0) courseCompleted = true;
+                }
+                // Also check individual course keys
+                for (var k in localStorage) {
+                    if (k.indexOf('sukoon_course_complete') === 0) courseCompleted = true;
+                }
+            } catch(e) {}
+
+            // Wisdom entries read
+            var wisdomRead = false;
+            try {
+                var wisdomData = localStorage.getItem('sukoon_wisdom_read');
+                if (wisdomData) {
+                    var wr = JSON.parse(wisdomData);
+                    if (Array.isArray(wr) && wr.length >= 10) wisdomRead = true;
+                }
+                if (typeCounts.wisdom >= 10) wisdomRead = true;
+            } catch(e) {}
+
+            // Language usage
+            var langsUsed = 1;
+            try {
+                var langHistory = localStorage.getItem('sukoon_langs_used');
+                if (langHistory) {
+                    var lh = JSON.parse(langHistory);
+                    if (Array.isArray(lh)) langsUsed = lh.length;
+                }
+            } catch(e) {}
+
+            var badges = [
+                {
+                    emoji: '\uD83C\uDF31',
+                    name: 'First Session',
+                    desc: 'Complete any session',
+                    earned: totalSessions >= 1 || journalCount >= 1,
+                    color: '#4F46E5', bg: 'rgba(79,70,229,0.12)'
+                },
+                {
+                    emoji: '\uD83D\uDD25',
+                    name: '7-Day Streak',
+                    desc: '7 consecutive days',
+                    earned: maxStreak >= 7,
+                    color: '#F59E0B', bg: 'rgba(245,158,11,0.12)'
+                },
+                {
+                    emoji: '\uD83D\uDCAA',
+                    name: '30-Day Streak',
+                    desc: '30 consecutive days',
+                    earned: maxStreak >= 30,
+                    color: '#10B981', bg: 'rgba(16,185,129,0.12)'
+                },
+                {
+                    emoji: '\uD83C\uDF19',
+                    name: 'Night Owl',
+                    desc: 'Session after 10pm',
+                    earned: hasNightSession,
+                    color: '#6366F1', bg: 'rgba(99,102,241,0.12)'
+                },
+                {
+                    emoji: '\uD83C\uDF05',
+                    name: 'Early Bird',
+                    desc: 'Session before 7am',
+                    earned: hasEarlySession,
+                    color: '#F59E0B', bg: 'rgba(245,158,11,0.12)'
+                },
+                {
+                    emoji: '\uD83C\uDFB5',
+                    name: 'Sound Explorer',
+                    desc: 'Used all 8 sounds',
+                    earned: soundsExplored >= 8,
+                    color: '#14B8A6', bg: 'rgba(20,184,166,0.12)'
+                },
+                {
+                    emoji: '\uD83D\uDCDA',
+                    name: 'Course Graduate',
+                    desc: 'Completed any course',
+                    earned: courseCompleted,
+                    color: '#8B5CF6', bg: 'rgba(139,92,246,0.12)'
+                },
+                {
+                    emoji: '\uD83E\uDDE0',
+                    name: 'Wisdom Seeker',
+                    desc: 'Read all wisdom entries',
+                    earned: wisdomRead,
+                    color: '#EC4899', bg: 'rgba(236,72,153,0.12)'
+                },
+                {
+                    emoji: '\uD83D\uDCAC',
+                    name: 'Deep Talker',
+                    desc: '10+ AI Friend chats',
+                    earned: friendCount >= 10,
+                    color: '#3B82F6', bg: 'rgba(59,130,246,0.12)'
+                },
+                {
+                    emoji: '\uD83C\uDF0D',
+                    name: 'Polyglot',
+                    desc: 'Used app in 3+ languages',
+                    earned: langsUsed >= 3,
+                    color: '#10B981', bg: 'rgba(16,185,129,0.12)'
+                }
+            ];
+
+            var earnedCount = badges.filter(function(b) { return b.earned; }).length;
+            document.getElementById('badgesCount').innerHTML = '<strong>' + earnedCount + '/' + badges.length + '</strong> badges earned';
+
+            grid.innerHTML = '';
+            badges.forEach(function(badge) {
+                var card = document.createElement('div');
+                card.className = 'badge-card ' + (badge.earned ? 'earned' : 'locked');
+
+                var iconStyle = badge.earned
+                    ? 'background:' + badge.bg + ';'
+                    : '';
+
+                card.innerHTML =
+                    '<div class="badge-icon-wrap" style="' + iconStyle + '">' +
+                    '<span class="badge-emoji">' + badge.emoji + '</span>' +
+                    '</div>' +
+                    '<div class="badge-name">' + badge.name + '</div>' +
+                    '<div class="badge-desc">' + badge.desc + '</div>';
+
+                grid.appendChild(card);
+            });
+        }
+
+        /* ================================================================
+           SETTINGS: Theme Toggle
+           ================================================================ */
+
+        var themeToggle = document.getElementById('themeToggle');
+        var currentTheme = localStorage.getItem('sukoon_theme') || 'dark';
+
+        function applyTheme(theme) {
+            document.documentElement.setAttribute('data-theme', theme);
+            localStorage.setItem('sukoon_theme', theme);
+            if (theme === 'dark') {
+                themeToggle.classList.add('active');
+            } else {
+                themeToggle.classList.remove('active');
+            }
+        }
+
+        applyTheme(currentTheme);
+
+        themeToggle.addEventListener('click', function() {
+            var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            applyTheme(next);
+        });
+
+        /* ================================================================
+           SETTINGS: Language Picker
+           ================================================================ */
+
+        var langSelect = document.getElementById('langSelect');
+        var settingsLang = document.getElementById('settingsLang');
+        var currentLang = localStorage.getItem('sukoon_lang') || 'en';
+
+        langSelect.value = currentLang;
+        settingsLang.value = currentLang;
+
+        function setLang(lang) {
+            localStorage.setItem('sukoon_lang', lang);
+            langSelect.value = lang;
+            settingsLang.value = lang;
+
+            // Track language usage for Polyglot badge
+            try {
+                var used = JSON.parse(localStorage.getItem('sukoon_langs_used') || '["en"]');
+                if (used.indexOf(lang) === -1) {
+                    used.push(lang);
+                    localStorage.setItem('sukoon_langs_used', JSON.stringify(used));
+                }
+            } catch(e) {
+                localStorage.setItem('sukoon_langs_used', JSON.stringify([lang]));
+            }
+        }
+
+        langSelect.addEventListener('change', function() { setLang(this.value); });
+        settingsLang.addEventListener('change', function() { setLang(this.value); });
+
+        /* ================================================================
+           SETTINGS: Daily Reminder (Notification API)
+           ================================================================ */
+
+        var reminderToggle = document.getElementById('reminderToggle');
+        var reminderTime = document.getElementById('reminderTime');
+        var reminderStatus = document.getElementById('reminderStatus');
+        var reminderEnabled = localStorage.getItem('sukoon_reminder') === 'true';
+        var savedTime = localStorage.getItem('sukoon_reminder_time') || '09:00';
+
+        reminderTime.value = savedTime;
+        if (reminderEnabled) {
+            reminderToggle.classList.add('active');
+            reminderStatus.textContent = 'Reminder set for ' + savedTime;
+        }
+
+        reminderToggle.addEventListener('click', function() {
+            if (reminderToggle.classList.contains('active')) {
+                // Disable
+                reminderToggle.classList.remove('active');
+                localStorage.setItem('sukoon_reminder', 'false');
+                reminderStatus.textContent = 'Get a gentle nudge to practice';
+                showToast('Reminder disabled');
+            } else {
+                // Enable - request notification permission
+                if ('Notification' in window) {
+                    Notification.requestPermission().then(function(perm) {
+                        if (perm === 'granted') {
+                            reminderToggle.classList.add('active');
+                            var t = reminderTime.value || '09:00';
+                            localStorage.setItem('sukoon_reminder', 'true');
+                            localStorage.setItem('sukoon_reminder_time', t);
+                            reminderStatus.textContent = 'Reminder set for ' + t;
+                            scheduleReminder(t);
+                            showToast('Daily reminder enabled');
+                        } else {
+                            showToast('Notification permission denied');
+                        }
+                    });
+                } else {
+                    showToast('Notifications not supported');
+                }
+            }
+        });
+
+        reminderTime.addEventListener('change', function() {
+            var t = this.value;
+            localStorage.setItem('sukoon_reminder_time', t);
+            if (reminderEnabled || reminderToggle.classList.contains('active')) {
+                reminderStatus.textContent = 'Reminder set for ' + t;
+                scheduleReminder(t);
+            }
+        });
+
+        function scheduleReminder(timeStr) {
+            // Calculate ms until next occurrence of the given time
+            var parts = timeStr.split(':');
+            var targetH = parseInt(parts[0]);
+            var targetM = parseInt(parts[1]);
+            var now = new Date();
+            var target = new Date();
+            target.setHours(targetH, targetM, 0, 0);
+
+            if (target <= now) {
+                target.setDate(target.getDate() + 1);
+            }
+
+            var delay = target.getTime() - now.getTime();
+
+            // Clear any existing timer
+            if (window._sukoonReminderTimer) clearTimeout(window._sukoonReminderTimer);
+
+            window._sukoonReminderTimer = setTimeout(function() {
+                if (localStorage.getItem('sukoon_reminder') === 'true' && 'Notification' in window && Notification.permission === 'granted') {
+                    new Notification('Sukoon - Time for Peace', {
+                        body: 'A few minutes of mindfulness can transform your day. Take a breath.',
+                        icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">&#9789;</text></svg>'
+                    });
+                    // Reschedule for next day
+                    scheduleReminder(timeStr);
+                }
+            }, delay);
+        }
+
+        // Start scheduler if enabled
+        if (reminderEnabled) {
+            scheduleReminder(savedTime);
+        }
+
+        /* ================================================================
+           SETTINGS: Export Data
+           ================================================================ */
+
+        document.getElementById('exportBtn').addEventListener('click', function() {
+            var exportData = {
+                exportDate: new Date().toISOString(),
+                localStorage: {}
+            };
+
+            // Export all sukoon-related localStorage keys
+            for (var i = 0; i < localStorage.length; i++) {
+                var key = localStorage.key(i);
+                if (key && (key.indexOf('sukoon') === 0 || key === LOG_KEY || key === STATS_KEY)) {
+                    try {
+                        exportData.localStorage[key] = JSON.parse(localStorage.getItem(key));
+                    } catch(e) {
+                        exportData.localStorage[key] = localStorage.getItem(key);
+                    }
+                }
+            }
+
+            // Export IndexedDB journal entries
+            openJournalDB(function(db) {
+                getJournalEntries(db, function(entries) {
+                    exportData.journalEntries = entries;
+
+                    // Trigger download
+                    var blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
+                    var url = URL.createObjectURL(blob);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'sukoon-data-' + todayKey() + '.json';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+
+                    showToast('Data exported successfully');
+                });
+            });
+        });
+
+        /* ================================================================
+           TOAST
+           ================================================================ */
+
+        function showToast(msg) {
+            var toast = document.getElementById('toast');
+            document.getElementById('toastMsg').textContent = msg;
+            toast.classList.add('show');
+            setTimeout(function() { toast.classList.remove('show'); }, 2500);
+        }
+
+        /* ================================================================
+           INITIALIZE
+           ================================================================ */
+
+        function init() {
+            openJournalDB(function(db) {
+                getJournalEntries(db, function(entries) {
+                    renderStats(entries);
+                    renderHeatmap(entries);
+                    renderMoodChart(entries);
+                    renderJournal(entries);
+                    renderBadges(entries);
+                });
+            });
+        }
+
+        init();
+
+    })();
+    </script>
+</body>
+</html>

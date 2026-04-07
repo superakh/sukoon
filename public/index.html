@@ -2,1500 +2,1481 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sukoon - Free Mental Wellness for Every Soul</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Sukoon - Your Daily Wellness Companion</title>
     <meta name="description" content="Sukoon: free breathing exercises, meditation, ambient sounds, mood journal, AI friend & wisdom quotes. No account. No tracking. Just peace.">
+    <meta name="theme-color" content="#0F172A">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* ===================== RESET & BASE ===================== */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #374151;
-            background: #FAFAF7;
+            color: #F1F5F9;
+            background: #0F172A;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            padding-bottom: 80px;
+            min-height: 100vh;
+            overflow-x: hidden;
         }
 
         a { text-decoration: none; color: inherit; }
-        img { max-width: 100%; display: block; }
 
-        /* ===================== TOPBAR ===================== */
-        .topbar {
-            position: fixed;
+        .hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            color: #94A3B8;
+        }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 20px rgba(124, 58, 237, 0.15); }
+            50% { box-shadow: 0 0 40px rgba(124, 58, 237, 0.3); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); }
+        }
+
+        .fade-section {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease forwards;
+        }
+
+        .fade-section:nth-child(1) { animation-delay: 0s; }
+        .fade-section:nth-child(2) { animation-delay: 0.08s; }
+        .fade-section:nth-child(3) { animation-delay: 0.16s; }
+        .fade-section:nth-child(4) { animation-delay: 0.24s; }
+        .fade-section:nth-child(5) { animation-delay: 0.32s; }
+        .fade-section:nth-child(6) { animation-delay: 0.40s; }
+        .fade-section:nth-child(7) { animation-delay: 0.48s; }
+        .fade-section:nth-child(8) { animation-delay: 0.56s; }
+        .fade-section:nth-child(9) { animation-delay: 0.64s; }
+
+        /* ===================== TOP HEADER ===================== */
+        .top-header {
+            position: sticky;
             top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
+            z-index: 100;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 0 2rem;
-            height: 72px;
-            background: rgba(250, 250, 247, 0.8);
+            padding: 16px 20px;
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+            max-width: 680px;
+            margin: 0 auto;
         }
 
         .brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-        }
-
-        .nav {
+            font-size: 1.4rem;
+            color: #F1F5F9;
+            letter-spacing: -0.01em;
             display: flex;
             align-items: center;
-            gap: 4px;
+            gap: 6px;
         }
 
-        .nav a {
-            padding: 8px 14px;
-            border-radius: 100px;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #6B7280;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        .brand-moon {
+            font-size: 1.2rem;
+            opacity: 0.9;
         }
 
-        .nav a:hover {
-            background: rgba(79, 70, 229, 0.06);
-            color: #4F46E5;
-        }
-
-        .nav a.active {
-            background: #4F46E5;
-            color: #FFFFFF;
-            font-weight: 600;
-        }
-
-        .topbar-actions {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .lang-picker {
-            padding: 8px 12px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
+        .lang-select {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: #94A3B8;
+            padding: 6px 12px;
+            border-radius: 8px;
             font-size: 0.8rem;
-            font-weight: 500;
-            color: #6B7280;
-            cursor: pointer;
             font-family: 'Inter', sans-serif;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            -webkit-appearance: none;
+            cursor: pointer;
+            outline: none;
             appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%239CA3AF' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394A3B8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
             background-repeat: no-repeat;
-            background-position: right 10px center;
+            background-position: right 8px center;
             padding-right: 28px;
         }
 
-        .lang-picker:hover {
-            border-color: rgba(79, 70, 229, 0.3);
+        .lang-select option {
+            background: #1E293B;
+            color: #F1F5F9;
         }
 
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #374151;
-            cursor: pointer;
-            padding: 4px;
-            line-height: 1;
+        /* ===================== GREETING ===================== */
+        .greeting-section {
+            padding: 32px 0 8px;
+            text-align: left;
         }
 
-        /* Mobile nav overlay */
-        .mobile-nav-overlay {
-            display: none;
-            position: fixed;
-            top: 72px;
-            left: 0;
-            right: 0;
-            background: rgba(250, 250, 247, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding: 16px 24px 24px;
-            z-index: 999;
-            flex-direction: column;
-            gap: 4px;
-            transform: translateY(-10px);
-            opacity: 0;
-            transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .mobile-nav-overlay.open {
-            display: flex;
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .mobile-nav-overlay a {
-            padding: 14px 16px;
-            border-radius: 12px;
-            font-size: 1rem;
-            font-weight: 500;
-            color: #374151;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .mobile-nav-overlay a:hover,
-        .mobile-nav-overlay a.active {
-            background: rgba(79, 70, 229, 0.06);
-            color: #4F46E5;
-        }
-
-        @media (max-width: 900px) {
-            .nav { display: none; }
-            .mobile-menu-btn { display: block; }
-            .topbar { padding: 0 1.25rem; }
-        }
-
-        /* ===================== HERO ===================== */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 120px 24px 80px;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -20%;
-            left: -10%;
-            width: 60%;
-            height: 60%;
-            background: radial-gradient(ellipse, rgba(79, 70, 229, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 10%;
-            right: -15%;
-            width: 50%;
-            height: 50%;
-            background: radial-gradient(ellipse, rgba(16, 185, 129, 0.05) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-mesh-3 {
-            position: absolute;
-            bottom: -10%;
-            left: 30%;
-            width: 40%;
-            height: 40%;
-            background: radial-gradient(ellipse, rgba(245, 158, 11, 0.04) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-            max-width: 780px;
-        }
-
-        .hero-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 8px 20px;
-            border-radius: 100px;
-            background: rgba(79, 70, 229, 0.06);
-            border: 1px solid rgba(79, 70, 229, 0.1);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #4F46E5;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-bottom: 32px;
-        }
-
-        .hero-label-dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: #10B981;
-            animation: pulse-dot 2s ease-in-out infinite;
-        }
-
-        @keyframes pulse-dot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.5); }
-        }
-
-        .hero h1 {
+        .greeting-time {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(3.5rem, 7vw, 5.5rem);
-            font-weight: 400;
-            color: #111827;
-            letter-spacing: -0.02em;
-            line-height: 1.05;
-            margin-bottom: 24px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: #6B7280;
-            max-width: 620px;
-            margin: 0 auto 12px;
-            font-weight: 400;
-        }
-
-        .hero-subtitle-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 1rem;
-            color: #9CA3AF;
-            margin-bottom: 36px;
-        }
-
-        .trust-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 22px;
-            border-radius: 100px;
-            border: 1.5px solid rgba(16, 185, 129, 0.25);
-            background: rgba(16, 185, 129, 0.04);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #059669;
-            margin-bottom: 40px;
-        }
-
-        .trust-badge svg {
-            width: 16px;
-            height: 16px;
-            flex-shrink: 0;
-        }
-
-        .hero-ctas {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 14px;
-            background: #4F46E5;
-            color: #FFFFFF;
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 1px 3px rgba(79, 70, 229, 0.2), 0 8px 24px rgba(79, 70, 229, 0.15);
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25), 0 12px 32px rgba(79, 70, 229, 0.2);
-        }
-
-        .btn-secondary {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 16px 32px;
-            border-radius: 14px;
-            background: transparent;
-            color: #374151;
-            font-size: 1rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            border: 1.5px solid rgba(0,0,0,0.12);
-            cursor: pointer;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .btn-secondary:hover {
-            border-color: rgba(79, 70, 229, 0.3);
-            color: #4F46E5;
-            background: rgba(79, 70, 229, 0.03);
-            transform: translateY(-2px);
-        }
-
-        /* ===================== STATS RIBBON ===================== */
-        .stats-ribbon {
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.04);
-            border-bottom: 1px solid rgba(0,0,0,0.04);
-            padding: 48px 24px;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-        }
-
-        .stat-number {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.5rem;
-            color: #111827;
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-        }
-
-        .stat-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #9CA3AF;
-        }
-
-        .stat-divider {
-            display: none;
-        }
-
-        /* ===================== FEATURES ===================== */
-        .features-section {
-            background: #FAFAF7;
-            padding: 96px 24px;
-        }
-
-        .section-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #4F46E5;
-            margin-bottom: 12px;
-        }
-
-        .section-heading {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 4vw, 2.75rem);
-            font-weight: 400;
-            color: #111827;
-            letter-spacing: -0.02em;
-            line-height: 1.15;
-            margin-bottom: 16px;
-        }
-
-        .section-desc {
-            font-size: 1.05rem;
-            color: #6B7280;
-            max-width: 540px;
-            line-height: 1.7;
-            margin-bottom: 56px;
-        }
-
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 24px;
-        }
-
-        .feature-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 20px;
-            padding: 32px 28px 28px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 24px;
-            right: 24px;
-            height: 3px;
-            border-radius: 0 0 3px 3px;
-        }
-
-        .feature-card:nth-child(1)::before { background: #4F46E5; }
-        .feature-card:nth-child(2)::before { background: #10B981; }
-        .feature-card:nth-child(3)::before { background: #F59E0B; }
-        .feature-card:nth-child(4)::before { background: #EC4899; }
-        .feature-card:nth-child(5)::before { background: #8B5CF6; }
-        .feature-card:nth-child(6)::before { background: #06B6D4; }
-
-        .feature-icon-box {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 1.1rem;
-        }
-
-        .feature-card:nth-child(1) .feature-icon-box { background: rgba(79, 70, 229, 0.08); color: #4F46E5; }
-        .feature-card:nth-child(2) .feature-icon-box { background: rgba(16, 185, 129, 0.08); color: #10B981; }
-        .feature-card:nth-child(3) .feature-icon-box { background: rgba(245, 158, 11, 0.08); color: #F59E0B; }
-        .feature-card:nth-child(4) .feature-icon-box { background: rgba(236, 72, 153, 0.08); color: #EC4899; }
-        .feature-card:nth-child(5) .feature-icon-box { background: rgba(139, 92, 246, 0.08); color: #8B5CF6; }
-        .feature-card:nth-child(6) .feature-icon-box { background: rgba(6, 182, 212, 0.08); color: #06B6D4; }
-
-        .feature-title {
-            font-size: 1.125rem;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 8px;
-        }
-
-        .feature-desc {
-            font-size: 0.875rem;
-            color: #6B7280;
-            line-height: 1.65;
-            margin-bottom: 8px;
-            flex: 1;
-        }
-
-        .feature-hindi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #9CA3AF;
-            margin-bottom: 16px;
-        }
-
-        .feature-arrow {
-            display: flex;
-            justify-content: flex-end;
-            font-size: 1.2rem;
-            color: #D1D5DB;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .feature-card:hover .feature-arrow {
-            color: #4F46E5;
-            transform: translateX(4px);
-        }
-
-        /* ===================== QUOTE ===================== */
-        .quote-section {
-            background: #FFFFFF;
-            padding: 96px 24px;
-        }
-
-        .quote-card {
-            max-width: 720px;
-            margin: 0 auto;
-            text-align: center;
-            padding: 56px 48px;
-            border-radius: 24px;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.03) 0%, rgba(16, 185, 129, 0.02) 50%, rgba(245, 158, 11, 0.02) 100%);
-            border: 1px solid rgba(0,0,0,0.04);
-            position: relative;
-        }
-
-        .quote-label {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: #9CA3AF;
-            margin-bottom: 28px;
-        }
-
-        .quote-text {
-            font-family: 'DM Serif Display', serif;
-            font-style: italic;
-            font-size: clamp(1.25rem, 2.5vw, 1.75rem);
-            color: #111827;
-            letter-spacing: -0.01em;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-
-        .quote-hindi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 1rem;
-            color: #9CA3AF;
-            margin-bottom: 24px;
-            line-height: 1.6;
-        }
-
-        .quote-author {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #6B7280;
-            margin-bottom: 28px;
-        }
-
-        .quote-refresh {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 10px 20px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #6B7280;
-            cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .quote-refresh:hover {
-            border-color: rgba(79, 70, 229, 0.3);
-            color: #4F46E5;
-        }
-
-        .quote-refresh svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        /* ===================== WHY SECTION ===================== */
-        .why-section {
-            background: #FAFAF7;
-            padding: 96px 24px;
-        }
-
-        .why-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .why-top {
-            max-width: 640px;
-            margin-bottom: 56px;
-        }
-
-        .why-desc {
-            font-size: 1.05rem;
-            color: #6B7280;
-            line-height: 1.75;
-            margin-bottom: 12px;
-        }
-
-        .why-hindi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #9CA3AF;
-            line-height: 1.7;
-        }
-
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 24px;
-        }
-
-        .pillar-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 20px;
-            padding: 32px 24px;
-            text-align: center;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.08);
-        }
-
-        .pillar-icon {
-            width: 52px;
-            height: 52px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 16px;
-            font-size: 1.3rem;
-        }
-
-        .pillar-card:nth-child(1) .pillar-icon { background: rgba(79, 70, 229, 0.08); color: #4F46E5; }
-        .pillar-card:nth-child(2) .pillar-icon { background: rgba(16, 185, 129, 0.08); color: #10B981; }
-        .pillar-card:nth-child(3) .pillar-icon { background: rgba(245, 158, 11, 0.08); color: #F59E0B; }
-        .pillar-card:nth-child(4) .pillar-icon { background: rgba(236, 72, 153, 0.08); color: #EC4899; }
-
-        .pillar-label {
-            font-size: 0.95rem;
-            font-weight: 700;
-            color: #111827;
+            font-size: 2rem;
+            color: #F1F5F9;
+            line-height: 1.2;
             margin-bottom: 6px;
         }
 
-        .pillar-sublabel {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #9CA3AF;
+        .greeting-sub {
+            font-size: 1rem;
+            color: #94A3B8;
+            font-weight: 400;
+            margin-bottom: 4px;
         }
 
-        /* ===================== FOOTER ===================== */
-        .footer {
-            background: #F3F4F6;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding: 56px 24px 32px;
+        .greeting-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.85rem;
+            color: #64748B;
+            font-weight: 400;
         }
 
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            text-align: center;
+        /* ===================== DAILY SUKOON CARD ===================== */
+        .daily-card {
+            margin: 24px 0;
+            border-radius: 20px;
+            padding: 28px 24px;
+            background: linear-gradient(135deg, #7C3AED 0%, #4F46E5 50%, #3730A3 100%);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            animation: breathe 6s ease-in-out infinite;
         }
 
-        .footer-brand {
+        .daily-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 60px rgba(124, 58, 237, 0.3);
+        }
+
+        .daily-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .daily-card::after {
+            content: '';
+            position: absolute;
+            bottom: -40%;
+            left: -20%;
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .daily-card-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .daily-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 600;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .daily-label-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #F59E0B;
+            animation: pulseGlow 2s ease-in-out infinite;
+            box-shadow: 0 0 8px rgba(245, 158, 11, 0.5);
+        }
+
+        .daily-quote {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            color: #111827;
-            letter-spacing: -0.02em;
+            font-size: 1.35rem;
+            line-height: 1.45;
+            color: #FFFFFF;
             margin-bottom: 12px;
         }
 
-        .footer-mission {
-            font-size: 0.95rem;
-            color: #6B7280;
-            max-width: 480px;
-            margin: 0 auto 8px;
-            line-height: 1.6;
+        .daily-quote-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.65);
+            line-height: 1.5;
+            margin-bottom: 20px;
         }
 
-        .footer-mission-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+        .daily-prompt {
             font-size: 0.85rem;
-            color: #9CA3AF;
-            margin-bottom: 24px;
+            color: rgba(255, 255, 255, 0.85);
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            font-style: italic;
         }
 
-        .footer-privacy {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 6px 16px;
-            border-radius: 100px;
-            background: rgba(16, 185, 129, 0.06);
-            border: 1px solid rgba(16, 185, 129, 0.15);
-            font-size: 0.75rem;
+        /* ===================== QUICK ACTIONS ===================== */
+        .section-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #64748B;
             font-weight: 600;
-            color: #059669;
-            margin-bottom: 28px;
+            margin-bottom: 14px;
+            padding-left: 2px;
         }
 
-        .footer-privacy svg {
-            width: 12px;
-            height: 12px;
-        }
-
-        .footer-nav {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 8px;
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
             margin-bottom: 32px;
         }
 
-        .footer-nav a {
-            padding: 6px 14px;
-            border-radius: 8px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            color: #6B7280;
-            transition: all 0.2s cubic-bezier(0.4,0,0.2,1);
+        .quick-card {
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 20px 16px;
+            text-align: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            display: block;
+            position: relative;
+            overflow: hidden;
         }
 
-        .footer-nav a:hover {
-            color: #4F46E5;
-            background: rgba(79, 70, 229, 0.04);
+        .quick-card:hover {
+            background: #253348;
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
         }
 
-        .footer-copy {
+        .quick-card.sos-card {
+            border-color: rgba(239, 68, 68, 0.2);
+            background: linear-gradient(135deg, #1E293B 0%, rgba(239, 68, 68, 0.08) 100%);
+        }
+
+        .quick-card.sos-card:hover {
+            border-color: rgba(239, 68, 68, 0.4);
+            box-shadow: 0 8px 30px rgba(239, 68, 68, 0.15);
+        }
+
+        .quick-icon {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 14px;
+            background: rgba(124, 58, 237, 0.12);
+        }
+
+        .quick-card.sos-card .quick-icon {
+            background: rgba(239, 68, 68, 0.12);
+        }
+
+        .quick-icon svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .quick-title {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #F1F5F9;
+            margin-bottom: 2px;
+        }
+
+        .quick-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
             font-size: 0.75rem;
-            color: #9CA3AF;
+            color: #64748B;
         }
 
-        /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 1024px) {
-            .features-grid { grid-template-columns: repeat(2, 1fr); }
-            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+        /* ===================== MOOD CHECK-IN ===================== */
+        .mood-section {
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 20px;
+            padding: 24px;
+            margin-bottom: 32px;
+            text-align: center;
         }
 
-        @media (max-width: 768px) {
-            .hero { padding: 100px 20px 64px; min-height: auto; }
-            .hero h1 { font-size: clamp(2.5rem, 8vw, 3.5rem); }
-            .hero-subtitle { font-size: 1.05rem; }
-            .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
-            .stat-number { font-size: 2rem; }
-            .features-section, .quote-section, .why-section { padding: 72px 20px; }
-            .quote-card { padding: 40px 28px; }
-            .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 0.95rem; }
+        .mood-title {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #F1F5F9;
+            margin-bottom: 2px;
         }
 
-        @media (max-width: 600px) {
-            .features-grid { grid-template-columns: 1fr; }
-            .pillars-grid { grid-template-columns: repeat(2, 1fr); }
-            .hero-ctas { flex-direction: column; width: 100%; }
-            .btn-primary, .btn-secondary { width: 100%; justify-content: center; }
+        .mood-title-hindi {
+            font-family: 'Noto Sans Devanagari', sans-serif;
+            font-size: 0.8rem;
+            color: #64748B;
+            margin-bottom: 20px;
         }
 
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fade-up {
-            from { opacity: 0; transform: translateY(24px); }
-            to { opacity: 1; transform: translateY(0); }
+        .mood-faces {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-bottom: 8px;
         }
 
-        .animate-in {
+        .mood-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .mood-btn svg {
+            width: 40px;
+            height: 40px;
+            transition: all 0.3s ease;
+        }
+
+        .mood-btn:hover svg {
+            transform: scale(1.15);
+        }
+
+        .mood-btn.selected svg {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 12px rgba(124, 58, 237, 0.6));
+        }
+
+        .mood-btn.selected {
+            background: rgba(124, 58, 237, 0.15);
+        }
+
+        .mood-btn-label {
+            font-size: 0.65rem;
+            color: #64748B;
+            font-weight: 500;
+        }
+
+        .mood-btn.selected .mood-btn-label {
+            color: #A78BFA;
+        }
+
+        .mood-thanks {
+            font-size: 0.85rem;
+            color: #A78BFA;
+            margin-top: 12px;
             opacity: 0;
-            transform: translateY(24px);
-            transition: all 0.6s cubic-bezier(0.4,0,0.2,1);
+            transition: opacity 0.4s ease;
+            height: 0;
+            overflow: hidden;
         }
 
-        .animate-in.visible {
+        .mood-thanks.visible {
             opacity: 1;
-            transform: translateY(0);
+            height: auto;
+            padding-top: 4px;
+        }
+
+        /* ===================== RECOMMENDED SECTION ===================== */
+        .rec-section {
+            margin-bottom: 32px;
+        }
+
+        .rec-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .rec-time-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(245, 158, 11, 0.12);
+        }
+
+        .rec-time-icon svg {
+            width: 18px;
+            height: 18px;
+            color: #F59E0B;
+        }
+
+        .rec-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.2rem;
+            color: #F1F5F9;
+        }
+
+        .rec-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .rec-card {
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 18px 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: block;
+        }
+
+        .rec-card:hover {
+            background: #253348;
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .rec-card-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .rec-card-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .rec-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #F1F5F9;
+            margin-bottom: 4px;
+        }
+
+        .rec-card-desc {
+            font-size: 0.75rem;
+            color: #64748B;
+            line-height: 1.4;
+        }
+
+        /* ===================== CONTINUE SECTION ===================== */
+        .continue-card {
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .continue-card:hover {
+            background: #253348;
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-1px);
+        }
+
+        .continue-icon {
+            width: 48px;
+            height: 48px;
+            min-width: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(124, 58, 237, 0.12);
+        }
+
+        .continue-icon svg {
+            width: 22px;
+            height: 22px;
+            color: #A78BFA;
+        }
+
+        .continue-text h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #F1F5F9;
+            margin-bottom: 2px;
+        }
+
+        .continue-text p {
+            font-size: 0.78rem;
+            color: #64748B;
+        }
+
+        .continue-arrow {
+            margin-left: auto;
+            color: #475569;
+        }
+
+        .continue-arrow svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* ===================== PROGRESS STRIP ===================== */
+        .progress-strip {
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 18px 20px;
+            margin-bottom: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .progress-stats {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .progress-stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-stat-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .progress-stat-icon svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        .streak-icon {
+            background: rgba(245, 158, 11, 0.12);
+        }
+
+        .streak-icon svg {
+            color: #F59E0B;
+        }
+
+        .sessions-icon {
+            background: rgba(124, 58, 237, 0.12);
+        }
+
+        .sessions-icon svg {
+            color: #A78BFA;
+        }
+
+        .progress-stat-num {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #F1F5F9;
+        }
+
+        .progress-stat-label {
+            font-size: 0.7rem;
+            color: #64748B;
+        }
+
+        .progress-link {
+            font-size: 0.78rem;
+            color: #7C3AED;
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color 0.2s;
+        }
+
+        .progress-link:hover {
+            color: #A78BFA;
+        }
+
+        /* ===================== EXPLORE MORE ===================== */
+        .explore-section {
+            margin-bottom: 40px;
+        }
+
+        .explore-scroll {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 8px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .explore-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .explore-card {
+            min-width: 160px;
+            max-width: 160px;
+            background: #1E293B;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 18px 16px;
+            scroll-snap-align: start;
+            transition: all 0.3s ease;
+            display: block;
+            flex-shrink: 0;
+        }
+
+        .explore-card:hover {
+            background: #253348;
+            border-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .explore-card-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 12px;
+        }
+
+        .explore-card-icon svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .explore-card-title {
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #F1F5F9;
+            margin-bottom: 4px;
+        }
+
+        .explore-card-desc {
+            font-size: 0.72rem;
+            color: #64748B;
+            line-height: 1.35;
+        }
+
+        /* ===================== BOTTOM NAV ===================== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: 64px;
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            padding: 0 8px;
+            padding-bottom: env(safe-area-inset-bottom, 0);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            padding: 8px 12px;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            min-width: 56px;
+        }
+
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            color: #475569;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item span {
+            font-size: 0.62rem;
+            font-weight: 500;
+            color: #475569;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item:hover svg,
+        .nav-item:hover span {
+            color: #94A3B8;
+        }
+
+        .nav-item.active {
+            background: rgba(124, 58, 237, 0.1);
+        }
+
+        .nav-item.active svg {
+            color: #A78BFA;
+        }
+
+        .nav-item.active span {
+            color: #A78BFA;
+            font-weight: 600;
+        }
+
+        /* ===================== DESKTOP: SIDEBAR NAV ===================== */
+        @media (min-width: 901px) {
+            body {
+                padding-left: 220px;
+                padding-bottom: 20px;
+            }
+
+            .bottom-nav {
+                position: fixed;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: auto;
+                width: 220px;
+                height: 100vh;
+                flex-direction: column;
+                justify-content: flex-start;
+                padding: 24px 16px;
+                gap: 4px;
+                border-top: none;
+                border-right: 1px solid rgba(255, 255, 255, 0.06);
+                background: rgba(15, 23, 42, 0.95);
+            }
+
+            .sidebar-brand {
+                font-family: 'DM Serif Display', serif;
+                font-size: 1.5rem;
+                color: #F1F5F9;
+                padding: 8px 12px 24px;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+            .nav-item {
+                flex-direction: row;
+                justify-content: flex-start;
+                gap: 12px;
+                padding: 12px 14px;
+                border-radius: 12px;
+                width: 100%;
+                min-width: unset;
+            }
+
+            .nav-item span {
+                font-size: 0.88rem;
+            }
+
+            .top-header {
+                position: relative;
+                border-bottom: none;
+                padding-top: 12px;
+            }
+
+            .top-header .brand {
+                display: none;
+            }
+
+            .quick-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .rec-cards {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .container {
+                max-width: 800px;
+            }
+        }
+
+        /* ===================== SMALL MOBILE ===================== */
+        @media (max-width: 380px) {
+            .greeting-time {
+                font-size: 1.6rem;
+            }
+
+            .mood-faces {
+                gap: 10px;
+            }
+
+            .mood-btn svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .progress-stats {
+                gap: 16px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- TOPBAR -->
-    <header class="topbar">
-        <a href="/" class="brand">Sukoon</a>
-        <nav class="nav">
-            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-        </nav>
-        <div class="topbar-actions">
-            <select class="lang-picker">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-            </select>
-            <button class="mobile-menu-btn" id="menuBtn">&#9776;</button>
-        </div>
+    <!-- ==================== TOP HEADER ==================== -->
+    <header class="top-header">
+        <a href="/" class="brand">
+            <span class="brand-moon">&#9789;</span> Sukoon
+        </a>
+        <select class="lang-select" id="langSelect" aria-label="Select language">
+            <option value="en">EN / HI</option>
+            <option value="hi">HI / EN</option>
+            <option value="en-only">English</option>
+            <option value="hi-only">Hindi</option>
+        </select>
     </header>
 
-    <!-- Mobile nav -->
-    <div class="mobile-nav-overlay" id="mobileNav">
-        <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-        <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-        <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-        <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-        <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-        <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-        <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-        <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-    </div>
+    <main class="container">
 
-    <!-- HERO -->
-    <section class="hero">
-        <div class="hero-mesh-3"></div>
-        <div class="hero-content">
-            <div class="hero-label">
-                <span class="hero-label-dot"></span>
-                <span data-i18n="hero.label">Free for everyone</span>
-            </div>
-            <h1 data-i18n="hero.heading">Find your peace.</h1>
-            <p class="hero-subtitle" data-i18n="hero.subtitle">
-                Sukoon is a free mental wellness platform with breathing exercises, meditation, ambient sounds, mood tracking, and an AI companion. For every soul on Earth.
-            </p>
-            <p class="hero-subtitle-hi">
-                सुकून एक मुफ़्त मानसिक स्वास्थ्य मंच है -- हर आत्मा के लिए, हर जगह।
-            </p>
-            <div class="trust-badge">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M8 1L2 4v4.5c0 3.5 2.5 6 6 7.5 3.5-1.5 6-4 6-7.5V4L8 1z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M5.5 8.5L7 10l3.5-3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <span data-i18n="hero.trust">No account &middot; No tracking &middot; No cost</span>
-            </div>
-            <div class="hero-ctas">
-                <a href="/breathe.html" class="btn-primary"><span data-i18n="hero.cta_breathe">Start Breathing</span> <span>&rarr;</span></a>
-                <a href="/friend.html" class="btn-secondary"><span data-i18n="hero.cta_friend">Talk to a Friend</span> <span>&rarr;</span></a>
-            </div>
-        </div>
-    </section>
+        <!-- ==================== GREETING ==================== -->
+        <section class="greeting-section fade-section">
+            <h1 class="greeting-time" id="greetingText">Good evening</h1>
+            <p class="greeting-sub" id="greetingSub">Wind down gently</p>
+            <p class="greeting-hindi" id="greetingHindi">धीरे-धीरे विश्राम करें</p>
+        </section>
 
-    <!-- STATS RIBBON -->
-    <section class="stats-ribbon">
-        <div class="stats-grid">
-            <div class="stat-item">
-                <div class="stat-number">8</div>
-                <div class="stat-label" data-i18n="stats.tools">Tools</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">6</div>
-                <div class="stat-label" data-i18n="stats.languages">Languages</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">0</div>
-                <div class="stat-label" data-i18n="stats.data">Data Collected</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">&infin;</div>
-                <div class="stat-label" data-i18n="stats.peace">Peace</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FEATURES -->
-    <section class="features-section">
-        <div class="section-inner">
-            <div class="section-label" data-i18n="features.label">FEATURES</div>
-            <h2 class="section-heading" data-i18n="features.heading">Everything you need to feel better</h2>
-            <p class="section-desc" data-i18n="features.sub">Simple, beautiful tools designed with clinical mindfulness principles. Each one crafted to help you pause, reflect, and restore balance.</p>
-            <div class="features-grid">
-
-                <!-- Breathe -->
-                <a href="/breathe.html" class="feature-card animate-in">
-                    <div class="feature-icon-box">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <!-- ==================== DAILY SUKOON CARD ==================== -->
+        <section class="fade-section">
+            <div class="daily-card" id="dailyCard">
+                <div class="daily-card-content">
+                    <div class="daily-label">
+                        <span class="daily-label-dot"></span>
+                        Today's Reflection
                     </div>
-                    <div class="feature-title" data-i18n="features.card_breathe_title">Breathe</div>
-                    <div class="feature-desc" data-i18n="features.card_breathe_desc">Guided breathing exercises with 4-7-8, box breathing, and more. Visual circle animation syncs with each phase.</div>
-                    <div class="feature-hindi">श्वास अभ्यास -- शांति का पहला कदम</div>
-                    <div class="feature-arrow">&rarr;</div>
+                    <p class="daily-quote" id="dailyQuote">Peace comes from within. Do not seek it without.</p>
+                    <p class="daily-quote-hindi" id="dailyQuoteHindi">शांति भीतर से आती है। इसे बाहर मत खोजो।</p>
+                    <div class="daily-prompt" id="dailyPrompt">What does inner peace mean to you today?</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== QUICK ACTIONS ==================== -->
+        <section class="fade-section">
+            <div class="section-label">Quick Start</div>
+            <div class="quick-grid">
+                <a href="/breathe.html" class="quick-card" data-feature="breathe">
+                    <div class="quick-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17.7 7.7A7.1 7.1 0 0 0 6.3 7.7c-1.2 1.6-1.2 4.4 0 6l5.7 6.3 5.7-6.3c1.2-1.6 1.2-4.4 0-6z"/>
+                            <path d="M12 20V10"/>
+                            <path d="M8 14s1.5-2 4-2 4 2 4 2"/>
+                        </svg>
+                    </div>
+                    <div class="quick-title">Breathe</div>
+                    <div class="quick-hindi">साँस</div>
                 </a>
-
-                <!-- Meditate -->
-                <a href="/meditate.html" class="feature-card animate-in">
-                    <div class="feature-icon-box">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
+                <a href="/meditate.html" class="quick-card" data-feature="meditate">
+                    <div class="quick-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="6" r="2"/>
+                            <path d="M12 8v2"/>
+                            <path d="M8 20c0-4 1.5-6 4-6s4 2 4 6"/>
+                            <path d="M6 16s1-2 6-2 6 2 6 2"/>
+                            <path d="M9 12l-3 2"/>
+                            <path d="M15 12l3 2"/>
+                        </svg>
                     </div>
-                    <div class="feature-title" data-i18n="features.card_meditate_title">Meditate</div>
-                    <div class="feature-desc" data-i18n="features.card_meditate_desc">Timer-based meditation with ambient backgrounds. Set your duration, choose a soundscape, and find stillness.</div>
-                    <div class="feature-hindi">ध्यान -- अपने भीतर की शांति खोजें</div>
-                    <div class="feature-arrow">&rarr;</div>
+                    <div class="quick-title">Meditate</div>
+                    <div class="quick-hindi">ध्यान</div>
                 </a>
-
-                <!-- Sounds -->
-                <a href="/sounds.html" class="feature-card animate-in">
-                    <div class="feature-icon-box">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                <a href="/sleep.html" class="quick-card" data-feature="sleep">
+                    <div class="quick-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                            <path d="M14 5l1 2"/>
+                            <path d="M18 8l2 1"/>
+                        </svg>
                     </div>
-                    <div class="feature-title" data-i18n="features.card_sounds_title">Sounds</div>
-                    <div class="feature-desc" data-i18n="features.card_sounds_desc">Mix ambient soundscapes: rain, ocean, forest, birdsong. Layer multiple tracks and adjust each volume.</div>
-                    <div class="feature-hindi">प्राकृतिक ध्वनियाँ -- मन को विश्राम दें</div>
-                    <div class="feature-arrow">&rarr;</div>
+                    <div class="quick-title">Sleep</div>
+                    <div class="quick-hindi">नींद</div>
                 </a>
-
-                <!-- Journal -->
-                <a href="/journal.html" class="feature-card animate-in">
-                    <div class="feature-icon-box">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <a href="/sos.html" class="quick-card sos-card" data-feature="sos">
+                    <div class="quick-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
                     </div>
-                    <div class="feature-title" data-i18n="features.card_journal_title">Journal</div>
-                    <div class="feature-desc" data-i18n="features.card_journal_desc">Private mood tracking with daily prompts. Write freely, track patterns, and understand your emotional rhythms.</div>
-                    <div class="feature-hindi">डायरी -- अपनी भावनाओं को समझें</div>
-                    <div class="feature-arrow">&rarr;</div>
+                    <div class="quick-title" style="color: #FCA5A5;">SOS</div>
+                    <div class="quick-hindi" style="color: #7F1D1D;">मदद</div>
                 </a>
+            </div>
+        </section>
 
-                <!-- AI Friend -->
-                <a href="/friend.html" class="feature-card animate-in">
-                    <div class="feature-icon-box">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <!-- ==================== MOOD CHECK-IN ==================== -->
+        <section class="mood-section fade-section" id="moodSection">
+            <h2 class="mood-title">How are you feeling?</h2>
+            <p class="mood-title-hindi">आप कैसा महसूस कर रहे हैं?</p>
+            <div class="mood-faces" id="moodFaces">
+                <button class="mood-btn" data-mood="awful" aria-label="Awful">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#EF4444" stroke-width="2" fill="rgba(239,68,68,0.08)"/>
+                        <circle cx="16" cy="20" r="2" fill="#EF4444"/>
+                        <circle cx="32" cy="20" r="2" fill="#EF4444"/>
+                        <path d="M16 34c2-3 5-5 8-5s6 2 8 5" stroke="#EF4444" stroke-width="2" stroke-linecap="round" transform="rotate(180 24 31.5)"/>
+                        <path d="M14 15l4 2" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+                        <path d="M34 15l-4 2" stroke="#EF4444" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                    <span class="mood-btn-label">Awful</span>
+                </button>
+                <button class="mood-btn" data-mood="bad" aria-label="Bad">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#F59E0B" stroke-width="2" fill="rgba(245,158,11,0.08)"/>
+                        <circle cx="16" cy="20" r="2" fill="#F59E0B"/>
+                        <circle cx="32" cy="20" r="2" fill="#F59E0B"/>
+                        <path d="M16 33c2-2 5-3 8-3s6 1 8 3" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" transform="rotate(180 24 31.5)"/>
+                    </svg>
+                    <span class="mood-btn-label">Bad</span>
+                </button>
+                <button class="mood-btn" data-mood="okay" aria-label="Okay">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#94A3B8" stroke-width="2" fill="rgba(148,163,184,0.08)"/>
+                        <circle cx="16" cy="20" r="2" fill="#94A3B8"/>
+                        <circle cx="32" cy="20" r="2" fill="#94A3B8"/>
+                        <line x1="16" y1="31" x2="32" y2="31" stroke="#94A3B8" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="mood-btn-label">Okay</span>
+                </button>
+                <button class="mood-btn" data-mood="good" aria-label="Good">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#34D399" stroke-width="2" fill="rgba(52,211,153,0.08)"/>
+                        <circle cx="16" cy="20" r="2" fill="#34D399"/>
+                        <circle cx="32" cy="20" r="2" fill="#34D399"/>
+                        <path d="M16 29c2 2 5 3 8 3s6-1 8-3" stroke="#34D399" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="mood-btn-label">Good</span>
+                </button>
+                <button class="mood-btn" data-mood="great" aria-label="Great">
+                    <svg viewBox="0 0 48 48" fill="none">
+                        <circle cx="24" cy="24" r="22" stroke="#A78BFA" stroke-width="2" fill="rgba(167,139,250,0.08)"/>
+                        <circle cx="16" cy="19" r="2" fill="#A78BFA"/>
+                        <circle cx="32" cy="19" r="2" fill="#A78BFA"/>
+                        <path d="M14 28c2 4 5 6 10 6s8-2 10-6" stroke="#A78BFA" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    <span class="mood-btn-label">Great</span>
+                </button>
+            </div>
+            <div class="mood-thanks" id="moodThanks">Thank you for checking in &#x1F49C;</div>
+        </section>
+
+        <!-- ==================== RECOMMENDED ==================== -->
+        <section class="rec-section fade-section" id="recSection">
+            <div class="rec-header">
+                <div class="rec-time-icon" id="recIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                    </svg>
+                </div>
+                <h2 class="rec-title" id="recTitle">Evening Wind-Down</h2>
+            </div>
+            <div class="rec-cards" id="recCards">
+                <!-- Populated by JS -->
+            </div>
+        </section>
+
+        <!-- ==================== CONTINUE WHERE YOU LEFT OFF ==================== -->
+        <section class="fade-section">
+            <div class="section-label">Continue</div>
+            <a id="continueCard" href="/courses.html" class="continue-card">
+                <div class="continue-icon" id="continueIcon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="5 3 19 12 5 21 5 3"/>
+                    </svg>
+                </div>
+                <div class="continue-text">
+                    <h3 id="continueTitle">Start Your Journey</h3>
+                    <p id="continueDesc">Explore our guided courses and programs</p>
+                </div>
+                <div class="continue-arrow">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                </div>
+            </a>
+        </section>
+
+        <!-- ==================== PROGRESS STRIP ==================== -->
+        <section class="fade-section">
+            <div class="section-label">Your Progress</div>
+            <div class="progress-strip">
+                <div class="progress-stats">
+                    <div class="progress-stat">
+                        <div class="progress-stat-icon streak-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2c1 4-2 8-2 8s4-1 5 4c1 5-4 8-4 8s2-3 0-6c-1.5 1.5-2 4-2 4s-3-3-1-8c-2 1-3 4-3 4s-1-6 3-10c0 0 2-1 4 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="progress-stat-num" id="streakNum">0</div>
+                            <div class="progress-stat-label">day streak</div>
+                        </div>
                     </div>
-                    <div class="feature-title" data-i18n="features.card_friend_title">AI Friend</div>
-                    <div class="feature-desc" data-i18n="features.card_friend_desc">A compassionate AI companion trained in CBT and active listening. Talk anytime, in your language, judgment-free.</div>
-                    <div class="feature-hindi">AI दोस्त -- बिना किसी निर्णय के बात करें</div>
-                    <div class="feature-arrow">&rarr;</div>
+                    <div class="progress-stat">
+                        <div class="progress-stat-icon sessions-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="progress-stat-num" id="sessionsNum">0</div>
+                            <div class="progress-stat-label">this week</div>
+                        </div>
+                    </div>
+                </div>
+                <a href="/you.html" class="progress-link">View all &rarr;</a>
+            </div>
+        </section>
+
+        <!-- ==================== EXPLORE MORE ==================== -->
+        <section class="explore-section fade-section">
+            <div class="section-label">Explore More</div>
+            <div class="explore-scroll">
+                <a href="/courses.html" class="explore-card" data-feature="courses">
+                    <div class="explore-card-icon" style="background: rgba(124, 58, 237, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#A78BFA" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+                    </div>
+                    <div class="explore-card-title">Courses</div>
+                    <div class="explore-card-desc">Guided programs for growth and healing</div>
                 </a>
-
-                <!-- Wisdom -->
-                <a href="/wisdom.html" class="feature-card animate-in">
-                    <div class="feature-icon-box">
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+                <a href="/wisdom.html" class="explore-card" data-feature="wisdom">
+                    <div class="explore-card-icon" style="background: rgba(245, 158, 11, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                            <path d="M2 17l10 5 10-5"/>
+                            <path d="M2 12l10 5 10-5"/>
+                        </svg>
                     </div>
-                    <div class="feature-title" data-i18n="features.card_wisdom_title">Wisdom</div>
-                    <div class="feature-desc" data-i18n="features.card_wisdom_desc">Curated insights from Rumi, Kabir, Marcus Aurelius, Thich Nhat Hanh, and timeless philosophical traditions.</div>
-                    <div class="feature-hindi">ज्ञान -- सदियों की बुद्धिमत्ता आपके लिए</div>
-                    <div class="feature-arrow">&rarr;</div>
+                    <div class="explore-card-title">Wisdom</div>
+                    <div class="explore-card-desc">Timeless teachings from Indian traditions</div>
                 </a>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- QUOTE -->
-    <section class="quote-section">
-        <div class="quote-card animate-in">
-            <div class="quote-label" data-i18n="quote_section.label">TODAY'S THOUGHT</div>
-            <div class="quote-text" id="quoteText">"The mind is everything. What you think, you become."</div>
-            <div class="quote-hindi" id="quoteHindi">मन ही सब कुछ है। जो तुम सोचते हो, वही बन जाते हो।</div>
-            <div class="quote-author" id="quoteAuthor">-- Buddha</div>
-            <button class="quote-refresh" id="quoteRefresh">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1v5h5"/><path d="M15 15v-5h-5"/><path d="M2.3 10.5A6.5 6.5 0 0013.7 5.5"/><path d="M13.7 5.5A6.5 6.5 0 002.3 10.5"/></svg>
-                <span data-i18n="quote_section.refresh">New thought</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- WHY SUKOON -->
-    <section class="why-section">
-        <div class="why-inner">
-            <div class="why-top">
-                <div class="section-label" data-i18n="why.label">PHILOSOPHY</div>
-                <h2 class="section-heading" data-i18n="why.heading">Why Sukoon?</h2>
-                <p class="why-desc">
-                    Mental wellness shouldn't have a paywall. Sukoon exists because peace of mind is a basic human right, not a premium subscription. We built these tools for the student in Delhi, the worker in Dubai, the mother in Lagos, the elder in Osaka. Free, private, and always available.
-                </p>
-                <p class="why-hindi">
-                    मानसिक शांति किसी paywall के पीछे नहीं होनी चाहिए। सुकून इसलिए है क्योंकि मन की शांति हर इंसान का अधिकार है -- हर जगह, हर किसी के लिए, हमेशा मुफ़्त।
-                </p>
-            </div>
-            <div class="pillars-grid">
-                <div class="pillar-card animate-in">
-                    <div class="pillar-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                <a href="/quotes.html" class="explore-card" data-feature="quotes">
+                    <div class="explore-card-icon" style="background: rgba(52, 211, 153, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#34D399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21z"/>
+                            <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
+                        </svg>
                     </div>
-                    <div class="pillar-label" data-i18n="why.free">Free Forever</div>
-                    <div class="pillar-sublabel">हमेशा मुफ़्त</div>
-                </div>
-                <div class="pillar-card animate-in">
-                    <div class="pillar-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                    <div class="explore-card-title">Quotes</div>
+                    <div class="explore-card-desc">Daily inspiration in English and Hindi</div>
+                </a>
+                <a href="/videos.html" class="explore-card" data-feature="videos">
+                    <div class="explore-card-icon" style="background: rgba(239, 68, 68, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#EF4444" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="5 3 19 12 5 21 5 3"/>
+                        </svg>
                     </div>
-                    <div class="pillar-label" data-i18n="why.private">Fully Private</div>
-                    <div class="pillar-sublabel">पूरी तरह निजी</div>
-                </div>
-                <div class="pillar-card animate-in">
-                    <div class="pillar-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15 15 0 014 10 15 15 0 01-4 10 15 15 0 01-4-10 15 15 0 014-10z"/></svg>
+                    <div class="explore-card-title">Videos</div>
+                    <div class="explore-card-desc">Curated wellness talks and practices</div>
+                </a>
+                <a href="/focus.html" class="explore-card" data-feature="focus">
+                    <div class="explore-card-icon" style="background: rgba(59, 130, 246, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#3B82F6" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
                     </div>
-                    <div class="pillar-label" data-i18n="why.multi">Multilingual</div>
-                    <div class="pillar-sublabel">बहुभाषी</div>
-                </div>
-                <div class="pillar-card animate-in">
-                    <div class="pillar-icon">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+                    <div class="explore-card-title">Focus</div>
+                    <div class="explore-card-desc">Pomodoro timer with calming sounds</div>
+                </a>
+                <a href="/friend.html" class="explore-card" data-feature="friend">
+                    <div class="explore-card-icon" style="background: rgba(236, 72, 153, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#EC4899" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            <path d="M8 10h.01"/>
+                            <path d="M12 10h.01"/>
+                            <path d="M16 10h.01"/>
+                        </svg>
                     </div>
-                    <div class="pillar-label" data-i18n="why.love">Made with Love</div>
-                    <div class="pillar-sublabel">प्यार से बनाया</div>
-                </div>
+                    <div class="explore-card-title">AI Friend</div>
+                    <div class="explore-card-desc">A compassionate listener, anytime</div>
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="footer-inner">
-            <div class="footer-brand">Sukoon</div>
-            <p class="footer-mission" data-i18n="footer.mission">Free mental wellness tools for every soul on Earth.</p>
-            <p class="footer-mission-hi">पृथ्वी पर हर आत्मा के लिए मुफ़्त मानसिक स्वास्थ्य उपकरण।</p>
-            <div class="footer-privacy">
-                <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="8" height="6" rx="1"/><path d="M4 5V3.5a2 2 0 014 0V5"/></svg>
-                <span data-i18n="footer.privacy_line">Zero data collection</span>
-            </div>
-            <nav class="footer-nav">
-                <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-                <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-                <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-                <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-                <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-                <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-                <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-                <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-                <a href="/privacy.html" data-i18n="nav.privacy">Privacy</a>
-            </nav>
-            <p class="footer-copy">&copy; 2025 Sukoon. <span data-i18n="footer.copyright">The world needs love, not war.</span></p>
-        </div>
-    </footer>
+    </main>
 
-    <script>
-        // Mobile menu
-        const menuBtn = document.getElementById('menuBtn');
-        const mobileNav = document.getElementById('mobileNav');
-        let menuOpen = false;
+    <!-- ==================== BOTTOM NAV ==================== -->
+    <nav class="bottom-nav" id="bottomNav">
+        <div class="sidebar-brand" style="display:none;">&#9789; Sukoon</div>
+        <a href="/" class="nav-item active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="/explore.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+            </svg>
+            <span>Explore</span>
+        </a>
+        <a href="/breathe.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17.7 7.7A7.1 7.1 0 0 0 6.3 7.7c-1.2 1.6-1.2 4.4 0 6l5.7 6.3 5.7-6.3c1.2-1.6 1.2-4.4 0-6z"/>
+                <path d="M12 20V10"/>
+            </svg>
+            <span>Breathe</span>
+        </a>
+        <a href="/friend.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+            </svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/you.html" class="nav-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>You</span>
+        </a>
+    </nav>
 
-        menuBtn.addEventListener('click', function() {
-            menuOpen = !menuOpen;
-            if (menuOpen) {
-                mobileNav.classList.add('open');
-                menuBtn.textContent = '\u2715';
-            } else {
-                mobileNav.classList.remove('open');
-                menuBtn.textContent = '\u2630';
-            }
-        });
-
-        // Scroll animations
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(function(entry) {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-
-        document.querySelectorAll('.animate-in').forEach(function(el) {
-            observer.observe(el);
-        });
-
-        // Quote rotation
-        const quotes = [
-            {
-                text: '"The mind is everything. What you think, you become."',
-                hindi: '\u092E\u0928 \u0939\u0940 \u0938\u092C \u0915\u0941\u091B \u0939\u0948\u0964 \u091C\u094B \u0924\u0941\u092E \u0938\u094B\u091A\u0924\u0947 \u0939\u094B, \u0935\u0939\u0940 \u092C\u0928 \u091C\u093E\u0924\u0947 \u0939\u094B\u0964',
-                author: '-- Buddha'
-            },
-            {
-                text: '"Peace comes from within. Do not seek it without."',
-                hindi: '\u0936\u093E\u0902\u0924\u093F \u092D\u0940\u0924\u0930 \u0938\u0947 \u0906\u0924\u0940 \u0939\u0948\u0964 \u0907\u0938\u0947 \u092C\u093E\u0939\u0930 \u092E\u0924 \u0916\u094B\u091C\u094B\u0964',
-                author: '-- Buddha'
-            },
-            {
-                text: '"You yourself, as much as anybody in the entire universe, deserve your love and affection."',
-                hindi: '\u0906\u092A \u0916\u0941\u0926, \u092A\u0942\u0930\u0947 \u092C\u094D\u0930\u0939\u094D\u092E\u093E\u0902\u0921 \u092E\u0947\u0902 \u0915\u093F\u0938\u0940 \u0915\u0947 \u092D\u0940 \u091C\u093F\u0924\u0928\u093E, \u0905\u092A\u0928\u0947 \u092A\u094D\u0930\u0947\u092E \u0914\u0930 \u0938\u094D\u0928\u0947\u0939 \u0915\u0947 \u092A\u093E\u0924\u094D\u0930 \u0939\u0948\u0902\u0964',
-                author: '-- Buddha'
-            },
-            {
-                text: '"The wound is the place where the Light enters you."',
-                hindi: '\u0918\u093E\u0935 \u0935\u0939 \u091C\u0917\u0939 \u0939\u0948 \u091C\u0939\u093E\u0901 \u0938\u0947 \u0930\u094B\u0936\u0928\u0940 \u0924\u0941\u092E\u092E\u0947\u0902 \u092A\u094D\u0930\u0935\u0947\u0936 \u0915\u0930\u0924\u0940 \u0939\u0948\u0964',
-                author: '-- Rumi'
-            },
-            {
-                text: '"What you seek is seeking you."',
-                hindi: '\u091C\u094B \u0924\u0941\u092E \u0916\u094B\u091C \u0930\u0939\u0947 \u0939\u094B, \u0935\u0939 \u0924\u0941\u092E\u094D\u0939\u0947\u0902 \u0916\u094B\u091C \u0930\u0939\u093E \u0939\u0948\u0964',
-                author: '-- Rumi'
-            },
-            {
-                text: '"Almost everything will work again if you unplug it for a few minutes, including you."',
-                hindi: '\u0932\u0917\u092D\u0917 \u0938\u092C \u0915\u0941\u091B \u092B\u093F\u0930 \u0938\u0947 \u0915\u093E\u092E \u0915\u0930\u0947\u0917\u093E \u0905\u0917\u0930 \u0906\u092A \u0915\u0941\u091B \u092E\u093F\u0928\u091F \u0915\u0947 \u0932\u093F\u090F \u0930\u0941\u0915\u0947\u0902 -- \u0906\u092A \u0938\u092E\u0947\u0924\u0964',
-                author: '-- Anne Lamott'
-            },
-            {
-                text: '"Be where you are, not where you think you should be."',
-                hindi: '\u091C\u0939\u093E\u0901 \u0906\u092A \u0939\u0948\u0902 \u0935\u0939\u0940\u0902 \u0930\u0939\u093F\u090F, \u0928 \u0915\u093F \u091C\u0939\u093E\u0901 \u0906\u092A\u0915\u094B \u0932\u0917\u0924\u093E \u0939\u0948 \u0915\u093F \u0906\u092A\u0915\u094B \u0939\u094B\u0928\u093E \u091A\u093E\u0939\u093F\u090F\u0964',
-                author: '-- Thich Nhat Hanh'
-            }
-        ];
-
-        let currentQuote = 0;
-        const quoteText = document.getElementById('quoteText');
-        const quoteHindi = document.getElementById('quoteHindi');
-        const quoteAuthor = document.getElementById('quoteAuthor');
-        const quoteRefresh = document.getElementById('quoteRefresh');
-
-        quoteRefresh.addEventListener('click', function() {
-            currentQuote = (currentQuote + 1) % quotes.length;
-            quoteText.style.opacity = '0';
-            quoteHindi.style.opacity = '0';
-            quoteAuthor.style.opacity = '0';
-
-            setTimeout(function() {
-                quoteText.textContent = quotes[currentQuote].text;
-                quoteHindi.textContent = quotes[currentQuote].hindi;
-                quoteAuthor.textContent = quotes[currentQuote].author;
-                quoteText.style.opacity = '1';
-                quoteHindi.style.opacity = '1';
-                quoteAuthor.style.opacity = '1';
-            }, 250);
-        });
-
-        quoteText.style.transition = 'opacity 0.25s ease';
-        quoteHindi.style.transition = 'opacity 0.25s ease';
-        quoteAuthor.style.transition = 'opacity 0.25s ease';
-    </script>
-    <script src="/js/i18n.js"></script>
-
-    <!-- ===================== ONBOARDING OVERLAY ===================== -->
-    <style>
-        .sukoon-onboard {
-            position: fixed;
-            inset: 0;
-            z-index: 99999;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(250, 250, 247, 0.55);
-            backdrop-filter: blur(28px) saturate(1.4);
-            -webkit-backdrop-filter: blur(28px) saturate(1.4);
-            opacity: 1;
-            transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1);
-        }
-        .sukoon-onboard.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-        .sukoon-onboard-step {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            max-width: 560px;
-            padding: 40px 28px;
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
-        }
-        .sukoon-onboard-step.active {
-            display: flex;
-        }
-        .sukoon-onboard-step.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Step 1: Breathing */
-        .onboard-breath-ring {
-            width: 160px;
-            height: 160px;
-            border-radius: 50%;
-            border: 3px solid rgba(79, 70, 229, 0.18);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;
-            position: relative;
-        }
-        .onboard-breath-circle {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(79, 70, 229, 0.35), rgba(139, 92, 246, 0.25));
-            animation: onboard-breathe 6s ease-in-out infinite;
-        }
-        @keyframes onboard-breathe {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(2.1); opacity: 1; }
-        }
-        .onboard-breath-ring::after {
-            content: '';
-            position: absolute;
-            inset: -8px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(79, 70, 229, 0.08);
-            animation: onboard-breathe-outer 6s ease-in-out infinite;
-        }
-        @keyframes onboard-breathe-outer {
-            0%, 100% { transform: scale(1); opacity: 0.3; }
-            50% { transform: scale(1.15); opacity: 0.7; }
-        }
-        .onboard-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            color: #111827;
-            letter-spacing: -0.02em;
-            line-height: 1.2;
-            margin-bottom: 10px;
-        }
-        .onboard-title-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 1rem;
-            color: #9CA3AF;
-            margin-bottom: 8px;
-        }
-        .onboard-sub {
-            font-size: 0.95rem;
-            color: #6B7280;
-            line-height: 1.6;
-            max-width: 380px;
-        }
-
-        /* Step 2: Goal cards */
-        .onboard-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-            margin-top: 36px;
-            width: 100%;
-            max-width: 420px;
-        }
-        .onboard-card {
-            background: #FFFFFF;
-            border: 1.5px solid rgba(0,0,0,0.06);
-            border-radius: 18px;
-            padding: 28px 20px 22px;
-            cursor: pointer;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-            user-select: none;
-            -webkit-user-select: none;
-        }
-        .onboard-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 28px rgba(79, 70, 229, 0.1);
-            border-color: rgba(79, 70, 229, 0.2);
-        }
-        .onboard-card.selected {
-            border-color: #4F46E5;
-            background: rgba(79, 70, 229, 0.04);
-            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.12), 0 8px 28px rgba(79, 70, 229, 0.1);
-            transform: translateY(-3px) scale(1.02);
-        }
-        .onboard-card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .onboard-card-icon svg { width: 24px; height: 24px; }
-        .onboard-card:nth-child(1) .onboard-card-icon { background: rgba(99, 102, 241, 0.1); color: #6366F1; }
-        .onboard-card:nth-child(2) .onboard-card-icon { background: rgba(236, 72, 153, 0.1); color: #EC4899; }
-        .onboard-card:nth-child(3) .onboard-card-icon { background: rgba(245, 158, 11, 0.1); color: #F59E0B; }
-        .onboard-card:nth-child(4) .onboard-card-icon { background: rgba(16, 185, 129, 0.1); color: #10B981; }
-        .onboard-card-label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: #111827;
-        }
-        .onboard-card-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.75rem;
-            color: #9CA3AF;
-        }
-
-        /* Step 3: Complete */
-        .onboard-check {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.12), rgba(79, 70, 229, 0.08));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 28px;
-            animation: onboard-pulse-check 2s ease-in-out infinite;
-        }
-        .onboard-check svg { width: 32px; height: 32px; color: #10B981; }
-        @keyframes onboard-pulse-check {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.06); }
-        }
-        .onboard-complete-msg {
-            font-size: 0.95rem;
-            color: #6B7280;
-            line-height: 1.7;
-            max-width: 380px;
-            margin-top: 4px;
-        }
-
-        /* Step dots */
-        .onboard-dots {
-            display: flex;
-            gap: 8px;
-            margin-top: 40px;
-        }
-        .onboard-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(0,0,0,0.1);
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
-        }
-        .onboard-dot.active {
-            background: #4F46E5;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        @media (max-width: 500px) {
-            .onboard-cards { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .onboard-card { padding: 20px 14px 16px; }
-            .onboard-breath-ring { width: 130px; height: 130px; }
-            .onboard-breath-circle { width: 48px; height: 48px; }
-        }
-    </style>
-
-    <div class="sukoon-onboard" id="sukoonOnboard">
-        <!-- Step 1: Breathing -->
-        <div class="sukoon-onboard-step active" id="onboardStep1">
-            <div class="onboard-breath-ring">
-                <div class="onboard-breath-circle"></div>
-            </div>
-            <div class="onboard-title">Welcome. Take a deep breath.</div>
-            <div class="onboard-title-hi">स्वागत है। एक गहरी साँस लीजिए।</div>
-            <div class="onboard-dots">
-                <div class="onboard-dot active"></div>
-                <div class="onboard-dot"></div>
-                <div class="onboard-dot"></div>
-            </div>
-        </div>
-
-        <!-- Step 2: Goal -->
-        <div class="sukoon-onboard-step" id="onboardStep2">
-            <div class="onboard-title">What brings you here?</div>
-            <div class="onboard-title-hi">आप यहाँ क्यों आए हैं?</div>
-            <div class="onboard-sub">Choose what matters most to you right now.</div>
-            <div class="onboard-cards">
-                <div class="onboard-card" data-goal="sleep">
-                    <div class="onboard-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-                    </div>
-                    <div class="onboard-card-label">Sleep better</div>
-                    <div class="onboard-card-hi">बेहतर नींद</div>
-                </div>
-                <div class="onboard-card" data-goal="anxiety">
-                    <div class="onboard-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
-                    </div>
-                    <div class="onboard-card-label">Reduce anxiety</div>
-                    <div class="onboard-card-hi">चिंता कम करें</div>
-                </div>
-                <div class="onboard-card" data-goal="focus">
-                    <div class="onboard-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
-                    </div>
-                    <div class="onboard-card-label">Improve focus</div>
-                    <div class="onboard-card-hi">ध्यान बढ़ाएँ</div>
-                </div>
-                <div class="onboard-card" data-goal="growth">
-                    <div class="onboard-card-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V8"/><path d="M5 12l7-7 7 7"/><path d="M8 22h8"/><path d="M7 16c-1.5 0-3-1-3-3 0-1.5 1-3 3-3"/><path d="M17 16c1.5 0 3-1 3-3 0-1.5-1-3-3-3"/></svg>
-                    </div>
-                    <div class="onboard-card-label">Personal growth</div>
-                    <div class="onboard-card-hi">व्यक्तिगत विकास</div>
-                </div>
-            </div>
-            <div class="onboard-dots">
-                <div class="onboard-dot"></div>
-                <div class="onboard-dot active"></div>
-                <div class="onboard-dot"></div>
-            </div>
-        </div>
-
-        <!-- Step 3: Done -->
-        <div class="sukoon-onboard-step" id="onboardStep3">
-            <div class="onboard-check">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-            </div>
-            <div class="onboard-title">You're all set.</div>
-            <div class="onboard-title-hi">आप तैयार हैं।</div>
-            <div class="onboard-complete-msg">
-                Sukoon is your quiet corner of the internet. Everything here is free, private, and made with care. No account needed -- ever.
-            </div>
-            <div class="onboard-dots">
-                <div class="onboard-dot"></div>
-                <div class="onboard-dot"></div>
-                <div class="onboard-dot active"></div>
-            </div>
-        </div>
-    </div>
-
+    <!-- ==================== JAVASCRIPT ==================== -->
     <script>
     (function() {
         'use strict';
-        if (localStorage.getItem('sukoon-onboarded')) {
-            var overlay = document.getElementById('sukoonOnboard');
-            if (overlay) overlay.remove();
-            return;
+
+        // ========== DAILY QUOTES (32 — one per day of month, cycling) ==========
+        const QUOTES = [
+            { en: "Peace comes from within. Do not seek it without.", hi: "शांति भीतर से आती है। इसे बाहर मत खोजो।", prompt: "What does inner peace mean to you today?" },
+            { en: "The present moment is the only moment available to us, and it is the door to all moments.", hi: "वर्तमान क्षण ही एकमात्र उपलब्ध क्षण है, और यह सभी क्षणों का द्वार है।", prompt: "What are you fully present for right now?" },
+            { en: "You yourself, as much as anybody in the entire universe, deserve your love and affection.", hi: "आप स्वयं, पूरे ब्रह्मांड में किसी से भी उतने ही अपने प्रेम और स्नेह के पात्र हैं।", prompt: "How will you show yourself love today?" },
+            { en: "In the middle of difficulty lies opportunity.", hi: "कठिनाई के बीच में अवसर छिपा होता है।", prompt: "What hidden opportunity do you see in a current challenge?" },
+            { en: "The mind is everything. What you think, you become.", hi: "मन ही सब कुछ है। आप जो सोचते हैं, वही बन जाते हैं।", prompt: "What is one thought you want to nurture today?" },
+            { en: "Happiness is not something ready-made. It comes from your own actions.", hi: "खुशी कोई बनी-बनाई चीज़ नहीं है। यह आपके अपने कर्मों से आती है।", prompt: "What action will bring you joy today?" },
+            { en: "Let go of the thoughts that do not make you strong.", hi: "उन विचारों को जाने दो जो तुम्हें मजबूत नहीं बनाते।", prompt: "What thought are you ready to release?" },
+            { en: "Breathing in, I calm my body. Breathing out, I smile.", hi: "सांस लेते हुए, मैं अपने शरीर को शांत करता हूँ। सांस छोड़ते हुए, मैं मुस्कुराता हूँ।", prompt: "Take three slow breaths. How do you feel?" },
+            { en: "Nothing can bring you peace but yourself.", hi: "आपके अलावा कोई भी आपको शांति नहीं दे सकता।", prompt: "Where in your life do you need to rely more on yourself?" },
+            { en: "The soul always knows what to do to heal itself. The challenge is to silence the mind.", hi: "आत्मा को हमेशा पता होता है कि स्वयं को कैसे ठीक करना है। चुनौती है मन को शांत करना।", prompt: "What is your soul telling you right now?" },
+            { en: "Be where you are, not where you think you should be.", hi: "जहाँ आप हैं वहीं रहें, जहाँ आपको लगता है कि आपको होना चाहिए वहाँ नहीं।", prompt: "Can you accept exactly where you are today?" },
+            { en: "Every morning we are born again. What we do today matters most.", hi: "हर सुबह हमारा पुनर्जन्म होता है। आज हम क्या करते हैं वही सबसे ज़रूरी है।", prompt: "What is the most meaningful thing you can do today?" },
+            { en: "Silence is not empty. It is full of answers.", hi: "मौन खाली नहीं है। यह उत्तरों से भरा है।", prompt: "Spend one minute in silence. What did you notice?" },
+            { en: "The greatest weapon against stress is our ability to choose one thought over another.", hi: "तनाव के खिलाफ सबसे बड़ा हथियार एक विचार को दूसरे पर चुनने की हमारी क्षमता है।", prompt: "What positive thought will you choose today?" },
+            { en: "You don't have to control your thoughts. You just have to stop letting them control you.", hi: "आपको अपने विचारों को नियंत्रित नहीं करना है। बस उन्हें आपको नियंत्रित करने से रोकना है।", prompt: "Which recurring thought can you observe without reacting to?" },
+            { en: "Almost everything will work again if you unplug it for a few minutes, including you.", hi: "लगभग सब कुछ फिर से काम करेगा अगर आप इसे कुछ मिनट के लिए बंद कर दें, आप सहित।", prompt: "When will you take your next real break?" },
+            { en: "One conscious breath in and out is a meditation.", hi: "एक सचेत सांस अंदर और बाहर एक ध्यान है।", prompt: "Pause and take one truly conscious breath." },
+            { en: "What you resist, persists. What you accept, transforms.", hi: "जिसका आप विरोध करते हैं, वह बना रहता है। जिसे आप स्वीकार करते हैं, वह बदल जाता है।", prompt: "What are you resisting that you could accept instead?" },
+            { en: "Your calm mind is the ultimate weapon against your challenges.", hi: "आपका शांत मन आपकी चुनौतियों के खिलाफ सबसे बड़ा हथियार है।", prompt: "How can you approach today's biggest challenge with calmness?" },
+            { en: "The quieter you become, the more you can hear.", hi: "आप जितने शांत होते जाते हैं, उतना अधिक सुन पाते हैं।", prompt: "What have you been too busy to hear?" },
+            { en: "Within you, there is a stillness and a sanctuary to which you can retreat at any time.", hi: "आपके भीतर एक शांति और एक अभयारण्य है जहाँ आप कभी भी जा सकते हैं।", prompt: "Close your eyes for a moment. Find your inner sanctuary." },
+            { en: "When you own your breath, nobody can steal your peace.", hi: "जब आप अपनी सांस पर अधिकार कर लेते हैं, तो कोई आपकी शांति नहीं चुरा सकता।", prompt: "Practice three deep breaths before your next activity." },
+            { en: "Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.", hi: "भावनाएँ तूफानी आसमान में बादलों की तरह आती-जाती हैं। सचेत श्वास मेरा लंगर है।", prompt: "What feeling is passing through you right now? Just notice it." },
+            { en: "You are not a drop in the ocean. You are the entire ocean in a drop.", hi: "तुम समुद्र में एक बूँद नहीं हो। तुम एक बूँद में पूरा समुद्र हो।", prompt: "What makes you feel vast and unlimited?" },
+            { en: "The only way to make sense out of change is to plunge into it and join the dance.", hi: "बदलाव को समझने का एकमात्र तरीका है इसमें कूद पड़ना और नृत्य में शामिल हो जाना।", prompt: "What change in your life can you embrace today?" },
+            { en: "Rest is not idleness. It is the wisest thing a tired mind can do.", hi: "विश्राम आलस्य नहीं है। यह सबसे बुद्धिमान काम है जो एक थका हुआ मन कर सकता है।", prompt: "Do you need rest right now? Give yourself permission." },
+            { en: "In today's rush, we all think too much, seek too much, want too much, and forget about the joy of just being.", hi: "आज की भागदौड़ में हम सब बहुत सोचते हैं, बहुत खोजते हैं, बहुत चाहते हैं, और बस होने की खुशी भूल जाते हैं।", prompt: "Can you find joy in simply existing right now?" },
+            { en: "Nature does not hurry, yet everything is accomplished.", hi: "प्रकृति जल्दी नहीं करती, फिर भी सब कुछ पूरा हो जाता है।", prompt: "Where can you slow down without losing progress?" },
+            { en: "Do not dwell in the past, do not dream of the future, concentrate the mind on the present moment.", hi: "अतीत में मत रहो, भविष्य के सपने मत देखो, मन को वर्तमान क्षण पर केंद्रित करो।", prompt: "What is one thing you are grateful for in this moment?" },
+            { en: "The wound is the place where the Light enters you.", hi: "घाव वह जगह है जहाँ से प्रकाश तुम में प्रवेश करता है।", prompt: "What difficult experience has taught you the most?" },
+            { en: "Start where you are. Use what you have. Do what you can.", hi: "जहाँ आप हैं वहाँ से शुरू करें। जो आपके पास है उसका उपयोग करें। जो आप कर सकते हैं वो करें।", prompt: "What one small step can you take right now?" },
+            { en: "May all beings be happy. May all beings be free from suffering.", hi: "सभी प्राणी सुखी हों। सभी प्राणी दुख से मुक्त हों।", prompt: "Send a silent wish of wellness to someone you know." }
+        ];
+
+        // ========== TIME DETECTION ==========
+        const hour = new Date().getHours();
+        let timeOfDay, greetEn, greetHi, subEn;
+
+        if (hour >= 5 && hour < 12) {
+            timeOfDay = 'morning';
+            greetEn = 'Good morning';
+            subEn = 'Start your day with peace';
+            greetHi = 'शांति से अपने दिन की शुरुआत करें';
+        } else if (hour >= 12 && hour < 17) {
+            timeOfDay = 'afternoon';
+            greetEn = 'Good afternoon';
+            subEn = 'Take a mindful pause';
+            greetHi = 'एक सचेत विराम लें';
+        } else if (hour >= 17 && hour < 22) {
+            timeOfDay = 'evening';
+            greetEn = 'Good evening';
+            subEn = 'Wind down gently';
+            greetHi = 'धीरे-धीरे विश्राम करें';
+        } else {
+            timeOfDay = 'night';
+            greetEn = 'Good night';
+            subEn = 'Embrace the stillness';
+            greetHi = 'शांति को अपनाएँ';
         }
 
-        var step1 = document.getElementById('onboardStep1');
-        var step2 = document.getElementById('onboardStep2');
-        var step3 = document.getElementById('onboardStep3');
-        var overlay = document.getElementById('sukoonOnboard');
+        document.getElementById('greetingText').textContent = greetEn;
+        document.getElementById('greetingSub').textContent = subEn;
+        document.getElementById('greetingHindi').textContent = greetHi;
 
-        function showStep(el) {
-            el.classList.add('active');
-            requestAnimationFrame(function() {
-                requestAnimationFrame(function() {
-                    el.classList.add('visible');
-                });
+        // ========== DAILY QUOTE ==========
+        const dayOfMonth = new Date().getDate();
+        const quoteIndex = (dayOfMonth - 1) % QUOTES.length;
+        const todayQuote = QUOTES[quoteIndex];
+
+        document.getElementById('dailyQuote').textContent = todayQuote.en;
+        document.getElementById('dailyQuoteHindi').textContent = todayQuote.hi;
+        document.getElementById('dailyPrompt').textContent = todayQuote.prompt;
+
+        // ========== MOOD CHECK-IN ==========
+        const moodFaces = document.getElementById('moodFaces');
+        const moodThanks = document.getElementById('moodThanks');
+        const todayKey = new Date().toISOString().split('T')[0];
+        const savedMood = localStorage.getItem('sukoon_mood_today_date') === todayKey
+            ? localStorage.getItem('sukoon_mood_today')
+            : null;
+
+        if (savedMood) {
+            const savedBtn = moodFaces.querySelector('[data-mood="' + savedMood + '"]');
+            if (savedBtn) {
+                savedBtn.classList.add('selected');
+                moodThanks.classList.add('visible');
+            }
+        }
+
+        moodFaces.addEventListener('click', function(e) {
+            const btn = e.target.closest('.mood-btn');
+            if (!btn) return;
+
+            moodFaces.querySelectorAll('.mood-btn').forEach(function(b) {
+                b.classList.remove('selected');
             });
+            btn.classList.add('selected');
+
+            const mood = btn.getAttribute('data-mood');
+            localStorage.setItem('sukoon_mood_today', mood);
+            localStorage.setItem('sukoon_mood_today_date', todayKey);
+
+            moodThanks.classList.add('visible');
+        });
+
+        // ========== RECOMMENDED SECTION ==========
+        var recCards = document.getElementById('recCards');
+        var recTitle = document.getElementById('recTitle');
+        var recIcon = document.getElementById('recIcon');
+
+        var recommendations = {
+            morning: {
+                title: 'Morning Calm',
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>',
+                cards: [
+                    { title: '4-7-8 Breathing', desc: 'Calm your nervous system', link: '/breathe.html', color: '#A78BFA', bg: 'rgba(124,58,237,0.12)' },
+                    { title: 'Morning Meditation', desc: '10 minutes of stillness', link: '/meditate.html', color: '#34D399', bg: 'rgba(52,211,153,0.12)' }
+                ]
+            },
+            afternoon: {
+                title: 'Afternoon Reset',
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>',
+                cards: [
+                    { title: 'Focus Timer', desc: 'Pomodoro with ambient sounds', link: '/focus.html', color: '#3B82F6', bg: 'rgba(59,130,246,0.12)' },
+                    { title: 'Calming Sounds', desc: 'Rain, forest, ocean & more', link: '/sounds.html', color: '#34D399', bg: 'rgba(52,211,153,0.12)' }
+                ]
+            },
+            evening: {
+                title: 'Evening Wind-Down',
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
+                cards: [
+                    { title: 'Sleep Sounds', desc: 'Drift off with gentle melodies', link: '/sleep.html', color: '#818CF8', bg: 'rgba(129,140,248,0.12)' },
+                    { title: 'Evening Journal', desc: 'Reflect on your day', link: '/journal.html', color: '#F59E0B', bg: 'rgba(245,158,11,0.12)' }
+                ]
+            },
+            night: {
+                title: 'Nighttime Peace',
+                icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/><path d="M14 5l1 2"/><path d="M18 8l2 1"/></svg>',
+                cards: [
+                    { title: 'Sleep Stories', desc: 'Gentle tales for restful sleep', link: '/sleep.html', color: '#A78BFA', bg: 'rgba(124,58,237,0.12)' },
+                    { title: 'Night Sounds', desc: 'Crickets, rain & soft ambience', link: '/sounds.html', color: '#64748B', bg: 'rgba(100,116,139,0.12)' }
+                ]
+            }
+        };
+
+        var rec = recommendations[timeOfDay];
+        recTitle.textContent = rec.title;
+        recIcon.innerHTML = rec.icon;
+
+        recCards.innerHTML = rec.cards.map(function(card) {
+            return '<a href="' + card.link + '" class="rec-card">' +
+                '<div class="rec-card-icon" style="background:' + card.bg + ';">' +
+                    '<svg viewBox="0 0 24 24" fill="none" stroke="' + card.color + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
+                        '<circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>' +
+                    '</svg>' +
+                '</div>' +
+                '<div class="rec-card-title">' + card.title + '</div>' +
+                '<div class="rec-card-desc">' + card.desc + '</div>' +
+            '</a>';
+        }).join('');
+
+        // ========== CONTINUE WHERE YOU LEFT OFF ==========
+        var featureMap = {
+            breathe: { title: 'Continue breathing exercise', desc: 'Pick up where you left off', link: '/breathe.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7A7.1 7.1 0 0 0 6.3 7.7c-1.2 1.6-1.2 4.4 0 6l5.7 6.3 5.7-6.3c1.2-1.6 1.2-4.4 0-6z"/><path d="M12 20V10"/></svg>' },
+            meditate: { title: 'Continue meditation', desc: 'Return to your practice', link: '/meditate.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="6" r="2"/><path d="M12 8v2"/><path d="M8 20c0-4 1.5-6 4-6s4 2 4 6"/></svg>' },
+            sleep: { title: 'Continue sleep session', desc: 'Your sleep sounds await', link: '/sleep.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>' },
+            courses: { title: 'Continue your course', desc: 'Keep up the great work', link: '/courses.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>' },
+            focus: { title: 'Continue focus session', desc: 'Stay in the zone', link: '/focus.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>' },
+            friend: { title: 'Continue your conversation', desc: 'Your AI friend is here', link: '/friend.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>' },
+            wisdom: { title: 'Continue reading wisdom', desc: 'Ancient teachings await', link: '/wisdom.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>' },
+            quotes: { title: 'Continue exploring quotes', desc: 'More inspiration awaits', link: '/quotes.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2"/></svg>' },
+            journal: { title: 'Continue journaling', desc: 'Your thoughts matter', link: '/journal.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>' },
+            sounds: { title: 'Continue listening', desc: 'Your ambient sounds await', link: '/sounds.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>' },
+            videos: { title: 'Continue watching', desc: 'Resume your wellness video', link: '/videos.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>' },
+            sos: { title: 'SOS resources', desc: 'You are not alone', link: '/sos.html', icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>' }
+        };
+
+        var lastFeature = localStorage.getItem('sukoon_last_feature');
+        if (lastFeature && featureMap[lastFeature]) {
+            var feat = featureMap[lastFeature];
+            var contCard = document.getElementById('continueCard');
+            contCard.href = feat.link;
+            document.getElementById('continueTitle').textContent = feat.title;
+            document.getElementById('continueDesc').textContent = feat.desc;
+            document.getElementById('continueIcon').innerHTML = feat.icon;
         }
 
-        function hideStep(el, cb) {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(-12px)';
-            setTimeout(function() {
-                el.classList.remove('active', 'visible');
-                el.style.opacity = '';
-                el.style.transform = '';
-                if (cb) cb();
-            }, 400);
-        }
-
-        // Start: show step 1 after a beat
-        setTimeout(function() { step1.classList.add('visible'); }, 200);
-
-        // Auto-advance to step 2 after breathing pause
-        setTimeout(function() {
-            hideStep(step1, function() {
-                showStep(step2);
-            });
-        }, 5500);
-
-        // Goal card selection
-        var cards = document.querySelectorAll('.onboard-card');
-        cards.forEach(function(card) {
-            card.addEventListener('click', function() {
-                cards.forEach(function(c) { c.classList.remove('selected'); });
-                card.classList.add('selected');
-                var goal = card.getAttribute('data-goal');
-                localStorage.setItem('sukoon-goal', goal);
-
-                setTimeout(function() {
-                    hideStep(step2, function() {
-                        showStep(step3);
-                        // Auto-dismiss after showing completion
-                        setTimeout(function() {
-                            localStorage.setItem('sukoon-onboarded', 'true');
-                            overlay.classList.add('fade-out');
-                            setTimeout(function() { overlay.remove(); }, 800);
-                        }, 2800);
-                    });
-                }, 600);
+        // Track feature visits on quick actions and explore cards
+        document.querySelectorAll('[data-feature]').forEach(function(el) {
+            el.addEventListener('click', function() {
+                localStorage.setItem('sukoon_last_feature', this.getAttribute('data-feature'));
             });
         });
+
+        // ========== STREAK & SESSIONS ==========
+        function getStreak() {
+            var streakData = localStorage.getItem('sukoon_streak');
+            if (!streakData) return { count: 0, lastDate: '' };
+            try { return JSON.parse(streakData); }
+            catch(e) { return { count: 0, lastDate: '' }; }
+        }
+
+        function updateStreak() {
+            var streak = getStreak();
+            var today = new Date().toISOString().split('T')[0];
+
+            if (streak.lastDate === today) {
+                // Already counted today
+            } else {
+                var yesterday = new Date();
+                yesterday.setDate(yesterday.getDate() - 1);
+                var yesterdayStr = yesterday.toISOString().split('T')[0];
+
+                if (streak.lastDate === yesterdayStr) {
+                    streak.count += 1;
+                } else if (streak.lastDate === '') {
+                    streak.count = 1;
+                } else {
+                    streak.count = 1;
+                }
+                streak.lastDate = today;
+                localStorage.setItem('sukoon_streak', JSON.stringify(streak));
+            }
+
+            document.getElementById('streakNum').textContent = streak.count;
+        }
+
+        function getWeeklySessions() {
+            var sessions = localStorage.getItem('sukoon_sessions');
+            if (!sessions) return [];
+            try { return JSON.parse(sessions); }
+            catch(e) { return []; }
+        }
+
+        function updateSessionsDisplay() {
+            var sessions = getWeeklySessions();
+            var now = new Date();
+            var weekAgo = new Date(now.getTime() - 7 * 24 * 60 * 60 * 1000);
+            var weekSessions = sessions.filter(function(s) {
+                return new Date(s) >= weekAgo;
+            });
+            document.getElementById('sessionsNum').textContent = weekSessions.length;
+        }
+
+        updateStreak();
+        updateSessionsDisplay();
+
+        // ========== BOTTOM NAV ACTIVE STATE ==========
+        var currentPath = window.location.pathname;
+        document.querySelectorAll('.nav-item').forEach(function(item) {
+            item.classList.remove('active');
+            var href = item.getAttribute('href');
+            if (href === currentPath || (currentPath === '/' && href === '/') || (currentPath === '/index.html' && href === '/')) {
+                item.classList.add('active');
+            }
+        });
+
+        // ========== DESKTOP SIDEBAR BRAND ==========
+        function handleResize() {
+            var sidebarBrand = document.querySelector('.sidebar-brand');
+            if (window.innerWidth > 900) {
+                sidebarBrand.style.display = 'flex';
+            } else {
+                sidebarBrand.style.display = 'none';
+            }
+        }
+        handleResize();
+        window.addEventListener('resize', handleResize);
+
     })();
     </script>
+
 </body>
 </html>
