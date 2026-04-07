@@ -676,24 +676,42 @@
     function stopChannel(id){
         var ch = channels[id];
         if(!ch) return;
-        try { ch.src.stop(); ch.gain.disconnect(); } catch(e){}
+        try {
+            /* Fade out quickly to avoid click */
+            ch.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+            ch.gain.gain.setValueAtTime(ch.gain.gain.value, audioCtx.currentTime);
+            ch.gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.05);
+            /* Stop source after fade */
+            setTimeout(function(){
+                try { ch.src.stop(); } catch(e){}
+                try { ch.gain.disconnect(); } catch(e){}
+            }, 80);
+        } catch(e){
+            try { ch.src.stop(); } catch(e2){}
+            try { ch.gain.disconnect(); } catch(e2){}
+        }
         delete channels[id];
     }
 
     async function setChannelVol(id, v){
         initAC();
+        if(v === 0){
+            stopChannel(id);
+            var card = document.querySelector('.snd-card[data-id="'+id+'"]');
+            if(card) card.classList.remove('playing');
+            return;
+        }
         if(!channels[id]) await buildChannel(id);
         var ch = channels[id];
         if(!ch) return;
         ch.vol = v;
-        var target = v / 100 * 0.3; /* max per-channel gain */
+        var target = v / 100 * 0.3;
+        /* Cancel any pending ramps, set current value, then ramp to target */
+        ch.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+        ch.gain.gain.setValueAtTime(ch.gain.gain.value, audioCtx.currentTime);
         ch.gain.gain.linearRampToValueAtTime(target, audioCtx.currentTime + 0.15);
-        if(v === 0) stopChannel(id);
-        /* Update card state */
         var card = document.querySelector('.snd-card[data-id="'+id+'"]');
-        if(card){
-            if(v > 0) card.classList.add('playing'); else card.classList.remove('playing');
-        }
+        if(card) card.classList.add('playing');
     }
 
     /* ====== Master volume ====== */
