@@ -12,9 +12,9 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #F1F5F9;
-            background: #0F172A;
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
+            color: #1D1D1F;
+            background: #FAFAF7;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -27,348 +27,337 @@
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; align-items: center; justify-content: space-between;
-            padding: 0 1.5rem; height: 64px;
-            background: rgba(15, 23, 42, 0.85);
-            backdrop-filter: blur(24px) saturate(1.4);
-            -webkit-backdrop-filter: blur(24px) saturate(1.4);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            padding: 0 1.5rem; height: 52px;
+            background: rgba(250, 250, 247, 0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .topbar-brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.35rem; color: #F1F5F9;
+            font-size: 1.35rem; color: #1D1D1F;
             display: flex; align-items: center; gap: 0.4rem;
             white-space: nowrap;
         }
-        .topbar-brand .moon { font-size: 1.3rem; }
 
         /* ===================== DESKTOP SIDEBAR ===================== */
         .desktop-sidebar {
             display: none;
             position: fixed;
-            left: 0; top: 64px; bottom: 0;
-            width: 72px;
-            background: rgba(15, 23, 42, 0.95);
-            backdrop-filter: blur(20px);
-            border-right: 1px solid rgba(255,255,255,0.06);
+            left: 0; top: 52px; bottom: 0;
+            width: 220px;
+            background: #FFFFFF;
+            border-right: 1px solid rgba(0,0,0,0.06);
             flex-direction: column;
-            align-items: center;
-            padding: 1.25rem 0;
-            gap: 6px;
+            padding: 1.25rem 0.75rem;
+            gap: 2px;
             z-index: 999;
         }
         .desktop-sidebar a {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 3px; text-decoration: none; color: #64748B;
-            font-size: 0.6rem; font-family: Inter, sans-serif;
-            padding: 8px 4px; border-radius: 12px;
+            display: flex; align-items: center;
+            gap: 10px; text-decoration: none; color: #86868B;
+            font-size: 0.82rem; font-weight: 500;
+            font-family: -apple-system, 'Inter', sans-serif;
+            padding: 10px 12px; border-radius: 10px;
             transition: color 0.2s, background 0.2s;
-            width: 58px; text-align: center;
         }
-        .desktop-sidebar a:hover { color: #C4B5FD; background: rgba(124,58,237,0.1); }
-        .desktop-sidebar a.active { color: #A78BFA; background: rgba(124,58,237,0.12); }
-        .desktop-sidebar a svg { width: 22px; height: 22px; }
+        .desktop-sidebar a:hover { color: #2D6A4F; background: rgba(45,106,79,0.06); }
+        .desktop-sidebar a.active { color: #2D6A4F; background: rgba(45,106,79,0.08); font-weight: 600; }
+        .desktop-sidebar a svg { width: 20px; height: 20px; flex-shrink: 0; }
 
         /* ===================== MAIN ===================== */
         main {
-            max-width: 680px;
+            max-width: 640px;
             margin: 0 auto;
-            padding: calc(64px + 32px) 20px 40px;
+            padding: calc(52px + 28px) 20px 40px;
         }
 
         /* ===================== PAGE HEADER ===================== */
         .page-header {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 36px;
         }
         .greeting {
-            font-size: 0.78rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.08em;
-            color: #7C3AED;
-            margin-bottom: 8px;
-            opacity: 0; animation: fadeUp 0.6s ease forwards;
+            font-size: 0.72rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            color: #2D6A4F;
+            margin-bottom: 6px;
+            opacity: 0; animation: fadeIn 0.5s ease forwards;
         }
         .date-badge {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 6px 18px; border-radius: 100px;
-            background: rgba(124, 58, 237, 0.12);
-            border: 1px solid rgba(124, 58, 237, 0.2);
-            font-size: 0.75rem; font-weight: 600; color: #A78BFA;
+            padding: 5px 16px; border-radius: 100px;
+            background: #D8F3DC;
+            border: 1px solid rgba(45,106,79,0.12);
+            font-size: 0.72rem; font-weight: 600; color: #2D6A4F;
             text-transform: uppercase; letter-spacing: 0.06em;
-            margin-bottom: 16px;
-            opacity: 0; animation: fadeUp 0.6s ease 0.05s forwards;
+            margin-bottom: 14px;
+            opacity: 0; animation: fadeIn 0.5s ease 0.05s forwards;
         }
-        .date-badge svg { width: 14px; height: 14px; }
+        .date-badge svg { width: 13px; height: 13px; }
         .page-header h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.8rem, 4.5vw, 2.4rem);
-            color: #F1F5F9;
-            margin-bottom: 8px;
-            opacity: 0; animation: fadeUp 0.6s ease 0.1s forwards;
+            font-size: clamp(1.75rem, 4.5vw, 2.3rem);
+            color: #1D1D1F;
+            margin-bottom: 6px;
+            letter-spacing: -0.02em;
+            opacity: 0; animation: fadeIn 0.5s ease 0.1s forwards;
         }
         .page-header .subtitle {
-            font-size: 0.95rem; color: #94A3B8; max-width: 420px; margin: 0 auto;
-            opacity: 0; animation: fadeUp 0.6s ease 0.15s forwards;
+            font-size: 0.92rem; color: #86868B; max-width: 400px; margin: 0 auto;
+            opacity: 0; animation: fadeIn 0.5s ease 0.15s forwards;
         }
         .page-header .subtitle-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.82rem; color: #64748B; margin-top: 4px;
-            opacity: 0; animation: fadeUp 0.6s ease 0.2s forwards;
+            font-size: 0.8rem; color: #AEAEB2; margin-top: 4px;
+            opacity: 0; animation: fadeIn 0.5s ease 0.2s forwards;
         }
 
         /* ===================== SECTION CARD ===================== */
         .section-card {
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.12);
-            padding: 32px 28px;
-            margin-bottom: 20px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+            padding: 28px 24px;
+            margin-bottom: 16px;
             position: relative;
             overflow: hidden;
             opacity: 0;
-            transform: translateY(20px);
         }
         .section-card.visible {
             opacity: 1;
-            transform: translateY(0);
-            transition: opacity 0.5s ease, transform 0.5s ease;
+            transition: opacity 0.4s ease;
         }
         .section-card::before {
             content: '';
             position: absolute;
-            top: 0; left: 24px; right: 24px;
-            height: 3px; border-radius: 0 0 3px 3px;
+            top: 0; left: 20px; right: 20px;
+            height: 2px; border-radius: 0 0 2px 2px;
         }
-        .section-card.accent-violet::before { background: #7C3AED; }
-        .section-card.accent-emerald::before { background: #10B981; }
-        .section-card.accent-amber::before { background: #F59E0B; }
-        .section-card.accent-rose::before { background: #EC4899; }
+        .section-card.accent-sage::before { background: #2D6A4F; }
+        .section-card.accent-green::before { background: #40916C; }
+        .section-card.accent-warm::before { background: #C4905A; }
+        .section-card.accent-stone::before { background: #86868B; }
 
         .section-label {
-            font-size: 0.68rem; font-weight: 700;
-            text-transform: uppercase; letter-spacing: 0.1em;
-            color: #64748B; margin-bottom: 18px;
+            font-size: 0.65rem; font-weight: 700;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: #AEAEB2; margin-bottom: 16px;
         }
         .section-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #F1F5F9;
-            margin-bottom: 4px;
+            font-size: 1.2rem; color: #1D1D1F;
+            margin-bottom: 3px;
         }
         .section-title-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.8rem; color: #64748B;
-            margin-bottom: 18px;
+            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
+            font-size: 0.78rem; color: #AEAEB2;
+            margin-bottom: 16px;
         }
 
         /* ===================== QUOTE SECTION ===================== */
         .quote-icon {
-            width: 42px; height: 42px; border-radius: 12px;
-            background: rgba(124, 58, 237, 0.15);
+            width: 38px; height: 38px; border-radius: 10px;
+            background: #D8F3DC;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 20px; color: #A78BFA;
+            margin-bottom: 18px; color: #2D6A4F;
         }
-        .quote-icon svg { width: 20px; height: 20px; }
+        .quote-icon svg { width: 18px; height: 18px; }
         .quote-text {
             font-family: 'DM Serif Display', serif;
             font-style: italic;
-            font-size: clamp(1.1rem, 2.5vw, 1.45rem);
-            color: #F1F5F9; letter-spacing: -0.01em;
-            line-height: 1.55; margin-bottom: 10px;
+            font-size: clamp(1.05rem, 2.5vw, 1.35rem);
+            color: #1D1D1F; letter-spacing: -0.01em;
+            line-height: 1.55; margin-bottom: 8px;
         }
         .quote-hindi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.88rem; color: #64748B;
-            margin-bottom: 14px; line-height: 1.6;
+            font-size: 0.85rem; color: #AEAEB2;
+            margin-bottom: 12px; line-height: 1.6;
         }
         .quote-author {
-            font-size: 0.82rem; font-weight: 500; color: #94A3B8;
-            margin-bottom: 20px;
+            font-size: 0.8rem; font-weight: 500; color: #86868B;
+            margin-bottom: 18px;
         }
         .share-btn {
             display: inline-flex; align-items: center; gap: 6px;
-            padding: 10px 20px; border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.08);
-            background: rgba(30, 41, 59, 0.8);
-            font-size: 0.8rem; font-weight: 600; color: #94A3B8;
-            cursor: pointer; font-family: 'Inter', sans-serif;
+            padding: 9px 18px; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF;
+            font-size: 0.78rem; font-weight: 600; color: #86868B;
+            cursor: pointer; font-family: -apple-system, 'Inter', sans-serif;
             transition: all 0.2s ease;
         }
-        .share-btn:hover { border-color: rgba(124,58,237,0.4); color: #C4B5FD; }
+        .share-btn:hover { border-color: rgba(45,106,79,0.3); color: #2D6A4F; }
         .share-btn svg { width: 14px; height: 14px; }
 
         /* ===================== REFLECTION SECTION ===================== */
         .reflection-prompt {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem; color: #F1F5F9;
-            line-height: 1.45; margin-bottom: 8px;
+            font-size: 1.25rem; color: #1D1D1F;
+            line-height: 1.45; margin-bottom: 6px;
         }
         .reflection-prompt-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.9rem; color: #64748B;
-            line-height: 1.6; margin-bottom: 22px;
+            font-size: 0.85rem; color: #AEAEB2;
+            line-height: 1.6; margin-bottom: 20px;
         }
         .journal-link {
             display: inline-flex; align-items: center; gap: 8px;
-            padding: 12px 24px; border-radius: 12px;
-            background: #7C3AED; color: #fff;
-            font-size: 0.86rem; font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            padding: 11px 22px; border-radius: 10px;
+            background: #2D6A4F; color: #fff;
+            font-size: 0.84rem; font-weight: 600;
+            font-family: -apple-system, 'Inter', sans-serif;
             border: none; cursor: pointer;
-            box-shadow: 0 2px 8px rgba(124,58,237,0.3);
             transition: all 0.2s ease;
         }
         .journal-link:hover {
-            background: #6D28D9;
-            box-shadow: 0 4px 16px rgba(124,58,237,0.4);
-            transform: translateY(-1px);
+            background: #245840;
         }
-        .journal-link svg { width: 16px; height: 16px; }
+        .journal-link svg { width: 15px; height: 15px; }
 
         /* ===================== MEDITATION SECTION ===================== */
         .meditation-display {
-            min-height: 180px;
+            min-height: 160px;
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
-            text-align: center; padding: 16px 0;
+            text-align: center; padding: 14px 0;
             position: relative;
         }
         .meditation-prompt {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(1.15rem, 3vw, 1.55rem);
-            color: #F1F5F9; line-height: 1.5;
-            opacity: 0; transform: translateY(12px);
-            transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
-            margin-bottom: 8px;
+            font-size: clamp(1.1rem, 3vw, 1.4rem);
+            color: #1D1D1F; line-height: 1.5;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+            margin-bottom: 6px;
         }
-        .meditation-prompt.visible { opacity: 1; transform: translateY(0); }
+        .meditation-prompt.visible { opacity: 1; }
         .meditation-prompt-hi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.88rem; color: #64748B; line-height: 1.6;
-            opacity: 0; transform: translateY(8px);
-            transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1) 0.15s, transform 0.8s cubic-bezier(0.4,0,0.2,1) 0.15s;
+            font-size: 0.85rem; color: #AEAEB2; line-height: 1.6;
+            opacity: 0;
+            transition: opacity 0.6s ease 0.1s;
         }
-        .meditation-prompt-hi.visible { opacity: 1; transform: translateY(0); }
+        .meditation-prompt-hi.visible { opacity: 1; }
         .meditation-progress {
-            width: 100%; height: 3px;
-            background: rgba(255,255,255,0.06);
-            border-radius: 3px;
-            margin-top: 28px; overflow: hidden;
+            width: 100%; height: 2px;
+            background: rgba(0,0,0,0.06);
+            border-radius: 2px;
+            margin-top: 24px; overflow: hidden;
         }
         .meditation-progress-bar {
             height: 100%; width: 0%;
-            background: linear-gradient(90deg, #7C3AED, #A78BFA);
-            border-radius: 3px;
+            background: #2D6A4F;
+            border-radius: 2px;
             transition: width 0.5s linear;
         }
         .meditation-controls {
-            display: flex; align-items: center; gap: 12px;
-            margin-top: 18px; justify-content: center;
+            display: flex; align-items: center; gap: 10px;
+            margin-top: 16px; justify-content: center;
         }
         .med-btn {
-            display: inline-flex; align-items: center; gap: 8px;
-            padding: 12px 24px; border-radius: 12px;
-            font-size: 0.86rem; font-weight: 600;
-            font-family: 'Inter', sans-serif;
+            display: inline-flex; align-items: center; gap: 7px;
+            padding: 11px 22px; border-radius: 10px;
+            font-size: 0.84rem; font-weight: 600;
+            font-family: -apple-system, 'Inter', sans-serif;
             border: none; cursor: pointer;
             transition: all 0.2s ease;
         }
-        .med-btn svg { width: 16px; height: 16px; }
+        .med-btn svg { width: 15px; height: 15px; }
         .med-btn-primary {
-            background: #7C3AED; color: #fff;
-            box-shadow: 0 2px 8px rgba(124,58,237,0.3);
+            background: #2D6A4F; color: #fff;
         }
         .med-btn-primary:hover {
-            background: #6D28D9;
-            box-shadow: 0 4px 16px rgba(124,58,237,0.4);
-            transform: translateY(-1px);
+            background: #245840;
         }
         .med-btn-secondary {
-            background: #1E293B; color: #94A3B8;
-            border: 1.5px solid rgba(255,255,255,0.1);
+            background: #FFFFFF; color: #86868B;
+            border: 1px solid rgba(0,0,0,0.08);
         }
         .med-btn-secondary:hover {
-            border-color: rgba(124,58,237,0.4); color: #C4B5FD;
-            transform: translateY(-1px);
+            border-color: rgba(45,106,79,0.3); color: #2D6A4F;
         }
         .med-btn-secondary.active {
-            border-color: #7C3AED; color: #A78BFA;
-            background: rgba(124,58,237,0.08);
+            border-color: #2D6A4F; color: #2D6A4F;
+            background: #D8F3DC;
         }
         .med-timer {
-            font-size: 0.76rem; font-weight: 600;
-            color: #64748B; margin-top: 8px;
+            font-size: 0.73rem; font-weight: 600;
+            color: #AEAEB2; margin-top: 6px;
             letter-spacing: 0.5px;
         }
         .meditation-idle-msg {
-            font-size: 0.92rem; color: #64748B;
+            font-size: 0.9rem; color: #AEAEB2;
             font-style: italic;
         }
         .meditation-idle-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.8rem; color: #475569;
+            font-size: 0.78rem; color: #C7C7CC;
             margin-top: 4px;
         }
 
         /* ===================== MOOD SECTION ===================== */
         .mood-row {
-            display: flex; justify-content: center; gap: 14px;
-            flex-wrap: wrap; margin-bottom: 18px;
+            display: flex; justify-content: center; gap: 12px;
+            flex-wrap: wrap; margin-bottom: 16px;
         }
         .mood-btn {
-            display: flex; flex-direction: column; align-items: center; gap: 6px;
-            cursor: pointer; transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            padding: 8px; border-radius: 16px; border: none; background: none;
-            font-family: 'Inter', sans-serif;
+            display: flex; flex-direction: column; align-items: center; gap: 5px;
+            cursor: pointer; transition: all 0.2s ease;
+            padding: 8px; border-radius: 14px; border: none; background: none;
+            font-family: -apple-system, 'Inter', sans-serif;
         }
         .mood-btn:hover { transform: translateY(-2px); }
-        .mood-btn.selected { transform: scale(1.12); }
+        .mood-btn.selected { transform: scale(1.08); }
         .mood-btn.selected .mood-circle {
-            border-color: #7C3AED;
-            box-shadow: 0 0 0 3px rgba(124,58,237,0.2), 0 4px 16px rgba(124,58,237,0.25);
+            border-color: #2D6A4F;
+            box-shadow: 0 0 0 3px rgba(45,106,79,0.15);
         }
         .mood-circle {
-            width: 50px; height: 50px; border-radius: 50%;
-            border: 2px solid rgba(255,255,255,0.08);
+            width: 48px; height: 48px; border-radius: 50%;
+            border: 1.5px solid rgba(0,0,0,0.08);
             display: flex; align-items: center; justify-content: center;
-            background: #1E293B;
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
+            background: #FFFFFF;
+            transition: all 0.2s ease;
         }
         .mood-circle svg { width: 24px; height: 24px; }
         .mood-text {
-            font-size: 0.65rem; font-weight: 600; color: #64748B;
+            font-size: 0.63rem; font-weight: 600; color: #AEAEB2;
             text-transform: uppercase; letter-spacing: 0.5px;
-            transition: color 0.3s;
+            transition: color 0.2s;
         }
-        .mood-btn.selected .mood-text { color: #A78BFA; }
-        .mood-btn[data-mood="1"] .mood-circle { background: rgba(239,68,68,0.1); }
-        .mood-btn[data-mood="1"].selected .mood-circle { background: rgba(239,68,68,0.18); }
-        .mood-btn[data-mood="2"] .mood-circle { background: rgba(245,158,11,0.1); }
-        .mood-btn[data-mood="2"].selected .mood-circle { background: rgba(245,158,11,0.18); }
-        .mood-btn[data-mood="3"] .mood-circle { background: rgba(234,179,8,0.1); }
-        .mood-btn[data-mood="3"].selected .mood-circle { background: rgba(234,179,8,0.18); }
-        .mood-btn[data-mood="4"] .mood-circle { background: rgba(16,185,129,0.1); }
-        .mood-btn[data-mood="4"].selected .mood-circle { background: rgba(16,185,129,0.18); }
-        .mood-btn[data-mood="5"] .mood-circle { background: rgba(124,58,237,0.1); }
-        .mood-btn[data-mood="5"].selected .mood-circle { background: rgba(124,58,237,0.18); }
+        .mood-btn.selected .mood-text { color: #2D6A4F; }
+        .mood-btn[data-mood="1"] .mood-circle { background: rgba(239,68,68,0.06); }
+        .mood-btn[data-mood="1"].selected .mood-circle { background: rgba(239,68,68,0.1); }
+        .mood-btn[data-mood="2"] .mood-circle { background: rgba(245,158,11,0.06); }
+        .mood-btn[data-mood="2"].selected .mood-circle { background: rgba(245,158,11,0.1); }
+        .mood-btn[data-mood="3"] .mood-circle { background: rgba(234,179,8,0.06); }
+        .mood-btn[data-mood="3"].selected .mood-circle { background: rgba(234,179,8,0.1); }
+        .mood-btn[data-mood="4"] .mood-circle { background: rgba(45,106,79,0.06); }
+        .mood-btn[data-mood="4"].selected .mood-circle { background: rgba(45,106,79,0.1); }
+        .mood-btn[data-mood="5"] .mood-circle { background: rgba(45,106,79,0.08); }
+        .mood-btn[data-mood="5"].selected .mood-circle { background: rgba(45,106,79,0.15); }
 
         .yesterday-mood {
             display: flex; align-items: center; justify-content: center;
-            gap: 8px; padding: 10px 18px;
-            background: rgba(255,255,255,0.03); border-radius: 12px;
-            font-size: 0.8rem; color: #64748B;
-            margin-bottom: 14px;
+            gap: 8px; padding: 9px 16px;
+            background: rgba(0,0,0,0.02); border-radius: 10px;
+            font-size: 0.78rem; color: #AEAEB2;
+            margin-bottom: 12px;
         }
-        .yesterday-mood strong { color: #94A3B8; font-weight: 600; }
+        .yesterday-mood strong { color: #1D1D1F; font-weight: 600; }
         .journal-track-link {
             display: inline-flex; align-items: center; gap: 6px;
-            font-size: 0.8rem; font-weight: 600; color: #A78BFA;
+            font-size: 0.78rem; font-weight: 600; color: #2D6A4F;
             transition: all 0.2s; padding: 6px 0;
         }
-        .journal-track-link:hover { opacity: 0.8; }
+        .journal-track-link:hover { opacity: 0.7; }
         .journal-track-link svg { width: 14px; height: 14px; }
         .mood-saved-msg {
-            font-size: 0.8rem; color: #10B981; font-weight: 500;
-            margin-top: 8px; opacity: 0;
+            font-size: 0.78rem; color: #2D6A4F; font-weight: 500;
+            margin-top: 6px; opacity: 0;
             transition: opacity 0.3s;
         }
         .mood-saved-msg.show { opacity: 1; }
@@ -377,50 +366,49 @@
         .feature-links {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 24px;
+            gap: 10px;
+            margin-top: 20px;
         }
         .feature-link {
             display: flex; align-items: center; gap: 10px;
-            padding: 14px 16px;
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 14px;
+            padding: 13px 14px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
             text-decoration: none;
             transition: all 0.2s ease;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
         }
         .feature-link:hover {
-            border-color: rgba(124,58,237,0.3);
-            background: rgba(30,41,59,0.9);
-            transform: translateY(-2px);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.06), 0 12px 28px rgba(0,0,0,0.06);
         }
         .feature-link-icon {
-            width: 36px; height: 36px; border-radius: 10px;
+            width: 34px; height: 34px; border-radius: 9px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1rem; flex-shrink: 0;
+            font-size: 0.95rem; flex-shrink: 0;
         }
-        .fl-violet { background: rgba(124,58,237,0.12); }
-        .fl-emerald { background: rgba(16,185,129,0.12); }
-        .fl-amber { background: rgba(245,158,11,0.12); }
-        .fl-rose { background: rgba(236,72,153,0.12); }
+        .fl-sage { background: rgba(45,106,79,0.1); }
+        .fl-green { background: #D8F3DC; }
+        .fl-warm { background: rgba(196,144,90,0.12); }
+        .fl-stone { background: rgba(134,134,139,0.1); }
         .feature-link-text {
-            font-size: 0.82rem; font-weight: 600; color: #F1F5F9;
+            font-size: 0.8rem; font-weight: 600; color: #1D1D1F;
         }
         .feature-link-sub {
-            font-size: 0.7rem; color: #64748B;
+            font-size: 0.68rem; color: #AEAEB2;
         }
 
         /* ===================== TOAST ===================== */
         .toast {
-            position: fixed; bottom: 80px; left: 50%;
-            transform: translateX(-50%) translateY(80px);
-            background: #1E293B; color: #F1F5F9;
-            border: 1px solid rgba(255,255,255,0.08);
-            padding: 14px 28px; border-radius: 14px;
-            font-size: 0.86rem; font-weight: 500;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            position: fixed; bottom: 76px; left: 50%;
+            transform: translateX(-50%) translateY(60px);
+            background: #FFFFFF; color: #1D1D1F;
+            border: 1px solid rgba(0,0,0,0.08);
+            padding: 12px 24px; border-radius: 12px;
+            font-size: 0.84rem; font-weight: 500;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
             z-index: 9999; opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.3s ease;
             display: flex; align-items: center; gap: 10px;
             pointer-events: none;
         }
@@ -428,31 +416,31 @@
             transform: translateX(-50%) translateY(0);
             opacity: 1;
         }
-        .toast svg { width: 20px; height: 20px; color: #10B981; flex-shrink: 0; }
+        .toast svg { width: 18px; height: 18px; color: #2D6A4F; flex-shrink: 0; }
 
         /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
 
         /* ===================== BOTTOM NAV ===================== */
         .bottom-nav { display: flex; }
 
         /* ===================== RESPONSIVE ===================== */
-        @media (min-width: 901px) {
+        @media (min-width: 961px) {
             .bottom-nav { display: none !important; }
             .desktop-sidebar { display: flex; }
-            main { margin-left: 72px; }
+            main { margin-left: 220px; }
         }
 
-        @media (max-width: 900px) {
+        @media (max-width: 960px) {
             .desktop-sidebar { display: none; }
         }
 
         @media (max-width: 600px) {
             main { padding-left: 16px; padding-right: 16px; }
-            .section-card { padding: 24px 18px; }
+            .section-card { padding: 22px 16px; }
             .mood-row { gap: 8px; }
             .mood-circle { width: 42px; height: 42px; }
             .mood-circle svg { width: 20px; height: 20px; }
@@ -465,18 +453,16 @@
 
     <!-- HEADER -->
     <header class="topbar">
-        <a href="/" class="topbar-brand">
-            <span class="moon">&#9789;</span> Sukoon
-        </a>
+        <a href="/" class="topbar-brand">Sukoon</a>
     </header>
 
     <!-- DESKTOP SIDEBAR -->
     <nav class="desktop-sidebar">
-        <a href="/"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
-        <a href="/explore.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
-        <a href="/breathe.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
-        <a href="/friend.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg><span>AI Friend</span></a>
-        <a href="/you.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
+        <a href="/"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
+        <a href="/explore.html"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
+        <a href="/breathe.html"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
+        <a href="/friend.html"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
+        <a href="/you.html"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
     </nav>
 
     <main>
@@ -493,7 +479,7 @@
         </div>
 
         <!-- ==================== SECTION 1: DAILY QUOTE ==================== -->
-        <div class="section-card accent-violet reveal">
+        <div class="section-card accent-sage reveal">
             <div class="section-label">TODAY'S QUOTE</div>
             <div class="quote-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21z"/><path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/></svg>
@@ -508,7 +494,7 @@
         </div>
 
         <!-- ==================== SECTION 2: REFLECTION ==================== -->
-        <div class="section-card accent-emerald reveal">
+        <div class="section-card accent-green reveal">
             <div class="section-label">DAILY REFLECTION</div>
             <div class="section-title">A moment to pause</div>
             <div class="section-title-hi">&#2352;&#2369;&#2325;&#2325;&#2352; &#2360;&#2379;&#2330;&#2344;&#2375; &#2325;&#2366; &#2319;&#2325; &#2346;&#2354;</div>
@@ -521,7 +507,7 @@
         </div>
 
         <!-- ==================== SECTION 3: MINI MEDITATION ==================== -->
-        <div class="section-card accent-amber reveal">
+        <div class="section-card accent-warm reveal">
             <div class="section-label">5-MINUTE MEDITATION</div>
             <div class="section-title">Daily mini-meditation</div>
             <div class="section-title-hi">&#2342;&#2376;&#2344;&#2367;&#2325; &#2354;&#2328;&#2369; &#2343;&#2381;&#2351;&#2366;&#2344;</div>
@@ -546,7 +532,7 @@
         </div>
 
         <!-- ==================== SECTION 4: MOOD CHECK-IN ==================== -->
-        <div class="section-card accent-rose reveal">
+        <div class="section-card accent-stone reveal">
             <div class="section-label">MOOD CHECK-IN</div>
             <div class="section-title">How are you feeling right now?</div>
             <div class="section-title-hi">&#2309;&#2349;&#2368; &#2310;&#2346; &#2325;&#2376;&#2360;&#2366; &#2350;&#2361;&#2360;&#2370;&#2360; &#2325;&#2352; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306;?</div>
@@ -600,11 +586,11 @@
                 <button class="mood-btn" data-mood="5" type="button" aria-label="Great">
                     <div class="mood-circle">
                         <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="#7C3AED" stroke-width="1.5" fill="none"/>
-                            <circle cx="11" cy="13" r="1.5" fill="#7C3AED"/>
-                            <circle cx="21" cy="13" r="1.5" fill="#7C3AED"/>
-                            <path d="M9 18c1.5 3.5 4 5 7 5s5.5-1.5 7-5" stroke="#7C3AED" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                            <path d="M9 18h14" stroke="#7C3AED" stroke-width="1.2" stroke-linecap="round"/>
+                            <circle cx="16" cy="16" r="14" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
+                            <circle cx="11" cy="13" r="1.5" fill="#2D6A4F"/>
+                            <circle cx="21" cy="13" r="1.5" fill="#2D6A4F"/>
+                            <path d="M9 18c1.5 3.5 4 5 7 5s5.5-1.5 7-5" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+                            <path d="M9 18h14" stroke="#2D6A4F" stroke-width="1.2" stroke-linecap="round"/>
                         </svg>
                     </div>
                     <span class="mood-text">Great</span>
@@ -612,7 +598,7 @@
             </div>
             <div id="yesterdayMood" class="yesterday-mood" style="display:none;"></div>
             <div class="mood-saved-msg" id="moodSavedMsg">Mood saved for today.</div>
-            <div style="text-align:center; margin-top: 12px;">
+            <div style="text-align:center; margin-top: 10px;">
                 <a href="/journal.html" class="journal-track-link">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                     <span>Track in Journal</span>
@@ -623,28 +609,28 @@
         <!-- ==================== FEATURE LINKS ==================== -->
         <div class="feature-links">
             <a href="/breathe.html" class="feature-link">
-                <div class="feature-link-icon fl-violet">&#x1F32C;</div>
+                <div class="feature-link-icon fl-sage">&#x1F32C;</div>
                 <div>
                     <div class="feature-link-text">Breathe</div>
                     <div class="feature-link-sub">Guided breathing</div>
                 </div>
             </a>
             <a href="/sounds.html" class="feature-link">
-                <div class="feature-link-icon fl-emerald">&#x1F3B6;</div>
+                <div class="feature-link-icon fl-green">&#x1F3B6;</div>
                 <div>
                     <div class="feature-link-text">Sounds</div>
                     <div class="feature-link-sub">Nature & calm</div>
                 </div>
             </a>
             <a href="/friend.html" class="feature-link">
-                <div class="feature-link-icon fl-rose">&#x1F4AC;</div>
+                <div class="feature-link-icon fl-stone">&#x1F4AC;</div>
                 <div>
                     <div class="feature-link-text">AI Friend</div>
                     <div class="feature-link-sub">Talk it out</div>
                 </div>
             </a>
             <a href="/videos.html" class="feature-link">
-                <div class="feature-link-icon fl-amber">&#x25B6;</div>
+                <div class="feature-link-icon fl-warm">&#x25B6;</div>
                 <div>
                     <div class="feature-link-text">Videos</div>
                     <div class="feature-link-sub">Soul nourishment</div>
@@ -654,12 +640,12 @@
     </main>
 
     <!-- BOTTOM NAV -->
-    <nav class="bottom-nav" style="position:fixed;bottom:0;left:0;right:0;height:64px;background:rgba(15,23,42,0.9);backdrop-filter:blur(20px);border-top:1px solid rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:space-around;z-index:1000;padding-bottom:env(safe-area-inset-bottom)">
-        <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:#64748B;font-size:0.65rem;font-family:Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
-        <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:#64748B;font-size:0.65rem;font-family:Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
-        <a href="/breathe.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:#64748B;font-size:0.65rem;font-family:Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
-        <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:#64748B;font-size:0.65rem;font-family:Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg><span>AI Friend</span></a>
-        <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:4px;text-decoration:none;color:#64748B;font-size:0.65rem;font-family:Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
+    <nav class="bottom-nav" style="position:fixed;bottom:0;left:0;right:0;height:56px;background:#fff;border-top:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-around;z-index:1000;padding-bottom:env(safe-area-inset-bottom)">
+        <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
+        <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
+        <a href="/breathe.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
+        <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
+        <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
     </nav>
 
     <!-- Toast -->
@@ -708,7 +694,7 @@
         var revealObserver = new IntersectionObserver(function(entries) {
             entries.forEach(function(e, i) {
                 if (e.isIntersecting) {
-                    setTimeout(function() { e.target.classList.add('visible'); }, i * 80);
+                    setTimeout(function() { e.target.classList.add('visible'); }, i * 60);
                 }
             });
         }, { threshold: 0.1 });

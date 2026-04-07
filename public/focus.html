@@ -7,192 +7,141 @@
     <meta name="description" content="Pomodoro-style focus timer with ambient sounds. Work deeply, rest mindfully. Free, private, no account needed.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #F1F5F9;
-            background: #0F172A;
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
+            color: #1D1D1F;
+            background: #FAFAF7;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
-            padding-bottom: 80px;
+            padding-bottom: 72px;
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== STAGGERED ANIMATIONS ===================== */
+        /* ===================== ANIMATIONS ===================== */
         @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(18px); }
+            from { opacity: 0; transform: translateY(12px); }
             to { opacity: 1; transform: translateY(0); }
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes pulseGlow {
-            0%, 100% { filter: drop-shadow(0 0 8px rgba(245,158,11,0.3)); }
-            50% { filter: drop-shadow(0 0 20px rgba(245,158,11,0.5)); }
-        }
-        @keyframes orbDrift {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(20px, -12px) scale(1.04); }
-            66% { transform: translate(-14px, 10px) scale(0.96); }
-        }
-        @keyframes breathePulse {
-            0%, 100% { transform: scale(0.7); opacity: 0.5; }
-            25% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1); opacity: 1; }
-            75% { transform: scale(0.7); opacity: 0.5; }
-        }
-        .stagger-1 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.05s; }
-        .stagger-2 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.12s; }
-        .stagger-3 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.20s; }
-        .stagger-4 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.28s; }
-        .stagger-5 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.36s; }
-        .stagger-6 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.44s; }
-        .stagger-7 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.52s; }
-        .stagger-8 { animation: fadeSlideUp 0.5s ease both; animation-delay: 0.60s; }
+        .stagger-1 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.05s; }
+        .stagger-2 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.1s; }
+        .stagger-3 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.15s; }
+        .stagger-4 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.2s; }
+        .stagger-5 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.25s; }
+        .stagger-6 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.3s; }
+        .stagger-7 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.35s; }
+        .stagger-8 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.4s; }
 
-        /* ===================== TOPBAR (Frosted Glass) ===================== */
+        /* ===================== TOP HEADER ===================== */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 1.5rem; height: 56px;
-            background: rgba(15,23,42,0.7);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 1.5rem; height: 52px;
+            background: rgba(250,250,247,0.82);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .topbar-brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #F1F5F9;
-            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 1.25rem; color: #1D1D1F;
             letter-spacing: -0.01em;
         }
 
-        /* ===================== BOTTOM NAVIGATION (Mobile) ===================== */
+        /* ===================== BOTTOM NAV ===================== */
         .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 56px; z-index: 1000;
+            background: #FFFFFF;
+            border-top: 1px solid rgba(0,0,0,0.06);
             display: flex; align-items: center; justify-content: space-around;
-            height: 68px;
-            background: rgba(15,23,42,0.85);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 0 0.5rem;
+            padding-bottom: env(safe-area-inset-bottom);
         }
         .bottom-nav a {
             display: flex; flex-direction: column; align-items: center;
-            gap: 0.2rem; padding: 0.4rem 0.6rem;
-            font-size: 0.62rem; font-weight: 500; color: #64748B;
-            transition: color 0.2s;
-            text-decoration: none; border-radius: 10px;
-            min-width: 52px;
+            gap: 3px; font-size: 0.6rem; font-weight: 500;
+            color: #AEAEB2; transition: color 0.2s;
         }
-        .bottom-nav a svg { width: 22px; height: 22px; opacity: 0.5; transition: opacity 0.2s; }
-        .bottom-nav a:hover { color: #F59E0B; }
-        .bottom-nav a:hover svg { opacity: 0.85; }
-        .bottom-nav a.active { color: #F59E0B; }
-        .bottom-nav a.active svg { opacity: 1; }
-        .bnav-label { display: block; }
-        .bnav-label-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.52rem; font-weight: 400; color: #475569;
-            display: block;
-        }
+        .bottom-nav a:hover { color: #86868B; }
+        .bottom-nav a.active { color: #2D6A4F; }
+        .bottom-nav svg { width: 22px; height: 22px; stroke-width: 1.5; fill: none; stroke: currentColor; }
 
-        /* ===================== SIDEBAR (Desktop > 900px) ===================== */
-        @media (min-width: 901px) {
+        /* ===================== DESKTOP SIDEBAR >960px ===================== */
+        @media (min-width: 961px) {
             .bottom-nav {
-                position: fixed; top: 56px; left: 0; bottom: 0;
-                width: 80px; height: auto;
+                position: fixed; top: 52px; left: 0; bottom: 0; right: auto;
+                width: 220px; height: auto;
                 flex-direction: column; justify-content: flex-start;
-                padding: 1.5rem 0; gap: 0.4rem;
-                border-top: none; border-right: 1px solid rgba(255,255,255,0.06);
+                padding: 24px 0; gap: 2px;
+                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
+                background: #FFFFFF;
             }
             .bottom-nav a {
-                padding: 0.65rem 0.4rem; min-width: unset; width: 64px;
+                flex-direction: row; gap: 10px; width: 100%;
+                padding: 10px 24px; font-size: 0.82rem; border-radius: 0;
             }
-            body { padding-left: 80px; padding-bottom: 0; }
-            .topbar { left: 0; }
+            .bottom-nav a.active {
+                background: rgba(45,106,79,0.06);
+                border-right: 2px solid #2D6A4F;
+            }
+            body { padding-left: 220px; padding-bottom: 0; }
+            .topbar { left: 220px; }
         }
 
         /* ===================== FOCUS PAGE ===================== */
         .focus-page {
             min-height: 100vh; min-height: 100dvh;
-            padding-top: 56px;
+            padding-top: 52px;
             display: flex; flex-direction: column;
             align-items: center;
-            position: relative; overflow: hidden;
         }
-
-        /* Gradient mesh background */
-        .mesh-bg {
-            position: absolute; inset: 0; z-index: 0;
-            background:
-                radial-gradient(ellipse 80% 55% at 20% 15%, rgba(245,158,11,0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 65% 60% at 85% 25%, rgba(124,58,237,0.05) 0%, transparent 55%),
-                radial-gradient(ellipse 70% 55% at 50% 85%, rgba(245,158,11,0.03) 0%, transparent 55%),
-                radial-gradient(ellipse 55% 65% at 8% 75%, rgba(124,58,237,0.03) 0%, transparent 50%);
-        }
-        .mesh-orb {
-            position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.08;
-            animation: orbDrift 28s ease-in-out infinite;
-        }
-        .mesh-orb:nth-child(1) { width: 420px; height: 420px; background: #F59E0B; top: 2%; left: 8%; }
-        .mesh-orb:nth-child(2) { width: 360px; height: 360px; background: #7C3AED; bottom: 10%; right: 8%; animation-delay: 9s; }
-        .mesh-orb:nth-child(3) { width: 300px; height: 300px; background: #F59E0B; top: 55%; left: 55%; animation-delay: 18s; }
-
         .focus-content {
-            position: relative; z-index: 2;
             display: flex; flex-direction: column;
             align-items: center; text-align: center;
             padding: 1.5rem 1.5rem 2rem;
-            width: 100%; max-width: 620px;
+            width: 100%; max-width: 600px;
         }
 
         /* ===================== PAGE HEADING ===================== */
-        .page-heading {
-            margin-bottom: 0.25rem;
-        }
+        .page-heading { margin-bottom: 0.5rem; }
         .page-heading h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem; color: #F1F5F9; font-weight: 400;
+            font-size: 1.35rem; color: #1D1D1F; font-weight: 400;
             line-height: 1.3;
-        }
-        .page-heading-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: #64748B; font-weight: 300;
-            margin-bottom: 1rem;
         }
 
         /* ===================== MODE SELECTOR ===================== */
         .mode-row {
             display: flex; gap: 0.4rem; flex-wrap: wrap;
-            justify-content: center; margin-bottom: 1.5rem;
-            margin-top: 0.5rem;
+            justify-content: center; margin-bottom: 1rem;
+            margin-top: 0.25rem;
         }
         .mode-pill {
-            padding: 0.5rem 1.05rem; border-radius: 100px;
+            padding: 0.45rem 1rem; border-radius: 100px;
             font-size: 0.8rem; font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.08); background: #1E293B;
-            color: #94A3B8; cursor: pointer;
-            transition: all 0.22s ease;
-            font-family: 'Inter', sans-serif;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF; color: #86868B;
+            cursor: pointer; transition: all 0.2s;
+            font-family: -apple-system, 'Inter', sans-serif;
             user-select: none;
         }
-        .mode-pill:hover { border-color: rgba(245,158,11,0.3); color: #F59E0B; }
+        .mode-pill:hover { border-color: rgba(198,139,89,0.3); color: #C68B59; }
         .mode-pill.active {
-            background: linear-gradient(135deg, #F59E0B, #D97706);
-            border-color: transparent;
-            color: #0F172A; font-weight: 600;
-            box-shadow: 0 2px 16px rgba(245,158,11,0.3);
+            background: #C68B59; border-color: #C68B59;
+            color: #FFFFFF; font-weight: 600;
         }
         .mode-sub {
-            font-size: 0.62rem; color: #64748B; margin-bottom: 1.25rem;
+            font-size: 0.72rem; color: #AEAEB2; margin-bottom: 1.25rem;
         }
-        .mode-sub span { color: #94A3B8; }
+        .mode-sub span { color: #86868B; font-weight: 500; }
 
         /* Custom duration inputs */
         .custom-row {
@@ -200,52 +149,45 @@
             margin-bottom: 1.25rem; flex-wrap: wrap; justify-content: center;
         }
         .custom-row.show { display: flex; }
-        .custom-field {
-            display: flex; align-items: center; gap: 0.35rem;
-        }
-        .custom-field label {
-            font-size: 0.75rem; font-weight: 500; color: #64748B;
-        }
+        .custom-field { display: flex; align-items: center; gap: 0.35rem; }
+        .custom-field label { font-size: 0.75rem; font-weight: 500; color: #86868B; }
         .custom-field input {
-            width: 56px; padding: 0.4rem 0.5rem; border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.1); background: #1E293B;
-            font-size: 0.82rem; font-family: 'Inter', sans-serif;
-            text-align: center; outline: none; color: #F1F5F9;
+            width: 56px; padding: 0.4rem 0.5rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF;
+            font-size: 0.82rem; font-family: -apple-system, 'Inter', sans-serif;
+            text-align: center; outline: none; color: #1D1D1F;
             font-variant-numeric: tabular-nums;
         }
-        .custom-field input:focus { border-color: #F59E0B; box-shadow: 0 0 0 3px rgba(245,158,11,0.15); }
+        .custom-field input:focus { border-color: #C68B59; box-shadow: 0 0 0 3px rgba(198,139,89,0.1); }
 
         /* Session counter */
         .session-info {
-            font-size: 0.72rem; color: #64748B;
-            font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.1em; margin-bottom: 1.5rem;
+            font-size: 0.72rem; color: #AEAEB2;
+            font-weight: 500; margin-bottom: 1.5rem;
         }
-        .session-info span.accent { color: #F59E0B; }
+        .session-info span.accent { color: #C68B59; font-weight: 600; }
 
         /* ===================== SVG TIMER RING ===================== */
         .ring-wrap {
             position: relative;
-            width: 280px; height: 280px;
+            width: 260px; height: 260px;
             margin-bottom: 1.75rem;
-            animation: pulseGlow 4s ease-in-out infinite;
         }
-        .ring-wrap.no-glow { animation: none; filter: none; }
         .ring-svg {
             width: 100%; height: 100%;
             transform: rotate(-90deg);
         }
-        .ring-track { fill: none; stroke: rgba(245,158,11,0.08); stroke-width: 3; }
+        .ring-track { fill: none; stroke: rgba(0,0,0,0.04); stroke-width: 2.5; }
         .ring-fill {
-            fill: none; stroke: url(#ringGrad); stroke-width: 3;
+            fill: none; stroke: url(#ringGrad); stroke-width: 2.5;
             stroke-linecap: round;
             transition: stroke-dashoffset 0.5s ease;
         }
         .ring-fill.break-mode { stroke: url(#breakGrad); }
         .ring-glow {
-            fill: none; stroke: url(#ringGrad); stroke-width: 8;
-            stroke-linecap: round; opacity: 0.15;
-            filter: blur(6px);
+            fill: none; stroke: url(#ringGrad); stroke-width: 6;
+            stroke-linecap: round; opacity: 0.12;
+            filter: blur(4px);
             transition: stroke-dashoffset 0.5s ease;
         }
         .ring-glow.break-mode { stroke: url(#breakGrad); }
@@ -255,50 +197,47 @@
             align-items: center; justify-content: center;
         }
         .timer-time {
-            font-size: clamp(3.5rem, 11vw, 5.5rem);
-            font-weight: 200; color: #F1F5F9;
+            font-size: clamp(3.2rem, 10vw, 5rem);
+            font-weight: 200; color: #1D1D1F;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.04em; line-height: 1;
         }
         .timer-phase {
-            font-size: 0.72rem; color: #64748B;
-            font-weight: 600; margin-top: 0.6rem;
+            font-size: 0.7rem; color: #AEAEB2;
+            font-weight: 600; margin-top: 0.5rem;
             text-transform: uppercase; letter-spacing: 0.12em;
         }
-        .timer-phase.focus-phase { color: #F59E0B; }
-        .timer-phase.break-phase { color: #7C3AED; }
+        .timer-phase.focus-phase { color: #C68B59; }
+        .timer-phase.break-phase { color: #2D6A4F; }
 
         /* ===================== CONTROLS ===================== */
         .ctrls {
-            display: flex; gap: 0.65rem; margin-bottom: 2rem;
+            display: flex; gap: 0.6rem; margin-bottom: 2rem;
             align-items: center; flex-wrap: wrap; justify-content: center;
         }
         .btn-main {
-            padding: 0.82rem 2.8rem; border-radius: 100px;
-            background: linear-gradient(135deg, #F59E0B, #D97706);
-            color: #0F172A;
-            font-size: 0.92rem; font-weight: 700;
+            padding: 0.75rem 2.5rem; border-radius: 100px;
+            background: #C68B59; color: #FFFFFF;
+            font-size: 0.9rem; font-weight: 600;
             border: none; cursor: pointer;
-            transition: all 0.22s ease;
-            font-family: 'Inter', sans-serif;
-            box-shadow: 0 4px 20px rgba(245,158,11,0.3);
-            letter-spacing: 0.02em;
+            transition: background 0.2s;
+            font-family: -apple-system, 'Inter', sans-serif;
+            letter-spacing: 0.01em;
         }
-        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(245,158,11,0.4); }
-        .btn-main:active { transform: translateY(0); }
+        .btn-main:hover { background: #B07A4C; }
         .btn-ghost {
-            padding: 0.7rem 1.4rem; border-radius: 100px;
-            background: transparent; color: #94A3B8;
+            padding: 0.65rem 1.3rem; border-radius: 100px;
+            background: #FFFFFF; color: #86868B;
             font-size: 0.82rem; font-weight: 500;
-            border: 1px solid rgba(255,255,255,0.08); cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Inter', sans-serif;
+            border: 1px solid rgba(0,0,0,0.08); cursor: pointer;
+            transition: all 0.2s;
+            font-family: -apple-system, 'Inter', sans-serif;
         }
-        .btn-ghost:hover { border-color: rgba(255,255,255,0.18); color: #F1F5F9; background: rgba(255,255,255,0.04); }
+        .btn-ghost:hover { border-color: rgba(0,0,0,0.15); color: #1D1D1F; }
 
         /* ===================== AMBIENT SOUND CARDS ===================== */
         .snd-section-title {
-            font-size: 0.68rem; color: #475569; font-weight: 600;
+            font-size: 0.68rem; color: #AEAEB2; font-weight: 600;
             text-transform: uppercase; letter-spacing: 0.1em;
             margin-bottom: 0.75rem;
         }
@@ -307,155 +246,125 @@
             flex-wrap: wrap; justify-content: center;
         }
         .snd-card {
-            width: 72px; padding: 0.65rem 0.5rem; border-radius: 14px;
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            color: #64748B; cursor: pointer;
-            transition: all 0.22s ease;
-            display: flex; flex-direction: column; align-items: center; gap: 0.35rem;
-            font-family: 'Inter', sans-serif;
+            width: 72px; padding: 0.6rem 0.5rem; border-radius: 10px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            color: #AEAEB2; cursor: pointer;
+            transition: all 0.2s;
+            display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+            font-family: -apple-system, 'Inter', sans-serif;
             font-size: 0.68rem; font-weight: 500;
             user-select: none;
         }
-        .snd-card svg { width: 20px; height: 20px; opacity: 0.4; transition: all 0.2s; }
-        .snd-card:hover { border-color: rgba(245,158,11,0.25); color: #94A3B8; }
-        .snd-card:hover svg { opacity: 0.7; }
+        .snd-card svg { width: 20px; height: 20px; opacity: 0.35; transition: opacity 0.2s; }
+        .snd-card:hover { border-color: rgba(198,139,89,0.2); color: #86868B; }
+        .snd-card:hover svg { opacity: 0.6; }
         .snd-card.active {
-            background: rgba(245,158,11,0.1);
-            border-color: rgba(245,158,11,0.3);
-            color: #F59E0B;
-            box-shadow: 0 2px 12px rgba(245,158,11,0.12);
+            background: rgba(198,139,89,0.08);
+            border-color: rgba(198,139,89,0.25);
+            color: #C68B59;
         }
-        .snd-card.active svg { opacity: 1; color: #F59E0B; }
+        .snd-card.active svg { opacity: 1; color: #C68B59; }
 
         /* ===================== DND TOGGLE ===================== */
         .dnd-row {
             display: flex; align-items: center; gap: 0.5rem;
             margin-bottom: 1.75rem;
         }
-        .dnd-row label {
-            font-size: 0.72rem; color: #64748B; font-weight: 500; cursor: pointer;
-        }
+        .dnd-row label { font-size: 0.72rem; color: #86868B; font-weight: 500; cursor: pointer; }
         .toggle-switch {
             position: relative; width: 36px; height: 20px;
-            background: rgba(255,255,255,0.08); border-radius: 10px;
+            background: rgba(0,0,0,0.06); border-radius: 10px;
             cursor: pointer; transition: background 0.2s;
             flex-shrink: 0;
         }
-        .toggle-switch.on { background: #F59E0B; }
+        .toggle-switch.on { background: #C68B59; }
         .toggle-switch::after {
             content: ''; position: absolute;
             top: 2px; left: 2px;
             width: 16px; height: 16px;
-            background: #F1F5F9; border-radius: 50%;
+            background: #FFFFFF; border-radius: 50%;
             transition: transform 0.2s;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
         .toggle-switch.on::after { transform: translateX(16px); }
 
-        /* DND active: dim everything except timer */
         body.dnd-active .focus-content > *:not(.ring-wrap):not(.ctrls) {
-            opacity: 0.2; pointer-events: none;
-            transition: opacity 0.4s ease;
+            opacity: 0.15; pointer-events: none; transition: opacity 0.3s;
         }
-        body.dnd-active .stats-section { opacity: 0.1; pointer-events: none; transition: opacity 0.4s ease; }
-        body.dnd-active .bottom-nav { opacity: 0.15; transition: opacity 0.4s ease; }
-        body.dnd-active .topbar { opacity: 0.15; transition: opacity 0.4s ease; }
+        body.dnd-active .stats-section { opacity: 0.08; pointer-events: none; transition: opacity 0.3s; }
+        body.dnd-active .bottom-nav { opacity: 0.1; transition: opacity 0.3s; }
+        body.dnd-active .topbar { opacity: 0.1; transition: opacity 0.3s; }
 
-        /* ===================== BREAK SCREEN OVERLAY ===================== */
+        /* ===================== BREAK OVERLAY ===================== */
         .break-overlay {
             position: fixed; inset: 0; z-index: 5000;
-            background: rgba(124,58,237,0.15);
-            backdrop-filter: blur(32px); -webkit-backdrop-filter: blur(32px);
+            background: rgba(250,250,247,0.96);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
             display: flex; flex-direction: column;
             align-items: center; justify-content: center;
             text-align: center; padding: 2rem;
             opacity: 0; pointer-events: none;
-            transition: opacity 0.55s ease;
+            transition: opacity 0.4s ease;
         }
         .break-overlay.show { opacity: 1; pointer-events: auto; }
-        .break-overlay::before {
-            content: ''; position: absolute; inset: 0;
-            background:
-                radial-gradient(ellipse 60% 50% at 50% 50%, rgba(124,58,237,0.2) 0%, transparent 70%),
-                linear-gradient(180deg, rgba(15,23,42,0.95) 0%, rgba(30,20,60,0.95) 100%);
-            z-index: -1;
-        }
-        .break-icon {
-            width: 80px; height: 80px; margin-bottom: 1.8rem;
-        }
-        .break-icon svg { width: 100%; height: 100%; }
         .break-msg-en {
             font-family: 'DM Serif Display', serif;
-            font-style: italic; font-size: clamp(1.4rem, 4vw, 2rem);
-            color: #F1F5F9; line-height: 1.45;
-            max-width: 480px; margin-bottom: 0.25rem;
-        }
-        .break-heading-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 1.1rem; color: #C4B5FD; font-weight: 400;
-            margin-bottom: 0.5rem;
+            font-style: italic; font-size: clamp(1.3rem, 4vw, 1.8rem);
+            color: #1D1D1F; line-height: 1.45;
+            max-width: 440px; margin-bottom: 0.5rem;
         }
         .break-msg-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.88rem; color: #94A3B8; font-weight: 300;
-            margin-bottom: 2rem; max-width: 420px;
+            font-size: 0.85rem; color: #86868B; font-weight: 400;
+            margin-bottom: 2rem; max-width: 400px;
         }
         .break-timer {
-            font-size: 2.8rem; font-weight: 200; color: #C4B5FD;
+            font-size: 2.6rem; font-weight: 200; color: #2D6A4F;
             font-variant-numeric: tabular-nums;
             letter-spacing: -0.03em; margin-bottom: 1.5rem;
         }
         .break-breathe {
-            font-size: 0.72rem; color: #64748B;
+            font-size: 0.72rem; color: #AEAEB2;
             font-weight: 600; text-transform: uppercase;
-            letter-spacing: 0.12em; margin-bottom: 0.3rem;
+            letter-spacing: 0.12em; margin-bottom: 0.5rem;
         }
-        .break-breathe-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.68rem; color: #475569; font-weight: 300;
-            margin-bottom: 1.2rem;
+        @keyframes breathePulse {
+            0%, 100% { transform: scale(0.75); opacity: 0.4; }
+            25% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1); opacity: 1; }
+            75% { transform: scale(0.75); opacity: 0.4; }
         }
         .breathe-circle {
-            width: 80px; height: 80px;
-            border-radius: 50%;
-            background: rgba(124,58,237,0.1);
-            border: 2px solid rgba(124,58,237,0.3);
+            width: 64px; height: 64px; border-radius: 50%;
+            background: rgba(45,106,79,0.08);
+            border: 2px solid rgba(45,106,79,0.2);
             margin-bottom: 2rem;
             animation: breathePulse 8s ease-in-out infinite;
         }
         .break-skip {
-            padding: 0.7rem 2rem; border-radius: 100px;
-            background: linear-gradient(135deg, #7C3AED, #6D28D9);
-            color: #fff;
+            padding: 0.65rem 1.8rem; border-radius: 100px;
+            background: #2D6A4F; color: #FFFFFF;
             font-size: 0.85rem; font-weight: 600;
             border: none; cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            box-shadow: 0 2px 16px rgba(124,58,237,0.3);
-            transition: all 0.22s ease;
+            font-family: -apple-system, 'Inter', sans-serif;
+            transition: background 0.2s;
         }
-        .break-skip:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(124,58,237,0.4); }
+        .break-skip:hover { background: #1B4332; }
 
         /* ===================== STATS SECTION ===================== */
         .stats-section {
-            position: relative; z-index: 2;
-            width: 100%; max-width: 620px;
+            width: 100%; max-width: 600px;
             padding: 0 1.5rem 3rem;
         }
         .stats-card {
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px; padding: 1.5rem 2rem;
-            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px; padding: 1.5rem 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
         .stats-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem; color: #F1F5F9;
-            margin-bottom: 0.25rem;
-        }
-        .stats-title-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.72rem; color: #475569; font-weight: 300;
+            font-size: 1rem; color: #1D1D1F;
             margin-bottom: 1rem;
         }
         .stats-grid {
@@ -466,74 +375,60 @@
             padding: 0.75rem 0;
         }
         .stat-val {
-            font-size: 1.5rem; font-weight: 200; color: #F59E0B;
+            font-size: 1.4rem; font-weight: 300; color: #C68B59;
             font-variant-numeric: tabular-nums; line-height: 1.2;
         }
         .stat-lbl {
-            font-size: 0.62rem; color: #64748B; text-transform: uppercase;
+            font-size: 0.6rem; color: #AEAEB2; text-transform: uppercase;
             letter-spacing: 0.08em; font-weight: 600; margin-top: 0.25rem;
             text-align: center;
-        }
-        .stat-lbl-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.56rem; color: #475569; font-weight: 300;
         }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 500px) {
-            .ring-wrap { width: 230px; height: 230px; }
+            .ring-wrap { width: 220px; height: 220px; }
             .mode-row { gap: 0.3rem; }
-            .mode-pill { padding: 0.42rem 0.8rem; font-size: 0.76rem; }
-            .ctrls { gap: 0.4rem; }
-            .snd-card { width: 64px; padding: 0.55rem 0.35rem; font-size: 0.62rem; }
+            .mode-pill { padding: 0.4rem 0.8rem; font-size: 0.76rem; }
+            .ctrls { gap: 0.35rem; }
+            .snd-card { width: 64px; padding: 0.5rem 0.35rem; font-size: 0.62rem; }
             .stats-grid { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
-            .break-msg-en { font-size: 1.25rem; }
+            .break-msg-en { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===================== TOPBAR (Minimal, Frosted Glass) ===================== -->
+<!-- ===================== TOP HEADER ===================== -->
 <nav class="topbar">
-    <a href="index.html" class="topbar-brand">&#9789; Sukoon</a>
+    <a href="index.html" class="topbar-brand">Sukoon</a>
 </nav>
 
 <!-- ===================== BOTTOM NAVIGATION ===================== -->
 <nav class="bottom-nav" id="bottomNav">
     <a href="index.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
-        <span class="bnav-label">Home</span>
-        <span class="bnav-label-hi">&#x0939;&#x094B;&#x092E;</span>
+        <span>Home</span>
     </a>
     <a href="sounds.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        <span class="bnav-label">Explore</span>
-        <span class="bnav-label-hi">&#x0916;&#x094B;&#x091C;&#x0947;&#x0902;</span>
+        <span>Explore</span>
     </a>
     <a href="breathe.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M12 6v6l4 2"/></svg>
-        <span class="bnav-label">Breathe</span>
-        <span class="bnav-label-hi">&#x0938;&#x093E;&#x0901;&#x0938;</span>
+        <span>Breathe</span>
     </a>
     <a href="friend.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-        <span class="bnav-label">AI Friend</span>
-        <span class="bnav-label-hi">&#x0926;&#x094B;&#x0938;&#x094D;&#x0924;</span>
+        <span>AI Friend</span>
     </a>
     <a href="journal.html">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        <span class="bnav-label">You</span>
-        <span class="bnav-label-hi">&#x0906;&#x092A;</span>
+        <span>You</span>
     </a>
 </nav>
 
 <!-- ===================== MAIN ===================== -->
 <main class="focus-page">
-    <div class="mesh-bg">
-        <div class="mesh-orb"></div>
-        <div class="mesh-orb"></div>
-        <div class="mesh-orb"></div>
-    </div>
 
     <div class="focus-content">
 
@@ -541,7 +436,6 @@
         <div class="page-heading stagger-1">
             <h1>Focus Timer</h1>
         </div>
-        <div class="page-heading-hi stagger-1">&#x0927;&#x094D;&#x092F;&#x093E;&#x0928; &#x091F;&#x093E;&#x0907;&#x092E;&#x0930;</div>
 
         <!-- Mode selector -->
         <div class="mode-row stagger-2" id="modeRow">
@@ -556,38 +450,38 @@
         <!-- Custom duration inputs -->
         <div class="custom-row" id="customRow">
             <div class="custom-field">
-                <label>Focus (min) / &#x092B;&#x094B;&#x0915;&#x0938;</label>
+                <label>Focus (min)</label>
                 <input type="number" id="customFocus" min="1" max="120" value="25">
             </div>
             <div class="custom-field">
-                <label>Break (min) / &#x092C;&#x094D;&#x0930;&#x0947;&#x0915;</label>
+                <label>Break (min)</label>
                 <input type="number" id="customBreak" min="1" max="30" value="5">
             </div>
         </div>
 
         <!-- Session counter -->
         <div class="session-info stagger-3" id="sessionInfo">
-            Session / &#x0938;&#x0924;&#x094D;&#x0930;: <span class="accent" id="curSession">1</span> of <span class="accent" id="totalSessions">4</span>
+            Session: <span class="accent" id="curSession">1</span> of <span class="accent" id="totalSessions">4</span>
         </div>
 
         <!-- SVG circular progress ring -->
         <div class="ring-wrap stagger-4">
-            <svg class="ring-svg" viewBox="0 0 280 280">
+            <svg class="ring-svg" viewBox="0 0 260 260">
                 <defs>
                     <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#F59E0B"/>
-                        <stop offset="100%" stop-color="#FBBF24"/>
+                        <stop offset="0%" stop-color="#C68B59"/>
+                        <stop offset="100%" stop-color="#D4A373"/>
                     </linearGradient>
                     <linearGradient id="breakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#7C3AED"/>
-                        <stop offset="100%" stop-color="#A78BFA"/>
+                        <stop offset="0%" stop-color="#2D6A4F"/>
+                        <stop offset="100%" stop-color="#52B788"/>
                     </linearGradient>
                 </defs>
-                <circle class="ring-track" cx="140" cy="140" r="130"/>
-                <circle class="ring-glow" id="ringGlow" cx="140" cy="140" r="130"
-                    stroke-dasharray="816.81" stroke-dashoffset="0"/>
-                <circle class="ring-fill" id="ringFill" cx="140" cy="140" r="130"
-                    stroke-dasharray="816.81" stroke-dashoffset="0"/>
+                <circle class="ring-track" cx="130" cy="130" r="120"/>
+                <circle class="ring-glow" id="ringGlow" cx="130" cy="130" r="120"
+                    stroke-dasharray="753.98" stroke-dashoffset="0"/>
+                <circle class="ring-fill" id="ringFill" cx="130" cy="130" r="120"
+                    stroke-dasharray="753.98" stroke-dashoffset="0"/>
             </svg>
             <div class="ring-inner">
                 <div class="timer-time" id="timerTime">25:00</div>
@@ -597,14 +491,14 @@
 
         <!-- Controls -->
         <div class="ctrls stagger-5">
-            <button class="btn-main" id="btnStart">Start / &#x0936;&#x0941;&#x0930;&#x0942;</button>
+            <button class="btn-main" id="btnStart">Start</button>
             <button class="btn-ghost" id="btnPause" style="display:none">Pause</button>
             <button class="btn-ghost" id="btnSkip" style="display:none">Skip</button>
             <button class="btn-ghost" id="btnReset" style="display:none">Reset</button>
         </div>
 
         <!-- Ambient Sound Cards -->
-        <div class="snd-section-title stagger-6">Ambient Sounds / &#x0927;&#x094D;&#x0935;&#x0928;&#x093F;</div>
+        <div class="snd-section-title stagger-6">Ambient Sounds</div>
         <div class="snd-row stagger-6" id="sndRow">
             <button class="snd-card" data-snd="rain">
                 <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M4 8v6M8 5v8M12 7v7M16 6v6"/></svg>
@@ -627,7 +521,7 @@
         <!-- Do Not Disturb Toggle -->
         <div class="dnd-row stagger-7">
             <div class="toggle-switch" id="dndToggle" role="switch" aria-checked="false" tabindex="0"></div>
-            <label for="dndToggle">Do Not Disturb / &#x0936;&#x093E;&#x0902;&#x0924; &#x092E;&#x094B;&#x0921;</label>
+            <label for="dndToggle">Do Not Disturb</label>
         </div>
 
     </div>
@@ -636,27 +530,22 @@
     <div class="stats-section stagger-8">
         <div class="stats-card">
             <div class="stats-title">Today's Progress</div>
-            <div class="stats-title-hi">&#x0906;&#x091C; &#x0915;&#x0940; &#x092A;&#x094D;&#x0930;&#x0917;&#x0924;&#x093F;</div>
             <div class="stats-grid">
                 <div class="stat-item">
                     <div class="stat-val" id="statTime">0m</div>
                     <div class="stat-lbl">Focus Time</div>
-                    <div class="stat-lbl-hi">&#x0938;&#x092E;&#x092F;</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-val" id="statSessions">0</div>
                     <div class="stat-lbl">Sessions</div>
-                    <div class="stat-lbl-hi">&#x0938;&#x0924;&#x094D;&#x0930;</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-val" id="statTotal">0m</div>
                     <div class="stat-lbl">Total</div>
-                    <div class="stat-lbl-hi">&#x0915;&#x0941;&#x0932;</div>
                 </div>
                 <div class="stat-item">
                     <div class="stat-val" id="statStreak">0</div>
                     <div class="stat-lbl">Streak</div>
-                    <div class="stat-lbl-hi">&#x0932;&#x0917;&#x093E;&#x0924;&#x093E;&#x0930;</div>
                 </div>
             </div>
         </div>
@@ -665,22 +554,12 @@
 
 <!-- ===================== BREAK OVERLAY ===================== -->
 <div class="break-overlay" id="breakOverlay">
-    <div class="break-icon">
-        <svg viewBox="0 0 80 80" fill="none">
-            <circle cx="40" cy="40" r="38" fill="#7C3AED" opacity="0.08"/>
-            <circle cx="40" cy="40" r="26" fill="#7C3AED" opacity="0.1"/>
-            <circle cx="40" cy="40" r="14" fill="#7C3AED" opacity="0.14"/>
-            <path d="M40 22c0 9.94-8.06 18-18 18 9.94 0 18 8.06 18 18 0-9.94 8.06-18 18-18-9.94 0-18-8.06-18-18z" fill="#A78BFA" opacity="0.6"/>
-        </svg>
-    </div>
-    <div class="break-heading-hi">&#x092C;&#x094D;&#x0930;&#x0947;&#x0915; &#x0932;&#x0947;&#x0902;</div>
     <div class="break-msg-en" id="breakMsgEn">Take a break. Rest your eyes.</div>
     <div class="break-msg-hi" id="breakMsgHi"></div>
     <div class="break-timer" id="breakTimer">5:00</div>
     <div class="break-breathe">Breathe with the circle</div>
-    <div class="break-breathe-hi">&#x0935;&#x0943;&#x0924;&#x094D;&#x0924; &#x0915;&#x0947; &#x0938;&#x093E;&#x0925; &#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
     <div class="breathe-circle"></div>
-    <button class="break-skip" id="breakSkipBtn">Skip Break / &#x091B;&#x094B;&#x0921;&#x093C;&#x0947;&#x0902;</button>
+    <button class="break-skip" id="breakSkipBtn">Skip Break</button>
 </div>
 
 <script>
@@ -707,7 +586,7 @@
     var breakDur = MODES.pomodoro.brk * 60;
     var totalSessions = MODES.pomodoro.sessions;
     var curSession = 1;
-    var phase = 'focus'; // 'focus' or 'break'
+    var phase = 'focus';
     var remaining = focusDur;
     var phaseDur = focusDur;
     var running = false;
@@ -745,20 +624,20 @@
     var $customBreak = document.getElementById('customBreak');
     var $modeSub = document.getElementById('modeSub');
     var $dndToggle = document.getElementById('dndToggle');
-    var CIRC = 2 * Math.PI * 130;
+    var CIRC = 2 * Math.PI * 120;
 
-    /* ====== Break messages (bilingual) ====== */
+    /* ====== Break messages ====== */
     var breakMessages = [
-        { en: "Rest your eyes. Step away from the screen.", hi: "\u0906\u0901\u0916\u094B\u0902 \u0915\u094B \u0906\u0930\u093E\u092E \u0926\u0947\u0902\u0964 \u0938\u094D\u0915\u094D\u0930\u0940\u0928 \u0938\u0947 \u0926\u0942\u0930 \u0939\u094B\u0902\u0964" },
-        { en: "Stretch. Breathe. You earned this.", hi: "\u0938\u094D\u091F\u094D\u0930\u0947\u091A \u0915\u0930\u0947\u0902\u0964 \u0938\u093E\u0901\u0938 \u0932\u0947\u0902\u0964 \u0906\u092A\u0928\u0947 \u092F\u0939 \u0915\u092E\u093E\u092F\u093E \u0939\u0948\u0964" },
-        { en: "Look at something far away. Let your mind wander.", hi: "\u0926\u0942\u0930 \u0915\u093F\u0938\u0940 \u091A\u0940\u091C\u093C \u0915\u094B \u0926\u0947\u0916\u0947\u0902\u0964 \u092E\u0928 \u0915\u094B \u0918\u0942\u092E\u0928\u0947 \u0926\u0947\u0902\u0964" },
-        { en: "Drink some water. Your body needs it.", hi: "\u0925\u094B\u0921\u093C\u093E \u092A\u093E\u0928\u0940 \u092A\u093F\u090F\u0902\u0964 \u0936\u0930\u0940\u0930 \u0915\u094B \u091C\u0930\u0942\u0930\u0924 \u0939\u0948\u0964" },
-        { en: "Close your eyes. Feel the stillness.", hi: "\u0906\u0901\u0916\u0947\u0902 \u092C\u0902\u0926 \u0915\u0930\u0947\u0902\u0964 \u0936\u093E\u0902\u0924\u093F \u092E\u0939\u0938\u0942\u0938 \u0915\u0930\u0947\u0902\u0964" },
-        { en: "Stand up. Move around. Refresh your body.", hi: "\u0909\u0920\u0947\u0902\u0964 \u0918\u0942\u092E\u0947\u0902\u0964 \u0936\u0930\u0940\u0930 \u0915\u094B \u0924\u093E\u091C\u093C\u093E \u0915\u0930\u0947\u0902\u0964" },
-        { en: "Take three slow, deep breaths.", hi: "\u0924\u0940\u0928 \u0927\u0940\u092E\u0940, \u0917\u0939\u0930\u0940 \u0938\u093E\u0901\u0938\u0947\u0902 \u0932\u0947\u0902\u0964" },
-        { en: "You are doing great. Keep going.", hi: "\u0906\u092A \u092C\u0939\u0941\u0924 \u0905\u091A\u094D\u091B\u093E \u0915\u0930 \u0930\u0939\u0947 \u0939\u0948\u0902\u0964 \u091C\u093E\u0930\u0940 \u0930\u0916\u0947\u0902\u0964" },
-        { en: "Gratitude: think of one thing you are thankful for.", hi: "\u0906\u092D\u093E\u0930: \u090F\u0915 \u091A\u0940\u091C\u093C \u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0938\u094B\u091A\u0947\u0902 \u091C\u093F\u0938\u0915\u0947 \u0932\u093F\u090F \u0906\u092A \u0906\u092D\u093E\u0930\u0940 \u0939\u0948\u0902\u0964" },
-        { en: "Relax your shoulders. Unclench your jaw.", hi: "\u0915\u0902\u0927\u0947 \u0922\u0940\u0932\u0947 \u0915\u0930\u0947\u0902\u0964 \u091C\u092C\u0921\u093C\u093E \u0916\u094B\u0932\u0947\u0902\u0964" }
+        { en: "Rest your eyes. Step away from the screen.", hi: "" },
+        { en: "Stretch. Breathe. You earned this.", hi: "" },
+        { en: "Look at something far away. Let your mind wander.", hi: "" },
+        { en: "Drink some water. Your body needs it.", hi: "" },
+        { en: "Close your eyes. Feel the stillness.", hi: "" },
+        { en: "Stand up. Move around. Refresh your body.", hi: "" },
+        { en: "Take three slow, deep breaths.", hi: "" },
+        { en: "You are doing great. Keep going.", hi: "" },
+        { en: "Gratitude: think of one thing you are thankful for.", hi: "" },
+        { en: "Relax your shoulders. Unclench your jaw.", hi: "" }
     ];
 
     /* ====== Request notification permission ====== */
@@ -776,27 +655,17 @@
             return s;
         } catch(e) { return { date: '', focusSec: 0, sessions: 0, streak: 0, lastDate: '', totalSec: 0 }; }
     }
-    function saveStats(s) {
-        localStorage.setItem('sukoon_focus', JSON.stringify(s));
-    }
-    function getTodayStr() {
-        return new Date().toDateString();
-    }
-    function getYesterdayStr() {
-        return new Date(Date.now() - 864e5).toDateString();
-    }
+    function saveStats(s) { localStorage.setItem('sukoon_focus', JSON.stringify(s)); }
+    function getTodayStr() { return new Date().toDateString(); }
+    function getYesterdayStr() { return new Date(Date.now() - 864e5).toDateString(); }
     function getStats() {
         var s = loadStats();
         var today = getTodayStr();
         if (s.date !== today) {
             var wasYesterday = s.lastDate === getYesterdayStr();
             var wasToday = s.lastDate === today;
-            s.focusSec = 0;
-            s.sessions = 0;
-            s.date = today;
-            if (!wasYesterday && !wasToday) {
-                s.streak = 0;
-            }
+            s.focusSec = 0; s.sessions = 0; s.date = today;
+            if (!wasYesterday && !wasToday) s.streak = 0;
             saveStats(s);
         }
         return s;
@@ -813,8 +682,7 @@
             s.lastDate = today;
         }
         s.date = today;
-        saveStats(s);
-        renderStats();
+        saveStats(s); renderStats();
     }
     function fmtDuration(sec) {
         var mins = Math.floor(sec / 60);
@@ -859,9 +727,7 @@
             $modeSub.innerHTML = '<span>' + d.f + '</span> min focus';
         }
     }
-    render();
-    updateSessionDisplay();
-    updateModeSub();
+    render(); updateSessionDisplay(); updateModeSub();
 
     /* ====== Mode selection ====== */
     function setMode(mode) {
@@ -870,27 +736,17 @@
         document.querySelectorAll('.mode-pill').forEach(function(b) { b.classList.remove('active'); });
         document.querySelector('.mode-pill[data-mode="' + mode + '"]').classList.add('active');
         $customRow.classList.toggle('show', mode === 'custom');
-        if (mode === 'custom') {
-            applyCustom();
-        } else {
-            var m = MODES[mode];
-            focusDur = m.focus * 60;
-            breakDur = m.brk * 60;
-            totalSessions = m.sessions;
-        }
-        updateModeSub();
-        resetTimer();
+        if (mode === 'custom') { applyCustom(); }
+        else { var m = MODES[mode]; focusDur = m.focus * 60; breakDur = m.brk * 60; totalSessions = m.sessions; }
+        updateModeSub(); resetTimer();
     }
     function applyCustom() {
         var f = parseInt($customFocus.value) || 25;
         var b = parseInt($customBreak.value) || 5;
         f = Math.max(1, Math.min(120, f));
         b = Math.max(1, Math.min(30, b));
-        $customFocus.value = f;
-        $customBreak.value = b;
-        focusDur = f * 60;
-        breakDur = b * 60;
-        totalSessions = 4;
+        $customFocus.value = f; $customBreak.value = b;
+        focusDur = f * 60; breakDur = b * 60; totalSessions = 4;
         MODE_DESC.custom = { f: f, b: b };
     }
     document.getElementById('modeRow').addEventListener('click', function(e) {
@@ -901,13 +757,11 @@
     $customFocus.addEventListener('change', function() { if (curMode === 'custom' && !running) { applyCustom(); updateModeSub(); resetTimer(); } });
     $customBreak.addEventListener('change', function() { if (curMode === 'custom' && !running) { applyCustom(); updateModeSub(); resetTimer(); } });
 
-    /* ====== Web Audio init ====== */
+    /* ====== Web Audio ====== */
     function initAC() {
         if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
         if (audioCtx.state === 'suspended') audioCtx.resume();
     }
-
-    /* 528Hz singing bowl bell */
     function bell() {
         initAC();
         var t = audioCtx.currentTime;
@@ -935,19 +789,10 @@
             ambientSrc = null; ambientGain = null; wavBuffer = null;
         }
     }
-
     function playAmbient(type) {
         initAC(); killAmbient();
         if (!type) return;
-
-        // Map sound type to audio file
-        var fileMap = {
-            rain: '/audio/rain.wav',
-            ocean: '/audio/ocean.wav',
-            fire: '/audio/fire.wav',
-            lofi: '/audio/creek.wav'  // use creek as lo-fi ambient
-        };
-
+        var fileMap = { rain: '/audio/rain.wav', ocean: '/audio/ocean.wav', fire: '/audio/fire.wav', lofi: '/audio/creek.wav' };
         var file = fileMap[type];
         if (file) {
             fetch(file).then(function(r) { return r.arrayBuffer(); }).then(function(buf) {
@@ -959,109 +804,71 @@
                 ambientGain = audioCtx.createGain();
                 ambientGain.gain.setValueAtTime(0, audioCtx.currentTime);
                 ambientGain.gain.linearRampToValueAtTime(0.25, audioCtx.currentTime + 2);
-                src.connect(ambientGain);
-                ambientGain.connect(audioCtx.destination);
-                src.start();
-                ambientSrc = src;
-            }).catch(function() {
-                makeSynthSound(type);
-            });
+                src.connect(ambientGain); ambientGain.connect(audioCtx.destination);
+                src.start(); ambientSrc = src;
+            }).catch(function() { makeSynthSound(type); });
             return;
         }
-
         makeSynthSound(type);
     }
-
     function makeSynthSound(type) {
         initAC();
-        var sr = audioCtx.sampleRate;
-        var len = sr * 4;
+        var sr = audioCtx.sampleRate; var len = sr * 4;
         var buf = audioCtx.createBuffer(2, len, sr);
-        for (var ch = 0; ch < 2; ch++) {
-            var d = buf.getChannelData(ch);
-            for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1;
-        }
-        var src = audioCtx.createBufferSource();
-        src.buffer = buf; src.loop = true;
+        for (var ch = 0; ch < 2; ch++) { var d = buf.getChannelData(ch); for (var i = 0; i < len; i++) d[i] = Math.random() * 2 - 1; }
+        var src = audioCtx.createBufferSource(); src.buffer = buf; src.loop = true;
         ambientGain = audioCtx.createGain();
         ambientGain.gain.setValueAtTime(0, audioCtx.currentTime);
         ambientGain.gain.linearRampToValueAtTime(0.12, audioCtx.currentTime + 2.5);
-
         if (type === 'rain') {
-            var bp = audioCtx.createBiquadFilter();
-            bp.type = 'bandpass'; bp.frequency.value = 900; bp.Q.value = 0.6;
-            var hp = audioCtx.createBiquadFilter();
-            hp.type = 'highpass'; hp.frequency.value = 250;
-            var lfo = audioCtx.createOscillator();
-            var lg = audioCtx.createGain();
+            var bp = audioCtx.createBiquadFilter(); bp.type = 'bandpass'; bp.frequency.value = 900; bp.Q.value = 0.6;
+            var hp = audioCtx.createBiquadFilter(); hp.type = 'highpass'; hp.frequency.value = 250;
+            var lfo = audioCtx.createOscillator(); var lg = audioCtx.createGain();
             lfo.type = 'sine'; lfo.frequency.value = 0.3; lg.gain.value = 150;
             lfo.connect(lg); lg.connect(bp.frequency); lfo.start();
             src.connect(bp); bp.connect(hp); hp.connect(ambientGain);
         } else if (type === 'ocean') {
-            var lp = audioCtx.createBiquadFilter();
-            lp.type = 'lowpass'; lp.frequency.value = 600; lp.Q.value = 0.5;
-            var lfo2 = audioCtx.createOscillator();
-            var lg2 = audioCtx.createGain();
+            var lp = audioCtx.createBiquadFilter(); lp.type = 'lowpass'; lp.frequency.value = 600; lp.Q.value = 0.5;
+            var lfo2 = audioCtx.createOscillator(); var lg2 = audioCtx.createGain();
             lfo2.type = 'sine'; lfo2.frequency.value = 0.1; lg2.gain.value = 300;
             lfo2.connect(lg2); lg2.connect(lp.frequency); lfo2.start();
             src.connect(lp); lp.connect(ambientGain);
             ambientGain.gain.linearRampToValueAtTime(0.1, audioCtx.currentTime + 2.5);
         } else if (type === 'fire') {
-            var bp2 = audioCtx.createBiquadFilter();
-            bp2.type = 'bandpass'; bp2.frequency.value = 400; bp2.Q.value = 0.3;
-            var lp2 = audioCtx.createBiquadFilter();
-            lp2.type = 'lowpass'; lp2.frequency.value = 1500;
-            var lfo3 = audioCtx.createOscillator();
-            var lg3 = audioCtx.createGain();
+            var bp2 = audioCtx.createBiquadFilter(); bp2.type = 'bandpass'; bp2.frequency.value = 400; bp2.Q.value = 0.3;
+            var lp2 = audioCtx.createBiquadFilter(); lp2.type = 'lowpass'; lp2.frequency.value = 1500;
+            var lfo3 = audioCtx.createOscillator(); var lg3 = audioCtx.createGain();
             lfo3.type = 'sine'; lfo3.frequency.value = 0.2; lg3.gain.value = 200;
             lfo3.connect(lg3); lg3.connect(bp2.frequency); lfo3.start();
             src.connect(bp2); bp2.connect(lp2); lp2.connect(ambientGain);
             ambientGain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 2.5);
         } else if (type === 'lofi') {
-            var lp3 = audioCtx.createBiquadFilter();
-            lp3.type = 'lowpass'; lp3.frequency.value = 500; lp3.Q.value = 0.8;
-            var hp2 = audioCtx.createBiquadFilter();
-            hp2.type = 'highpass'; hp2.frequency.value = 80;
-            var hs = audioCtx.createBiquadFilter();
-            hs.type = 'highshelf'; hs.frequency.value = 3000; hs.gain.value = -12;
-            var lfo4 = audioCtx.createOscillator();
-            var lg4 = audioCtx.createGain();
+            var lp3 = audioCtx.createBiquadFilter(); lp3.type = 'lowpass'; lp3.frequency.value = 500; lp3.Q.value = 0.8;
+            var hp2 = audioCtx.createBiquadFilter(); hp2.type = 'highpass'; hp2.frequency.value = 80;
+            var hs = audioCtx.createBiquadFilter(); hs.type = 'highshelf'; hs.frequency.value = 3000; hs.gain.value = -12;
+            var lfo4 = audioCtx.createOscillator(); var lg4 = audioCtx.createGain();
             lfo4.type = 'sine'; lfo4.frequency.value = 0.15; lg4.gain.value = 60;
             lfo4.connect(lg4); lg4.connect(lp3.frequency); lfo4.start();
             src.connect(lp3); lp3.connect(hp2); hp2.connect(hs); hs.connect(ambientGain);
             ambientGain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 2.5);
-        } else {
-            src.connect(ambientGain);
-        }
-
-        ambientGain.connect(audioCtx.destination);
-        src.start();
-        ambientSrc = src;
+        } else { src.connect(ambientGain); }
+        ambientGain.connect(audioCtx.destination); src.start(); ambientSrc = src;
     }
 
-    /* Sound cards - toggle on/off */
+    /* Sound cards */
     document.getElementById('sndRow').addEventListener('click', function(e) {
-        var p = e.target.closest('.snd-card');
-        if (!p) return;
+        var p = e.target.closest('.snd-card'); if (!p) return;
         var snd = p.dataset.snd;
-
         if (p.classList.contains('active')) {
-            // Toggle off
-            p.classList.remove('active');
-            curSound = null;
-            killAmbient();
+            p.classList.remove('active'); curSound = null; killAmbient();
         } else {
-            // Deactivate others, activate this
             document.querySelectorAll('.snd-card').forEach(function(b) { b.classList.remove('active'); });
-            p.classList.add('active');
-            curSound = snd;
-            if (running && (phase === 'focus' || phase === 'break')) {
-                playAmbient(curSound);
-            }
+            p.classList.add('active'); curSound = snd;
+            if (running && (phase === 'focus' || phase === 'break')) playAmbient(curSound);
         }
     });
 
-    /* Do Not Disturb toggle */
+    /* DND toggle */
     $dndToggle.addEventListener('click', function() {
         dndActive = !dndActive;
         $dndToggle.classList.toggle('on', dndActive);
@@ -1072,7 +879,7 @@
         if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); $dndToggle.click(); }
     });
 
-    /* ====== Notification helper ====== */
+    /* ====== Notification ====== */
     function notify(title, body) {
         if ('Notification' in window && Notification.permission === 'granted') {
             try { new Notification(title, { body: body }); } catch(e) {}
@@ -1083,177 +890,90 @@
     function startTimer() {
         if (running && !paused) return;
         initAC();
-
         if (!running) {
-            phase = 'focus';
-            remaining = focusDur;
-            phaseDur = focusDur;
-            curSession = 1;
-            updateSessionDisplay();
-            render();
+            phase = 'focus'; remaining = focusDur; phaseDur = focusDur;
+            curSession = 1; updateSessionDisplay(); render();
         }
-
-        running = true;
-        paused = false;
-
+        running = true; paused = false;
         updatePhaseDisplay();
-
-        if (curSound && (phase === 'focus')) {
-            playAmbient(curSound);
-        }
-
+        if (curSound && (phase === 'focus')) playAmbient(curSound);
         $start.style.display = 'none';
-        $pause.style.display = '';
-        $skip.style.display = '';
-        $reset.style.display = '';
+        $pause.style.display = ''; $skip.style.display = ''; $reset.style.display = '';
         $pause.textContent = 'Pause';
-
         document.querySelectorAll('.mode-pill').forEach(function(b) { b.style.pointerEvents = 'none'; b.style.opacity = '0.35'; });
-        $customFocus.disabled = true;
-        $customBreak.disabled = true;
-
+        $customFocus.disabled = true; $customBreak.disabled = true;
         ticker = setInterval(tick, 1000);
     }
-
     function tick() {
-        remaining--;
-        if (remaining < 0) remaining = 0;
+        remaining--; if (remaining < 0) remaining = 0;
         render();
-
-        if (phase === 'break') {
-            $breakTimer.textContent = fmt(remaining);
-        }
-
+        if (phase === 'break') $breakTimer.textContent = fmt(remaining);
         if (remaining <= 0) {
-            clearInterval(ticker); ticker = null;
-            bell();
-
+            clearInterval(ticker); ticker = null; bell();
             if (phase === 'focus') {
                 recordSession(phaseDur);
-
-                if (curSession >= totalSessions || breakDur === 0) {
-                    finishAll();
-                    return;
-                }
-
-                phase = 'break';
-                remaining = breakDur;
-                phaseDur = breakDur;
-                render();
-                updatePhaseDisplay();
-                showBreakOverlay();
+                if (curSession >= totalSessions || breakDur === 0) { finishAll(); return; }
+                phase = 'break'; remaining = breakDur; phaseDur = breakDur;
+                render(); updatePhaseDisplay(); showBreakOverlay();
                 notify('Sukoon Focus', 'Time for a break! Rest your eyes.');
-
                 killAmbient();
-
                 ticker = setInterval(tick, 1000);
             } else {
-                hideBreakOverlay();
-                curSession++;
-                updateSessionDisplay();
-                phase = 'focus';
-                remaining = focusDur;
-                phaseDur = focusDur;
-                render();
-                updatePhaseDisplay();
-                bell();
+                hideBreakOverlay(); curSession++; updateSessionDisplay();
+                phase = 'focus'; remaining = focusDur; phaseDur = focusDur;
+                render(); updatePhaseDisplay(); bell();
                 notify('Sukoon Focus', 'Break over. Time to focus!');
-
                 if (curSound) playAmbient(curSound);
-
                 ticker = setInterval(tick, 1000);
             }
         }
     }
-
     function pauseTimer() {
         if (!running) return;
         if (paused) {
-            paused = false;
-            $pause.textContent = 'Pause';
+            paused = false; $pause.textContent = 'Pause';
             if (curSound && phase === 'focus') playAmbient(curSound);
             ticker = setInterval(tick, 1000);
         } else {
-            paused = true;
-            $pause.textContent = 'Resume';
-            clearInterval(ticker); ticker = null;
-            killAmbient();
+            paused = true; $pause.textContent = 'Resume';
+            clearInterval(ticker); ticker = null; killAmbient();
         }
     }
-
     function skipPhase() {
         if (!running) return;
-        clearInterval(ticker); ticker = null;
-        remaining = 0;
-        tick();
+        clearInterval(ticker); ticker = null; remaining = 0; tick();
     }
-
     function resetTimer() {
-        clearInterval(ticker); ticker = null;
-        killAmbient();
-        hideBreakOverlay();
-        running = false;
-        paused = false;
-        phase = 'focus';
-        curSession = 1;
-        remaining = focusDur;
-        phaseDur = focusDur;
-        render();
-        updateSessionDisplay();
-        updatePhaseDisplay();
-        $ring.classList.remove('break-mode');
-        $ringGlow.classList.remove('break-mode');
-
+        clearInterval(ticker); ticker = null; killAmbient(); hideBreakOverlay();
+        running = false; paused = false; phase = 'focus';
+        curSession = 1; remaining = focusDur; phaseDur = focusDur;
+        render(); updateSessionDisplay(); updatePhaseDisplay();
+        $ring.classList.remove('break-mode'); $ringGlow.classList.remove('break-mode');
         $start.style.display = '';
-        $pause.style.display = 'none';
-        $skip.style.display = 'none';
-        $reset.style.display = 'none';
-
+        $pause.style.display = 'none'; $skip.style.display = 'none'; $reset.style.display = 'none';
         document.querySelectorAll('.mode-pill').forEach(function(b) { b.style.pointerEvents = ''; b.style.opacity = ''; });
-        $customFocus.disabled = false;
-        $customBreak.disabled = false;
+        $customFocus.disabled = false; $customBreak.disabled = false;
     }
-
     function finishAll() {
-        killAmbient();
-        hideBreakOverlay();
-        running = false;
-        paused = false;
-
+        killAmbient(); hideBreakOverlay(); running = false; paused = false;
         $time.textContent = '00:00';
-        $phase.textContent = 'Complete!';
-        $phase.className = 'timer-phase focus-phase';
-        $ring.setAttribute('stroke-dashoffset', '0');
-        $ringGlow.setAttribute('stroke-dashoffset', '0');
-        $ring.classList.remove('break-mode');
-        $ringGlow.classList.remove('break-mode');
-
+        $phase.textContent = 'Complete!'; $phase.className = 'timer-phase focus-phase';
+        $ring.setAttribute('stroke-dashoffset', '0'); $ringGlow.setAttribute('stroke-dashoffset', '0');
+        $ring.classList.remove('break-mode'); $ringGlow.classList.remove('break-mode');
         notify('Sukoon Focus', 'All sessions complete! Great work today.');
-
-        setTimeout(function() {
-            resetTimer();
-            $phase.textContent = 'Complete!';
-        }, 3000);
+        setTimeout(function() { resetTimer(); $phase.textContent = 'Complete!'; }, 3000);
     }
-
     function updatePhaseDisplay() {
         if (!running && !paused) {
-            $phase.textContent = 'Ready';
-            $phase.className = 'timer-phase';
-            $ring.classList.remove('break-mode');
-            $ringGlow.classList.remove('break-mode');
-            return;
+            $phase.textContent = 'Ready'; $phase.className = 'timer-phase';
+            $ring.classList.remove('break-mode'); $ringGlow.classList.remove('break-mode'); return;
         }
         if (phase === 'focus') {
-            $phase.textContent = 'Focus';
-            $phase.className = 'timer-phase focus-phase';
-            $ring.classList.remove('break-mode');
-            $ringGlow.classList.remove('break-mode');
+            $phase.textContent = 'Focus'; $phase.className = 'timer-phase focus-phase';
+            $ring.classList.remove('break-mode'); $ringGlow.classList.remove('break-mode');
         } else {
-            $phase.textContent = 'Break';
-            $phase.className = 'timer-phase break-phase';
-            $ring.classList.add('break-mode');
-            $ringGlow.classList.add('break-mode');
+            $phase.textContent = 'Break'; $phase.className = 'timer-phase break-phase';
+            $ring.classList.add('break-mode'); $ringGlow.classList.add('break-mode');
         }
     }
 
@@ -1265,38 +985,21 @@
         $breakTimer.textContent = fmt(remaining);
         $breakOverlay.classList.add('show');
     }
-    function hideBreakOverlay() {
-        $breakOverlay.classList.remove('show');
-    }
+    function hideBreakOverlay() { $breakOverlay.classList.remove('show'); }
 
     /* ====== Button events ====== */
     $start.addEventListener('click', startTimer);
     $pause.addEventListener('click', pauseTimer);
     $skip.addEventListener('click', skipPhase);
     $reset.addEventListener('click', resetTimer);
-    $breakSkip.addEventListener('click', function() {
-        if (phase === 'break' && running) {
-            skipPhase();
-        }
-    });
+    $breakSkip.addEventListener('click', function() { if (phase === 'break' && running) skipPhase(); });
 
     /* ====== Keyboard shortcuts ====== */
     document.addEventListener('keydown', function(e) {
         if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA' || e.target.tagName === 'SELECT') return;
-        if (e.code === 'Space') {
-            e.preventDefault();
-            if (!running) { startTimer(); }
-            else { pauseTimer(); }
-        }
-        if (e.code === 'KeyR' && !e.metaKey && !e.ctrlKey) {
-            resetTimer();
-        }
-        if (e.code === 'KeyS' && !e.metaKey && !e.ctrlKey) {
-            if (running) skipPhase();
-        }
-        if (e.code === 'KeyD' && !e.metaKey && !e.ctrlKey) {
-            $dndToggle.click();
-        }
+        if (e.code === 'Space') { e.preventDefault(); if (!running) startTimer(); else pauseTimer(); }
+        if (e.code === 'KeyR' && !e.metaKey && !e.ctrlKey) resetTimer();
+        if (e.code === 'KeyS' && !e.metaKey && !e.ctrlKey) { if (running) skipPhase(); }
     });
 
 })();

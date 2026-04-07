@@ -7,824 +7,417 @@
     <meta name="description" content="Instant calm when you need it most. Guided breathing, grounding exercises, and crisis support. You are safe here.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #F1F5F9;
-            background: #0F172A;
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
+            color: #1D1D1F;
+            background: #FAFAF7;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
-            padding-bottom: 80px;
+            padding-bottom: 72px;
         }
-
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== AMBIENT BACKGROUND ===================== */
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 0;
-            pointer-events: none;
-            background:
-                radial-gradient(ellipse 80% 60% at 20% 10%, rgba(16, 185, 129, 0.07) 0%, transparent 60%),
-                radial-gradient(ellipse 60% 50% at 80% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 60%),
-                radial-gradient(ellipse 70% 40% at 50% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 60%);
-            background-size: 100% 100%;
-            animation: ambientShift 40s ease-in-out infinite;
-        }
-
-        @keyframes ambientShift {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.05); }
-        }
-
-        /* ===================== TOPBAR ===================== */
+        /* ===================== TOP HEADER ===================== */
         .topbar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0 2rem;
-            height: 56px;
-            background: rgba(15, 23, 42, 0.7);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 1.5rem; height: 52px;
+            background: rgba(250,250,247,0.82);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
-
         .brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.35rem;
-            color: #F1F5F9;
-            letter-spacing: -0.02em;
+            font-size: 1.25rem; color: #1D1D1F;
+            letter-spacing: -0.01em;
         }
 
-        .brand-moon {
-            margin-right: 4px;
-            font-size: 1.1rem;
-        }
-
-        /* ===================== BOTTOM NAVIGATION ===================== */
+        /* ===================== BOTTOM NAV ===================== */
         .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            height: 72px;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border-top: 1px solid rgba(255,255,255,0.06);
-            padding: 0 8px;
-            padding-bottom: env(safe-area-inset-bottom, 0);
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 56px; z-index: 1000;
+            background: #FFFFFF;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            display: flex; align-items: center; justify-content: space-around;
+            padding-bottom: env(safe-area-inset-bottom);
         }
-
         .bottom-nav a {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 4px;
-            padding: 8px 12px;
-            border-radius: 12px;
-            font-size: 0.65rem;
-            font-weight: 500;
-            color: #64748B;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
+            display: flex; flex-direction: column; align-items: center;
+            gap: 3px; font-size: 0.6rem; font-weight: 500;
+            color: #AEAEB2; transition: color 0.2s;
         }
+        .bottom-nav a:hover { color: #86868B; }
+        .bottom-nav a.active { color: #2D6A4F; }
+        .bottom-nav svg { width: 22px; height: 22px; stroke-width: 1.5; fill: none; stroke: currentColor; }
 
-        .bottom-nav a:hover, .bottom-nav a.active {
-            color: #10B981;
-        }
-
-        .bottom-nav a.active {
-            background: rgba(16, 185, 129, 0.1);
-        }
-
-        .bottom-nav svg {
-            width: 22px;
-            height: 22px;
-            stroke-width: 1.8;
-            fill: none;
-            stroke: currentColor;
-        }
-
-        /* ===================== DESKTOP SIDEBAR >900px ===================== */
-        @media (min-width: 901px) {
+        /* ===================== DESKTOP SIDEBAR >960px ===================== */
+        @media (min-width: 961px) {
             .bottom-nav {
-                top: 56px;
-                bottom: 0;
-                left: 0;
-                right: auto;
-                width: 80px;
-                height: auto;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 24px 0;
-                gap: 4px;
-                border-top: none;
-                border-right: 1px solid rgba(255,255,255,0.06);
+                position: fixed; top: 52px; left: 0; bottom: 0; right: auto;
+                width: 220px; height: auto;
+                flex-direction: column; justify-content: flex-start;
+                padding: 24px 0; gap: 2px;
+                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
+                background: #FFFFFF;
             }
-
             .bottom-nav a {
-                width: 64px;
-                padding: 10px 8px;
-                font-size: 0.6rem;
+                flex-direction: row; gap: 10px; width: 100%;
+                padding: 10px 24px; font-size: 0.82rem; border-radius: 0;
             }
-
-            body {
-                padding-left: 80px;
-                padding-bottom: 0;
+            .bottom-nav a.active {
+                background: rgba(45,106,79,0.06);
+                border-right: 2px solid #2D6A4F;
             }
-
-            .topbar {
-                left: 80px;
-            }
+            body { padding-left: 220px; padding-bottom: 0; }
+            .topbar { left: 220px; }
         }
 
         /* ===================== MAIN CONTENT ===================== */
         .main-content {
-            position: relative;
-            z-index: 1;
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 80px 20px 40px;
+            position: relative; z-index: 1;
+            max-width: 600px; margin: 0 auto;
+            padding: 72px 20px 40px;
         }
-
-        .section-spacing {
-            margin-bottom: 64px;
-        }
+        .section-spacing { margin-bottom: 56px; }
 
         /* ===================== BREATHING OVERLAY ===================== */
         .breathing-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             z-index: 2000;
-            background: rgba(15, 23, 42, 0.97);
-            backdrop-filter: blur(40px);
-            -webkit-backdrop-filter: blur(40px);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: opacity 0.8s ease;
+            background: rgba(250,250,247,0.97);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            opacity: 1; transition: opacity 0.6s ease;
         }
-
-        .breathing-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
+        .breathing-overlay.hidden { opacity: 0; pointer-events: none; }
 
         .breath-header {
-            text-align: center;
-            margin-bottom: 48px;
-            opacity: 0;
-            animation: fadeSlideIn 1.5s ease 0.3s forwards;
+            text-align: center; margin-bottom: 40px;
+            opacity: 0; animation: fadeSlideIn 1s ease 0.3s forwards;
         }
-
         .breath-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.75rem;
-            color: #F1F5F9;
+            font-size: 1.65rem; color: #1D1D1F;
             letter-spacing: -0.02em;
-            margin-bottom: 4px;
         }
-
-        .breath-title-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.95rem;
-            color: #64748B;
-        }
-
         @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(12px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         /* Breathing circle */
         .circle-container {
             position: relative;
-            width: 240px;
-            height: 240px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 40px;
-            opacity: 0;
-            animation: fadeSlideIn 1.5s ease 0.8s forwards;
+            width: 220px; height: 220px;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 36px;
+            opacity: 0; animation: fadeSlideIn 1s ease 0.6s forwards;
         }
-
-        .circle-glow {
-            position: absolute;
-            width: 240px;
-            height: 240px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%);
-            transition: all 4s cubic-bezier(0.4,0,0.2,1);
-            filter: blur(20px);
-        }
-
-        .circle-glow.expanded {
-            width: 360px;
-            height: 360px;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
-        }
-
         .circle-ring {
-            position: absolute;
-            border-radius: 50%;
-            border: 1px solid rgba(16, 185, 129, 0.1);
+            position: absolute; border-radius: 50%;
+            border: 1px solid rgba(45,106,79,0.1);
         }
-
-        .circle-ring-1 { width: 240px; height: 240px; }
-        .circle-ring-2 { width: 200px; height: 200px; border-color: rgba(16, 185, 129, 0.07); }
-        .circle-ring-3 { width: 160px; height: 160px; border-color: rgba(16, 185, 129, 0.04); }
+        .circle-ring-1 { width: 220px; height: 220px; }
+        .circle-ring-2 { width: 184px; height: 184px; border-color: rgba(45,106,79,0.07); }
+        .circle-ring-3 { width: 148px; height: 148px; border-color: rgba(45,106,79,0.04); }
 
         .breath-circle {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: radial-gradient(circle at 45% 40%, rgba(16, 185, 129, 0.3) 0%, rgba(16, 185, 129, 0.12) 60%, rgba(16, 185, 129, 0.06) 100%);
-            border: 1px solid rgba(16, 185, 129, 0.2);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            width: 110px; height: 110px; border-radius: 50%;
+            background: radial-gradient(circle at 45% 40%, rgba(45,106,79,0.2) 0%, rgba(45,106,79,0.08) 60%, rgba(45,106,79,0.03) 100%);
+            border: 1px solid rgba(45,106,79,0.2);
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
             z-index: 2;
-            box-shadow: 0 0 60px rgba(16, 185, 129, 0.15), inset 0 0 30px rgba(16, 185, 129, 0.05);
-            transition: transform 4s cubic-bezier(0.4,0,0.2,1), box-shadow 4s ease;
+            transition: transform 4s cubic-bezier(0.4,0,0.2,1);
         }
-
-        .breath-circle.expanded {
-            transform: scale(1.6);
-            box-shadow: 0 0 100px rgba(16, 185, 129, 0.25), inset 0 0 40px rgba(16, 185, 129, 0.08);
-        }
+        .breath-circle.expanded { transform: scale(1.5); }
 
         .phase-text {
             font-family: 'DM Serif Display', serif;
-            font-size: 0.95rem;
-            color: #F1F5F9;
-            letter-spacing: -0.02em;
-            text-align: center;
-            line-height: 1.3;
-        }
-
-        .phase-text-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.6rem;
-            color: #94A3B8;
-            text-align: center;
-            margin-top: 2px;
+            font-size: 0.9rem; color: #1D1D1F;
+            text-align: center; line-height: 1.3;
         }
 
         .breath-counter {
-            font-family: 'Inter', sans-serif;
-            font-size: 1rem;
-            font-weight: 300;
-            color: #64748B;
-            margin-bottom: 8px;
-            opacity: 0;
-            animation: fadeSlideIn 1.5s ease 1.2s forwards;
+            font-size: 0.85rem; font-weight: 400;
+            color: #AEAEB2; margin-bottom: 6px;
+            opacity: 0; animation: fadeSlideIn 1s ease 1s forwards;
         }
-
         .breath-timer {
-            font-family: 'Inter', sans-serif;
-            font-size: 3rem;
-            font-weight: 200;
-            color: #F1F5F9;
+            font-size: 2.8rem; font-weight: 200;
+            color: #1D1D1F;
             letter-spacing: -0.02em;
             font-variant-numeric: tabular-nums;
-            margin-bottom: 48px;
-            opacity: 0;
-            animation: fadeSlideIn 1.5s ease 1s forwards;
+            margin-bottom: 40px;
+            opacity: 0; animation: fadeSlideIn 1s ease 0.8s forwards;
         }
-
         .btn-skip {
-            padding: 12px 32px;
-            border-radius: 100px;
-            background: rgba(255,255,255,0.06);
-            border: 1px solid rgba(255,255,255,0.1);
-            color: #94A3B8;
-            font-size: 0.85rem;
-            font-weight: 500;
-            font-family: 'Inter', sans-serif;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            opacity: 0;
-            animation: fadeSlideIn 1.5s ease 1.5s forwards;
+            padding: 10px 28px; border-radius: 100px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.1);
+            color: #86868B; font-size: 0.85rem; font-weight: 500;
+            font-family: -apple-system, 'Inter', sans-serif;
+            cursor: pointer; transition: all 0.2s;
+            opacity: 0; animation: fadeSlideIn 1s ease 1.2s forwards;
         }
-
-        .btn-skip:hover {
-            background: rgba(255,255,255,0.1);
-            color: #F1F5F9;
-        }
+        .btn-skip:hover { background: #F5F5F3; color: #1D1D1F; }
 
         /* ===================== SECTION HEADINGS ===================== */
         .section-label {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: #10B981;
-            margin-bottom: 8px;
+            font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.12em;
+            color: #2D6A4F; margin-bottom: 6px;
         }
-
         .section-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.6rem;
-            color: #F1F5F9;
+            font-size: 1.45rem; color: #1D1D1F;
             letter-spacing: -0.02em;
-            margin-bottom: 4px;
-            line-height: 1.3;
+            margin-bottom: 4px; line-height: 1.3;
         }
-
-        .section-title-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.9rem;
-            color: #64748B;
-            margin-bottom: 24px;
+        .section-subtitle {
+            font-size: 0.85rem; color: #86868B;
+            margin-bottom: 20px;
         }
 
         /* ===================== GROUNDING EXERCISE ===================== */
         .grounding-steps {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            width: 100%;
+            display: flex; flex-direction: column;
+            gap: 10px; width: 100%;
         }
-
         .grounding-card {
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            border-radius: 20px;
-            padding: 20px 24px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px; padding: 18px 20px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+            transition: all 0.3s ease;
             -webkit-tap-highlight-color: transparent;
-            user-select: none;
-            overflow: hidden;
+            user-select: none; overflow: hidden;
         }
-
-        .grounding-card:hover {
-            border-color: rgba(16, 185, 129, 0.2);
-            background: rgba(30, 41, 59, 0.9);
-        }
-
+        .grounding-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
         .grounding-card.active {
-            border-color: rgba(16, 185, 129, 0.3);
-            box-shadow: 0 0 30px rgba(16, 185, 129, 0.06);
+            border-color: rgba(45,106,79,0.2);
+            box-shadow: 0 2px 12px rgba(45,106,79,0.06);
         }
-
         .grounding-card.completed {
-            border-color: rgba(16, 185, 129, 0.2);
-            background: rgba(16, 185, 129, 0.05);
+            border-color: rgba(45,106,79,0.15);
+            background: rgba(216,243,220,0.3);
         }
-
         .grounding-card-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
+            display: flex; align-items: center; gap: 14px;
         }
-
         .grounding-number {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(16, 185, 129, 0.1);
-            border: 1.5px solid rgba(16, 185, 129, 0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(45,106,79,0.08);
+            border: 1.5px solid rgba(45,106,79,0.15);
+            display: flex; align-items: center; justify-content: center;
             font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem;
-            color: #10B981;
-            flex-shrink: 0;
-            transition: all 0.4s ease;
+            font-size: 1.05rem; color: #2D6A4F;
+            flex-shrink: 0; transition: all 0.3s;
         }
-
         .grounding-card.completed .grounding-number {
-            background: #10B981;
-            border-color: #10B981;
-            color: #0F172A;
+            background: #2D6A4F; border-color: #2D6A4F; color: #FFFFFF;
         }
-
-        .grounding-card-text {
-            flex: 1;
-        }
-
+        .grounding-card-text { flex: 1; }
         .grounding-card-en {
-            font-size: 0.95rem;
-            font-weight: 600;
-            color: #F1F5F9;
-            line-height: 1.4;
+            font-size: 0.92rem; font-weight: 600; color: #1D1D1F; line-height: 1.4;
         }
-
-        .grounding-card-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.8rem;
-            color: #64748B;
-            margin-top: 2px;
-        }
-
         .grounding-chevron {
-            color: #475569;
-            transition: transform 0.4s ease;
-            flex-shrink: 0;
+            color: #AEAEB2; transition: transform 0.3s; flex-shrink: 0;
         }
-
-        .grounding-card.active .grounding-chevron {
-            transform: rotate(180deg);
-        }
+        .grounding-card.active .grounding-chevron { transform: rotate(180deg); }
 
         .grounding-expanded {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.4,0,0.2,1), padding 0.5s ease;
-            padding: 0 0;
+            max-height: 0; overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0;
         }
-
         .grounding-card.active .grounding-expanded {
-            max-height: 200px;
-            padding: 20px 0 4px;
+            max-height: 200px; padding: 18px 0 4px;
         }
-
         .grounding-circles {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            flex-wrap: wrap;
+            display: flex; gap: 10px;
+            justify-content: center; flex-wrap: wrap;
         }
-
         .grounding-dot {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            border: 2px solid rgba(16, 185, 129, 0.2);
-            background: rgba(16, 185, 129, 0.04);
+            width: 44px; height: 44px; border-radius: 50%;
+            border: 2px solid rgba(45,106,79,0.15);
+            background: rgba(45,106,79,0.03);
             cursor: pointer;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex; align-items: center; justify-content: center;
             -webkit-tap-highlight-color: transparent;
         }
-
-        .grounding-dot:hover {
-            border-color: rgba(16, 185, 129, 0.4);
-            background: rgba(16, 185, 129, 0.08);
-        }
-
+        .grounding-dot:hover { border-color: rgba(45,106,79,0.3); }
         .grounding-dot.filled {
-            background: #10B981;
-            border-color: #10B981;
-            transform: scale(1.12);
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+            background: #2D6A4F; border-color: #2D6A4F;
+            transform: scale(1.08);
         }
-
         .grounding-dot svg {
-            width: 18px;
-            height: 18px;
-            stroke: #FFFFFF;
-            stroke-width: 2.5;
-            fill: none;
-            opacity: 0;
-            transition: opacity 0.2s ease;
+            width: 16px; height: 16px;
+            stroke: #FFFFFF; stroke-width: 2.5; fill: none;
+            opacity: 0; transition: opacity 0.2s;
         }
-
         .grounding-dot.filled svg { opacity: 1; }
-
         .grounding-hint {
-            text-align: center;
-            font-size: 0.75rem;
-            color: #475569;
-            margin-top: 12px;
+            text-align: center; font-size: 0.72rem;
+            color: #AEAEB2; margin-top: 10px;
         }
 
         /* ===================== AFFIRMATION CARDS ===================== */
         .affirmation-scroll {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding: 4px 0 16px;
+            display: flex; gap: 14px;
+            overflow-x: auto; padding: 4px 0 16px;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
-            margin: 0 -20px;
-            padding-left: 20px;
-            padding-right: 20px;
+            margin: 0 -20px; padding-left: 20px; padding-right: 20px;
         }
-
         .affirmation-scroll::-webkit-scrollbar { display: none; }
-
         .affirmation-card {
-            min-width: 280px;
-            max-width: 280px;
-            padding: 36px 28px;
-            border-radius: 24px;
+            min-width: 260px; max-width: 260px;
+            padding: 32px 24px;
+            border-radius: 12px;
             scroll-snap-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
+            display: flex; flex-direction: column;
+            align-items: flex-start; text-align: left;
             flex-shrink: 0;
-            transition: transform 0.4s ease;
+            background: #FFFFFF;
+            border-left: 3px solid #2D6A4F;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            border-right: 1px solid rgba(0,0,0,0.06);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
         }
-
-        .affirmation-card:hover { transform: translateY(-4px); }
-
-        .aff-1 { background: linear-gradient(145deg, rgba(16, 185, 129, 0.15), rgba(16, 185, 129, 0.05)); border: 1px solid rgba(16, 185, 129, 0.15); }
-        .aff-2 { background: linear-gradient(145deg, rgba(124, 58, 237, 0.15), rgba(124, 58, 237, 0.05)); border: 1px solid rgba(124, 58, 237, 0.15); }
-        .aff-3 { background: linear-gradient(145deg, rgba(14, 165, 233, 0.15), rgba(14, 165, 233, 0.05)); border: 1px solid rgba(14, 165, 233, 0.15); }
-        .aff-4 { background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05)); border: 1px solid rgba(245, 158, 11, 0.12); }
-        .aff-5 { background: linear-gradient(145deg, rgba(236, 72, 153, 0.15), rgba(236, 72, 153, 0.05)); border: 1px solid rgba(236, 72, 153, 0.12); }
-        .aff-6 { background: linear-gradient(145deg, rgba(34, 211, 238, 0.15), rgba(34, 211, 238, 0.05)); border: 1px solid rgba(34, 211, 238, 0.12); }
-        .aff-7 { background: linear-gradient(145deg, rgba(16, 185, 129, 0.12), rgba(124, 58, 237, 0.1)); border: 1px solid rgba(16, 185, 129, 0.12); }
-        .aff-8 { background: linear-gradient(145deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.08)); border: 1px solid rgba(251, 191, 36, 0.12); }
-
-        .affirmation-icon {
-            font-size: 1.5rem;
-            margin-bottom: 16px;
-            opacity: 0.8;
-        }
-
         .affirmation-en {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.2rem;
-            color: #F1F5F9;
+            font-size: 1.1rem; color: #1D1D1F;
             letter-spacing: -0.02em;
-            line-height: 1.4;
-            margin-bottom: 10px;
-        }
-
-        .affirmation-hi {
-            font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
-            font-size: 0.85rem;
-            color: #94A3B8;
-            line-height: 1.5;
+            line-height: 1.45;
         }
 
         /* ===================== TALK TO SOMEONE ===================== */
         .talk-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            width: 100%;
-            padding: 22px 32px;
-            border-radius: 20px;
-            background: linear-gradient(135deg, #7C3AED 0%, #6D28D9 50%, #5B21B6 100%);
-            color: #FFFFFF;
-            font-size: 1.05rem;
-            font-weight: 600;
-            font-family: 'Inter', sans-serif;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 24px rgba(124, 58, 237, 0.3), 0 0 0 1px rgba(124, 58, 237, 0.1);
-            transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
-            text-decoration: none;
+            display: flex; align-items: center; justify-content: center;
+            gap: 10px; width: 100%;
+            padding: 18px 28px; border-radius: 12px;
+            background: #2D6A4F; color: #FFFFFF;
+            font-size: 1rem; font-weight: 600;
+            font-family: -apple-system, 'Inter', sans-serif;
+            border: none; cursor: pointer;
+            transition: background 0.2s;
         }
-
-        .talk-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.4), 0 0 0 1px rgba(124, 58, 237, 0.2);
-        }
-
-        .talk-btn svg {
-            width: 22px;
-            height: 22px;
-        }
-
+        .talk-btn:hover { background: #1B4332; }
+        .talk-btn svg { width: 20px; height: 20px; }
         .talk-subtitle {
-            text-align: center;
-            font-size: 0.8rem;
-            color: #64748B;
-            margin-top: 10px;
+            text-align: center; font-size: 0.78rem;
+            color: #AEAEB2; margin-top: 8px;
         }
 
         /* ===================== CRISIS HELPLINES ===================== */
         .helplines-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            width: 100%;
+            display: flex; flex-direction: column;
+            gap: 8px; width: 100%;
         }
-
         .helpline-card {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            padding: 16px 20px;
-            border-radius: 16px;
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.3s ease;
-            text-decoration: none;
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px 18px; border-radius: 12px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s;
             color: inherit;
             -webkit-tap-highlight-color: transparent;
         }
-
-        .helpline-card:hover {
-            border-color: rgba(16, 185, 129, 0.2);
-            background: rgba(30, 41, 59, 0.9);
-            transform: translateX(4px);
-        }
-
+        .helpline-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .helpline-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 14px;
-            background: rgba(16, 185, 129, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 40px; height: 40px; border-radius: 10px;
+            background: #D8F3DC;
+            display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-
-        .helpline-icon svg {
-            width: 20px;
-            height: 20px;
-            stroke: #10B981;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .helpline-info {
-            display: flex;
-            flex-direction: column;
-            text-align: left;
-            flex: 1;
-        }
-
-        .helpline-name {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #F1F5F9;
-        }
-
-        .helpline-number {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #10B981;
-            letter-spacing: 0.03em;
-        }
-
+        .helpline-icon svg { width: 18px; height: 18px; stroke: #2D6A4F; fill: none; stroke-width: 2; }
+        .helpline-info { display: flex; flex-direction: column; text-align: left; flex: 1; }
+        .helpline-name { font-size: 0.85rem; font-weight: 600; color: #1D1D1F; }
+        .helpline-number { font-size: 0.85rem; font-weight: 600; color: #2D6A4F; letter-spacing: 0.02em; }
         .helpline-region {
-            font-size: 0.65rem;
-            color: #64748B;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            margin-top: 2px;
+            font-size: 0.62rem; color: #AEAEB2;
+            font-weight: 500; text-transform: uppercase;
+            letter-spacing: 0.05em; margin-top: 2px;
         }
-
         .helpline-call {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(16, 185, 129, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            width: 34px; height: 34px; border-radius: 50%;
+            background: rgba(45,106,79,0.08);
+            display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-
-        .helpline-call svg {
-            width: 16px;
-            height: 16px;
-            stroke: #10B981;
-            fill: none;
-            stroke-width: 2;
-        }
+        .helpline-call svg { width: 15px; height: 15px; stroke: #2D6A4F; fill: none; stroke-width: 2; }
 
         /* ===================== QUICK LINKS ===================== */
         .quick-links {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 12px;
-            width: 100%;
+            display: grid; grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px; width: 100%;
         }
-
         .quick-link {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            padding: 24px 16px;
-            border-radius: 20px;
-            background: #1E293B;
-            border: 1px solid rgba(255,255,255,0.06);
-            transition: all 0.3s ease;
-            text-decoration: none;
-            text-align: center;
+            display: flex; flex-direction: column; align-items: center;
+            gap: 8px; padding: 20px 14px; border-radius: 12px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            transition: box-shadow 0.2s; text-align: center;
         }
-
-        .quick-link:hover {
-            border-color: rgba(16, 185, 129, 0.2);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-        }
-
+        .quick-link:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
         .quick-link-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
+            width: 42px; height: 42px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.15rem;
         }
-
-        .quick-link-icon.green { background: rgba(16, 185, 129, 0.12); }
-        .quick-link-icon.purple { background: rgba(124, 58, 237, 0.12); }
-        .quick-link-icon.blue { background: rgba(14, 165, 233, 0.12); }
-
-        .quick-link-text {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #F1F5F9;
-            line-height: 1.3;
-        }
+        .quick-link-icon.green { background: #D8F3DC; }
+        .quick-link-icon.purple { background: #F3E8FF; }
+        .quick-link-icon.blue { background: #DBEAFE; }
+        .quick-link-text { font-size: 0.78rem; font-weight: 600; color: #1D1D1F; line-height: 1.3; }
 
         /* ===================== FOOTER NOTE ===================== */
-        .footer-note {
-            text-align: center;
-            padding: 40px 20px 20px;
-        }
-
-        .footer-note p {
-            font-size: 0.8rem;
-            color: #475569;
-            line-height: 1.6;
-        }
-
+        .footer-note { text-align: center; padding: 32px 20px 16px; }
+        .footer-note p { font-size: 0.78rem; color: #AEAEB2; line-height: 1.6; }
         .footer-note .brand-small {
-            font-family: 'DM Serif Display', serif;
-            color: #64748B;
+            font-family: 'DM Serif Display', serif; color: #86868B;
         }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 480px) {
-            .breath-title { font-size: 1.5rem; }
-            .section-title { font-size: 1.35rem; }
-            .circle-container { width: 200px; height: 200px; }
-            .circle-ring-1 { width: 200px; height: 200px; }
-            .circle-ring-2 { width: 168px; height: 168px; }
-            .circle-ring-3 { width: 136px; height: 136px; }
-            .breath-circle { width: 100px; height: 100px; }
-            .phase-text { font-size: 0.85rem; }
-            .breath-timer { font-size: 2.5rem; }
-            .affirmation-card { min-width: 250px; max-width: 250px; padding: 28px 20px; }
-            .affirmation-en { font-size: 1.05rem; }
+            .breath-title { font-size: 1.4rem; }
+            .section-title { font-size: 1.3rem; }
+            .circle-container { width: 190px; height: 190px; }
+            .circle-ring-1 { width: 190px; height: 190px; }
+            .circle-ring-2 { width: 158px; height: 158px; }
+            .circle-ring-3 { width: 126px; height: 126px; }
+            .breath-circle { width: 95px; height: 95px; }
+            .phase-text { font-size: 0.82rem; }
+            .breath-timer { font-size: 2.4rem; }
+            .affirmation-card { min-width: 240px; max-width: 240px; padding: 24px 18px; }
+            .affirmation-en { font-size: 1rem; }
             .quick-links { grid-template-columns: 1fr; }
-            .quick-link { flex-direction: row; padding: 18px 20px; }
-        }
-
-        @media (max-width: 360px) {
-            .circle-container { width: 180px; height: 180px; }
-            .circle-ring-1 { width: 180px; height: 180px; }
-            .circle-ring-2 { width: 150px; height: 150px; }
-            .circle-ring-3 { width: 120px; height: 120px; }
-            .breath-circle { width: 85px; height: 85px; }
+            .quick-link { flex-direction: row; padding: 16px 18px; }
         }
 
         /* ===================== ANIMATIONS ===================== */
         .fade-in-up {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s cubic-bezier(0.4,0,0.2,1);
+            opacity: 0; transform: translateY(16px);
+            transition: all 0.6s ease;
         }
-
-        .fade-in-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <!-- Ambient background -->
-    <div class="ambient-bg"></div>
-
-    <!-- TOPBAR -->
+    <!-- TOP HEADER -->
     <header class="topbar">
-        <a href="/" class="brand"><span class="brand-moon">&#9789;</span> Sukoon</a>
+        <a href="/" class="brand">Sukoon</a>
     </header>
 
     <!-- BOTTOM NAVIGATION -->
@@ -855,24 +448,21 @@
     <div class="breathing-overlay" id="breathingOverlay">
         <div class="breath-header">
             <div class="breath-title">Breathe with me</div>
-            <div class="breath-title-hi">&#x092E;&#x0947;&#x0930;&#x0947; &#x0938;&#x093E;&#x0925; &#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
         </div>
 
         <div class="circle-container">
-            <div class="circle-glow" id="circleGlow"></div>
             <div class="circle-ring circle-ring-1"></div>
             <div class="circle-ring circle-ring-2"></div>
             <div class="circle-ring circle-ring-3"></div>
             <div class="breath-circle" id="breathCircle">
                 <div class="phase-text" id="phaseText">Inhale</div>
-                <div class="phase-text-hi" id="phaseHindi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0932;&#x0947;&#x0902;</div>
             </div>
         </div>
 
         <div class="breath-timer" id="breathTimer">4</div>
         <div class="breath-counter" id="breathCounter">Breath 1 of 10</div>
 
-        <button class="btn-skip" id="btnSkip">Skip &mdash; I'm okay</button>
+        <button class="btn-skip" id="btnSkip">Skip -- I'm okay</button>
     </div>
 
     <!-- ===================== MAIN CONTENT ===================== -->
@@ -882,7 +472,7 @@
         <div class="section-spacing fade-in-up" id="groundingSection">
             <div class="section-label">Grounding Exercise</div>
             <div class="section-title">5-4-3-2-1 Technique</div>
-            <div class="section-title-hi">&#x092A;&#x093E;&#x0901;&#x091A; &#x0907;&#x0902;&#x0926;&#x094D;&#x0930;&#x093F;&#x092F;&#x094B;&#x0902; &#x0915;&#x0940; &#x0935;&#x093F;&#x0927;&#x093F;</div>
+            <div class="section-subtitle">Bring yourself back to the present moment</div>
 
             <div class="grounding-steps">
                 <!-- 5 SEE -->
@@ -891,7 +481,6 @@
                         <div class="grounding-number">5</div>
                         <div class="grounding-card-text">
                             <div class="grounding-card-en">Things you can <strong>SEE</strong></div>
-                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x0926;&#x0947;&#x0916;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
                         </div>
                         <div class="grounding-chevron">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -915,7 +504,6 @@
                         <div class="grounding-number">4</div>
                         <div class="grounding-card-text">
                             <div class="grounding-card-en">Things you can <strong>TOUCH</strong></div>
-                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x091B;&#x0942;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
                         </div>
                         <div class="grounding-chevron">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -938,7 +526,6 @@
                         <div class="grounding-number">3</div>
                         <div class="grounding-card-text">
                             <div class="grounding-card-en">Things you can <strong>HEAR</strong></div>
-                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x0938;&#x0941;&#x0928;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
                         </div>
                         <div class="grounding-chevron">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -960,7 +547,6 @@
                         <div class="grounding-number">2</div>
                         <div class="grounding-card-text">
                             <div class="grounding-card-en">Things you can <strong>SMELL</strong></div>
-                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x0938;&#x0942;&#x0902;&#x0918;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
                         </div>
                         <div class="grounding-chevron">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -981,7 +567,6 @@
                         <div class="grounding-number">1</div>
                         <div class="grounding-card-text">
                             <div class="grounding-card-en">Thing you can <strong>TASTE</strong></div>
-                            <div class="grounding-card-hi">&#x091C;&#x094B; &#x0906;&#x092A; <strong>&#x091A;&#x0916;</strong> &#x0938;&#x0915;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
                         </div>
                         <div class="grounding-chevron">
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
@@ -997,52 +582,36 @@
             </div>
         </div>
 
-        <!-- ===================== AFFIRMATION CARDS ===================== -->
+        <!-- ===================== AFFIRMATIONS ===================== -->
         <div class="section-spacing fade-in-up">
             <div class="section-label">Affirmations</div>
             <div class="section-title">You are going to be okay</div>
-            <div class="section-title-hi">&#x0938;&#x092C; &#x0920;&#x0940;&#x0915; &#x0939;&#x094B; &#x091C;&#x093E;&#x090F;&#x0917;&#x093E;</div>
+            <div class="section-subtitle">Swipe through these gentle reminders</div>
 
             <div class="affirmation-scroll">
-                <div class="affirmation-card aff-1">
-                    <div class="affirmation-icon">&#x1F33F;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">This feeling will pass</div>
-                    <div class="affirmation-hi">&#x092F;&#x0939; &#x092D;&#x093E;&#x0935;&#x0928;&#x093E; &#x0917;&#x0941;&#x095B;&#x0930; &#x091C;&#x093E;&#x090F;&#x0917;&#x0940;</div>
                 </div>
-                <div class="affirmation-card aff-2">
-                    <div class="affirmation-icon">&#x1F6E1;&#xFE0F;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">You are safe right now</div>
-                    <div class="affirmation-hi">&#x0906;&#x092A; &#x0905;&#x092D;&#x0940; &#x0938;&#x0941;&#x0930;&#x0915;&#x094D;&#x0937;&#x093F;&#x0924; &#x0939;&#x0948;&#x0902;</div>
                 </div>
-                <div class="affirmation-card aff-3">
-                    <div class="affirmation-icon">&#x1F91D;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">You are not alone</div>
-                    <div class="affirmation-hi">&#x0906;&#x092A; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x0948;&#x0902;</div>
                 </div>
-                <div class="affirmation-card aff-4">
-                    <div class="affirmation-icon">&#x2B50;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">You have survived every bad day so far</div>
-                    <div class="affirmation-hi">&#x0906;&#x092A;&#x0928;&#x0947; &#x0905;&#x092C; &#x0924;&#x0915; &#x0939;&#x0930; &#x092C;&#x0941;&#x0930;&#x0947; &#x0926;&#x093F;&#x0928; &#x0915;&#x094B; &#x092A;&#x093E;&#x0930; &#x0915;&#x093F;&#x092F;&#x093E; &#x0939;&#x0948;</div>
                 </div>
-                <div class="affirmation-card aff-5">
-                    <div class="affirmation-icon">&#x1F497;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">You deserve kindness, especially from yourself</div>
-                    <div class="affirmation-hi">&#x0906;&#x092A; &#x0926;&#x092F;&#x093E; &#x0915;&#x0947; &#x092A;&#x093E;&#x0924;&#x094D;&#x0930; &#x0939;&#x0948;&#x0902;, &#x0959;&#x093E;&#x0938;&#x0915;&#x0930; &#x0905;&#x092A;&#x0928;&#x0940; &#x0959;&#x0941;&#x0926; &#x0938;&#x0947;</div>
                 </div>
-                <div class="affirmation-card aff-6">
-                    <div class="affirmation-icon">&#x1F30A;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">Waves always calm down. So will this.</div>
-                    <div class="affirmation-hi">&#x0932;&#x0939;&#x0930;&#x0947;&#x0902; &#x0939;&#x092E;&#x0947;&#x0936;&#x093E; &#x0936;&#x093E;&#x0902;&#x0924; &#x0939;&#x094B;&#x0924;&#x0940; &#x0939;&#x0948;&#x0902;</div>
                 </div>
-                <div class="affirmation-card aff-7">
-                    <div class="affirmation-icon">&#x1F331;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">Healing is not linear. Every step counts.</div>
-                    <div class="affirmation-hi">&#x0909;&#x092A;&#x091A;&#x093E;&#x0930; &#x0938;&#x0940;&#x0927;&#x093E; &#x0928;&#x0939;&#x0940;&#x0902; &#x0939;&#x094B;&#x0924;&#x093E;&#x0964; &#x0939;&#x0930; &#x0915;&#x0926;&#x092E; &#x092E;&#x093E;&#x092F;&#x0928;&#x0947; &#x0930;&#x0916;&#x0924;&#x093E; &#x0939;&#x0948;</div>
                 </div>
-                <div class="affirmation-card aff-8">
-                    <div class="affirmation-icon">&#x2600;&#xFE0F;</div>
+                <div class="affirmation-card">
                     <div class="affirmation-en">Tomorrow is a new beginning</div>
-                    <div class="affirmation-hi">&#x0915;&#x0932; &#x090F;&#x0915; &#x0928;&#x092F;&#x0940; &#x0936;&#x0941;&#x0930;&#x0941;&#x0906;&#x0924; &#x0939;&#x0948;</div>
                 </div>
             </div>
         </div>
@@ -1051,7 +620,7 @@
         <div class="section-spacing fade-in-up">
             <div class="section-label">Talk to Someone</div>
             <div class="section-title">You don't have to face this alone</div>
-            <div class="section-title-hi">&#x0906;&#x092A;&#x0915;&#x094B; &#x0905;&#x0915;&#x0947;&#x0932;&#x0947; &#x0928;&#x0939;&#x0940;&#x0902; &#x091D;&#x0947;&#x0932;&#x0928;&#x093E; &#x0939;&#x0948;</div>
+            <div class="section-subtitle">A patient, empathetic listener available 24/7</div>
 
             <a href="/friend.html" class="talk-btn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -1060,17 +629,16 @@
                 </svg>
                 Talk to AI Friend
             </a>
-            <div class="talk-subtitle">A patient, empathetic listener available 24/7</div>
+            <div class="talk-subtitle">Available whenever you need someone</div>
         </div>
 
         <!-- ===================== CRISIS HELPLINES ===================== -->
         <div class="section-spacing fade-in-up">
             <div class="section-label">Crisis Helplines</div>
             <div class="section-title">Reach a real person</div>
-            <div class="section-title-hi">&#x0915;&#x093F;&#x0938;&#x0940; &#x0938;&#x0947; &#x092C;&#x093E;&#x0924; &#x0915;&#x0930;&#x0947;&#x0902;</div>
+            <div class="section-subtitle">Trained professionals ready to help</div>
 
             <div class="helplines-grid">
-                <!-- India: iCall -->
                 <a href="tel:9152987821" class="helpline-card">
                     <div class="helpline-icon">
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1084,8 +652,6 @@
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
-
-                <!-- India: Vandrevala Foundation -->
                 <a href="tel:9999666555" class="helpline-card">
                     <div class="helpline-icon">
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1093,14 +659,12 @@
                     <div class="helpline-info">
                         <div class="helpline-name">Vandrevala Foundation</div>
                         <div class="helpline-number">9999666555</div>
-                        <div class="helpline-region">India &mdash; 24/7</div>
+                        <div class="helpline-region">India -- 24/7</div>
                     </div>
                     <div class="helpline-call">
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
-
-                <!-- US: 988 -->
                 <a href="tel:988" class="helpline-card">
                     <div class="helpline-icon">
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1114,8 +678,6 @@
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
-
-                <!-- UK: Samaritans -->
                 <a href="tel:116123" class="helpline-card">
                     <div class="helpline-icon">
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
@@ -1123,14 +685,12 @@
                     <div class="helpline-info">
                         <div class="helpline-name">Samaritans</div>
                         <div class="helpline-number">116 123</div>
-                        <div class="helpline-region">United Kingdom &mdash; 24/7</div>
+                        <div class="helpline-region">United Kingdom -- 24/7</div>
                     </div>
                     <div class="helpline-call">
                         <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
                     </div>
                 </a>
-
-                <!-- International -->
                 <a href="https://findahelpline.com" target="_blank" rel="noopener" class="helpline-card">
                     <div class="helpline-icon">
                         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
@@ -1151,7 +711,7 @@
         <div class="section-spacing fade-in-up">
             <div class="section-label">More Support</div>
             <div class="section-title">Try something calming</div>
-            <div class="section-title-hi">&#x0915;&#x0941;&#x091B; &#x0936;&#x093E;&#x0902;&#x0924; &#x0915;&#x0930;&#x0928;&#x0947; &#x0935;&#x093E;&#x0932;&#x093E; &#x0906;&#x095B;&#x092E;&#x093E;&#x090F;&#x0902;</div>
+            <div class="section-subtitle">Gentle activities to help you feel grounded</div>
 
             <div class="quick-links">
                 <a href="/breathe.html" class="quick-link">
@@ -1169,10 +729,10 @@
             </div>
         </div>
 
-        <!-- Footer note -->
+        <!-- Footer -->
         <div class="footer-note">
             <p>You are not alone. Help is always available.<br>
-            <span class="brand-small">&#9789; Sukoon</span> &mdash; peace of mind, always.</p>
+            <span class="brand-small">Sukoon</span> -- peace of mind, always.</p>
         </div>
     </div>
 
@@ -1180,9 +740,7 @@
         // ===================== BREATHING EXERCISE =====================
         const overlay = document.getElementById('breathingOverlay');
         const circle = document.getElementById('breathCircle');
-        const glow = document.getElementById('circleGlow');
         const phaseText = document.getElementById('phaseText');
-        const phaseHindi = document.getElementById('phaseHindi');
         const timerEl = document.getElementById('breathTimer');
         const counterEl = document.getElementById('breathCounter');
         const btnSkip = document.getElementById('btnSkip');
@@ -1191,12 +749,12 @@
         const totalBreaths = 10;
         let breathInterval = null;
         let countdownInterval = null;
-        let currentPhase = 0; // 0=inhale, 1=hold, 2=exhale
+        let currentPhase = 0;
 
         const phases = [
-            { en: 'Inhale', hi: '\u0938\u093E\u0901\u0938 \u0932\u0947\u0902', duration: 4, expand: true },
-            { en: 'Hold', hi: '\u0930\u094B\u0915\u0947\u0902', duration: 4, expand: true },
-            { en: 'Exhale', hi: '\u091B\u094B\u0921\u093C\u0947\u0902', duration: 4, expand: false }
+            { en: 'Inhale', duration: 4, expand: true },
+            { en: 'Hold', duration: 4, expand: true },
+            { en: 'Exhale', duration: 4, expand: false }
         ];
 
         function startBreathing() {
@@ -1209,14 +767,11 @@
         function runPhase() {
             const phase = phases[currentPhase];
             phaseText.textContent = phase.en;
-            phaseHindi.textContent = phase.hi;
 
             if (phase.expand) {
                 circle.classList.add('expanded');
-                glow.classList.add('expanded');
             } else {
                 circle.classList.remove('expanded');
-                glow.classList.remove('expanded');
             }
 
             let remaining = phase.duration;
@@ -1256,20 +811,18 @@
             overlay.classList.add('hidden');
             setTimeout(() => {
                 overlay.style.display = 'none';
-            }, 800);
+            }, 600);
         }
 
         btnSkip.addEventListener('click', dismissBreathing);
 
-        // Auto-start after a gentle 1.5 second delay
+        // Auto-start after 1.5s
         setTimeout(startBreathing, 1500);
 
         // ===================== GROUNDING EXERCISE =====================
         function toggleGround(card) {
             const wasActive = card.classList.contains('active');
-            // Close all
             document.querySelectorAll('.grounding-card').forEach(c => c.classList.remove('active'));
-            // Open clicked if wasn't active
             if (!wasActive) {
                 card.classList.add('active');
             }
@@ -1279,7 +832,6 @@
             if (dot.classList.contains('filled')) return;
             dot.classList.add('filled');
 
-            // Check if all dots in this card are filled
             const card = dot.closest('.grounding-card');
             const allDots = card.querySelectorAll('.grounding-dot');
             const filledDots = card.querySelectorAll('.grounding-dot.filled');
@@ -1289,7 +841,6 @@
                     card.classList.remove('active');
                     card.classList.add('completed');
 
-                    // Auto-open next card
                     const next = card.nextElementSibling;
                     if (next && next.classList.contains('grounding-card') && !next.classList.contains('completed')) {
                         setTimeout(() => {

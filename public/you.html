@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,46 +12,10 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
-        :root {
-            --bg: #0F172A;
-            --bg-card: #1E293B;
-            --bg-card-hover: #253449;
-            --bg-surface: #172033;
-            --text-primary: #F1F5F9;
-            --text-secondary: #94A3B8;
-            --text-muted: #64748B;
-            --border: rgba(255,255,255,0.06);
-            --border-light: rgba(255,255,255,0.1);
-            --accent-purple: #8B5CF6;
-            --accent-amber: #F59E0B;
-            --accent-green: #10B981;
-            --accent-blue: #3B82F6;
-            --accent-pink: #EC4899;
-            --accent-indigo: #6366F1;
-            --glass: rgba(30,41,59,0.7);
-            --glass-border: rgba(255,255,255,0.08);
-            --nav-bg: rgba(15,23,42,0.85);
-        }
-
-        [data-theme="light"] {
-            --bg: #FAFAF7;
-            --bg-card: #FFFFFF;
-            --bg-card-hover: #F8FAFC;
-            --bg-surface: #F1F5F9;
-            --text-primary: #111827;
-            --text-secondary: #6B7280;
-            --text-muted: #9CA3AF;
-            --border: rgba(0,0,0,0.06);
-            --border-light: rgba(0,0,0,0.1);
-            --glass: rgba(255,255,255,0.7);
-            --glass-border: rgba(0,0,0,0.06);
-            --nav-bg: rgba(250,250,247,0.85);
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: var(--text-primary);
-            background: var(--bg);
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
+            color: #1D1D1F;
+            background: #FAFAF7;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -61,188 +25,152 @@
 
         a { text-decoration: none; color: inherit; }
 
+        /* ===================== ANIMATIONS ===================== */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.3s ease forwards;
+        }
+        .fade-d1 { animation-delay: 0.05s; }
+        .fade-d2 { animation-delay: 0.10s; }
+        .fade-d3 { animation-delay: 0.15s; }
+        .fade-d4 { animation-delay: 0.20s; }
+        .fade-d5 { animation-delay: 0.25s; }
+        .fade-d6 { animation-delay: 0.30s; }
+        .fade-d7 { animation-delay: 0.35s; }
+
         /* ===================== TOPBAR ===================== */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 72px;
-            background: var(--nav-bg);
-            backdrop-filter: blur(24px) saturate(1.4);
-            -webkit-backdrop-filter: blur(24px) saturate(1.4);
-            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; justify-content: center;
+            padding: 0 1.5rem; height: 52px;
+            background: rgba(250, 250, 247, 0.8);
+            backdrop-filter: blur(20px) saturate(1.4);
+            -webkit-backdrop-filter: blur(20px) saturate(1.4);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
         }
         .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem; color: var(--text-primary);
-            display: flex; align-items: center; gap: 0.5rem;
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.2rem; color: #1D1D1F;
             white-space: nowrap;
-        }
-        .topbar-nav { display: flex; align-items: center; gap: 2px; }
-        .topbar-nav a {
-            padding: 0.45rem 0.85rem; border-radius: 10px;
-            font-size: 0.85rem; font-weight: 500; color: var(--text-secondary);
-            transition: all 0.2s ease;
-        }
-        .topbar-nav a:hover { background: rgba(139,92,246,0.1); color: var(--accent-purple); }
-        .topbar-nav a.active {
-            background: rgba(139,92,246,0.15); color: var(--accent-purple); font-weight: 600;
-        }
-        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
-        .lang-select {
-            padding: 0.4rem 0.65rem; border-radius: 8px;
-            border: 1px solid var(--border-light);
-            background: var(--bg-card);
-            font-size: 0.8rem; font-weight: 600; color: var(--text-secondary);
-            cursor: pointer; outline: none; font-family: 'Inter', sans-serif;
-        }
-        .lang-select:focus { border-color: var(--accent-purple); }
-        .mobile-nav-toggle {
-            display: none; background: none; border: none;
-            color: var(--text-primary); cursor: pointer; padding: 4px;
-        }
-        .mobile-nav-toggle svg { width: 24px; height: 24px; }
-
-        @media (max-width: 768px) {
-            .mobile-nav-toggle { display: flex; align-items: center; }
-            .topbar { padding: 0 1rem; }
-            .topbar-nav { display: none; }
-            .topbar-nav.open {
-                display: flex; flex-direction: column;
-                position: absolute; top: 72px; left: 0; right: 0;
-                background: var(--nav-bg);
-                backdrop-filter: blur(24px);
-                padding: 0.75rem;
-                border-bottom: 1px solid var(--border);
-                box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-            }
-            .topbar-nav.open a { padding: 0.85rem 1rem; font-size: 0.95rem; width: 100%; }
+            letter-spacing: -0.01em;
         }
 
         /* ===================== MAIN ===================== */
         main {
-            max-width: 900px;
+            max-width: 720px;
             margin: 0 auto;
-            padding: calc(72px + 32px) 20px 40px;
+            padding: calc(52px + 28px) 20px 40px;
         }
 
         /* ===================== PROFILE HEADER ===================== */
         .profile-header {
             text-align: center;
-            margin-bottom: 40px;
-            animation: fadeSlideUp 0.6s ease-out;
+            margin-bottom: 32px;
         }
         .profile-header h1 {
-            font-family: 'DM Serif Display', serif;
-            font-size: clamp(2rem, 5vw, 2.8rem);
-            color: var(--text-primary);
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            color: #1D1D1F;
             margin-bottom: 4px;
-            background: linear-gradient(135deg, var(--accent-purple), var(--accent-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            letter-spacing: -0.02em;
         }
         .profile-header .subtitle-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 1.1rem;
-            color: var(--text-muted);
-            margin-bottom: 8px;
+            font-size: 1rem;
+            color: #AEAEB2;
+            margin-bottom: 6px;
         }
         .profile-header .tagline {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            font-weight: 300;
+            font-size: 0.9rem;
+            color: #86868B;
+            font-weight: 400;
         }
 
         /* ===================== STATS CARDS ===================== */
         .stats-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 14px;
-            margin-bottom: 36px;
+            gap: 12px;
+            margin-bottom: 32px;
         }
         .stat-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 22px 16px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+            padding: 20px 14px;
             text-align: center;
             position: relative;
             overflow: hidden;
-            backdrop-filter: blur(12px);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            animation: fadeSlideUp 0.6s ease-out both;
         }
-        .stat-card:nth-child(1) { animation-delay: 0.1s; }
-        .stat-card:nth-child(2) { animation-delay: 0.15s; }
-        .stat-card:nth-child(3) { animation-delay: 0.2s; }
-        .stat-card:nth-child(4) { animation-delay: 0.25s; }
-        .stat-card:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(0,0,0,0.25); }
         .stat-card::before {
             content: '';
             position: absolute; top: 0; left: 0; right: 0;
             height: 3px;
         }
-        .stat-card.s-purple::before { background: linear-gradient(90deg, #8B5CF6, #A78BFA); }
-        .stat-card.s-amber::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
-        .stat-card.s-green::before { background: linear-gradient(90deg, #10B981, #34D399); }
-        .stat-card.s-blue::before { background: linear-gradient(90deg, #3B82F6, #60A5FA); }
-        .stat-emoji {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            display: block;
+        .stat-card.s-green::before { background: #2D6A4F; }
+        .stat-card.s-amber::before { background: #C68B59; }
+        .stat-card.s-blue::before { background: #3B82F6; }
+        .stat-card.s-rose::before { background: #E11D48; }
+        .stat-icon {
+            width: 36px; height: 36px;
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            margin: 0 auto 10px;
         }
+        .stat-icon svg { width: 18px; height: 18px; }
+        .s-green .stat-icon { background: #D8F3DC; color: #2D6A4F; }
+        .s-amber .stat-icon { background: #FDEBD0; color: #C68B59; }
+        .s-blue .stat-icon { background: #DBEAFE; color: #3B82F6; }
+        .s-rose .stat-icon { background: #FFE4E6; color: #E11D48; }
         .stat-number {
-            font-size: 1.9rem;
+            font-size: 1.75rem;
             font-weight: 700;
             letter-spacing: -0.02em;
             line-height: 1.1;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
+            color: #1D1D1F;
         }
-        .s-purple .stat-number { color: #A78BFA; }
-        .s-amber .stat-number { color: #FBBF24; }
-        .s-green .stat-number { color: #34D399; }
-        .s-blue .stat-number { color: #60A5FA; }
         .stat-label {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
-            color: var(--text-muted);
+            letter-spacing: 0.05em;
+            color: #AEAEB2;
         }
 
         @media (max-width: 600px) {
             .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-            .stat-card { padding: 18px 12px; }
-            .stat-number { font-size: 1.5rem; }
+            .stat-card { padding: 16px 12px; }
+            .stat-number { font-size: 1.4rem; }
         }
 
         /* ===================== SECTION COMMON ===================== */
         .section {
-            margin-bottom: 36px;
-            animation: fadeSlideUp 0.6s ease-out both;
+            margin-bottom: 32px;
         }
-        .section:nth-of-type(2) { animation-delay: 0.2s; }
-        .section:nth-of-type(3) { animation-delay: 0.3s; }
-        .section:nth-of-type(4) { animation-delay: 0.35s; }
-        .section:nth-of-type(5) { animation-delay: 0.4s; }
-        .section:nth-of-type(6) { animation-delay: 0.45s; }
         .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.35rem;
-            color: var(--text-primary);
-            margin-bottom: 4px;
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1.25rem;
+            color: #1D1D1F;
+            margin-bottom: 3px;
+            letter-spacing: -0.01em;
         }
         .section-subtitle {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 16px;
+            font-size: 0.82rem;
+            color: #AEAEB2;
+            margin-bottom: 14px;
         }
         .card-wrap {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: 16px;
-            padding: 24px;
-            backdrop-filter: blur(12px);
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+            padding: 22px 20px;
         }
 
         /* ===================== HEATMAP ===================== */
@@ -260,38 +188,33 @@
         .heatmap-cell {
             width: 14px; height: 14px;
             border-radius: 3px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            transition: background 0.2s ease;
+            background: #F5F5F0;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            transition: background 0.3s ease;
             position: relative;
         }
-        .heatmap-cell.today { outline: 2px solid var(--accent-purple); outline-offset: 1px; }
-        .heatmap-cell.level-1 { background: #064E3B; border-color: #065F46; }
-        .heatmap-cell.level-2 { background: #047857; border-color: #059669; }
-        .heatmap-cell.level-3 { background: #10B981; border-color: #34D399; }
-        .heatmap-cell.level-4 { background: #34D399; border-color: #6EE7B7; }
-
-        [data-theme="light"] .heatmap-cell.level-1 { background: #D1FAE5; border-color: #A7F3D0; }
-        [data-theme="light"] .heatmap-cell.level-2 { background: #6EE7B7; border-color: #34D399; }
-        [data-theme="light"] .heatmap-cell.level-3 { background: #34D399; border-color: #10B981; }
-        [data-theme="light"] .heatmap-cell.level-4 { background: #10B981; border-color: #059669; }
+        .heatmap-cell.today { outline: 2px solid #2D6A4F; outline-offset: 1px; }
+        .heatmap-cell.level-1 { background: #D8F3DC; border-color: #B7E4C7; }
+        .heatmap-cell.level-2 { background: #95D5B2; border-color: #74C69D; }
+        .heatmap-cell.level-3 { background: #52B788; border-color: #40916C; }
+        .heatmap-cell.level-4 { background: #2D6A4F; border-color: #1B4332; }
 
         .heatmap-legend {
-            display: flex; align-items: center; gap: 6px;
-            margin-top: 12px; font-size: 0.72rem; color: var(--text-muted);
+            display: flex; align-items: center; gap: 5px;
+            margin-top: 12px; font-size: 0.7rem; color: #AEAEB2;
         }
         .heatmap-legend .swatch {
             width: 12px; height: 12px; border-radius: 2px; display: inline-block;
         }
         .heatmap-months {
             display: flex; gap: 0; margin-bottom: 6px;
-            font-size: 0.7rem; color: var(--text-muted);
+            font-size: 0.68rem; color: #AEAEB2;
         }
         .heatmap-months span { min-width: 34px; text-align: left; }
         .heatmap-days {
             display: flex; flex-direction: column; gap: 3px;
-            margin-right: 6px; font-size: 0.65rem; color: var(--text-muted);
-            justify-content: space-between; padding: 0 0 0 0;
+            margin-right: 6px; font-size: 0.62rem; color: #AEAEB2;
+            justify-content: space-between; padding: 0;
         }
         .heatmap-days span { height: 14px; display: flex; align-items: center; }
         .heatmap-row { display: flex; gap: 0; }
@@ -299,9 +222,9 @@
             content: attr(data-tip);
             position: absolute; bottom: calc(100% + 6px); left: 50%;
             transform: translateX(-50%);
-            background: #1E293B; color: #F1F5F9; border: 1px solid rgba(255,255,255,0.1);
+            background: #1D1D1F; color: #fff; border: 1px solid rgba(0,0,0,0.1);
             padding: 4px 8px; border-radius: 6px;
-            font-size: 0.65rem; white-space: nowrap; z-index: 10;
+            font-size: 0.62rem; white-space: nowrap; z-index: 10;
             pointer-events: none;
         }
 
@@ -317,47 +240,50 @@
             display: flex; flex-direction: column;
             justify-content: space-between;
             padding: 4px 0;
-            font-size: 1rem;
+            font-size: 0.7rem;
             width: 28px;
+            color: #AEAEB2;
         }
         .mood-trend-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            padding: 6px 14px; border-radius: 100px;
-            font-size: 0.78rem; font-weight: 600;
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 5px 12px; border-radius: 100px;
+            font-size: 0.75rem; font-weight: 600;
             margin-top: 12px;
         }
-        .mood-trend-badge.improving { background: rgba(16,185,129,0.12); color: #34D399; }
-        .mood-trend-badge.declining { background: rgba(239,68,68,0.12); color: #F87171; }
-        .mood-trend-badge.stable { background: rgba(139,92,246,0.12); color: #A78BFA; }
+        .mood-trend-badge.improving { background: #D8F3DC; color: #2D6A4F; }
+        .mood-trend-badge.declining { background: #FFE4E6; color: #E11D48; }
+        .mood-trend-badge.stable { background: #F5F5F0; color: #86868B; }
         .mood-empty {
-            text-align: center; padding: 40px 20px;
-            color: var(--text-muted); font-size: 0.9rem;
+            text-align: center; padding: 36px 20px;
+            color: #AEAEB2; font-size: 0.88rem;
         }
-        .mood-empty span { font-size: 2rem; display: block; margin-bottom: 8px; }
+        .mood-empty .mood-empty-icon {
+            width: 32px; height: 32px; color: #AEAEB2; margin: 0 auto 10px; display: block;
+        }
 
         /* ===================== JOURNAL ===================== */
         .journal-entry {
-            display: flex; align-items: flex-start; gap: 14px;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
+            display: flex; align-items: flex-start; gap: 12px;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         }
         .journal-entry:last-child { border-bottom: none; }
         .journal-mood {
-            font-size: 1.5rem;
             flex-shrink: 0;
-            width: 40px; height: 40px;
+            width: 36px; height: 36px;
             display: flex; align-items: center; justify-content: center;
-            border-radius: 12px;
-            background: var(--bg-surface);
+            border-radius: 10px;
+            background: #F5F5F0;
         }
+        .journal-mood svg { width: 20px; height: 20px; }
         .journal-meta { flex: 1; min-width: 0; }
         .journal-date {
-            font-size: 0.75rem; font-weight: 600;
-            color: var(--text-muted); text-transform: uppercase;
+            font-size: 0.72rem; font-weight: 600;
+            color: #AEAEB2; text-transform: uppercase;
             letter-spacing: 0.04em; margin-bottom: 2px;
         }
         .journal-text {
-            font-size: 0.88rem; color: var(--text-secondary);
+            font-size: 0.85rem; color: #86868B;
             line-height: 1.5;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -370,114 +296,101 @@
         }
         .btn {
             display: inline-flex; align-items: center; justify-content: center;
-            gap: 8px; padding: 12px 24px;
-            border-radius: 12px; border: none;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.88rem; font-weight: 600;
-            cursor: pointer; transition: all 0.2s ease;
+            gap: 7px; padding: 10px 22px;
+            border-radius: 8px; border: none;
+            font-family: -apple-system, 'Inter', sans-serif;
+            font-size: 0.85rem; font-weight: 600;
+            cursor: pointer; transition: opacity 0.3s ease;
         }
         .btn-primary {
-            background: linear-gradient(135deg, #8B5CF6, #6366F1);
+            background: #2D6A4F;
             color: #fff;
         }
-        .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(139,92,246,0.35); }
+        .btn-primary:hover { opacity: 0.85; }
         .btn-secondary {
-            background: var(--bg-surface);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-light);
+            background: #F5F5F0;
+            color: #86868B;
+            border: 1px solid rgba(0, 0, 0, 0.06);
         }
-        .btn-secondary:hover { background: var(--bg-card-hover); }
-        .btn svg { width: 16px; height: 16px; }
+        .btn-secondary:hover { background: #EEEEE8; color: #1D1D1F; }
+        .btn svg { width: 15px; height: 15px; }
         .journal-empty {
-            text-align: center; padding: 32px 16px;
-            color: var(--text-muted); font-size: 0.88rem;
+            text-align: center; padding: 30px 16px;
+            color: #AEAEB2; font-size: 0.85rem;
         }
-        .journal-empty span { font-size: 2.5rem; display: block; margin-bottom: 8px; }
+        .journal-empty svg { width: 28px; height: 28px; color: #AEAEB2; margin: 0 auto 8px; display: block; }
         .view-all-btn {
-            display: block; width: 100%; padding: 12px;
-            background: none; border: 1px dashed var(--border-light);
-            border-radius: 10px; color: var(--text-muted);
-            font-family: 'Inter', sans-serif; font-size: 0.82rem;
+            display: block; width: 100%; padding: 11px;
+            background: none; border: 1px dashed rgba(0, 0, 0, 0.08);
+            border-radius: 8px; color: #AEAEB2;
+            font-family: -apple-system, 'Inter', sans-serif; font-size: 0.8rem;
             font-weight: 500; cursor: pointer; margin-top: 12px;
-            transition: all 0.2s ease;
+            transition: all 0.3s ease;
         }
-        .view-all-btn:hover { background: var(--bg-surface); color: var(--text-secondary); }
+        .view-all-btn:hover { background: #F5F5F0; color: #86868B; }
 
         /* ===================== BADGES ===================== */
         .badges-count {
-            font-size: 0.85rem; color: var(--text-muted);
-            margin-bottom: 16px; font-weight: 500;
+            font-size: 0.82rem; color: #AEAEB2;
+            margin-bottom: 14px; font-weight: 500;
         }
-        .badges-count strong { color: var(--accent-purple); }
+        .badges-count strong { color: #2D6A4F; }
         .badges-grid {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 12px;
+            gap: 10px;
         }
         .badge-card {
-            background: var(--bg-surface);
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 20px 10px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 6px 16px rgba(0,0,0,0.04);
+            padding: 18px 8px;
             text-align: center;
-            transition: all 0.3s ease;
+            transition: opacity 0.3s ease;
             position: relative;
         }
         .badge-card.earned {
-            background: var(--bg-card);
-            border-color: var(--glass-border);
-            box-shadow: 0 0 20px rgba(139,92,246,0.08);
-        }
-        .badge-card.earned:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 30px rgba(139,92,246,0.15);
+            opacity: 1;
         }
         .badge-card.locked {
-            opacity: 0.4;
-            filter: grayscale(0.8);
+            opacity: 0.35;
         }
         .badge-icon-wrap {
-            width: 48px; height: 48px;
-            border-radius: 14px;
+            width: 44px; height: 44px;
+            border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            margin: 0 auto 10px;
-            font-size: 1.5rem;
+            margin: 0 auto 8px;
+            font-size: 1.4rem;
             position: relative;
         }
-        .badge-card.earned .badge-icon-wrap {
-            animation: badgeGlow 3s ease-in-out infinite;
-        }
-        @keyframes badgeGlow {
-            0%, 100% { box-shadow: 0 0 0 rgba(139,92,246,0); }
-            50% { box-shadow: 0 0 16px rgba(139,92,246,0.2); }
-        }
         .badge-card.locked .badge-icon-wrap {
-            background: var(--bg-card);
+            background: #F5F5F0;
         }
         .badge-card.locked .badge-icon-wrap::after {
             content: '?';
             position: absolute;
-            font-size: 1.2rem; font-weight: 700;
-            color: var(--text-muted);
+            font-size: 1.1rem; font-weight: 700;
+            color: #AEAEB2;
         }
         .badge-card.locked .badge-emoji { display: none; }
         .badge-name {
-            font-size: 0.72rem; font-weight: 600;
-            color: var(--text-primary);
+            font-size: 0.68rem; font-weight: 600;
+            color: #1D1D1F;
             margin-bottom: 2px;
             line-height: 1.2;
         }
-        .badge-card.locked .badge-name { color: var(--text-muted); }
+        .badge-card.locked .badge-name { color: #AEAEB2; }
         .badge-desc {
-            font-size: 0.62rem;
-            color: var(--text-muted);
+            font-size: 0.58rem;
+            color: #AEAEB2;
             line-height: 1.3;
         }
 
         @media (max-width: 600px) {
             .badges-grid { grid-template-columns: repeat(3, 1fr); gap: 8px; }
             .badge-card { padding: 14px 6px; }
-            .badge-icon-wrap { width: 40px; height: 40px; font-size: 1.2rem; }
+            .badge-icon-wrap { width: 38px; height: 38px; font-size: 1.2rem; }
         }
         @media (min-width: 601px) and (max-width: 800px) {
             .badges-grid { grid-template-columns: repeat(4, 1fr); }
@@ -489,44 +402,44 @@
         }
         .setting-row {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 16px 0;
-            border-bottom: 1px solid var(--border);
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
         }
         .setting-row:last-child { border-bottom: none; }
         .setting-left {
-            display: flex; align-items: center; gap: 14px;
+            display: flex; align-items: center; gap: 12px;
         }
         .setting-icon {
-            width: 38px; height: 38px; border-radius: 10px;
+            width: 36px; height: 36px; border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem;
-            background: var(--bg-surface);
+            background: #F5F5F0;
             flex-shrink: 0;
         }
+        .setting-icon svg { width: 18px; height: 18px; color: #86868B; }
         .setting-label {
-            font-size: 0.9rem; font-weight: 500;
-            color: var(--text-primary);
+            font-size: 0.88rem; font-weight: 500;
+            color: #1D1D1F;
         }
         .setting-desc {
-            font-size: 0.75rem;
-            color: var(--text-muted);
+            font-size: 0.73rem;
+            color: #AEAEB2;
             margin-top: 1px;
         }
 
         /* Toggle switch */
         .toggle {
             position: relative;
-            width: 48px; height: 26px;
-            background: var(--bg-surface);
-            border: 1px solid var(--border-light);
+            width: 46px; height: 26px;
+            background: #E5E5E0;
+            border: 1px solid rgba(0, 0, 0, 0.06);
             border-radius: 13px;
             cursor: pointer;
             transition: background 0.3s ease;
             flex-shrink: 0;
         }
         .toggle.active {
-            background: var(--accent-purple);
-            border-color: var(--accent-purple);
+            background: #2D6A4F;
+            border-color: #2D6A4F;
         }
         .toggle::after {
             content: '';
@@ -536,117 +449,130 @@
             border-radius: 50%;
             background: #fff;
             transition: transform 0.3s ease;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.15);
         }
-        .toggle.active::after { transform: translateX(22px); }
+        .toggle.active::after { transform: translateX(20px); }
 
         .time-input {
             padding: 6px 12px; border-radius: 8px;
-            border: 1px solid var(--border-light);
-            background: var(--bg-surface);
-            color: var(--text-primary);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #FAFAF7;
+            color: #1D1D1F;
+            font-family: -apple-system, 'Inter', sans-serif;
+            font-size: 0.82rem;
             outline: none;
         }
-        .time-input:focus { border-color: var(--accent-purple); }
+        .time-input:focus { border-color: #2D6A4F; }
+
+        .lang-select {
+            padding: 6px 12px; border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #FAFAF7;
+            font-size: 0.82rem; font-weight: 500; color: #1D1D1F;
+            cursor: pointer; outline: none; font-family: -apple-system, 'Inter', sans-serif;
+        }
+        .lang-select:focus { border-color: #2D6A4F; }
 
         .btn-export {
-            padding: 8px 18px; border-radius: 10px;
-            border: 1px solid var(--border-light);
-            background: var(--bg-surface);
-            color: var(--accent-green);
-            font-family: 'Inter', sans-serif;
-            font-size: 0.82rem; font-weight: 600;
-            cursor: pointer; transition: all 0.2s ease;
+            padding: 7px 16px; border-radius: 8px;
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            background: #F5F5F0;
+            color: #2D6A4F;
+            font-family: -apple-system, 'Inter', sans-serif;
+            font-size: 0.8rem; font-weight: 600;
+            cursor: pointer; transition: opacity 0.3s ease;
         }
-        .btn-export:hover { background: rgba(16,185,129,0.1); }
+        .btn-export:hover { opacity: 0.7; }
 
         .about-text {
-            font-size: 0.82rem; color: var(--text-secondary);
+            font-size: 0.82rem; color: #86868B;
             line-height: 1.6; margin-top: 8px;
         }
         .version-tag {
             display: inline-block; padding: 3px 10px;
-            border-radius: 6px; background: var(--bg-surface);
-            font-size: 0.7rem; font-weight: 600;
-            color: var(--text-muted); margin-top: 6px;
-        }
-
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 64px; z-index: 1000;
-            display: none;
-            background: var(--nav-bg);
-            backdrop-filter: blur(24px) saturate(1.4);
-            -webkit-backdrop-filter: blur(24px) saturate(1.4);
-            border-top: 1px solid var(--border);
-            align-items: center; justify-content: space-around;
-            padding: 0 8px;
-        }
-        .nav-item {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 2px; padding: 6px 0; min-width: 56px;
-            color: var(--text-muted); transition: color 0.2s ease;
-            font-size: 0.65rem; font-weight: 500;
-        }
-        .nav-item svg { width: 22px; height: 22px; }
-        .nav-item.active { color: var(--accent-purple); }
-        .nav-item:hover { color: var(--accent-purple); }
-
-        @media (max-width: 768px) {
-            .bottom-nav { display: flex; }
-            body { padding-bottom: 80px; }
+            border-radius: 6px; background: #F5F5F0;
+            font-size: 0.68rem; font-weight: 600;
+            color: #AEAEB2; margin-top: 6px;
         }
 
         /* ===================== FOOTER ===================== */
         .footer {
             text-align: center;
-            padding: 40px 20px 100px;
-            color: var(--text-muted);
-            font-size: 0.78rem;
+            padding: 36px 20px 100px;
+            color: #AEAEB2;
+            font-size: 0.76rem;
         }
         .footer-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem; color: var(--text-secondary);
-            margin-bottom: 8px;
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 1rem; color: #86868B;
+            margin-bottom: 6px;
         }
-        .footer a { color: var(--accent-purple); }
+        .footer a { color: #2D6A4F; }
         .footer a:hover { text-decoration: underline; }
-
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
 
         /* ===================== TOAST ===================== */
         .toast {
-            position: fixed; bottom: 90px; left: 50%;
+            position: fixed; bottom: 80px; left: 50%;
             transform: translateX(-50%) translateY(20px);
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            color: var(--text-primary);
+            background: #FFFFFF;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            color: #1D1D1F;
             padding: 12px 24px;
-            border-radius: 12px;
-            font-size: 0.85rem; font-weight: 500;
+            border-radius: 10px;
+            font-size: 0.84rem; font-weight: 500;
             display: flex; align-items: center; gap: 8px;
             opacity: 0; pointer-events: none;
             transition: all 0.3s ease;
             z-index: 2000;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.12);
         }
         .toast.show {
             opacity: 1; transform: translateX(-50%) translateY(0);
             pointer-events: auto;
         }
-        .toast svg { width: 18px; height: 18px; color: var(--accent-green); flex-shrink: 0; }
+        .toast svg { width: 18px; height: 18px; color: #2D6A4F; flex-shrink: 0; }
 
-        /* ===================== DESKTOP SIDEBAR LAYOUT ===================== */
-        @media (min-width: 901px) {
-            .bottom-nav { display: none !important; }
-            body { padding-bottom: 20px; }
+        /* ===================== DESKTOP SIDEBAR >960px ===================== */
+        @media (min-width: 961px) {
+            nav[style] { display: none !important; }
+            .desktop-sidebar {
+                position: fixed; left: 0; top: 0; bottom: 0;
+                width: 220px;
+                background: #FFFFFF;
+                border-right: 1px solid rgba(0, 0, 0, 0.06);
+                display: flex; flex-direction: column;
+                padding: 72px 16px 24px;
+                gap: 2px;
+                z-index: 999;
+            }
+            .desktop-sidebar .sidebar-brand {
+                font-family: 'DM Serif Display', Georgia, serif;
+                font-size: 1.2rem; color: #1D1D1F;
+                padding: 0 12px 20px;
+                border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+                margin-bottom: 12px;
+            }
+            .desktop-sidebar a {
+                display: flex; align-items: center;
+                gap: 10px; text-decoration: none; color: #86868B;
+                font-size: 0.85rem; font-family: -apple-system, 'Inter', sans-serif;
+                font-weight: 500;
+                padding: 9px 12px; border-radius: 8px;
+                transition: all 0.3s ease;
+            }
+            .desktop-sidebar a:hover { color: #1D1D1F; background: #F5F5F0; }
+            .desktop-sidebar a.active { color: #2D6A4F; background: #D8F3DC; font-weight: 600; }
+            .desktop-sidebar a svg { width: 20px; height: 20px; }
+            main { margin-left: 220px; max-width: 720px; }
+            .topbar { left: 220px; }
+        }
+        @media (max-width: 960px) {
+            .desktop-sidebar { display: none !important; }
+        }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 600px) {
+            main { padding-left: 16px; padding-right: 16px; }
         }
     </style>
 </head>
@@ -654,69 +580,70 @@
 
     <!-- TOPBAR -->
     <header class="topbar">
-        <a href="/" class="topbar-brand">&#9789; Sukoon</a>
-        <nav class="topbar-nav" id="mainNav">
-            <a href="/">Home</a>
-            <a href="/breathe.html">Breathe</a>
-            <a href="/meditate.html">Meditate</a>
-            <a href="/sounds.html">Sounds</a>
-            <a href="/journal.html">Journal</a>
-            <a href="/friend.html">AI Friend</a>
-            <a href="/wisdom.html">Wisdom</a>
-            <a href="/progress.html">Progress</a>
-            <a href="/you.html" class="active">You</a>
-        </nav>
-        <div class="topbar-right">
-            <select class="lang-select" id="langSelect" aria-label="Language">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-            </select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Toggle navigation">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
-        </div>
+        <span class="topbar-brand">Sukoon</span>
     </header>
+
+    <!-- DESKTOP SIDEBAR -->
+    <aside class="desktop-sidebar">
+        <div class="sidebar-brand">Sukoon</div>
+        <a href="/">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="/explore.html">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
+            <span>Explore</span>
+        </a>
+        <a href="/breathe.html">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
+            <span>Breathe</span>
+        </a>
+        <a href="/friend.html">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/you.html" class="active">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+            <span>You</span>
+        </a>
+    </aside>
 
     <!-- MAIN CONTENT -->
     <main>
 
         <!-- Profile Header -->
-        <div class="profile-header">
+        <div class="profile-header fade-in fade-d1">
             <h1>Your Journey</h1>
             <div class="subtitle-hi">&#2310;&#2346;&#2325;&#2368; &#2351;&#2366;&#2340;&#2381;&#2352;&#2366;</div>
             <p class="tagline">Every moment of peace matters</p>
         </div>
 
         <!-- Stats Cards -->
-        <div class="stats-grid">
-            <div class="stat-card s-purple">
-                <span class="stat-emoji">&#128293;</span>
+        <div class="stats-grid fade-in fade-d2">
+            <div class="stat-card s-green">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
                 <div class="stat-number" id="statStreak">0</div>
                 <div class="stat-label">Day Streak</div>
             </div>
             <div class="stat-card s-amber">
-                <span class="stat-emoji">&#129496;</span>
+                <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
                 <div class="stat-number" id="statSessions">0</div>
                 <div class="stat-label">Sessions</div>
             </div>
-            <div class="stat-card s-green">
-                <span class="stat-emoji">&#9201;</span>
+            <div class="stat-card s-blue">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
                 <div class="stat-number" id="statMinutes">0</div>
                 <div class="stat-label">Minutes</div>
             </div>
-            <div class="stat-card s-blue">
-                <span class="stat-emoji">&#128197;</span>
+            <div class="stat-card s-rose">
+                <div class="stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
                 <div class="stat-number" id="statDays">0</div>
                 <div class="stat-label">Days Active</div>
             </div>
         </div>
 
         <!-- Streak Heatmap -->
-        <div class="section">
+        <div class="section fade-in fade-d3">
             <h2 class="section-title">Activity Heatmap</h2>
             <p class="section-subtitle">Your last 12 weeks of wellness practice</p>
             <div class="card-wrap">
@@ -729,34 +656,34 @@
                 </div>
                 <div class="heatmap-legend">
                     <span>Less</span>
-                    <span class="swatch" style="background:var(--bg-surface); border:1px solid var(--border);"></span>
-                    <span class="swatch" style="background:#064E3B;"></span>
-                    <span class="swatch" style="background:#047857;"></span>
-                    <span class="swatch" style="background:#10B981;"></span>
-                    <span class="swatch" style="background:#34D399;"></span>
+                    <span class="swatch" style="background:#F5F5F0; border:1px solid rgba(0,0,0,0.04);"></span>
+                    <span class="swatch" style="background:#D8F3DC;"></span>
+                    <span class="swatch" style="background:#95D5B2;"></span>
+                    <span class="swatch" style="background:#52B788;"></span>
+                    <span class="swatch" style="background:#2D6A4F;"></span>
                     <span>More</span>
                 </div>
             </div>
         </div>
 
         <!-- Mood Trends -->
-        <div class="section">
+        <div class="section fade-in fade-d4">
             <h2 class="section-title">Mood Trends</h2>
             <p class="section-subtitle">Your emotional landscape over the last 30 days</p>
             <div class="card-wrap">
                 <div id="moodChartContainer">
                     <div class="mood-empty" id="moodEmpty" style="display:none;">
-                        <span>&#128522;</span>
+                        <svg class="mood-empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
                         Start journaling to see your mood trends appear here.
                     </div>
                     <div id="moodChartArea" style="display:none;">
                         <div class="mood-chart-wrap">
                             <div class="mood-y-labels">
-                                <span>&#128522;</span>
-                                <span>&#128578;</span>
-                                <span>&#128528;</span>
-                                <span>&#128543;</span>
-                                <span>&#128546;</span>
+                                <span>5</span>
+                                <span>4</span>
+                                <span>3</span>
+                                <span>2</span>
+                                <span>1</span>
                             </div>
                             <div style="margin-left:32px; height:100%;">
                                 <svg id="moodSvg" viewBox="0 0 600 170" preserveAspectRatio="none"></svg>
@@ -769,7 +696,7 @@
         </div>
 
         <!-- Journal Section -->
-        <div class="section">
+        <div class="section fade-in fade-d5">
             <h2 class="section-title">Recent Entries</h2>
             <p class="section-subtitle">Your latest journal reflections</p>
             <div class="card-wrap">
@@ -787,7 +714,7 @@
         </div>
 
         <!-- Badges & Milestones -->
-        <div class="section">
+        <div class="section fade-in fade-d6">
             <h2 class="section-title">Badges &amp; Milestones</h2>
             <p class="section-subtitle">Celebrate your wellness achievements</p>
             <div class="badges-count" id="badgesCount"></div>
@@ -795,26 +722,15 @@
         </div>
 
         <!-- Settings -->
-        <div class="section">
+        <div class="section fade-in fade-d7">
             <h2 class="section-title">Settings</h2>
             <p class="section-subtitle">Personalize your Sukoon experience</p>
             <div class="card-wrap">
                 <ul class="settings-list">
-                    <!-- Theme -->
-                    <li class="setting-row">
-                        <div class="setting-left">
-                            <div class="setting-icon">&#127769;</div>
-                            <div>
-                                <div class="setting-label">Dark Theme</div>
-                                <div class="setting-desc">Switch between dark and light modes</div>
-                            </div>
-                        </div>
-                        <div class="toggle active" id="themeToggle" role="switch" aria-label="Toggle theme" tabindex="0"></div>
-                    </li>
                     <!-- Language -->
                     <li class="setting-row">
                         <div class="setting-left">
-                            <div class="setting-icon">&#127760;</div>
+                            <div class="setting-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
                             <div>
                                 <div class="setting-label">Language</div>
                                 <div class="setting-desc">Choose your preferred language</div>
@@ -832,7 +748,7 @@
                     <!-- Daily Reminder -->
                     <li class="setting-row">
                         <div class="setting-left">
-                            <div class="setting-icon">&#128276;</div>
+                            <div class="setting-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg></div>
                             <div>
                                 <div class="setting-label">Daily Reminder</div>
                                 <div class="setting-desc" id="reminderStatus">Get a gentle nudge to practice</div>
@@ -846,7 +762,7 @@
                     <!-- Export Data -->
                     <li class="setting-row">
                         <div class="setting-left">
-                            <div class="setting-icon">&#128230;</div>
+                            <div class="setting-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></div>
                             <div>
                                 <div class="setting-label">Export Data</div>
                                 <div class="setting-desc">Download all your data as JSON</div>
@@ -857,19 +773,19 @@
                     <!-- Privacy -->
                     <li class="setting-row">
                         <div class="setting-left">
-                            <div class="setting-icon">&#128274;</div>
+                            <div class="setting-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></div>
                             <div>
                                 <div class="setting-label">Privacy Policy</div>
                                 <div class="setting-desc">No data leaves your device, ever</div>
                             </div>
                         </div>
-                        <a href="/privacy.html" style="color:var(--accent-purple); font-size:0.85rem; font-weight:500;">View &rarr;</a>
+                        <a href="/privacy.html" style="color:#2D6A4F; font-size:0.82rem; font-weight:500;">View &rarr;</a>
                     </li>
                     <!-- About -->
                     <li class="setting-row" style="border-bottom:none;">
                         <div style="width:100%;">
                             <div class="setting-left" style="margin-bottom:8px;">
-                                <div class="setting-icon">&#9789;</div>
+                                <div class="setting-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg></div>
                                 <div>
                                     <div class="setting-label">About Sukoon</div>
                                 </div>
@@ -890,33 +806,18 @@
 
     <!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-brand">&#9789; Sukoon</div>
+        <div class="footer-brand">Sukoon</div>
         <p>Free mental wellness for every soul on Earth.</p>
-        <p style="margin-top:4px;">&copy; 2025 Sukoon. The world needs love, not war.</p>
+        <p style="margin-top:4px;">2025 Sukoon. The world needs love, not war.</p>
     </footer>
 
-    <!-- BOTTOM NAV (mobile) -->
-    <nav class="bottom-nav">
-        <a href="/" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span>Home</span>
-        </a>
-        <a href="/breathe.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1111 8H2m10.59 11.41A2 2 0 1014 16H2m15.73-8.27A2.5 2.5 0 1119.5 12H2"/></svg>
-            <span>Breathe</span>
-        </a>
-        <a href="/journal.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-            <span>Journal</span>
-        </a>
-        <a href="/friend.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            <span>AI Friend</span>
-        </a>
-        <a href="/you.html" class="nav-item active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span>You</span>
-        </a>
+    <!-- BOTTOM NAV (mobile) - "You" tab active -->
+    <nav style="position:fixed;bottom:0;left:0;right:0;height:56px;background:#fff;border-top:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-around;z-index:1000;padding-bottom:env(safe-area-inset-bottom)">
+      <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
+      <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
+      <a href="/breathe.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
+      <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
+      <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#2D6A4F;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif;font-weight:600"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
     </nav>
 
     <!-- TOAST -->
@@ -966,7 +867,6 @@
 
         /* ================================================================
            GLOBAL HELPER: window.sukoonLog
-           Other pages can call this to log activity
            ================================================================ */
         window.sukoonLog = function(type, minutes) {
             var log = getLog();
@@ -1005,12 +905,10 @@
 
             saveStats(stats);
 
-            // Bump daily count
             var tk = todayKey();
             var c = getDailyCount(tk) + 1;
             try { localStorage.setItem('sukoon_daily_' + tk, String(c)); } catch(e) {}
 
-            // Update streak
             updateStreak();
         };
 
@@ -1063,17 +961,6 @@
         }
 
         /* ================================================================
-           MOBILE NAV
-           ================================================================ */
-
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-        document.querySelectorAll('#mainNav a').forEach(function(a) {
-            a.addEventListener('click', function() { document.getElementById('mainNav').classList.remove('open'); });
-        });
-
-        /* ================================================================
            RENDER: Stats Cards
            ================================================================ */
 
@@ -1084,13 +971,11 @@
             var totalSessions = stats.totalSessions || 0;
             var totalMinutes = stats.totalMinutes || 0;
 
-            // Merge legacy meditation data
             try {
                 var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
                 if (med.streak) streak = Math.max(streak, med.streak);
             } catch(e) {}
 
-            // Count unique active days from daily keys and log entries
             var activeDays = {};
             log.forEach(function(entry) {
                 if (entry.timestamp) {
@@ -1098,14 +983,12 @@
                     activeDays[d] = true;
                 }
             });
-            // Also scan daily count keys
             for (var i = 0; i < 365; i++) {
                 var dt = new Date();
                 dt.setDate(dt.getDate() - i);
                 var dk = dateKey(dt);
                 if (getDailyCount(dk) > 0) activeDays[dk] = true;
             }
-            // Also count journal days
             if (journalEntries) {
                 journalEntries.forEach(function(e) {
                     if (e.date) activeDays[e.date.substring(0, 10)] = true;
@@ -1136,7 +1019,6 @@
             today.setHours(0, 0, 0, 0);
             var todayStr = todayKey();
 
-            // Build journal date counts
             var journalDates = {};
             if (journalEntries) {
                 journalEntries.forEach(function(e) {
@@ -1147,7 +1029,6 @@
                 });
             }
 
-            // Build activity counts from log entries
             var logDates = {};
             var log = getLog();
             log.forEach(function(entry) {
@@ -1157,7 +1038,6 @@
                 }
             });
 
-            // Day labels
             var dayLabels = ['', 'Mon', '', 'Wed', '', 'Fri', ''];
             dayLabels.forEach(function(label) {
                 var span = document.createElement('span');
@@ -1165,37 +1045,29 @@
                 daysCol.appendChild(span);
             });
 
-            // Calculate start date (go back to make today land in the last column)
             var totalDays = 84;
             var endDate = new Date(today);
-            var dayOfWeek = endDate.getDay(); // 0=Sun
-            // We want the grid to end on today's column
-            // Calculate how many cells we need
             var startDate = new Date(today);
             startDate.setDate(startDate.getDate() - totalDays + 1);
-            // Adjust to start on a Sunday
             var startDay = startDate.getDay();
             if (startDay !== 0) {
                 startDate.setDate(startDate.getDate() - startDay);
             }
 
-            // Calculate total cells needed
             var totalCells = 0;
             var d = new Date(startDate);
             while (d <= today) {
                 totalCells++;
                 d.setDate(d.getDate() + 1);
             }
-            // Pad to complete the last week
             var remainder = totalCells % 7;
             if (remainder !== 0) totalCells += (7 - remainder);
 
             var weeks = Math.ceil(totalCells / 7);
 
-            // Build month labels
             var monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
             var seenMonths = {};
-            var cellWidth = 17; // 14px cell + 3px gap
+            var cellWidth = 17;
             d = new Date(startDate);
             for (var w = 0; w < weeks; w++) {
                 var weekStart = new Date(d);
@@ -1214,7 +1086,6 @@
             monthsRow.style.height = '16px';
             monthsRow.style.marginLeft = '0';
 
-            // Build heatmap cells
             grid.style.gridTemplateRows = 'repeat(7, 14px)';
             d = new Date(startDate);
             for (var i = 0; i < totalCells; i++) {
@@ -1249,7 +1120,6 @@
             var emptyEl = document.getElementById('moodEmpty');
             var chartArea = document.getElementById('moodChartArea');
 
-            // Filter entries with moods from last 30 days
             var now = new Date();
             var thirtyDaysAgo = new Date();
             thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
@@ -1280,7 +1150,6 @@
             var chartW = svgW - padding.left - padding.right;
             var chartH = svgH - padding.top - padding.bottom;
 
-            // Group by date and average moods
             var dateMap = {};
             moodEntries.forEach(function(e) {
                 var d = e.date.substring(0, 10);
@@ -1301,7 +1170,6 @@
                 return;
             }
 
-            // Scale
             var xScale = function(i) { return padding.left + (i / (points.length - 1)) * chartW; };
             var yScale = function(m) { return padding.top + chartH - ((m - 1) / 4) * chartH; };
 
@@ -1312,7 +1180,7 @@
                 lineEl.setAttribute('y1', yScale(g));
                 lineEl.setAttribute('x2', svgW - padding.right);
                 lineEl.setAttribute('y2', yScale(g));
-                lineEl.setAttribute('stroke', 'rgba(148,163,184,0.1)');
+                lineEl.setAttribute('stroke', 'rgba(0,0,0,0.04)');
                 lineEl.setAttribute('stroke-width', '1');
                 svg.appendChild(lineEl);
             }
@@ -1328,16 +1196,15 @@
             var area = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             area.setAttribute('d', areaPath);
             area.setAttribute('fill', 'url(#moodGrad)');
-            area.setAttribute('opacity', '0.3');
+            area.setAttribute('opacity', '0.25');
 
-            // Gradient definition
             var defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
             var grad = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
             grad.setAttribute('id', 'moodGrad');
             grad.setAttribute('x1', '0'); grad.setAttribute('y1', '0');
             grad.setAttribute('x2', '0'); grad.setAttribute('y2', '1');
             var stop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-            stop1.setAttribute('offset', '0%'); stop1.setAttribute('stop-color', '#8B5CF6');
+            stop1.setAttribute('offset', '0%'); stop1.setAttribute('stop-color', '#2D6A4F');
             var stop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
             stop2.setAttribute('offset', '100%'); stop2.setAttribute('stop-color', 'transparent');
             grad.appendChild(stop1); grad.appendChild(stop2);
@@ -1354,7 +1221,7 @@
             var line = document.createElementNS('http://www.w3.org/2000/svg', 'path');
             line.setAttribute('d', linePath);
             line.setAttribute('fill', 'none');
-            line.setAttribute('stroke', '#8B5CF6');
+            line.setAttribute('stroke', '#2D6A4F');
             line.setAttribute('stroke-width', '2.5');
             line.setAttribute('stroke-linecap', 'round');
             line.setAttribute('stroke-linejoin', 'round');
@@ -1366,20 +1233,19 @@
                 circle.setAttribute('cx', xScale(i));
                 circle.setAttribute('cy', yScale(p.mood));
                 circle.setAttribute('r', '4');
-                circle.setAttribute('fill', '#8B5CF6');
-                circle.setAttribute('stroke', '#0F172A');
+                circle.setAttribute('fill', '#2D6A4F');
+                circle.setAttribute('stroke', '#FFFFFF');
                 circle.setAttribute('stroke-width', '2');
                 svg.appendChild(circle);
 
-                // Date labels on x-axis (show every few)
                 if (i === 0 || i === points.length - 1 || points.length <= 7 || i % Math.ceil(points.length / 6) === 0) {
                     var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
                     text.setAttribute('x', xScale(i));
                     text.setAttribute('y', svgH - 4);
                     text.setAttribute('text-anchor', 'middle');
-                    text.setAttribute('fill', '#64748B');
+                    text.setAttribute('fill', '#AEAEB2');
                     text.setAttribute('font-size', '9');
-                    text.setAttribute('font-family', 'Inter, sans-serif');
+                    text.setAttribute('font-family', '-apple-system, Inter, sans-serif');
                     var parts = p.date.split('-');
                     text.textContent = parseInt(parts[2]) + '/' + parseInt(parts[1]);
                     svg.appendChild(text);
@@ -1407,17 +1273,24 @@
            RENDER: Journal Entries
            ================================================================ */
 
+        var moodFaceSVGs = {
+            1: '<svg viewBox="0 0 32 32" fill="none" width="20" height="20"><circle cx="16" cy="16" r="14" stroke="#C0392B" stroke-width="1.5"/><circle cx="11" cy="13" r="1.5" fill="#C0392B"/><circle cx="21" cy="13" r="1.5" fill="#C0392B"/><path d="M10 23c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>',
+            2: '<svg viewBox="0 0 32 32" fill="none" width="20" height="20"><circle cx="16" cy="16" r="14" stroke="#C68B59" stroke-width="1.5"/><circle cx="11" cy="14" r="1.5" fill="#C68B59"/><circle cx="21" cy="14" r="1.5" fill="#C68B59"/><path d="M11 22c1.2-2 3-3 5-3s3.8 1 5 3" stroke="#C68B59" stroke-width="1.5" stroke-linecap="round"/></svg>',
+            3: '<svg viewBox="0 0 32 32" fill="none" width="20" height="20"><circle cx="16" cy="16" r="14" stroke="#86868B" stroke-width="1.5"/><circle cx="11" cy="14" r="1.5" fill="#86868B"/><circle cx="21" cy="14" r="1.5" fill="#86868B"/><line x1="10" y1="21" x2="22" y2="21" stroke="#86868B" stroke-width="1.5" stroke-linecap="round"/></svg>',
+            4: '<svg viewBox="0 0 32 32" fill="none" width="20" height="20"><circle cx="16" cy="16" r="14" stroke="#52B788" stroke-width="1.5"/><circle cx="11" cy="14" r="1.5" fill="#52B788"/><circle cx="21" cy="14" r="1.5" fill="#52B788"/><path d="M10 19c1.5 2.5 3.5 3.5 6 3.5s4.5-1 6-3.5" stroke="#52B788" stroke-width="1.5" stroke-linecap="round"/></svg>',
+            5: '<svg viewBox="0 0 32 32" fill="none" width="20" height="20"><circle cx="16" cy="16" r="14" stroke="#2D6A4F" stroke-width="1.5"/><circle cx="11" cy="13" r="1.5" fill="#2D6A4F"/><circle cx="21" cy="13" r="1.5" fill="#2D6A4F"/><path d="M9 18c1.5 3.5 4 5 7 5s5.5-1.5 7-5" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/><path d="M9 18h14" stroke="#2D6A4F" stroke-width="1.2" stroke-linecap="round"/></svg>'
+        };
+
         function renderJournal(journalEntries) {
             var list = document.getElementById('journalList');
             var allWrap = document.getElementById('journalAllWrap');
             list.innerHTML = '';
 
             if (!journalEntries || journalEntries.length === 0) {
-                list.innerHTML = '<div class="journal-empty"><span>&#128214;</span>Your journal is waiting. Write your first entry to see it here.</div>';
+                list.innerHTML = '<div class="journal-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Your journal is waiting. Write your first entry to see it here.</div>';
                 return;
             }
 
-            var moodFaces = { 1: '\uD83D\uDE22', 2: '\uD83D\uDE1E', 3: '\uD83D\uDE10', 4: '\uD83D\uDE42', 5: '\uD83D\uDE0A' };
             var sorted = journalEntries.slice().sort(function(a, b) {
                 return (b.timestamp || 0) - (a.timestamp || 0);
             });
@@ -1432,7 +1305,7 @@
                     var div = document.createElement('div');
                     div.className = 'journal-entry';
 
-                    var moodEmoji = moodFaces[entry.mood] || '\uD83D\uDE10';
+                    var face = moodFaceSVGs[entry.mood] || moodFaceSVGs[3];
                     var dateStr = '';
                     if (entry.date) {
                         var dp = entry.date.split('-');
@@ -1442,7 +1315,7 @@
                     var preview = entry.text || '(No text)';
 
                     div.innerHTML =
-                        '<div class="journal-mood">' + moodEmoji + '</div>' +
+                        '<div class="journal-mood">' + face + '</div>' +
                         '<div class="journal-meta">' +
                             '<div class="journal-date">' + dateStr + '</div>' +
                             '<div class="journal-text">' + escapeHtml(preview) + '</div>' +
@@ -1497,13 +1370,11 @@
             var journalCount = journalEntries ? journalEntries.length : 0;
             var friendCount = typeCounts.friend || 0;
 
-            // Merge legacy meditation data
             try {
                 var med = JSON.parse(localStorage.getItem('sukoon_med') || '{}');
                 if (med.streak) maxStreak = Math.max(maxStreak, med.streak);
             } catch(e) {}
 
-            // Check time-based badges from log
             var hasNightSession = false;
             var hasEarlySession = false;
             log.forEach(function(entry) {
@@ -1514,18 +1385,15 @@
                 }
             });
 
-            // Sound usage - check if all 8 different sounds were used
             var soundsExplored = 0;
             try {
                 var soundKeys = ['rain','ocean','fire','forest','wind','birds','thunder','bowls'];
                 soundKeys.forEach(function(s) {
                     if (localStorage.getItem('sukoon_sound_' + s) || (typeCounts['sound_' + s])) soundsExplored++;
                 });
-                // Also count total unique sounds from featuresUsed
                 if (typeCounts.sounds >= 8) soundsExplored = Math.max(soundsExplored, 8);
             } catch(e) {}
 
-            // Course completion check
             var courseCompleted = false;
             try {
                 var courseData = localStorage.getItem('sukoon_courses');
@@ -1533,13 +1401,11 @@
                     var courses = JSON.parse(courseData);
                     if (courses && courses.completed && courses.completed.length > 0) courseCompleted = true;
                 }
-                // Also check individual course keys
                 for (var k in localStorage) {
                     if (k.indexOf('sukoon_course_complete') === 0) courseCompleted = true;
                 }
             } catch(e) {}
 
-            // Wisdom entries read
             var wisdomRead = false;
             try {
                 var wisdomData = localStorage.getItem('sukoon_wisdom_read');
@@ -1550,7 +1416,6 @@
                 if (typeCounts.wisdom >= 10) wisdomRead = true;
             } catch(e) {}
 
-            // Language usage
             var langsUsed = 1;
             try {
                 var langHistory = localStorage.getItem('sukoon_langs_used');
@@ -1566,70 +1431,70 @@
                     name: 'First Session',
                     desc: 'Complete any session',
                     earned: totalSessions >= 1 || journalCount >= 1,
-                    color: '#4F46E5', bg: 'rgba(79,70,229,0.12)'
+                    bg: '#D8F3DC'
                 },
                 {
                     emoji: '\uD83D\uDD25',
                     name: '7-Day Streak',
                     desc: '7 consecutive days',
                     earned: maxStreak >= 7,
-                    color: '#F59E0B', bg: 'rgba(245,158,11,0.12)'
+                    bg: '#FDEBD0'
                 },
                 {
                     emoji: '\uD83D\uDCAA',
                     name: '30-Day Streak',
                     desc: '30 consecutive days',
                     earned: maxStreak >= 30,
-                    color: '#10B981', bg: 'rgba(16,185,129,0.12)'
+                    bg: '#D8F3DC'
                 },
                 {
                     emoji: '\uD83C\uDF19',
                     name: 'Night Owl',
                     desc: 'Session after 10pm',
                     earned: hasNightSession,
-                    color: '#6366F1', bg: 'rgba(99,102,241,0.12)'
+                    bg: '#E8E0F0'
                 },
                 {
                     emoji: '\uD83C\uDF05',
                     name: 'Early Bird',
                     desc: 'Session before 7am',
                     earned: hasEarlySession,
-                    color: '#F59E0B', bg: 'rgba(245,158,11,0.12)'
+                    bg: '#FDEBD0'
                 },
                 {
                     emoji: '\uD83C\uDFB5',
                     name: 'Sound Explorer',
                     desc: 'Used all 8 sounds',
                     earned: soundsExplored >= 8,
-                    color: '#14B8A6', bg: 'rgba(20,184,166,0.12)'
+                    bg: '#D8F3DC'
                 },
                 {
                     emoji: '\uD83D\uDCDA',
                     name: 'Course Graduate',
                     desc: 'Completed any course',
                     earned: courseCompleted,
-                    color: '#8B5CF6', bg: 'rgba(139,92,246,0.12)'
+                    bg: '#E8E0F0'
                 },
                 {
                     emoji: '\uD83E\uDDE0',
                     name: 'Wisdom Seeker',
                     desc: 'Read all wisdom entries',
                     earned: wisdomRead,
-                    color: '#EC4899', bg: 'rgba(236,72,153,0.12)'
+                    bg: '#FFE4E6'
                 },
                 {
                     emoji: '\uD83D\uDCAC',
                     name: 'Deep Talker',
                     desc: '10+ AI Friend chats',
                     earned: friendCount >= 10,
-                    color: '#3B82F6', bg: 'rgba(59,130,246,0.12)'
+                    bg: '#DBEAFE'
                 },
                 {
                     emoji: '\uD83C\uDF0D',
                     name: 'Polyglot',
                     desc: 'Used app in 3+ languages',
                     earned: langsUsed >= 3,
-                    color: '#10B981', bg: 'rgba(16,185,129,0.12)'
+                    bg: '#D8F3DC'
                 }
             ];
 
@@ -1657,46 +1522,18 @@
         }
 
         /* ================================================================
-           SETTINGS: Theme Toggle
-           ================================================================ */
-
-        var themeToggle = document.getElementById('themeToggle');
-        var currentTheme = localStorage.getItem('sukoon_theme') || 'dark';
-
-        function applyTheme(theme) {
-            document.documentElement.setAttribute('data-theme', theme);
-            localStorage.setItem('sukoon_theme', theme);
-            if (theme === 'dark') {
-                themeToggle.classList.add('active');
-            } else {
-                themeToggle.classList.remove('active');
-            }
-        }
-
-        applyTheme(currentTheme);
-
-        themeToggle.addEventListener('click', function() {
-            var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-            applyTheme(next);
-        });
-
-        /* ================================================================
            SETTINGS: Language Picker
            ================================================================ */
 
-        var langSelect = document.getElementById('langSelect');
         var settingsLang = document.getElementById('settingsLang');
         var currentLang = localStorage.getItem('sukoon_lang') || 'en';
 
-        langSelect.value = currentLang;
         settingsLang.value = currentLang;
 
         function setLang(lang) {
             localStorage.setItem('sukoon_lang', lang);
-            langSelect.value = lang;
             settingsLang.value = lang;
 
-            // Track language usage for Polyglot badge
             try {
                 var used = JSON.parse(localStorage.getItem('sukoon_langs_used') || '["en"]');
                 if (used.indexOf(lang) === -1) {
@@ -1708,7 +1545,6 @@
             }
         }
 
-        langSelect.addEventListener('change', function() { setLang(this.value); });
         settingsLang.addEventListener('change', function() { setLang(this.value); });
 
         /* ================================================================
@@ -1729,13 +1565,11 @@
 
         reminderToggle.addEventListener('click', function() {
             if (reminderToggle.classList.contains('active')) {
-                // Disable
                 reminderToggle.classList.remove('active');
                 localStorage.setItem('sukoon_reminder', 'false');
                 reminderStatus.textContent = 'Get a gentle nudge to practice';
                 showToast('Reminder disabled');
             } else {
-                // Enable - request notification permission
                 if ('Notification' in window) {
                     Notification.requestPermission().then(function(perm) {
                         if (perm === 'granted') {
@@ -1766,7 +1600,6 @@
         });
 
         function scheduleReminder(timeStr) {
-            // Calculate ms until next occurrence of the given time
             var parts = timeStr.split(':');
             var targetH = parseInt(parts[0]);
             var targetM = parseInt(parts[1]);
@@ -1780,7 +1613,6 @@
 
             var delay = target.getTime() - now.getTime();
 
-            // Clear any existing timer
             if (window._sukoonReminderTimer) clearTimeout(window._sukoonReminderTimer);
 
             window._sukoonReminderTimer = setTimeout(function() {
@@ -1789,13 +1621,11 @@
                         body: 'A few minutes of mindfulness can transform your day. Take a breath.',
                         icon: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><text y=".9em" font-size="90">&#9789;</text></svg>'
                     });
-                    // Reschedule for next day
                     scheduleReminder(timeStr);
                 }
             }, delay);
         }
 
-        // Start scheduler if enabled
         if (reminderEnabled) {
             scheduleReminder(savedTime);
         }
@@ -1810,7 +1640,6 @@
                 localStorage: {}
             };
 
-            // Export all sukoon-related localStorage keys
             for (var i = 0; i < localStorage.length; i++) {
                 var key = localStorage.key(i);
                 if (key && (key.indexOf('sukoon') === 0 || key === LOG_KEY || key === STATS_KEY)) {
@@ -1822,12 +1651,10 @@
                 }
             }
 
-            // Export IndexedDB journal entries
             openJournalDB(function(db) {
                 getJournalEntries(db, function(entries) {
                     exportData.journalEntries = entries;
 
-                    // Trigger download
                     var blob = new Blob([JSON.stringify(exportData, null, 2)], { type: 'application/json' });
                     var url = URL.createObjectURL(blob);
                     var a = document.createElement('a');

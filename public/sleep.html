@@ -7,196 +7,123 @@
     <meta name="description" content="Drift off to sleep with calming AI-generated bedtime stories. Nature, folklore, travel & spiritual tales narrated in soothing prose.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #F1F5F9;
-            background: #0F172A;
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
+            color: #1D1D1F;
+            background: #FAFAF7;
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
-            padding-bottom: 80px;
+            padding-bottom: 72px;
         }
         a { text-decoration: none; color: inherit; }
 
-        /* ===================== STICKY TOP HEADER ===================== */
+        /* ===================== TOP HEADER ===================== */
         .topbar {
             position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
             display: flex; align-items: center; justify-content: center;
-            padding: 0 1.5rem; height: 56px;
-            background: rgba(15, 23, 42, 0.65);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+            padding: 0 1.5rem; height: 52px;
+            background: rgba(250,250,247,0.82);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .topbar-brand {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem; color: #F1F5F9;
-            display: flex; align-items: center; gap: 0.4rem;
+            font-size: 1.25rem; color: #1D1D1F;
             letter-spacing: -0.01em;
         }
-        .topbar-moon { font-size: 1.2rem; }
 
         /* ===================== BOTTOM NAV ===================== */
         .bottom-nav {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            height: 64px;
-            background: rgba(15, 23, 42, 0.92);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            border-top: 1px solid rgba(124, 58, 237, 0.1);
+            position: fixed; bottom: 0; left: 0; right: 0;
+            height: 56px; z-index: 1000;
+            background: #FFFFFF;
+            border-top: 1px solid rgba(0,0,0,0.06);
             display: flex; align-items: center; justify-content: space-around;
-            z-index: 1000;
             padding-bottom: env(safe-area-inset-bottom);
         }
         .bottom-nav a {
             display: flex; flex-direction: column; align-items: center;
-            gap: 4px; text-decoration: none; color: #64748B;
-            font-size: 0.65rem; font-family: 'Inter', sans-serif;
-            transition: color 0.2s ease;
+            gap: 3px; font-size: 0.6rem; font-weight: 500;
+            color: #AEAEB2; transition: color 0.2s;
         }
-        .bottom-nav a:hover { color: #94A3B8; }
-        .bottom-nav a.active { color: #7C3AED; }
+        .bottom-nav a:hover { color: #86868B; }
+        .bottom-nav a.active { color: #2D6A4F; }
+        .bottom-nav svg { width: 22px; height: 22px; stroke-width: 1.5; fill: none; stroke: currentColor; }
 
-        /* ===================== DESKTOP SIDEBAR >900px ===================== */
-        @media (min-width: 901px) {
+        /* ===================== DESKTOP SIDEBAR >960px ===================== */
+        @media (min-width: 961px) {
             .bottom-nav {
-                position: fixed; top: 56px; left: 0; bottom: 0; right: auto;
-                width: 80px; height: auto;
+                position: fixed; top: 52px; left: 0; bottom: 0; right: auto;
+                width: 220px; height: auto;
                 flex-direction: column; justify-content: flex-start;
-                padding: 24px 0; gap: 8px;
-                border-top: none;
-                border-right: 1px solid rgba(124, 58, 237, 0.08);
+                padding: 24px 0; gap: 2px;
+                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
+                background: #FFFFFF;
             }
             .bottom-nav a {
-                width: 100%; padding: 12px 0;
-                font-size: 0.6rem; gap: 6px;
+                flex-direction: row; gap: 10px; width: 100%;
+                padding: 10px 24px; font-size: 0.82rem;
+                border-radius: 0;
             }
             .bottom-nav a.active {
-                background: rgba(124, 58, 237, 0.08);
-                border-right: 2px solid #7C3AED;
+                background: rgba(45,106,79,0.06);
+                border-right: 2px solid #2D6A4F;
             }
-            .sleep-page { margin-left: 80px; }
+            .sleep-page { margin-left: 220px; }
+            .topbar { left: 220px; }
         }
 
-        /* ===================== SLEEP PAGE WRAPPER ===================== */
-        .sleep-page {
-            min-height: 100vh;
-            position: relative;
-        }
-
-        /* Ambient background glows */
-        .sleep-page::before {
-            content: '';
-            position: fixed; top: -10%; left: -10%;
-            width: 55%; height: 55%;
-            background: radial-gradient(ellipse, rgba(124, 58, 237, 0.06) 0%, transparent 70%);
-            pointer-events: none; z-index: 0;
-        }
-        .sleep-page::after {
-            content: '';
-            position: fixed; bottom: -10%; right: -10%;
-            width: 50%; height: 50%;
-            background: radial-gradient(ellipse, rgba(99, 102, 241, 0.04) 0%, transparent 70%);
-            pointer-events: none; z-index: 0;
-        }
+        /* ===================== SLEEP PAGE ===================== */
+        .sleep-page { min-height: 100vh; }
 
         /* ===================== HERO ===================== */
         .sleep-hero {
-            position: relative;
-            padding: 100px 2rem 60px;
+            padding: 84px 2rem 48px;
             text-align: center;
-            background: linear-gradient(165deg, #0F0A2E 0%, #1A1145 25%, #151040 50%, #0A0E2A 75%, #0F172A 100%);
-            overflow: hidden;
-        }
-        .sleep-hero::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background:
-                radial-gradient(ellipse 50% 40% at 20% 30%, rgba(124,58,237,0.12) 0%, transparent 70%),
-                radial-gradient(ellipse 40% 50% at 80% 60%, rgba(99,102,241,0.08) 0%, transparent 70%),
-                radial-gradient(ellipse 60% 30% at 50% 80%, rgba(30,27,75,0.5) 0%, transparent 70%);
-            pointer-events: none;
-        }
-        /* Stars */
-        .sleep-hero::after {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background-image:
-                radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.5) 0%, transparent 100%),
-                radial-gradient(1px 1px at 25% 40%, rgba(255,255,255,0.3) 0%, transparent 100%),
-                radial-gradient(1.5px 1.5px at 50% 10%, rgba(255,255,255,0.45) 0%, transparent 100%),
-                radial-gradient(1px 1px at 70% 30%, rgba(255,255,255,0.35) 0%, transparent 100%),
-                radial-gradient(1px 1px at 85% 55%, rgba(255,255,255,0.25) 0%, transparent 100%),
-                radial-gradient(1.5px 1.5px at 40% 65%, rgba(255,255,255,0.35) 0%, transparent 100%),
-                radial-gradient(1px 1px at 15% 75%, rgba(255,255,255,0.3) 0%, transparent 100%),
-                radial-gradient(1px 1px at 60% 80%, rgba(255,255,255,0.25) 0%, transparent 100%),
-                radial-gradient(1px 1px at 90% 15%, rgba(255,255,255,0.4) 0%, transparent 100%),
-                radial-gradient(1px 1px at 35% 25%, rgba(255,255,255,0.25) 0%, transparent 100%),
-                radial-gradient(2px 2px at 78% 48%, rgba(245,158,11,0.6) 0%, transparent 100%),
-                radial-gradient(1px 1px at 5% 60%, rgba(245,158,11,0.3) 0%, transparent 100%);
-            pointer-events: none;
-            animation: twinkle 6s ease-in-out infinite alternate;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0.5; }
-            100% { opacity: 1; }
+            border-bottom: 1px solid rgba(0,0,0,0.06);
         }
         .sleep-hero-content {
-            position: relative; z-index: 1;
-            max-width: 640px; margin: 0 auto;
-        }
-        .sleep-hero-moon {
-            font-size: 3.5rem; margin-bottom: 1rem;
-            filter: drop-shadow(0 0 20px rgba(245,158,11,0.3));
-            animation: floatMoon 6s ease-in-out infinite;
-        }
-        @keyframes floatMoon {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-8px); }
+            max-width: 540px; margin: 0 auto;
         }
         .sleep-hero h1 {
             font-family: 'DM Serif Display', serif;
-            font-size: clamp(2.2rem, 5vw, 3.2rem);
-            color: #F1F5F9;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: #1D1D1F;
             letter-spacing: -0.02em;
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.5rem;
             font-weight: 400;
         }
-        .sleep-hero-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 1.15rem; color: rgba(245,158,11,0.7);
-            font-weight: 400; margin-bottom: 1rem;
-        }
         .sleep-hero-sub {
-            font-size: 1rem; color: #94A3B8;
-            max-width: 420px; margin: 0 auto;
+            font-size: 0.95rem; color: #86868B;
+            max-width: 400px; margin: 0 auto;
             line-height: 1.7;
         }
 
-        /* ===================== PAGE CONTENT ===================== */
+        /* ===================== CONTENT ===================== */
         .page-content {
-            position: relative; z-index: 1;
-            max-width: 960px; margin: 0 auto;
-            padding: 3rem 2rem 2rem;
+            max-width: 880px; margin: 0 auto;
+            padding: 2.5rem 2rem 2rem;
         }
 
         /* ===================== SECTION LABELS ===================== */
         .section-label {
             font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 0.12em; color: #7C3AED;
-            font-weight: 600; margin-bottom: 0.5rem;
+            letter-spacing: 0.12em; color: #2D6A4F;
+            font-weight: 600; margin-bottom: 0.4rem;
         }
         .section-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.5rem; color: #F1F5F9;
-            margin-bottom: 0.3rem;
+            font-size: 1.45rem; color: #1D1D1F;
+            margin-bottom: 0.2rem;
         }
         .section-subtitle {
-            font-size: 0.85rem; color: #64748B;
+            font-size: 0.85rem; color: #86868B;
             margin-bottom: 1.5rem;
         }
 
@@ -206,141 +133,95 @@
             gap: 1.25rem; margin-bottom: 3.5rem;
         }
         .story-card {
-            background: #1E293B;
-            border: 1px solid rgba(124, 58, 237, 0.08);
-            border-radius: 20px; overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2), 0 8px 32px rgba(0,0,0,0.15);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px; overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
             cursor: pointer;
-            opacity: 0; transform: translateY(20px);
-            animation: cardReveal 0.6s ease forwards;
+            opacity: 0; transform: translateY(12px);
+            animation: cardReveal 0.5s ease forwards;
         }
-        .story-card:nth-child(1) { animation-delay: 0.1s; }
-        .story-card:nth-child(2) { animation-delay: 0.2s; }
-        .story-card:nth-child(3) { animation-delay: 0.3s; }
-        .story-card:nth-child(4) { animation-delay: 0.4s; }
-        .story-card:nth-child(5) { animation-delay: 0.5s; }
-        .story-card:nth-child(6) { animation-delay: 0.6s; }
-        .story-card:nth-child(7) { animation-delay: 0.7s; }
-        .story-card:nth-child(8) { animation-delay: 0.8s; }
-
+        .story-card:nth-child(1) { animation-delay: 0.05s; }
+        .story-card:nth-child(2) { animation-delay: 0.1s; }
+        .story-card:nth-child(3) { animation-delay: 0.15s; }
+        .story-card:nth-child(4) { animation-delay: 0.2s; }
+        .story-card:nth-child(5) { animation-delay: 0.25s; }
+        .story-card:nth-child(6) { animation-delay: 0.3s; }
+        .story-card:nth-child(7) { animation-delay: 0.35s; }
+        .story-card:nth-child(8) { animation-delay: 0.4s; }
         @keyframes cardReveal {
             to { opacity: 1; transform: translateY(0); }
         }
-
         .story-card:hover {
-            transform: translateY(-4px);
-            box-shadow:
-                0 4px 16px rgba(124, 58, 237, 0.15),
-                0 12px 40px rgba(0,0,0,0.25),
-                0 0 0 1px rgba(124, 58, 237, 0.15);
-            border-color: rgba(124, 58, 237, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
         }
-        .story-cover {
-            height: 120px; position: relative;
-            display: flex; align-items: flex-end;
-            padding: 1rem 1.25rem;
-        }
-        .story-cover-icon {
-            position: absolute; top: 1rem; right: 1rem;
-            width: 32px; height: 32px; border-radius: 10px;
-            background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(8px);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .story-cover-icon svg { width: 16px; height: 16px; color: rgba(255,255,255,0.85); }
-        .story-cover-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.15rem; color: #fff;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.4);
-            line-height: 1.25;
-        }
-        .story-body { padding: 1rem 1.25rem 1.25rem; }
+        .story-body { padding: 1.25rem; }
         .story-genre {
             display: inline-block;
-            padding: 0.2rem 0.6rem; border-radius: 100px;
-            font-size: 0.68rem; font-weight: 600;
+            padding: 0.2rem 0.65rem; border-radius: 100px;
+            font-size: 0.65rem; font-weight: 600;
             text-transform: uppercase; letter-spacing: 0.06em;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
+            background: #D8F3DC; color: #2D6A4F;
         }
-        .story-genre.nature { background: rgba(16,185,129,0.12); color: #34D399; }
-        .story-genre.folklore { background: rgba(245,158,11,0.12); color: #F59E0B; }
-        .story-genre.travel { background: rgba(99,102,241,0.12); color: #818CF8; }
-        .story-genre.spiritual { background: rgba(168,85,247,0.12); color: #C084FC; }
-        .story-genre.fantasy { background: rgba(236,72,153,0.12); color: #F472B6; }
-        .story-title-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.72rem; color: #64748B;
-            font-weight: 300; margin-bottom: 0.3rem;
+        .story-genre.folklore { background: #FEF3C7; color: #92400E; }
+        .story-genre.travel { background: #DBEAFE; color: #1E40AF; }
+        .story-genre.spiritual { background: #F3E8FF; color: #6B21A8; }
+        .story-genre.fantasy { background: #FCE7F3; color: #9D174D; }
+        .story-card-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.1rem; color: #1D1D1F;
+            line-height: 1.3; margin-bottom: 0.35rem;
         }
         .story-desc {
-            font-size: 0.82rem; color: #94A3B8; line-height: 1.5;
+            font-size: 0.82rem; color: #86868B; line-height: 1.55;
             margin-bottom: 0.75rem;
         }
         .story-bottom {
             display: flex; align-items: center; justify-content: space-between;
         }
         .story-duration {
-            font-size: 0.72rem; color: #64748B; font-weight: 500;
+            font-size: 0.72rem; color: #AEAEB2; font-weight: 500;
             display: flex; align-items: center; gap: 0.3rem;
         }
         .story-duration svg { width: 13px; height: 13px; }
         .story-begin {
             padding: 0.4rem 1rem; border-radius: 100px;
-            background: #7C3AED; color: #fff;
+            background: #2D6A4F; color: #fff;
             font-size: 0.78rem; font-weight: 600;
             border: none; cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.25s;
+            font-family: -apple-system, 'Inter', sans-serif;
+            transition: background 0.2s;
         }
-        .story-begin:hover { background: #6D28D9; transform: scale(1.05); box-shadow: 0 4px 15px rgba(124,58,237,0.3); }
-
-        /* Cover gradients per genre */
-        .cover-mountain-lake { background: linear-gradient(135deg, #1E3A5F, #2D6A4F, #40916C); }
-        .cover-spice-market { background: linear-gradient(135deg, #78350F, #B45309, #D97706); }
-        .cover-ocean-lullaby { background: linear-gradient(135deg, #0F172A, #1E3A5F, #2563EB); }
-        .cover-silk-road { background: linear-gradient(135deg, #451A03, #78350F, #A16207); }
-        .cover-tea-garden { background: linear-gradient(135deg, #064E3B, #166534, #22C55E); }
-        .cover-grandmother { background: linear-gradient(135deg, #7C2D12, #9A3412, #C2410C); }
-        .cover-northern-lights { background: linear-gradient(135deg, #1E1B4B, #4F46E5, #7C3AED); }
-        .cover-sufi-garden { background: linear-gradient(135deg, #3B0764, #581C87, #7C3AED); }
+        .story-begin:hover { background: #1B4332; }
 
         /* ===================== AI GENERATOR ===================== */
         .ai-gen-section { margin-bottom: 3.5rem; }
         .ai-gen-card {
-            background: #1E293B;
-            border: 1px solid rgba(124, 58, 237, 0.1);
-            border-radius: 20px; padding: 2rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 8px 32px rgba(0,0,0,0.1);
-            position: relative; overflow: hidden;
-        }
-        .ai-gen-card::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; height: 3px;
-            background: linear-gradient(90deg, #7C3AED, #F59E0B, #7C3AED);
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px; padding: 2rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
         }
         .ai-gen-top {
             display: flex; align-items: center; gap: 0.75rem;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
         }
         .ai-gen-icon {
-            width: 44px; height: 44px; border-radius: 12px;
-            background: rgba(124, 58, 237, 0.12);
+            width: 44px; height: 44px; border-radius: 10px;
+            background: #D8F3DC;
             display: flex; align-items: center; justify-content: center;
             flex-shrink: 0;
         }
-        .ai-gen-icon svg { width: 22px; height: 22px; color: #7C3AED; }
+        .ai-gen-icon svg { width: 22px; height: 22px; color: #2D6A4F; }
         .ai-gen-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #F1F5F9;
+            font-size: 1.15rem; color: #1D1D1F;
         }
         .ai-gen-sub {
-            font-size: 0.82rem; color: #64748B;
-        }
-        .ai-gen-sub-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.75rem; color: #475569;
-            font-weight: 300; margin-bottom: 1.25rem;
+            font-size: 0.82rem; color: #86868B; margin-bottom: 1.25rem;
         }
         .ai-gen-form {
             display: flex; gap: 0.75rem; align-items: center;
@@ -348,38 +229,36 @@
         }
         .ai-prompt-input {
             flex: 2; min-width: 200px;
-            padding: 0.65rem 1rem; border-radius: 12px;
-            border: 1px solid rgba(124, 58, 237, 0.15);
-            background: rgba(15, 23, 42, 0.6);
-            font-size: 0.88rem; color: #F1F5F9;
-            font-family: 'Inter', sans-serif;
+            padding: 0.65rem 1rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: #FAFAF7;
+            font-size: 0.88rem; color: #1D1D1F;
+            font-family: -apple-system, 'Inter', sans-serif;
             outline: none; transition: border-color 0.2s;
         }
-        .ai-prompt-input::placeholder { color: #475569; }
-        .ai-prompt-input:focus { border-color: rgba(124, 58, 237, 0.5); box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.08); }
+        .ai-prompt-input::placeholder { color: #AEAEB2; }
+        .ai-prompt-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.08); }
         .genre-select {
             flex: 1; min-width: 140px;
-            padding: 0.65rem 1rem; border-radius: 12px;
-            border: 1px solid rgba(124, 58, 237, 0.15);
-            background: rgba(15, 23, 42, 0.6);
-            font-size: 0.88rem; color: #F1F5F9;
-            font-family: 'Inter', sans-serif;
+            padding: 0.65rem 1rem; border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.1);
+            background: #FAFAF7;
+            font-size: 0.88rem; color: #1D1D1F;
+            font-family: -apple-system, 'Inter', sans-serif;
             outline: none; cursor: pointer;
-            transition: border-color 0.2s;
         }
-        .genre-select option { background: #1E293B; color: #F1F5F9; }
-        .genre-select:focus { border-color: rgba(124, 58, 237, 0.5); }
+        .genre-select:focus { border-color: #2D6A4F; }
         .gen-btn {
-            padding: 0.65rem 1.5rem; border-radius: 12px;
-            background: #7C3AED; color: #fff;
+            padding: 0.65rem 1.5rem; border-radius: 8px;
+            background: #2D6A4F; color: #fff;
             font-size: 0.88rem; font-weight: 600;
             border: none; cursor: pointer;
-            font-family: 'Inter', sans-serif;
-            transition: all 0.25s;
+            font-family: -apple-system, 'Inter', sans-serif;
+            transition: background 0.2s;
             display: flex; align-items: center; gap: 0.5rem;
             white-space: nowrap;
         }
-        .gen-btn:hover { background: #6D28D9; box-shadow: 0 4px 15px rgba(124,58,237,0.3); }
+        .gen-btn:hover { background: #1B4332; }
         .gen-btn:disabled { opacity: 0.5; cursor: not-allowed; }
         .gen-btn svg { width: 18px; height: 18px; }
         .gen-loading { display: none; }
@@ -389,218 +268,182 @@
         }
         .gen-spinner {
             width: 16px; height: 16px;
-            border: 2px solid rgba(255,255,255,0.2);
+            border: 2px solid rgba(255,255,255,0.3);
             border-top-color: #fff;
             border-radius: 50%;
             animation: spin 0.8s linear infinite;
         }
         @keyframes spin { to { transform: rotate(360deg); } }
 
-        /* ===================== WIND-DOWN SECTION ===================== */
+        /* ===================== WIND-DOWN ===================== */
         .winddown-section { margin-bottom: 3rem; }
         .winddown-grid {
             display: grid; grid-template-columns: 1fr 1fr;
             gap: 1rem;
         }
         .winddown-card {
-            background: #1E293B;
-            border: 1px solid rgba(124, 58, 237, 0.08);
-            border-radius: 16px;
-            padding: 1.5rem;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px; padding: 1.5rem;
             display: flex; align-items: center; gap: 1rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            color: inherit;
+            transition: box-shadow 0.3s ease; color: inherit;
         }
         .winddown-card:hover {
-            border-color: rgba(124, 58, 237, 0.2);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
         }
         .winddown-icon {
-            width: 48px; height: 48px; border-radius: 14px;
+            width: 44px; height: 44px; border-radius: 10px;
             display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-            font-size: 1.4rem;
+            flex-shrink: 0; font-size: 1.25rem;
         }
-        .winddown-icon.breathe-icon { background: rgba(124, 58, 237, 0.12); }
-        .winddown-icon.meditate-icon { background: rgba(245, 158, 11, 0.12); }
+        .winddown-icon.breathe-icon { background: #D8F3DC; }
+        .winddown-icon.meditate-icon { background: #FEF3C7; }
         .winddown-card-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1rem; color: #F1F5F9;
+            font-size: 0.95rem; color: #1D1D1F;
             margin-bottom: 0.15rem;
         }
-        .winddown-card-title-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.72rem; color: #64748B;
-            font-weight: 300; margin-bottom: 0.25rem;
-        }
         .winddown-card-desc {
-            font-size: 0.78rem; color: #94A3B8; line-height: 1.4;
+            font-size: 0.78rem; color: #86868B; line-height: 1.45;
         }
 
-        /* ===================== STORY READER OVERLAY ===================== */
+        /* ===================== READER OVERLAY ===================== */
         .reader-overlay {
             position: fixed; top: 0; left: 0; right: 0; bottom: 0;
             z-index: 9999;
-            background: #0A0E1A;
+            background: rgba(250,250,247,0.98);
             display: none; flex-direction: column;
-            opacity: 0; transition: opacity 0.5s ease;
+            opacity: 0; transition: opacity 0.4s ease;
         }
         .reader-overlay.open { display: flex; opacity: 1; }
-
         .reader-topbar {
             display: flex; align-items: center; justify-content: space-between;
             padding: 1rem 2rem;
-            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
             flex-shrink: 0;
-            background: rgba(10, 14, 26, 0.95);
-            backdrop-filter: blur(16px);
+            background: rgba(250,250,247,0.95);
+            backdrop-filter: blur(12px);
         }
-        .reader-title-area {
-            display: flex; flex-direction: column; gap: 0.15rem;
-        }
+        .reader-title-area { display: flex; flex-direction: column; gap: 0.1rem; }
         .reader-story-title {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem; color: #F1F5F9;
+            font-size: 1.05rem; color: #1D1D1F;
         }
         .reader-story-genre {
-            font-size: 0.7rem; color: #7C3AED;
+            font-size: 0.68rem; color: #2D6A4F;
             text-transform: uppercase; letter-spacing: 0.08em;
-            font-weight: 500;
+            font-weight: 600;
         }
-        .reader-progress-wrap {
-            flex: 1; max-width: 200px; margin: 0 1.5rem;
-        }
+        .reader-progress-wrap { flex: 1; max-width: 200px; margin: 0 1.5rem; }
         .reader-progress-bar {
-            width: 100%; height: 3px; border-radius: 2px;
-            background: rgba(124, 58, 237, 0.1);
-            overflow: hidden;
+            width: 100%; height: 2px; border-radius: 1px;
+            background: rgba(0,0,0,0.06); overflow: hidden;
         }
         .reader-progress-fill {
-            height: 100%; border-radius: 2px;
-            background: linear-gradient(90deg, #7C3AED, #F59E0B);
+            height: 100%; border-radius: 1px;
+            background: #2D6A4F;
             width: 0%; transition: width 0.5s ease;
         }
         .reader-progress-label {
-            font-size: 0.65rem; color: #64748B;
-            margin-top: 0.25rem; text-align: center;
+            font-size: 0.62rem; color: #AEAEB2;
+            margin-top: 0.2rem; text-align: center;
         }
         .reader-close {
-            width: 40px; height: 40px; border-radius: 12px;
-            background: rgba(124, 58, 237, 0.08);
-            border: 1px solid rgba(124, 58, 237, 0.15);
-            color: #94A3B8;
+            width: 36px; height: 36px; border-radius: 8px;
+            background: rgba(0,0,0,0.04);
+            border: 1px solid rgba(0,0,0,0.06);
+            color: #86868B;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: all 0.2s;
+            cursor: pointer; transition: background 0.2s;
             flex-shrink: 0;
         }
-        .reader-close:hover { background: rgba(124, 58, 237, 0.15); color: #F1F5F9; }
-        .reader-close svg { width: 20px; height: 20px; }
+        .reader-close:hover { background: rgba(0,0,0,0.08); color: #1D1D1F; }
+        .reader-close svg { width: 18px; height: 18px; }
 
         .reader-body {
             flex: 1; overflow-y: auto; padding: 3rem 2rem 6rem;
             scroll-behavior: smooth;
         }
-        .reader-body::-webkit-scrollbar { width: 4px; }
+        .reader-body::-webkit-scrollbar { width: 3px; }
         .reader-body::-webkit-scrollbar-track { background: transparent; }
-        .reader-body::-webkit-scrollbar-thumb { background: rgba(124, 58, 237, 0.15); border-radius: 2px; }
+        .reader-body::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.08); border-radius: 2px; }
 
-        .reader-text {
-            max-width: 640px; margin: 0 auto;
-        }
+        .reader-text { max-width: 600px; margin: 0 auto; }
         .reader-text p {
             font-family: 'DM Serif Display', serif;
-            font-size: 1.3rem; line-height: 1.85;
-            color: rgba(241, 245, 249, 0.75);
+            font-size: 1.25rem; line-height: 1.9;
+            color: rgba(29,29,31,0.7);
             margin-bottom: 2rem;
-            opacity: 0; transform: translateY(12px);
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            opacity: 0; transform: translateY(8px);
+            transition: opacity 1s ease, transform 1s ease;
         }
-        .reader-text p.visible {
-            opacity: 1; transform: translateY(0);
-        }
+        .reader-text p.visible { opacity: 1; transform: translateY(0); }
         .reader-loading {
             text-align: center; padding: 4rem 0;
-            font-size: 0.95rem; color: #64748B;
-            display: none;
+            font-size: 0.92rem; color: #AEAEB2; display: none;
         }
         .reader-loading.show { display: block; }
         .reader-loading-dots::after {
-            content: '';
-            animation: dots 1.5s steps(4, end) infinite;
+            content: ''; animation: dots 1.5s steps(4, end) infinite;
         }
         @keyframes dots {
-            0% { content: ''; }
-            25% { content: '.'; }
-            50% { content: '..'; }
-            75% { content: '...'; }
+            0% { content: ''; } 25% { content: '.'; }
+            50% { content: '..'; } 75% { content: '...'; }
         }
 
         /* Reader bottom controls */
         .reader-bottom {
-            flex-shrink: 0;
-            padding: 0.75rem 2rem;
-            border-top: 1px solid rgba(124, 58, 237, 0.1);
-            background: rgba(10, 14, 26, 0.98);
+            flex-shrink: 0; padding: 0.75rem 2rem;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            background: #FFFFFF;
             display: flex; align-items: center; justify-content: center;
             gap: 2rem; flex-wrap: wrap;
         }
-        .reader-controls-group {
-            display: flex; align-items: center; gap: 0.5rem;
-        }
+        .reader-controls-group { display: flex; align-items: center; gap: 0.5rem; }
         .reader-controls-label {
-            font-size: 0.65rem; color: #64748B;
+            font-size: 0.62rem; color: #AEAEB2;
             text-transform: uppercase; letter-spacing: 0.08em;
-            font-weight: 600; margin-right: 0.25rem;
+            font-weight: 600; margin-right: 0.2rem;
         }
         .ambient-btn, .timer-btn {
-            padding: 0.35rem 0.75rem; border-radius: 100px;
+            padding: 0.3rem 0.7rem; border-radius: 6px;
             font-size: 0.72rem; font-weight: 500;
-            border: 1px solid rgba(124, 58, 237, 0.12);
-            background: rgba(124, 58, 237, 0.04);
-            color: #94A3B8;
-            cursor: pointer; font-family: 'Inter', sans-serif;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF; color: #86868B;
+            cursor: pointer; font-family: -apple-system, 'Inter', sans-serif;
             transition: all 0.2s;
         }
-        .ambient-btn:hover, .timer-btn:hover {
-            border-color: rgba(124, 58, 237, 0.35);
-            color: #F1F5F9;
-        }
+        .ambient-btn:hover, .timer-btn:hover { border-color: rgba(0,0,0,0.15); color: #1D1D1F; }
         .ambient-btn.active, .timer-btn.active {
-            background: rgba(124, 58, 237, 0.2);
-            border-color: rgba(124, 58, 237, 0.4);
-            color: #C4B5FD;
+            background: #D8F3DC; border-color: rgba(45,106,79,0.2); color: #2D6A4F;
         }
         .timer-countdown {
-            font-size: 0.75rem; color: #7C3AED;
-            font-variant-numeric: tabular-nums; font-weight: 300;
+            font-size: 0.72rem; color: #2D6A4F;
+            font-variant-numeric: tabular-nums; font-weight: 500;
             min-width: 40px;
         }
         .auto-advance-btn {
-            padding: 0.35rem 0.75rem; border-radius: 100px;
+            padding: 0.3rem 0.7rem; border-radius: 6px;
             font-size: 0.72rem; font-weight: 500;
-            border: 1px solid rgba(245, 158, 11, 0.15);
-            background: rgba(245, 158, 11, 0.06);
-            color: #94A3B8;
-            cursor: pointer; font-family: 'Inter', sans-serif;
+            border: 1px solid rgba(198,139,89,0.2);
+            background: #FFFFFF; color: #86868B;
+            cursor: pointer; font-family: -apple-system, 'Inter', sans-serif;
             transition: all 0.2s;
         }
         .auto-advance-btn.active {
-            background: rgba(245, 158, 11, 0.15);
-            border-color: rgba(245, 158, 11, 0.35);
-            color: #F59E0B;
+            background: rgba(198,139,89,0.1);
+            border-color: rgba(198,139,89,0.3); color: #C68B59;
         }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 768px) {
-            .reader-bottom { gap: 1rem; padding: 0.75rem 1rem; }
+            .reader-bottom { gap: 0.75rem; padding: 0.6rem 1rem; }
             .winddown-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .stories-grid { grid-template-columns: 1fr; }
-            .page-content { padding: 2rem 1.25rem 2rem; }
-            .sleep-hero { padding: 80px 1.25rem 40px; }
+            .page-content { padding: 2rem 1.25rem; }
+            .sleep-hero { padding: 72px 1.25rem 36px; }
             .ai-gen-card { padding: 1.5rem; }
             .ai-gen-form { flex-direction: column; }
             .ai-prompt-input { min-width: 100%; }
@@ -615,34 +458,31 @@
 </head>
 <body>
 
-<!-- ===================== STICKY TOP HEADER ===================== -->
+<!-- ===================== TOP HEADER ===================== -->
 <header class="topbar">
-    <a href="index.html" class="topbar-brand">
-        <span class="topbar-moon">&#9789;</span>
-        Sukoon
-    </a>
+    <a href="index.html" class="topbar-brand">Sukoon</a>
 </header>
 
 <!-- ===================== BOTTOM NAVIGATION ===================== -->
 <nav class="bottom-nav">
     <a href="/">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
         <span>Home</span>
     </a>
     <a href="/explore.html">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
         <span>Explore</span>
     </a>
     <a href="/breathe.html">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
         <span>Breathe</span>
     </a>
     <a href="/friend.html">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg>
         <span>AI Friend</span>
     </a>
     <a href="/you.html">
-        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
         <span>You</span>
     </a>
 </nav>
@@ -653,9 +493,7 @@
     <!-- ===================== HERO ===================== -->
     <section class="sleep-hero">
         <div class="sleep-hero-content">
-            <div class="sleep-hero-moon">&#127769;</div>
             <h1>Sleep Stories</h1>
-            <p class="sleep-hero-hi">&#x0928;&#x0940;&#x0902;&#x0926; &#x0915;&#x0940; &#x0915;&#x0939;&#x093E;&#x0928;&#x093F;&#x092F;&#x093E;&#x0901;</p>
             <p class="sleep-hero-sub">Drift off to sleep with calming stories. Each tale is crafted to guide you gently into rest.</p>
         </div>
     </section>
@@ -663,7 +501,6 @@
     <!-- ===================== CONTENT ===================== -->
     <div class="page-content">
 
-        <!-- Story Library -->
         <div class="section-label">Story Library</div>
         <div class="section-title">Bedtime Stories</div>
         <div class="section-subtitle">Choose a story and let your mind wander to sleep</div>
@@ -672,13 +509,9 @@
 
             <!-- 1. The Mountain Lake -->
             <div class="story-card" data-story="mountain-lake">
-                <div class="story-cover cover-mountain-lake">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2L2 22h20L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M6.5 16L9 12l2 3 3-4 3.5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></div>
-                    <div class="story-cover-title">The Mountain Lake</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
-                    <div class="story-title-hi">&#x092A;&#x0939;&#x093E;&#x0921;&#x093C;&#x0940; &#x0915;&#x0940; &#x091D;&#x0940;&#x0932;</div>
+                    <div class="story-card-title">The Mountain Lake</div>
                     <p class="story-desc">A journey to a serene mountain lake at sunset</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -689,13 +522,9 @@
 
             <!-- 2. The Spice Market -->
             <div class="story-card" data-story="spice-market">
-                <div class="story-cover cover-spice-market">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M3 21h18M5 21V7l7-4 7 4v14" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><rect x="9" y="13" width="6" height="8" rx="0.5" stroke="currentColor" stroke-width="1.2"/></svg></div>
-                    <div class="story-cover-title">The Spice Market</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre folklore">Indian Folklore</span>
-                    <div class="story-title-hi">&#x092E;&#x0938;&#x093E;&#x0932;&#x094B;&#x0902; &#x0915;&#x093E; &#x092C;&#x093E;&#x095B;&#x093E;&#x0930;</div>
+                    <div class="story-card-title">The Spice Market</div>
                     <p class="story-desc">Walking through a fragrant evening market in Jaipur</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -706,13 +535,9 @@
 
             <!-- 3. Ocean's Lullaby -->
             <div class="story-card" data-story="ocean-lullaby">
-                <div class="story-cover cover-ocean-lullaby">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12c2-2.5 4.5-.5 6.5-2.5S13 7 15 9.5s4.5-.5 7-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M2 16c2-2.5 4.5-.5 6.5-2.5S13 11 15 13.5s4.5-.5 7-2.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg></div>
-                    <div class="story-cover-title">Ocean's Lullaby</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
-                    <div class="story-title-hi">&#x0938;&#x093E;&#x0917;&#x0930; &#x0915;&#x0940; &#x0932;&#x094B;&#x0930;&#x0940;</div>
+                    <div class="story-card-title">Ocean's Lullaby</div>
                     <p class="story-desc">Waves gently washing over a moonlit shore</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -723,13 +548,9 @@
 
             <!-- 4. The Silk Road Traveler -->
             <div class="story-card" data-story="silk-road">
-                <div class="story-cover cover-silk-road">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M3 12h18M12 3c-2 3-3 6-3 9s1 6 3 9M12 3c2 3 3 6 3 9s-1 6-3 9" stroke="currentColor" stroke-width="1.2"/></svg></div>
-                    <div class="story-cover-title">The Silk Road Traveler</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre travel">Travel</span>
-                    <div class="story-title-hi">&#x0930;&#x0947;&#x0936;&#x092E; &#x092E;&#x093E;&#x0930;&#x094D;&#x0917; &#x0915;&#x093E; &#x092F;&#x093E;&#x0924;&#x094D;&#x0930;&#x0940;</div>
+                    <div class="story-card-title">The Silk Road Traveler</div>
                     <p class="story-desc">A peaceful caravan crossing ancient deserts under stars</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -740,13 +561,9 @@
 
             <!-- 5. The Tea Garden -->
             <div class="story-card" data-story="tea-garden">
-                <div class="story-cover cover-tea-garden">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M5 12a7 7 0 007 7 7 7 0 007-7M17 12h2a2 2 0 010 4h-2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 8c0-1.5.5-3 2-3s2 1.5 2 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" opacity="0.5"/></svg></div>
-                    <div class="story-cover-title">The Tea Garden</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
-                    <div class="story-title-hi">&#x091A;&#x093E;&#x092F; &#x0915;&#x093E; &#x092C;&#x093E;&#x0917;&#x093C;</div>
+                    <div class="story-card-title">The Tea Garden</div>
                     <p class="story-desc">Morning mist lifting over rolling green hills</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -757,13 +574,9 @@
 
             <!-- 6. Grandmother's Stories -->
             <div class="story-card" data-story="grandmother">
-                <div class="story-cover cover-grandmother">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2a4 4 0 00-4 4v1H6a2 2 0 00-2 2v11a2 2 0 002 2h12a2 2 0 002-2V9a2 2 0 00-2-2h-2V6a4 4 0 00-4-4z" stroke="currentColor" stroke-width="1.5"/><path d="M10 14l2 2 4-4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/></svg></div>
-                    <div class="story-cover-title">Grandmother's Stories</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre folklore">Indian Folklore</span>
-                    <div class="story-title-hi">&#x0926;&#x093E;&#x0926;&#x0940; &#x0915;&#x0940; &#x0915;&#x0939;&#x093E;&#x0928;&#x093F;&#x092F;&#x093E;&#x0901;</div>
+                    <div class="story-card-title">Grandmother's Stories</div>
                     <p class="story-desc">A grandmother telling tales by lamplight</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -774,13 +587,9 @@
 
             <!-- 7. The Northern Lights -->
             <div class="story-card" data-story="northern-lights">
-                <div class="story-cover cover-northern-lights">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M4.22 7.22l2.12 2.12M1 15h3M4.22 22.78l2.12-2.12M12 21v3" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/><path d="M15 9a6 6 0 11-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-                    <div class="story-cover-title">The Northern Lights</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
-                    <div class="story-title-hi">&#x0909;&#x0924;&#x094D;&#x0924;&#x0930;&#x0940; &#x0930;&#x094B;&#x0936;&#x0928;&#x0940;</div>
+                    <div class="story-card-title">The Northern Lights</div>
                     <p class="story-desc">Watching aurora borealis from a cozy cabin</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -791,13 +600,9 @@
 
             <!-- 8. The Sufi Garden -->
             <div class="story-card" data-story="sufi-garden">
-                <div class="story-cover cover-sufi-garden">
-                    <div class="story-cover-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 22c-4.97 0-9-2.69-9-6 0-2.21 1.79-4 4-4 .36 0 .72.05 1.06.14C9.42 8.58 10.58 6 12 6s2.58 2.58 3.94 6.14c.34-.09.7-.14 1.06-.14 2.21 0 4 1.79 4 4 0 3.31-4.03 6-9 6z" stroke="currentColor" stroke-width="1.5"/><path d="M12 6V2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></div>
-                    <div class="story-cover-title">The Sufi Garden</div>
-                </div>
                 <div class="story-body">
                     <span class="story-genre spiritual">Spiritual</span>
-                    <div class="story-title-hi">&#x0938;&#x0942;&#x092B;&#x093C;&#x0940; &#x092C;&#x093E;&#x0917;&#x093C;</div>
+                    <div class="story-card-title">The Sufi Garden</div>
                     <p class="story-desc">A mystic garden where every flower whispers wisdom</p>
                     <div class="story-bottom">
                         <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~15 min</span>
@@ -818,14 +623,11 @@
                     <div class="ai-gen-icon">
                         <svg viewBox="0 0 24 24" fill="none"><path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 16.8l-6.2 4.5 2.4-7.4L2 9.4h7.6L12 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
                     </div>
-                    <div>
-                        <div class="ai-gen-title">&#x0905;&#x092A;&#x0928;&#x0940; &#x0915;&#x0939;&#x093E;&#x0928;&#x0940; &#x092C;&#x0928;&#x093E;&#x090F;&#x0902;</div>
-                        <div class="ai-gen-sub">Tell us what you'd like, and we'll write it for you</div>
-                    </div>
+                    <div class="ai-gen-title">Create Your Story</div>
                 </div>
-                <div class="ai-gen-sub-hi">&#x0915;&#x0943;&#x092A;&#x092F;&#x093E; &#x092C;&#x0924;&#x093E;&#x090F;&#x0902; &#x0915;&#x093F; &#x0906;&#x092A; &#x0915;&#x094D;&#x092F;&#x093E; &#x091A;&#x093E;&#x0939;&#x0924;&#x0947; &#x0939;&#x0948;&#x0902;</div>
+                <div class="ai-gen-sub">Tell us what you'd like, and we'll write it for you</div>
                 <div class="ai-gen-form">
-                    <input type="text" class="ai-prompt-input" id="storyPromptInput" placeholder="Create a story about... a moonlit forest, a gentle river..." />
+                    <input type="text" class="ai-prompt-input" id="storyPromptInput" placeholder="A moonlit forest, a gentle river..." />
                     <select class="genre-select" id="genreSelect">
                         <option value="Nature">Nature</option>
                         <option value="Travel">Travel</option>
@@ -843,17 +645,16 @@
             </div>
         </div>
 
-        <!-- ===================== WIND-DOWN SECTION ===================== -->
+        <!-- ===================== WIND-DOWN ===================== -->
         <div class="winddown-section">
             <div class="section-label">Prepare for Sleep</div>
             <div class="section-title">Wind Down</div>
-            <div class="section-subtitle">Gentle practices to ease you into rest / &#x0928;&#x0940;&#x0902;&#x0926; &#x0915;&#x0940; &#x0924;&#x0948;&#x092F;&#x093E;&#x0930;&#x0940;</div>
+            <div class="section-subtitle">Gentle practices to ease you into rest</div>
             <div class="winddown-grid">
                 <a href="breathe.html" class="winddown-card">
                     <div class="winddown-icon breathe-icon">&#x1F32C;&#xFE0F;</div>
                     <div>
                         <div class="winddown-card-title">Breathing Exercises</div>
-                        <div class="winddown-card-title-hi">&#x0938;&#x093E;&#x0901;&#x0938; &#x0915;&#x0940; &#x0915;&#x094D;&#x0930;&#x093F;&#x092F;&#x093E;&#x090F;&#x0902;</div>
                         <div class="winddown-card-desc">4-7-8 breathing and more to calm your nervous system</div>
                     </div>
                 </a>
@@ -861,7 +662,6 @@
                     <div class="winddown-icon meditate-icon">&#x1F9D8;</div>
                     <div>
                         <div class="winddown-card-title">Sleep Meditation</div>
-                        <div class="winddown-card-title-hi">&#x0928;&#x0940;&#x0902;&#x0926; &#x0915;&#x093E; &#x0927;&#x094D;&#x092F;&#x093E;&#x0928;</div>
                         <div class="winddown-card-desc">Guided body scan and progressive relaxation</div>
                     </div>
                 </a>
@@ -931,23 +731,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You stand at the edge of a narrow trail that winds upward through a forest of ancient pines. The air is cool and carries the faint sweetness of cedar. Each step you take is cushioned by a soft carpet of fallen needles, and the sound of your footsteps is almost silent. Somewhere above, the late afternoon sun filters through the canopy in long, golden shafts, warming your shoulders as you climb.',
-
                 'The trail curves gently around a mossy boulder, and you notice the sound of water somewhere ahead. Not a rush or a roar, but something quieter -- a soft, continuous murmur, like a whisper from the earth itself. The trees begin to thin, and patches of wildflowers appear at the edges of the path. Purple lupines and pale yellow buttercups sway in a breeze so gentle you can barely feel it against your skin.',
-
                 'You emerge from the tree line and the world opens before you. A mountain lake stretches out in perfect stillness, its surface a mirror reflecting the peaks that rise on all sides. The water is a deep, clear blue, the kind of blue that seems to hold the entire sky within it. The sun is low now, painting everything in shades of amber and rose. You stand still and breathe.',
-
                 'You find a smooth, flat stone near the water\'s edge and sit down. The stone is warm from the sun, and its warmth seeps through your clothes and into your body. You rest your palms against it and feel the gentle heat. The lake is so still that the reflection of the mountains is almost more vivid than the mountains themselves. A single bird calls from somewhere across the water, a long, clear note that fades slowly into silence.',
-
                 'The breeze carries the scent of pine and something softer -- the clean, mineral smell of mountain water. You close your eyes and listen. There is the faint lapping of water at the shore, so soft it is almost imagined. There is the whisper of wind through the last few trees behind you. And beneath it all, a deep, wide silence that holds everything together.',
-
                 'The sun dips lower, and the light on the water shifts from gold to a soft, glowing pink. The air cools slightly, and you feel it on your face like a gentle hand. You do not need to move. You do not need to think. The mountain and the lake and the sky are enough. They ask nothing of you, and you offer nothing in return. You simply sit, and breathe, and watch the light change.',
-
                 'The first star appears above the eastern ridge, small and steady. Then another, and another. The sky deepens from lavender to a dusky violet. The lake darkens too, becoming a still sheet of indigo. The reflections of the stars begin to appear on its surface, tiny points of light that do not waver. The world is folding gently into evening.',
-
                 'Your eyelids grow heavy. The warmth of the stone beneath you, the cool air on your face, the soft rhythm of the water -- all of it is pulling you gently downward, into a deep, quiet rest. Your breathing slows. Your shoulders soften. The mountain holds you. The lake holds you. The stars hold you.',
-
                 'Everything is still. Everything is warm. The last light fades to a soft blue glow on the horizon.',
-
                 'You are safe here. You are held. Sleep.'
             ]
         },
@@ -958,23 +749,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You walk through an old stone archway into the evening market of Jaipur. The sun has just set, and the sky above the pink sandstone buildings is a deep, warm magenta, fading to indigo at its edges. Lanterns are being lit one by one along the narrow lane, casting pools of golden light onto the worn cobblestones. The air is thick and fragrant -- cardamom, saffron, dried rose petals -- all mingling into something that feels less like a scent and more like a memory.',
-
                 'The market is quieting now. The afternoon crowds have thinned, and the remaining vendors move slowly, unhurried, arranging their wares for the evening. You pass a stall where a woman sits behind towers of powdered turmeric, bright as sunlight, and deep red chili in perfect pyramids. She looks up and smiles, and the smile reaches her eyes. She does not try to sell you anything. She simply nods, as if welcoming you home.',
-
                 'Further along, a man is roasting cashews in a wide, blackened pan over a low flame. The sound is a gentle, rhythmic scraping -- metal against metal, the soft hiss of heat. He turns them slowly with a flat wooden paddle, and the nutty, buttery fragrance rises in a warm cloud. He offers you a small paper cone filled with the roasted nuts. They are warm in your hand, and their heat travels up through your fingers.',
-
                 'You walk on, deeper into the market. The lane narrows, and the lanterns grow closer together, their light warmer and softer. A shop is filled with bolts of fabric -- silk in deep emerald, cotton in faded indigo, muslin so fine it is nearly transparent. The shopkeeper sits cross-legged on a low platform, sipping chai from a small clay cup. The scent of the tea -- sweet, milky, laced with ginger and cinnamon -- drifts toward you and settles around you like a shawl.',
-
                 'Around the next corner, you hear music. It is faint at first, then clearer -- a single sitar, its notes bending and sliding like water flowing over smooth stones. A man sits in an open doorway, his instrument across his lap, his eyes half-closed. He plays for no one in particular. He plays for the evening, for the lanterns, for the warm air. You stop and lean against a wall and let the music wash through you.',
-
                 'The wall is warm against your back. The sandstone holds the heat of the day and releases it slowly, like a long exhale. The music continues, each note hanging in the air a little longer than the last, as if the evening itself is stretching, slowing, settling. A cat appears from beneath a market stall and winds its way between your ankles, soft and unhurried, before disappearing into the shadows.',
-
                 'You continue walking, but more slowly now. The market is almost empty. A boy is sweeping the cobblestones with a straw broom, the sound a soft, rhythmic shushing. An old woman wraps her spices in squares of newspaper, folding each one with practiced care. The lanterns flicker gently, and their light makes the stone walls glow like embers.',
-
                 'You find a low bench at the end of the lane, beneath an ancient neem tree whose leaves rustle like whispered secrets. You sit down. The stone is smooth and warm. The last of the vendors are closing their shutters, the soft wooden clatter mixing with the distant sitar. The sky is fully dark now, and the stars above Jaipur are bright and close.',
-
                 'The fragrance of cardamom and rose lingers. The warmth of the stone holds you. The music fades to a single, long, sustained note.',
-
                 'The market sleeps. And so, gently, do you.'
             ]
         },
@@ -985,23 +767,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You walk barefoot along a shore that stretches endlessly in both directions. The sand beneath your feet is fine and cool, still holding the last warmth of the day in its deeper layers. The moon has risen early -- full and luminous, hanging low over the water like a lantern placed there just for you. Its light paints a silver path across the surface of the sea, and the path seems to lead directly to where you stand.',
-
                 'The waves come in slow, unhurried rolls. They rise gently offshore, their crests catching the moonlight for a brief, shining moment before they curl forward and dissolve into white foam that slides up the sand toward your toes. Each wave arrives with a soft, continuous sigh -- a sound so ancient and so steady that your body begins to match its rhythm without you even trying.',
-
                 'You stop walking and face the water. The breeze is warm and carries the clean, salt smell of the open ocean. It moves through your hair and across your face, and it feels like the sea is breathing on you, slowly and peacefully. Far out on the horizon, the water and the sky merge into a single dark expanse, and you cannot tell where one ends and the other begins.',
-
                 'You sit down on the sand, letting your legs stretch out before you. The sand molds itself around you, cradling you gently. A wave reaches further than the others and touches your feet with cool water, then retreats. The sensation is soft and surprising, like a gentle tap on the shoulder from an old friend. You wiggle your toes and let the next wave find them again.',
-
                 'The moon climbs a little higher, and its light grows stronger. You can see tiny shells scattered in the wet sand, each one catching the silver glow. A hermit crab makes its slow, careful way across the beach, leaving a delicate trail of tiny footprints that the next wave will erase. Everything here is temporary and gentle. Everything arrives and departs without effort.',
-
                 'You lie back on the sand and look up. The sky is immense, deep and dark and scattered with stars. The sound of the waves is beneath you now, coming through the sand itself -- a low, resonant pulse that you feel more than hear. It moves through your back, through your shoulders, through the base of your skull. It is the heartbeat of the earth, slow and sure.',
-
                 'Your breathing deepens. Each inhale brings the salt air deep into your lungs, and each exhale carries away something you no longer need. The waves keep their rhythm. The moon keeps its watch. The stars keep their slow, ancient turning. Nothing here needs to be different than it is.',
-
                 'The sand is warm beneath you. The air is soft above you. The sound of the water wraps around you like a blanket.',
-
                 'The waves grow quieter. The moonlight softens. The world becomes very still and very kind.',
-
                 'You are floating. Gently. Safely. Asleep.'
             ]
         },
@@ -1012,23 +785,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You ride on the back of a camel whose steps are slow and swaying, like a boat rocking gently on a calm sea. The desert stretches out in every direction -- vast, golden, and impossibly quiet. The sun has set, leaving behind a sky that glows in layers of peach, rose, and deepening violet. The air is cooling rapidly, and it feels clean and dry against your skin, carrying the faint, mineral scent of ancient sand.',
-
                 'The caravan moves in a long, unhurried line ahead of you. A dozen camels, their silhouettes dark against the glowing horizon, each one laden with bundles of silk and spice wrapped in cloth. The bells tied to their harnesses make a soft, irregular chiming -- a gentle music that marks each step. The sound carries far in the desert silence, then fades, then returns, like a melody that the wind is learning.',
-
                 'Your guide walks beside you, his footsteps nearly silent on the sand. He wears a long, flowing robe the color of the dunes themselves, and his face is calm and unhurried. He points to a cluster of rocks in the distance where you will make camp for the night. You nod, and the camel beneath you seems to understand too, adjusting its pace toward the shelter as if it has been there a thousand times before.',
-
                 'The camp is simple and beautiful. Woven carpets are spread on the sand between the rocks, their patterns intricate -- deep reds, blues, and golds that catch the last light. A fire is built from dried brush, and its first flames are small and yellow, crackling softly. The smoke rises straight up in the still air, a thin column of grey against the darkening sky. Someone places a copper kettle near the coals, and soon the sweet, aromatic scent of mint tea fills the air.',
-
                 'You dismount and sink into the carpets. They are thick and soft, and the sand beneath them gives slightly, molding to the shape of your body. A cup of tea is placed in your hands -- warm, sweet, fragrant. You hold it with both hands and feel the heat seep into your palms. The first sip is perfect. The mint is cool on your tongue, the sweetness gentle, and the warmth travels down through your chest.',
-
                 'The stars appear, and in the desert they are staggering. Not scattered, but crowded -- thousands upon thousands of them, filling the sky so completely that the darkness between them seems like the exception, not the rule. The Milky Way arches overhead, a river of soft, luminous dust. You lean back on the carpets and look up, and the sky is so vast and so close that you feel you could reach up and trail your fingers through the stars.',
-
                 'The fire burns low, its flames now orange and quiet. The camels have settled nearby, their legs folded beneath them, their long necks curved in rest. Someone in the caravan begins to hum -- a low, wordless melody that rises and falls like the dunes themselves. It is not a song with a beginning or an end. It is simply a sound that belongs here, in this place, under these stars.',
-
                 'The sand is still warm from the day. The carpets are soft beneath you. The tea has left a gentle warmth in your belly. The humming continues, lower now, blending with the crackle of embers and the faint chime of a distant bell.',
-
                 'The desert holds you in its wide, open arms. The stars turn slowly overhead.',
-
                 'You close your eyes. The caravan rests. And you rest with it.'
             ]
         },
@@ -1039,23 +803,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You stand at the top of a hill and look out over a landscape of rolling green. The tea garden stretches below you in long, curving rows that follow the contours of the land like lines on a gentle palm. A thin mist hangs over everything, softening the edges of the world. The sun has just risen, but it is still hidden behind the hills, and the light is a pale, silvery gold that makes the dew on the tea leaves glow like tiny jewels.',
-
                 'You begin to walk down a narrow path between the rows. The tea bushes come up to your waist, their leaves dark and glossy, each one perfectly shaped. The air is cool and damp, and it carries a fresh, green fragrance -- the scent of new growth, of earth after rain, of chlorophyll and morning. You breathe it in deeply, and it fills your lungs with something that feels like the color green itself.',
-
                 'The mist moves slowly around you, thinning and thickening in gentle pulses. Through it, you can see the shapes of hills rising and falling in the distance, each one a slightly different shade of green -- emerald, sage, olive, jade. A bird calls from somewhere in the mist, a high, clear note that rises and then fades, as if the mist itself has absorbed it.',
-
                 'You reach a small clearing where a wooden bench sits beneath an old magnolia tree. The bench is simple, its wood silvered by years of weather, and it looks out over the garden. You sit down. The wood is cool and smooth beneath you. A single magnolia blossom, white and heavy, hangs above your head, its perfume thick and sweet. A drop of dew falls from it onto the back of your hand, cool and startling.',
-
                 'The sun begins to break through. The first rays come slanting through the mist like golden threads, and wherever they touch, the garden lights up. The dew on the tea leaves catches the light and throws it back in tiny sparks of gold and white. The mist begins to lift, slowly, reluctantly, as if it does not want to leave this place. You watch it thin and drift upward, revealing more and more of the green hills beneath.',
-
                 'A woman appears on the path below, carrying a wide basket on her back. She moves through the rows with a practiced, rhythmic grace, her fingers selecting and plucking the topmost leaves with a motion so quick and light it is almost invisible. The sound is a soft, continuous whisper -- leaf after leaf, dropped into the basket. She does not hurry. She moves like water finding its way downhill.',
-
                 'You close your eyes and listen. The birdsong has grown richer now, layered -- different voices from different distances, weaving together into a tapestry of sound that is complex and yet perfectly peaceful. Beneath it, you hear the garden itself: the drip of dew, the faint creak of a branch, the rustle of leaves as the warming air begins to stir them.',
-
                 'The sun is warm on your face. The magnolia perfume is thick and sweet. The bench holds you. The garden holds you. The mist has gone, and the hills are bright and clear, but the softness remains -- in the air, in the light, in the way the world feels this morning.',
-
                 'Your eyes stay closed. Your breath is slow and even. The green world around you is quiet and kind.',
-
                 'Rest here. The garden will keep watch.'
             ]
         },
@@ -1066,23 +821,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You are sitting on the cool stone floor of your grandmother\'s veranda, your back against a wooden pillar that has been polished smooth by generations of leaning. The evening is warm and quiet, and the jasmine vine that climbs the railing is in full bloom, its white flowers glowing like tiny moons in the lamplight. Your grandmother sits in her chair -- a low, wide chair with a woven cane seat that creaks softly whenever she shifts her weight.',
-
                 'She holds a brass oil lamp in her lap, adjusting the wick until the flame is steady and golden. The light it casts is warm and close, illuminating the folds of her white cotton sari and the silver bangles on her wrists. Her face is lined and beautiful, and her eyes hold the kind of quiet brightness that comes from a lifetime of watching the world with patience and love. She looks at you and smiles.',
-
                 '"Shall I tell you a story?" she asks, and her voice is low and unhurried, like honey being poured from a spoon. You nod, and she settles deeper into her chair, the cane creaking once more. The night insects have begun their chorus outside -- a steady, rhythmic chirping that rises and falls like breathing. The jasmine scent drifts across the veranda in slow, invisible waves.',
-
                 'She tells you of a river that once flowed through a village much like this one. The river was wise, she says, and it knew every stone in its bed by name. It sang to each one as it passed, a different song for each stone, and the stones were happy because they were known and remembered. The river never hurried. It moved slowly through the village, watering the gardens and cooling the feet of children who waded in its shallows.',
-
                 'One day, she continues, a young girl sat by the river and asked it where it was going. The river answered that it was going where all rivers go -- to the sea. But the journey was long, and there was no need to rush. The river told the girl that the secret to peace was not in arriving, but in flowing. In moving gently through each moment, touching each stone, singing each song, and then moving on.',
-
                 'The girl asked the river if it was ever afraid. The river laughed, a sound like water tumbling over smooth pebbles. "Why would I be afraid?" it said. "I am held by the earth beneath me and guided by the slope of the land. Even when I cannot see the sea, I know it is there, because that is where all water returns." The girl nodded and dipped her hands into the river, and the water was cool and kind.',
-
                 'Your grandmother pauses and takes a sip of water from a steel tumbler. The lamplight flickers, and the shadows on the wall shift and dance. A moth circles the flame, its wings making the softest sound you have ever heard. Your grandmother watches it for a moment, then continues, her voice even lower now, even slower.',
-
                 'She tells you that the girl grew up and left the village, but she never forgot the river. Wherever she went, she carried its lesson with her -- to flow gently, to touch each moment, to not be afraid. And whenever she was tired or lost, she would close her eyes and listen, and she could always hear the river, far away but still singing.',
-
                 'Your grandmother\'s voice is very soft now. The lamp flame is steady. The jasmine is sweet. The night is warm and dark and full of gentle sounds.',
-
                 'She reaches over and places her hand on your head, and her touch is light and warm. "Sleep now," she whispers. And you do.'
             ]
         },
@@ -1093,23 +839,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You are standing on the porch of a small wooden cabin at the edge of a frozen lake. The air is sharp and clean and carries the smell of pine and wood smoke. You are wrapped in a thick wool blanket, and beneath it you wear a heavy sweater that holds your warmth close against your body. The cabin behind you is glowing with firelight -- the windows are small and amber, and through them you can see the stone fireplace where birch logs are burning with a soft, steady crackle.',
-
                 'The lake is a vast, white expanse stretching to the tree line on the far shore. The snow on its surface is untouched and smooth, and in the moonlight it glows with a faint, blue-white luminance. The trees beyond are spruce and pine, their dark shapes forming a jagged line against the sky. Everything is perfectly still. The only sound is the occasional settling of snow, a quiet crumpling like a whispered word.',
-
                 'You look up, and at first the sky seems empty -- just darkness and stars, thousands of them, hard and bright in the cold air. But then you notice a faint, greenish glow along the northern horizon, barely there, like the memory of light. You watch, and the glow begins to strengthen, to spread, to lift itself from the horizon and reach upward into the sky. It is happening. The northern lights are beginning.',
-
                 'The green deepens and brightens, and now it is moving -- a slow, undulating curtain of light that ripples across the sky like silk blown by an unfelt wind. The edges shimmer and shift, and where the green is thinnest, you can see hints of other colors -- a pale violet, a faint rose, a whisper of blue. The light is silent, and its silence makes it even more beautiful. It is the most peaceful thing you have ever seen.',
-
                 'You pull the blanket tighter around your shoulders and lower yourself into the wooden chair on the porch. The chair is wide and deep, and the blanket is thick, and you are warm despite the cold air on your face. The fire inside the cabin pops softly, and a small shower of sparks is briefly visible through the window. You settle deeper into the chair and tilt your head back.',
-
                 'The aurora is overhead now, filling the sky. The curtains of light fold and unfold in slow motion, each wave taking ten or twenty seconds to complete its movement. Green gives way to violet, violet to a deep, luminous teal that seems to pulse with its own quiet heartbeat. The stars show through the thinner parts of the light, and it looks as if the sky has two layers -- one of fire, one of diamonds.',
-
                 'The cold air on your cheeks is pleasant now, a gentle contrast to the warmth wrapped around the rest of you. Your breath makes small clouds that drift away and disappear. The blanket smells of wool and wood smoke and something older -- the scent of the cabin itself, of years of winter nights and morning fires and quiet, peaceful evenings exactly like this one.',
-
                 'The lights begin to slow. The great curtains drift lower, their colors softening, their movements becoming gentler and more deliberate. The green fades to a pale, luminous wash, and the violet retreats to the edges. The sky is returning to its stars, but gently, gradually, as if tucking the colors away for another night.',
-
                 'Your eyes are heavy. The blanket is warm. The fire crackles. The snow is silent.',
-
                 'The last light shimmers once, twice, and is still. The stars hold steady. You close your eyes.'
             ]
         },
@@ -1120,23 +857,14 @@
             duration: '~15 min',
             paragraphs: [
                 'You step through an arched doorway of weathered stone and enter a garden that seems to exist outside of time. The walls are high and covered in climbing roses whose petals are the color of old parchment, and their fragrance fills the air with something sweet and ancient. A path of smooth, grey flagstones leads you forward, and each stone is warm beneath your bare feet. Above you, the sky is the deep blue-violet of late dusk, and the first stars are just beginning to appear.',
-
                 'The garden is arranged in a pattern you cannot quite see from where you stand, but you sense its order -- a geometry of circles and squares, of paths that curve and return, of water channels that divide the space into four equal parts. At the center, you can hear a fountain. Its sound is gentle and continuous, a murmur that is neither loud nor quiet but exactly right, as if the garden has been designed around this single, perfect sound.',
-
                 'You walk along the path and pass beds of flowers you have never seen before. Some have petals that seem to glow with their own inner light -- a soft amber, a pale silver, a deep, warm rose. Others are small and unassuming, but as you pass them, they release their fragrance one by one, as if greeting you. Jasmine, then sandalwood, then something like rain on warm earth, then a sweetness you cannot name but that makes your heart feel lighter.',
-
                 'You reach the fountain at the center of the garden. It is a simple basin of carved marble, and the water rises from its center in a low, continuous arc before falling back into the pool below. The water is clear and catches the starlight, and each drop that falls makes a tiny, musical sound. Around the fountain, the flagstones are arranged in a circle, and you sit on the edge of the basin and let your fingers trail in the water. It is cool and soft.',
-
                 'A presence settles beside you, though you see no one. It is the feeling of being accompanied -- not by a person, but by something larger and quieter. The garden itself seems aware of you, seems to hold you in a kind of gentle attention. The roses turn slightly on their stems. The water adjusts its song. The warm air moves around you like arms opening in welcome.',
-
                 'You notice a tree near the far wall -- an ancient olive, its trunk twisted and silver in the starlight. Beneath it, someone has placed a small, worn carpet, and on the carpet sits a single clay oil lamp, its flame steady and golden despite the open air. The flame does not flicker. It burns as if it has always been burning and always will be, as if time does not touch this small, golden light.',
-
                 'You walk to the tree and sit on the carpet. The ground beneath it is soft with decades of fallen leaves, and the carpet is old and beautiful, its patterns faded to gentle, muted colors. The olive tree above you spreads its branches like open hands, and through the leaves you can see the stars, more of them now, filling the sky. The lamp is warm near your knee, and its light makes the olive leaves glow silver-gold.',
-
                 'The garden is quiet. The fountain murmurs in the distance. The roses breathe their perfume into the night. The flame burns. Everything in this place seems to be saying the same thing, in different ways: You are welcome here. You are known. You are enough.',
-
                 'Your eyes close slowly. The fragrance of roses and earth and ancient stone surrounds you. The flame is a warm glow behind your eyelids.',
-
                 'The garden holds you. The silence holds you. Rest now, in this place where all things are at peace.'
             ]
         }
@@ -1168,7 +896,6 @@
     var sleepTimerRemaining = 0;
     var autoAdvanceEnabled = true;
 
-    /* Audio engine for ambient sounds */
     var audioCtx = null;
     var ambientGain = null;
     var ambientSource = null;
@@ -1220,10 +947,8 @@
         stopAmbient();
         currentAmbient = id;
         if (id === 'silence') return;
-
         var buf = await loadAmbientBuffer(id);
         if (!buf) return;
-
         ambientSource = audioCtx.createBufferSource();
         ambientSource.buffer = buf;
         ambientSource.loop = true;
@@ -1244,75 +969,53 @@
         progressFill.style.width = '0%';
         progressLabel.textContent = '0 / ' + totalParagraphs;
 
-        /* Create all paragraphs (hidden) */
         paragraphs.forEach(function(text) {
             var p = document.createElement('p');
             p.textContent = text;
             readerText.appendChild(p);
         });
 
-        /* Show overlay */
         overlay.style.display = 'flex';
-        requestAnimationFrame(function() {
-            overlay.classList.add('open');
-        });
+        requestAnimationFrame(function() { overlay.classList.add('open'); });
         document.body.style.overflow = 'hidden';
 
-        /* Reveal first paragraph immediately */
         revealNext();
-
-        /* Then reveal one every 20 seconds if auto-advance is on */
         if (autoAdvanceEnabled) {
-            revealInterval = setInterval(function() {
-                revealNext();
-            }, 20000);
+            revealInterval = setInterval(function() { revealNext(); }, 20000);
         }
     }
 
     function revealNext() {
         var paragraphs = readerText.querySelectorAll('p');
         if (revealIndex >= paragraphs.length) {
-            clearInterval(revealInterval);
-            revealInterval = null;
-            return;
+            clearInterval(revealInterval); revealInterval = null; return;
         }
         paragraphs[revealIndex].classList.add('visible');
         revealIndex++;
-
-        /* Update progress */
         var pct = (revealIndex / totalParagraphs) * 100;
         progressFill.style.width = pct + '%';
         progressLabel.textContent = revealIndex + ' / ' + totalParagraphs;
-
-        /* Auto-scroll to newly revealed paragraph */
         if (revealIndex > 1) {
-            var target = paragraphs[revealIndex - 1];
-            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            paragraphs[revealIndex - 1].scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
 
     function closeReader() {
         overlay.classList.remove('open');
-        setTimeout(function() {
-            overlay.style.display = 'none';
-        }, 500);
+        setTimeout(function() { overlay.style.display = 'none'; }, 400);
         document.body.style.overflow = '';
         if (revealInterval) { clearInterval(revealInterval); revealInterval = null; }
         stopAmbient();
         clearSleepTimer();
-
-        /* Reset ambient buttons */
         document.querySelectorAll('.ambient-btn').forEach(function(b) { b.classList.remove('active'); });
         document.querySelector('.ambient-btn[data-ambient="silence"]').classList.add('active');
         currentAmbient = 'silence';
-
-        /* Reset timer buttons */
         document.querySelectorAll('.timer-btn').forEach(function(b) { b.classList.remove('active'); });
         timerCD.textContent = '';
     }
 
     /* ============================================================
-       SLEEP TIMER (inside reader)
+       SLEEP TIMER
        ============================================================ */
     function fmtTimer(s) {
         var m = Math.floor(s / 60);
@@ -1324,21 +1027,14 @@
         clearSleepTimer();
         sleepTimerRemaining = mins * 60;
         timerCD.textContent = fmtTimer(sleepTimerRemaining);
-
         sleepTimerInterval = setInterval(function() {
             sleepTimerRemaining--;
             timerCD.textContent = fmtTimer(sleepTimerRemaining);
-
-            /* Fade out ambient in last 30 seconds */
             if (sleepTimerRemaining <= 30 && ambientGain) {
                 var fadeVol = (sleepTimerRemaining / 30) * 0.25;
                 ambientGain.gain.linearRampToValueAtTime(Math.max(fadeVol, 0), audioCtx.currentTime + 0.5);
             }
-
-            if (sleepTimerRemaining <= 0) {
-                clearSleepTimer();
-                closeReader();
-            }
+            if (sleepTimerRemaining <= 0) { clearSleepTimer(); closeReader(); }
         }, 1000);
     }
 
@@ -1352,8 +1048,6 @@
     /* ============================================================
        EVENT LISTENERS
        ============================================================ */
-
-    /* Story card clicks */
     document.getElementById('storiesGrid').addEventListener('click', function(e) {
         var btn = e.target.closest('.story-begin');
         var card = e.target.closest('.story-card');
@@ -1365,31 +1059,23 @@
         openReader(story.title, story.genre, story.paragraphs);
     });
 
-    /* Close reader */
     readerClose.addEventListener('click', closeReader);
 
-    /* Close on Escape key */
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && overlay.classList.contains('open')) {
-            closeReader();
-        }
+        if (e.key === 'Escape' && overlay.classList.contains('open')) closeReader();
     });
 
-    /* Auto-advance toggle */
     autoAdvanceBtn.addEventListener('click', function() {
         autoAdvanceEnabled = !autoAdvanceEnabled;
         autoAdvanceBtn.classList.toggle('active', autoAdvanceEnabled);
         autoAdvanceBtn.textContent = autoAdvanceEnabled ? 'On' : 'Off';
-
         if (autoAdvanceEnabled && !revealInterval && overlay.classList.contains('open')) {
             revealInterval = setInterval(function() { revealNext(); }, 20000);
         } else if (!autoAdvanceEnabled && revealInterval) {
-            clearInterval(revealInterval);
-            revealInterval = null;
+            clearInterval(revealInterval); revealInterval = null;
         }
     });
 
-    /* Ambient sound buttons */
     document.querySelectorAll('.ambient-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.ambient-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -1398,7 +1084,6 @@
         });
     });
 
-    /* Timer buttons */
     document.querySelectorAll('.timer-btn').forEach(function(btn) {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.timer-btn').forEach(function(b) { b.classList.remove('active'); });
@@ -1420,7 +1105,6 @@
         generateBtn.disabled = true;
         generateBtn.classList.add('loading');
 
-        /* Open reader with loading state */
         var storyTitle = customPrompt ? 'Your Story' : 'Your ' + genre + ' Story';
         readerTitle.textContent = storyTitle;
         readerGenre.textContent = genre + ' (AI Generated)';
@@ -1432,9 +1116,7 @@
         totalParagraphs = 0;
 
         overlay.style.display = 'flex';
-        requestAnimationFrame(function() {
-            overlay.classList.add('open');
-        });
+        requestAnimationFrame(function() { overlay.classList.add('open'); });
         document.body.style.overflow = 'hidden';
 
         var systemPrompt = 'You are a sleep story narrator. Write a calming, slow-paced bedtime story in second person present tense. The story should be 10 paragraphs long, rich in sensory details, progressively slower and drowsier. Genre: ' + genre + '. Make it warm, safe, and peaceful. Return ONLY the story text with paragraphs separated by double newlines. No titles, no headings, no labels.';
@@ -1460,28 +1142,21 @@
             readerLoading.classList.remove('show');
             generateBtn.disabled = false;
             generateBtn.classList.remove('loading');
-
             var text = data.reply || data.content || data.message || '';
             var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0; });
-
             if (paragraphs.length === 0) {
-                readerText.innerHTML = '<p class="visible" style="color:#64748B;">Could not generate a story. Please try again.</p>';
+                readerText.innerHTML = '<p class="visible" style="color:#AEAEB2;">Could not generate a story. Please try again.</p>';
                 return;
             }
-
             totalParagraphs = paragraphs.length;
             paragraphs.forEach(function(pText) {
                 var p = document.createElement('p');
                 p.textContent = pText.trim();
                 readerText.appendChild(p);
             });
-
-            /* Reveal first immediately, then every 20s */
             revealNext();
             if (autoAdvanceEnabled) {
-                revealInterval = setInterval(function() {
-                    revealNext();
-                }, 20000);
+                revealInterval = setInterval(function() { revealNext(); }, 20000);
             }
         })
         .catch(function(err) {
@@ -1489,7 +1164,7 @@
             readerLoading.classList.remove('show');
             generateBtn.disabled = false;
             generateBtn.classList.remove('loading');
-            readerText.innerHTML = '<p class="visible" style="color:rgba(239,68,68,0.6);">Unable to generate story. Please check your connection and try again.</p>';
+            readerText.innerHTML = '<p class="visible" style="color:rgba(220,38,38,0.6);">Unable to generate story. Please check your connection and try again.</p>';
         });
     });
 
