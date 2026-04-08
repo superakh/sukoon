@@ -8,45 +8,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
         body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             padding-bottom: 80px;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        /* ===================== HEADER ===================== */
-        .topbar {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.5rem;
-            height: 52px;
-            background: rgba(250, 250, 247, 0.92);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.35rem;
-            color: #1D1D1F;
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-            white-space: nowrap;
         }
 
         /* ===================== DESKTOP SIDEBAR ===================== */
@@ -306,15 +271,6 @@
             font-size: 0.83rem;
             color: #AEAEB2;
         }
-
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav { display: flex; }
 
         /* ===================== RESPONSIVE ===================== */
         @media (min-width: 961px) {

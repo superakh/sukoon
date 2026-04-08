@@ -4,869 +4,375 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>SOS - Sukoon</title>
-    <meta name="description" content="Instant calm when you need it most. Guided breathing, grounding exercises, and crisis support. You are safe here.">
+    <meta name="description" content="Instant calm when you need it most. Guided interventions for panic, grief, overwhelm, insomnia, and anger. You are safe here.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            padding-bottom: 72px;
-        }
-        a { text-decoration: none; color: inherit; }
+        body { padding-bottom: 72px; }
+        @media(min-width:961px){ body { padding-left: 220px; padding-bottom: 0; } }
 
-        /* ===================== TOP HEADER ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 1.5rem; height: 52px;
-            background: rgba(250,250,247,0.82);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            letter-spacing: -0.01em;
-        }
+        /* Browse */
+        .sos-page { max-width: 600px; margin: 0 auto; padding: calc(var(--topbar-h)+24px) 20px 40px; }
+        .sos-hero { text-align: center; margin-bottom: 28px; }
+        .sos-hero h1 { font-family: var(--font-brand); font-size: 1.5rem; margin-bottom: 6px; }
+        .sos-hero p { color: var(--color-text-sec); font-size: 0.88rem; }
 
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 56px; z-index: 1000;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            display: flex; align-items: center; justify-content: space-around;
-            padding-bottom: env(safe-area-inset-bottom);
+        .emotion-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-bottom: 36px; }
+        .emo-card {
+            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
+            padding: 20px 16px; text-align: center; cursor: pointer; transition: all 0.2s;
         }
-        .bottom-nav a {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 3px; font-size: 0.6rem; font-weight: 500;
-            color: #AEAEB2; transition: color 0.2s;
-        }
-        .bottom-nav a:hover { color: #86868B; }
-        .bottom-nav a.active { color: #2D6A4F; }
-        .bottom-nav svg { width: 22px; height: 22px; stroke-width: 1.5; fill: none; stroke: currentColor; }
+        .emo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .emo-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
+        .emo-title { font-weight: 600; font-size: 0.88rem; color: var(--color-text); margin-bottom: 2px; }
+        .emo-sub { font-size: 0.72rem; color: var(--color-text-tert); }
 
-        /* ===================== DESKTOP SIDEBAR >960px ===================== */
-        @media (min-width: 961px) {
-            .bottom-nav {
-                position: fixed; top: 52px; left: 0; bottom: 0; right: auto;
-                width: 220px; height: auto;
-                flex-direction: column; justify-content: flex-start;
-                padding: 24px 0; gap: 2px;
-                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
-                background: #FFFFFF;
-            }
-            .bottom-nav a {
-                flex-direction: row; gap: 10px; width: 100%;
-                padding: 10px 24px; font-size: 0.82rem; border-radius: 0;
-            }
-            .bottom-nav a.active {
-                background: rgba(45,106,79,0.06);
-                border-right: 2px solid #2D6A4F;
-            }
-            body { padding-left: 220px; padding-bottom: 0; }
-            .topbar { left: 220px; }
+        /* Crisis banner */
+        .crisis-section { margin-top: 16px; }
+        .crisis-title { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--color-text-tert); margin-bottom: 12px; text-align: center; }
+        .crisis-card {
+            display: flex; align-items: center; gap: 12px; padding: 14px 16px;
+            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md);
+            margin-bottom: 8px;
         }
+        .crisis-card .cc-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(239,68,68,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #EF4444; }
+        .crisis-card .cc-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+        .crisis-card .cc-info { flex: 1; }
+        .crisis-card .cc-name { font-size: 0.85rem; font-weight: 600; color: var(--color-text); }
+        .crisis-card .cc-num { font-size: 0.78rem; color: var(--color-accent); font-weight: 600; }
 
-        /* ===================== MAIN CONTENT ===================== */
-        .main-content {
-            position: relative; z-index: 1;
-            max-width: 600px; margin: 0 auto;
-            padding: 72px 20px 40px;
+        /* Guided session overlay */
+        .session-overlay {
+            position: fixed; inset: 0; z-index: 2000; display: none; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center; padding: 20px;
+            transition: opacity 0.5s;
         }
-        .section-spacing { margin-bottom: 56px; }
+        .session-overlay.active { display: flex; }
+        .session-overlay .so-bg { position: absolute; inset: 0; z-index: 0; }
+        .session-overlay .so-content { position: relative; z-index: 2; max-width: 440px; color: #fff; }
+        .so-back {
+            position: fixed; top: 16px; left: 16px; z-index: 10;
+            background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.8); cursor: pointer; backdrop-filter: blur(10px);
+        }
+        .so-back:hover { background: rgba(255,255,255,0.2); }
+        .so-title { font-family: var(--font-brand); font-size: 1.3rem; margin-bottom: 8px; opacity: 0.9; }
+        .so-prompt { font-size: 1.1rem; line-height: 1.7; min-height: 80px; margin-bottom: 20px; font-weight: 300; opacity: 0.9; transition: opacity 0.5s; }
+        .so-play {
+            width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+            background: rgba(255,255,255,0.15); color: #fff; backdrop-filter: blur(10px);
+            display: flex; align-items: center; justify-content: center; margin: 0 auto;
+        }
+        .so-play:hover { background: rgba(255,255,255,0.25); }
+        .so-play svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+        .so-done { margin-top: 24px; padding: 12px 32px; border-radius: var(--radius-md); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 0.88rem; cursor: pointer; display: none; font-family: var(--font-body); }
+        .so-done.visible { display: inline-block; }
 
-        /* ===================== BREATHING OVERLAY ===================== */
-        .breathing-overlay {
-            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-            z-index: 2000;
-            background: rgba(250,250,247,0.97);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            opacity: 1; transition: opacity 0.6s ease;
+        /* Particles */
+        #soParticles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+        .particle { position: absolute; border-radius: 50%; opacity: 0; animation: particleFloat linear infinite; }
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            15% { opacity: var(--po,0.3); } 85% { opacity: var(--po,0.3); }
+            100% { opacity: 0; transform: translateY(var(--dy,-200px)) scale(1.2); }
         }
-        .breathing-overlay.hidden { opacity: 0; pointer-events: none; }
-
-        .breath-header {
-            text-align: center; margin-bottom: 40px;
-            opacity: 0; animation: fadeSlideIn 1s ease 0.3s forwards;
-        }
-        .breath-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.65rem; color: #1D1D1F;
-            letter-spacing: -0.02em;
-        }
-        @keyframes fadeSlideIn {
-            from { opacity: 0; transform: translateY(8px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Breathing circle */
-        .circle-container {
-            position: relative;
-            width: 220px; height: 220px;
-            display: flex; align-items: center; justify-content: center;
-            margin-bottom: 36px;
-            opacity: 0; animation: fadeSlideIn 1s ease 0.6s forwards;
-        }
-        .circle-ring {
-            position: absolute; border-radius: 50%;
-            border: 1px solid rgba(45,106,79,0.1);
-        }
-        .circle-ring-1 { width: 220px; height: 220px; }
-        .circle-ring-2 { width: 184px; height: 184px; border-color: rgba(45,106,79,0.07); }
-        .circle-ring-3 { width: 148px; height: 148px; border-color: rgba(45,106,79,0.04); }
-
-        .breath-circle {
-            width: 110px; height: 110px; border-radius: 50%;
-            background: radial-gradient(circle at 45% 40%, rgba(45,106,79,0.2) 0%, rgba(45,106,79,0.08) 60%, rgba(45,106,79,0.03) 100%);
-            border: 1px solid rgba(45,106,79,0.2);
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            z-index: 2;
-            transition: transform 4s cubic-bezier(0.4,0,0.2,1);
-        }
-        .breath-circle.expanded { transform: scale(1.5); }
-
-        .phase-text {
-            font-family: 'DM Serif Display', serif;
-            font-size: 0.9rem; color: #1D1D1F;
-            text-align: center; line-height: 1.3;
-        }
-
-        .breath-counter {
-            font-size: 0.85rem; font-weight: 400;
-            color: #AEAEB2; margin-bottom: 6px;
-            opacity: 0; animation: fadeSlideIn 1s ease 1s forwards;
-        }
-        .breath-timer {
-            font-size: 2.8rem; font-weight: 200;
-            color: #1D1D1F;
-            letter-spacing: -0.02em;
-            font-variant-numeric: tabular-nums;
-            margin-bottom: 40px;
-            opacity: 0; animation: fadeSlideIn 1s ease 0.8s forwards;
-        }
-        .btn-skip {
-            padding: 10px 28px; border-radius: 100px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.1);
-            color: #86868B; font-size: 0.85rem; font-weight: 500;
-            font-family: -apple-system, 'Inter', sans-serif;
-            cursor: pointer; transition: all 0.2s;
-            opacity: 0; animation: fadeSlideIn 1s ease 1.2s forwards;
-        }
-        .btn-skip:hover { background: #F5F5F3; color: #1D1D1F; }
-
-        /* ===================== SECTION HEADINGS ===================== */
-        .section-label {
-            font-size: 0.7rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.12em;
-            color: #2D6A4F; margin-bottom: 6px;
-        }
-        .section-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.45rem; color: #1D1D1F;
-            letter-spacing: -0.02em;
-            margin-bottom: 4px; line-height: 1.3;
-        }
-        .section-subtitle {
-            font-size: 0.85rem; color: #86868B;
-            margin-bottom: 20px;
-        }
-
-        /* ===================== GROUNDING EXERCISE ===================== */
-        .grounding-steps {
-            display: flex; flex-direction: column;
-            gap: 10px; width: 100%;
-        }
-        .grounding-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 12px; padding: 18px 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none; overflow: hidden;
-        }
-        .grounding-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.04); }
-        .grounding-card.active {
-            border-color: rgba(45,106,79,0.2);
-            box-shadow: 0 2px 12px rgba(45,106,79,0.06);
-        }
-        .grounding-card.completed {
-            border-color: rgba(45,106,79,0.15);
-            background: rgba(216,243,220,0.3);
-        }
-        .grounding-card-header {
-            display: flex; align-items: center; gap: 14px;
-        }
-        .grounding-number {
-            width: 40px; height: 40px; border-radius: 50%;
-            background: rgba(45,106,79,0.08);
-            border: 1.5px solid rgba(45,106,79,0.15);
-            display: flex; align-items: center; justify-content: center;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.05rem; color: #2D6A4F;
-            flex-shrink: 0; transition: all 0.3s;
-        }
-        .grounding-card.completed .grounding-number {
-            background: #2D6A4F; border-color: #2D6A4F; color: #FFFFFF;
-        }
-        .grounding-card-text { flex: 1; }
-        .grounding-card-en {
-            font-size: 0.92rem; font-weight: 600; color: #1D1D1F; line-height: 1.4;
-        }
-        .grounding-chevron {
-            color: #AEAEB2; transition: transform 0.3s; flex-shrink: 0;
-        }
-        .grounding-card.active .grounding-chevron { transform: rotate(180deg); }
-
-        .grounding-expanded {
-            max-height: 0; overflow: hidden;
-            transition: max-height 0.4s ease, padding 0.4s ease;
-            padding: 0;
-        }
-        .grounding-card.active .grounding-expanded {
-            max-height: 200px; padding: 18px 0 4px;
-        }
-        .grounding-circles {
-            display: flex; gap: 10px;
-            justify-content: center; flex-wrap: wrap;
-        }
-        .grounding-dot {
-            width: 44px; height: 44px; border-radius: 50%;
-            border: 2px solid rgba(45,106,79,0.15);
-            background: rgba(45,106,79,0.03);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex; align-items: center; justify-content: center;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .grounding-dot:hover { border-color: rgba(45,106,79,0.3); }
-        .grounding-dot.filled {
-            background: #2D6A4F; border-color: #2D6A4F;
-            transform: scale(1.08);
-        }
-        .grounding-dot svg {
-            width: 16px; height: 16px;
-            stroke: #FFFFFF; stroke-width: 2.5; fill: none;
-            opacity: 0; transition: opacity 0.2s;
-        }
-        .grounding-dot.filled svg { opacity: 1; }
-        .grounding-hint {
-            text-align: center; font-size: 0.72rem;
-            color: #AEAEB2; margin-top: 10px;
-        }
-
-        /* ===================== AFFIRMATION CARDS ===================== */
-        .affirmation-scroll {
-            display: flex; gap: 14px;
-            overflow-x: auto; padding: 4px 0 16px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            scrollbar-width: none;
-            margin: 0 -20px; padding-left: 20px; padding-right: 20px;
-        }
-        .affirmation-scroll::-webkit-scrollbar { display: none; }
-        .affirmation-card {
-            min-width: 260px; max-width: 260px;
-            padding: 32px 24px;
-            border-radius: 12px;
-            scroll-snap-align: center;
-            display: flex; flex-direction: column;
-            align-items: flex-start; text-align: left;
-            flex-shrink: 0;
-            background: #FFFFFF;
-            border-left: 3px solid #2D6A4F;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            border-right: 1px solid rgba(0,0,0,0.06);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-            box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-        }
-        .affirmation-en {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.1rem; color: #1D1D1F;
-            letter-spacing: -0.02em;
-            line-height: 1.45;
-        }
-
-        /* ===================== TALK TO SOMEONE ===================== */
-        .talk-btn {
-            display: flex; align-items: center; justify-content: center;
-            gap: 10px; width: 100%;
-            padding: 18px 28px; border-radius: 12px;
-            background: #2D6A4F; color: #FFFFFF;
-            font-size: 1rem; font-weight: 600;
-            font-family: -apple-system, 'Inter', sans-serif;
-            border: none; cursor: pointer;
-            transition: background 0.2s;
-        }
-        .talk-btn:hover { background: #1B4332; }
-        .talk-btn svg { width: 20px; height: 20px; }
-        .talk-subtitle {
-            text-align: center; font-size: 0.78rem;
-            color: #AEAEB2; margin-top: 8px;
-        }
-
-        /* ===================== CRISIS HELPLINES ===================== */
-        .helplines-grid {
-            display: flex; flex-direction: column;
-            gap: 8px; width: 100%;
-        }
-        .helpline-card {
-            display: flex; align-items: center; gap: 14px;
-            padding: 16px 18px; border-radius: 12px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            transition: box-shadow 0.2s;
-            color: inherit;
-            -webkit-tap-highlight-color: transparent;
-        }
-        .helpline-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .helpline-icon {
-            width: 40px; height: 40px; border-radius: 10px;
-            background: #D8F3DC;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-        .helpline-icon svg { width: 18px; height: 18px; stroke: #2D6A4F; fill: none; stroke-width: 2; }
-        .helpline-info { display: flex; flex-direction: column; text-align: left; flex: 1; }
-        .helpline-name { font-size: 0.85rem; font-weight: 600; color: #1D1D1F; }
-        .helpline-number { font-size: 0.85rem; font-weight: 600; color: #2D6A4F; letter-spacing: 0.02em; }
-        .helpline-region {
-            font-size: 0.62rem; color: #AEAEB2;
-            font-weight: 500; text-transform: uppercase;
-            letter-spacing: 0.05em; margin-top: 2px;
-        }
-        .helpline-call {
-            width: 34px; height: 34px; border-radius: 50%;
-            background: rgba(45,106,79,0.08);
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-        .helpline-call svg { width: 15px; height: 15px; stroke: #2D6A4F; fill: none; stroke-width: 2; }
-
-        /* ===================== QUICK LINKS ===================== */
-        .quick-links {
-            display: grid; grid-template-columns: 1fr 1fr 1fr;
-            gap: 10px; width: 100%;
-        }
-        .quick-link {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 8px; padding: 20px 14px; border-radius: 12px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            transition: box-shadow 0.2s; text-align: center;
-        }
-        .quick-link:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-        .quick-link-icon {
-            width: 42px; height: 42px; border-radius: 10px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.15rem;
-        }
-        .quick-link-icon.green { background: #D8F3DC; }
-        .quick-link-icon.purple { background: #F3E8FF; }
-        .quick-link-icon.blue { background: #DBEAFE; }
-        .quick-link-text { font-size: 0.78rem; font-weight: 600; color: #1D1D1F; line-height: 1.3; }
-
-        /* ===================== FOOTER NOTE ===================== */
-        .footer-note { text-align: center; padding: 32px 20px 16px; }
-        .footer-note p { font-size: 0.78rem; color: #AEAEB2; line-height: 1.6; }
-        .footer-note .brand-small {
-            font-family: 'DM Serif Display', serif; color: #86868B;
-        }
-
-        /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 480px) {
-            .breath-title { font-size: 1.4rem; }
-            .section-title { font-size: 1.3rem; }
-            .circle-container { width: 190px; height: 190px; }
-            .circle-ring-1 { width: 190px; height: 190px; }
-            .circle-ring-2 { width: 158px; height: 158px; }
-            .circle-ring-3 { width: 126px; height: 126px; }
-            .breath-circle { width: 95px; height: 95px; }
-            .phase-text { font-size: 0.82rem; }
-            .breath-timer { font-size: 2.4rem; }
-            .affirmation-card { min-width: 240px; max-width: 240px; padding: 24px 18px; }
-            .affirmation-en { font-size: 1rem; }
-            .quick-links { grid-template-columns: 1fr; }
-            .quick-link { flex-direction: row; padding: 16px 18px; }
-        }
-
-        /* ===================== ANIMATIONS ===================== */
-        .fade-in-up {
-            opacity: 0; transform: translateY(16px);
-            transition: all 0.6s ease;
-        }
-        .fade-in-up.visible { opacity: 1; transform: translateY(0); }
     </style>
 </head>
 <body>
 
-    <!-- TOP HEADER -->
-    <header class="topbar">
-        <a href="/" class="brand">Sukoon</a>
-    </header>
+<!-- TOPBAR -->
+<header class="topbar">
+    <a href="/" class="topbar-brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
+</header>
 
-    <!-- BOTTOM NAVIGATION -->
-    <nav class="bottom-nav">
-        <a href="/">
-            <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span>Home</span>
-        </a>
-        <a href="/explore.html">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
-            <span>Explore</span>
-        </a>
-        <a href="/breathe.html">
-            <svg viewBox="0 0 24 24"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="M8 12s1.5-3 4-3 4 3 4 3-1.5 3-4 3-4-3-4-3z"/></svg>
-            <span>Breathe</span>
-        </a>
-        <a href="/friend.html">
-            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            <span>AI Friend</span>
-        </a>
-        <a href="/profile.html">
-            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span>You</span>
-        </a>
-    </nav>
+<!-- NAV -->
+<nav class="bottom-nav">
+    <a href="/"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg><span>Home</span></a>
+    <a href="/meditate.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 1.5"/></svg><span>Meditate</span></a>
+    <a href="/sleep.html"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><span>Sleep</span></a>
+    <a href="/friend.html"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
+    <a href="/progress.html"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Progress</span></a>
+</nav>
 
-    <!-- ===================== BREATHING OVERLAY (Auto-starts) ===================== -->
-    <div class="breathing-overlay" id="breathingOverlay">
-        <div class="breath-header">
-            <div class="breath-title">Breathe with me</div>
-        </div>
-
-        <div class="circle-container">
-            <div class="circle-ring circle-ring-1"></div>
-            <div class="circle-ring circle-ring-2"></div>
-            <div class="circle-ring circle-ring-3"></div>
-            <div class="breath-circle" id="breathCircle">
-                <div class="phase-text" id="phaseText">Inhale</div>
-            </div>
-        </div>
-
-        <div class="breath-timer" id="breathTimer">4</div>
-        <div class="breath-counter" id="breathCounter">Breath 1 of 10</div>
-
-        <button class="btn-skip" id="btnSkip">Skip -- I'm okay</button>
+<!-- ==================== BROWSE ==================== -->
+<div class="sos-page" id="sosPage">
+    <div class="sos-hero">
+        <h1>What's happening?</h1>
+        <p>Choose what you're feeling. We'll guide you through it.</p>
     </div>
 
-    <!-- ===================== MAIN CONTENT ===================== -->
-    <div class="main-content">
-
-        <!-- ===================== GROUNDING EXERCISE ===================== -->
-        <div class="section-spacing fade-in-up" id="groundingSection">
-            <div class="section-label">Grounding Exercise</div>
-            <div class="section-title">5-4-3-2-1 Technique</div>
-            <div class="section-subtitle">Bring yourself back to the present moment</div>
-
-            <div class="grounding-steps">
-                <!-- 5 SEE -->
-                <div class="grounding-card" data-count="5" onclick="toggleGround(this)">
-                    <div class="grounding-card-header">
-                        <div class="grounding-number">5</div>
-                        <div class="grounding-card-text">
-                            <div class="grounding-card-en">Things you can <strong>SEE</strong></div>
-                        </div>
-                        <div class="grounding-chevron">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                    </div>
-                    <div class="grounding-expanded">
-                        <div class="grounding-circles">
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        </div>
-                        <div class="grounding-hint">Tap each circle as you notice something</div>
-                    </div>
-                </div>
-
-                <!-- 4 TOUCH -->
-                <div class="grounding-card" data-count="4" onclick="toggleGround(this)">
-                    <div class="grounding-card-header">
-                        <div class="grounding-number">4</div>
-                        <div class="grounding-card-text">
-                            <div class="grounding-card-en">Things you can <strong>TOUCH</strong></div>
-                        </div>
-                        <div class="grounding-chevron">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                    </div>
-                    <div class="grounding-expanded">
-                        <div class="grounding-circles">
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        </div>
-                        <div class="grounding-hint">Tap each circle as you notice something</div>
-                    </div>
-                </div>
-
-                <!-- 3 HEAR -->
-                <div class="grounding-card" data-count="3" onclick="toggleGround(this)">
-                    <div class="grounding-card-header">
-                        <div class="grounding-number">3</div>
-                        <div class="grounding-card-text">
-                            <div class="grounding-card-en">Things you can <strong>HEAR</strong></div>
-                        </div>
-                        <div class="grounding-chevron">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                    </div>
-                    <div class="grounding-expanded">
-                        <div class="grounding-circles">
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        </div>
-                        <div class="grounding-hint">Tap each circle as you notice something</div>
-                    </div>
-                </div>
-
-                <!-- 2 SMELL -->
-                <div class="grounding-card" data-count="2" onclick="toggleGround(this)">
-                    <div class="grounding-card-header">
-                        <div class="grounding-number">2</div>
-                        <div class="grounding-card-text">
-                            <div class="grounding-card-en">Things you can <strong>SMELL</strong></div>
-                        </div>
-                        <div class="grounding-chevron">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                    </div>
-                    <div class="grounding-expanded">
-                        <div class="grounding-circles">
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        </div>
-                        <div class="grounding-hint">Tap each circle as you notice something</div>
-                    </div>
-                </div>
-
-                <!-- 1 TASTE -->
-                <div class="grounding-card" data-count="1" onclick="toggleGround(this)">
-                    <div class="grounding-card-header">
-                        <div class="grounding-number">1</div>
-                        <div class="grounding-card-text">
-                            <div class="grounding-card-en">Thing you can <strong>TASTE</strong></div>
-                        </div>
-                        <div class="grounding-chevron">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
-                        </div>
-                    </div>
-                    <div class="grounding-expanded">
-                        <div class="grounding-circles">
-                            <div class="grounding-dot" onclick="event.stopPropagation(); fillDot(this)"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-                        </div>
-                        <div class="grounding-hint">Tap the circle as you notice something</div>
-                    </div>
-                </div>
-            </div>
+    <div class="emotion-grid" id="emoGrid">
+        <div class="emo-card" data-emo="panic">
+            <span class="emo-icon">&#128168;</span>
+            <div class="emo-title">Panic Attack</div>
+            <div class="emo-sub">3 min guided calm</div>
         </div>
-
-        <!-- ===================== AFFIRMATIONS ===================== -->
-        <div class="section-spacing fade-in-up">
-            <div class="section-label">Affirmations</div>
-            <div class="section-title">You are going to be okay</div>
-            <div class="section-subtitle">Swipe through these gentle reminders</div>
-
-            <div class="affirmation-scroll">
-                <div class="affirmation-card">
-                    <div class="affirmation-en">This feeling will pass</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">You are safe right now</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">You are not alone</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">You have survived every bad day so far</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">You deserve kindness, especially from yourself</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">Waves always calm down. So will this.</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">Healing is not linear. Every step counts.</div>
-                </div>
-                <div class="affirmation-card">
-                    <div class="affirmation-en">Tomorrow is a new beginning</div>
-                </div>
-            </div>
+        <div class="emo-card" data-emo="crying">
+            <span class="emo-icon">&#128167;</span>
+            <div class="emo-title">Can't Stop Crying</div>
+            <div class="emo-sub">5 min compassion hold</div>
         </div>
-
-        <!-- ===================== TALK TO SOMEONE ===================== -->
-        <div class="section-spacing fade-in-up">
-            <div class="section-label">Talk to Someone</div>
-            <div class="section-title">You don't have to face this alone</div>
-            <div class="section-subtitle">A patient, empathetic listener available 24/7</div>
-
-            <a href="/friend.html" class="talk-btn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/>
-                    <path d="M8 10h.01M12 10h.01M16 10h.01" stroke-linecap="round"/>
-                </svg>
-                Talk to AI Friend
-            </a>
-            <div class="talk-subtitle">Available whenever you need someone</div>
+        <div class="emo-card" data-emo="overwhelm">
+            <span class="emo-icon">&#127754;</span>
+            <div class="emo-title">Overwhelmed</div>
+            <div class="emo-sub">5-4-3-2-1 grounding</div>
         </div>
-
-        <!-- ===================== CRISIS HELPLINES ===================== -->
-        <div class="section-spacing fade-in-up">
-            <div class="section-label">Crisis Helplines</div>
-            <div class="section-title">Reach a real person</div>
-            <div class="section-subtitle">Trained professionals ready to help</div>
-
-            <div class="helplines-grid">
-                <a href="tel:9152987821" class="helpline-card">
-                    <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                    <div class="helpline-info">
-                        <div class="helpline-name">iCall</div>
-                        <div class="helpline-number">9152987821</div>
-                        <div class="helpline-region">India</div>
-                    </div>
-                    <div class="helpline-call">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                </a>
-                <a href="tel:9999666555" class="helpline-card">
-                    <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                    <div class="helpline-info">
-                        <div class="helpline-name">Vandrevala Foundation</div>
-                        <div class="helpline-number">9999666555</div>
-                        <div class="helpline-region">India -- 24/7</div>
-                    </div>
-                    <div class="helpline-call">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                </a>
-                <a href="tel:988" class="helpline-card">
-                    <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                    <div class="helpline-info">
-                        <div class="helpline-name">988 Suicide &amp; Crisis Lifeline</div>
-                        <div class="helpline-number">988</div>
-                        <div class="helpline-region">United States</div>
-                    </div>
-                    <div class="helpline-call">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                </a>
-                <a href="tel:116123" class="helpline-card">
-                    <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                    <div class="helpline-info">
-                        <div class="helpline-name">Samaritans</div>
-                        <div class="helpline-number">116 123</div>
-                        <div class="helpline-region">United Kingdom -- 24/7</div>
-                    </div>
-                    <div class="helpline-call">
-                        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                    </div>
-                </a>
-                <a href="https://findahelpline.com" target="_blank" rel="noopener" class="helpline-card">
-                    <div class="helpline-icon">
-                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                    </div>
-                    <div class="helpline-info">
-                        <div class="helpline-name">Find a Helpline</div>
-                        <div class="helpline-number">findahelpline.com</div>
-                        <div class="helpline-region">International Directory</div>
-                    </div>
-                    <div class="helpline-call">
-                        <svg viewBox="0 0 24 24" stroke="currentColor" fill="none" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                    </div>
-                </a>
-            </div>
+        <div class="emo-card" data-emo="insomnia">
+            <span class="emo-icon">&#127769;</span>
+            <div class="emo-title">Can't Sleep</div>
+            <div class="emo-sub">10 min relaxation</div>
         </div>
-
-        <!-- ===================== QUICK LINKS ===================== -->
-        <div class="section-spacing fade-in-up">
-            <div class="section-label">More Support</div>
-            <div class="section-title">Try something calming</div>
-            <div class="section-subtitle">Gentle activities to help you feel grounded</div>
-
-            <div class="quick-links">
-                <a href="/breathe.html" class="quick-link">
-                    <div class="quick-link-icon green">&#x1F32C;&#xFE0F;</div>
-                    <div class="quick-link-text">Breathing Exercise</div>
-                </a>
-                <a href="/sounds.html" class="quick-link">
-                    <div class="quick-link-icon purple">&#x1F3B6;</div>
-                    <div class="quick-link-text">Calming Sounds</div>
-                </a>
-                <a href="/wisdom.html" class="quick-link">
-                    <div class="quick-link-icon blue">&#x1F4D6;</div>
-                    <div class="quick-link-text">Read Something Peaceful</div>
-                </a>
-            </div>
+        <div class="emo-card" data-emo="anger">
+            <span class="emo-icon">&#128293;</span>
+            <div class="emo-title">Angry</div>
+            <div class="emo-sub">3 min cooling breath</div>
         </div>
-
-        <!-- Footer -->
-        <div class="footer-note">
-            <p>You are not alone. Help is always available.<br>
-            <span class="brand-small">Sukoon</span> -- peace of mind, always.</p>
+        <div class="emo-card" data-emo="lonely">
+            <span class="emo-icon">&#128156;</span>
+            <div class="emo-title">Lonely</div>
+            <div class="emo-sub">Talk to AI Friend</div>
         </div>
     </div>
 
-    <script>
-        // ===================== BREATHING EXERCISE =====================
-        const overlay = document.getElementById('breathingOverlay');
-        const circle = document.getElementById('breathCircle');
-        const phaseText = document.getElementById('phaseText');
-        const timerEl = document.getElementById('breathTimer');
-        const counterEl = document.getElementById('breathCounter');
-        const btnSkip = document.getElementById('btnSkip');
+    <div class="crisis-section">
+        <div class="crisis-title">Crisis Support Lines</div>
+        <div class="crisis-card">
+            <div class="cc-icon"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.08 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.13.81.37 1.6.65 2.36a2 2 0 01-.45 2.11L8.09 11.41a16 16 0 006.5 6.5l2.22-2.22a2 2 0 012.11-.45c.76.28 1.55.52 2.36.65a2 2 0 011.72 2.01z"/></svg></div>
+            <div class="cc-info"><div class="cc-name">Vandrevala Foundation</div><div class="cc-num">1860-2662-345</div></div>
+        </div>
+        <div class="crisis-card">
+            <div class="cc-icon"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.08 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.13.81.37 1.6.65 2.36a2 2 0 01-.45 2.11L8.09 11.41a16 16 0 006.5 6.5l2.22-2.22a2 2 0 012.11-.45c.76.28 1.55.52 2.36.65a2 2 0 011.72 2.01z"/></svg></div>
+            <div class="cc-info"><div class="cc-name">iCall (TISS)</div><div class="cc-num">9152987821</div></div>
+        </div>
+        <div class="crisis-card">
+            <div class="cc-icon"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.08 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.13.81.37 1.6.65 2.36a2 2 0 01-.45 2.11L8.09 11.41a16 16 0 006.5 6.5l2.22-2.22a2 2 0 012.11-.45c.76.28 1.55.52 2.36.65a2 2 0 011.72 2.01z"/></svg></div>
+            <div class="cc-info"><div class="cc-name">988 Suicide & Crisis (US)</div><div class="cc-num">988</div></div>
+        </div>
+    </div>
+</div>
 
-        let breathCount = 0;
-        const totalBreaths = 10;
-        let breathInterval = null;
-        let countdownInterval = null;
-        let currentPhase = 0;
+<!-- ==================== SESSION OVERLAY ==================== -->
+<div class="session-overlay" id="sessionOverlay">
+    <div class="so-bg" id="soBg"></div>
+    <div id="soParticles"></div>
+    <button class="so-back" id="soBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <div class="so-content">
+        <div class="so-title" id="soTitle"></div>
+        <div class="so-prompt" id="soPrompt">Tap play to begin</div>
+        <button class="so-play" id="soPlay"><svg viewBox="0 0 24 24" id="soIcon"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+        <button class="so-done" id="soDone">I feel better</button>
+    </div>
+</div>
 
-        const phases = [
-            { en: 'Inhale', duration: 4, expand: true },
-            { en: 'Hold', duration: 4, expand: true },
-            { en: 'Exhale', duration: 4, expand: false }
-        ];
+<script>
+(function(){
+'use strict';
 
-        function startBreathing() {
-            breathCount = 0;
-            currentPhase = 0;
-            updateCounter();
-            runPhase();
-        }
+var INTERVENTIONS = {
+    panic: {
+        title: 'You Are Safe', bg: 'linear-gradient(135deg,#1a3a2a,#0d1f17)', ambient: 'rain',
+        prompts: [
+            'I am here with you. You are safe. This will pass.',
+            'Place both feet flat on the ground. Feel the floor beneath you. It is solid. You are grounded.',
+            'Put one hand on your chest. Feel your heartbeat. It is fast, but it is strong. Your body is protecting you.',
+            'Breathe with me now. In through your nose for 4. 1. 2. 3. 4.',
+            'Hold gently for 4. 1. 2. 3. 4.',
+            'Out through your mouth slowly for 8. 1. 2. 3. 4. 5. 6. 7. 8.',
+            'Good. Again. In. 1. 2. 3. 4.',
+            'Hold. 1. 2. 3. 4.',
+            'Out slowly. 1. 2. 3. 4. 5. 6. 7. 8.',
+            'Your body is calming down. The wave is passing. You are still here.',
+            'One more. Breathe in deeply. 1. 2. 3. 4.',
+            'Hold with ease. 1. 2. 3. 4.',
+            'Release everything. 1. 2. 3. 4. 5. 6. 7. 8.',
+            'You made it through. You are brave. You are safe. This too has passed.'
+        ]
+    },
+    crying: {
+        title: 'Let It Flow', bg: 'linear-gradient(135deg,#2a1a3a,#180d28)', ambient: 'rain',
+        prompts: [
+            'It is okay to cry. Tears are not weakness. They are your body releasing pain.',
+            'Place your hand over your heart. Feel its warmth. You are holding yourself right now.',
+            'You do not need to stop crying. You do not need to be strong right now. Just let it flow.',
+            'Take a slow breath. Not to stop the tears, but to be with them.',
+            'Whatever you are feeling is valid. You are allowed to feel this deeply.',
+            'Now silently say to yourself: I am hurting, and that is okay.',
+            'Say: I am worthy of comfort. I am worthy of love.',
+            'Imagine someone who loves you wrapping their arms around you. Feel that warmth.',
+            'Your tears are washing away what no longer serves you. They are healing you.',
+            'Take a deep breath. The weight is a little lighter now. Even if just a little.',
+            'When you are ready, wipe your eyes gently. You have been so brave. You will be okay.'
+        ]
+    },
+    overwhelm: {
+        title: '5-4-3-2-1 Grounding', bg: 'linear-gradient(135deg,#1a2a3a,#0d1828)', ambient: 'ocean',
+        prompts: [
+            'When everything feels like too much, we come back to our senses. Right here. Right now.',
+            'Take a deep breath. We are going to use your five senses to bring you back to this moment.',
+            'Five things you can see. Look around you. Name five things you can see right now. A wall. A light. Your hands. Take your time.',
+            'Four things you can touch. Reach out and feel four textures. Your clothes. The chair. Your skin. The air.',
+            'Three things you can hear. Listen carefully. What sounds are happening right now? Near and far.',
+            'Two things you can smell. Breathe in through your nose. What do you notice? Even subtle scents count.',
+            'One thing you can taste. What is the taste in your mouth right now? Sweet? Neutral? Just notice.',
+            'Take a deep breath. You just grounded yourself in the present moment. The overwhelm lives in the future and the past. But you are here. Now.',
+            'You do not have to solve everything today. Just this moment. Just this breath. That is enough.',
+            'You are doing better than you think. Take one more deep breath. You are okay.'
+        ]
+    },
+    insomnia: {
+        title: 'Drift Into Sleep', bg: 'linear-gradient(135deg,#0d0d2a,#05051a)', ambient: 'crickets',
+        prompts: [
+            'Close your eyes. We are going to relax every part of your body, one by one, until sleep finds you.',
+            'Start with your toes. Tense them tight. Hold for 3 seconds. And release. Feel the difference.',
+            'Your calves. Tighten. Hold. And release. Warmth flows in where tension leaves.',
+            'Your thighs. Squeeze them. Hold. And let go completely.',
+            'Your belly. Tighten your stomach muscles. Hold. And soften.',
+            'Your hands. Make tight fists. Hold. And open them like flowers blooming.',
+            'Your shoulders. Pull them up to your ears. Hold. And drop them. Feel them melt.',
+            'Your face. Scrunch every muscle. Hold. And let your face go completely smooth.',
+            'Your whole body is now heavy and warm. Like sinking into a cloud.',
+            'Each breath takes you deeper. You are safe. There is nothing left to do today.',
+            'Just breathe. Slowly. Gently. Sleep is coming for you. Let it carry you away.',
+            'You are drifting. Peaceful. Quiet. Sleep is here. Goodnight.'
+        ]
+    },
+    anger: {
+        title: 'Cooling Breath', bg: 'linear-gradient(135deg,#3a1a1a,#280d0d)', ambient: 'creek',
+        prompts: [
+            'Your anger is valid. But right now, let us cool the fire so you can think clearly.',
+            'Unclench your jaw. Unclench your fists. Consciously soften your body.',
+            'We will use cooling breath. Breathe in through your mouth with your tongue curled. Feel the cool air.',
+            'Hold for 4 counts. 1. 2. 3. 4.',
+            'Exhale slowly through your nose. Feel the heat leaving your body.',
+            'Again. Cool air in through your mouth. Feel it cooling your throat, your chest.',
+            'Hold. 1. 2. 3. 4.',
+            'Warm air out through your nose. Releasing the fire.',
+            'Imagine your anger as a flame. With each exhale, the flame gets smaller.',
+            'It does not disappear. It transforms into clarity. Into understanding.',
+            'One more cooling breath in. Hold. And release.',
+            'You are calmer now. Your anger told you something important. When you are ready, listen to its message with a clear mind.'
+        ]
+    }
+};
 
-        function runPhase() {
-            const phase = phases[currentPhase];
-            phaseText.textContent = phase.en;
+/* State */
+var running = false, promptIdx = 0, currentEmo = null, ttsEnabled = true;
 
-            if (phase.expand) {
-                circle.classList.add('expanded');
-            } else {
-                circle.classList.remove('expanded');
-            }
+/* Audio (compact) */
+var audioCtx=null,ambientGain=null,ambientChannel=null,ambientBufferCache={},CROSSFADE=4;
+function initAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
+function bell(hz){initAC();var t=audioCtx.currentTime,b=hz||528;[[b,0.25,3.5],[b*2,0.08,2.6],[b*3,0.03,1.8],[b*1.5,0.05,2.2]].forEach(function(h){var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.setValueAtTime(h[0],t);g.gain.setValueAtTime(h[1],t);g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+h[2]);});}
+async function loadBuf(type){if(ambientBufferCache[type])return ambientBufferCache[type];try{var r=await fetch('/audio/'+type+'.wav');var ab=await r.arrayBuffer();var d=await audioCtx.decodeAudioData(ab);ambientBufferCache[type]=d;return d;}catch(e){return null;}}
+function startCrossfade(ch,buf,off){var src=audioCtx.createBufferSource();src.buffer=buf;var fg=audioCtx.createGain();fg.gain.setValueAtTime(0,audioCtx.currentTime);src.connect(fg);fg.connect(ch.gain);var dur=buf.duration,ft=Math.min(CROSSFADE,dur*0.4),now=audioCtx.currentTime;src.start(now,off||0);fg.gain.linearRampToValueAtTime(1,now+ft);var fos=now+(dur-(off||0)-ft);if(fos>now+ft){fg.gain.setValueAtTime(1,fos);fg.gain.linearRampToValueAtTime(0,fos+ft);}var nd=(dur-(off||0)-ft)*1000;if(nd<500)nd=500;var timer=setTimeout(function(){if(ambientChannel&&ambientChannel.active)startCrossfade(ch,buf,0);},nd);src.onended=function(){try{fg.disconnect();}catch(e){}};ch.sources.push({src:src,gain:fg,timer:timer});while(ch.sources.length>3){var old=ch.sources.shift();clearTimeout(old.timer);try{old.src.stop();}catch(e){}try{old.gain.disconnect();}catch(e){}}}
+async function startAmbient(type){initAC();killAmbient();if(type==='silence')return;var buf=await loadBuf(type);if(!buf)return;ambientGain=audioCtx.createGain();ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);ambientGain.gain.linearRampToValueAtTime(0.15,audioCtx.currentTime+2);ambientGain.connect(audioCtx.destination);ambientChannel={gain:ambientGain,sources:[],active:true};startCrossfade(ambientChannel,buf,0);setTimeout(function(){if(ambientChannel&&ambientChannel.active)startCrossfade(ambientChannel,buf,0);},(buf.duration/2)*1000);}
+function killAmbient(){if(ambientChannel){ambientChannel.active=false;try{ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value,audioCtx.currentTime);ambientChannel.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.5);var ch=ambientChannel;setTimeout(function(){ch.sources.forEach(function(s){clearTimeout(s.timer);try{s.src.stop();}catch(e){}try{s.gain.disconnect();}catch(e){}});try{ch.gain.disconnect();}catch(e){}},600);}catch(e){}ambientChannel=null;ambientGain=null;}}
+function duckAmbient(d){if(!ambientGain)return;try{ambientGain.gain.cancelScheduledValues(audioCtx.currentTime);ambientGain.gain.setValueAtTime(ambientGain.gain.value,audioCtx.currentTime);ambientGain.gain.linearRampToValueAtTime(d?0.04:0.15,audioCtx.currentTime+0.5);}catch(e){}}
 
-            let remaining = phase.duration;
-            timerEl.textContent = remaining;
+/* TTS */
+var tts={synth:window.speechSynthesis||null,voice:null,speaking:false,
+    init:function(){if(!tts.synth)return;var load=function(){var v=tts.synth.getVoices(),p=['Google UK English Female','Samantha','Karen','Moira','Fiona','Google US English'];for(var i=0;i<p.length;i++){var f=v.find(function(x){return x.name===p[i];});if(f){tts.voice=f;break;}}if(!tts.voice)tts.voice=v.find(function(x){return x.lang.startsWith('en');});};if(tts.synth.getVoices().length)load();tts.synth.onvoiceschanged=load;},
+    speak:function(text,onEnd){if(!ttsEnabled||!tts.synth||!tts.voice){if(onEnd)setTimeout(onEnd,100);return;}tts.synth.cancel();var sentences=text.match(/[^.!?]+[.!?]+/g)||[text];var idx=0;duckAmbient(true);function next(){if(idx>=sentences.length||!running){tts.speaking=false;duckAmbient(false);if(onEnd)onEnd();return;}var u=new SpeechSynthesisUtterance(sentences[idx].trim());u.voice=tts.voice;u.rate=0.82;u.pitch=0.92;u.volume=0.9;u.onend=function(){idx++;if(idx<sentences.length)setTimeout(next,350);else{tts.speaking=false;duckAmbient(false);if(onEnd)onEnd();}};u.onerror=function(){tts.speaking=false;duckAmbient(false);if(onEnd)onEnd();};tts.speaking=true;tts.synth.speak(u);}next();},
+    stop:function(){if(tts.synth)tts.synth.cancel();tts.speaking=false;duckAmbient(false);}
+};
+tts.init();
 
-            if (countdownInterval) clearInterval(countdownInterval);
-            countdownInterval = setInterval(() => {
-                remaining--;
-                timerEl.textContent = remaining;
+/* Emotion grid click */
+document.getElementById('emoGrid').addEventListener('click', function(e){
+    var card = e.target.closest('.emo-card'); if(!card) return;
+    var emo = card.dataset.emo;
+    if(emo === 'lonely'){ window.location.href='/friend.html'; return; }
+    openSession(emo);
+});
 
-                if (remaining <= 0) {
-                    clearInterval(countdownInterval);
-                    currentPhase++;
+function openSession(emo){
+    var data = INTERVENTIONS[emo]; if(!data) return;
+    currentEmo = emo; promptIdx = 0; running = false;
+    document.getElementById('soBg').style.background = data.bg;
+    document.getElementById('soTitle').textContent = data.title;
+    document.getElementById('soPrompt').textContent = 'Tap play when you are ready.';
+    document.getElementById('soIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+    document.getElementById('soDone').classList.remove('visible');
+    spawnParticles();
+    document.getElementById('sessionOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-                    if (currentPhase >= phases.length) {
-                        currentPhase = 0;
-                        breathCount++;
-                        updateCounter();
+function spawnParticles(){
+    var c=document.getElementById('soParticles'); c.innerHTML='';
+    for(var i=0;i<15;i++){
+        var p=document.createElement('div'); p.className='particle';
+        p.style.left=Math.random()*100+'%'; p.style.top=(60+Math.random()*40)+'%';
+        p.style.width=p.style.height=(2+Math.random()*4)+'px';
+        p.style.background='rgba(255,255,255,'+(0.1+Math.random()*0.2).toFixed(2)+')';
+        p.style.setProperty('--dy',(-200-Math.random()*400)+'px');
+        p.style.setProperty('--po',(0.15+Math.random()*0.3).toFixed(2));
+        p.style.animationDuration=(12+Math.random()*18)+'s';
+        p.style.animationDelay=(Math.random()*10)+'s';
+        c.appendChild(p);
+    }
+}
 
-                        if (breathCount >= totalBreaths) {
-                            dismissBreathing();
-                            return;
-                        }
-                    }
+function closeSession(){
+    running = false; tts.stop(); killAmbient();
+    document.getElementById('sessionOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
 
-                    runPhase();
-                }
-            }, 1000);
-        }
+document.getElementById('soBack').addEventListener('click', closeSession);
 
-        function updateCounter() {
-            counterEl.textContent = 'Breath ' + (breathCount + 1) + ' of ' + totalBreaths;
-        }
+document.getElementById('soPlay').addEventListener('click', function(){
+    if(!running){
+        running = true; promptIdx = 0;
+        document.getElementById('soIcon').innerHTML = '<line x1="10" y1="4" x2="10" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/>';
+        bell(528);
+        var data = INTERVENTIONS[currentEmo];
+        startAmbient(data.ambient);
+        setTimeout(function(){ showPrompt(0); }, 2000);
+    } else {
+        running = false; tts.stop();
+        document.getElementById('soIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+    }
+});
 
-        function dismissBreathing() {
-            if (countdownInterval) clearInterval(countdownInterval);
-            overlay.classList.add('hidden');
-            setTimeout(() => {
-                overlay.style.display = 'none';
-            }, 600);
-        }
-
-        btnSkip.addEventListener('click', dismissBreathing);
-
-        // Auto-start after 1.5s
-        setTimeout(startBreathing, 1500);
-
-        // ===================== GROUNDING EXERCISE =====================
-        function toggleGround(card) {
-            const wasActive = card.classList.contains('active');
-            document.querySelectorAll('.grounding-card').forEach(c => c.classList.remove('active'));
-            if (!wasActive) {
-                card.classList.add('active');
-            }
-        }
-
-        function fillDot(dot) {
-            if (dot.classList.contains('filled')) return;
-            dot.classList.add('filled');
-
-            const card = dot.closest('.grounding-card');
-            const allDots = card.querySelectorAll('.grounding-dot');
-            const filledDots = card.querySelectorAll('.grounding-dot.filled');
-
-            if (filledDots.length === allDots.length) {
-                setTimeout(() => {
-                    card.classList.remove('active');
-                    card.classList.add('completed');
-
-                    const next = card.nextElementSibling;
-                    if (next && next.classList.contains('grounding-card') && !next.classList.contains('completed')) {
-                        setTimeout(() => {
-                            next.classList.add('active');
-                            next.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                        }, 400);
-                    }
-                }, 500);
-            }
-        }
-
-        // ===================== SCROLL ANIMATIONS =====================
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.1,
-            rootMargin: '0px 0px -40px 0px'
+function showPrompt(idx){
+    if(!running || !currentEmo) return;
+    var prompts = INTERVENTIONS[currentEmo].prompts;
+    if(idx >= prompts.length){
+        // Session complete
+        bell(528); setTimeout(killAmbient, 2000);
+        document.getElementById('soPrompt').textContent = 'You did beautifully. Take your time.';
+        document.getElementById('soDone').classList.add('visible');
+        running = false;
+        // Log
+        try{
+            var log=JSON.parse(localStorage.getItem('sukoon_activity_log')||'[]');
+            log.unshift({type:'meditation',text:'SOS: '+INTERVENTIONS[currentEmo].title,minutes:3,timestamp:new Date().toISOString()});
+            if(log.length>200)log=log.slice(0,200);
+            localStorage.setItem('sukoon_activity_log',JSON.stringify(log));
+        }catch(e){}
+        // Track via engine
+        if(window.sukoon) sukoon.track('meditation', 3, 'SOS: '+INTERVENTIONS[currentEmo].title);
+        return;
+    }
+    promptIdx = idx;
+    var el = document.getElementById('soPrompt');
+    el.style.opacity = '0';
+    setTimeout(function(){
+        el.textContent = prompts[idx];
+        el.style.opacity = '1';
+        tts.speak(prompts[idx], function(){
+            setTimeout(function(){ showPrompt(idx+1); }, 2500);
         });
+    }, 300);
+}
 
-        document.querySelectorAll('.fade-in-up').forEach(el => {
-            observer.observe(el);
-        });
-    </script>
+document.getElementById('soDone').addEventListener('click', closeSession);
+
+})();
+</script>
+    <script src="/js/sukoon-engine.js"></script>
 </body>
 </html>

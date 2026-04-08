@@ -8,75 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
             padding-bottom: 72px;
         }
-        a { text-decoration: none; color: inherit; }
-
-        /* ===================== TOP HEADER ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 1.5rem; height: 52px;
-            background: rgba(250,250,247,0.82);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            letter-spacing: -0.01em;
-        }
-
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 56px; z-index: 1000;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            display: flex; align-items: center; justify-content: space-around;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        .bottom-nav a {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 3px; font-size: 0.6rem; font-weight: 500;
-            color: #AEAEB2; transition: color 0.2s;
-        }
-        .bottom-nav a:hover { color: #86868B; }
-        .bottom-nav a.active { color: #2D6A4F; }
-        .bottom-nav svg { width: 22px; height: 22px; stroke-width: 1.5; fill: none; stroke: currentColor; }
 
         /* ===================== DESKTOP SIDEBAR >960px ===================== */
         @media (min-width: 961px) {
-            .bottom-nav {
-                position: fixed; top: 52px; left: 0; bottom: 0; right: auto;
-                width: 220px; height: auto;
-                flex-direction: column; justify-content: flex-start;
-                padding: 24px 0; gap: 2px;
-                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
-                background: #FFFFFF;
-            }
-            .bottom-nav a {
-                flex-direction: row; gap: 10px; width: 100%;
-                padding: 10px 24px; font-size: 0.82rem;
-                border-radius: 0;
-            }
-            .bottom-nav a.active {
-                background: rgba(45,106,79,0.06);
-                border-right: 2px solid #2D6A4F;
-            }
             .sleep-page { margin-left: 220px; }
-            .topbar { left: 220px; }
         }
 
         /* ===================== SLEEP PAGE ===================== */
@@ -150,6 +91,11 @@
         .story-card:nth-child(6) { animation-delay: 0.3s; }
         .story-card:nth-child(7) { animation-delay: 0.35s; }
         .story-card:nth-child(8) { animation-delay: 0.4s; }
+        .story-card:nth-child(9) { animation-delay: 0.45s; }
+        .story-card:nth-child(10) { animation-delay: 0.5s; }
+        .story-card:nth-child(11) { animation-delay: 0.55s; }
+        .story-card:nth-child(12) { animation-delay: 0.6s; }
+        .story-card:nth-child(13) { animation-delay: 0.65s; }
         @keyframes cardReveal {
             to { opacity: 1; transform: translateY(0); }
         }
@@ -422,18 +368,24 @@
             font-variant-numeric: tabular-nums; font-weight: 500;
             min-width: 40px;
         }
-        .auto-advance-btn {
+        .auto-advance-btn, .tts-reader-btn {
             padding: 0.3rem 0.7rem; border-radius: 6px;
             font-size: 0.72rem; font-weight: 500;
             border: 1px solid rgba(198,139,89,0.2);
             background: #FFFFFF; color: #86868B;
             cursor: pointer; font-family: -apple-system, 'Inter', sans-serif;
             transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 0.3rem;
         }
         .auto-advance-btn.active {
             background: rgba(198,139,89,0.1);
             border-color: rgba(198,139,89,0.3); color: #C68B59;
         }
+        .tts-reader-btn.active {
+            background: rgba(45,106,79,0.1);
+            border-color: rgba(45,106,79,0.3); color: #2D6A4F;
+        }
+        .tts-reader-btn svg { width: 13px; height: 13px; }
 
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 768px) {
@@ -611,6 +563,71 @@
                 </div>
             </div>
 
+            <!-- 9. The Forest Path -->
+            <div class="story-card" data-story="forest-path">
+                <div class="story-body">
+                    <span class="story-genre nature">Nature</span>
+                    <div class="story-card-title">The Forest Path</div>
+                    <p class="story-desc">Walking slowly through an ancient forest at dusk</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~18 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. The Night Train -->
+            <div class="story-card" data-story="night-train">
+                <div class="story-body">
+                    <span class="story-genre travel">Travel</span>
+                    <div class="story-card-title">The Night Train</div>
+                    <p class="story-desc">A slow train through sleeping countryside</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~18 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. The Rainy Village -->
+            <div class="story-card" data-story="rainy-village">
+                <div class="story-body">
+                    <span class="story-genre folklore">Indian Folklore</span>
+                    <div class="story-card-title">The Rainy Village</div>
+                    <p class="story-desc">Monsoon evening in a quiet Himalayan village</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~18 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 12. Rumi's Garden -->
+            <div class="story-card" data-story="rumi-garden">
+                <div class="story-body">
+                    <span class="story-genre spiritual">Spiritual</span>
+                    <div class="story-card-title">Rumi's Garden</div>
+                    <p class="story-desc">A mystic poet's garden where words become light</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~18 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 13. The Floating Lanterns -->
+            <div class="story-card" data-story="floating-lanterns">
+                <div class="story-body">
+                    <span class="story-genre fantasy">Fantasy</span>
+                    <div class="story-card-title">The Floating Lanterns</div>
+                    <p class="story-desc">A river festival where lanterns carry wishes skyward</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> ~18 min</span>
+                        <button class="story-begin">Begin</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <!-- ===================== AI STORY GENERATOR ===================== -->
@@ -693,6 +710,10 @@
         </div>
     </div>
     <div class="reader-bottom">
+        <div class="reader-controls-group">
+            <span class="reader-controls-label">Read Aloud</span>
+            <button class="tts-reader-btn" id="ttsReaderBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg> Off</button>
+        </div>
         <div class="reader-controls-group">
             <span class="reader-controls-label">Auto</span>
             <button class="auto-advance-btn active" id="autoAdvanceBtn">On</button>
@@ -866,6 +887,102 @@
                 'The garden is quiet. The fountain murmurs in the distance. The roses breathe their perfume into the night. The flame burns. Everything in this place seems to be saying the same thing, in different ways: You are welcome here. You are known. You are enough.',
                 'Your eyes close slowly. The fragrance of roses and earth and ancient stone surrounds you. The flame is a warm glow behind your eyelids.',
                 'The garden holds you. The silence holds you. Rest now, in this place where all things are at peace.'
+            ]
+        },
+
+        'forest-path': {
+            title: 'The Forest Path',
+            genre: 'Nature',
+            duration: '~18 min',
+            paragraphs: [
+                'You step onto a path of packed earth that winds between ancient trees. The forest floor is soft with decades of fallen leaves, and your footsteps are almost silent. The light is the deep gold of late afternoon, filtered through a canopy so high above you that the tops of the trees seem to touch the sky. The air is cool and carries the rich, earthy smell of moss and bark and something sweet, like distant honeysuckle.',
+                'The path curves gently, and you follow it without hurry. On either side, the trunks of oaks and beeches rise like pillars in a cathedral, their bark rough and silver-grey, patterned with lichen in shades of pale green and white. Between them, ferns unfurl their delicate fronds, each one a perfect spiral of bright green that catches the slanting light and holds it.',
+                'A stream appears beside the path, narrow and clear, running over a bed of smooth, dark stones. The sound it makes is continuous and gentle, a soft murmuring that seems to come from the earth itself. You pause and watch the water move. It flows without effort, finding its way around each stone with a patience that is almost meditative. Small bubbles form and dissolve. A leaf drifts past, spinning slowly.',
+                'You walk on, and the trees grow closer together. The light dims to a warm amber, and the shadows deepen. Somewhere ahead, a wood pigeon calls, its voice a low, rhythmic cooing that repeats three times and then falls silent. The silence that follows is not empty but full, rich with the sounds of the forest breathing, the tiny creaks and rustles of a living world settling into evening.',
+                'The path opens into a small clearing where the grass is thick and soft. A fallen log lies across it, its surface covered in a velvet coat of emerald moss. You sit down. The moss is cool and slightly damp beneath your hands. From here, you can see a patch of sky through the canopy above, and it is turning from blue to the palest pink, like a watercolor wash.',
+                'A rabbit appears at the edge of the clearing, its ears tall and alert. It watches you for a long moment, its nose twitching, and then it seems to decide you are harmless. It hops a few steps closer, stops, and begins to groom itself with careful, unhurried movements. You sit very still and watch, and the simple sight of this small creature at peace fills you with a quiet happiness.',
+                'The light continues to fade, and the forest takes on the soft, muted tones of twilight. The greens become deeper, the shadows gentler. Fireflies begin to appear, one by one, their tiny lights pulsing in slow, irregular rhythms. They drift between the trees like sparks from a distant fire, and their glow is warm and golden against the deepening blue of the evening.',
+                'You lean back against the mossy log and close your eyes. The sounds of the forest wrap around you like a blanket. The stream murmurs. The wood pigeon calls once more, farther away now. The leaves above you whisper to each other in a language older than words. The earth beneath you is solid and warm, holding you with the same patience it has held these trees for centuries.',
+                'The last bird falls silent. The fireflies continue their slow dance. The air is cool on your face, and it carries the scent of pine and damp earth and the first faint sweetness of night-blooming flowers.',
+                'You are held by the forest. You are safe. The trees keep watch.',
+                'Sleep comes softly, like mist between the trees.'
+            ]
+        },
+
+        'night-train': {
+            title: 'The Night Train',
+            genre: 'Travel',
+            duration: '~18 min',
+            paragraphs: [
+                'You settle into a window seat on the night train. The compartment is small and warm, lined with polished wood that glows in the soft amber light of a reading lamp. Your seat is cushioned in dark blue velvet, and it gives slightly as you lean back, molding to the shape of your body. Through the window, the platform lights slide past, and then the train begins to move, so gently that you barely feel it.',
+                'The rhythm starts immediately, a steady, rocking motion that is deeply soothing. The wheels on the tracks make a sound that is almost musical, a low, repeating pattern that your body begins to match without thinking. Duh-duh-duh-duh. Duh-duh-duh-duh. It is the heartbeat of the journey, and it has been the same on every train, on every track, since the very first locomotive rolled forward.',
+                'The train clears the city, and the lights outside grow sparse. You watch as small towns appear and disappear, each one a cluster of warm windows in the darkness. A church steeple. A row of houses. A single streetlamp casting a cone of gold on an empty road. Each little town is a life, a story, a thousand quiet evenings just like this one, and then it is gone, replaced by the dark fields beyond.',
+                'Someone has left a blanket folded on the seat beside you. You pull it over your lap. It is thick and soft, the kind of blanket that has been washed many times and has grown softer with each washing. Its warmth settles around your legs, and you tuck it under your chin. The train rocks gently. The lamp glows. The world outside is dark and moving and far away.',
+                'The countryside rolls past in waves of shadow. You can make out the shapes of hills rising and falling against the sky, and the dark lines of hedgerows dividing the fields. Occasionally, the moon appears through a break in the clouds, and for a moment the landscape is washed in silver light, every detail sharp and luminous before the clouds close again and the darkness returns.',
+                'A attendant passes through the corridor, and you hear the soft click of the door and the quiet clink of cups. The scent of tea drifts in, warm and milky and faintly spiced. You close your eyes and breathe it in. The train rocks. The wheels sing their steady song. The warmth of the blanket holds you.',
+                'You open your eyes once more to watch the darkness. A river appears beside the tracks, its surface catching the moonlight in a long, silver ribbon. It runs alongside the train for a while, keeping pace, and then it curves away and is gone. A forest appears, dark trees standing close together, their branches reaching over the tracks like a tunnel of leaves.',
+                'The reading lamp dims automatically, and the compartment grows darker. The window becomes a mirror, and in it you can see the reflection of the warm interior, the velvet seat, the folded blanket, and your own face, calm and still. Beyond the reflection, the real world continues to move, dark fields and distant lights, the slow turning of the earth.',
+                'The rhythm of the train has become your rhythm. Your breathing slows to match it. Your eyes grow heavy. The world outside is a gentle blur of shadow and silver.',
+                'The train carries you forward through the night, steady and sure.',
+                'You do not need to steer. You do not need to arrive. Just rest. The train knows the way.'
+            ]
+        },
+
+        'rainy-village': {
+            title: 'The Rainy Village',
+            genre: 'Indian Folklore',
+            duration: '~18 min',
+            paragraphs: [
+                'The monsoon has arrived. You stand on the covered veranda of a stone cottage in a village nestled in the foothills of the Himalayas. The rain comes down in long, silver threads, steady and warm, filling the air with a sound that is both loud and deeply peaceful. It falls on the tin roofs of the houses around you with a gentle drumming, and it turns the narrow lanes between them into small, rushing streams that catch the last light of the evening.',
+                'The mountains are hidden behind curtains of rain and cloud, but you can feel their presence, vast and patient, surrounding the village like the walls of a great, open room. The air smells of wet earth and pine resin and the sharp, green scent of rain on leaves. It is the smell of the world being washed clean, of everything being renewed.',
+                'A kerosene lamp burns on a small table behind you, its light warm and amber. It throws your shadow long across the stone floor of the veranda, and it makes the rain look like threads of gold where the light catches it. A cup of chai sits beside the lamp, still warm, and you pick it up and hold it in both hands. The warmth seeps into your palms, and the spiced, milky scent rises and mingles with the rain.',
+                'Across the lane, an old man sits on his own veranda, smoking a bidi and watching the rain with an expression of deep contentment. He has seen a thousand monsoons, and each one still brings him peace. He catches your eye and nods slowly, a gesture that says more than words could. The rain falls between you, a curtain of silver, and the moment is shared and complete.',
+                'Children run through the lane below, barefoot and laughing, their clothes already soaked through. They splash in the puddles and hold their faces up to the sky, catching raindrops on their tongues. Their laughter is bright and clean, the purest sound in the world, and it rises above the rain and the drumming on the tin roofs and fills the evening with joy.',
+                'A woman appears in a doorway down the lane, wrapped in a green shawl, carrying a brass pot. She calls the children in for dinner, and they scatter reluctantly, their laughter trailing behind them. The lane grows quiet. The rain continues, steady and unhurried, as if it has all the time in the world.',
+                'You take a sip of chai. It is sweet and warm, laced with cardamom and ginger, and it fills your chest with a gentle heat that spreads outward to your arms and legs. The rain is softer now, the heavy downpour settling into a lighter, more rhythmic patter. The tin roofs sing with it. The streams in the lanes slow and quiet. The world is settling.',
+                'The lamp flickers once and steadies. The old man across the lane has gone inside, and his lamp glows behind the window, a warm square of amber in the grey evening. One by one, the houses around you light up, each window becoming a small, warm beacon. The village is drawing inward, gathering itself for the night.',
+                'You sit back in your chair and listen. The rain on the roof above you is the gentlest sound you have ever heard. It taps and patters and murmurs, and it seems to be saying the same thing over and over: rest now, rest now, rest now.',
+                'The mountains hold the village. The rain holds the mountains. The night holds everything.',
+                'You close your eyes. The chai is warm. The rain is soft. You are home.'
+            ]
+        },
+
+        'rumi-garden': {
+            title: "Rumi's Garden",
+            genre: 'Spiritual',
+            duration: '~18 min',
+            paragraphs: [
+                'You find yourself walking along a path of white stone, worn smooth by centuries of pilgrims. The path leads through a gate of old wood, its surface carved with flowing script that you cannot read but somehow understand. Beyond the gate, a garden opens before you, and it is unlike any garden you have seen. The flowers here do not grow in rows. They grow wherever they wish, in clusters and waves, as if the garden has been planted by the wind itself.',
+                'The light in this place is different. It is golden but soft, as if the sun is shining through silk. It falls on the flowers and the stone paths and the old walls in a way that makes everything glow from within. The air is warm and still, and it carries a fragrance that changes with every step you take, as if each flower is greeting you personally. Rose, then jasmine, then something unnamed and deeply sweet.',
+                'At the center of the garden stands a single tree, very old and very beautiful. Its trunk is thick and gnarled, twisted by time into a shape that looks almost like a figure in meditation. Its branches spread wide, and its leaves are small and silver-green, rustling softly in a breeze you can barely feel. Beneath the tree, someone has placed a woven mat and a clay water jug.',
+                'You sit beneath the tree. The mat is soft and warm, and the shade is cool. The water jug is filled with clear, cold water that tastes of stone and earth. You drink, and the coolness travels down through your chest, and you feel something quiet and old settle inside you, as if the garden is teaching you patience simply by existing.',
+                'A poet once walked these paths. He wrote of love and loss and the great silence that holds them both. His words still hang in the air here like invisible lanterns, and if you listen very carefully, you can almost hear them. They say that the wound is where the light enters. They say that what you seek is also seeking you. They say that you are not a drop in the ocean but the entire ocean in a drop.',
+                'A bird lands on a low branch above you. It is small and plain, the color of dust, but when it opens its beak, the song that pours out is extraordinary, pure and clear and full of a longing so beautiful it makes your heart ache. The song rises and fills the garden, and the flowers seem to lean toward it, and the light seems to brighten, and for a moment everything in this place is connected by a single thread of sound.',
+                'The bird falls silent. The silence that follows is not empty. It is the fullest silence you have ever known, a silence that contains everything, every sound that has ever been made and every sound that ever will be. You rest in it the way a stone rests at the bottom of a clear stream.',
+                'The shadows in the garden grow longer. The golden light softens to amber, then to the palest rose. The flowers close their petals one by one, slowly, as if folding their hands in prayer. The evening is arriving, and it arrives gently, with the same patience as the tree, the same grace as the water in the jug.',
+                'You lie back on the mat and look up through the silver-green leaves at the sky. The first stars are appearing. They are faint and far away, but they have been there all along, hidden by the light of day, waiting for the darkness to reveal them.',
+                'The garden holds you. The tree watches over you. The stars are kind.',
+                'Rest now. You have come home to yourself.'
+            ]
+        },
+
+        'floating-lanterns': {
+            title: 'The Floating Lanterns',
+            genre: 'Fantasy',
+            duration: '~18 min',
+            paragraphs: [
+                'You stand at the edge of a wide, slow river on an evening when the sky is the color of ripe plums. The water moves with a deep, unhurried current, its surface dark and smooth, reflecting the first stars as points of trembling light. In your hands, you hold a lantern made of thin rice paper stretched over a frame of bent bamboo. Inside it, a small candle waits to be lit.',
+                'All along the riverbank, others stand as you do, each one holding their own lantern. They are quiet, patient, gathered here for the festival of wishes. Some lanterns are round, some are shaped like lotus flowers, some are simple squares with painted designs. All of them are beautiful, and all of them are waiting.',
+                'Someone passes along the bank with a long, thin taper, and one by one the candles are lit. Your lantern comes alive in your hands, its paper walls glowing from within with a warm, amber light. You feel its gentle heat on your fingers, and the flame inside flickers once and then steadies, burning with a calm, confident brightness.',
+                'A bell sounds, low and resonant, and the crowd begins to move toward the water. You walk to the edge and kneel on the soft, grassy bank. The water laps gently at the mud. You hold your lantern close for a moment and think of your wish, the one thing you would like to send out into the world. It does not need to be grand. It can be simple. Peace. Rest. A quiet heart.',
+                'You place the lantern on the water. It wobbles for a moment, finding its balance, and then the current takes it, and it begins to drift away from you. The light inside it glows, steady and warm, and it moves out onto the river with a slow, graceful certainty, as if it knows exactly where it is going.',
+                'All around you, lanterns are being released. Hundreds of them. They drift out onto the dark water and form a river of light, a constellation floating just above the surface. The sight is breathtaking. Each lantern carries its own small flame, its own wish, its own prayer, and together they create something larger than any one of them could be alone.',
+                'The current carries them downstream, and they spread apart slowly, forming patterns that shift and change, like stars being rearranged by a gentle hand. Some cluster together, their lights merging into a warm, golden glow. Others drift alone, each one a solitary point of light in the vast darkness, and they are beautiful in their solitude.',
+                'You sit back on the bank and watch. The river of lanterns stretches as far as you can see, a long, winding ribbon of amber light against the dark water and the dark sky. The reflection doubles them, so it seems as if the lanterns are floating in both directions, upward and downward, into the sky and into the deep.',
+                'The air is warm and smells of river water and candle wax and the green, growing scent of the grass beneath you. The bell sounds again, a single note that hangs in the air for a long time before fading. The people around you are quiet, watching, held in the same peaceful trance.',
+                'The lanterns drift on. Their lights grow smaller as they travel downstream, but they do not go out. They simply become smaller and smaller, fainter and fainter, until they are indistinguishable from the stars reflected in the water.',
+                'You lie back on the grass. The sky is vast and dark and full of light. The river carries the wishes. The night holds everything.',
+                'Your eyes close. The world is gentle. Sleep.'
             ]
         }
     };
@@ -1167,6 +1284,177 @@
             readerText.innerHTML = '<p class="visible" style="color:rgba(220,38,38,0.6);">Unable to generate story. Please check your connection and try again.</p>';
         });
     });
+
+    /* ============================================================
+       TTS (READ ALOUD) ENGINE
+       Web Speech API with sentence splitting for Chrome 15s bug
+       ============================================================ */
+    var ttsReaderBtn = document.getElementById('ttsReaderBtn');
+    var ttsEnabled = false;
+    var ttsSpeaking = false;
+    var ttsQueue = [];
+    var ttsCurrentUtterance = null;
+
+    ttsReaderBtn.addEventListener('click', function() {
+        ttsEnabled = !ttsEnabled;
+        ttsReaderBtn.classList.toggle('active', ttsEnabled);
+        ttsReaderBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg> ' + (ttsEnabled ? 'On' : 'Off');
+        if (!ttsEnabled) {
+            ttsStop();
+        } else if (overlay.classList.contains('open')) {
+            // Start reading the last revealed paragraph
+            var visiblePs = readerText.querySelectorAll('p.visible');
+            if (visiblePs.length > 0) {
+                ttsSpeak(visiblePs[visiblePs.length - 1].textContent);
+            }
+        }
+    });
+
+    function ttsSplitSentences(text) {
+        // Split into sentences to avoid Chrome's 15-second speech cutoff
+        var sentences = text.match(/[^.!?]+[.!?]+[\s]*/g);
+        if (!sentences) return [text];
+        return sentences.map(function(s) { return s.trim(); }).filter(function(s) { return s.length > 0; });
+    }
+
+    function ttsPickVoice() {
+        var voices = window.speechSynthesis.getVoices();
+        // Prefer English voices with calm/natural names
+        var preferred = ['Samantha', 'Karen', 'Daniel', 'Fiona', 'Moira', 'Google UK English Female', 'Google US English'];
+        for (var i = 0; i < preferred.length; i++) {
+            for (var j = 0; j < voices.length; j++) {
+                if (voices[j].name.indexOf(preferred[i]) !== -1) return voices[j];
+            }
+        }
+        // Fallback to first English voice
+        for (var k = 0; k < voices.length; k++) {
+            if (voices[k].lang.indexOf('en') === 0) return voices[k];
+        }
+        return voices[0] || null;
+    }
+
+    function ttsDuckAmbient() {
+        if (ambientGain && audioCtx && currentAmbient !== 'silence') {
+            ambientGain.gain.linearRampToValueAtTime(0.08, audioCtx.currentTime + 0.3);
+        }
+    }
+
+    function ttsRestoreAmbient() {
+        if (ambientGain && audioCtx && currentAmbient !== 'silence') {
+            ambientGain.gain.linearRampToValueAtTime(0.25, audioCtx.currentTime + 0.5);
+        }
+    }
+
+    function ttsSpeak(text) {
+        if (!ttsEnabled || !('speechSynthesis' in window)) return;
+        ttsStop();
+        var sentences = ttsSplitSentences(text);
+        ttsQueue = sentences.slice();
+        ttsSpeaking = true;
+        ttsDuckAmbient();
+        ttsNextSentence();
+    }
+
+    function ttsNextSentence() {
+        if (ttsQueue.length === 0) {
+            ttsSpeaking = false;
+            ttsRestoreAmbient();
+            // Auto-advance to next paragraph after speech finishes
+            if (ttsEnabled && autoAdvanceEnabled && overlay.classList.contains('open')) {
+                setTimeout(function() {
+                    if (ttsEnabled && !ttsSpeaking) {
+                        revealAndSpeak();
+                    }
+                }, 2000); // 2s pause between paragraphs
+            }
+            return;
+        }
+        var sentence = ttsQueue.shift();
+        var utt = new SpeechSynthesisUtterance(sentence);
+        utt.rate = 0.82;
+        utt.pitch = 0.92;
+        utt.volume = 1.0;
+        var voice = ttsPickVoice();
+        if (voice) utt.voice = voice;
+        utt.onend = function() {
+            ttsCurrentUtterance = null;
+            ttsNextSentence();
+        };
+        utt.onerror = function() {
+            ttsCurrentUtterance = null;
+            ttsNextSentence();
+        };
+        ttsCurrentUtterance = utt;
+        window.speechSynthesis.speak(utt);
+    }
+
+    function ttsStop() {
+        ttsQueue = [];
+        ttsSpeaking = false;
+        ttsCurrentUtterance = null;
+        if ('speechSynthesis' in window) {
+            window.speechSynthesis.cancel();
+        }
+        ttsRestoreAmbient();
+    }
+
+    function revealAndSpeak() {
+        var paragraphs = readerText.querySelectorAll('p');
+        if (revealIndex >= paragraphs.length) return;
+        revealNext();
+        var justRevealed = paragraphs[revealIndex - 1];
+        if (justRevealed && ttsEnabled) {
+            ttsSpeak(justRevealed.textContent);
+        }
+    }
+
+    /* Override revealNext to trigger TTS when Read Aloud is on */
+    var _origRevealNext = revealNext;
+    var origOpenReader = openReader;
+
+    openReader = function(title, genre, paragraphs) {
+        origOpenReader(title, genre, paragraphs);
+        // When TTS is on, read the first paragraph aloud
+        if (ttsEnabled) {
+            var firstP = readerText.querySelector('p.visible');
+            if (firstP) {
+                setTimeout(function() { ttsSpeak(firstP.textContent); }, 500);
+            }
+        }
+        // When TTS is on, replace auto-advance with TTS-driven advance
+        if (ttsEnabled && revealInterval) {
+            clearInterval(revealInterval);
+            revealInterval = null;
+        }
+    };
+
+    /* When TTS is on, intercept auto-advance to let TTS control pacing */
+    var _origAutoAdvanceClick = autoAdvanceBtn.onclick;
+    var origSetInterval = window.setInterval;
+
+    // Ensure that when TTS is active, auto-advance intervals are suppressed
+    // TTS drives the pacing instead
+    var checkAutoInterval = setInterval(function() {
+        if (ttsEnabled && ttsSpeaking && revealInterval) {
+            clearInterval(revealInterval);
+            revealInterval = null;
+        }
+    }, 1000);
+
+    /* Clean up TTS on reader close */
+    var _origCloseReader = closeReader;
+    closeReader = function() {
+        ttsStop();
+        _origCloseReader();
+    };
+
+    // Pre-load voices
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = function() {
+            window.speechSynthesis.getVoices();
+        };
+    }
 
 })();
 </script>

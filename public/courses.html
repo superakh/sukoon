@@ -8,46 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            padding-bottom: 80px;
-        }
-        a { text-decoration: none; color: inherit; }
-
-        /* ===================== STICKY HEADER ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 1.5rem; height: 52px;
-            background: rgba(250,250,247,0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            letter-spacing: -0.01em;
-        }
-
         /* ===================== PAGE CONTENT ===================== */
         .page-wrap {
             padding: 80px 1.5rem 2rem;
             max-width: 960px; margin: 0 auto;
         }
 
-        /* ===================== DESKTOP SIDEBAR >960px ===================== */
+        /* ===================== DESKTOP >960px ===================== */
         @media (min-width: 961px) {
-            .topbar { justify-content: flex-start; padding-left: 2rem; left: 220px; }
-            body { padding-left: 220px; padding-bottom: 0; }
             .page-wrap { padding-top: 80px; max-width: 840px; }
         }
 
@@ -380,18 +350,6 @@
         }
         .detail-begin-btn:hover { transform: translateY(-1px); filter: brightness(0.9); }
         .detail-begin-btn svg { width: 16px; height: 16px; }
-
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .stagger-1 { animation: fadeIn 0.4s ease 0.05s both; }
-        .stagger-2 { animation: fadeIn 0.4s ease 0.1s both; }
-        .stagger-3 { animation: fadeIn 0.4s ease 0.15s both; }
-        .stagger-4 { animation: fadeIn 0.4s ease 0.2s both; }
-        .stagger-5 { animation: fadeIn 0.4s ease 0.25s both; }
-        .stagger-6 { animation: fadeIn 0.4s ease 0.3s both; }
 
         @media (max-width: 600px) {
             .detail-hero { padding: 1.5rem 1.25rem 1.25rem; }

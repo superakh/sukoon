@@ -8,51 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===================== TOP HEADER ===================== */
-        .topbar {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.5rem;
-            background: rgba(250, 250, 247, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-        }
-
-        .brand {
-            text-decoration: none;
-            color: #1D1D1F;
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem;
-            letter-spacing: -0.02em;
-        }
-
         /* ===================== BREATHE PAGE ===================== */
         .breathe-page {
             min-height: 100vh;
@@ -346,52 +303,6 @@
             .phase-text { font-size: 0.82rem; }
         }
 
-        /* ===================== DESKTOP SIDEBAR (>960px) ===================== */
-        @media (min-width: 961px) {
-            .bottom-nav-inline {
-                position: fixed;
-                top: 52px;
-                left: 0;
-                bottom: 0;
-                width: 220px;
-                display: flex;
-                flex-direction: column;
-                align-items: stretch;
-                padding: 24px 16px;
-                gap: 4px;
-                background: #FFFFFF;
-                border-right: 1px solid rgba(0, 0, 0, 0.06);
-                z-index: 999;
-            }
-            .bottom-nav-inline a {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                gap: 10px;
-                padding: 10px 14px;
-                border-radius: 8px;
-                font-size: 0.85rem;
-                font-weight: 500;
-                color: #86868B;
-                text-decoration: none;
-                font-family: -apple-system, 'Inter', sans-serif;
-                transition: all 0.15s ease;
-            }
-            .bottom-nav-inline a:hover {
-                background: #F5F5F0;
-                color: #1D1D1F;
-            }
-            .bottom-nav-inline a.active {
-                color: #2D6A4F;
-                background: #D8F3DC;
-            }
-            .breathe-page { margin-left: 220px; }
-            .mobile-bottom-nav { display: none; }
-        }
-
-        @media (max-width: 960px) {
-            .bottom-nav-inline { display: none; }
-        }
     </style>
 </head>
 <body>

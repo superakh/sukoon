@@ -8,93 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            padding-bottom: 72px;
-        }
-        a { text-decoration: none; color: inherit; }
-
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeSlideUp {
-            from { opacity: 0; transform: translateY(12px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        .stagger-1 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.05s; }
-        .stagger-2 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.1s; }
-        .stagger-3 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.15s; }
-        .stagger-4 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.2s; }
-        .stagger-5 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.25s; }
-        .stagger-6 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.3s; }
-        .stagger-7 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.35s; }
-        .stagger-8 { animation: fadeSlideUp 0.4s ease both; animation-delay: 0.4s; }
-
-        /* ===================== TOP HEADER ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 1.5rem; height: 52px;
-            background: rgba(250,250,247,0.82);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            letter-spacing: -0.01em;
-        }
-
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0;
-            height: 56px; z-index: 1000;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            display: flex; align-items: center; justify-content: space-around;
-            padding-bottom: env(safe-area-inset-bottom);
-        }
-        .bottom-nav a {
-            display: flex; flex-direction: column; align-items: center;
-            gap: 3px; font-size: 0.6rem; font-weight: 500;
-            color: #AEAEB2; transition: color 0.2s;
-        }
-        .bottom-nav a:hover { color: #86868B; }
-        .bottom-nav a.active { color: #2D6A4F; }
-        .bottom-nav svg { width: 22px; height: 22px; stroke-width: 1.5; fill: none; stroke: currentColor; }
-
-        /* ===================== DESKTOP SIDEBAR >960px ===================== */
-        @media (min-width: 961px) {
-            .bottom-nav {
-                position: fixed; top: 52px; left: 0; bottom: 0; right: auto;
-                width: 220px; height: auto;
-                flex-direction: column; justify-content: flex-start;
-                padding: 24px 0; gap: 2px;
-                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
-                background: #FFFFFF;
-            }
-            .bottom-nav a {
-                flex-direction: row; gap: 10px; width: 100%;
-                padding: 10px 24px; font-size: 0.82rem; border-radius: 0;
-            }
-            .bottom-nav a.active {
-                background: rgba(45,106,79,0.06);
-                border-right: 2px solid #2D6A4F;
-            }
-            body { padding-left: 220px; padding-bottom: 0; }
-            .topbar { left: 220px; }
-        }
 
         /* ===================== FOCUS PAGE ===================== */
         .focus-page {
@@ -133,9 +48,9 @@
             font-family: -apple-system, 'Inter', sans-serif;
             user-select: none;
         }
-        .mode-pill:hover { border-color: rgba(198,139,89,0.3); color: #C68B59; }
+        .mode-pill:hover { border-color: rgba(45,106,79,0.3); color: #2D6A4F; }
         .mode-pill.active {
-            background: #C68B59; border-color: #C68B59;
+            background: #2D6A4F; border-color: #2D6A4F;
             color: #FFFFFF; font-weight: 600;
         }
         .mode-sub {
@@ -158,14 +73,14 @@
             text-align: center; outline: none; color: #1D1D1F;
             font-variant-numeric: tabular-nums;
         }
-        .custom-field input:focus { border-color: #C68B59; box-shadow: 0 0 0 3px rgba(198,139,89,0.1); }
+        .custom-field input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.1); }
 
         /* Session counter */
         .session-info {
             font-size: 0.72rem; color: #AEAEB2;
             font-weight: 500; margin-bottom: 1.5rem;
         }
-        .session-info span.accent { color: #C68B59; font-weight: 600; }
+        .session-info span.accent { color: #2D6A4F; font-weight: 600; }
 
         /* ===================== SVG TIMER RING ===================== */
         .ring-wrap {
@@ -207,7 +122,7 @@
             font-weight: 600; margin-top: 0.5rem;
             text-transform: uppercase; letter-spacing: 0.12em;
         }
-        .timer-phase.focus-phase { color: #C68B59; }
+        .timer-phase.focus-phase { color: #2D6A4F; }
         .timer-phase.break-phase { color: #2D6A4F; }
 
         /* ===================== CONTROLS ===================== */
@@ -217,7 +132,7 @@
         }
         .btn-main {
             padding: 0.75rem 2.5rem; border-radius: 100px;
-            background: #C68B59; color: #FFFFFF;
+            background: #2D6A4F; color: #FFFFFF;
             font-size: 0.9rem; font-weight: 600;
             border: none; cursor: pointer;
             transition: background 0.2s;
@@ -257,14 +172,14 @@
             user-select: none;
         }
         .snd-card svg { width: 20px; height: 20px; opacity: 0.35; transition: opacity 0.2s; }
-        .snd-card:hover { border-color: rgba(198,139,89,0.2); color: #86868B; }
+        .snd-card:hover { border-color: rgba(45,106,79,0.2); color: #86868B; }
         .snd-card:hover svg { opacity: 0.6; }
         .snd-card.active {
-            background: rgba(198,139,89,0.08);
-            border-color: rgba(198,139,89,0.25);
-            color: #C68B59;
+            background: rgba(45,106,79,0.08);
+            border-color: rgba(45,106,79,0.25);
+            color: #2D6A4F;
         }
-        .snd-card.active svg { opacity: 1; color: #C68B59; }
+        .snd-card.active svg { opacity: 1; color: #2D6A4F; }
 
         /* ===================== DND TOGGLE ===================== */
         .dnd-row {
@@ -278,7 +193,7 @@
             cursor: pointer; transition: background 0.2s;
             flex-shrink: 0;
         }
-        .toggle-switch.on { background: #C68B59; }
+        .toggle-switch.on { background: #2D6A4F; }
         .toggle-switch::after {
             content: ''; position: absolute;
             top: 2px; left: 2px;
@@ -375,7 +290,7 @@
             padding: 0.75rem 0;
         }
         .stat-val {
-            font-size: 1.4rem; font-weight: 300; color: #C68B59;
+            font-size: 1.4rem; font-weight: 300; color: #2D6A4F;
             font-variant-numeric: tabular-nums; line-height: 1.2;
         }
         .stat-lbl {
@@ -469,7 +384,7 @@
             <svg class="ring-svg" viewBox="0 0 260 260">
                 <defs>
                     <linearGradient id="ringGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#C68B59"/>
+                        <stop offset="0%" stop-color="#2D6A4F"/>
                         <stop offset="100%" stop-color="#D4A373"/>
                     </linearGradient>
                     <linearGradient id="breakGrad" x1="0%" y1="0%" x2="100%" y2="100%">
@@ -1004,5 +919,6 @@
 
 })();
 </script>
+    <script src="/js/sukoon-engine.js"></script>
 </body>
 </html>

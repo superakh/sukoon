@@ -4,731 +4,985 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meditate - Sukoon</title>
+    <meta name="description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-            padding-bottom: 80px;
-        }
-        a { text-decoration: none; color: inherit; }
+        /* ===================== BROWSE VIEW ===================== */
+        .browse-view { padding: calc(var(--topbar-h) + 16px) 16px 80px; max-width: 720px; margin: 0 auto; }
+        @media(min-width:961px){ .browse-view { margin-left: var(--sidebar-w); } }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .page-hero { text-align: center; margin-bottom: 28px; }
+        .page-hero h1 { font-family: var(--font-brand); font-size: 1.6rem; margin-bottom: 4px; }
+        .page-hero p { color: var(--color-text-sec); font-size: 0.88rem; }
 
-        /* ===================== TOPBAR ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 1.5rem; height: 52px;
-            background: rgba(250,250,247,0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
+        /* Emotion cards */
+        .emotion-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
+        .emotion-card {
+            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
+            padding: 18px 10px; text-align: center; cursor: pointer;
+            transition: all 0.2s ease; position: relative; overflow: hidden;
         }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem; color: #1D1D1F;
-            display: flex; align-items: center; gap: 0.4rem;
-            letter-spacing: -0.02em;
-            text-decoration: none;
-        }
+        .emotion-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-accent-border); }
+        .emotion-card .em-icon { font-size: 1.6rem; margin-bottom: 6px; display: block; }
+        .emotion-card .em-label { font-size: 0.78rem; font-weight: 500; color: var(--color-text); line-height: 1.3; }
+        .emotion-card .em-sub { font-size: 0.65rem; color: var(--color-text-tert); margin-top: 2px; }
 
-        /* ===================== DESKTOP SIDEBAR >960px ===================== */
-        .sidebar-nav {
-            display: none;
+        /* Category tabs */
+        .cat-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; margin-bottom: 20px; }
+        .cat-tabs::-webkit-scrollbar { display: none; }
+        .cat-tab {
+            padding: 8px 16px; border-radius: 100px; border: 1px solid var(--color-divider);
+            background: var(--color-surface); color: var(--color-text-sec); font-size: 0.8rem; font-weight: 500;
+            cursor: pointer; white-space: nowrap; transition: all 0.15s; font-family: var(--font-body);
         }
-        @media (min-width: 961px) {
-            .sidebar-nav {
-                display: flex;
-                position: fixed; top: 52px; left: 0; bottom: 0;
-                width: 220px; flex-direction: column;
-                align-items: stretch;
-                padding: 24px 16px; gap: 4px;
-                background: #FFFFFF;
-                border-right: 1px solid rgba(0,0,0,0.06);
-                z-index: 999;
-            }
-            .sidebar-nav a {
-                display: flex; flex-direction: row; align-items: center;
-                gap: 10px; padding: 10px 14px; border-radius: 8px;
-                font-size: 0.85rem; font-weight: 500; color: #86868B;
-                text-decoration: none;
-                font-family: -apple-system, 'Inter', sans-serif;
-                transition: all 0.15s ease;
-            }
-            .sidebar-nav a:hover { background: #F5F5F0; color: #1D1D1F; }
-            .sidebar-nav a.active { color: #2D6A4F; background: #D8F3DC; }
-            .topbar { left: 220px; }
-            .meditate-page { margin-left: 220px; }
-            body { padding-bottom: 0; }
-            .mobile-bottom-nav { display: none; }
+        .cat-tab:hover { border-color: var(--color-accent-border); }
+        .cat-tab.active { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+
+        /* Session cards */
+        .session-grid { display: grid; gap: 12px; }
+        .session-card {
+            display: flex; align-items: center; gap: 14px; padding: 16px;
+            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .session-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .sess-icon {
+            width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+        }
+        .sess-info { flex: 1; min-width: 0; }
+        .sess-title { font-weight: 600; font-size: 0.9rem; color: var(--color-text); margin-bottom: 2px; }
+        .sess-meta { font-size: 0.75rem; color: var(--color-text-tert); }
+        .sess-desc { font-size: 0.78rem; color: var(--color-text-sec); line-height: 1.4; margin-top: 3px; }
+        .sess-play {
+            width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
+            background: var(--color-accent-bg); border: 1px solid var(--color-accent-border);
+            display: flex; align-items: center; justify-content: center; color: var(--color-accent);
         }
 
-        /* ===================== FULL-PAGE MEDITATION ===================== */
-        .meditate-page {
-            min-height: 100vh; min-height: 100dvh;
-            padding-top: 52px;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            position: relative;
-            animation: fadeIn 0.5s ease;
-        }
+        .empty-cat { text-align: center; padding: 40px 20px; color: var(--color-text-tert); font-size: 0.9rem; }
 
-        .med-content {
-            position: relative; z-index: 2;
-            display: flex; flex-direction: column;
-            align-items: center; text-align: center;
-            padding: 1.5rem 1.5rem 2.5rem;
-            width: 100%; max-width: 540px;
-        }
-
-        /* ===================== STREAK BADGE ===================== */
-        .streak-badge {
-            display: inline-flex; align-items: center; gap: 0.4rem;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 100px; padding: 0.45rem 1rem;
-            font-size: 0.78rem; font-weight: 600; color: #1D1D1F;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-            margin-bottom: 1.5rem;
-            letter-spacing: 0.01em;
-        }
-        .streak-badge svg { width: 15px; height: 15px; flex-shrink: 0; }
-        .streak-num { font-variant-numeric: tabular-nums; color: #2D6A4F; font-weight: 700; }
-        .streak-label { color: #86868B; }
-
-        /* ===================== DURATION PILLS ===================== */
-        .dur-row {
-            display: flex; gap: 8px; flex-wrap: wrap;
-            justify-content: center; margin-bottom: 2rem;
-        }
-        .dur-pill {
-            padding: 7px 16px; border-radius: 100px;
-            font-size: 0.78rem; font-weight: 500;
-            border: none;
-            background: #F5F5F0;
-            color: #86868B; cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: -apple-system, 'Inter', sans-serif;
-            user-select: none;
-        }
-        .dur-pill:hover {
-            color: #1D1D1F;
-            background: #EEEEE8;
-        }
-        .dur-pill.active {
-            background: #2D6A4F;
-            color: #FFFFFF;
-        }
-
-        /* ===================== SVG PROGRESS RING ===================== */
-        .ring-wrap {
-            position: relative;
-            width: 260px; height: 260px;
-            margin-bottom: 2rem;
-        }
-        .ring-svg {
-            width: 100%; height: 100%;
-            transform: rotate(-90deg);
-        }
-        .ring-track {
-            fill: none; stroke: rgba(0,0,0,0.04); stroke-width: 2.5;
-        }
-        .ring-fill {
-            fill: none; stroke: #2D6A4F; stroke-width: 3;
-            stroke-linecap: round;
-            transition: stroke-dashoffset 0.5s ease;
-        }
-        .ring-inner {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-        }
-        .timer-time {
-            font-size: clamp(3rem, 10vw, 5rem);
-            font-weight: 200; color: #1D1D1F;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: -0.04em; line-height: 1;
-        }
-        .timer-state {
-            font-size: 0.7rem; color: #AEAEB2;
-            font-weight: 600; margin-top: 0.5rem;
-            text-transform: uppercase; letter-spacing: 0.12em;
-        }
-
-        /* ===================== AMBIENT SOUND CARDS ===================== */
-        .snd-row {
-            display: flex; gap: 8px; margin-bottom: 2rem;
-            flex-wrap: wrap; justify-content: center;
-        }
-        .snd-card {
-            padding: 0.6rem 1rem; border-radius: 12px;
-            font-size: 0.8rem; font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.06);
-            background: #FFFFFF;
-            color: #86868B; cursor: pointer;
-            transition: all 0.2s ease;
-            display: flex; align-items: center; gap: 0.4rem;
-            font-family: -apple-system, 'Inter', sans-serif;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-        .snd-card svg { width: 15px; height: 15px; opacity: 0.4; transition: all 0.2s; }
-        .snd-card:hover {
-            border-color: rgba(45,106,79,0.2); color: #1D1D1F;
-        }
-        .snd-card:hover svg { opacity: 0.7; }
-        .snd-card.active {
-            background: #D8F3DC;
-            border-color: rgba(45,106,79,0.2);
-            color: #2D6A4F;
-        }
-        .snd-card.active svg { opacity: 1; }
-
-        /* ===================== CONTROLS ===================== */
-        .ctrls { display: flex; gap: 10px; margin-bottom: 2rem; align-items: center; }
-        .btn-main {
-            padding: 12px 32px; border-radius: 8px;
-            background: #2D6A4F;
-            color: #fff;
-            font-size: 0.92rem; font-weight: 600;
-            border: none; cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: -apple-system, 'Inter', sans-serif;
-        }
-        .btn-main:hover {
-            background: #1B4332;
-        }
-        .btn-ghost {
-            padding: 11px 20px; border-radius: 8px;
-            background: #FFFFFF; color: #86868B;
-            font-size: 0.85rem; font-weight: 500;
-            border: 1px solid rgba(0,0,0,0.08); cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: -apple-system, 'Inter', sans-serif;
-        }
-        .btn-ghost:hover {
-            border-color: rgba(0,0,0,0.15);
-            color: #1D1D1F;
-        }
-
-        /* ===================== BILINGUAL PROMPTS ===================== */
-        .prompt-wrap {
-            min-height: 80px; display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-        }
-        .pmt-en {
-            font-family: 'DM Serif Display', serif;
-            font-style: italic; font-size: 1.1rem;
-            color: #86868B; line-height: 1.6;
-            max-width: 380px;
-            opacity: 1; transition: opacity 0.6s ease;
-        }
-        .pmt-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.82rem; color: #AEAEB2;
-            font-weight: 300; margin-top: 0.35rem;
-            opacity: 1; transition: opacity 0.6s ease;
-        }
-        .pmt-en.fade, .pmt-hi.fade { opacity: 0; }
-
-        /* ===================== SESSION COMPLETE OVERLAY ===================== */
-        .done-overlay {
-            position: fixed; inset: 0; z-index: 5000;
-            background: rgba(250,250,247,0.95);
-            backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-            display: flex; flex-direction: column;
-            align-items: center; justify-content: center;
-            text-align: center; padding: 2rem;
-            opacity: 0; pointer-events: none;
+        /* ===================== PLAYER VIEW (immersive fullscreen) ===================== */
+        .player-view {
+            position: fixed; inset: 0; z-index: 2000;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
             transition: opacity 0.5s ease;
         }
-        .done-overlay.show { opacity: 1; pointer-events: auto; }
-        .done-icon {
-            width: 72px; height: 72px; margin-bottom: 1.5rem;
-            position: relative;
+        .player-view.active { display: flex; }
+        .player-bg {
+            position: absolute; inset: 0; z-index: 0;
+            transition: background 1s ease;
         }
-        .done-icon svg { width: 100%; height: 100%; }
-        .done-title {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.5rem; color: #1D1D1F; margin-bottom: 0.3rem;
+        .player-content { position: relative; z-index: 2; text-align: center; padding: 20px; width: 100%; max-width: 480px; }
+
+        /* Player header */
+        .player-back {
+            position: fixed; top: 16px; left: 16px; z-index: 10;
+            background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.8); cursor: pointer; backdrop-filter: blur(10px);
         }
-        .done-sub {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.95rem; color: #AEAEB2; font-weight: 300;
-            margin-bottom: 2rem;
+        .player-back:hover { background: rgba(255,255,255,0.2); }
+
+        /* Particles */
+        #particles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
+        .particle {
+            position: absolute; border-radius: 50%; opacity: 0;
+            animation: particleFloat linear infinite;
         }
-        .done-stats {
-            display: flex; gap: 2rem; margin-bottom: 2rem;
-        }
-        .done-stat {
-            display: flex; flex-direction: column; align-items: center;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 12px; padding: 1.1rem 1.8rem;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
-        }
-        .done-val {
-            font-size: 1.8rem; font-weight: 200; color: #2D6A4F;
-            font-variant-numeric: tabular-nums;
-        }
-        .done-lbl {
-            font-size: 0.65rem; color: #AEAEB2; text-transform: uppercase;
-            letter-spacing: 0.08em; font-weight: 600; margin-top: 0.25rem;
+        @keyframes particleFloat {
+            0% { opacity: 0; transform: translateY(0) scale(0.5); }
+            15% { opacity: var(--po, 0.4); }
+            85% { opacity: var(--po, 0.4); }
+            100% { opacity: 0; transform: translateY(calc(var(--dy, -200px))) scale(1.2); }
         }
 
-        /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 500px) {
-            .ring-wrap { width: 210px; height: 210px; }
-            .dur-row { gap: 6px; }
-            .dur-pill { padding: 6px 12px; font-size: 0.75rem; }
-            .done-stats { gap: 1rem; }
-            .done-stat { padding: 0.9rem 1.3rem; }
-            .done-title { font-size: 2rem; }
-            .ctrls { flex-wrap: wrap; justify-content: center; }
-            .snd-card { padding: 0.5rem 0.8rem; font-size: 0.76rem; }
-            .pmt-en { font-size: 1rem; }
-            .topbar { padding: 0 1rem; }
+        /* Progress ring */
+        .ring-wrap { position: relative; width: 220px; height: 220px; margin: 0 auto 24px; }
+        .ring-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .ring-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 4; }
+        .ring-fg { fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+        .ring-time {
+            position: absolute; inset: 0; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; color: #fff;
+        }
+        .ring-min { font-size: 3rem; font-weight: 200; line-height: 1; font-variant-numeric: tabular-nums; }
+        .ring-label { font-size: 0.75rem; opacity: 0.6; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Prompt text */
+        .prompt-text {
+            color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.7;
+            min-height: 80px; margin-bottom: 20px; font-weight: 300;
+            transition: opacity 0.5s ease;
         }
 
-        @media (max-width: 960px) {
-            .sidebar-nav { display: none; }
+        /* Player controls */
+        .player-controls { display: flex; align-items: center; justify-content: center; gap: 16px; }
+        .ctrl-btn {
+            width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .ctrl-main { background: rgba(255,255,255,0.15); color: #fff; backdrop-filter: blur(10px); }
+        .ctrl-main:hover { background: rgba(255,255,255,0.25); }
+        .ctrl-sm {
+            width: 40px; height: 40px;
+            background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
+        }
+        .ctrl-sm:hover { background: rgba(255,255,255,0.15); }
+        .ctrl-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+        /* Ambient selector in player */
+        .amb-row { display: flex; gap: 8px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
+        .amb-pill {
+            padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 500;
+            background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer; transition: all 0.15s; font-family: var(--font-body);
+        }
+        .amb-pill:hover { background: rgba(255,255,255,0.15); }
+        .amb-pill.active { background: rgba(255,255,255,0.2); color: #fff; border-color: rgba(255,255,255,0.3); }
+
+        /* Completion screen */
+        .complete-view {
+            position: fixed; inset: 0; z-index: 2001; display: none; flex-direction: column;
+            align-items: center; justify-content: center; text-align: center;
+            background: linear-gradient(135deg, #1a3a2a 0%, #0d1f17 100%); color: #fff; padding: 20px;
+        }
+        .complete-view.active { display: flex; }
+        .complete-icon { font-size: 3rem; margin-bottom: 16px; }
+        .complete-title { font-family: var(--font-brand); font-size: 1.6rem; margin-bottom: 8px; }
+        .complete-stat { font-size: 0.85rem; opacity: 0.7; margin-bottom: 4px; }
+        .complete-btn {
+            margin-top: 24px; padding: 14px 36px; border-radius: var(--radius-md);
+            background: var(--color-accent); color: #fff; border: none;
+            font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+        }
+        .complete-btn:hover { background: #245A42; }
+
+        @media(max-width:400px){
+            .emotion-grid { grid-template-columns: repeat(2, 1fr); }
+            .ring-wrap { width: 180px; height: 180px; }
+            .ring-min { font-size: 2.4rem; }
         }
     </style>
 </head>
 <body>
 
-<!-- ===================== TOPBAR ===================== -->
-<nav class="topbar">
-    <a href="index.html" class="topbar-brand">Sukoon</a>
-    <div style="width:1px"></div>
+<!-- TOPBAR -->
+<header class="topbar">
+    <a href="/" class="topbar-brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
+</header>
+
+<!-- NAV -->
+<nav class="bottom-nav">
+    <a href="/">
+        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+        <span>Home</span>
+    </a>
+    <a href="/meditate.html" class="active">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 1.5"/></svg>
+        <span>Meditate</span>
+    </a>
+    <a href="/sleep.html">
+        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <span>Sleep</span>
+    </a>
+    <a href="/friend.html">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <span>AI Friend</span>
+    </a>
+    <a href="/progress.html">
+        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        <span>Progress</span>
+    </a>
 </nav>
 
-<!-- ===================== DESKTOP SIDEBAR ===================== -->
-<nav class="sidebar-nav">
-    <a href="/"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
-    <a href="/explore.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
-    <a href="/breathe.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
-    <a href="/friend.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
-    <a href="/you.html"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
-</nav>
+<!-- ==================== BROWSE VIEW ==================== -->
+<div class="browse-view" id="browseView">
 
-<!-- ===================== MAIN ===================== -->
-<main class="meditate-page">
-    <div class="med-content">
+    <div class="page-hero stagger-1">
+        <h1>Guided Meditations</h1>
+        <p>Voice-guided sessions for every mood</p>
+    </div>
 
-        <!-- Streak -->
-        <div class="streak-badge">
-            <svg viewBox="0 0 16 16" fill="none"><path d="M8 1.5L9.8 5.8 14.5 6.5 11.2 9.7 12 14.5 8 12.2 4 14.5 4.8 9.7 1.5 6.5 6.2 5.8z" fill="#2D6A4F"/></svg>
-            <span class="streak-label" data-i18n="meditate.streak">Day</span> <span class="streak-num" id="streakNum">1</span>
+    <!-- Emotion routing -->
+    <div class="emotion-grid stagger-2" id="emotionGrid">
+        <div class="emotion-card" data-emotion="anxious">
+            <span class="em-icon">&#127754;</span>
+            <span class="em-label">I feel anxious</span>
+            <span class="em-sub">Calm your mind</span>
         </div>
-
-        <!-- Duration pills -->
-        <div class="dur-row" id="durRow">
-            <button class="dur-pill active" data-min="5">5 min</button>
-            <button class="dur-pill" data-min="10">10 min</button>
-            <button class="dur-pill" data-min="15">15 min</button>
-            <button class="dur-pill" data-min="20">20 min</button>
-            <button class="dur-pill" data-min="30">30 min</button>
+        <div class="emotion-card" data-emotion="sleepless">
+            <span class="em-icon">&#127769;</span>
+            <span class="em-label">Can't sleep</span>
+            <span class="em-sub">Drift off gently</span>
         </div>
-
-        <!-- SVG circular progress ring -->
-        <div class="ring-wrap">
-            <svg class="ring-svg" viewBox="0 0 260 260">
-                <circle class="ring-track" cx="130" cy="130" r="120"/>
-                <circle class="ring-fill" id="ringFill" cx="130" cy="130" r="120"
-                    stroke-dasharray="753.98" stroke-dashoffset="0"/>
-            </svg>
-            <div class="ring-inner">
-                <div class="timer-time" id="timerTime">5:00</div>
-                <div class="timer-state" id="timerState" data-i18n="meditate.ready">Ready</div>
-            </div>
+        <div class="emotion-card" data-emotion="unfocused">
+            <span class="em-icon">&#127919;</span>
+            <span class="em-label">Need focus</span>
+            <span class="em-sub">Sharpen attention</span>
         </div>
-
-        <!-- Ambient sound cards -->
-        <div class="snd-row" id="sndRow">
-            <button class="snd-card active" data-snd="silence">
-                <svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="1.3"/><line x1="5" y1="5" x2="11" y2="11" stroke="currentColor" stroke-width="1.3"/></svg>
-                <span data-i18n="meditate.silence">Silence</span>
-            </button>
-            <button class="snd-card" data-snd="rain">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M4 7v5M8 5v7M12 6v6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
-                <span data-i18n="meditate.rain">Rain</span>
-            </button>
-            <button class="snd-card" data-snd="ocean">
-                <svg viewBox="0 0 16 16" fill="none"><path d="M1 8c2.5-2.5 5 0 7.5-2.5S13.5 3 16 5.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><path d="M1 11.5c2.5-2.5 5 0 7.5-2.5S13.5 6.5 16 9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" opacity="0.4"/></svg>
-                <span data-i18n="meditate.ocean">Ocean</span>
-            </button>
+        <div class="emotion-card" data-emotion="grieving">
+            <span class="em-icon">&#127811;</span>
+            <span class="em-label">I'm grieving</span>
+            <span class="em-sub">Healing compassion</span>
         </div>
-
-        <!-- Controls -->
-        <div class="ctrls">
-            <button class="btn-main" id="btnStart" data-i18n="meditate.start">Start</button>
-            <button class="btn-ghost" id="btnPause" style="display:none" data-i18n="meditate.pause">Pause</button>
-            <button class="btn-ghost" id="btnReset" style="display:none" data-i18n="meditate.reset">Reset</button>
+        <div class="emotion-card" data-emotion="peaceful">
+            <span class="em-icon">&#127800;</span>
+            <span class="em-label">I want peace</span>
+            <span class="em-sub">Deep stillness</span>
         </div>
-
-        <!-- Bilingual prompt -->
-        <div class="prompt-wrap">
-            <div class="pmt-en" id="pmtEn">Close your eyes and arrive in this moment.</div>
-            <div class="pmt-hi" id="pmtHi">&#x0906;&#x0901;&#x0916;&#x0947;&#x0902; &#x092C;&#x0902;&#x0926; &#x0915;&#x0930;&#x0947;&#x0902; &#x0914;&#x0930; &#x0907;&#x0938; &#x092A;&#x0932; &#x092E;&#x0947;&#x0902; &#x0906;&#x090F;&#x0902;&#x0964;</div>
+        <div class="emotion-card" data-emotion="surprise">
+            <span class="em-icon">&#10024;</span>
+            <span class="em-label">Surprise me</span>
+            <span class="em-sub">Random session</span>
         </div>
     </div>
-</main>
 
-<!-- ===================== SESSION COMPLETE ===================== -->
-<div class="done-overlay" id="doneOverlay">
-    <div class="done-icon">
-        <svg viewBox="0 0 72 72" fill="none">
-            <circle cx="36" cy="36" r="34" fill="#D8F3DC"/>
-            <circle cx="36" cy="36" r="22" fill="#2D6A4F" opacity="0.08"/>
-            <path d="M36 18c0 9.94-8.06 18-18 18 9.94 0 18 8.06 18 18 0-9.94 8.06-18 18-18-9.94 0-18-8.06-18-18z" fill="#2D6A4F" opacity="0.4"/>
-        </svg>
+    <!-- Category tabs -->
+    <div class="cat-tabs stagger-3" id="catTabs">
+        <button class="cat-tab active" data-cat="all">All</button>
+        <button class="cat-tab" data-cat="breathing">Breathing</button>
+        <button class="cat-tab" data-cat="body-scan">Body Scan</button>
+        <button class="cat-tab" data-cat="loving-kindness">Loving-Kindness</button>
+        <button class="cat-tab" data-cat="visualization">Visualization</button>
+        <button class="cat-tab" data-cat="mindful">Mindful Minutes</button>
     </div>
-    <div class="done-title" data-i18n="meditate.namaste">Namaste</div>
-    <div class="done-sub">&#x0928;&#x092E;&#x0938;&#x094D;&#x0924;&#x0947; &mdash; &#x0906;&#x092A;&#x0915;&#x0940; &#x0938;&#x093E;&#x0927;&#x0928;&#x093E; &#x092A;&#x0942;&#x0930;&#x094D;&#x0923; &#x0939;&#x0941;&#x0908;</div>
-    <div class="done-stats">
-        <div class="done-stat">
-            <div class="done-val" id="doneTime">5:00</div>
-            <div class="done-lbl" data-i18n="meditate.duration">Duration</div>
-        </div>
-        <div class="done-stat">
-            <div class="done-val" id="doneStreak">1</div>
-            <div class="done-lbl" data-i18n="meditate.day_streak">Day Streak</div>
-        </div>
-    </div>
-    <button class="btn-main" id="btnContinue" data-i18n="meditate.continue_btn">Continue</button>
+
+    <!-- Session list -->
+    <div class="session-grid stagger-4" id="sessionGrid"></div>
 </div>
 
-<!-- BOTTOM NAV (mobile) -->
-<nav class="mobile-bottom-nav" style="position:fixed;bottom:0;left:0;right:0;height:56px;background:#fff;border-top:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-around;z-index:1000;padding-bottom:env(safe-area-inset-bottom)">
-    <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
-    <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
-    <a href="/breathe.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
-    <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
-    <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
-</nav>
+<!-- ==================== PLAYER VIEW ==================== -->
+<div class="player-view" id="playerView">
+    <div class="player-bg" id="playerBg"></div>
+    <div id="particles"></div>
+    <button class="player-back" id="playerBack" aria-label="Back">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="player-content">
+        <div class="ring-wrap">
+            <svg class="ring-svg" viewBox="0 0 220 220">
+                <circle class="ring-bg" cx="110" cy="110" r="100"/>
+                <circle class="ring-fg" id="ringFg" cx="110" cy="110" r="100" stroke-dasharray="628.3" stroke-dashoffset="628.3"/>
+            </svg>
+            <div class="ring-time">
+                <div class="ring-min" id="ringTime">0:00</div>
+                <div class="ring-label" id="ringLabel">ready</div>
+            </div>
+        </div>
+        <div class="prompt-text" id="promptText"></div>
+        <div class="player-controls">
+            <button class="ctrl-btn ctrl-sm" id="btnSound" title="Toggle sound">
+                <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+            </button>
+            <button class="ctrl-btn ctrl-main" id="btnPlay" title="Play/Pause">
+                <svg viewBox="0 0 24 24" id="iconPlay"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            </button>
+            <button class="ctrl-btn ctrl-sm" id="btnVoice" title="Toggle voice">
+                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+            </button>
+        </div>
+        <div class="amb-row" id="ambRow">
+            <button class="amb-pill active" data-amb="rain">Rain</button>
+            <button class="amb-pill" data-amb="ocean">Ocean</button>
+            <button class="amb-pill" data-amb="birds">Birds</button>
+            <button class="amb-pill" data-amb="fire">Fire</button>
+            <button class="amb-pill" data-amb="creek">Creek</button>
+            <button class="amb-pill" data-amb="silence">Silence</button>
+        </div>
+    </div>
+</div>
+
+<!-- ==================== COMPLETION VIEW ==================== -->
+<div class="complete-view" id="completeView">
+    <div class="complete-icon">&#9968;&#65039;</div>
+    <div class="complete-title" id="compTitle">Session Complete</div>
+    <div class="complete-stat" id="compDuration"></div>
+    <div class="complete-stat" id="compSession"></div>
+    <button class="complete-btn" id="compDone">Continue</button>
+</div>
 
 <script>
 (function(){
-    'use strict';
+'use strict';
 
-    /* ====== State ====== */
-    var duration = 5 * 60;
-    var remaining = duration;
-    var running = false;
-    var paused = false;
-    var ticker = null;
-    var audioCtx = null;
-    var ambientSrc = null;
-    var ambientGain = null;
-    var curSound = 'silence';
-    var promptIdx = 0;
-    var promptTick = null;
+/* ================================================================
+   SESSION DATA — All guided meditations with TTS scripts
+   ================================================================ */
+var SESSIONS = [
+    // === BREATHING ===
+    { id:'calm-478', cat:'breathing', title:'4-7-8 Calm Breathing', duration:5, icon:'&#128168;', iconBg:'#E8F5E9',
+      bg:'linear-gradient(135deg,#1a3a2a,#0d2818)', emotion:['anxious','peaceful'],
+      desc:'Classic calming breath with guided counting',
+      prompts:[
+        'Welcome. Find a comfortable position and gently close your eyes.',
+        'We will practice the 4-7-8 breathing technique. This activates your parasympathetic nervous system, telling your body it is safe to relax.',
+        'Let us begin. Breathe in through your nose. 2. 3. 4.',
+        'Hold your breath gently. 2. 3. 4. 5. 6. 7.',
+        'Exhale slowly through your mouth. 2. 3. 4. 5. 6. 7. 8.',
+        'Good. Again. Breathe in. 2. 3. 4.',
+        'Hold. 2. 3. 4. 5. 6. 7.',
+        'Exhale slowly. 2. 3. 4. 5. 6. 7. 8.',
+        'Beautiful. One more round. Breathe in deeply. 2. 3. 4.',
+        'Hold with ease. 2. 3. 4. 5. 6. 7.',
+        'And release completely. 2. 3. 4. 5. 6. 7. 8.',
+        'Notice how your body feels now. Calmer. Quieter. This peace is always available to you.',
+        'Whenever anxiety rises, return to this breath. 4 counts in, 7 counts hold, 8 counts out. You carry this tool with you always.'
+      ]
+    },
+    { id:'box-breath', cat:'breathing', title:'Box Breathing', duration:5, icon:'&#11036;', iconBg:'#E3F2FD',
+      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['unfocused','anxious'],
+      desc:'Navy SEAL technique for focus and calm',
+      prompts:[
+        'Welcome to Box Breathing. This technique is used by Navy SEALs to stay calm under pressure.',
+        'Picture a square in your mind. We will trace its four sides with our breath.',
+        'Breathe in for 4. 2. 3. 4.',
+        'Hold for 4. 2. 3. 4.',
+        'Breathe out for 4. 2. 3. 4.',
+        'Hold empty for 4. 2. 3. 4.',
+        'Again. In. 2. 3. 4.',
+        'Hold. 2. 3. 4.',
+        'Out. 2. 3. 4.',
+        'Hold. 2. 3. 4.',
+        'You are tracing the square perfectly. Let the rhythm become automatic.',
+        'One more round. Breathe in. 2. 3. 4.',
+        'Hold. 2. 3. 4.',
+        'Release. 2. 3. 4.',
+        'And hold. 2. 3. 4.',
+        'Well done. You have just trained your nervous system to find calm on command. Use this before any stressful moment.'
+      ]
+    },
+    { id:'deep-calm', cat:'breathing', title:'Deep Calm', duration:7, icon:'&#127754;', iconBg:'#E8EAF6',
+      bg:'linear-gradient(135deg,#1a1a3a,#0d0d28)', emotion:['anxious','peaceful'],
+      desc:'Extended exhale for deep relaxation',
+      prompts:[
+        'Welcome to Deep Calm. In this practice, we use a longer exhale to activate your relaxation response.',
+        'Settle into your body. Feel the surface beneath you. You are supported.',
+        'Begin with a natural breath in.',
+        'Now exhale for twice as long. Let the air leave slowly, like a gentle stream.',
+        'Breathe in for 4 counts. 2. 3. 4.',
+        'And out for 8. 2. 3. 4. 5. 6. 7. 8.',
+        'The long exhale signals safety to your nervous system. You are telling your body all is well.',
+        'In. 2. 3. 4.',
+        'Out slowly. 2. 3. 4. 5. 6. 7. 8.',
+        'Feel a wave of calm washing through you with each exhale.',
+        'One more. Breathe in. 2. 3. 4.',
+        'And let everything go. 2. 3. 4. 5. 6. 7. 8.',
+        'Beautiful. Now just breathe naturally. Notice the quiet that has settled within you.',
+        'This calm is your natural state. The world may be noisy, but inside, you are still water.'
+      ]
+    },
+    { id:'energize', cat:'breathing', title:'Energizing Breath', duration:4, icon:'&#9889;', iconBg:'#FFF3E0',
+      bg:'linear-gradient(135deg,#3a2a1a,#281d0d)', emotion:['unfocused'],
+      desc:'Quick rhythmic breathing to boost energy',
+      prompts:[
+        'Welcome. This is an energizing breath to wake up your body and sharpen your mind.',
+        'Sit tall. Roll your shoulders back. Lift your chin slightly.',
+        'We will do quick rhythmic breathing. Short, sharp inhales and exhales through the nose.',
+        'Ready? Begin. In-out, in-out, in-out, in-out. Keep going.',
+        'Faster now. In-out, in-out, in-out. Feel the energy building.',
+        'Now take one deep breath in and hold. Hold. Hold.',
+        'Release with force. Ahh.',
+        'Again. Quick breaths. In-out, in-out, in-out, in-out.',
+        'Deep breath in. Hold. Feel the tingling energy throughout your body.',
+        'Release. Ahh.',
+        'Take a moment. Notice how alert you feel. Your mind is clear, your body is awake.',
+        'Carry this energy into whatever comes next. You are ready.'
+      ]
+    },
 
-    /* ====== DOM refs ====== */
-    var $time = document.getElementById('timerTime');
-    var $state = document.getElementById('timerState');
-    var $ring = document.getElementById('ringFill');
-    var $start = document.getElementById('btnStart');
-    var $pause = document.getElementById('btnPause');
-    var $reset = document.getElementById('btnReset');
-    var $streak = document.getElementById('streakNum');
-    var $pmtEn = document.getElementById('pmtEn');
-    var $pmtHi = document.getElementById('pmtHi');
-    var $overlay = document.getElementById('doneOverlay');
-    var $doneTime = document.getElementById('doneTime');
-    var $doneStreak = document.getElementById('doneStreak');
-    var CIRC = 2 * Math.PI * 120;
+    // === BODY SCAN ===
+    { id:'body-5', cat:'body-scan', title:'Quick Body Scan', duration:5, icon:'&#129497;', iconBg:'#F3E5F5',
+      bg:'linear-gradient(135deg,#2a1a3a,#180d28)', emotion:['anxious','peaceful'],
+      desc:'5-minute head-to-toe awareness scan',
+      prompts:[
+        'Welcome to this body scan. Close your eyes and take three deep breaths.',
+        'Bring your attention to the top of your head. Notice any tension there. Just notice it, without trying to change anything.',
+        'Move down to your forehead. Your eyes. Let the muscles around your eyes soften completely.',
+        'Your jaw. So much tension hides here. Let your mouth open slightly. Let the jaw hang loose.',
+        'Your neck and shoulders. Imagine warm sunlight melting any tightness. Let your shoulders drop away from your ears.',
+        'Your chest. Feel it rise and fall with each breath. Notice the rhythm of your own aliveness.',
+        'Your belly. Let it be soft. There is nothing to hold in, nothing to brace against.',
+        'Your hands. Fingers. Notice any tingling. Your hands do so much. Let them rest completely.',
+        'Your legs. Your thighs. Knees. Shins. Feel their weight against the surface beneath you.',
+        'Your feet. Feel the ground. You are here. You are supported. You are whole.',
+        'Now take a breath that fills your entire body, from feet to crown.',
+        'And exhale everything. You have just given your body the gift of attention. It will remember this kindness.'
+      ]
+    },
+    { id:'body-10', cat:'body-scan', title:'Deep Body Scan', duration:10, icon:'&#129497;&#8205;&#9792;&#65039;', iconBg:'#E8F5E9',
+      bg:'linear-gradient(135deg,#1a2a1a,#0d180d)', emotion:['sleepless','peaceful'],
+      desc:'10-minute progressive relaxation journey',
+      prompts:[
+        'Welcome to this deep body scan. Find a comfortable position, lying down if you can. Close your eyes.',
+        'Take three slow breaths. With each exhale, feel yourself sinking a little deeper into the surface beneath you.',
+        'We begin at the very top of your head. Imagine a warm golden light resting there. It is healing. It is gentle.',
+        'Let that light move down to your forehead. Feel the skin of your forehead smoothing out, softening.',
+        'The light moves to your eyes. Your eyelids are heavy with relaxation. There is nothing to see right now. Just rest.',
+        'Your cheeks. Your nose. The light touches each part with warmth.',
+        'Your mouth. Your lips. Let them part slightly. Your tongue rests gently behind your lower teeth.',
+        'Your jaw releases completely. So much emotion is stored here. Let it all go.',
+        'The golden light flows down to your neck. Feel each vertebra releasing, one by one.',
+        'Your shoulders. They have carried so much. In this moment, they carry nothing. Let them melt.',
+        'The warmth flows down your right arm. Upper arm. Elbow. Forearm. Wrist. Hand. Each finger relaxes.',
+        'Now your left arm. Upper arm. Elbow. Forearm. Wrist. Hand. Each finger lets go.',
+        'Your chest opens. Your heart beats steadily. You are alive. You are safe.',
+        'Your belly softens. Release any holding. There is no judgment here.',
+        'Your lower back. The golden light soothes every muscle, every fiber.',
+        'Your hips. Your pelvis. Grounding you.',
+        'The light flows down your right leg. Thigh. Knee. Calf. Ankle. Foot. Toes.',
+        'And your left leg. Thigh. Knee. Calf. Ankle. Foot. Toes.',
+        'Your entire body is now bathed in golden light. Every cell is relaxed. Every thought is quiet.',
+        'Stay here for a moment. This is your body at peace. Remember this feeling. You can return here anytime.',
+        'Gently begin to bring awareness back. Wiggle your fingers and toes. Take a deep breath. And when you are ready, open your eyes.'
+      ]
+    },
 
-    /* ====== 16 bilingual prompts ====== */
-    var prompts = [
-        {en:"Close your eyes and arrive in this moment.",hi:"\u0906\u0901\u0916\u0947\u0902 \u092C\u0902\u0926 \u0915\u0930\u0947\u0902 \u0914\u0930 \u0907\u0938 \u092A\u0932 \u092E\u0947\u0902 \u0906\u090F\u0902\u0964"},
-        {en:"Breathe in calm, breathe out tension.",hi:"\u0936\u093E\u0902\u0924\u093F \u0938\u093E\u0901\u0938 \u0932\u0947\u0902, \u0924\u0928\u093E\u0935 \u091B\u094B\u0921\u093C\u0947\u0902\u0964"},
-        {en:"You are exactly where you need to be.",hi:"\u0906\u092A \u0920\u0940\u0915 \u0935\u0939\u0940\u0902 \u0939\u0948\u0902 \u091C\u0939\u093E\u0901 \u0906\u092A\u0915\u094B \u0939\u094B\u0928\u093E \u091A\u093E\u0939\u093F\u090F\u0964"},
-        {en:"Let each thought pass like a cloud in the sky.",hi:"\u0939\u0930 \u0935\u093F\u091A\u093E\u0930 \u0915\u094B \u092C\u093E\u0926\u0932 \u0915\u0940 \u0924\u0930\u0939 \u0917\u0941\u091C\u0930\u0928\u0947 \u0926\u0947\u0902\u0964"},
-        {en:"Feel the stillness that lives within you.",hi:"\u0905\u092A\u0928\u0947 \u092D\u0940\u0924\u0930 \u0915\u0940 \u0936\u093E\u0902\u0924\u093F \u092E\u0939\u0938\u0942\u0938 \u0915\u0930\u0947\u0902\u0964"},
-        {en:"Your breath is your anchor to the present.",hi:"\u0906\u092A\u0915\u0940 \u0938\u093E\u0901\u0938 \u0935\u0930\u094D\u0924\u092E\u093E\u0928 \u0938\u0947 \u091C\u094B\u0921\u093C\u0924\u0940 \u0939\u0948\u0964"},
-        {en:"There is nowhere else you need to be right now.",hi:"\u0907\u0938 \u0938\u092E\u092F \u0915\u0939\u0940\u0902 \u0914\u0930 \u0939\u094B\u0928\u0947 \u0915\u0940 \u091C\u0930\u0942\u0930\u0924 \u0928\u0939\u0940\u0902\u0964"},
-        {en:"Observe your breath without changing it.",hi:"\u092C\u093F\u0928\u093E \u092C\u0926\u0932\u0947 \u0905\u092A\u0928\u0940 \u0938\u093E\u0901\u0938 \u0915\u094B \u0926\u0947\u0916\u0947\u0902\u0964"},
-        {en:"Soften your shoulders, relax your jaw.",hi:"\u0915\u0902\u0927\u094B\u0902 \u0914\u0930 \u091C\u092C\u0921\u093C\u0947 \u0915\u094B \u0922\u0940\u0932\u093E \u0915\u0930\u0947\u0902\u0964"},
-        {en:"With every exhale, release a little more.",hi:"\u0939\u0930 \u0938\u093E\u0901\u0938 \u091B\u094B\u0921\u093C\u0924\u0947 \u0938\u092E\u092F \u0925\u094B\u0921\u093C\u093E \u0914\u0930 \u091B\u094B\u0921\u093C\u0947\u0902\u0964"},
-        {en:"Peace is not a destination. It is already here.",hi:"\u0936\u093E\u0902\u0924\u093F \u0915\u094B\u0908 \u092E\u0902\u091C\u093F\u0932 \u0928\u0939\u0940\u0902\u0964 \u092F\u0939 \u092A\u0939\u0932\u0947 \u0938\u0947 \u092F\u0939\u093E\u0901 \u0939\u0948\u0964"},
-        {en:"When the mind wanders, return gently.",hi:"\u091C\u092C \u092E\u0928 \u092D\u091F\u0915\u0947 \u0924\u094B \u0927\u0940\u0930\u0947 \u0938\u0947 \u0932\u094C\u091F\u0947\u0902\u0964"},
-        {en:"Feel the earth beneath you, steady and sure.",hi:"\u0905\u092A\u0928\u0947 \u0928\u0940\u091A\u0947 \u0915\u0940 \u0927\u0930\u0924\u0940 \u0915\u094B \u092E\u0939\u0938\u0942\u0938 \u0915\u0930\u0947\u0902\u0964"},
-        {en:"This moment is a gift you give yourself.",hi:"\u092F\u0939 \u092A\u0932 \u0906\u092A\u0915\u093E \u0905\u092A\u0928\u0947 \u0932\u093F\u090F \u0909\u092A\u0939\u093E\u0930 \u0939\u0948\u0964"},
-        {en:"Silence is the language of the soul.",hi:"\u092E\u094C\u0928 \u0906\u0924\u094D\u092E\u093E \u0915\u0940 \u092D\u093E\u0937\u093E \u0939\u0948\u0964"},
-        {en:"You are not your thoughts. You are the witness.",hi:"\u0906\u092A \u0935\u093F\u091A\u093E\u0930 \u0928\u0939\u0940\u0902, \u0906\u092A \u0938\u093E\u0915\u094D\u0937\u0940 \u0939\u0948\u0902\u0964"}
-    ];
+    // === LOVING-KINDNESS ===
+    { id:'lk-self', cat:'loving-kindness', title:'Self-Compassion', duration:7, icon:'&#128156;', iconBg:'#FCE4EC',
+      bg:'linear-gradient(135deg,#3a1a2a,#280d18)', emotion:['grieving','peaceful'],
+      desc:'Direct loving-kindness toward yourself',
+      prompts:[
+        'Welcome to this loving-kindness meditation. Today, we focus on the most important person: you.',
+        'Close your eyes. Place one hand over your heart. Feel the warmth of your own touch.',
+        'Think of yourself as a child. Small, innocent, full of wonder. That child is still within you.',
+        'Silently repeat after me: May I be happy.',
+        'May I be healthy.',
+        'May I be safe.',
+        'May I live with ease.',
+        'Feel these words sinking into your heart like rain into dry soil.',
+        'May I be happy. May I be healthy. May I be safe. May I live with ease.',
+        'If resistance arises, that is okay. You are learning to love yourself. It takes practice.',
+        'One more time. May I be happy. May I be healthy. May I be safe. May I live with ease.',
+        'Now imagine warm light radiating from your heart outward, filling your entire body.',
+        'You are worthy of your own love. You always have been.',
+        'Take a deep breath and carry this warmth with you into the rest of your day.'
+      ]
+    },
+    { id:'lk-others', cat:'loving-kindness', title:'Compassion for All', duration:10, icon:'&#127758;', iconBg:'#E1F5FE',
+      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['grieving','peaceful'],
+      desc:'Extend loving-kindness from self to all beings',
+      prompts:[
+        'Welcome. In this practice, we will expand loving-kindness outward in ever-widening circles.',
+        'Close your eyes. Begin with yourself. Place your hand on your heart.',
+        'May I be happy. May I be healthy. May I be safe. May I live with ease.',
+        'Now bring to mind someone you love deeply. See their face. Feel your love for them.',
+        'May you be happy. May you be healthy. May you be safe. May you live with ease.',
+        'Now think of someone neutral. A stranger you passed today. The person who made your coffee.',
+        'May you be happy. May you be healthy. May you be safe. May you live with ease.',
+        'Now, the difficult one. Think of someone you are struggling with. This is the bravest act of love.',
+        'May you be happy. May you be healthy. May you be safe. May you live with ease.',
+        'Finally, expand your love to all beings everywhere. Every human, every animal, every living thing.',
+        'May all beings be happy. May all beings be healthy. May all beings be safe. May all beings live with ease.',
+        'Feel the vastness of your own compassion. It is limitless.',
+        'This love is not weakness. It is the strongest force in the universe. And it lives inside you.',
+        'Take a deep breath. Open your eyes when ready. Carry this love outward.'
+      ]
+    },
 
-    /* ====== Streak logic ====== */
-    function loadStreak(){
-        var d = JSON.parse(localStorage.getItem('sukoon_med')||'{}');
-        var today = new Date().toDateString();
-        var yesterday = new Date(Date.now()-864e5).toDateString();
-        if(d.lastDate===today) return d.streak||1;
-        if(d.lastDate===yesterday) return d.streak||1;
-        return 0;
+    // === VISUALIZATION ===
+    { id:'vis-forest', cat:'visualization', title:'Forest Walk', duration:8, icon:'&#127795;', iconBg:'#E8F5E9',
+      bg:'linear-gradient(135deg,#1a3a1a,#0d280d)', emotion:['anxious','peaceful'],
+      desc:'A guided walk through a healing forest',
+      prompts:[
+        'Close your eyes. Take a deep breath. You are standing at the entrance to a beautiful forest.',
+        'The air is cool and fresh. It smells of pine needles and damp earth after rain.',
+        'A soft path stretches before you, covered in golden-brown leaves. You begin to walk.',
+        'With each step, you feel lighter. The worries of the day dissolve like morning mist.',
+        'Tall trees surround you on both sides. Their branches form a cathedral of green above.',
+        'Sunlight filters through the canopy in shafts of gold. Tiny dust motes dance in the light.',
+        'You hear a stream nearby. Its sound is gentle, constant, reassuring.',
+        'You reach a small clearing. In the center is a moss-covered stone, warm from the sun. You sit.',
+        'Here, in this clearing, there is no past and no future. Only this moment. Only peace.',
+        'A bird sings somewhere above you. Its song is simple and pure.',
+        'Feel the earth beneath you. Feel the sky above. You are held between them, perfectly safe.',
+        'When you are ready, stand slowly. Know that this forest is always here, inside you. You can return anytime.',
+        'Walk back along the path. With each step, you carry the peace of the forest with you.',
+        'Take a deep breath. Gently open your eyes. Welcome back.'
+      ]
+    },
+    { id:'vis-beach', cat:'visualization', title:'Beach at Sunset', duration:8, icon:'&#127773;', iconBg:'#FFF3E0',
+      bg:'linear-gradient(135deg,#3a2a1a,#281d0d)', emotion:['peaceful','anxious'],
+      desc:'Relax on a warm beach as the sun sets',
+      prompts:[
+        'Close your eyes and breathe deeply. You are on a quiet beach. The day is ending.',
+        'The sand beneath you is warm and soft. You sink into it. It cradles your body perfectly.',
+        'The sun is low on the horizon. It paints the sky in streaks of orange, pink, and gold.',
+        'Waves roll gently toward you. Each one reaches just close enough to kiss your toes before retreating.',
+        'With each wave that comes in, feel peace washing over you. With each wave that pulls back, feel tension leaving.',
+        'The air is warm and salty. A gentle breeze touches your skin like a lover.',
+        'Seagulls call in the distance. Their cries are the sound of freedom.',
+        'The sun sinks lower. The colors deepen. Purple now. Crimson. The first star appears.',
+        'You are safe here. You are held by the sand, rocked by the waves, warmed by the dying light.',
+        'Breathe with the ocean. In as the wave comes. Out as it goes.',
+        'The sky darkens to deep blue. More stars appear. The universe reveals itself above you.',
+        'You are a part of this. Not separate from it. As vast and as beautiful as the sky above.',
+        'Take one more deep breath of this salty air. And slowly, gently, come back to the room.',
+        'Open your eyes. The peace of the ocean is inside you now.'
+      ]
+    },
+    { id:'vis-mountain', cat:'visualization', title:'Mountain Lake', duration:7, icon:'&#127956;', iconBg:'#E3F2FD',
+      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['peaceful'],
+      desc:'Find stillness at a crystal mountain lake',
+      prompts:[
+        'Close your eyes. Breathe deeply. You are high in the mountains, standing at the edge of a crystal-clear lake.',
+        'The water is perfectly still. It mirrors the sky above like a sheet of glass.',
+        'Snow-capped peaks surround you. They have stood here for millions of years. Silent witnesses to time.',
+        'You sit on a smooth rock at the water edge. The stone is cool and solid beneath you.',
+        'A gentle breeze creates tiny ripples on the lake surface. They spread outward and disappear.',
+        'Your thoughts are like those ripples. They arise, spread, and dissolve. You watch them without judgment.',
+        'The mountains do not react to the ripples. They simply stand. You can be like the mountain.',
+        'Breathe in the pure mountain air. It is thin and clean. Each breath fills you with clarity.',
+        'The lake is a mirror. What does it reflect? Only what is. Not what was or what will be.',
+        'You are the lake. Your true nature is stillness. Thoughts come and go on the surface, but deep below, you are always calm.',
+        'Take one more breath. Carry this mountain stillness with you. Open your eyes when ready.'
+      ]
+    },
+    { id:'vis-stars', cat:'visualization', title:'Starry Sky', duration:7, icon:'&#127747;', iconBg:'#E8EAF6',
+      bg:'linear-gradient(135deg,#0d0d2a,#05051a)', emotion:['sleepless','peaceful'],
+      desc:'Float among the stars and find perspective',
+      prompts:[
+        'Close your eyes. You are lying on your back in a vast meadow on a clear night.',
+        'Above you is the entire universe. Thousands of stars fill the sky from horizon to horizon.',
+        'With each breath, you feel yourself becoming lighter. You begin to float upward gently.',
+        'You rise above the meadow. Above the trees. Above the clouds.',
+        'Higher and higher. The earth becomes a blue marble below you. Beautiful and fragile.',
+        'You are surrounded by stars now. They are ancient lights. Some of these photons have traveled millions of years just to reach your eyes.',
+        'In this vast emptiness, you find a strange comfort. Your worries feel small. Not unimportant, but manageable.',
+        'You are made of the same atoms as these stars. Carbon, oxygen, iron. You are literally stardust having a human experience.',
+        'Float here for a moment. In the silence between the stars. This is the deepest quiet you have ever known.',
+        'Slowly, gently, you begin to descend. Back through the clouds. Back to the meadow.',
+        'You land softly in the grass. The stars are still above you. You are still made of them.',
+        'Take a deep breath. Open your eyes. Remember: you are vast. You contain galaxies.'
+      ]
+    },
+
+    // === MINDFUL MINUTES ===
+    { id:'mindful-1', cat:'mindful', title:'One Mindful Minute', duration:1, icon:'&#128337;', iconBg:'#F1F8E9',
+      bg:'linear-gradient(135deg,#1a2a1a,#0d180d)', emotion:['anxious','unfocused'],
+      desc:'A single minute of presence',
+      prompts:[
+        'Stop. You have one minute. That is enough.',
+        'Close your eyes. Take one deep breath.',
+        'Notice three sounds around you. Just listen. Do not name them.',
+        'Feel your feet on the ground. Feel your hands wherever they rest.',
+        'You are here. Right here. This moment is all there is.',
+        'Take one more breath. Open your eyes. You just meditated. It counts.'
+      ]
+    },
+    { id:'mindful-3', cat:'mindful', title:'Three Minutes of Calm', duration:3, icon:'&#128336;', iconBg:'#E8F5E9',
+      bg:'linear-gradient(135deg,#1a3a2a,#0d2818)', emotion:['anxious','unfocused','peaceful'],
+      desc:'A quick reset for busy moments',
+      prompts:[
+        'Welcome. Three minutes is all you need to reset. Close your eyes.',
+        'Take a deep breath in. And out. Let your shoulders drop.',
+        'For the next minute, just follow your breath. In and out. Nothing else matters right now.',
+        'If your mind wanders, that is perfectly normal. Just gently bring it back to the breath.',
+        'Now expand your awareness. Feel your entire body sitting or standing. Feel its weight. Its warmth.',
+        'Notice the sounds around you. Near and far. Let them come and go like clouds.',
+        'Take a final deep breath. Feel the aliveness in your body.',
+        'You have just created a pocket of peace in your day. Open your eyes. Carry this calm forward.'
+      ]
+    },
+    { id:'mindful-5', cat:'mindful', title:'Five Minutes of Stillness', duration:5, icon:'&#128338;', iconBg:'#E1F5FE',
+      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['peaceful','anxious','unfocused'],
+      desc:'A gentle introduction to mindfulness',
+      prompts:[
+        'Welcome. Five minutes of stillness can change the entire texture of your day.',
+        'Find a comfortable position. Close your eyes. Take three deep breaths at your own pace.',
+        'Now let your breath return to its natural rhythm. Do not try to control it. Just watch it.',
+        'Thoughts will come. Plans, memories, worries. That is what minds do. Simply notice each thought and let it pass.',
+        'Imagine your thoughts are leaves floating down a stream. You sit on the bank, watching them pass. You do not chase them.',
+        'Come back to the breath. The rise and fall of your chest. The cool air entering your nose. The warm air leaving.',
+        'If you get lost in thought, smile. You just noticed. That noticing is mindfulness. You are doing it perfectly.',
+        'Now listen. What is the farthest sound you can hear? Just listen.',
+        'And the closest sound? Perhaps your own breathing.',
+        'Feel your body. The places where you contact the chair or the ground. The weight of your hands.',
+        'Take a deep breath in. Fill your lungs completely. And exhale everything.',
+        'You have given yourself five minutes of peace. That is a revolutionary act in a busy world. Well done.',
+        'Open your eyes slowly. The world is still here. But you are different now. Even just a little.'
+      ]
     }
-    function bumpStreak(){
-        var d = JSON.parse(localStorage.getItem('sukoon_med')||'{}');
-        var today = new Date().toDateString();
-        var yesterday = new Date(Date.now()-864e5).toDateString();
-        var s = d.streak||0;
-        if(d.lastDate===today) return s;
-        s = (d.lastDate===yesterday) ? s+1 : 1;
-        localStorage.setItem('sukoon_med',JSON.stringify({streak:s,lastDate:today}));
-        return s;
-    }
-    $streak.textContent = Math.max(loadStreak(),1);
+];
 
-    /* ====== Timer helpers ====== */
-    function fmt(s){ return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); }
-    function render(){
-        $time.textContent = fmt(remaining);
-        var frac = 1 - remaining/duration;
-        var offset = (CIRC*(1-frac)).toFixed(2);
-        $ring.setAttribute('stroke-dashoffset', offset);
-    }
-    render();
+/* ================================================================
+   STATE
+   ================================================================ */
+var state = {
+    currentSession: null,
+    running: false,
+    paused: false,
+    elapsed: 0,
+    duration: 0,
+    promptIdx: 0,
+    ttsEnabled: true,
+    ambientType: 'rain',
+    timer: null
+};
 
-    /* ====== Duration pills ====== */
-    document.getElementById('durRow').addEventListener('click',function(e){
-        var p = e.target.closest('.dur-pill');
-        if(!p||running) return;
-        document.querySelectorAll('.dur-pill').forEach(function(b){b.classList.remove('active');});
-        p.classList.add('active');
-        duration = parseInt(p.dataset.min)*60;
-        remaining = duration;
-        render();
-        $state.textContent = 'Ready';
+/* ================================================================
+   AUDIO ENGINE (from course-player patterns)
+   ================================================================ */
+var audioCtx = null, ambientGain = null, ambientChannel = null, ambientBufferCache = {}, CROSSFADE = 4;
+
+function initAC(){ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume(); }
+
+function bell(hz){
+    initAC(); var t=audioCtx.currentTime; var base=hz||528;
+    [[base,0.25,3.5],[base*2,0.08,2.6],[base*3,0.03,1.8],[base*1.5,0.05,2.2]].forEach(function(h){
+        var o=audioCtx.createOscillator(),g=audioCtx.createGain();
+        o.type='sine'; o.frequency.setValueAtTime(h[0],t);
+        g.gain.setValueAtTime(h[1],t); g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);
+        o.connect(g); g.connect(audioCtx.destination); o.start(t); o.stop(t+h[2]);
     });
+}
 
-    /* ====== Web Audio init ====== */
-    function initAC(){
-        if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)();
-        if(audioCtx.state==='suspended') audioCtx.resume();
+async function loadBuf(type){
+    if(ambientBufferCache[type]) return ambientBufferCache[type];
+    try{ var r=await fetch('/audio/'+type+'.wav'); var ab=await r.arrayBuffer();
+    var d=await audioCtx.decodeAudioData(ab); ambientBufferCache[type]=d; return d; }catch(e){ return null; }
+}
+function startCrossfade(ch,buf,offset){
+    var src=audioCtx.createBufferSource(); src.buffer=buf; src.loop=false;
+    var fg=audioCtx.createGain(); fg.gain.setValueAtTime(0,audioCtx.currentTime);
+    src.connect(fg); fg.connect(ch.gain);
+    var dur=buf.duration,ft=Math.min(CROSSFADE,dur*0.4),now=audioCtx.currentTime;
+    src.start(now,offset||0); fg.gain.linearRampToValueAtTime(1,now+ft);
+    var fos=now+(dur-(offset||0)-ft);
+    if(fos>now+ft){ fg.gain.setValueAtTime(1,fos); fg.gain.linearRampToValueAtTime(0,fos+ft); }
+    var nd=(dur-(offset||0)-ft)*1000; if(nd<500) nd=500;
+    var timer=setTimeout(function(){ if(ambientChannel&&ambientChannel.active) startCrossfade(ch,buf,0); },nd);
+    src.onended=function(){ try{fg.disconnect();}catch(e){} };
+    ch.sources.push({src:src,gain:fg,timer:timer});
+    while(ch.sources.length>3){ var old=ch.sources.shift(); clearTimeout(old.timer); try{old.src.stop();}catch(e){} try{old.gain.disconnect();}catch(e){} }
+}
+async function startAmbient(type){
+    initAC(); killAmbient(); if(type==='silence') return;
+    var buf=await loadBuf(type); if(!buf) return;
+    ambientGain=audioCtx.createGain(); ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);
+    ambientGain.gain.linearRampToValueAtTime(0.2,audioCtx.currentTime+2);
+    ambientGain.connect(audioCtx.destination);
+    ambientChannel={gain:ambientGain,sources:[],active:true};
+    startCrossfade(ambientChannel,buf,0);
+    setTimeout(function(){ if(ambientChannel&&ambientChannel.active) startCrossfade(ambientChannel,buf,0); },(buf.duration/2)*1000);
+}
+function killAmbient(){
+    if(ambientChannel){ ambientChannel.active=false;
+        try{ ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+        ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value,audioCtx.currentTime);
+        ambientChannel.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.5);
+        var ch=ambientChannel;
+        setTimeout(function(){ ch.sources.forEach(function(s){ clearTimeout(s.timer); try{s.src.stop();}catch(e){} try{s.gain.disconnect();}catch(e){} }); try{ch.gain.disconnect();}catch(e){} },600);
+        }catch(e){} ambientChannel=null; ambientGain=null;
     }
+}
+function duckAmbient(duck){
+    if(!ambientGain) return;
+    try{ ambientGain.gain.cancelScheduledValues(audioCtx.currentTime);
+    ambientGain.gain.setValueAtTime(ambientGain.gain.value,audioCtx.currentTime);
+    ambientGain.gain.linearRampToValueAtTime(duck?0.06:0.2,audioCtx.currentTime+0.5);
+    }catch(e){}
+}
 
-    /* 528Hz singing bowl bell */
-    function bell(){
-        initAC();
-        var t = audioCtx.currentTime;
-        [[528,0.3,3.5],[1056,0.1,2.6],[1584,0.04,1.8],[792,0.06,2.2]].forEach(function(h){
-            var o = audioCtx.createOscillator();
-            var g = audioCtx.createGain();
-            o.type='sine'; o.frequency.setValueAtTime(h[0],t);
-            g.gain.setValueAtTime(h[1],t);
-            g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);
-            o.connect(g); g.connect(audioCtx.destination);
-            o.start(t); o.stop(t+h[2]);
-        });
-    }
-
-    /* Ambient sound - crossfade looping engine for seamless audio */
-    var ambientBufferCache = {};
-    var ambientChannel = null;
-    var AMBIENT_CROSSFADE = 4;
-
-    async function loadAmbientBuffer(type){
-        if(ambientBufferCache[type]) return ambientBufferCache[type];
-        var url = '/audio/' + type + '.wav';
-        try {
-            var resp = await fetch(url);
-            var ab = await resp.arrayBuffer();
-            var decoded = await audioCtx.decodeAudioData(ab);
-            ambientBufferCache[type] = decoded;
-            return decoded;
-        } catch(e){ console.warn('Failed to load ambient:', type, e); return null; }
-    }
-
-    function startAmbientCrossfade(ch, buf, offset) {
-        var src = audioCtx.createBufferSource();
-        src.buffer = buf; src.loop = false;
-        var fadeG = audioCtx.createGain();
-        fadeG.gain.setValueAtTime(0, audioCtx.currentTime);
-        src.connect(fadeG); fadeG.connect(ch.gain);
-        var dur = buf.duration;
-        var fadeT = Math.min(AMBIENT_CROSSFADE, dur * 0.4);
-        var now = audioCtx.currentTime;
-        src.start(now, offset || 0);
-        fadeG.gain.linearRampToValueAtTime(1, now + fadeT);
-        var fadeOutStart = now + (dur - (offset||0) - fadeT);
-        if(fadeOutStart > now + fadeT){
-            fadeG.gain.setValueAtTime(1, fadeOutStart);
-            fadeG.gain.linearRampToValueAtTime(0, fadeOutStart + fadeT);
-        }
-        var nextDelay = (dur - (offset||0) - fadeT) * 1000;
-        if(nextDelay < 500) nextDelay = 500;
-        var timer = setTimeout(function(){
-            if(ambientChannel && ambientChannel.active) startAmbientCrossfade(ch, buf, 0);
-        }, nextDelay);
-        src.onended = function(){ try{fadeG.disconnect();}catch(e){} };
-        ch.sources.push({src:src, gain:fadeG, timer:timer});
-        while(ch.sources.length > 3){
-            var old = ch.sources.shift();
-            clearTimeout(old.timer);
-            try{old.src.stop();}catch(e){} try{old.gain.disconnect();}catch(e){}
-        }
-    }
-
-    async function makeNoise(type){
-        initAC(); killAmbient();
-        if(type==='silence') return;
-        var buf = await loadAmbientBuffer(type);
-        if(!buf) return;
-        ambientGain = audioCtx.createGain();
-        ambientGain.gain.setValueAtTime(0, audioCtx.currentTime);
-        ambientGain.gain.linearRampToValueAtTime(0.2, audioCtx.currentTime + 2);
-        ambientGain.connect(audioCtx.destination);
-        ambientChannel = { gain: ambientGain, sources: [], active: true };
-        startAmbientCrossfade(ambientChannel, buf, 0);
-        setTimeout(function(){
-            if(ambientChannel && ambientChannel.active) startAmbientCrossfade(ambientChannel, buf, 0);
-        }, (buf.duration / 2) * 1000);
-    }
-    function killAmbient(){
-        if(ambientChannel){
-            ambientChannel.active = false;
-            try{
-                ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);
-                ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value, audioCtx.currentTime);
-                ambientChannel.gain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
-                var ch = ambientChannel;
-                setTimeout(function(){
-                    ch.sources.forEach(function(s){
-                        clearTimeout(s.timer);
-                        try{s.src.stop();}catch(e){} try{s.gain.disconnect();}catch(e){}
-                    });
-                    try{ch.gain.disconnect();}catch(e){}
-                }, 600);
-            }catch(e){}
-            ambientChannel = null; ambientGain = null; ambientSrc = null;
-        }
-    }
-
-    /* Sound cards */
-    document.getElementById('sndRow').addEventListener('click',function(e){
-        var p = e.target.closest('.snd-card');
-        if(!p) return;
-        document.querySelectorAll('.snd-card').forEach(function(b){b.classList.remove('active');});
-        p.classList.add('active');
-        curSound = p.dataset.snd;
-        if(running && !paused) makeNoise(curSound);
-    });
-
-    /* ====== Prompt rotation ====== */
-    function showPrompt(i){
-        $pmtEn.classList.add('fade');
-        $pmtHi.classList.add('fade');
-        setTimeout(function(){
-            var p = prompts[i%prompts.length];
-            $pmtEn.textContent = p.en;
-            $pmtHi.textContent = p.hi;
-            $pmtEn.classList.remove('fade');
-            $pmtHi.classList.remove('fade');
-        },700);
-    }
-    function startPrompts(){
-        promptIdx = Math.floor(Math.random()*prompts.length);
-        showPrompt(promptIdx);
-        promptTick = setInterval(function(){
-            promptIdx++;
-            showPrompt(promptIdx);
-        },30000);
-    }
-    function stopPrompts(){ if(promptTick){clearInterval(promptTick);promptTick=null;} }
-
-    /* ====== Timer controls ====== */
-    function go(){
-        initAC();
-        running=true; paused=false;
-        $state.textContent='Meditating';
-        $start.style.display='none';
-        $pause.style.display=''; $reset.style.display='';
-        $pause.textContent='Pause';
-        bell();
-        makeNoise(curSound);
-        startPrompts();
-        ticker = setInterval(function(){
-            remaining--;
-            render();
-            if(remaining<=0){
-                clearInterval(ticker); ticker=null;
-                running=false;
-                bell();
-                killAmbient();
-                stopPrompts();
-                complete();
+/* ================================================================
+   TTS ENGINE
+   ================================================================ */
+var tts = {
+    synth: window.speechSynthesis || null, voice: null, speaking: false,
+    init: function(){
+        if(!tts.synth) return;
+        var load=function(){
+            var voices=tts.synth.getVoices();
+            var prefs=['Google UK English Female','Samantha','Karen','Moira','Fiona','Google US English'];
+            for(var i=0;i<prefs.length;i++){ var f=voices.find(function(v){return v.name===prefs[i];}); if(f){tts.voice=f;break;} }
+            if(!tts.voice) tts.voice=voices.find(function(v){return v.lang.startsWith('en');});
+        };
+        if(tts.synth.getVoices().length) load();
+        tts.synth.onvoiceschanged = load;
+    },
+    speak: function(text, onEnd){
+        if(!state.ttsEnabled || !tts.synth || !tts.voice){ if(onEnd) setTimeout(onEnd,100); return; }
+        tts.synth.cancel();
+        var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+        var idx=0;
+        duckAmbient(true);
+        function speakNext(){
+            if(idx>=sentences.length || !state.running){
+                tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); return;
             }
-        },1000);
-    }
-    function togglePause(){
-        if(!paused){
-            paused=true; clearInterval(ticker); ticker=null;
-            $state.textContent='Paused';
-            $pause.textContent='Resume';
-            killAmbient(); stopPrompts();
-        } else {
-            paused=false;
-            $state.textContent='Meditating';
-            $pause.textContent='Pause';
-            makeNoise(curSound); startPrompts();
-            ticker = setInterval(function(){
-                remaining--;
-                render();
-                if(remaining<=0){
-                    clearInterval(ticker); ticker=null;
-                    running=false;
-                    bell(); killAmbient(); stopPrompts();
-                    complete();
-                }
-            },1000);
+            var u=new SpeechSynthesisUtterance(sentences[idx].trim());
+            u.voice=tts.voice; u.rate=0.85; u.pitch=0.95; u.volume=0.85;
+            u.onend=function(){ idx++; if(idx<sentences.length) setTimeout(speakNext,300); else { tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); } };
+            u.onerror=function(){ tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); };
+            tts.speaking=true; tts.synth.speak(u);
         }
-    }
-    function reset(){
-        running=false; paused=false;
-        if(ticker){clearInterval(ticker);ticker=null;}
-        remaining=duration; render();
-        $state.textContent='Ready';
-        $start.style.display='';
-        $pause.style.display='none'; $reset.style.display='none';
-        $pause.textContent='Pause';
-        killAmbient(); stopPrompts();
-    }
-    function complete(){
-        var s = bumpStreak();
-        $doneTime.textContent = fmt(duration);
-        $doneStreak.textContent = s;
-        $streak.textContent = s;
-        requestAnimationFrame(function(){
-            $overlay.classList.add('show');
-        });
-        $start.style.display='';
-        $pause.style.display='none'; $reset.style.display='none';
-        remaining=duration; render();
-        $state.textContent='Complete';
-    }
+        speakNext();
+    },
+    stop: function(){ if(tts.synth) tts.synth.cancel(); tts.speaking=false; duckAmbient(false); }
+};
+tts.init();
 
-    $start.addEventListener('click', go);
-    $pause.addEventListener('click', togglePause);
-    $reset.addEventListener('click', reset);
-    document.getElementById('btnContinue').addEventListener('click',function(){
-        $overlay.classList.remove('show');
-        $state.textContent='Ready';
+/* ================================================================
+   BROWSE VIEW — Render sessions
+   ================================================================ */
+var sessionGrid = document.getElementById('sessionGrid');
+var catTabs = document.getElementById('catTabs');
+var currentCat = 'all';
+
+function renderSessions(cat){
+    var filtered = cat === 'all' ? SESSIONS : SESSIONS.filter(function(s){ return s.cat === cat; });
+    sessionGrid.innerHTML = '';
+    if(!filtered.length){ sessionGrid.innerHTML = '<div class="empty-cat">No sessions in this category yet.</div>'; return; }
+    filtered.forEach(function(s){
+        var card = document.createElement('div');
+        card.className = 'session-card';
+        card.innerHTML =
+            '<div class="sess-icon" style="background:'+s.iconBg+'">'+s.icon+'</div>'+
+            '<div class="sess-info">'+
+                '<div class="sess-title">'+s.title+'</div>'+
+                '<div class="sess-meta">'+s.duration+' min &middot; '+s.cat.replace('-',' ')+'</div>'+
+                '<div class="sess-desc">'+s.desc+'</div>'+
+            '</div>'+
+            '<div class="sess-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>';
+        card.addEventListener('click', function(){ openSession(s); });
+        sessionGrid.appendChild(card);
     });
+}
+
+catTabs.addEventListener('click', function(e){
+    var tab = e.target.closest('.cat-tab');
+    if(!tab) return;
+    catTabs.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
+    tab.classList.add('active');
+    currentCat = tab.dataset.cat;
+    renderSessions(currentCat);
+});
+
+// Emotion routing
+document.getElementById('emotionGrid').addEventListener('click', function(e){
+    var card = e.target.closest('.emotion-card');
+    if(!card) return;
+    var emotion = card.dataset.emotion;
+    if(emotion === 'surprise'){
+        var idx = Math.floor(Math.random() * SESSIONS.length);
+        openSession(SESSIONS[idx]);
+        return;
+    }
+    var matches = SESSIONS.filter(function(s){ return s.emotion && s.emotion.indexOf(emotion) !== -1; });
+    if(matches.length){ openSession(matches[Math.floor(Math.random() * matches.length)]); }
+});
+
+renderSessions('all');
+
+/* ================================================================
+   PLAYER VIEW — Immersive session
+   ================================================================ */
+var playerView = document.getElementById('playerView');
+var playerBg = document.getElementById('playerBg');
+var ringFg = document.getElementById('ringFg');
+var ringTime = document.getElementById('ringTime');
+var ringLabel = document.getElementById('ringLabel');
+var promptText = document.getElementById('promptText');
+var btnPlay = document.getElementById('btnPlay');
+var iconPlay = document.getElementById('iconPlay');
+var CIRC = 2 * Math.PI * 100; // 628.3
+
+function openSession(session){
+    state.currentSession = session;
+    state.elapsed = 0;
+    state.duration = session.duration * 60;
+    state.promptIdx = 0;
+    state.running = false;
+    state.paused = false;
+
+    // Set background
+    playerBg.style.background = session.bg;
+
+    // Reset UI
+    ringFg.style.strokeDashoffset = CIRC;
+    ringTime.textContent = session.duration + ':00';
+    ringLabel.textContent = session.title;
+    promptText.textContent = 'Tap play to begin';
+    promptText.style.opacity = '1';
+    iconPlay.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+
+    // Spawn particles
+    spawnParticles(session);
+
+    // Show player
+    playerView.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function spawnParticles(session){
+    var container = document.getElementById('particles');
+    container.innerHTML = '';
+    var colors = ['rgba(255,255,255,0.3)','rgba(200,230,210,0.25)','rgba(180,220,255,0.2)'];
+    for(var i = 0; i < 20; i++){
+        var p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random()*100+'%';
+        p.style.top = (60+Math.random()*40)+'%';
+        p.style.width = p.style.height = (2+Math.random()*4)+'px';
+        p.style.background = colors[i%colors.length];
+        p.style.setProperty('--dy', (-200-Math.random()*400)+'px');
+        p.style.setProperty('--po', (0.2+Math.random()*0.4).toFixed(2));
+        p.style.animationDuration = (12+Math.random()*18)+'s';
+        p.style.animationDelay = (Math.random()*10)+'s';
+        container.appendChild(p);
+    }
+}
+
+function closePlayer(){
+    state.running = false;
+    state.paused = false;
+    clearInterval(state.timer);
+    tts.stop();
+    killAmbient();
+    playerView.classList.remove('active');
+    document.getElementById('completeView').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+document.getElementById('playerBack').addEventListener('click', closePlayer);
+
+// Play/Pause
+btnPlay.addEventListener('click', function(){
+    if(!state.running && !state.paused){
+        // Start session
+        state.running = true;
+        bell(528);
+        startAmbient(state.ambientType);
+        iconPlay.innerHTML = '<line x1="10" y1="4" x2="10" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/>';
+        // Start timer
+        state.timer = setInterval(tick, 1000);
+        // First prompt after bell
+        setTimeout(function(){ showPrompt(0); }, 2000);
+    } else if(state.running && !state.paused){
+        // Pause
+        state.paused = true;
+        state.running = false;
+        clearInterval(state.timer);
+        tts.stop();
+        iconPlay.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+    } else if(state.paused){
+        // Resume
+        state.paused = false;
+        state.running = true;
+        state.timer = setInterval(tick, 1000);
+        iconPlay.innerHTML = '<line x1="10" y1="4" x2="10" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/>';
+    }
+});
+
+function tick(){
+    if(!state.running) return;
+    state.elapsed++;
+    var remaining = Math.max(0, state.duration - state.elapsed);
+    var m = Math.floor(remaining/60), s = remaining%60;
+    ringTime.textContent = m + ':' + (s<10?'0':'') + s;
+    // Update ring
+    var progress = state.elapsed / state.duration;
+    ringFg.style.strokeDashoffset = CIRC * (1 - Math.min(progress, 1));
+
+    if(state.elapsed >= state.duration){
+        sessionComplete();
+    }
+}
+
+function showPrompt(idx){
+    if(!state.running || !state.currentSession) return;
+    var prompts = state.currentSession.prompts;
+    if(idx >= prompts.length) return;
+    state.promptIdx = idx;
+
+    promptText.style.opacity = '0';
+    setTimeout(function(){
+        promptText.textContent = prompts[idx];
+        promptText.style.opacity = '1';
+
+        // Speak the prompt
+        tts.speak(prompts[idx], function(){
+            // After speaking, wait a bit then show next
+            var delay = state.currentSession.duration <= 3 ? 2000 : 4000;
+            setTimeout(function(){ showPrompt(idx + 1); }, delay);
+        });
+    }, 300);
+}
+
+function sessionComplete(){
+    state.running = false;
+    clearInterval(state.timer);
+    tts.stop();
+    bell(528);
+
+    // Fade out ambient after 2 seconds
+    setTimeout(killAmbient, 2000);
+
+    // Log activity
+    try{
+        var log = JSON.parse(localStorage.getItem('sukoon_activity_log')||'[]');
+        log.unshift({ type:'meditation', text: state.currentSession.title+' ('+state.currentSession.duration+' min)', minutes: state.currentSession.duration, timestamp: new Date().toISOString() });
+        if(log.length>200) log=log.slice(0,200);
+        localStorage.setItem('sukoon_activity_log', JSON.stringify(log));
+        var stats = JSON.parse(localStorage.getItem('sukoon_progress_stats')||'{}');
+        stats.totalMinutes = (stats.totalMinutes||0) + state.currentSession.duration;
+        stats.totalSessions = (stats.totalSessions||0) + 1;
+        if(!stats.typeCounts) stats.typeCounts={};
+        stats.typeCounts.meditation = (stats.typeCounts.meditation||0)+1;
+        localStorage.setItem('sukoon_progress_stats', JSON.stringify(stats));
+        var dk = new Date().toISOString().slice(0,10);
+        var dc = parseInt(localStorage.getItem('sukoon_daily_'+dk)||'0',10)+1;
+        localStorage.setItem('sukoon_daily_'+dk, String(dc));
+    }catch(e){}
+
+    // Track via engine
+    if(window.sukoon) sukoon.track('meditation', state.currentSession.duration, state.currentSession.title);
+
+    // Show completion
+    setTimeout(function(){
+        document.getElementById('compTitle').textContent = 'Session Complete';
+        document.getElementById('compDuration').textContent = state.currentSession.duration + ' minutes of mindfulness';
+        document.getElementById('compSession').textContent = state.currentSession.title;
+        document.getElementById('completeView').classList.add('active');
+    }, 1500);
+}
+
+document.getElementById('compDone').addEventListener('click', closePlayer);
+
+// Ambient selector
+document.getElementById('ambRow').addEventListener('click', function(e){
+    var pill = e.target.closest('.amb-pill');
+    if(!pill) return;
+    document.querySelectorAll('.amb-pill').forEach(function(p){ p.classList.remove('active'); });
+    pill.classList.add('active');
+    state.ambientType = pill.dataset.amb;
+    if(state.running) startAmbient(state.ambientType);
+});
+
+// Voice toggle
+var voiceOn = true;
+document.getElementById('btnVoice').addEventListener('click', function(){
+    voiceOn = !voiceOn;
+    state.ttsEnabled = voiceOn;
+    this.style.opacity = voiceOn ? '1' : '0.4';
+    if(!voiceOn) tts.stop();
+});
+
+// Sound toggle
+var soundOn = true;
+document.getElementById('btnSound').addEventListener('click', function(){
+    soundOn = !soundOn;
+    this.style.opacity = soundOn ? '1' : '0.4';
+    if(soundOn && state.running){ startAmbient(state.ambientType); }
+    else { killAmbient(); }
+});
+
 })();
 </script>
-<script src="/js/i18n.js"></script>
+    <script src="/js/sukoon-engine.js"></script>
 </body>
 </html>

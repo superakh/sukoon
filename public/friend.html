@@ -8,37 +8,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { height: 100%; }
-        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
             overflow: hidden;
             display: flex;
             flex-direction: column;
+            height: 100%;
         }
-        a { text-decoration: none; color: inherit; }
 
-        /* ===================== TOP HEADER ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 1.25rem; height: 52px;
-            background: rgba(250,250,247,0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            display: flex; align-items: center; gap: 0.4rem;
-            letter-spacing: -0.01em;
-        }
         .topbar-status {
             display: flex; align-items: center; gap: 6px;
             font-size: 0.74rem; color: #86868B; font-weight: 500;
@@ -52,17 +30,6 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.4; }
         }
-        .lang-select {
-            padding: 0.32rem 0.5rem; border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.1); background: #FFFFFF;
-            font-size: 0.76rem; font-weight: 500; color: #1D1D1F;
-            cursor: pointer; outline: none;
-            font-family: -apple-system, 'Inter', sans-serif;
-            transition: border-color 0.2s;
-        }
-        .lang-select:focus { border-color: #2D6A4F; }
-        .lang-select option { background: #FFFFFF; color: #1D1D1F; }
-
         /* ===================== CRISIS BANNER ===================== */
         .crisis-banner {
             position: fixed; top: 52px; left: 0; right: 0; z-index: 999;
@@ -79,53 +46,10 @@
         }
         .crisis-banner a:hover { color: #1B4332; }
 
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: stretch; justify-content: space-around;
-            height: 56px;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding: 0 4px;
-        }
-        .nav-tab {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            gap: 2px; flex: 1;
-            color: #86868B; font-size: 0.62rem; font-weight: 500;
-            transition: color 0.2s;
-            cursor: pointer;
-            background: none; border: none; font-family: inherit;
-            text-decoration: none;
-        }
-        .nav-tab svg { width: 22px; height: 22px; }
-        .nav-tab:hover { color: #1D1D1F; }
-        .nav-tab.active { color: #2D6A4F; }
-        .nav-tab-label { letter-spacing: 0.02em; }
-
         /* ===================== DESKTOP SIDEBAR ===================== */
         @media (min-width: 961px) {
-            .bottom-nav {
-                position: fixed; top: 52px; left: 0; bottom: 0;
-                width: 220px; height: auto;
-                flex-direction: column; justify-content: flex-start; align-items: stretch;
-                padding: 1.25rem 0.75rem; gap: 0.2rem;
-                border-top: none;
-                border-right: 1px solid rgba(0,0,0,0.06);
-            }
-            .nav-tab {
-                flex: none; padding: 0.6rem 0.75rem;
-                border-radius: 8px;
-                flex-direction: row; justify-content: flex-start;
-                gap: 0.6rem; font-size: 0.82rem;
-            }
-            .nav-tab.active {
-                background: rgba(45,106,79,0.06);
-            }
             .chat-page {
                 margin-left: 220px;
-            }
-            .topbar {
-                left: 220px;
             }
             .crisis-banner {
                 left: 220px;
@@ -153,10 +77,6 @@
             animation: fadeIn 0.4s ease;
         }
         .welcome-state.hidden { display: none; }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
         .welcome-title {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(2rem, 5vw, 2.8rem);
@@ -429,7 +349,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
             <span class="nav-tab-label">AI Friend</span>
         </a>
-        <a href="/profile.html" class="nav-tab">
+        <a href="/you.html" class="nav-tab">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             <span class="nav-tab-label">You</span>
         </a>

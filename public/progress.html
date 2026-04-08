@@ -8,108 +8,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            color: #111827;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-        a { text-decoration: none; color: inherit; }
-
-        /* ===================== TOPBAR ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 2rem; height: 72px;
-            background: rgba(250,250,247,0.82);
-            backdrop-filter: blur(20px) saturate(1.4);
-            -webkit-backdrop-filter: blur(20px) saturate(1.4);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.4rem; color: #111827;
-            display: flex; align-items: center; gap: 0.5rem;
-            white-space: nowrap;
-        }
-        .brand-mark {
-            width: 32px; height: 32px; border-radius: 10px;
-            background: linear-gradient(135deg, #4F46E5, #7C3AED);
-            display: flex; align-items: center; justify-content: center;
-        }
-        .brand-mark svg { width: 18px; height: 18px; }
-        .topbar-nav { display: flex; align-items: center; gap: 2px; }
-        .topbar-nav a {
-            padding: 0.45rem 0.85rem; border-radius: 10px;
-            font-size: 0.85rem; font-weight: 500; color: #6B7280;
-            transition: all 0.2s ease;
-        }
-        .topbar-nav a:hover { background: rgba(79,70,229,0.06); color: #4F46E5; }
-        .topbar-nav a.active {
-            background: rgba(79,70,229,0.08); color: #4F46E5; font-weight: 600;
-        }
-        .topbar-right { display: flex; align-items: center; gap: 0.75rem; }
-        .lang-select {
-            padding: 0.4rem 0.65rem; border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.08); background: #fff;
-            font-size: 0.8rem; font-weight: 600; color: #6B7280;
-            cursor: pointer; outline: none; font-family: 'Inter', sans-serif;
-        }
-        .lang-select:focus { border-color: #4F46E5; }
-        .mobile-nav-toggle {
-            display: none; background: none; border: none;
-            color: #111827; cursor: pointer; padding: 4px;
-        }
-        .mobile-nav-toggle svg { width: 24px; height: 24px; }
-
-        @media (max-width: 768px) {
-            .mobile-nav-toggle { display: flex; align-items: center; }
-            .topbar { padding: 0 1rem; }
-            .topbar-nav { display: none; }
-            .topbar-nav.open {
-                display: flex; flex-direction: column;
-                position: absolute; top: 72px; left: 0; right: 0;
-                background: rgba(250,250,247,0.98);
-                backdrop-filter: blur(20px);
-                padding: 0.75rem;
-                border-bottom: 1px solid rgba(0,0,0,0.06);
-                box-shadow: 0 8px 32px rgba(0,0,0,0.08);
-            }
-            .topbar-nav.open a { padding: 0.85rem 1rem; font-size: 0.95rem; width: 100%; }
-        }
-
-        @media (min-width: 961px) {
-            .topbar { left: 220px; }
-            main { margin-left: 220px; }
-        }
-
         /* ===================== MAIN ===================== */
         main {
             max-width: 860px;
             margin: 0 auto;
-            padding: calc(72px + 40px) 20px 60px;
+            padding: calc(var(--topbar-h) + 32px) 20px 60px;
         }
-
-        /* ===================== PRIVACY NOTICE ===================== */
-        .privacy-notice {
-            display: flex; align-items: center; gap: 12px;
-            padding: 14px 20px;
-            background: rgba(16,185,129,0.06);
-            border: 1px solid rgba(16,185,129,0.15);
-            border-radius: 14px;
-            margin-bottom: 40px;
-        }
-        .privacy-notice svg { flex-shrink: 0; color: #10B981; }
-        .privacy-notice p { font-size: 0.84rem; color: #374151; line-height: 1.5; }
-        .privacy-notice .hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: #9CA3AF; display: block; margin-top: 2px;
+        @media (min-width: 961px) {
+            main { margin-left: var(--sidebar-w); }
         }
 
         /* ===================== PAGE HEADER ===================== */
@@ -149,7 +57,7 @@
             position: absolute; top: 0; left: 0; right: 0;
             height: 4px;
         }
-        .overview-card.card-minutes::before { background: linear-gradient(90deg, #4F46E5, #818CF8); }
+        .overview-card.card-minutes::before { background: linear-gradient(90deg, #2D6A4F, #52B788); }
         .overview-card.card-streak::before { background: linear-gradient(90deg, #F59E0B, #FBBF24); }
         .overview-card.card-sessions::before { background: linear-gradient(90deg, #10B981, #34D399); }
         .card-icon {
@@ -157,7 +65,7 @@
             display: flex; align-items: center; justify-content: center;
             margin: 0 auto 16px;
         }
-        .card-minutes .card-icon { background: rgba(79,70,229,0.08); }
+        .card-minutes .card-icon { background: rgba(45,106,79,0.08); }
         .card-streak .card-icon { background: rgba(245,158,11,0.08); }
         .card-sessions .card-icon { background: rgba(16,185,129,0.08); }
         .card-icon svg { width: 22px; height: 22px; }
@@ -210,14 +118,14 @@
             z-index: 2;
         }
         .cal-day.today {
-            outline: 2px solid #4F46E5;
+            outline: 2px solid #2D6A4F;
             outline-offset: 1px;
         }
-        .cal-day.level-1 { background: rgba(79,70,229,0.12); }
-        .cal-day.level-2 { background: rgba(79,70,229,0.28); }
-        .cal-day.level-3 { background: rgba(79,70,229,0.5); }
-        .cal-day.level-4 { background: rgba(79,70,229,0.75); }
-        .cal-day.level-5 { background: #4F46E5; }
+        .cal-day.level-1 { background: rgba(45,106,79,0.12); }
+        .cal-day.level-2 { background: rgba(45,106,79,0.28); }
+        .cal-day.level-3 { background: rgba(45,106,79,0.5); }
+        .cal-day.level-4 { background: rgba(45,106,79,0.75); }
+        .cal-day.level-5 { background: #2D6A4F; }
         .cal-tooltip {
             position: absolute;
             bottom: calc(100% + 8px); left: 50%;
@@ -304,12 +212,12 @@
         }
         .badge-card.earned {
             background: #FFFFFF;
-            border-color: rgba(79,70,229,0.15);
-            box-shadow: 0 0 20px rgba(79,70,229,0.06), 0 2px 8px rgba(0,0,0,0.04);
+            border-color: rgba(45,106,79,0.15);
+            box-shadow: 0 0 20px rgba(45,106,79,0.06), 0 2px 8px rgba(0,0,0,0.04);
         }
         .badge-card.earned:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 28px rgba(79,70,229,0.1), 0 4px 16px rgba(0,0,0,0.06);
+            box-shadow: 0 0 28px rgba(45,106,79,0.1), 0 4px 16px rgba(0,0,0,0.06);
         }
         .badge-card.locked { opacity: 0.55; }
         .badge-icon {
@@ -323,8 +231,8 @@
             animation: badgePulse 3s ease-in-out infinite;
         }
         @keyframes badgePulse {
-            0%, 100% { box-shadow: 0 0 0 0 rgba(79,70,229,0.15); }
-            50% { box-shadow: 0 0 0 8px rgba(79,70,229,0); }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(45,106,79,0.15); }
+            50% { box-shadow: 0 0 0 8px rgba(45,106,79,0); }
         }
         .badge-icon svg { width: 24px; height: 24px; }
         .badge-card.locked .badge-icon {
@@ -358,7 +266,7 @@
             width: 8px; height: 8px; border-radius: 50%;
             margin-top: 7px; flex-shrink: 0;
         }
-        .log-dot.meditation { background: #4F46E5; }
+        .log-dot.meditation { background: #2D6A4F; }
         .log-dot.breathing { background: #10B981; }
         .log-dot.journal { background: #F59E0B; }
         .log-dot.focus { background: #EC4899; }
@@ -405,7 +313,7 @@
             gap: 0.5rem 1.25rem; margin-bottom: 1.5rem;
         }
         .footer-nav a { font-size: 0.85rem; color: #6B7280; transition: color 0.2s; }
-        .footer-nav a:hover { color: #4F46E5; }
+        .footer-nav a:hover { color: #2D6A4F; }
         .footer-copy { font-size: 0.75rem; color: #9CA3AF; }
 
         /* ===================== TOAST ===================== */
@@ -446,37 +354,32 @@
 
     <!-- TOPBAR -->
     <header class="topbar">
-        <a href="/" class="topbar-brand">
-            <span class="brand-mark">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z"/><circle cx="12" cy="9" r="2"/></svg>
-            </span>
-            Sukoon
-        </a>
-        <nav class="topbar-nav" id="mainNav">
-            <a href="/breathe.html" data-i18n="nav.breathe">Breathe</a>
-            <a href="/meditate.html" data-i18n="nav.meditate">Meditate</a>
-            <a href="/sounds.html" data-i18n="nav.sounds">Sounds</a>
-            <a href="/journal.html" data-i18n="nav.journal">Journal</a>
-            <a href="/friend.html" data-i18n="nav.friend">AI Friend</a>
-            <a href="/wisdom.html" data-i18n="nav.wisdom">Wisdom</a>
-            <a href="/progress.html" class="active" data-i18n="nav.progress">Progress</a>
-            <a href="/quotes.html" data-i18n="nav.quotes">Quotes</a>
-            <a href="/videos.html" data-i18n="nav.videos">Videos</a>
-        </nav>
-        <div class="topbar-right">
-            <select class="lang-select" id="langPicker">
-                <option value="en">EN</option>
-                <option value="hi">HI</option>
-                <option value="ur">UR</option>
-                <option value="ar">AR</option>
-                <option value="es">ES</option>
-                <option value="fr">FR</option>
-            </select>
-            <button class="mobile-nav-toggle" id="mobileToggle" aria-label="Menu">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-            </button>
-        </div>
+        <a href="/" class="topbar-brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
     </header>
+
+    <!-- NAV -->
+    <nav class="bottom-nav">
+        <a href="/">
+            <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+            <span>Home</span>
+        </a>
+        <a href="/meditate.html">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 1.5"/></svg>
+            <span>Meditate</span>
+        </a>
+        <a href="/sleep.html">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+            <span>Sleep</span>
+        </a>
+        <a href="/friend.html">
+            <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+            <span>AI Friend</span>
+        </a>
+        <a href="/progress.html" class="active">
+            <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+            <span>Progress</span>
+        </a>
+    </nav>
 
     <main>
         <!-- Privacy Notice -->
@@ -499,7 +402,7 @@
         <div class="overview-grid">
             <div class="overview-card card-minutes">
                 <div class="card-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 </div>
                 <div class="card-number" id="totalMinutes">0</div>
                 <div class="card-label" data-i18n="progress.mindful_minutes">Mindful Minutes</div>
@@ -531,11 +434,11 @@
                     <span class="cal-legend-label">Less</span>
                     <div class="cal-legend-squares">
                         <div class="cal-legend-sq" style="background:rgba(0,0,0,0.03)"></div>
-                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.12)"></div>
-                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.28)"></div>
-                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.5)"></div>
-                        <div class="cal-legend-sq" style="background:rgba(79,70,229,0.75)"></div>
-                        <div class="cal-legend-sq" style="background:#4F46E5"></div>
+                        <div class="cal-legend-sq" style="background:rgba(45,106,79,0.12)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(45,106,79,0.28)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(45,106,79,0.5)"></div>
+                        <div class="cal-legend-sq" style="background:rgba(45,106,79,0.75)"></div>
+                        <div class="cal-legend-sq" style="background:#2D6A4F"></div>
                     </div>
                     <span class="cal-legend-label">More</span>
                 </div>
@@ -571,10 +474,7 @@
     <!-- FOOTER -->
     <footer class="footer">
         <div class="footer-brand">
-            <span class="brand-mark" style="width:28px;height:28px;border-radius:8px;">
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M12 3c-3.3 0-6 2.7-6 6 0 4.5 6 11 6 11s6-6.5 6-11c0-3.3-2.7-6-6-6z"/><circle cx="12" cy="9" r="2"/></svg>
-            </span>
-            Sukoon
+            <span style="color:#2D6A4F;">&#9752;</span> Sukoon
         </div>
         <p class="footer-mission" data-i18n="footer.mission">Free mental wellness for every soul on Earth.</p>
         <p class="footer-hindi">&#2342;&#2369;&#2344;&#2367;&#2351;&#2366; &#2325;&#2368; &#2361;&#2352; &#2310;&#2340;&#2381;&#2350;&#2366; &#2325;&#2375; &#2354;&#2367;&#2319; &#2350;&#2369;&#2347;&#2364;&#2381;&#2340; &#2350;&#2366;&#2344;&#2360;&#2367;&#2325; &#2360;&#2369;&#2325;&#2370;&#2344;&#2404;</p>
@@ -735,6 +635,43 @@
                             saveStats(stats);
                         }
                     }
+                }
+            } catch(e) {}
+        }
+
+        /* ================================================================
+           IMPORT: Course player streak data (sukoon-course-streak)
+           ================================================================ */
+
+        function importCoursePlayerData() {
+            try {
+                var courseStreak = JSON.parse(localStorage.getItem('sukoon-course-streak') || '{}');
+                if (!courseStreak.total) return;
+                var stats = getStats();
+
+                // Merge course streak into progress stats if higher
+                if (courseStreak.count > (stats.currentStreak || 0) && courseStreak.last === todayKey()) {
+                    stats.currentStreak = courseStreak.count;
+                }
+                if (courseStreak.count > (stats.maxStreak || 0)) {
+                    stats.maxStreak = courseStreak.count;
+                }
+                if ((stats.totalMinutes || 0) < (courseStreak.minutes || 0)) {
+                    stats.totalMinutes = courseStreak.minutes;
+                }
+                if ((stats.totalSessions || 0) < (courseStreak.total || 0)) {
+                    stats.totalSessions = courseStreak.total;
+                }
+                if (courseStreak.last && !stats.lastActiveDate) {
+                    stats.lastActiveDate = courseStreak.last;
+                }
+                if (!stats.featuresUsed) stats.featuresUsed = {};
+                stats.featuresUsed.meditation = true;
+                saveStats(stats);
+
+                // Ensure today has a daily count if active today
+                if (courseStreak.last === todayKey() && getDailyCount(todayKey()) === 0) {
+                    bumpDailyCount(todayKey());
                 }
             } catch(e) {}
         }
@@ -926,7 +863,7 @@
             var chartH = H - padT - padB;
 
             var moodColors = {
-                1: '#EF4444', 2: '#F59E0B', 3: '#EAB308', 4: '#10B981', 5: '#4F46E5'
+                1: '#EF4444', 2: '#F59E0B', 3: '#EAB308', 4: '#10B981', 5: '#2D6A4F'
             };
 
             function moodColor(val) {
@@ -969,7 +906,7 @@
                 areaPath += ' L' + points[points.length-1].x + ',' + (padT + chartH);
                 areaPath += ' L' + points[0].x + ',' + (padT + chartH) + ' Z';
                 svg += '<path d="' + areaPath + '" fill="url(#moodGrad)" opacity="0.4"/>';
-                svg += '<defs><linearGradient id="moodGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#4F46E5" stop-opacity="0.2"/><stop offset="100%" stop-color="#4F46E5" stop-opacity="0"/></linearGradient></defs>';
+                svg += '<defs><linearGradient id="moodGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2D6A4F" stop-opacity="0.2"/><stop offset="100%" stop-color="#2D6A4F" stop-opacity="0"/></linearGradient></defs>';
             }
 
             // Line connecting points
@@ -978,7 +915,7 @@
                 for (var li = 1; li < points.length; li++) {
                     linePath += ' L' + points[li].x + ',' + points[li].y;
                 }
-                svg += '<path d="' + linePath + '" fill="none" stroke="#4F46E5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>';
+                svg += '<path d="' + linePath + '" fill="none" stroke="#2D6A4F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.6"/>';
             }
 
             // Dots
@@ -1076,7 +1013,7 @@
                     name: 'First Step',
                     desc: 'Completed your first session',
                     earned: totalSessions >= 1 || journalCount >= 1,
-                    color: '#4F46E5',
+                    color: '#2D6A4F',
                     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
                 },
                 {
@@ -1108,7 +1045,7 @@
                     name: 'Zen Master',
                     desc: '1000 mindful minutes',
                     earned: totalMinutes >= 1000,
-                    color: '#4F46E5',
+                    color: '#2D6A4F',
                     icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'
                 },
                 {
@@ -1221,23 +1158,11 @@
         }
 
         /* ================================================================
-           MOBILE NAV
-           ================================================================ */
-
-        document.getElementById('mobileToggle').addEventListener('click', function() {
-            document.getElementById('mainNav').classList.toggle('open');
-        });
-        document.querySelectorAll('#mainNav a').forEach(function(a) {
-            a.addEventListener('click', function() {
-                document.getElementById('mainNav').classList.remove('open');
-            });
-        });
-
-        /* ================================================================
            INIT: Load all data and render
            ================================================================ */
 
         importLegacyMeditationData();
+        importCoursePlayerData();
 
         openJournalDB(function(db) {
             getJournalEntries(db, function(journalEntries) {
@@ -1252,5 +1177,15 @@
     })();
     </script>
     <script src="/js/i18n.js"></script>
+
+    <!-- Bottom Nav -->
+    <nav style="position:fixed;bottom:0;left:0;right:0;height:56px;background:#fff;border-top:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-around;z-index:1000;padding-bottom:env(safe-area-inset-bottom)">
+      <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
+      <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
+      <a href="/breathe.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
+      <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
+      <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
+    </nav>
+    <script src="/js/sukoon-engine.js"></script>
 </body>
 </html>

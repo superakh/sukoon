@@ -7,35 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
         body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
-        a { text-decoration: none; color: inherit; }
 
-        /* ===================== TOP HEADER ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 0 1.25rem; height: 52px;
-            background: rgba(250,250,247,0.8);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            display: flex; align-items: center; gap: 0.4rem;
-            letter-spacing: -0.01em;
-        }
         .topbar-actions { display: flex; align-items: center; gap: 0.5rem; }
         .save-mix-btn, .load-mix-btn {
             padding: 0.38rem 0.85rem; border-radius: 8px;
@@ -81,44 +58,8 @@
             font-size: 0.78rem; color: #86868B;
         }
 
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: space-around;
-            height: 56px;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding: 0 0.5rem;
-        }
-        .bnav-item {
-            display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
-            padding: 0.3rem 0.75rem; border-radius: 10px;
-            font-size: 0.62rem; font-weight: 500; color: #86868B;
-            transition: color 0.2s; cursor: pointer; text-decoration: none;
-        }
-        .bnav-item:hover { color: #1D1D1F; }
-        .bnav-item.active { color: #2D6A4F; }
-        .bnav-item svg { width: 22px; height: 22px; }
-
         /* ===================== DESKTOP SIDEBAR ===================== */
         @media (min-width: 961px) {
-            .topbar { left: 220px; }
-            .bottom-nav {
-                position: fixed; top: 52px; left: 0; bottom: 0;
-                width: 220px; height: auto;
-                flex-direction: column; justify-content: flex-start; align-items: stretch;
-                padding: 1.25rem 0.75rem; gap: 0.2rem;
-                border-top: none; border-right: 1px solid rgba(0,0,0,0.06);
-                background: #FFFFFF;
-            }
-            .bnav-item {
-                flex-direction: row; justify-content: flex-start;
-                padding: 0.6rem 0.75rem; border-radius: 8px;
-                font-size: 0.82rem; gap: 0.6rem;
-            }
-            .bnav-item.active {
-                background: rgba(45,106,79,0.06);
-            }
             .page-wrap { margin-left: 220px; }
         }
 
@@ -339,11 +280,6 @@
         .sleep-cancel:hover { background: rgba(239,68,68,0.08); }
         .sleep-cancel.show { display: inline-block; }
 
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
         .snd-card {
             animation: fadeIn 0.35s ease both;
         }
@@ -380,6 +316,53 @@
         .toast.show {
             opacity: 1; transform: translateX(-50%) translateY(0);
         }
+
+        /* ===================== FOCUS MUSIC ===================== */
+        .focus-section { margin-bottom: 2rem; }
+        .focus-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+        @media(min-width:961px){ .focus-grid { grid-template-columns: repeat(4,1fr); } }
+        .focus-card {
+            background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px;
+            padding: 16px 12px; text-align: center; cursor: pointer;
+            transition: all 0.2s; border-left: 3px solid transparent;
+        }
+        .focus-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+        .focus-card.playing { border-left-color: #2D6A4F; }
+        .focus-icon { font-size: 1.5rem; margin-bottom: 6px; display: block; }
+        .focus-name { font-size: 0.82rem; font-weight: 600; color: #1D1D1F; }
+        .focus-desc { font-size: 0.65rem; color: #86868B; margin-top: 2px; }
+
+        /* ===================== IMMERSIVE MODE ===================== */
+        .immersive-btn {
+            position: fixed; bottom: 72px; right: 16px; z-index: 900;
+            width: 44px; height: 44px; border-radius: 50%; border: none;
+            background: var(--color-accent); color: #fff; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 16px rgba(45,106,79,0.3); transition: all 0.2s;
+        }
+        .immersive-btn:hover { transform: scale(1.1); }
+        .immersive-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+        @media(min-width:961px){ .immersive-btn { bottom: 24px; right: 24px; } }
+
+        body.immersive { background: #0d1f17; }
+        body.immersive .topbar { opacity: 0; pointer-events: none; }
+        body.immersive .bottom-nav { opacity: 0; pointer-events: none; }
+        body.immersive .page-wrap { padding-top: 20px; }
+        body.immersive .snd-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+        body.immersive .snd-name, body.immersive .master-label { color: rgba(255,255,255,0.85); }
+        body.immersive .snd-name-hi, body.immersive .snd-val, body.immersive .section-label { color: rgba(255,255,255,0.4); }
+        body.immersive .snd-emoji { opacity: 1; }
+        body.immersive .preset-pill { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7); }
+        body.immersive .preset-pill.active { background: #2D6A4F; color: #fff; }
+        body.immersive .sleep-section, body.immersive .master-section { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+        body.immersive .sleep-heading-text, body.immersive .sleep-countdown { color: rgba(255,255,255,0.7); }
+        body.immersive .sleep-pill { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.6); border-color: rgba(255,255,255,0.1); }
+        body.immersive .save-mix-btn, body.immersive .load-mix-btn { background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); border-color: rgba(255,255,255,0.1); }
+        body.immersive .focus-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.08); }
+        body.immersive .focus-name { color: rgba(255,255,255,0.85); }
+        body.immersive .focus-desc { color: rgba(255,255,255,0.4); }
+        body.immersive input[type="range"] { background: rgba(255,255,255,0.12); }
+        body.immersive .immersive-btn { background: rgba(255,255,255,0.15); box-shadow: none; }
     </style>
 </head>
 <body>
@@ -537,6 +520,33 @@
 
     </div>
 
+    <!-- Focus Music Stations -->
+    <div class="focus-section">
+        <div class="section-label">Focus Music</div>
+        <div class="focus-grid" id="focusGrid">
+            <div class="focus-card" data-focus="lofi">
+                <span class="focus-icon">&#127911;</span>
+                <div class="focus-name">Lo-Fi Study</div>
+                <div class="focus-desc">Warm tones for deep work</div>
+            </div>
+            <div class="focus-card" data-focus="drone">
+                <span class="focus-icon">&#127756;</span>
+                <div class="focus-name">Deep Drone</div>
+                <div class="focus-desc">Ambient pad for flow state</div>
+            </div>
+            <div class="focus-card" data-focus="binaural">
+                <span class="focus-icon">&#129504;</span>
+                <div class="focus-name">Binaural 40Hz</div>
+                <div class="focus-desc">Gamma waves for focus</div>
+            </div>
+            <div class="focus-card" data-focus="piano">
+                <span class="focus-icon">&#127929;</span>
+                <div class="focus-name">Piano Calm</div>
+                <div class="focus-desc">Gentle generative piano</div>
+            </div>
+        </div>
+    </div>
+
     <!-- Quick Mix Presets -->
     <div class="presets-section">
         <div class="section-label" data-i18n="sounds.presets">Quick Mix Presets</div>
@@ -569,30 +579,20 @@
         </div>
     </div>
 
+    <!-- Immersive Mode Button -->
+    <button class="immersive-btn" id="immersiveBtn" title="Immersive mode">
+        <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+    </button>
+
 </main>
 
-<!-- ===================== BOTTOM NAVIGATION ===================== -->
+<!-- NAV -->
 <nav class="bottom-nav">
-    <a href="index.html" class="bnav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
-        Home
-    </a>
-    <a href="sounds.html" class="bnav-item active">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3m10-10h-3M5 12H2m15.07-5.07l-2.12 2.12M9.05 14.95l-2.12 2.12m10.14 0l-2.12-2.12M9.05 9.05L6.93 6.93"/></svg>
-        Sounds
-    </a>
-    <a href="breathe.html" class="bnav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l2 2"/></svg>
-        Breathe
-    </a>
-    <a href="friend.html" class="bnav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
-        AI Friend
-    </a>
-    <a href="journal.html" class="bnav-item">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        You
-    </a>
+    <a href="/"><svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg><span>Home</span></a>
+    <a href="/meditate.html"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 1.5"/></svg><span>Meditate</span></a>
+    <a href="/sleep.html"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg><span>Sleep</span></a>
+    <a href="/friend.html"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
+    <a href="/progress.html"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg><span>Progress</span></a>
 </nav>
 
 <!-- Toast notification -->
@@ -1009,8 +1009,135 @@
         }
     });
 
+    /* ====== Focus Music — Web Audio API Generated Tones ====== */
+    var focusNodes = null;
+    var activeFocus = null;
+
+    var FOCUS_CONFIGS = {
+        lofi: function(ctx, dest){
+            // Warm filtered noise + slow oscillator
+            var nodes = [];
+            var bufSize = ctx.sampleRate * 2;
+            var buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+            var data = buf.getChannelData(0);
+            for(var i=0;i<bufSize;i++) data[i] = Math.random()*2-1;
+            var noise = ctx.createBufferSource(); noise.buffer = buf; noise.loop = true;
+            var filter = ctx.createBiquadFilter(); filter.type = 'lowpass'; filter.frequency.value = 400; filter.Q.value = 2;
+            var gain = ctx.createGain(); gain.gain.value = 0;
+            noise.connect(filter); filter.connect(gain); gain.connect(dest);
+            noise.start();
+            gain.gain.linearRampToValueAtTime(0.08, ctx.currentTime+2);
+            // Add warm bass hum
+            var osc = ctx.createOscillator(); osc.type = 'sine'; osc.frequency.value = 110;
+            var og = ctx.createGain(); og.gain.value = 0;
+            osc.connect(og); og.connect(dest); osc.start();
+            og.gain.linearRampToValueAtTime(0.04, ctx.currentTime+2);
+            // Slow LFO on filter
+            var lfo = ctx.createOscillator(); lfo.frequency.value = 0.1;
+            var lfoG = ctx.createGain(); lfoG.gain.value = 150;
+            lfo.connect(lfoG); lfoG.connect(filter.frequency); lfo.start();
+            nodes.push({stop:function(){ noise.stop(); osc.stop(); lfo.stop(); gain.disconnect(); og.disconnect(); }});
+            return nodes;
+        },
+        drone: function(ctx, dest){
+            var nodes = [];
+            var freqs = [55, 82.5, 110, 165];
+            freqs.forEach(function(f){
+                var osc = ctx.createOscillator(); osc.type = 'sine'; osc.frequency.value = f;
+                var g = ctx.createGain(); g.gain.value = 0;
+                osc.connect(g); g.connect(dest); osc.start();
+                g.gain.linearRampToValueAtTime(0.03, ctx.currentTime+3);
+                nodes.push({stop:function(){ osc.stop(); g.disconnect(); }});
+            });
+            // Filtered noise bed
+            var bufSize = ctx.sampleRate*2, buf = ctx.createBuffer(1,bufSize,ctx.sampleRate), d = buf.getChannelData(0);
+            for(var i=0;i<bufSize;i++) d[i]=Math.random()*2-1;
+            var n=ctx.createBufferSource();n.buffer=buf;n.loop=true;
+            var flt=ctx.createBiquadFilter();flt.type='bandpass';flt.frequency.value=200;flt.Q.value=0.5;
+            var ng=ctx.createGain();ng.gain.value=0;
+            n.connect(flt);flt.connect(ng);ng.connect(dest);n.start();
+            ng.gain.linearRampToValueAtTime(0.04,ctx.currentTime+3);
+            nodes.push({stop:function(){n.stop();ng.disconnect();}});
+            return nodes;
+        },
+        binaural: function(ctx, dest){
+            var nodes = [];
+            // Left ear 200Hz, Right ear 240Hz = 40Hz gamma binaural beat
+            var merger = ctx.createChannelMerger(2);
+            var oscL = ctx.createOscillator(); oscL.frequency.value = 200;
+            var oscR = ctx.createOscillator(); oscR.frequency.value = 240;
+            var gL = ctx.createGain(); gL.gain.value = 0;
+            var gR = ctx.createGain(); gR.gain.value = 0;
+            oscL.connect(gL); gL.connect(merger, 0, 0);
+            oscR.connect(gR); gR.connect(merger, 0, 1);
+            merger.connect(dest);
+            oscL.start(); oscR.start();
+            gL.gain.linearRampToValueAtTime(0.08, ctx.currentTime+2);
+            gR.gain.linearRampToValueAtTime(0.08, ctx.currentTime+2);
+            nodes.push({stop:function(){oscL.stop();oscR.stop();gL.disconnect();gR.disconnect();merger.disconnect();}});
+            return nodes;
+        },
+        piano: function(ctx, dest){
+            var nodes = [];
+            // Generative piano-like tones using enveloped sine waves
+            var scale = [261.63, 293.66, 329.63, 349.23, 392, 440, 493.88, 523.25]; // C4 major
+            var running = true;
+            function playNote(){
+                if(!running) return;
+                var freq = scale[Math.floor(Math.random()*scale.length)];
+                var osc = ctx.createOscillator(); osc.type = 'sine'; osc.frequency.value = freq;
+                var g = ctx.createGain(); g.gain.setValueAtTime(0.06, ctx.currentTime);
+                g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+3);
+                osc.connect(g); g.connect(dest); osc.start(); osc.stop(ctx.currentTime+3);
+                var next = 1500 + Math.random()*3000;
+                setTimeout(playNote, next);
+            }
+            playNote();
+            // Soft pad underneath
+            var pad = ctx.createOscillator(); pad.type='sine'; pad.frequency.value=261.63;
+            var pg = ctx.createGain(); pg.gain.value=0;
+            pad.connect(pg); pg.connect(dest); pad.start();
+            pg.gain.linearRampToValueAtTime(0.02, ctx.currentTime+2);
+            nodes.push({stop:function(){ running=false; pad.stop(); pg.disconnect(); }});
+            return nodes;
+        }
+    };
+
+    function startFocus(type){
+        stopFocus();
+        initAC();
+        focusNodes = FOCUS_CONFIGS[type](audioCtx, masterGain);
+        activeFocus = type;
+        document.querySelectorAll('.focus-card').forEach(function(c){
+            c.classList.toggle('playing', c.dataset.focus===type);
+        });
+    }
+
+    function stopFocus(){
+        if(focusNodes){
+            focusNodes.forEach(function(n){ try{n.stop();}catch(e){} });
+            focusNodes = null;
+        }
+        activeFocus = null;
+        document.querySelectorAll('.focus-card').forEach(function(c){ c.classList.remove('playing'); });
+    }
+
+    document.getElementById('focusGrid').addEventListener('click', function(e){
+        var card = e.target.closest('.focus-card');
+        if(!card) return;
+        var type = card.dataset.focus;
+        if(activeFocus === type){ stopFocus(); }
+        else { startFocus(type); }
+    });
+
+    /* ====== Immersive Mode ====== */
+    document.getElementById('immersiveBtn').addEventListener('click', function(){
+        document.body.classList.toggle('immersive');
+    });
+
 })();
 </script>
 <script src="/js/i18n.js"></script>
+    <script src="/js/sukoon-engine.js"></script>
 </body>
 </html>

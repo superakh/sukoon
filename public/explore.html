@@ -8,71 +8,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            padding-bottom: 72px;
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
-        /* ===================== TOP HEADER ===================== */
-        .top-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 1.25rem;
-            height: 52px;
-            background: rgba(250, 250, 247, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-
-        .brand {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 1.25rem;
-            color: #1D1D1F;
-            letter-spacing: -0.02em;
-        }
-
-        .brand-leaf {
-            color: #2D6A4F;
-            margin-right: 2px;
-        }
-
-        .lang-picker {
-            padding: 5px 26px 5px 10px;
-            border-radius: 8px;
-            border: 1px solid rgba(0,0,0,0.1);
-            background: #FFFFFF;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #86868B;
-            cursor: pointer;
-            font-family: -apple-system, 'Inter', sans-serif;
-            -webkit-appearance: none;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L5 5L9 1' stroke='%2386868B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            transition: border-color 0.2s;
-        }
-
-        .lang-picker:hover { border-color: rgba(45, 106, 79, 0.4); }
-
         /* ===================== SEARCH BAR ===================== */
         .search-wrapper {
             padding: 16px 1.25rem 8px;
@@ -467,99 +404,8 @@
             color: #AEAEB2;
         }
 
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 200;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            height: 56px;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0,0,0,0.06);
-            padding-bottom: env(safe-area-inset-bottom, 0);
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            padding: 6px 12px;
-            border-radius: 10px;
-            color: #AEAEB2;
-            transition: color 0.2s ease;
-            text-decoration: none;
-            -webkit-tap-highlight-color: transparent;
-        }
-
-        .nav-item svg {
-            width: 21px;
-            height: 21px;
-        }
-
-        .nav-item span {
-            font-size: 0.62rem;
-            font-weight: 500;
-            font-family: -apple-system, 'Inter', sans-serif;
-        }
-
-        .nav-item:hover { color: #86868B; }
-
-        .nav-item.active {
-            color: #2D6A4F;
-        }
-
-        .nav-item.active svg { stroke-width: 2.2; }
-
-        /* ===================== DESKTOP SIDEBAR LAYOUT ===================== */
+        /* ===================== DESKTOP LAYOUT ===================== */
         @media (min-width: 961px) {
-            body { padding-bottom: 0; }
-
-            .bottom-nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: auto;
-                width: 220px;
-                height: 100vh;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 68px 0 24px;
-                gap: 4px;
-                border-top: none;
-                border-right: 1px solid rgba(0,0,0,0.06);
-                background: #FFFFFF;
-                align-items: flex-start;
-            }
-
-            .nav-item {
-                flex-direction: row;
-                gap: 10px;
-                padding: 10px 24px;
-                width: 100%;
-                border-radius: 0;
-                justify-content: flex-start;
-            }
-
-            .nav-item span {
-                font-size: 0.82rem;
-                font-weight: 500;
-            }
-
-            .nav-item.active {
-                background: #F5FAF7;
-                border-right: 2px solid #2D6A4F;
-            }
-
-            .top-header {
-                padding-left: calc(220px + 1.5rem);
-            }
-
             .search-wrapper {
                 max-width: 960px;
                 padding-left: calc(220px + 1.5rem);
@@ -608,14 +454,125 @@
             .featured-title { font-size: 1.65rem; }
         }
 
-        /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         .featured-banner {
             animation: fadeIn 0.3s ease forwards;
+        }
+
+        /* ===================== QUICK START GRID ===================== */
+        .quick-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            padding: 0 1.25rem 32px;
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .quick-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 12px 20px;
+            border-radius: 14px;
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            text-decoration: none;
+            transition: all 0.25s ease;
+            cursor: pointer;
+        }
+
+        .quick-card:hover {
+            box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+            transform: translateY(-2px);
+        }
+
+        .quick-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .quick-label {
+            font-family: 'DM Serif Display', Georgia, serif;
+            font-size: 0.92rem;
+            color: #1D1D1F;
+        }
+
+        .quick-sub {
+            font-size: 0.7rem;
+            color: #AEAEB2;
+            margin-top: -4px;
+        }
+
+        /* ===================== FOR YOU / CONTINUE SECTIONS ===================== */
+        .smart-section {
+            margin-bottom: 32px;
+            display: none;
+        }
+
+        .smart-section.has-items {
+            display: block;
+        }
+
+        .smart-section .section-header {
+            padding: 0 1.25rem;
+            margin-bottom: 14px;
+        }
+
+        .smart-section .cards-scroll {
+            padding: 0 1.25rem;
+        }
+
+        .smart-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #2D6A4F;
+            background: #D8F3DC;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        .mood-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 0.65rem;
+            font-weight: 500;
+            background: rgba(45,106,79,0.08);
+            color: #2D6A4F;
+            margin-top: 6px;
+        }
+
+        @media (min-width: 961px) {
+            .quick-grid {
+                max-width: 960px;
+                margin-left: 220px;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .smart-section .section-header {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+
+            .smart-section .cards-scroll {
+                padding-left: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -664,16 +621,56 @@
     <!-- ===== MAIN CONTENT ===== -->
     <main class="main-content" id="mainContent">
 
-        <!-- Featured Banner -->
-        <a href="/meditate.html" class="featured-banner" id="featuredBanner">
+        <!-- Featured Banner: Daily Sukoon -->
+        <a href="/daily.html" class="featured-banner" id="featuredBanner">
             <div class="featured-bg">
-                <div class="featured-accent">&#9752;</div>
-                <span class="featured-label">Curated Collection</span>
-                <h2 class="featured-title">Finding Inner Peace</h2>
-                <p class="featured-desc">A gentle journey through meditation, breath & stillness</p>
-                <span class="featured-cta">Begin Journey <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                <div class="featured-accent" id="dailyIcon">&#9752;</div>
+                <span class="featured-label">New Today</span>
+                <h2 class="featured-title" id="dailyTitle">Today's Daily Sukoon</h2>
+                <p class="featured-desc" id="dailyDesc">Your 10-minute guided ritual — a new practice every day</p>
+                <span class="featured-cta">Start Today's Practice <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
         </a>
+
+        <!-- Quick Start Grid -->
+        <div class="quick-grid">
+            <a href="/meditate.html" class="quick-card">
+                <div class="quick-icon icon-green">&#128477;&#65039;</div>
+                <div class="quick-label">Meditate</div>
+                <div class="quick-sub">Guided sessions</div>
+            </a>
+            <a href="/sleep.html" class="quick-card">
+                <div class="quick-icon icon-indigo">&#127769;</div>
+                <div class="quick-label">Sleep</div>
+                <div class="quick-sub">Stories & sounds</div>
+            </a>
+            <a href="/sounds.html" class="quick-card">
+                <div class="quick-icon icon-sky">&#127926;</div>
+                <div class="quick-label">Sounds</div>
+                <div class="quick-sub">Focus & ambient</div>
+            </a>
+            <a href="/friend.html" class="quick-card">
+                <div class="quick-icon icon-teal">&#128172;</div>
+                <div class="quick-label">AI Friend</div>
+                <div class="quick-sub">Always here</div>
+            </a>
+        </div>
+
+        <!-- For You (dynamic, personalized) -->
+        <section class="smart-section" id="forYouSection">
+            <div class="section-header">
+                <h3 class="section-title">For You <span class="smart-badge">Personalized</span></h3>
+            </div>
+            <div class="cards-scroll" id="forYouCards"></div>
+        </section>
+
+        <!-- Continue (in-progress items) -->
+        <section class="smart-section" id="continueSection">
+            <div class="section-header">
+                <h3 class="section-title">Continue</h3>
+            </div>
+            <div class="cards-scroll" id="continueCards"></div>
+        </section>
 
         <!-- ===== MEDITATION ===== -->
         <section class="content-section" data-section="meditation" id="sectionMeditation">
@@ -1257,7 +1254,211 @@
             } catch(e) {}
         });
 
+        /* ====== DAILY SUKOON SPOTLIGHT ====== */
+        (function() {
+            var days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+            var themes = [
+                { icon: '&#128524;', title: "Sunday's Deep Rest", desc: 'Progressive relaxation to recharge for the week ahead' },
+                { icon: '&#127793;', title: "Monday's Intention Setting", desc: 'Visualize your week with clarity and purpose' },
+                { icon: '&#128156;', title: "Tuesday's Gratitude", desc: 'Cultivate thankfulness for what matters most' },
+                { icon: '&#129702;', title: "Wednesday's Body Scan", desc: 'Release tension and reconnect with your body' },
+                { icon: '&#128150;', title: "Thursday's Loving-Kindness", desc: 'Extend compassion to yourself and others' },
+                { icon: '&#127807;', title: "Friday's Weekly Release", desc: 'Let go of the week\'s stress and find peace' },
+                { icon: '&#10024;', title: "Saturday's Dream Visualization", desc: 'Explore your aspirations and deepest desires' }
+            ];
+            var d = new Date().getDay();
+            var t = themes[d];
+            var el = function(id) { return document.getElementById(id); };
+            if (el('dailyIcon')) el('dailyIcon').innerHTML = t.icon;
+            if (el('dailyTitle')) el('dailyTitle').textContent = t.title;
+            if (el('dailyDesc')) el('dailyDesc').textContent = t.desc;
+        })();
+
+        /* ====== FOR YOU (PERSONALIZED) ====== */
+        (function() {
+            var forYouEl = document.getElementById('forYouSection');
+            var forYouCards = document.getElementById('forYouCards');
+            if (!forYouEl || !forYouCards) return;
+
+            var recs = [];
+
+            // Read last mood from various sources
+            var lastMood = null;
+            try {
+                var moodKeys = ['sukoon_daily_mood_pre', 'sukoon_last_mood'];
+                for (var i = 0; i < moodKeys.length; i++) {
+                    var m = localStorage.getItem(moodKeys[i]);
+                    if (m) { lastMood = m; break; }
+                }
+            } catch(e) {}
+
+            // Mood-based recommendations
+            var moodMap = {
+                'anxious': [
+                    { href: '/meditate.html', icon: '&#127807;', bg: 'icon-teal', title: 'Calm Anxiety', meta: '5 min guided', desc: 'Gentle guidance to ease anxious thoughts', tag: 'For anxiety' },
+                    { href: '/sos.html', icon: '&#128168;', bg: 'icon-sky', title: 'SOS Breathing', meta: 'Instant relief', desc: 'Quick grounding when anxiety peaks', tag: 'Instant calm' }
+                ],
+                'sad': [
+                    { href: '/meditate.html', icon: '&#128156;', bg: 'icon-pink', title: 'Loving Kindness', meta: '10 min guided', desc: 'Wrap yourself in compassion', tag: 'For sadness' },
+                    { href: '/friend.html', icon: '&#128172;', bg: 'icon-teal', title: 'Talk It Out', meta: 'AI Friend', desc: 'Share what\'s on your heart', tag: 'Support' }
+                ],
+                'stressed': [
+                    { href: '/meditate.html', icon: '&#128477;&#65039;', bg: 'icon-purple', title: 'Quick Calm', meta: '3 min', desc: 'A brief pause to reset', tag: 'For stress' },
+                    { href: '/sounds.html', icon: '&#127783;&#65039;', bg: 'icon-sky', title: 'Rain Sounds', meta: 'Ambient', desc: 'Soothing rainfall for instant relief', tag: 'Relaxation' }
+                ],
+                'tired': [
+                    { href: '/sleep.html', icon: '&#127769;', bg: 'icon-indigo', title: 'Sleep Stories', meta: '15-30 min', desc: 'Drift off with a soothing tale', tag: 'For rest' },
+                    { href: '/sos.html', icon: '&#128716;', bg: 'icon-blue', title: 'Can\'t Sleep', meta: 'Guided', desc: 'Progressive relaxation for insomnia', tag: 'Sleep help' }
+                ],
+                'happy': [
+                    { href: '/meditate.html', icon: '&#10024;', bg: 'icon-amber', title: 'Gratitude Practice', meta: '5 min', desc: 'Amplify this beautiful feeling', tag: 'Joy' },
+                    { href: '/journal.html', icon: '&#128221;', bg: 'icon-green', title: 'Journal This', meta: 'Capture', desc: 'Write down what made you smile', tag: 'Reflect' }
+                ],
+                'calm': [
+                    { href: '/meditate.html', icon: '&#127795;', bg: 'icon-green', title: 'Deepen Your Peace', meta: '10 min', desc: 'A mindful awareness session', tag: 'Serenity' },
+                    { href: '/wisdom.html', icon: '&#128220;', bg: 'icon-amber', title: 'Soul Wisdom', meta: 'Read', desc: 'Timeless insights for the still mind', tag: 'Wisdom' }
+                ]
+            };
+
+            // Try to find matching mood recommendations
+            if (lastMood) {
+                var moodLower = lastMood.toLowerCase();
+                // Map numeric/emoji moods to text
+                var moodNames = { '1': 'sad', '2': 'anxious', '3': 'calm', '4': 'happy', '5': 'happy' };
+                if (moodNames[moodLower]) moodLower = moodNames[moodLower];
+
+                // Find matching recommendations
+                var keys = Object.keys(moodMap);
+                for (var k = 0; k < keys.length; k++) {
+                    if (moodLower.indexOf(keys[k]) !== -1 || keys[k].indexOf(moodLower) !== -1) {
+                        recs = moodMap[keys[k]];
+                        break;
+                    }
+                }
+            }
+
+            // Check recent activity for more recommendations
+            try {
+                var actLog = JSON.parse(localStorage.getItem('sukoon_activity_log') || '[]');
+                if (actLog.length > 0 && recs.length < 3) {
+                    var lastCat = actLog[actLog.length - 1].category;
+                    if (lastCat === 'meditation') {
+                        recs.push({ href: '/meditate.html', icon: '&#128477;&#65039;', bg: 'icon-purple', title: 'More Meditation', meta: 'Continue', desc: 'Pick up where you left off', tag: 'Recent' });
+                    } else if (lastCat === 'focus') {
+                        recs.push({ href: '/focus.html', icon: '&#127919;', bg: 'icon-rose', title: 'Focus Again', meta: 'Continue', desc: 'Get back into flow state', tag: 'Recent' });
+                    }
+                }
+            } catch(e) {}
+
+            // Default recommendations if nothing personalized
+            if (recs.length === 0) {
+                recs = [
+                    { href: '/meditate.html', icon: '&#128477;&#65039;', bg: 'icon-purple', title: 'Start Meditating', meta: '3-20 min', desc: 'Guided sessions for every mood', tag: 'Popular' },
+                    { href: '/daily.html', icon: '&#9752;', bg: 'icon-green', title: 'Daily Sukoon', meta: '10 min ritual', desc: 'Your personalized daily practice', tag: 'Try it' },
+                    { href: '/sos.html', icon: '&#128680;', bg: 'icon-red', title: 'SOS Support', meta: 'Instant', desc: 'Emotion-specific guided help', tag: 'Crisis' }
+                ];
+            }
+
+            // Render cards
+            var html = '';
+            for (var r = 0; r < recs.length; r++) {
+                var rec = recs[r];
+                html += '<a href="' + rec.href + '" class="card">' +
+                    '<div class="card-icon ' + rec.bg + '">' + rec.icon + '</div>' +
+                    '<div class="card-title">' + rec.title + '</div>' +
+                    '<div class="card-meta">' + rec.meta + '</div>' +
+                    '<div class="card-desc">' + rec.desc + '</div>' +
+                    (rec.tag ? '<span class="mood-tag">' + rec.tag + '</span>' : '') +
+                    '</a>';
+            }
+            forYouCards.innerHTML = html;
+            forYouEl.classList.add('has-items');
+        })();
+
+        /* ====== CONTINUE (IN-PROGRESS) ====== */
+        (function() {
+            var contEl = document.getElementById('continueSection');
+            var contCards = document.getElementById('continueCards');
+            if (!contEl || !contCards) return;
+
+            var items = [];
+
+            // Check course progress
+            var courseInfo = [
+                { id: 'start-here', title: 'Start Here', total: 7, icon: '&#127793;', bg: 'icon-green' },
+                { id: 'calm-anxiety', title: 'Calm Anxiety', total: 10, icon: '&#127807;', bg: 'icon-teal' },
+                { id: 'better-sleep', title: 'Better Sleep', total: 7, icon: '&#127769;', bg: 'icon-indigo' },
+                { id: 'sharp-focus', title: 'Sharp Focus', total: 5, icon: '&#127919;', bg: 'icon-amber' },
+                { id: 'healing-grief', title: 'Healing Grief', total: 10, icon: '&#128156;', bg: 'icon-purple' },
+                { id: 'self-love', title: 'Self-Love', total: 7, icon: '&#128151;', bg: 'icon-pink' }
+            ];
+
+            try {
+                for (var c = 0; c < courseInfo.length; c++) {
+                    var ci = courseInfo[c];
+                    var stored = localStorage.getItem('sukoon_course_' + ci.id);
+                    if (stored) {
+                        var data = JSON.parse(stored);
+                        var day = data.completedDays || data.day || 0;
+                        if (day > 0 && day < ci.total) {
+                            var pct = Math.round((day / ci.total) * 100);
+                            items.push({
+                                href: '/courses.html',
+                                icon: ci.icon,
+                                bg: ci.bg,
+                                title: ci.title,
+                                meta: 'Day ' + day + ' of ' + ci.total,
+                                desc: pct + '% complete',
+                                progress: pct
+                            });
+                        }
+                    }
+                }
+            } catch(e) {}
+
+            // Check daily streak
+            try {
+                var streak = localStorage.getItem('sukoon_daily_streak');
+                if (streak) {
+                    var sd = JSON.parse(streak);
+                    if (sd.count > 0) {
+                        var today = new Date().toDateString();
+                        if (sd.lastDate !== today) {
+                            items.push({
+                                href: '/daily.html',
+                                icon: '&#9752;',
+                                bg: 'icon-green',
+                                title: 'Daily Sukoon',
+                                meta: sd.count + '-day streak',
+                                desc: 'Don\'t break your streak!',
+                                progress: null
+                            });
+                        }
+                    }
+                }
+            } catch(e) {}
+
+            if (items.length === 0) return;
+
+            var html = '';
+            for (var i = 0; i < items.length; i++) {
+                var it = items[i];
+                html += '<a href="' + it.href + '" class="card">' +
+                    '<div class="card-icon ' + it.bg + '">' + it.icon + '</div>' +
+                    '<div class="card-title">' + it.title + '</div>' +
+                    '<div class="card-meta">' + it.meta + '</div>' +
+                    '<div class="card-desc">' + it.desc + '</div>';
+                if (it.progress !== null) {
+                    html += '<div class="card-progress-wrap"><div class="card-progress-bar"><div class="card-progress-fill" style="width:' + it.progress + '%"></div></div></div>';
+                }
+                html += '</a>';
+            }
+            contCards.innerHTML = html;
+            contEl.classList.add('has-items');
+        })();
+
     })();
     </script>
+    <script src="/js/sukoon-engine.js"></script>
 </body>
 </html>

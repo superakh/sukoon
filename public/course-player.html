@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
         html, body { height: 100%; overflow: hidden; }
@@ -127,6 +128,17 @@
             90% { opacity: 0.4; }
             100% { transform: translate(var(--dx), 110vh) rotate(360deg) scale(0.6); opacity: 0; }
         }
+
+        /* ===================== BACK LINK ===================== */
+        .back-link {
+            position: absolute; top: 1.2rem; left: 1.2rem;
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            font-size: 0.82rem; opacity: 0.5; color: #fff;
+            cursor: pointer; transition: opacity 0.2s;
+            z-index: 30; text-decoration: none;
+        }
+        .back-link:hover { opacity: 0.9; }
+        .back-link svg { width: 16px; height: 16px; }
 
         /* ===================== PHASE 0: MOOD CHECK-IN ===================== */
         .mood-screen {
@@ -498,6 +510,7 @@
 
 <!-- PHASE 0: Pre-Session Mood -->
 <div class="phase mood-screen active" id="phaseMoodPre">
+    <a class="back-link" href="/courses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back to courses</a>
     <div class="mood-title">How are you feeling?</div>
     <div class="mood-subtitle">अभी आप कैसा महसूस कर रहे हैं?</div>
     <div class="mood-faces" id="moodPreFaces">
@@ -526,6 +539,7 @@
 
 <!-- PHASE 1: Setup -->
 <div class="phase setup-screen" id="phaseSetup">
+    <a class="back-link" href="/courses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back to courses</a>
     <div class="setup-course-badge" id="setupBadge"></div>
     <div class="setup-day-label" id="setupDayLabel"></div>
     <div class="setup-title" id="setupTitle"></div>
@@ -1262,6 +1276,31 @@ function endSession(){
     streakData.total = (streakData.total||0) + 1;
     streakData.minutes = (streakData.minutes||0) + Math.round(state.duration/60);
     localStorage.setItem('sukoon-course-streak', JSON.stringify(streakData));
+
+    // Log to unified activity system (read by progress.html)
+    var mins = Math.round(state.duration/60);
+    try {
+        var log = JSON.parse(localStorage.getItem('sukoon_activity_log') || '[]');
+        log.unshift({ type: 'meditation', text: course.title + ' — Day ' + dayNum + ' (' + mins + ' min)', minutes: mins, timestamp: new Date().toISOString() });
+        if (log.length > 200) log = log.slice(0, 200);
+        localStorage.setItem('sukoon_activity_log', JSON.stringify(log));
+
+        var pStats = JSON.parse(localStorage.getItem('sukoon_progress_stats') || '{}');
+        pStats.totalMinutes = (pStats.totalMinutes || 0) + mins;
+        pStats.totalSessions = (pStats.totalSessions || 0) + 1;
+        if (!pStats.featuresUsed) pStats.featuresUsed = {};
+        pStats.featuresUsed.meditation = true;
+        if (!pStats.typeCounts) pStats.typeCounts = {};
+        pStats.typeCounts.meditation = (pStats.typeCounts.meditation || 0) + 1;
+        pStats.lastActiveDate = today;
+        pStats.currentStreak = streakData.count;
+        if (!pStats.maxStreak || streakData.count > pStats.maxStreak) pStats.maxStreak = streakData.count;
+        localStorage.setItem('sukoon_progress_stats', JSON.stringify(pStats));
+
+        var dailyKey = 'sukoon_daily_' + today;
+        var dailyCount = parseInt(localStorage.getItem(dailyKey) || '0', 10) + 1;
+        localStorage.setItem(dailyKey, String(dailyCount));
+    } catch(e) {}
 
     // Save journal if journaling
     if(session.type === 'journaling'){

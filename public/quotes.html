@@ -3,492 +3,537 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quotes - Sukoon</title>
-    <meta name="description" content="Bilingual quotes for the soul. Wisdom, kindness, courage, strength, and healing -- in English and Hindi.">
+    <title>Quotes & Wisdom - Sukoon</title>
+    <meta name="description" content="Bilingual quotes and wisdom for the soul. Curated insights in English and Hindi. Save favorites, listen aloud, reflect in your journal.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body {
-            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
-        a { text-decoration: none; color: inherit; }
+        .qw-page { min-height: 100vh; padding-top: 52px; padding-bottom: 80px; }
 
-        /* ===================== TOPBAR ===================== */
-        .topbar {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-            display: flex; align-items: center; justify-content: center;
-            padding: 0 1.5rem; height: 52px;
-            background: rgba(250,250,247,0.85);
-            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.06);
-        }
-        .topbar-brand {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.25rem; color: #1D1D1F;
-            letter-spacing: -0.01em;
-        }
-
-        /* ===================== DESKTOP >960px ===================== */
-        @media (min-width: 961px) {
-            .topbar { justify-content: flex-start; padding-left: 2rem; left: 220px; }
-            .quotes-page { margin-left: 220px; }
-        }
-
-        /* ===================== QUOTES PAGE ===================== */
-        .quotes-page {
-            min-height: 100vh;
-            padding-top: 52px;
-            padding-bottom: 80px;
-        }
-
-        /* ===================== DAILY QUOTE ===================== */
-        .daily-section {
-            padding: 2rem 1.5rem 1.5rem;
-            max-width: 760px; margin: 0 auto;
-        }
+        /* ===== DAILY QUOTE ===== */
+        .daily-section { padding: 2rem 1.5rem 1.5rem; max-width: 760px; margin: 0 auto; }
         .daily-card {
-            background: #FFFFFF;
-            border-radius: 12px;
-            padding: 2.25rem 2rem 1.75rem;
-            text-align: center;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-left: 3px solid #2D6A4F;
+            background: #FFFFFF; border-radius: 12px; padding: 2.25rem 2rem 1.75rem;
+            text-align: center; border: 1px solid rgba(0,0,0,0.06); border-left: 3px solid #2D6A4F;
         }
-        .daily-inner { position: relative; z-index: 1; }
         .daily-label {
             display: inline-flex; align-items: center; gap: 0.4rem;
             font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em;
-            text-transform: uppercase; color: #2D6A4F;
-            margin-bottom: 1.25rem;
+            text-transform: uppercase; color: #2D6A4F; margin-bottom: 1.25rem;
         }
         .daily-label svg { width: 14px; height: 14px; }
-        .daily-mark {
-            font-family: 'DM Serif Display', serif;
-            font-size: 3.5rem; color: rgba(45,106,79,0.15);
-            line-height: 1; margin-bottom: 0.2rem;
-        }
-        .daily-en {
-            font-family: 'DM Serif Display', serif;
-            font-style: italic;
-            font-size: 1.3rem; color: #1D1D1F;
-            line-height: 1.5; margin-bottom: 0.85rem;
-            max-width: 540px; margin-left: auto; margin-right: auto;
-        }
-        .daily-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.85rem; color: #AEAEB2;
-            margin-bottom: 0.6rem; line-height: 1.6;
-        }
-        .daily-author {
-            font-size: 0.8rem; color: #86868B; font-weight: 500;
-            margin-bottom: 1.25rem;
-        }
-        .daily-actions {
-            display: flex; align-items: center; justify-content: center; gap: 0.6rem;
-        }
+        .daily-mark { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: rgba(45,106,79,0.15); line-height: 1; margin-bottom: 0.2rem; }
+        .daily-en { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.3rem; color: #1D1D1F; line-height: 1.5; margin-bottom: 0.85rem; max-width: 540px; margin-left: auto; margin-right: auto; }
+        .daily-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.85rem; color: #AEAEB2; margin-bottom: 0.6rem; line-height: 1.6; }
+        .daily-author { font-size: 0.8rem; color: #86868B; font-weight: 500; margin-bottom: 1.25rem; }
+        .daily-actions { display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
         .daily-btn {
             display: inline-flex; align-items: center; gap: 0.35rem;
-            padding: 0.5rem 1rem; border-radius: 100px;
-            font-size: 0.78rem; font-weight: 500;
-            border: none; cursor: pointer; transition: all 0.25s;
-            font-family: -apple-system, 'Inter', sans-serif;
+            padding: 0.5rem 1rem; border-radius: 100px; font-size: 0.78rem; font-weight: 500;
+            border: none; cursor: pointer; transition: all 0.25s; font-family: -apple-system, 'Inter', sans-serif;
+            background: #F5F5F0; color: #1D1D1F; border: 1px solid rgba(0,0,0,0.06);
         }
+        .daily-btn:hover { background: #EEEEE9; }
         .daily-btn svg { width: 14px; height: 14px; }
-        .daily-btn.primary {
-            background: #F5F5F0; color: #1D1D1F;
-            border: 1px solid rgba(0,0,0,0.06);
-        }
-        .daily-btn.primary:hover { background: #EEEEE9; }
 
-        /* ===================== SEARCH BAR ===================== */
-        .search-section {
-            max-width: 760px; margin: 0 auto;
-            padding: 0 1.5rem 1rem;
+        /* ===== TABS ===== */
+        .tabs-section { max-width: 760px; margin: 0 auto; padding: 0 1.5rem 0.5rem; }
+        .tabs-row { display: flex; gap: 0; border-bottom: 1px solid rgba(0,0,0,0.08); }
+        .tab-btn {
+            flex: 1; padding: 0.75rem 1rem; text-align: center;
+            font-size: 0.88rem; font-weight: 500; color: #86868B;
+            border: none; background: none; cursor: pointer; transition: all 0.25s;
+            border-bottom: 2px solid transparent; font-family: -apple-system, 'Inter', sans-serif;
         }
+        .tab-btn:hover { color: #1D1D1F; }
+        .tab-btn.active { color: #2D6A4F; border-bottom-color: #2D6A4F; }
+
+        /* ===== SEARCH ===== */
+        .search-section { max-width: 760px; margin: 0 auto; padding: 0.75rem 1.5rem 0.75rem; }
         .search-wrap { position: relative; }
-        .search-wrap svg {
-            position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
-            width: 18px; height: 18px; color: #AEAEB2; pointer-events: none;
-        }
+        .search-wrap svg { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: #AEAEB2; pointer-events: none; }
         .search-input {
-            width: 100%;
-            padding: 0.7rem 1rem 0.7rem 2.75rem;
-            border-radius: 10px;
-            border: 1px solid rgba(0,0,0,0.08);
-            background: #FFFFFF;
-            color: #1D1D1F;
-            font-size: 0.88rem;
-            font-family: -apple-system, 'Inter', sans-serif;
-            outline: none; transition: all 0.25s;
+            width: 100%; padding: 0.7rem 1rem 0.7rem 2.75rem; border-radius: 10px;
+            border: 1px solid rgba(0,0,0,0.08); background: #FFFFFF; color: #1D1D1F;
+            font-size: 0.88rem; font-family: -apple-system, 'Inter', sans-serif; outline: none; transition: all 0.25s;
         }
         .search-input::placeholder { color: #AEAEB2; }
-        .search-input:focus {
-            border-color: #2D6A4F;
-            box-shadow: 0 0 0 3px rgba(45,106,79,0.08);
-        }
+        .search-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.08); }
 
-        /* ===================== FILTER PILLS ===================== */
-        .filter-section {
-            max-width: 1100px; margin: 0 auto;
-            padding: 0 1.5rem 1.25rem;
-        }
-        .filter-scroll {
-            display: flex; gap: 0.35rem;
-            overflow-x: auto; scrollbar-width: none;
-            -ms-overflow-style: none; padding-bottom: 4px;
-        }
+        /* ===== FILTER PILLS ===== */
+        .filter-section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 1rem; }
+        .filter-scroll { display: flex; gap: 0.35rem; overflow-x: auto; scrollbar-width: none; padding-bottom: 4px; }
         .filter-scroll::-webkit-scrollbar { display: none; }
         .filter-pill {
-            padding: 0.4rem 0.9rem; border-radius: 100px;
-            background: #F5F5F0;
-            border: 1px solid rgba(0,0,0,0.04);
-            font-size: 0.78rem; font-weight: 500;
-            color: #86868B; cursor: pointer;
-            transition: all 0.25s;
-            white-space: nowrap; flex-shrink: 0;
-            font-family: -apple-system, 'Inter', sans-serif;
+            padding: 0.4rem 0.9rem; border-radius: 100px; background: #F5F5F0;
+            border: 1px solid rgba(0,0,0,0.04); font-size: 0.78rem; font-weight: 500;
+            color: #86868B; cursor: pointer; transition: all 0.25s; white-space: nowrap;
+            flex-shrink: 0; font-family: -apple-system, 'Inter', sans-serif;
         }
         .filter-pill:hover { color: #1D1D1F; background: #EEEEE9; }
-        .filter-pill.active {
-            background: #2D6A4F; color: #fff;
-            border-color: #2D6A4F;
-        }
+        .filter-pill.active { background: #2D6A4F; color: #fff; border-color: #2D6A4F; }
 
-        /* ===================== QUOTES GRID ===================== */
-        .quotes-section {
-            max-width: 1100px; margin: 0 auto;
-            padding: 0 1.5rem 2rem;
-        }
-        .quotes-grid {
-            display: grid; grid-template-columns: 1fr; gap: 1rem;
-        }
-        @media (min-width: 640px) {
-            .quotes-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (min-width: 1024px) {
-            .quotes-grid { grid-template-columns: repeat(3, 1fr); }
-        }
+        /* ===== QUOTES GRID ===== */
+        .quotes-section { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 2rem; }
+        .quotes-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+        @media (min-width: 640px) { .quotes-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (min-width: 1024px) { .quotes-grid { grid-template-columns: repeat(3, 1fr); } }
 
-        /* ===================== QUOTE CARD ===================== */
+        /* ===== QUOTE CARD ===== */
         .quote-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.06);
-            border-radius: 12px;
-            padding: 1.5rem 1.35rem 1.15rem;
-            transition: box-shadow 0.3s ease;
-            position: relative;
-            opacity: 0;
-            animation: cardFadeIn 0.4s ease forwards;
+            background: #FFFFFF; border: 1px solid rgba(0,0,0,0.06); border-radius: 12px;
+            padding: 1.5rem 1.35rem 1.15rem; transition: box-shadow 0.3s ease;
+            opacity: 0; animation: cardFadeIn 0.4s ease forwards;
         }
         .quote-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.04); }
-        .quote-card.hidden { display: none; }
+        @keyframes cardFadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-        @keyframes cardFadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+        .quote-mark { font-family: 'DM Serif Display', serif; font-size: 2.2rem; line-height: 1; color: rgba(45,106,79,0.2); margin-bottom: 0.2rem; }
+        .quote-en { font-family: 'DM Serif Display', serif; font-size: 1.02rem; color: #1D1D1F; line-height: 1.55; margin-bottom: 0.75rem; }
+        .quote-hi-wrap { border-left: 2px solid rgba(45,106,79,0.2); padding-left: 0.85rem; margin-bottom: 0.75rem; }
+        .quote-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.82rem; color: #AEAEB2; line-height: 1.65; }
+        .quote-author { font-size: 0.78rem; color: #86868B; font-weight: 500; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.35rem; }
+        .quote-author::before { content: ''; width: 12px; height: 1px; background: #AEAEB2; }
 
-        .quote-mark {
-            font-family: 'DM Serif Display', serif;
-            font-size: 2.2rem; line-height: 1;
-            color: rgba(45,106,79,0.2);
-            margin-bottom: 0.2rem;
-        }
-        .quote-en {
-            font-family: 'DM Serif Display', serif;
-            font-size: 1.02rem; color: #1D1D1F;
-            line-height: 1.55; margin-bottom: 0.75rem;
-        }
-        .quote-hi-wrap {
-            border-left: 2px solid rgba(45,106,79,0.2);
-            padding-left: 0.85rem;
-            margin-bottom: 0.75rem;
-        }
-        .quote-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.82rem; color: #AEAEB2;
-            line-height: 1.65;
-        }
-        .quote-author {
-            font-size: 0.78rem; color: #86868B;
-            font-weight: 500; margin-bottom: 0.65rem;
-            display: flex; align-items: center; gap: 0.35rem;
-        }
-        .quote-author::before {
-            content: ''; width: 12px; height: 1px; background: #AEAEB2;
-        }
-        .quote-footer {
-            display: flex; align-items: center; justify-content: space-between;
-            gap: 0.5rem;
-        }
-        .quote-tags {
-            display: flex; flex-wrap: wrap; gap: 0.25rem;
-        }
-        .quote-tag {
-            padding: 0.15rem 0.5rem; border-radius: 5px;
-            font-size: 0.62rem; font-weight: 500;
-            background: #D8F3DC; color: #2D6A4F;
-        }
-        .quote-actions {
-            display: flex; gap: 0.3rem; flex-shrink: 0;
-        }
+        .quote-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
+        .quote-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
+        .quote-tag { padding: 0.15rem 0.5rem; border-radius: 5px; font-size: 0.62rem; font-weight: 500; background: #D8F3DC; color: #2D6A4F; }
+        .quote-actions { display: flex; gap: 0.3rem; flex-shrink: 0; }
         .action-btn {
             display: flex; align-items: center; justify-content: center;
-            gap: 0.3rem;
-            padding: 0.35rem 0.6rem; border-radius: 8px;
-            background: #F5F5F0;
-            border: 1px solid rgba(0,0,0,0.04);
-            font-size: 0.7rem; font-weight: 500;
-            color: #86868B;
-            cursor: pointer; transition: all 0.2s;
-            white-space: nowrap;
+            width: 32px; height: 32px; border-radius: 8px;
+            background: #F5F5F0; border: 1px solid rgba(0,0,0,0.04);
+            color: #86868B; cursor: pointer; transition: all 0.2s;
             font-family: -apple-system, 'Inter', sans-serif;
         }
         .action-btn:hover { background: #EEEEE9; color: #1D1D1F; }
-        .action-btn.copied { background: #D8F3DC; color: #2D6A4F; }
-        .action-btn svg { width: 13px; height: 13px; }
+        .action-btn.active { background: #D8F3DC; color: #2D6A4F; }
+        .action-btn svg { width: 14px; height: 14px; }
 
-        /* ===================== NO RESULTS ===================== */
-        .no-results {
-            text-align: center; padding: 4rem 1rem;
-            grid-column: 1 / -1; display: none;
-        }
+        /* ===== WISDOM CARD (longer text) ===== */
+        .wisdom-card .quote-en { font-size: 0.95rem; font-style: normal; }
+
+        /* ===== NO RESULTS ===== */
+        .no-results { text-align: center; padding: 4rem 1rem; grid-column: 1 / -1; display: none; }
         .no-results.show { display: block; }
-        .no-results-text { font-size: 0.95rem; color: #AEAEB2; margin-bottom: 0.25rem; }
-        .no-results-hint {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.82rem; color: #AEAEB2;
-        }
+        .no-results-text { font-size: 0.95rem; color: #AEAEB2; }
 
-        /* ===================== QUOTE COUNT ===================== */
-        .quote-count {
-            text-align: center;
-            padding: 0.5rem 1.5rem 1rem;
-            font-size: 0.73rem; color: #AEAEB2;
+        /* ===== COUNT ===== */
+        .quote-count { text-align: center; padding: 0.25rem 1.5rem 0.75rem; font-size: 0.73rem; color: #AEAEB2; }
+
+        /* ===== CANVAS OVERLAY ===== */
+        .share-overlay {
+            display: none; position: fixed; inset: 0; z-index: 9999;
+            background: rgba(0,0,0,0.6); backdrop-filter: blur(4px);
+            align-items: center; justify-content: center; padding: 1.5rem;
+        }
+        .share-overlay.show { display: flex; }
+        .share-box {
+            background: #FFFFFF; border-radius: 16px; padding: 1.5rem;
+            max-width: 420px; width: 100%; text-align: center;
+        }
+        .share-box canvas { width: 100%; border-radius: 8px; margin-bottom: 1rem; }
+        .share-actions { display: flex; gap: 0.5rem; justify-content: center; }
+        .share-btn {
+            padding: 0.6rem 1.2rem; border-radius: 8px; font-size: 0.82rem; font-weight: 500;
+            border: none; cursor: pointer; font-family: -apple-system, 'Inter', sans-serif;
+        }
+        .share-btn.primary { background: #2D6A4F; color: #fff; }
+        .share-btn.secondary { background: #F5F5F0; color: #1D1D1F; }
+
+        /* ===== DESKTOP ===== */
+        @media (min-width: 961px) {
+            .qw-page { margin-left: 220px; }
+            .daily-section, .tabs-section, .search-section { max-width: 960px; }
         }
     </style>
 </head>
 <body>
 
-    <header class="topbar">
-        <a href="/" class="topbar-brand">Sukoon</a>
+    <header class="top-header">
+        <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
     </header>
 
-    <nav style="position:fixed;bottom:0;left:0;right:0;height:56px;background:#fff;border-top:1px solid rgba(0,0,0,0.08);display:flex;align-items:center;justify-content:space-around;z-index:1000;padding-bottom:env(safe-area-inset-bottom)">
-      <a href="/" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg><span>Home</span></a>
-      <a href="/explore.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg><span>Explore</span></a>
-      <a href="/breathe.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg><span>Breathe</span></a>
-      <a href="/friend.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><span>AI Friend</span></a>
-      <a href="/you.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;text-decoration:none;color:#AEAEB2;font-size:10px;letter-spacing:0.02em;font-family:-apple-system,Inter,sans-serif"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg><span>You</span></a>
+    <nav class="bottom-nav">
+        <a href="/" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg><span>Home</span></a>
+        <a href="/explore.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg><span>Explore</span></a>
+        <a href="/meditate.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Meditate</span></a>
+        <a href="/friend.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span>AI Friend</span></a>
+        <a href="/you.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg><span>You</span></a>
     </nav>
 
-    <main class="quotes-page">
+    <main class="qw-page">
 
+        <!-- Daily Quote -->
         <section class="daily-section">
             <div class="daily-card">
-                <div class="daily-inner">
-                    <div class="daily-label">
-                        <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
-                        Quote of the Moment
-                    </div>
-                    <div class="daily-mark">&ldquo;</div>
-                    <p class="daily-en" id="dailyEN"></p>
-                    <p class="daily-hi" id="dailyHI"></p>
-                    <p class="daily-author" id="dailyAuthor"></p>
-                    <div class="daily-actions">
-                        <button class="daily-btn primary" id="dailyRefresh">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
-                            Another
-                        </button>
-                        <button class="daily-btn primary" id="dailyCopy">
-                            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg>
-                            Copy
-                        </button>
-                    </div>
+                <div class="daily-label">
+                    <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 3v2.25m6.364.386l-1.591 1.591M21 12h-2.25m-.386 6.364l-1.591-1.591M12 18.75V21m-4.773-4.227l-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"/></svg>
+                    Quote of the Moment
+                </div>
+                <div class="daily-mark">&ldquo;</div>
+                <p class="daily-en" id="dailyEN"></p>
+                <p class="daily-hi" id="dailyHI"></p>
+                <p class="daily-author" id="dailyAuthor"></p>
+                <div class="daily-actions">
+                    <button class="daily-btn" id="dailyRefresh"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg> Another</button>
+                    <button class="daily-btn" id="dailyListen"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/></svg> Listen</button>
+                    <button class="daily-btn" id="dailyCopy"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg> Copy</button>
                 </div>
             </div>
         </section>
 
-        <section class="search-section">
-            <div class="search-wrap">
-                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
-                <input type="text" class="search-input" id="searchInput" placeholder="Search quotes... / &#2326;&#2379;&#2332;&#2375;&#2306;..." autocomplete="off">
+        <!-- Tabs: Quotes | Wisdom -->
+        <section class="tabs-section">
+            <div class="tabs-row">
+                <button class="tab-btn active" data-tab="quotes">Quotes</button>
+                <button class="tab-btn" data-tab="wisdom">Wisdom</button>
             </div>
         </section>
 
-        <section class="filter-section">
-            <div class="filter-scroll" id="filterBar">
-                <button class="filter-pill active" data-cat="all">All</button>
-                <button class="filter-pill" data-cat="kindness">Kindness</button>
-                <button class="filter-pill" data-cat="strength">Strength</button>
-                <button class="filter-pill" data-cat="courage">Courage</button>
-                <button class="filter-pill" data-cat="wisdom">Wisdom</button>
-                <button class="filter-pill" data-cat="self-talk">Self-Talk</button>
-                <button class="filter-pill" data-cat="islamic">Islamic</button>
-                <button class="filter-pill" data-cat="family">Family</button>
-                <button class="filter-pill" data-cat="humor">Humor</button>
-                <button class="filter-pill" data-cat="peace">Peace</button>
-                <button class="filter-pill" data-cat="healing">Healing</button>
+        <!-- Search -->
+        <section class="search-section">
+            <div class="search-wrap">
+                <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                <input type="text" class="search-input" id="searchInput" placeholder="Search quotes & wisdom..." autocomplete="off">
             </div>
+        </section>
+
+        <!-- Filter Pills -->
+        <section class="filter-section">
+            <div class="filter-scroll" id="filterBar"></div>
         </section>
 
         <div class="quote-count" id="quoteCount"></div>
 
+        <!-- Content Grid -->
         <section class="quotes-section">
             <div class="quotes-grid" id="quotesGrid"></div>
         </section>
 
     </main>
 
+    <!-- Share as Image Overlay -->
+    <div class="share-overlay" id="shareOverlay">
+        <div class="share-box">
+            <canvas id="shareCanvas" width="600" height="400"></canvas>
+            <div class="share-actions">
+                <button class="share-btn primary" id="shareDownload">Download Image</button>
+                <button class="share-btn secondary" id="shareClose">Close</button>
+            </div>
+        </div>
+    </div>
+
     <script>
     (function() {
         'use strict';
+
+        /* ====== DATA ====== */
         var quotes = [
-            { en: "Be kind. Everyone is healing from things they don't speak about.", hi: "\u0926\u092F\u093E\u0932\u0941 \u092C\u0928\u094B\u0964 \u0939\u0930 \u0915\u094B\u0908 \u0909\u0928 \u091C\u093C\u0916\u094D\u092E\u094B\u0902 \u0938\u0947 \u0909\u092D\u0930 \u0930\u0939\u093E \u0939\u0948 \u091C\u093F\u0928\u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0935\u094B \u092C\u094B\u0932\u0924\u0947 \u0928\u0939\u0940\u0902\u0964", author: "", cats: ["kindness", "healing"] },
-            { en: "Never blame anyone in your life. Good people give you happiness. Bad people give you experience. Worst people give you a lesson. Best people give you memories.", hi: "\u0905\u092A\u0928\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u092E\u0947\u0902 \u0915\u093F\u0938\u0940 \u0915\u094B \u0926\u094B\u0937 \u0928 \u0926\u094B\u0964 \u0905\u091A\u094D\u091B\u0947 \u0932\u094B\u0917 \u0916\u0941\u0936\u0940 \u0926\u0947\u0924\u0947 \u0939\u0948\u0902\u0964 \u092C\u0941\u0930\u0947 \u0932\u094B\u0917 \u0905\u0928\u0941\u092D\u0935\u0964 \u0938\u092C\u0938\u0947 \u092C\u0941\u0930\u0947 \u0938\u092C\u0915\u0964 \u0938\u092C\u0938\u0947 \u0905\u091A\u094D\u091B\u0947 \u092F\u093E\u0926\u0947\u0902\u0964", author: "APJ Abdul Kalam", cats: ["wisdom", "strength"] },
-            { en: "The light you discover is proportionate to the darkness you confront.", hi: "\u091C\u093F\u0924\u0928\u0947 \u0905\u0902\u0927\u0947\u0930\u0947 \u0915\u093E \u0938\u093E\u092E\u0928\u093E \u0915\u0930\u094B\u0917\u0947, \u0909\u0924\u0928\u093E \u0939\u0940 \u0930\u094B\u0936\u0928\u0940 \u092A\u093E\u0913\u0917\u0947\u0964", author: "Jordan Peterson", cats: ["courage", "strength"] },
-            { en: "If you cannot call wrong as wrong, you are in the final stage of slavery.", hi: "\u0905\u0917\u0930 \u0906\u092A \u0917\u093C\u0932\u0924 \u0915\u094B \u0917\u093C\u0932\u0924 \u0928\u0939\u0940\u0902 \u0915\u0939 \u0938\u0915\u0924\u0947, \u0924\u094B \u0906\u092A \u0917\u093C\u0941\u0932\u093E\u092E\u0940 \u0915\u0940 \u0906\u0916\u093C\u093F\u0930\u0940 \u0938\u094D\u091F\u0947\u091C \u092E\u0947\u0902 \u0939\u0948\u0902\u0964", author: "Che Guevara", cats: ["courage", "strength"] },
-            { en: "Desire makes slaves out of kings, patience makes kings out of slaves.", hi: "\u0907\u091A\u094D\u091B\u093E \u0930\u093E\u091C\u093E\u0913\u0902 \u0915\u094B \u0917\u093C\u0941\u0932\u093E\u092E \u092C\u0928\u093E\u0924\u0940 \u0939\u0948, \u0938\u092C\u094D\u0930 \u0917\u093C\u0941\u0932\u093E\u092E\u094B\u0902 \u0915\u094B \u0930\u093E\u091C\u093E\u0964", author: "Al-Ghazali", cats: ["islamic", "wisdom"] },
-            { en: "Sadness is caused by intelligence. The more you understand, the more you suffer.", hi: "\u0926\u0941\u0916 \u092C\u0941\u0926\u094D\u0927\u093F \u0938\u0947 \u0906\u0924\u093E \u0939\u0948\u0964 \u091C\u093F\u0924\u0928\u093E \u0938\u092E\u091D\u094B\u0917\u0947, \u0909\u0924\u0928\u093E \u0926\u0941\u0916 \u092A\u093E\u0913\u0917\u0947\u0964", author: "Charles Bukowski", cats: ["wisdom", "self-talk"] },
-            { en: "If you kill a cockroach you are a hero. Kill a butterfly and you are bad. Morals have an aesthetic basis.", hi: "\u090F\u0915 \u0915\u0949\u0915\u0930\u094B\u091A \u092E\u093E\u0930\u094B \u0924\u094B \u0939\u0940\u0930\u094B\u0964 \u0924\u093F\u0924\u0932\u0940 \u092E\u093E\u0930\u094B \u0924\u094B \u0916\u0932\u0928\u093E\u092F\u0915\u0964 \u0928\u0948\u0924\u093F\u0915\u0924\u093E \u0915\u093E \u0906\u0927\u093E\u0930 \u0938\u094C\u0902\u0926\u0930\u094D\u092F \u0939\u0948\u0964", author: "Friedrich Nietzsche", cats: ["wisdom", "humor"] },
-            { en: "Life is like a kulfi -- taste it or waste it, it's melting anyway.", hi: "\u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u0915\u0941\u0932\u094D\u092B\u093C\u0940 \u091C\u0948\u0938\u0940 \u0939\u0948 -- \u091A\u0916\u094B \u092F\u093E \u092C\u0930\u094D\u092C\u093E\u0926 \u0915\u0930\u094B, \u092A\u093F\u0918\u0932 \u0924\u094B \u0930\u0939\u0940 \u0939\u0940 \u0939\u0948\u0964", author: "", cats: ["humor", "wisdom"] },
-            { en: "The wound is the place where the light enters you.", hi: "\u0918\u093E\u0935 \u0935\u0939 \u091C\u0917\u0939 \u0939\u0948 \u091C\u0939\u093E\u0901 \u0938\u0947 \u0930\u094B\u0936\u0928\u0940 \u0906\u092A\u0915\u0947 \u0905\u0902\u0926\u0930 \u0906\u0924\u0940 \u0939\u0948\u0964", author: "Rumi", cats: ["healing", "wisdom", "islamic"] },
-            { en: "Forgive your parents. They too had a childhood they didn't heal from.", hi: "\u0905\u092A\u0928\u0947 \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u0915\u094B \u092E\u093E\u092B\u093C \u0915\u0930\u094B\u0964 \u0909\u0928\u0915\u093E \u092D\u0940 \u090F\u0915 \u092C\u091A\u092A\u0928 \u0925\u093E \u091C\u093F\u0938\u0938\u0947 \u0935\u094B \u0909\u092D\u0930 \u0928\u0939\u0940\u0902 \u092A\u093E\u090F\u0964", author: "", cats: ["family", "healing"] },
-            { en: "Your calm mind is the ultimate weapon against your challenges.", hi: "\u0906\u092A\u0915\u093E \u0936\u093E\u0902\u0924 \u092E\u0928 \u0906\u092A\u0915\u0940 \u091A\u0941\u0928\u094C\u0924\u093F\u092F\u094B\u0902 \u0915\u0947 \u0916\u093F\u0932\u093E\u092B\u093C \u0938\u092C\u0938\u0947 \u0936\u0915\u094D\u0924\u093F\u0936\u093E\u0932\u0940 \u0939\u0925\u093F\u092F\u093E\u0930 \u0939\u0948\u0964", author: "Bryant McGill", cats: ["peace", "strength"] },
-            { en: "Do not lose hope, nor be sad. You will surely be tested, but Allah is with the patient.", hi: "\u0909\u092E\u094D\u092E\u0940\u0926 \u092E\u0924 \u0916\u094B\u0913 \u0914\u0930 \u0928 \u0909\u0926\u093E\u0938 \u0939\u094B\u0964 \u0924\u0941\u092E\u094D\u0939\u093E\u0930\u0940 \u092A\u0930\u0940\u0915\u094D\u0937\u093E \u0939\u094B\u0917\u0940, \u092A\u0930 \u0905\u0932\u094D\u0932\u093E\u0939 \u0938\u092C\u094D\u0930 \u0915\u0930\u0928\u0947 \u0935\u093E\u0932\u094B\u0902 \u0915\u0947 \u0938\u093E\u0925 \u0939\u0948\u0964", author: "Quran 2:153", cats: ["islamic", "strength", "peace"] },
-            { en: "Holding on to anger is like drinking poison and expecting the other person to die.", hi: "\u0917\u0941\u0938\u094D\u0938\u093E \u092A\u0915\u0921\u093C\u0928\u093E \u091C\u093C\u0939\u0930 \u092A\u0940\u0928\u0947 \u091C\u0948\u0938\u093E \u0939\u0948 \u0914\u0930 \u0909\u092E\u094D\u092E\u0940\u0926 \u0915\u0930\u0928\u093E \u0915\u093F \u0926\u0942\u0938\u0930\u093E \u092E\u0930\u0947\u0917\u093E\u0964", author: "Buddha", cats: ["wisdom", "peace", "healing"] },
-            { en: "The strongest people are not those who show strength in front of us, but those who win battles we know nothing about.", hi: "\u0938\u092C\u0938\u0947 \u092E\u091C\u093C\u092C\u0942\u0924 \u0935\u094B \u0928\u0939\u0940\u0902 \u091C\u094B \u0939\u092E\u093E\u0930\u0947 \u0938\u093E\u092E\u0928\u0947 \u0924\u093E\u0915\u0924 \u0926\u093F\u0916\u093E\u0924\u0947 \u0939\u0948\u0902, \u092C\u0932\u094D\u0915\u093F \u0935\u094B \u091C\u094B \u0909\u0928 \u0932\u0921\u093C\u093E\u0907\u092F\u094B\u0902 \u092E\u0947\u0902 \u091C\u0940\u0924\u0924\u0947 \u0939\u0948\u0902 \u091C\u093F\u0928\u0915\u0947 \u092C\u093E\u0930\u0947 \u0939\u092E \u0915\u0941\u091B \u0928\u0939\u0940\u0902 \u091C\u093E\u0928\u0924\u0947\u0964", author: "", cats: ["strength", "courage"] },
-            { en: "Sometimes the bravest thing you can do is ask for help.", hi: "\u0915\u092D\u0940-\u0915\u092D\u0940 \u0938\u092C\u0938\u0947 \u092C\u0939\u093E\u0926\u0941\u0930 \u0915\u093E\u092E \u092E\u0926\u0926 \u092E\u093E\u0901\u0917\u0928\u093E \u0939\u094B\u0924\u093E \u0939\u0948\u0964", author: "", cats: ["courage", "self-talk"] },
-            { en: "You are allowed to be both a masterpiece and a work in progress simultaneously.", hi: "\u0906\u092A \u090F\u0915 \u0938\u093E\u0925 \u0936\u093E\u0939\u0915\u093E\u0930 \u092D\u0940 \u0939\u094B \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0905\u0927\u0942\u0930\u0940 \u092D\u0940\u0964", author: "Sophia Bush", cats: ["self-talk", "healing"] },
-            { en: "Your children don't need a perfect parent. They need a happy one.", hi: "\u0906\u092A\u0915\u0947 \u092C\u091A\u094D\u091A\u094B\u0902 \u0915\u094B \u092A\u0930\u092B\u0947\u0915\u094D\u091F \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u0928\u0939\u0940\u0902, \u0916\u0941\u0936 \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u091A\u093E\u0939\u093F\u090F\u0964", author: "", cats: ["family", "kindness"] },
-            { en: "Talk to yourself like you would to someone you love.", hi: "\u0905\u092A\u0928\u0947 \u0906\u092A \u0938\u0947 \u0910\u0938\u0947 \u092C\u093E\u0924 \u0915\u0930\u094B \u091C\u0948\u0938\u0947 \u0915\u093F\u0938\u0940 \u092A\u094D\u092F\u093E\u0930\u0947 \u0938\u0947 \u0915\u0930\u0924\u0947 \u0939\u094B\u0964", author: "Brene Brown", cats: ["self-talk", "kindness"] },
-            { en: "And verily, with hardship comes ease.", hi: "\u0914\u0930 \u092C\u0947\u0936\u0915, \u092E\u0941\u0936\u094D\u0915\u093F\u0932 \u0915\u0947 \u0938\u093E\u0925 \u0906\u0938\u093E\u0928\u0940 \u0939\u0948\u0964", author: "Quran 94:6", cats: ["islamic", "strength", "peace"] },
-            { en: "The only person you should try to be better than is the person you were yesterday.", hi: "\u0906\u092A\u0915\u094B \u0938\u093F\u0930\u094D\u092B\u093C \u0915\u0932 \u0915\u0947 \u0905\u092A\u0928\u0947 \u0906\u092A \u0938\u0947 \u092C\u0947\u0939\u0924\u0930 \u092C\u0928\u0928\u093E \u0939\u0948\u0964", author: "", cats: ["self-talk", "strength"] },
-            { en: "Home is not a place. It is the people who love you when you have nothing to offer.", hi: "\u0918\u0930 \u0915\u094B\u0908 \u091C\u0917\u0939 \u0928\u0939\u0940\u0902\u0964 \u0918\u0930 \u0935\u094B \u0932\u094B\u0917 \u0939\u0948\u0902 \u091C\u094B \u0906\u092A\u0938\u0947 \u0924\u092C \u092D\u0940 \u092A\u094D\u092F\u093E\u0930 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902 \u091C\u092C \u0906\u092A\u0915\u0947 \u092A\u093E\u0938 \u0926\u0947\u0928\u0947 \u0915\u094B \u0915\u0941\u091B \u0928 \u0939\u094B\u0964", author: "", cats: ["family", "kindness"] },
-            { en: "Worrying does not take away tomorrow's troubles. It takes away today's peace.", hi: "\u091A\u093F\u0902\u0924\u093E \u0915\u0932 \u0915\u0940 \u092E\u0941\u0938\u0940\u092C\u0924 \u0928\u0939\u0940\u0902 \u0939\u091F\u093E\u0924\u0940\u0964 \u092F\u0939 \u0906\u091C \u0915\u0940 \u0936\u093E\u0902\u0924\u093F \u091B\u0940\u0928 \u0932\u0947\u0924\u0940 \u0939\u0948\u0964", author: "", cats: ["peace", "wisdom"] },
-            { en: "You don't have to defend your boundaries. You just have to set them.", hi: "\u0906\u092A\u0915\u094B \u0905\u092A\u0928\u0940 \u0938\u0940\u092E\u093E\u0913\u0902 \u0915\u0940 \u0930\u0915\u094D\u0937\u093E \u0928\u0939\u0940\u0902 \u0915\u0930\u0928\u0940\u0964 \u092C\u0938 \u0909\u0928\u094D\u0939\u0947\u0902 \u0924\u092F \u0915\u0930\u0928\u093E \u0939\u0948\u0964", author: "", cats: ["self-talk", "strength"] },
-            { en: "Not everything that weighs you down is yours to carry.", hi: "\u0939\u0930 \u092C\u094B\u091D \u091C\u094B \u0906\u092A\u0915\u094B \u0926\u092C\u093E\u0924\u0940 \u0939\u0948, \u0935\u094B \u0906\u092A\u0915\u0940 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964", author: "", cats: ["peace", "healing"] },
-            { en: "Patience with family is love. Patience with others is respect. Patience with self is confidence.", hi: "\u092A\u0930\u093F\u0935\u093E\u0930 \u0938\u0947 \u0938\u092C\u094D\u0930 \u092A\u094D\u092F\u093E\u0930 \u0939\u0948\u0964 \u0926\u0942\u0938\u0930\u094B\u0902 \u0938\u0947 \u0938\u092C\u094D\u0930 \u0938\u092E\u094D\u092E\u093E\u0928\u0964 \u0916\u0941\u0926 \u0938\u0947 \u0938\u092C\u094D\u0930 \u0906\u0924\u094D\u092E\u0935\u093F\u0936\u094D\u0935\u093E\u0938\u0964", author: "", cats: ["family", "islamic", "wisdom"] },
-            { en: "A smile is the best makeup any face can wear.", hi: "\u092E\u0941\u0938\u094D\u0915\u093E\u0928 \u0938\u092C\u0938\u0947 \u0905\u091A\u094D\u091B\u093E \u0936\u094D\u0930\u0943\u0902\u0917\u093E\u0930 \u0939\u0948 \u091C\u094B \u0915\u094B\u0908 \u091A\u0947\u0939\u0930\u093E \u092A\u0939\u0928 \u0938\u0915\u0924\u093E \u0939\u0948\u0964", author: "Marilyn Monroe", cats: ["kindness", "humor"] },
-            { en: "Your heart knows the way. Run in that direction.", hi: "\u0906\u092A\u0915\u093E \u0926\u093F\u0932 \u0930\u093E\u0938\u094D\u0924\u093E \u091C\u093E\u0928\u0924\u093E \u0939\u0948\u0964 \u0909\u0938 \u0926\u093F\u0936\u093E \u092E\u0947\u0902 \u0926\u094C\u0921\u093C\u094B\u0964", author: "Rumi", cats: ["courage", "islamic"] },
-            { en: "The broken will always be able to love harder than most. Once you've been in the dark, you learn to appreciate everything that shines.", hi: "\u091F\u0942\u091F\u0947 \u0939\u0941\u090F \u0932\u094B\u0917 \u0939\u092E\u0947\u0936\u093E \u0938\u092C\u0938\u0947 \u0917\u0939\u0930\u093E \u092A\u094D\u092F\u093E\u0930 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964 \u091C\u092C \u0906\u092A \u0905\u0902\u0927\u0947\u0930\u0947 \u092E\u0947\u0902 \u0930\u0939 \u091A\u0941\u0915\u0947 \u0939\u094B, \u0924\u094B \u0939\u0930 \u091A\u092E\u0915\u0924\u0940 \u091A\u0940\u091C\u093C \u0915\u0940 \u0915\u0926\u094D\u0930 \u0915\u0930\u0924\u0947 \u0939\u094B\u0964", author: "", cats: ["healing", "strength"] }
+            { en: "Be kind. Everyone is healing from things they don't speak about.", hi: "\u0926\u092F\u093E\u0932\u0941 \u092C\u0928\u094B\u0964 \u0939\u0930 \u0915\u094B\u0908 \u0909\u0928 \u091C\u093C\u0916\u094D\u092E\u094B\u0902 \u0938\u0947 \u0909\u092D\u0930 \u0930\u0939\u093E \u0939\u0948 \u091C\u093F\u0928\u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0935\u094B \u092C\u094B\u0932\u0924\u0947 \u0928\u0939\u0940\u0902\u0964", author: "", cats: ["kindness","healing"] },
+            { en: "Never blame anyone in your life. Good people give you happiness. Bad people give you experience. Worst people give you a lesson. Best people give you memories.", hi: "\u0905\u092A\u0928\u0940 \u091C\u093C\u093F\u0902\u0926\u0917\u0940 \u092E\u0947\u0902 \u0915\u093F\u0938\u0940 \u0915\u094B \u0926\u094B\u0937 \u0928 \u0926\u094B\u0964", author: "APJ Abdul Kalam", cats: ["wisdom","strength"] },
+            { en: "The light you discover is proportionate to the darkness you confront.", hi: "\u091C\u093F\u0924\u0928\u0947 \u0905\u0902\u0927\u0947\u0930\u0947 \u0915\u093E \u0938\u093E\u092E\u0928\u093E \u0915\u0930\u094B\u0917\u0947, \u0909\u0924\u0928\u093E \u0939\u0940 \u0930\u094B\u0936\u0928\u0940 \u092A\u093E\u0913\u0917\u0947\u0964", author: "Jordan Peterson", cats: ["courage","strength"] },
+            { en: "Desire makes slaves out of kings, patience makes kings out of slaves.", hi: "\u0907\u091A\u094D\u091B\u093E \u0930\u093E\u091C\u093E\u0913\u0902 \u0915\u094B \u0917\u093C\u0941\u0932\u093E\u092E \u092C\u0928\u093E\u0924\u0940 \u0939\u0948, \u0938\u092C\u094D\u0930 \u0917\u093C\u0941\u0932\u093E\u092E\u094B\u0902 \u0915\u094B \u0930\u093E\u091C\u093E\u0964", author: "Al-Ghazali", cats: ["islamic","wisdom"] },
+            { en: "Sadness is caused by intelligence. The more you understand, the more you suffer.", hi: "\u0926\u0941\u0916 \u092C\u0941\u0926\u094D\u0927\u093F \u0938\u0947 \u0906\u0924\u093E \u0939\u0948\u0964 \u091C\u093F\u0924\u0928\u093E \u0938\u092E\u091D\u094B\u0917\u0947, \u0909\u0924\u0928\u093E \u0926\u0941\u0916 \u092A\u093E\u0913\u0917\u0947\u0964", author: "Charles Bukowski", cats: ["wisdom","self-talk"] },
+            { en: "The wound is the place where the light enters you.", hi: "\u0918\u093E\u0935 \u0935\u0939 \u091C\u0917\u0939 \u0939\u0948 \u091C\u0939\u093E\u0901 \u0938\u0947 \u0930\u094B\u0936\u0928\u0940 \u0906\u092A\u0915\u0947 \u0905\u0902\u0926\u0930 \u0906\u0924\u0940 \u0939\u0948\u0964", author: "Rumi", cats: ["healing","wisdom","islamic"] },
+            { en: "Forgive your parents. They too had a childhood they didn't heal from.", hi: "\u0905\u092A\u0928\u0947 \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u0915\u094B \u092E\u093E\u092B\u093C \u0915\u0930\u094B\u0964 \u0909\u0928\u0915\u093E \u092D\u0940 \u090F\u0915 \u092C\u091A\u092A\u0928 \u0925\u093E \u091C\u093F\u0938\u0938\u0947 \u0935\u094B \u0909\u092D\u0930 \u0928\u0939\u0940\u0902 \u092A\u093E\u090F\u0964", author: "", cats: ["family","healing"] },
+            { en: "Your calm mind is the ultimate weapon against your challenges.", hi: "\u0906\u092A\u0915\u093E \u0936\u093E\u0902\u0924 \u092E\u0928 \u0906\u092A\u0915\u0940 \u091A\u0941\u0928\u094C\u0924\u093F\u092F\u094B\u0902 \u0915\u0947 \u0916\u093F\u0932\u093E\u092B\u093C \u0938\u092C\u0938\u0947 \u0936\u0915\u094D\u0924\u093F\u0936\u093E\u0932\u0940 \u0939\u0925\u093F\u092F\u093E\u0930 \u0939\u0948\u0964", author: "Bryant McGill", cats: ["peace","strength"] },
+            { en: "Do not lose hope, nor be sad. You will surely be tested, but Allah is with the patient.", hi: "\u0909\u092E\u094D\u092E\u0940\u0926 \u092E\u0924 \u0916\u094B\u0913 \u0914\u0930 \u0928 \u0909\u0926\u093E\u0938 \u0939\u094B\u0964", author: "Quran 2:153", cats: ["islamic","strength","peace"] },
+            { en: "Holding on to anger is like drinking poison and expecting the other person to die.", hi: "\u0917\u0941\u0938\u094D\u0938\u093E \u092A\u0915\u0921\u093C\u0928\u093E \u091C\u093C\u0939\u0930 \u092A\u0940\u0928\u0947 \u091C\u0948\u0938\u093E \u0939\u0948\u0964", author: "Buddha", cats: ["wisdom","peace","healing"] },
+            { en: "Sometimes the bravest thing you can do is ask for help.", hi: "\u0915\u092D\u0940-\u0915\u092D\u0940 \u0938\u092C\u0938\u0947 \u092C\u0939\u093E\u0926\u0941\u0930 \u0915\u093E\u092E \u092E\u0926\u0926 \u092E\u093E\u0901\u0917\u0928\u093E \u0939\u094B\u0924\u093E \u0939\u0948\u0964", author: "", cats: ["courage","self-talk"] },
+            { en: "Talk to yourself like you would to someone you love.", hi: "\u0905\u092A\u0928\u0947 \u0906\u092A \u0938\u0947 \u0910\u0938\u0947 \u092C\u093E\u0924 \u0915\u0930\u094B \u091C\u0948\u0938\u0947 \u0915\u093F\u0938\u0940 \u092A\u094D\u092F\u093E\u0930\u0947 \u0938\u0947 \u0915\u0930\u0924\u0947 \u0939\u094B\u0964", author: "Brene Brown", cats: ["self-talk","kindness"] },
+            { en: "And verily, with hardship comes ease.", hi: "\u0914\u0930 \u092C\u0947\u0936\u0915, \u092E\u0941\u0936\u094D\u0915\u093F\u0932 \u0915\u0947 \u0938\u093E\u0925 \u0906\u0938\u093E\u0928\u0940 \u0939\u0948\u0964", author: "Quran 94:6", cats: ["islamic","strength","peace"] },
+            { en: "Your heart knows the way. Run in that direction.", hi: "\u0906\u092A\u0915\u093E \u0926\u093F\u0932 \u0930\u093E\u0938\u094D\u0924\u093E \u091C\u093E\u0928\u0924\u093E \u0939\u0948\u0964 \u0909\u0938 \u0926\u093F\u0936\u093E \u092E\u0947\u0902 \u0926\u094C\u0921\u093C\u094B\u0964", author: "Rumi", cats: ["courage","islamic"] },
+            { en: "Worrying does not take away tomorrow's troubles. It takes away today's peace.", hi: "\u091A\u093F\u0902\u0924\u093E \u0915\u0932 \u0915\u0940 \u092E\u0941\u0938\u0940\u092C\u0924 \u0928\u0939\u0940\u0902 \u0939\u091F\u093E\u0924\u0940\u0964 \u092F\u0939 \u0906\u091C \u0915\u0940 \u0936\u093E\u0902\u0924\u093F \u091B\u0940\u0928 \u0932\u0947\u0924\u0940 \u0939\u0948\u0964", author: "", cats: ["peace","wisdom"] },
+            { en: "Not everything that weighs you down is yours to carry.", hi: "\u0939\u0930 \u092C\u094B\u091D \u091C\u094B \u0906\u092A\u0915\u094B \u0926\u092C\u093E\u0924\u0940 \u0939\u0948, \u0935\u094B \u0906\u092A\u0915\u0940 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964", author: "", cats: ["peace","healing"] },
+            { en: "Patience with family is love. Patience with others is respect. Patience with self is confidence.", hi: "\u092A\u0930\u093F\u0935\u093E\u0930 \u0938\u0947 \u0938\u092C\u094D\u0930 \u092A\u094D\u092F\u093E\u0930 \u0939\u0948\u0964 \u0926\u0942\u0938\u0930\u094B\u0902 \u0938\u0947 \u0938\u092C\u094D\u0930 \u0938\u092E\u094D\u092E\u093E\u0928\u0964 \u0916\u0941\u0926 \u0938\u0947 \u0938\u092C\u094D\u0930 \u0906\u0924\u094D\u092E\u0935\u093F\u0936\u094D\u0935\u093E\u0938\u0964", author: "", cats: ["family","islamic","wisdom"] },
+            { en: "A smile is the best makeup any face can wear.", hi: "\u092E\u0941\u0938\u094D\u0915\u093E\u0928 \u0938\u092C\u0938\u0947 \u0905\u091A\u094D\u091B\u093E \u0936\u094D\u0930\u0943\u0902\u0917\u093E\u0930 \u0939\u0948\u0964", author: "Marilyn Monroe", cats: ["kindness","humor"] },
+            { en: "You are allowed to be both a masterpiece and a work in progress simultaneously.", hi: "\u0906\u092A \u090F\u0915 \u0938\u093E\u0925 \u0936\u093E\u0939\u0915\u093E\u0930 \u092D\u0940 \u0939\u094B \u0938\u0915\u0924\u0947 \u0939\u0948\u0902 \u0914\u0930 \u0905\u0927\u0942\u0930\u0940 \u092D\u0940\u0964", author: "Sophia Bush", cats: ["self-talk","healing"] },
+            { en: "Your children don't need a perfect parent. They need a happy one.", hi: "\u0906\u092A\u0915\u0947 \u092C\u091A\u094D\u091A\u094B\u0902 \u0915\u094B \u092A\u0930\u092B\u0947\u0915\u094D\u091F \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u0928\u0939\u0940\u0902, \u0916\u0941\u0936 \u092E\u093E\u0924\u093E-\u092A\u093F\u0924\u093E \u091A\u093E\u0939\u093F\u090F\u0964", author: "", cats: ["family","kindness"] }
         ];
 
+        var wisdoms = [
+            { en: "Happiness is not something you chase. It is what surfaces when you stop running. Every desire is a quiet contract that says: I will not be at peace until I get this. Tear up enough of those contracts and peace is what remains.", hi: "\u0916\u0941\u0936\u0940 \u0915\u094B\u0908 \u092A\u0940\u091B\u093E \u0915\u0930\u0928\u0947 \u0915\u0940 \u091A\u0940\u091C\u093C \u0928\u0939\u0940\u0902\u0964 \u092F\u0939 \u0924\u092C \u0909\u092D\u0930\u0924\u0940 \u0939\u0948 \u091C\u092C \u0906\u092A \u092D\u093E\u0917\u0928\u093E \u092C\u0902\u0926 \u0915\u0930\u0924\u0947 \u0939\u0948\u0902\u0964", cats: ["happiness","peace"] },
+            { en: "You do not rise to the level of your goals. You fall to the level of your systems. The person who builds the right daily habits will always outlast the person with the bigger dream and no structure.", hi: "\u0906\u092A \u0905\u092A\u0928\u0947 \u0932\u0915\u094D\u0937\u094D\u092F\u094B\u0902 \u0915\u0947 \u0938\u094D\u0924\u0930 \u0924\u0915 \u0928\u0939\u0940\u0902 \u0909\u0920\u0924\u0947\u0964 \u0906\u092A \u0905\u092A\u0928\u0940 \u092A\u094D\u0930\u0923\u093E\u0932\u093F\u092F\u094B\u0902 \u0915\u0947 \u0938\u094D\u0924\u0930 \u092A\u0930 \u0917\u093F\u0930\u0924\u0947 \u0939\u0948\u0902\u0964", cats: ["discipline","growth"] },
+            { en: "The present moment is the only thing you can never lose. Everything else -- money, health, relationships -- exists on borrowed time. But this breath, right now, is fully and irrevocably yours.", hi: "\u0935\u0930\u094D\u0924\u092E\u093E\u0928 \u0915\u094D\u0937\u0923 \u0939\u0940 \u090F\u0915\u092E\u093E\u0924\u094D\u0930 \u091A\u0940\u091C\u093C \u0939\u0948 \u091C\u094B \u0906\u092A \u0915\u092D\u0940 \u0928\u0939\u0940\u0902 \u0916\u094B \u0938\u0915\u0924\u0947\u0964", cats: ["mindfulness","peace"] },
+            { en: "You are not your thoughts. You are the one watching them. This is the most important distinction a human being can ever make. Once you see it clearly, most of your suffering ends.", hi: "\u0906\u092A \u0905\u092A\u0928\u0947 \u0935\u093F\u091A\u093E\u0930 \u0928\u0939\u0940\u0902 \u0939\u0948\u0902\u0964 \u0906\u092A \u0935\u094B \u0939\u0948\u0902 \u091C\u094B \u0909\u0928\u094D\u0939\u0947\u0902 \u0926\u0947\u0916 \u0930\u0939\u093E \u0939\u0948\u0964", cats: ["mindfulness","freedom"] },
+            { en: "Courage does not require the absence of fear. It requires acting while afraid. Every brave person you admire was terrified. The difference is they moved anyway.", hi: "\u0938\u093E\u0939\u0938 \u0915\u0947 \u0932\u093F\u090F \u0921\u0930 \u0915\u093E \u0928 \u0939\u094B\u0928\u093E \u091C\u093C\u0930\u0942\u0930\u0940 \u0928\u0939\u0940\u0902\u0964 \u0921\u0930\u0924\u0947 \u0939\u0941\u090F \u092D\u0940 \u0906\u0917\u0947 \u092C\u0922\u093C\u0928\u093E \u091C\u093C\u0930\u0942\u0930\u0940 \u0939\u0948\u0964", cats: ["courage","strength"] },
+            { en: "Desire is a loan you take out against your present peace. You get the object, make one payment of pleasure, and then spend months on the interest of wanting the next thing.", hi: "\u0907\u091A\u094D\u091B\u093E \u0906\u092A\u0915\u0940 \u0935\u0930\u094D\u0924\u092E\u093E\u0928 \u0936\u093E\u0902\u0924\u093F \u092A\u0930 \u0932\u093F\u092F\u093E \u0917\u092F\u093E \u0915\u0930\u094D\u091C\u093C \u0939\u0948\u0964", cats: ["desire","peace"] },
+            { en: "What you call failure is just information delivered in an uncomfortable format. The experiment did not fail. It told you something you did not want to hear. Listen anyway.", hi: "\u091C\u093F\u0938\u0947 \u0906\u092A \u0905\u0938\u092B\u0932\u0924\u093E \u0915\u0939\u0924\u0947 \u0939\u0948\u0902 \u0935\u094B \u092C\u0938 \u0905\u0938\u0941\u0935\u093F\u0927\u093E\u091C\u0928\u0915 \u0924\u0930\u0940\u0915\u0947 \u0938\u0947 \u092E\u093F\u0932\u0940 \u091C\u093E\u0928\u0915\u093E\u0930\u0940 \u0939\u0948\u0964", cats: ["growth","resilience"] },
+            { en: "The story you tell yourself about yourself becomes the architecture of your life. Change the story and the building changes.", hi: "\u0906\u092A \u0905\u092A\u0928\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u091C\u094B \u0915\u0939\u093E\u0928\u0940 \u0938\u0941\u0928\u093E\u0924\u0947 \u0939\u0948\u0902, \u0935\u0939 \u0906\u092A\u0915\u0947 \u091C\u0940\u0935\u0928 \u0915\u093E \u0928\u0915\u094D\u0936\u093E \u092C\u0928 \u091C\u093E\u0924\u0940 \u0939\u0948\u0964", cats: ["identity","freedom"] },
+            { en: "The gap between who you are and who you want to be is called discipline. Not motivation. Motivation visits. Discipline lives with you.", hi: "\u091C\u094B \u0906\u092A \u0939\u0948\u0902 \u0914\u0930 \u091C\u094B \u0906\u092A \u092C\u0928\u0928\u093E \u091A\u093E\u0939\u0924\u0947 \u0939\u0948\u0902, \u0909\u0938\u0915\u0947 \u092C\u0940\u091A \u0915\u0940 \u0926\u0942\u0930\u0940 \u0915\u093E \u0928\u093E\u092E \u0905\u0928\u0941\u0936\u093E\u0938\u0928 \u0939\u0948\u0964", cats: ["discipline","strength"] },
+            { en: "Forgiveness is not a gift you give to someone else. It is a wall you tear down inside yourself. As long as that wall stands, you are the one imprisoned.", hi: "\u0915\u094D\u0937\u092E\u093E \u0915\u093F\u0938\u0940 \u0914\u0930 \u0915\u094B \u0926\u093F\u092F\u093E \u0917\u092F\u093E \u0924\u094B\u0939\u092B\u093C\u093E \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u092F\u0939 \u0905\u092A\u0928\u0947 \u0905\u0902\u0926\u0930 \u0915\u0940 \u090F\u0915 \u0926\u0940\u0935\u093E\u0930 \u0917\u093F\u0930\u093E\u0928\u093E \u0939\u0948\u0964", cats: ["healing","freedom"] },
+            { en: "Meditation is not about emptying the mind. It is about noticing what fills it. You do not meditate to escape your thoughts. You meditate to stop being kidnapped by them.", hi: "\u0927\u094D\u092F\u093E\u0928 \u092E\u0928 \u0916\u093E\u0932\u0940 \u0915\u0930\u0928\u0947 \u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u092F\u0939 \u0926\u0947\u0916\u0928\u0947 \u0915\u0947 \u092C\u093E\u0930\u0947 \u092E\u0947\u0902 \u0939\u0948 \u0915\u093F \u092E\u0928 \u092E\u0947\u0902 \u0915\u094D\u092F\u093E \u092D\u0930\u093E \u0939\u0948\u0964", cats: ["mindfulness","meditation"] },
+            { en: "Comparison is the most expensive subscription you never signed up for. It charges you daily in envy, anxiety, and a sense of never being enough. Cancel it.", hi: "\u0924\u0941\u0932\u0928\u093E \u0938\u092C\u0938\u0947 \u092E\u0939\u0901\u0917\u0940 \u0938\u0926\u0938\u094D\u092F\u0924\u093E \u0939\u0948 \u091C\u093F\u0938\u0915\u0947 \u0932\u093F\u090F \u0906\u092A\u0928\u0947 \u0915\u092D\u0940 \u0938\u093E\u0907\u0928 \u0928\u0939\u0940\u0902 \u0915\u093F\u092F\u093E\u0964", cats: ["freedom","peace"] },
+            { en: "Suffering shared honestly becomes connection. Suffering hidden becomes isolation. Your pain is not your shame. It is your bridge to every other human being.", hi: "\u0908\u092E\u093E\u0928\u0926\u093E\u0930\u0940 \u0938\u0947 \u092C\u093E\u0901\u091F\u093E \u0917\u092F\u093E \u0926\u0941\u0916 \u091C\u0941\u0921\u093C\u093E\u0935 \u092C\u0928 \u091C\u093E\u0924\u093E \u0939\u0948\u0964", cats: ["healing","courage"] },
+            { en: "Solitude is not loneliness. Solitude is a choice; loneliness is a condition. The person who can sit alone without reaching for a screen has a kind of wealth money cannot purchase.", hi: "\u090F\u0915\u093E\u0902\u0924 \u0914\u0930 \u0905\u0915\u0947\u0932\u093E\u092A\u0928 \u090F\u0915 \u0928\u0939\u0940\u0902 \u0939\u0948\u0964 \u090F\u0915\u093E\u0902\u0924 \u091A\u0941\u0928\u093E\u0935 \u0939\u0948; \u0905\u0915\u0947\u0932\u093E\u092A\u0928 \u0939\u093E\u0932\u093E\u0924\u0964", cats: ["peace","mindfulness"] }
+        ];
+
+        var quoteCats = ['all','kindness','strength','courage','wisdom','self-talk','islamic','family','healing','peace','humor'];
+        var wisdomCats = ['all','peace','mindfulness','freedom','courage','strength','discipline','growth','healing','identity'];
+
+        /* ====== STATE ====== */
+        var activeTab = 'quotes';
+        var activeFilter = 'all';
+        var searchTerm = '';
+        var favorites = {};
+        try { favorites = JSON.parse(localStorage.getItem('sukoon_favorites') || '{}'); } catch(e) {}
+
+        /* ====== DOM ====== */
         var grid = document.getElementById('quotesGrid');
         var filterBar = document.getElementById('filterBar');
         var searchInput = document.getElementById('searchInput');
-        var quoteCountEl = document.getElementById('quoteCount');
-        var activeFilter = 'all';
-        var searchTerm = '';
+        var countEl = document.getElementById('quoteCount');
+        var tabBtns = document.querySelectorAll('.tab-btn');
 
-        function renderQuotes() {
-            grid.innerHTML = '';
-            var visibleCount = 0, delay = 0;
-            quotes.forEach(function(q, i) {
-                var cats = q.cats.join(' ');
-                if (activeFilter !== 'all' && cats.indexOf(activeFilter) === -1) return;
-                if (searchTerm) {
-                    var term = searchTerm.toLowerCase();
-                    if ((q.en + ' ' + q.hi + ' ' + q.author + ' ' + cats).toLowerCase().indexOf(term) === -1) return;
-                }
-                visibleCount++;
-                var card = document.createElement('div');
-                card.className = 'quote-card';
-                card.style.animationDelay = (delay * 0.04) + 's';
-                delay++;
-                var authorLine = q.author ? '<p class="quote-author">' + q.author + '</p>' : '';
-                var tags = q.cats.map(function(c) { return '<span class="quote-tag">' + c.charAt(0).toUpperCase() + c.slice(1) + '</span>'; }).join('');
-                card.innerHTML =
-                    '<div class="quote-mark">\u201C</div>' +
-                    '<p class="quote-en">' + q.en + '</p>' +
-                    '<div class="quote-hi-wrap"><p class="quote-hi">' + q.hi + '</p></div>' +
-                    authorLine +
-                    '<div class="quote-footer"><div class="quote-tags">' + tags + '</div><div class="quote-actions">' +
-                    '<button class="action-btn copy-btn" data-idx="' + i + '" title="Copy"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg></button>' +
-                    '<button class="action-btn share-btn" data-idx="' + i + '" title="Share"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/></svg></button>' +
-                    '</div></div>';
-                grid.appendChild(card);
+        /* ====== TABS ====== */
+        tabBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                tabBtns.forEach(function(b) { b.classList.remove('active'); });
+                btn.classList.add('active');
+                activeTab = btn.getAttribute('data-tab');
+                activeFilter = 'all';
+                searchTerm = '';
+                searchInput.value = '';
+                buildFilters();
+                render();
             });
-            var noResults = grid.querySelector('.no-results');
-            if (!noResults) {
-                noResults = document.createElement('div');
-                noResults.className = 'no-results';
-                noResults.innerHTML = '<p class="no-results-text">No quotes found</p><p class="no-results-hint">\u0915\u094B\u0908 \u0909\u0926\u094D\u0927\u0930\u0923 \u0928\u0939\u0940\u0902 \u092E\u093F\u0932\u093E</p>';
-                grid.appendChild(noResults);
-            }
-            noResults.classList.toggle('show', visibleCount === 0);
-            var catLabel = activeFilter === 'all' ? 'All' : activeFilter.charAt(0).toUpperCase() + activeFilter.slice(1);
-            quoteCountEl.textContent = visibleCount + ' quote' + (visibleCount !== 1 ? 's' : '') + (activeFilter !== 'all' ? ' in ' + catLabel : '') + (searchTerm ? ' matching "' + searchTerm + '"' : '');
+        });
+
+        // Handle ?tab=wisdom URL param
+        if (location.search.indexOf('tab=wisdom') !== -1) {
+            tabBtns.forEach(function(b) { b.classList.remove('active'); });
+            document.querySelector('[data-tab="wisdom"]').classList.add('active');
+            activeTab = 'wisdom';
         }
-        renderQuotes();
+
+        /* ====== FILTER PILLS ====== */
+        function buildFilters() {
+            var cats = activeTab === 'quotes' ? quoteCats : wisdomCats;
+            filterBar.innerHTML = '';
+            cats.forEach(function(c) {
+                var pill = document.createElement('button');
+                pill.className = 'filter-pill' + (c === activeFilter ? ' active' : '');
+                pill.setAttribute('data-cat', c);
+                pill.textContent = c === 'all' ? 'All' : c.charAt(0).toUpperCase() + c.slice(1).replace('-', ' ');
+                filterBar.appendChild(pill);
+            });
+        }
+        buildFilters();
 
         filterBar.addEventListener('click', function(e) {
             var pill = e.target.closest('.filter-pill'); if (!pill) return;
             filterBar.querySelectorAll('.filter-pill').forEach(function(p) { p.classList.remove('active'); });
             pill.classList.add('active');
             activeFilter = pill.getAttribute('data-cat');
-            renderQuotes();
+            render();
         });
 
-        var searchTimeout;
+        /* ====== RENDER ====== */
+        function render() {
+            var data = activeTab === 'quotes' ? quotes : wisdoms;
+            grid.innerHTML = '';
+            var count = 0, delay = 0;
+
+            data.forEach(function(q, i) {
+                var cats = q.cats.join(' ');
+                if (activeFilter !== 'all' && cats.indexOf(activeFilter) === -1) return;
+                if (searchTerm) {
+                    var s = searchTerm.toLowerCase();
+                    if ((q.en + ' ' + q.hi + ' ' + (q.author || '') + ' ' + cats).toLowerCase().indexOf(s) === -1) return;
+                }
+                count++;
+                var key = activeTab + '_' + i;
+                var isFav = !!favorites[key];
+                var card = document.createElement('div');
+                card.className = 'quote-card' + (activeTab === 'wisdom' ? ' wisdom-card' : '');
+                card.style.animationDelay = (delay * 0.04) + 's';
+                delay++;
+
+                var authorLine = q.author ? '<p class="quote-author">' + q.author + '</p>' : '';
+                var tags = q.cats.map(function(c) { return '<span class="quote-tag">' + c.charAt(0).toUpperCase() + c.slice(1) + '</span>'; }).join('');
+
+                card.innerHTML =
+                    '<div class="quote-mark">\u201C</div>' +
+                    '<p class="quote-en">' + q.en + '</p>' +
+                    '<div class="quote-hi-wrap"><p class="quote-hi">' + q.hi + '</p></div>' +
+                    authorLine +
+                    '<div class="quote-footer"><div class="quote-tags">' + tags + '</div>' +
+                    '<div class="quote-actions">' +
+                    '<button class="action-btn fav-btn' + (isFav ? ' active' : '') + '" data-key="' + key + '" title="Favorite"><svg fill="' + (isFav ? 'currentColor' : 'none') + '" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"/></svg></button>' +
+                    '<button class="action-btn tts-btn" data-tab="' + activeTab + '" data-idx="' + i + '" title="Listen"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z"/></svg></button>' +
+                    '<button class="action-btn reflect-btn" data-tab="' + activeTab + '" data-idx="' + i + '" title="Reflect in Journal"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931z"/><path d="M19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10"/></svg></button>' +
+                    '<button class="action-btn img-btn" data-tab="' + activeTab + '" data-idx="' + i + '" title="Share as Image"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 21h16.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3.75a1.5 1.5 0 00-1.5 1.5v14.25a1.5 1.5 0 001.5 1.5z"/></svg></button>' +
+                    '</div></div>';
+                grid.appendChild(card);
+            });
+
+            // No results
+            var noR = grid.querySelector('.no-results');
+            if (!noR) {
+                noR = document.createElement('div');
+                noR.className = 'no-results';
+                noR.innerHTML = '<p class="no-results-text">Nothing found</p>';
+                grid.appendChild(noR);
+            }
+            noR.classList.toggle('show', count === 0);
+
+            var label = activeTab === 'quotes' ? 'quotes' : 'insights';
+            countEl.textContent = count + ' ' + label + (activeFilter !== 'all' ? ' in ' + activeFilter : '') + (searchTerm ? ' matching "' + searchTerm + '"' : '');
+        }
+        render();
+
+        /* ====== SEARCH ====== */
+        var st;
         searchInput.addEventListener('input', function() {
-            clearTimeout(searchTimeout);
-            searchTimeout = setTimeout(function() { searchTerm = searchInput.value.trim(); renderQuotes(); }, 200);
+            clearTimeout(st);
+            st = setTimeout(function() { searchTerm = searchInput.value.trim(); render(); }, 200);
         });
 
+        /* ====== CARD ACTIONS ====== */
         grid.addEventListener('click', function(e) {
-            var btn = e.target.closest('.copy-btn'); if (!btn) return;
-            var idx = parseInt(btn.getAttribute('data-idx'));
-            var q = quotes[idx];
-            var text = '"' + q.en + '"\n\n' + q.hi;
-            if (q.author) text += '\n\n-- ' + q.author;
-            text += '\n\n~ Sukoon';
-            if (navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(function() {
-                    btn.classList.add('copied');
-                    btn.innerHTML = '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5"/></svg>';
-                    setTimeout(function() {
-                        btn.classList.remove('copied');
-                        btn.innerHTML = '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M15.666 3.888A2.25 2.25 0 0013.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 01-.75.75H9.75a.75.75 0 01-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 01-2.25 2.25H6.75A2.25 2.25 0 014.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 011.927-.184"/></svg>';
-                    }, 2000);
-                });
+            // Favorite
+            var favBtn = e.target.closest('.fav-btn');
+            if (favBtn) {
+                var key = favBtn.getAttribute('data-key');
+                if (favorites[key]) { delete favorites[key]; favBtn.classList.remove('active'); favBtn.querySelector('svg').setAttribute('fill', 'none'); }
+                else { favorites[key] = true; favBtn.classList.add('active'); favBtn.querySelector('svg').setAttribute('fill', 'currentColor'); }
+                try { localStorage.setItem('sukoon_favorites', JSON.stringify(favorites)); } catch(ex) {}
+                return;
+            }
+
+            // TTS
+            var ttsBtn = e.target.closest('.tts-btn');
+            if (ttsBtn) {
+                var tab = ttsBtn.getAttribute('data-tab');
+                var idx = parseInt(ttsBtn.getAttribute('data-idx'));
+                var item = (tab === 'quotes' ? quotes : wisdoms)[idx];
+                speakQuote(item.en);
+                return;
+            }
+
+            // Reflect (open journal with quote)
+            var refBtn = e.target.closest('.reflect-btn');
+            if (refBtn) {
+                var tab2 = refBtn.getAttribute('data-tab');
+                var idx2 = parseInt(refBtn.getAttribute('data-idx'));
+                var item2 = (tab2 === 'quotes' ? quotes : wisdoms)[idx2];
+                var text = '"' + item2.en + '"' + (item2.author ? ' -- ' + item2.author : '');
+                try { localStorage.setItem('sukoon_journal_prefill', text); } catch(ex) {}
+                window.location.href = '/journal.html';
+                return;
+            }
+
+            // Share as Image
+            var imgBtn = e.target.closest('.img-btn');
+            if (imgBtn) {
+                var tab3 = imgBtn.getAttribute('data-tab');
+                var idx3 = parseInt(imgBtn.getAttribute('data-idx'));
+                var item3 = (tab3 === 'quotes' ? quotes : wisdoms)[idx3];
+                drawShareCard(item3);
+                return;
             }
         });
 
-        grid.addEventListener('click', function(e) {
-            var btn = e.target.closest('.share-btn'); if (!btn) return;
-            var idx = parseInt(btn.getAttribute('data-idx'));
-            var q = quotes[idx];
-            var text = '"' + q.en + '"\n\n' + q.hi;
-            if (q.author) text += '\n\n-- ' + q.author;
-            text += '\n\n~ Sukoon';
-            if (navigator.share) {
-                navigator.share({ title: 'Sukoon Quote', text: text }).catch(function() {});
-            } else if (navigator.clipboard) {
-                navigator.clipboard.writeText(text).then(function() {
-                    btn.classList.add('copied');
-                    btn.innerHTML = '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5"/></svg>';
-                    setTimeout(function() {
-                        btn.classList.remove('copied');
-                        btn.innerHTML = '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M7.217 10.907a2.25 2.25 0 100 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186l9.566-5.314m-9.566 7.5l9.566 5.314m0 0a2.25 2.25 0 103.935 2.186 2.25 2.25 0 00-3.935-2.186zm0-12.814a2.25 2.25 0 103.933-2.185 2.25 2.25 0 00-3.933 2.185z"/></svg>';
-                    }, 2000);
-                });
+        /* ====== TTS ====== */
+        function speakQuote(text) {
+            if (!window.speechSynthesis) return;
+            speechSynthesis.cancel();
+            var u = new SpeechSynthesisUtterance(text);
+            u.rate = 0.88;
+            u.pitch = 0.95;
+            var voices = speechSynthesis.getVoices();
+            var prefs = ['Google UK English Female','Samantha','Karen','Moira','Fiona'];
+            for (var p = 0; p < prefs.length; p++) {
+                for (var v = 0; v < voices.length; v++) {
+                    if (voices[v].name.indexOf(prefs[p]) !== -1) { u.voice = voices[v]; p = prefs.length; break; }
+                }
             }
+            speechSynthesis.speak(u);
+        }
+
+        /* ====== SHARE AS IMAGE (Canvas) ====== */
+        var overlay = document.getElementById('shareOverlay');
+        var canvas = document.getElementById('shareCanvas');
+        var ctx = canvas.getContext('2d');
+
+        function drawShareCard(item) {
+            var W = 600, H = 400;
+            canvas.width = W; canvas.height = H;
+
+            // Background gradient
+            var grad = ctx.createLinearGradient(0, 0, W, H);
+            grad.addColorStop(0, '#1B4332');
+            grad.addColorStop(1, '#2D6A4F');
+            ctx.fillStyle = grad;
+            ctx.fillRect(0, 0, W, H);
+
+            // Decorative quote mark
+            ctx.fillStyle = 'rgba(255,255,255,0.08)';
+            ctx.font = '180px serif';
+            ctx.fillText('\u201C', 20, 150);
+
+            // Quote text
+            ctx.fillStyle = '#FFFFFF';
+            ctx.font = '20px Georgia, serif';
+            var lines = wrapText(item.en, W - 80);
+            var startY = Math.max(100, (H - lines.length * 28) / 2);
+            lines.forEach(function(line, i) {
+                ctx.fillText(line, 40, startY + i * 28);
+            });
+
+            // Author
+            if (item.author) {
+                ctx.fillStyle = 'rgba(255,255,255,0.6)';
+                ctx.font = '14px sans-serif';
+                ctx.fillText('-- ' + item.author, 40, startY + lines.length * 28 + 24);
+            }
+
+            // Brand
+            ctx.fillStyle = 'rgba(255,255,255,0.4)';
+            ctx.font = '12px sans-serif';
+            ctx.textAlign = 'right';
+            ctx.fillText('sukoon.cloud', W - 24, H - 20);
+            ctx.textAlign = 'left';
+
+            overlay.classList.add('show');
+        }
+
+        function wrapText(text, maxW) {
+            var words = text.split(' '), lines = [], line = '';
+            words.forEach(function(w) {
+                var test = line + (line ? ' ' : '') + w;
+                if (ctx.measureText(test).width > maxW && line) { lines.push(line); line = w; }
+                else { line = test; }
+            });
+            if (line) lines.push(line);
+            return lines;
+        }
+
+        document.getElementById('shareDownload').addEventListener('click', function() {
+            var link = document.createElement('a');
+            link.download = 'sukoon-quote.png';
+            link.href = canvas.toDataURL('image/png');
+            link.click();
         });
 
+        document.getElementById('shareClose').addEventListener('click', function() {
+            overlay.classList.remove('show');
+        });
+
+        overlay.addEventListener('click', function(e) {
+            if (e.target === overlay) overlay.classList.remove('show');
+        });
+
+        /* ====== DAILY QUOTE ====== */
+        var allItems = quotes.concat(wisdoms);
         var dailyIdx = -1;
         function showDaily() {
-            var next; do { next = Math.floor(Math.random() * quotes.length); } while (next === dailyIdx && quotes.length > 1);
+            var next; do { next = Math.floor(Math.random() * allItems.length); } while (next === dailyIdx && allItems.length > 1);
             dailyIdx = next;
-            var q = quotes[dailyIdx];
+            var q = allItems[dailyIdx];
             document.getElementById('dailyEN').textContent = q.en;
             document.getElementById('dailyHI').textContent = q.hi;
             document.getElementById('dailyAuthor').textContent = q.author ? '-- ' + q.author : '';
@@ -496,13 +541,17 @@
         showDaily();
         document.getElementById('dailyRefresh').addEventListener('click', showDaily);
 
+        document.getElementById('dailyListen').addEventListener('click', function() {
+            speakQuote(allItems[dailyIdx].en);
+        });
+
         document.getElementById('dailyCopy').addEventListener('click', function() {
-            var q = quotes[dailyIdx];
+            var q = allItems[dailyIdx];
             var text = '"' + q.en + '"\n\n' + q.hi;
             if (q.author) text += '\n\n-- ' + q.author;
             text += '\n\n~ Sukoon';
-            var btn = document.getElementById('dailyCopy');
             if (navigator.clipboard) {
+                var btn = document.getElementById('dailyCopy');
                 navigator.clipboard.writeText(text).then(function() {
                     btn.innerHTML = '<svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4.5 12.75l6 6 9-13.5"/></svg> Copied!';
                     setTimeout(function() {
@@ -511,8 +560,8 @@
                 });
             }
         });
+
     })();
     </script>
-    <script src="/js/i18n.js"></script>
 </body>
 </html>

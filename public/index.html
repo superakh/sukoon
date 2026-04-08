@@ -9,25 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
     <style>
-        /* ===================== RESET & BASE ===================== */
-        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Inter', sans-serif;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            line-height: 1.7;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            padding-bottom: 72px;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        a { text-decoration: none; color: inherit; }
-
         .hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
             color: #86868B;
@@ -40,11 +23,6 @@
         }
 
         /* ===================== ANIMATIONS ===================== */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
         .fade-section {
             opacity: 0;
             animation: fadeIn 0.5s ease forwards;
@@ -59,59 +37,6 @@
         .fade-section:nth-child(7) { animation-delay: 0.35s; }
         .fade-section:nth-child(8) { animation-delay: 0.4s; }
         .fade-section:nth-child(9) { animation-delay: 0.45s; }
-
-        /* ===================== TOP HEADER ===================== */
-        .top-header {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            height: 52px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 24px;
-            background: rgba(250, 250, 247, 0.8);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            max-width: 720px;
-            margin: 0 auto;
-        }
-
-        .brand {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 1.3rem;
-            color: #1D1D1F;
-            letter-spacing: -0.01em;
-        }
-
-        .lang-select {
-            background: transparent;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            color: #86868B;
-            padding: 5px 28px 5px 10px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-family: 'Inter', -apple-system, sans-serif;
-            font-weight: 500;
-            cursor: pointer;
-            outline: none;
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='%2386868B' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 8px center;
-            transition: border-color 0.2s ease;
-        }
-
-        .lang-select:hover {
-            border-color: rgba(0, 0, 0, 0.2);
-        }
-
-        .lang-select option {
-            background: #FFFFFF;
-            color: #1D1D1F;
-        }
 
         /* ===================== GREETING ===================== */
         .greeting-section {
@@ -672,121 +597,8 @@
             line-height: 1.45;
         }
 
-        /* ===================== BOTTOM NAV ===================== */
-        .bottom-nav {
-            position: fixed;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            height: 56px;
-            background: #FFFFFF;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            padding: 0 8px;
-            padding-bottom: env(safe-area-inset-bottom, 0);
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 2px;
-            padding: 6px 12px;
-            border-radius: 10px;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            min-width: 56px;
-        }
-
-        .nav-item svg {
-            width: 22px;
-            height: 22px;
-            color: #AEAEB2;
-            transition: color 0.2s ease;
-        }
-
-        .nav-item span {
-            font-size: 10px;
-            font-weight: 500;
-            color: #AEAEB2;
-            letter-spacing: 0.02em;
-            transition: color 0.2s ease;
-        }
-
-        .nav-item:hover svg,
-        .nav-item:hover span {
-            color: #86868B;
-        }
-
-        .nav-item.active svg {
-            color: #2D6A4F;
-        }
-
-        .nav-item.active span {
-            color: #2D6A4F;
-            font-weight: 600;
-        }
-
-        /* ===================== DESKTOP: SIDEBAR NAV ===================== */
+        /* ===================== DESKTOP LAYOUT OVERRIDES ===================== */
         @media (min-width: 961px) {
-            body {
-                padding-left: 220px;
-                padding-bottom: 20px;
-            }
-
-            .bottom-nav {
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                right: auto;
-                width: 220px;
-                height: 100vh;
-                flex-direction: column;
-                justify-content: flex-start;
-                padding: 24px 16px;
-                gap: 2px;
-                border-top: none;
-                border-right: 1px solid rgba(0, 0, 0, 0.06);
-                background: #FFFFFF;
-            }
-
-            .sidebar-brand {
-                font-family: 'DM Serif Display', Georgia, serif;
-                font-size: 1.4rem;
-                color: #1D1D1F;
-                padding: 8px 12px 28px;
-                display: flex;
-                align-items: center;
-                gap: 8px;
-            }
-
-            .nav-item {
-                flex-direction: row;
-                justify-content: flex-start;
-                gap: 12px;
-                padding: 12px 14px;
-                border-radius: 10px;
-                width: 100%;
-                min-width: unset;
-            }
-
-            .nav-item span {
-                font-size: 0.88rem;
-            }
-
-            .nav-item:hover {
-                background: rgba(0, 0, 0, 0.03);
-            }
-
-            .nav-item.active {
-                background: rgba(45, 106, 79, 0.06);
-            }
-
             .top-header {
                 position: relative;
                 border-bottom: none;
