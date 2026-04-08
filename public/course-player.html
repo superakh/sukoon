@@ -1,0 +1,1355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Session - Sukoon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { height: 100%; overflow: hidden; }
+        body {
+            font-family: -apple-system, 'Inter', BlinkMacSystemFont, sans-serif;
+            color: #FFFFFF;
+            background: #0C0A1D;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        a { text-decoration: none; color: inherit; }
+
+        /* ===================== PHASE SCREENS ===================== */
+        .phase {
+            position: fixed; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.6s ease;
+            z-index: 10;
+        }
+        .phase.active { opacity: 1; pointer-events: auto; }
+
+        /* ===================== IMMERSIVE BACKGROUND ===================== */
+        .session-bg {
+            position: fixed; inset: 0; z-index: 0;
+            overflow: hidden;
+            transition: background 1s ease;
+        }
+        .session-bg-gradient {
+            position: absolute; inset: 0;
+            background: linear-gradient(160deg, var(--bg-from), var(--bg-to));
+        }
+        .orb {
+            position: absolute; border-radius: 50%;
+            filter: blur(80px); opacity: 0.25;
+            pointer-events: none;
+        }
+        .orb-1 { width: 350px; height: 350px; top: 10%; left: 15%; animation: orbFloat1 22s ease-in-out infinite; }
+        .orb-2 { width: 280px; height: 280px; bottom: 20%; right: 10%; animation: orbFloat2 18s ease-in-out infinite; }
+        .orb-3 { width: 200px; height: 200px; top: 55%; left: 50%; animation: orbFloat3 25s ease-in-out infinite; }
+
+        @keyframes orbFloat1 { 0%,100%{ transform:translate(0,0) } 33%{ transform:translate(40px,-60px) } 66%{ transform:translate(-30px,40px) } }
+        @keyframes orbFloat2 { 0%,100%{ transform:translate(0,0) } 33%{ transform:translate(-50px,30px) } 66%{ transform:translate(35px,-45px) } }
+        @keyframes orbFloat3 { 0%,100%{ transform:translate(0,0) } 50%{ transform:translate(60px,-50px) } }
+
+        /* ===================== PARTICLE SYSTEMS ===================== */
+        .particles { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+        .particle { position: absolute; pointer-events: none; }
+
+        /* Fireflies */
+        .particle-firefly {
+            width: 4px; height: 4px; border-radius: 50%;
+            background: rgba(255,255,180,0.8);
+            box-shadow: 0 0 8px rgba(255,255,180,0.6);
+            animation: fireflyFloat var(--dur) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+        @keyframes fireflyFloat {
+            0%,100% { transform: translate(0,0); opacity: 0.2; }
+            25% { transform: translate(var(--dx1), var(--dy1)); opacity: 0.8; }
+            50% { transform: translate(var(--dx2), var(--dy2)); opacity: 0.3; }
+            75% { transform: translate(var(--dx3), var(--dy3)); opacity: 0.9; }
+        }
+
+        /* Stars */
+        .particle-star {
+            width: var(--size); height: var(--size); border-radius: 50%;
+            background: rgba(255,255,255,0.8);
+            animation: starTwinkle var(--dur) ease-in-out infinite;
+            animation-delay: var(--delay);
+        }
+        @keyframes starTwinkle {
+            0%,100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.4); }
+        }
+
+        /* Leaves */
+        .particle-leaf {
+            width: 12px; height: 16px;
+            background: var(--leaf-color, rgba(45,106,79,0.5));
+            border-radius: 0 50% 50% 50%;
+            animation: leafDrift var(--dur) linear infinite;
+            animation-delay: var(--delay);
+        }
+        @keyframes leafDrift {
+            0% { transform: translate(0,-20vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.6; }
+            90% { opacity: 0.6; }
+            100% { transform: translate(var(--dx), 110vh) rotate(var(--rot)); opacity: 0; }
+        }
+
+        /* Snow */
+        .particle-snow {
+            width: var(--size); height: var(--size); border-radius: 50%;
+            background: rgba(255,255,255,0.7);
+            animation: snowFall var(--dur) linear infinite;
+            animation-delay: var(--delay);
+        }
+        @keyframes snowFall {
+            0% { transform: translate(0,-10vh); opacity: 0; }
+            10% { opacity: 0.7; }
+            90% { opacity: 0.5; }
+            100% { transform: translate(var(--dx), 110vh); opacity: 0; }
+        }
+
+        /* Petals */
+        .particle-petal {
+            width: 8px; height: 10px;
+            background: var(--petal-color, rgba(220,120,150,0.5));
+            border-radius: 50% 0 50% 0;
+            animation: petalFloat var(--dur) linear infinite;
+            animation-delay: var(--delay);
+        }
+        @keyframes petalFloat {
+            0% { transform: translate(0,-15vh) rotate(0deg) scale(0.8); opacity: 0; }
+            10% { opacity: 0.6; }
+            50% { transform: translate(calc(var(--dx) / 2), 50vh) rotate(180deg) scale(1); }
+            90% { opacity: 0.4; }
+            100% { transform: translate(var(--dx), 110vh) rotate(360deg) scale(0.6); opacity: 0; }
+        }
+
+        /* ===================== PHASE 0: MOOD CHECK-IN ===================== */
+        .mood-screen {
+            padding: 2rem;
+            text-align: center;
+            z-index: 20;
+        }
+        .mood-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.6rem, 4vw, 2.2rem);
+            font-weight: 400; margin-bottom: 0.4rem;
+            letter-spacing: -0.02em;
+        }
+        .mood-subtitle {
+            font-size: 0.9rem; opacity: 0.6;
+            margin-bottom: 2.5rem;
+            font-family: 'Noto Sans Devanagari', sans-serif;
+        }
+        .mood-faces {
+            display: flex; gap: 1.2rem;
+            justify-content: center; flex-wrap: wrap;
+        }
+        .mood-btn {
+            display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px; padding: 1.2rem 1rem;
+            cursor: pointer; transition: all 0.3s ease;
+            min-width: 72px;
+        }
+        .mood-btn:hover { background: rgba(255,255,255,0.15); transform: translateY(-3px); }
+        .mood-btn.selected { background: rgba(255,255,255,0.2); border-color: var(--accent, #2D6A4F); transform: scale(1.08); }
+        .mood-btn svg { width: 36px; height: 36px; }
+        .mood-label { font-size: 0.7rem; opacity: 0.7; font-weight: 500; }
+
+        /* ===================== PHASE 1: SETUP ===================== */
+        .setup-screen { padding: 2rem; text-align: center; z-index: 15; }
+        .setup-course-badge {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.35rem 0.9rem; border-radius: 100px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.72rem; font-weight: 500; letter-spacing: 0.04em;
+            text-transform: uppercase; margin-bottom: 1.5rem;
+        }
+        .setup-day-label {
+            font-size: 0.8rem; opacity: 0.5; margin-bottom: 0.3rem;
+            letter-spacing: 0.05em; text-transform: uppercase; font-weight: 600;
+        }
+        .setup-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 5vw, 2.6rem);
+            font-weight: 400; margin-bottom: 0.4rem;
+            letter-spacing: -0.02em; line-height: 1.15;
+        }
+        .setup-type {
+            display: inline-flex; align-items: center; gap: 0.3rem;
+            font-size: 0.78rem; opacity: 0.6; margin-bottom: 2rem;
+        }
+        .setup-type svg { width: 14px; height: 14px; }
+
+        .setup-section-label {
+            font-size: 0.65rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.1em; opacity: 0.4; margin-bottom: 0.6rem;
+        }
+        .pill-row {
+            display: flex; gap: 0.5rem; justify-content: center;
+            flex-wrap: wrap; margin-bottom: 1.5rem;
+        }
+        .pill {
+            padding: 0.5rem 1.1rem; border-radius: 100px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+            font-size: 0.82rem; font-weight: 500; cursor: pointer;
+            transition: all 0.2s ease; color: rgba(255,255,255,0.8);
+        }
+        .pill:hover { background: rgba(255,255,255,0.14); }
+        .pill.active { background: var(--accent, #2D6A4F); border-color: var(--accent, #2D6A4F); color: #fff; }
+
+        .tts-toggle {
+            display: inline-flex; align-items: center; gap: 0.6rem;
+            padding: 0.6rem 1.2rem; border-radius: 100px;
+            background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer; transition: all 0.2s ease;
+            font-size: 0.82rem; margin-bottom: 2rem;
+        }
+        .tts-toggle:hover { background: rgba(255,255,255,0.12); }
+        .tts-toggle.on { background: rgba(255,255,255,0.15); border-color: var(--accent, #2D6A4F); }
+        .tts-toggle svg { width: 18px; height: 18px; opacity: 0.7; }
+
+        .begin-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.9rem 2.5rem; border-radius: 100px;
+            background: var(--accent, #2D6A4F); border: none;
+            color: #fff; font-size: 1rem; font-weight: 600;
+            cursor: pointer; transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+        .begin-btn:hover { transform: scale(1.04); filter: brightness(1.1); }
+        .begin-btn svg { width: 20px; height: 20px; }
+
+        /* ===================== PHASE 2: ACTIVE SESSION ===================== */
+        .session-screen {
+            padding: 1.5rem;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            z-index: 12;
+        }
+        .session-header {
+            position: fixed; top: 0; left: 0; right: 0;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 1rem 1.5rem; z-index: 50;
+            transition: opacity 0.8s ease;
+        }
+        .session-header.dimmed { opacity: 0.1; }
+        .session-close {
+            width: 36px; height: 36px; border-radius: 50%;
+            background: rgba(255,255,255,0.1); border: none;
+            color: #fff; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            transition: all 0.2s ease;
+        }
+        .session-close:hover { background: rgba(255,255,255,0.2); }
+        .session-close svg { width: 18px; height: 18px; }
+        .session-meta {
+            font-size: 0.72rem; opacity: 0.5;
+            letter-spacing: 0.04em; text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Visual Center — changes per session type */
+        .visual-center {
+            position: relative;
+            width: 260px; height: 260px;
+            margin-bottom: 2rem;
+            transition: opacity 0.8s ease;
+        }
+        .visual-center.dimmed { opacity: 0.6; }
+
+        /* Progress Ring */
+        .ring-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+        .ring-track { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 4; }
+        .ring-fill {
+            fill: none; stroke: var(--accent, #2D6A4F);
+            stroke-width: 4; stroke-linecap: round;
+            transition: stroke-dashoffset 0.5s ease;
+        }
+        .ring-inner {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+        }
+        .session-timer {
+            font-family: 'Inter', sans-serif;
+            font-size: 2.8rem; font-weight: 200;
+            letter-spacing: 0.04em;
+            transition: opacity 0.8s ease;
+        }
+        .session-timer.dimmed { opacity: 0.15; }
+
+        /* Breathing Circle (for breathing session type) */
+        .breath-visual {
+            width: 180px; height: 180px; border-radius: 50%;
+            background: radial-gradient(circle, var(--accent-light, rgba(45,106,79,0.3)), transparent 70%);
+            border: 2px solid var(--accent, rgba(45,106,79,0.5));
+            display: flex; align-items: center; justify-content: center;
+            transition-property: transform, box-shadow;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .breath-visual.expanded {
+            transform: translate(-50%, -50%) scale(1.55);
+            box-shadow: 0 0 60px var(--accent-light, rgba(45,106,79,0.2));
+        }
+        .breath-phase-text {
+            font-size: 0.85rem; font-weight: 500;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        /* Body Scan SVG */
+        .body-svg { width: 120px; height: 280px; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+        .body-zone { fill: rgba(255,255,255,0.05); stroke: rgba(255,255,255,0.2); stroke-width: 1; transition: fill 1.5s ease; }
+        .body-zone.active { fill: var(--accent-light, rgba(45,106,79,0.4)); }
+
+        /* Journaling */
+        .journal-area {
+            width: 100%; max-width: 500px;
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+        .journal-prompt-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.3rem; font-weight: 400;
+            margin-bottom: 1.5rem; line-height: 1.5;
+            opacity: 0.9;
+        }
+        .journal-textarea {
+            width: 100%; height: 180px; padding: 1rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 12px; color: #fff;
+            font-family: 'Inter', sans-serif; font-size: 0.95rem;
+            line-height: 1.7; resize: none;
+            outline: none; transition: border-color 0.3s;
+        }
+        .journal-textarea:focus { border-color: var(--accent, rgba(45,106,79,0.5)); }
+        .journal-textarea::placeholder { color: rgba(255,255,255,0.3); }
+
+        /* Prompt Text Display */
+        .prompt-area {
+            text-align: center; max-width: 560px;
+            min-height: 100px;
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity 0.8s ease;
+        }
+        .prompt-area.dimmed { opacity: 0.3; }
+        .prompt-text {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1rem, 3vw, 1.35rem);
+            font-weight: 400; line-height: 1.7;
+            opacity: 0; transition: opacity 0.8s ease;
+            letter-spacing: -0.01em;
+        }
+        .prompt-text.visible { opacity: 1; }
+
+        /* Session Controls */
+        .session-controls {
+            margin-top: 1.5rem;
+            display: flex; flex-direction: column; align-items: center; gap: 0.8rem;
+            transition: opacity 0.8s ease;
+        }
+        .session-controls.dimmed { opacity: 0.1; }
+        .prompt-dots {
+            display: flex; gap: 5px; margin-bottom: 0.3rem;
+        }
+        .prompt-dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: rgba(255,255,255,0.2);
+            transition: all 0.4s ease;
+        }
+        .prompt-dot.active { background: var(--accent, #2D6A4F); transform: scale(1.4); }
+        .prompt-dot.done { background: rgba(255,255,255,0.4); }
+
+        .pause-btn {
+            padding: 0.6rem 2rem; border-radius: 100px;
+            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15);
+            color: #fff; font-size: 0.85rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .pause-btn:hover { background: rgba(255,255,255,0.18); }
+
+        /* Breath guide (corner indicator during guided sessions) */
+        .breath-guide-corner {
+            position: fixed; bottom: 2rem; right: 2rem;
+            width: 20px; height: 20px; border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            animation: breathGuideAnim 19s ease-in-out infinite;
+            z-index: 40; opacity: 0.5;
+            transition: opacity 0.8s ease;
+        }
+        .breath-guide-corner.dimmed { opacity: 0.05; }
+        @keyframes breathGuideAnim {
+            0%,100% { transform: scale(1); opacity: 0.3; }
+            21% { transform: scale(1.8); opacity: 0.6; }
+            58% { transform: scale(1.8); opacity: 0.5; }
+        }
+
+        /* ===================== PHASE 3: COMPLETE ===================== */
+        .complete-screen {
+            padding: 2rem; text-align: center;
+            z-index: 20;
+        }
+        .complete-icon {
+            font-size: 3rem; margin-bottom: 1rem;
+            animation: completePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+        }
+        @keyframes completePop { 0%{ transform: scale(0); opacity:0; } 100%{ transform: scale(1); opacity:1; } }
+        .complete-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: clamp(1.8rem, 5vw, 2.4rem);
+            font-weight: 400; margin-bottom: 0.5rem;
+        }
+        .complete-subtitle { font-size: 0.9rem; opacity: 0.6; margin-bottom: 2rem; }
+        .complete-stats {
+            display: flex; gap: 2rem; justify-content: center;
+            margin-bottom: 2rem;
+        }
+        .complete-stat { text-align: center; }
+        .complete-stat-val { font-size: 1.8rem; font-weight: 300; }
+        .complete-stat-label { font-size: 0.7rem; opacity: 0.5; text-transform: uppercase; letter-spacing: 0.06em; }
+        .complete-streak {
+            display: inline-flex; align-items: center; gap: 0.4rem;
+            padding: 0.5rem 1.2rem; border-radius: 100px;
+            background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.85rem; margin-bottom: 1.5rem;
+        }
+        .complete-quote {
+            max-width: 440px; margin: 0 auto 1.5rem;
+            font-style: italic; font-size: 0.95rem;
+            line-height: 1.7; opacity: 0.7;
+        }
+        .complete-quote-author { font-size: 0.78rem; opacity: 0.5; font-style: normal; margin-top: 0.3rem; }
+        .complete-next {
+            font-size: 0.82rem; opacity: 0.5; margin-bottom: 1.5rem;
+        }
+        .complete-next strong { opacity: 0.8; }
+        .complete-actions { display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap; }
+        .complete-btn {
+            padding: 0.7rem 1.8rem; border-radius: 100px;
+            font-size: 0.85rem; font-weight: 500; cursor: pointer;
+            transition: all 0.2s ease; border: none;
+        }
+        .complete-btn-primary { background: var(--accent, #2D6A4F); color: #fff; }
+        .complete-btn-primary:hover { filter: brightness(1.15); }
+        .complete-btn-secondary { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); color: #fff; }
+        .complete-btn-secondary:hover { background: rgba(255,255,255,0.18); }
+
+        /* Confetti */
+        .confetti-container { position: fixed; inset: 0; pointer-events: none; z-index: 100; }
+        .confetti-piece {
+            position: absolute; width: 8px; height: 8px;
+            border-radius: 2px;
+            animation: confettiFall 1.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        @keyframes confettiFall {
+            0% { transform: translate(0,0) rotate(0deg) scale(1); opacity: 1; }
+            100% { transform: translate(var(--cx), var(--cy)) rotate(var(--cr)) scale(0); opacity: 0; }
+        }
+
+        /* ===================== PHASE 4: POST MOOD ===================== */
+        .mood-shift {
+            display: flex; align-items: center; gap: 0.6rem;
+            margin-top: 1.5rem; font-size: 0.85rem;
+            padding: 0.5rem 1rem; border-radius: 100px;
+            background: rgba(255,255,255,0.06);
+        }
+        .mood-shift-arrow { font-size: 1.2rem; }
+        .mood-done-btn {
+            margin-top: 2rem;
+            padding: 0.7rem 2rem; border-radius: 100px;
+            background: var(--accent, #2D6A4F); border: none;
+            color: #fff; font-size: 0.9rem; font-weight: 500;
+            cursor: pointer; transition: all 0.2s ease;
+        }
+        .mood-done-btn:hover { filter: brightness(1.15); }
+
+        /* ===================== RESPONSIVE ===================== */
+        @media (max-width: 480px) {
+            .visual-center { width: 200px; height: 200px; }
+            .session-timer { font-size: 2.2rem; }
+            .mood-btn { min-width: 60px; padding: 0.9rem 0.7rem; }
+            .mood-btn svg { width: 30px; height: 30px; }
+            .complete-stats { gap: 1.2rem; }
+            .breath-guide-corner { bottom: 1rem; right: 1rem; width: 16px; height: 16px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Background -->
+<div class="session-bg" id="sessionBg">
+    <div class="session-bg-gradient" id="bgGradient"></div>
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+    <div class="particles" id="particles"></div>
+</div>
+
+<!-- PHASE 0: Pre-Session Mood -->
+<div class="phase mood-screen active" id="phaseMoodPre">
+    <div class="mood-title">How are you feeling?</div>
+    <div class="mood-subtitle">अभी आप कैसा महसूस कर रहे हैं?</div>
+    <div class="mood-faces" id="moodPreFaces">
+        <button class="mood-btn" data-mood="1">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M11 25c2-3 10-3 14 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 18 25)"/></svg>
+            <span class="mood-label">Awful</span>
+        </button>
+        <button class="mood-btn" data-mood="2">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><line x1="11" y1="24" x2="25" y2="24" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Low</span>
+        </button>
+        <button class="mood-btn" data-mood="3">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M12 23c2 2 8 2 12 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Okay</span>
+        </button>
+        <button class="mood-btn" data-mood="4">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M11 22c2 3 10 3 14 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Good</span>
+        </button>
+        <button class="mood-btn" data-mood="5">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="13" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="13" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M10 21c2 5 12 5 16 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Great</span>
+        </button>
+    </div>
+</div>
+
+<!-- PHASE 1: Setup -->
+<div class="phase setup-screen" id="phaseSetup">
+    <div class="setup-course-badge" id="setupBadge"></div>
+    <div class="setup-day-label" id="setupDayLabel"></div>
+    <div class="setup-title" id="setupTitle"></div>
+    <div class="setup-type" id="setupType"></div>
+
+    <div class="setup-section-label">Duration</div>
+    <div class="pill-row" id="durationPills">
+        <button class="pill" data-min="5">5 min</button>
+        <button class="pill active" data-min="10">10 min</button>
+        <button class="pill" data-min="15">15 min</button>
+        <button class="pill" data-min="20">20 min</button>
+    </div>
+
+    <div class="setup-section-label">Ambient Sound</div>
+    <div class="pill-row" id="ambientPills">
+        <button class="pill active" data-snd="silence">Silence</button>
+        <button class="pill" data-snd="rain">Rain</button>
+        <button class="pill" data-snd="ocean">Ocean</button>
+        <button class="pill" data-snd="birds">Birds</button>
+        <button class="pill" data-snd="fire">Fire</button>
+        <button class="pill" data-snd="creek">Creek</button>
+        <button class="pill" data-snd="wind">Wind</button>
+        <button class="pill" data-snd="crickets">Crickets</button>
+    </div>
+
+    <div class="tts-toggle on" id="ttsToggle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+        <span id="ttsLabel">Voice Narration: On</span>
+    </div>
+
+    <button class="begin-btn" id="beginBtn">
+        <svg viewBox="0 0 20 20" fill="currentColor"><polygon points="5,3 17,10 5,17"/></svg>
+        Begin Session
+    </button>
+</div>
+
+<!-- PHASE 2: Active Session -->
+<div class="phase session-screen" id="phaseSession">
+    <div class="session-header" id="sessionHeader">
+        <button class="session-close" id="sessionClose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <span class="session-meta" id="sessionMeta"></span>
+    </div>
+
+    <div class="visual-center" id="visualCenter">
+        <!-- Guided: SVG Ring -->
+        <svg class="ring-svg" id="ringSvg" viewBox="0 0 260 260">
+            <circle class="ring-track" cx="130" cy="130" r="120"/>
+            <circle class="ring-fill" id="ringFill" cx="130" cy="130" r="120"
+                stroke-dasharray="753.98" stroke-dashoffset="753.98"/>
+        </svg>
+        <div class="ring-inner">
+            <div class="session-timer" id="sessionTimer">10:00</div>
+        </div>
+
+        <!-- Breathing: circle (hidden by default) -->
+        <div class="breath-visual" id="breathVisual" style="display:none;">
+            <span class="breath-phase-text" id="breathPhaseText">Ready</span>
+        </div>
+
+        <!-- Body Scan: SVG silhouette (hidden by default) -->
+        <svg class="body-svg" id="bodySvg" viewBox="0 0 120 280" style="display:none;">
+            <ellipse class="body-zone" id="bz-head" cx="60" cy="22" rx="18" ry="20"/>
+            <rect class="body-zone" id="bz-neck" x="50" y="42" width="20" height="14" rx="4"/>
+            <path class="body-zone" id="bz-shoulders" d="M20 56 Q60 48 100 56 L100 72 Q60 64 20 72 Z"/>
+            <rect class="body-zone" id="bz-chest" x="30" y="72" width="60" height="40" rx="6"/>
+            <rect class="body-zone" id="bz-belly" x="32" y="112" width="56" height="36" rx="6"/>
+            <path class="body-zone" id="bz-arms" d="M20 60 L6 130 L16 132 L28 72 M100 60 L114 130 L104 132 L92 72"/>
+            <rect class="body-zone" id="bz-hips" x="30" y="148" width="60" height="24" rx="6"/>
+            <rect class="body-zone" id="bz-legs" x="32" y="172" width="22" height="70" rx="6"/>
+            <rect class="body-zone" id="bz-legs2" x="66" y="172" width="22" height="70" rx="6"/>
+            <ellipse class="body-zone" id="bz-feet" cx="43" cy="252" rx="14" ry="8"/>
+            <ellipse class="body-zone" id="bz-feet2" cx="77" cy="252" rx="14" ry="8"/>
+        </svg>
+
+        <!-- Journaling (hidden by default) -->
+        <div class="journal-area" id="journalArea" style="display:none;">
+            <div class="journal-prompt-text" id="journalPrompt"></div>
+            <textarea class="journal-textarea" id="journalTextarea" placeholder="Write your thoughts here..."></textarea>
+        </div>
+    </div>
+
+    <div class="prompt-area" id="promptArea">
+        <div class="prompt-text" id="promptText"></div>
+    </div>
+
+    <div class="session-controls" id="sessionControls">
+        <div class="prompt-dots" id="promptDots"></div>
+        <button class="pause-btn" id="pauseBtn">Pause</button>
+    </div>
+
+    <div class="breath-guide-corner" id="breathGuide"></div>
+</div>
+
+<!-- PHASE 3: Complete -->
+<div class="phase complete-screen" id="phaseComplete">
+    <div class="confetti-container" id="confettiContainer"></div>
+    <div class="complete-icon" id="completeIcon">&#x2728;</div>
+    <div class="complete-title">Session Complete</div>
+    <div class="complete-subtitle" id="completeSubtitle">Namaste</div>
+    <div class="complete-stats" id="completeStats">
+        <div class="complete-stat"><div class="complete-stat-val" id="statDuration">10</div><div class="complete-stat-label">Minutes</div></div>
+        <div class="complete-stat"><div class="complete-stat-val" id="statDay">1/7</div><div class="complete-stat-label">Day</div></div>
+    </div>
+    <div class="complete-streak" id="completeStreak">&#x1F525; 1-day streak</div>
+    <div class="complete-quote" id="completeQuote"></div>
+    <div class="complete-next" id="completeNext"></div>
+    <div class="complete-actions">
+        <button class="complete-btn complete-btn-primary" id="completeDoneBtn">Continue</button>
+        <button class="complete-btn complete-btn-secondary" id="completeRepeatBtn">Repeat</button>
+    </div>
+</div>
+
+<!-- PHASE 4: Post Mood -->
+<div class="phase mood-screen" id="phaseMoodPost">
+    <div class="mood-title">How do you feel now?</div>
+    <div class="mood-subtitle">अब आप कैसा महसूस कर रहे हैं?</div>
+    <div class="mood-faces" id="moodPostFaces">
+        <button class="mood-btn" data-mood="1">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M11 25c2-3 10-3 14 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 18 25)"/></svg>
+            <span class="mood-label">Awful</span>
+        </button>
+        <button class="mood-btn" data-mood="2">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><line x1="11" y1="24" x2="25" y2="24" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Low</span>
+        </button>
+        <button class="mood-btn" data-mood="3">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M12 23c2 2 8 2 12 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Okay</span>
+        </button>
+        <button class="mood-btn" data-mood="4">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M11 22c2 3 10 3 14 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Good</span>
+        </button>
+        <button class="mood-btn" data-mood="5">
+            <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="13" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="13" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M10 21c2 5 12 5 16 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round"/></svg>
+            <span class="mood-label">Great</span>
+        </button>
+    </div>
+    <div class="mood-shift" id="moodShift" style="display:none;">
+        <span class="mood-shift-arrow" id="moodArrow"></span>
+        <span id="moodShiftText"></span>
+    </div>
+    <button class="mood-done-btn" id="moodDoneBtn" style="display:none;">Done</button>
+</div>
+
+<script>
+(function(){
+"use strict";
+
+/* ===================== COURSE DATA ===================== */
+var COURSES = {
+    "start-here": {
+        id:"start-here", title:"Start Here", titleHi:"\u092F\u0939\u093E\u0901 \u0938\u0947 \u0936\u0941\u0930\u0942 \u0915\u0930\u0947\u0902", days:7, level:"Beginner",
+        theme: { bgFrom:"#1B4332", bgTo:"#2D6A4F", orbs:["#40916C","#52B788","#74C69D"], accent:"#52B788", accentLight:"rgba(82,183,136,0.3)", particles:"leaves", toneHz:528, bellVariant:"singing-bowl" },
+        sessions: {
+            1:{title:"Arriving",type:"guided",prompts:["Welcome. Find a comfortable position. You can sit or lie down. There is no wrong way to do this.","Gently close your eyes. Take a deep breath in through your nose... and slowly release it through your mouth.","Notice how your body feels right now. You don't need to change anything. Just notice.","Bring your attention to your breathing. Feel the air entering your nostrils... filling your lungs... and leaving again.","Your mind will wander. That's perfectly normal. When it does, gently guide your attention back to your breath.","Feel the weight of your body against the surface beneath you. You are supported. You are held.","With each breath, let go of one small tension. Your shoulders... your jaw... your hands.","You have given yourself this gift of stillness. Even one minute of mindfulness creates ripples of calm.","When you're ready, slowly open your eyes. Carry this calm with you. You did beautifully today."]},
+            2:{title:"The Anchor",type:"guided",prompts:["Welcome back. You showed up again. That matters more than you know.","Close your eyes and settle in. Let your body find its natural resting position.","Today we'll use the breath as an anchor. Whenever your mind drifts, the breath is always here.","Breathe in for a slow count of four... hold for a moment... and breathe out for a count of six.","Notice the tiny pause between the inhale and the exhale. That brief moment of stillness is where peace lives.","Your mind has wandered. That's not failure, that's awareness. You noticed. Gently return to the breath.","Imagine your thoughts are clouds passing through a vast sky. The sky doesn't hold onto clouds. It lets them pass.","Feel the rhythm of your breathing. It asks nothing of you. It simply continues, faithfully.","Take one last deep breath. Feel how different your body feels now compared to when you began."]},
+            3:{title:"Body Scan",type:"body-scan",prompts:["Welcome to Day 3. Today we'll explore a body scan. A gentle way to listen to your body.","Close your eyes and take three slow breaths to settle in. Let the outside world fade.","Bring your attention to the top of your head. Notice any sensation there. Just observe.","Slowly move your attention down to your face. Your forehead, your eyes, your jaw. Soften each area.","Let your awareness flow into your neck and shoulders. Breathe into any tension you find.","Move down through your arms to your fingertips. Feel the life in your hands.","Bring attention to your chest and belly. Feel the rise and fall. Trust your body.","Continue down through your hips, your legs, all the way to your toes.","Now hold your entire body in awareness, as one whole. You are complete. You are here."]},
+            4:{title:"Thoughts as Visitors",type:"visualization",prompts:["Welcome to Day 4. Today we'll learn to greet our thoughts differently.","Close your eyes. Settle into your breathing. Let it be natural and unforced.","As you sit quietly, a thought will appear. When it does, silently say: 'Thought.'","You don't need to follow the thought or push it away. Just label it and return to your breath.","Imagine sitting on a riverbank, watching leaves float by on the water. Each leaf carries a thought.","Some thoughts feel urgent. That's okay. For now, practice the art of not engaging. Just watching.","Notice that between thoughts, there are small gaps of silence. These gaps are your natural state.","You are not your thoughts. You are the one who notices them. This is a profound difference.","Gently come back. You can observe your mind without being controlled by it."]},
+            5:{title:"Kindness to Self",type:"guided",prompts:["Welcome to Day 5. Today, we turn our attention toward kindness.","Close your eyes. Take a few settling breaths. Let your body soften.","Place your hand on your heart if comfortable. Feel its steady rhythm.","Silently repeat: May I be happy. May I be healthy. May I be safe. May I live with ease.","If those words feel awkward, that's okay. Kindness toward ourselves can feel unfamiliar.","Think of something you've been hard on yourself about. What would you say to a dear friend?","Offer yourself that same compassion now. You are doing your best. Your best is enough.","Breathe in warmth. Breathe out criticism. Breathe in gentleness. Breathe out harshness.","Carry this kindness with you. You deserve the same compassion you give to others."]},
+            6:{title:"Mindful Listening",type:"guided",prompts:["Welcome to Day 6. Today, we practice listening to the world around you.","Close your eyes and become still. Open your ears to whatever is present.","What do you hear? Perhaps distant sounds, a hum, nature. Don't label or judge. Just listen.","Notice how sounds come and go on their own. You don't have to hold onto any of them.","Try to hear the silence between sounds. That quiet underneath everything.","Now zoom in to the closest sound you can find. Perhaps your own breathing.","When you listen this deeply, the ordinary becomes extraordinary.","Your ability to be fully present, hearing what is actually here, is the essence of mindfulness.","Slowly widen your awareness back to your body. Listen deeply to the rest of your day."]},
+            7:{title:"Your Own Way",type:"guided",prompts:["Welcome to Day 7. Your final day. But really, this is just the beginning.","Close your eyes. Take three deep breaths. Feel how naturally you settle in now.","Today, there is no technique. Simply sit with yourself and breathe.","You know how to anchor in the breath, scan your body, watch thoughts pass. Use whatever feels right.","This is what mindfulness really is. Not a rigid practice, but a way of being.","Reflect on the past seven days. You showed up. Seven times. That is beautiful.","Imagine carrying this stillness into your daily life. A pause before reacting.","You don't need an app to be mindful. You only need the willingness to be here, right now.","This course is complete, but your practice is just beginning. Well done."]}
+        }
+    },
+    "calm-anxiety": {
+        id:"calm-anxiety", title:"Calm Anxiety", titleHi:"\u091A\u093F\u0902\u0924\u093E \u0936\u093E\u0902\u0924 \u0915\u0930\u0947\u0902", days:7, level:"Intermediate",
+        theme: { bgFrom:"#0F172A", bgTo:"#1E3A5F", orbs:["#3B82F6","#60A5FA","#93C5FD"], accent:"#60A5FA", accentLight:"rgba(96,165,250,0.3)", particles:"fireflies", toneHz:396, bellVariant:"tibetan" },
+        sessions: {
+            1:{title:"Understanding Anxiety",type:"guided",prompts:["Welcome. If you're here, you may be carrying some worry. That's okay. You've come to the right place.","Close your eyes. Notice what anxiety feels like in your body right now. Your chest? Stomach? Just notice.","Anxiety is not your enemy. It's your nervous system trying to protect you. We'll work with it.","Take a slow breath in for four counts. Hold for four. Out for six. This activates your calming response.","Continue this breathing pattern. Each cycle sends a signal of safety to your brain.","After just a few breaths, something shifts. The grip loosens. That shift is real.","Anxiety pulls us into the future. Right now, bring yourself back to this moment. You are safe.","Place a hand on your belly. Feel it rise and fall. This grounds you in the present.","You've taken the first step. Your breath is always with you."]},
+            2:{title:"The 5-4-3-2-1 Ground",type:"breathing",breathPhases:[{name:"Breathe In",duration:4,expand:true},{name:"Hold",duration:4,expand:false},{name:"Breathe Out",duration:6,expand:false}],prompts:["Today we learn a grounding technique that pulls you out of anxious spirals.","Close your eyes. Take three centering breaths. Let your body settle.","Open your eyes. Notice five things you can see. Really see them.","Now four things you can feel. The chair, fabric, temperature, your feet.","Three things you can hear. Near or far. Let each sound anchor you.","Two things you can smell. Even subtle scents count.","One thing you can taste. Perhaps the taste of stillness.","Your senses are doorways to the present. Anxiety lives in the imagined future.","Whenever anxiety rises: Five, four, three, two, one. Less than a minute."]},
+            3:{title:"The Worry Container",type:"visualization",prompts:["Welcome to Day 3. Today we'll visualize a way to manage overwhelming worries.","Close your eyes. Breathe slowly and settle in.","Imagine a container. A wooden box, a glass jar, a treasure chest. See it clearly.","Think of one worry. See it as an object. A tangled ball, a heavy stone.","Gently place that worry into your container. You're not ignoring it. Just setting it down.","If more worries arise, give each one a form. Place each into the container.","Now close the lid. The container is strong. Your worries are held safely.","Take slow breaths. Feel the space that opens when you set your burdens down.","Your worries will still be there when you're ready. But you've chosen when to carry them."]},
+            4:{title:"Releasing Tension",type:"body-scan",prompts:["Welcome to Day 4. Anxiety lives in the body. Today we release it.","Close your eyes. Notice where you're holding tension. Everyone has their spots.","Squeeze your hands into tight fists. Hold for five seconds. Now release. Feel the difference.","Raise your shoulders to your ears. Hold them tight. Now drop them completely.","Tighten your face. Scrunch everything. Hold. Now relax completely.","Tense your legs. Hold for five seconds. Release. Feel warmth flowing.","Now tense your entire body. Every muscle. Hold... and release everything at once.","Breathe into this total release. This is what your body feels like without anxiety's armor.","You can tense and release any time. It takes seconds and reminds your body it's safe."]},
+            5:{title:"Rewriting the Story",type:"journaling",journalPrompt:"What recurring worry has been on your mind? Write about it, then imagine the best possible outcome instead.",prompts:["Welcome to Day 5. Today we work with the stories anxiety tells us.","Think of a worry that's been recurring. Hold it gently in your awareness.","Notice the story your mind tells. It probably starts with 'what if' and ends catastrophically.","Ask yourself: Is this story absolutely true? Have I confused possibility with probability?","Try rewriting the story. Same situation, but the best possible outcome.","Anxiety is a storyteller. You can choose to write a different story.","Take a few breaths. Each exhale releases the old story. Each inhale invites a kinder one.","You don't have to believe every thought your mind produces. You are the author.","You can always revise your story."]},
+            6:{title:"The Calm Place",type:"visualization",prompts:["Welcome to Day 6. Today we build an inner sanctuary.","Close your eyes. Breathe slowly until settled.","Imagine a place where you feel completely safe. A beach, forest, quiet room.","See it in vivid detail. What colors? What light? Warm or cool?","What sounds? Waves, wind, birds, or perfect silence?","Feel the ground beneath you. The textures, the temperature. Breathe this air.","In this place, there is nothing to fix, nowhere to be, nothing to fear.","Spend a few more breaths here. It exists inside you always.","When anxiety rises, close your eyes for ten seconds and visit. It's always waiting."]},
+            7:{title:"Living with Openness",type:"guided",prompts:["Welcome to Day 7. You've built a toolkit of skills. Today, we bring them together.","Close your eyes. Notice how much easier it is to arrive here.","You've learned to breathe, ground yourself, contain worries, release tension, rewrite stories.","Today, we practice acceptance. Not giving up, but stopping the fight.","Imagine anxiety as a wave. You don't stop the wave. You learn to surf it.","Say to yourself: I am not my anxiety. I am the awareness that notices it.","Breathe in courage. Breathe out resistance. Breathe in openness.","Some days will be harder. That's okay. You have tools. You have breath.","This course is complete. When anxiety visits, welcome it gently, then let it pass."]}
+        }
+    },
+    "better-sleep": {
+        id:"better-sleep", title:"Better Sleep", titleHi:"\u092C\u0947\u0939\u0924\u0930 \u0928\u0940\u0902\u0926", days:5, level:"Beginner",
+        theme: { bgFrom:"#0C0A1D", bgTo:"#1A1145", orbs:["#6366F1","#818CF8","#A5B4FC"], accent:"#818CF8", accentLight:"rgba(129,140,248,0.3)", particles:"stars", toneHz:432, bellVariant:"crystal" },
+        sessions: {
+            1:{title:"Permission to Rest",type:"guided",prompts:["Welcome. The day is done. Whatever happened today, it's time to set it all down.","Lie comfortably. Let your body become heavy. There is nothing left to do tonight.","Take a slow breath in, and a long slow breath out. Like a sigh of relief.","Scan down through your body. Wherever you find tension, breathe into it and let it melt.","Let your jaw drop slightly open. Unclench your teeth. Soften your tongue.","Let your shoulders sink. They've been carrying the weight of the day.","Give yourself full permission to rest. Your body heals when you sleep.","With each breath, you sink deeper. The mattress holds you. You are safe.","There is nowhere to go. Nothing to solve. Only this breath. And sleep."]},
+            2:{title:"The Body Melts",type:"body-scan",prompts:["Tonight we'll guide your body into deep relaxation, one piece at a time.","Take three breaths that are longer than usual. Each exhale a sigh of letting go.","Bring attention to your feet. Warmth spreading. Toes relax, arches soften.","The warmth travels up through your calves and shins. Muscles release. Legs heavy.","Through your thighs, your hips. These muscles hold tension all day. Let them go.","The warmth spreads into your belly and lower back. Breathing becomes effortless.","Up through your chest, shoulders. Everything dissolving into warmth.","Into your arms, hands, fingers. Through your neck, jaw, face. Every muscle surrenders.","Your entire body is warm, heavy, deeply relaxed. Let yourself drift."]},
+            3:{title:"Quiet Mind",type:"visualization",prompts:["The body is learning to rest. Tonight, we help the mind follow.","Begin with five slow breaths. Count each one. This brings you to the present.","If thoughts arise, imagine placing each one on a cloud and watching it float away.","Imagine a chalkboard. Write the number ten. See it clearly. Erase it slowly. Write nine.","Eight... seven... six. There is no rush. Each number brings you deeper.","Five... four... three. The numbers are fading. Your mind is quieting.","Two... one. The board is clean. The room in your mind is quiet.","Rest in this emptiness. Not void, but peaceful. A lake at night, completely still.","Sleep comes to a quiet mind like dawn comes to the night."]},
+            4:{title:"Sleep Sanctuary",type:"visualization",prompts:["Tonight, we create a space devoted entirely to deep rest.","Close your eyes. Let the world outside this room fade completely.","Imagine the most comfortable room you can conceive. Soft light, perfect temperature.","The sheets are cool and smooth. The pillows exactly right. Perhaps lavender in the air.","Outside the window, stars across a dark sky. The world is quiet and still.","A gentle breeze, barely perceptible, carries away any remaining tension.","In this room, time slows down. No clocks, no alarms. Only rest.","You sink deeper. The line between imagination and sleep is blurring.","You are safe. You are warm. You are held. Let sleep take you now."]},
+            5:{title:"Grateful Rest",type:"guided",prompts:["Our final evening together. Tonight, we drift off with gratitude.","Let your breathing become slow and rhythmic, like a gentle tide.","Think of one thing from today you're grateful for. It can be small.","Hold that gratitude in your chest. Feel it as warmth.","Think of someone you love. Send them a silent wish for peaceful sleep.","Extend that wish to yourself. May I sleep deeply. May I wake refreshed.","Over these five nights, you've learned to release your body and quiet your mind.","Your body knows how to sleep. Trust it. You just have to stop trying.","The night is yours. Sleep is coming like an old friend. Goodnight."]}
+        }
+    },
+    "sharp-focus": {
+        id:"sharp-focus", title:"Sharp Focus", titleHi:"\u0924\u0940\u0935\u094D\u0930 \u090F\u0915\u093E\u0917\u094D\u0930\u0924\u093E", days:5, level:"Intermediate",
+        theme: { bgFrom:"#1A1814", bgTo:"#2C2620", orbs:["#D4A574","#E8C9A0","#F5E6D3"], accent:"#D4A574", accentLight:"rgba(212,165,116,0.3)", particles:"none", toneHz:528, bellVariant:"singing-bowl" },
+        sessions: {
+            1:{title:"Single Point",type:"guided",prompts:["Welcome. Focus is a skill, not a talent. And like any skill, it can be trained.","Sit upright. A straight spine supports alertness. Take three energizing breaths.","Choose one thing to focus on: the sensation of air at your nostrils as you breathe.","Keep your attention right there. Cool air entering, warm air leaving. That's your only task.","When attention drifts, the moment you notice and return — that's the exercise. That's the rep.","Think of it like lifting weights. Mind wanders, you bring it back. One rep.","Continue. Air in, air out, at the nostrils. Nothing else matters right now.","If you managed even thirty seconds of unbroken focus, that's significant.","Your attention is already sharper than when you sat down."]},
+            2:{title:"The Counting Game",type:"breathing",breathPhases:[{name:"Breathe In",duration:4,expand:true},{name:"Hold",duration:2,expand:false},{name:"Breathe Out",duration:4,expand:false}],prompts:["Today we add structure with a counting technique used for centuries.","Sit tall. Close your eyes. Let the busy mind settle.","Count your breaths. Inhale, exhale — one. Inhale, exhale — two. Up to ten.","If you lose count, start over. No frustration. Restarting IS the practice.","The goal isn't reaching ten. It's noticing when you've lost count.","Continue counting. Each number is an anchor. Each restart strengthens you.","The mind generates thoughts automatically. You can choose not to follow each one.","With practice, you'll reach ten regularly. Then twenty. Then you won't need numbers.","You've just trained your prefrontal cortex. It's literally getting stronger."]},
+            3:{title:"Open Awareness",type:"guided",prompts:["We've practiced narrow focus. Today, we go wide. Panoramic awareness.","Instead of focusing on one thing, try to be aware of everything at once.","Notice sounds, sensations, air, your body weight — all simultaneously.","This is the difference between a spotlight and a floodlight.","In this open awareness, thoughts may arise. Let them exist in the periphery.","The mind wants to grab onto something specific. Resist that pull. Stay wide.","This is what athletes call 'the zone.' Musicians call it 'flow.'","Practice holding this open awareness. Wide, spacious, accepting.","You now have two modes: narrow focus and open awareness. True mental agility."]},
+            4:{title:"Distraction Training",type:"guided",prompts:["Today we practice focus under fire. Real-world conditions.","Begin your breath counting. One... two... three.","Keep counting. Now notice: what did you have for breakfast? Let it pass. Continue.","What's on your to-do list? See it briefly. Let it dissolve. Back to counting.","This is real-world focus. Not absence of distraction, but staying on task despite it.","Your attention is like a dog on a leash. Your job isn't to remove squirrels. It's to hold the leash.","Keep counting through whatever arises. Sounds. Sensations. Emotions.","Focus isn't about a quiet environment. It's about a trained mind.","Your mind is getting stronger with every session."]},
+            5:{title:"Focus in Motion",type:"journaling",journalPrompt:"What task requires your deepest focus right now? Describe how you will approach it with the attention skills you've practiced.",prompts:["Our final session. Today, we carry focus into the rest of your life.","Begin with a minute of single-point focus on your breath.","Think of a task you need to do today that requires focus. Imagine beginning it.","See yourself working with the same quality of attention you bring to meditation.","When distractions arise, practice the same skill: notice, release, return.","The bridge between meditation and daily life is intention.","You have a complete toolkit. Single-point for deep work. Open awareness for creativity.","Focus is a muscle. Meditation is the gym. Come back whenever you feel scattered.","You have trained your attention in a way most people never will. Use it wisely."]}
+        }
+    },
+    "healing-grief": {
+        id:"healing-grief", title:"Healing Grief", titleHi:"\u0926\u0941\u0916 \u0938\u0947 \u0909\u092A\u091A\u093E\u0930", days:5, level:"All levels",
+        theme: { bgFrom:"#1A0A00", bgTo:"#3D1F00", orbs:["#D97706","#F59E0B","#FCD34D"], accent:"#F59E0B", accentLight:"rgba(245,158,11,0.3)", particles:"snow", toneHz:396, bellVariant:"crystal" },
+        sessions: {
+            1:{title:"Making Space",type:"guided",prompts:["Welcome. If you're hurting, I'm sorry for what you've lost. Your grief is valid.","Close your eyes. Take a breath. You don't need to feel anything specific.","Grief can feel like a weight, a fog, or an emptiness. However it shows up is okay.","Today, we simply make space. Not to fix, not to move past, but to allow.","Breathe into the heaviest part of your body. Say: I see you. I feel you. You matter.","Grief is not a problem to solve. It is love with nowhere to go.","If tears come, let them. They are the body's way of carrying what the mind cannot.","For the remaining time, simply be with whatever is here. No agenda.","You sat with your pain instead of running from it. That takes tremendous strength."]},
+            2:{title:"Remembering with Love",type:"guided",prompts:["Grief often comes in waves. Whatever wave brought you here, you're in the right place.","Close your eyes. Breathe gently. Settle into this quiet moment.","Think of what you have lost. Hold the memory gently, like something precious.","Remember a moment that made you smile. A laugh, a look, a small kindness.","Feel the warmth of that memory. Grief and love live in the same place.","It's possible to feel deep sadness and deep gratitude simultaneously.","Say silently: Thank you. Thank you for existing. Thank you for touching my life.","The people and things we love change us permanently. That change lives on, in you.","The love you carry is not a wound. It is a gift. And it stays."]},
+            3:{title:"Waves of Grief",type:"visualization",prompts:["Today we work with the wave nature of grief — how it comes and goes.","Notice how you feel right now. There's no right answer.","A song, a scent, a memory — and the wave crashes again.","When a wave comes, instead of fighting it, practice riding it.","Imagine standing in the ocean. A wave approaches. You let it lift you. You float.","The wave rises, carries you, and sets you down. You're still standing.","Between waves, there is calm water. Rest in the calm. Surrender to the waves.","There is no timeline for grief. Be patient with yourself. Healing is not linear.","You are learning to live with loss. Wave by wave."]},
+            4:{title:"The Unfinished",type:"journaling",journalPrompt:"Is there something you wish you had said to someone you've lost? Write it here. Let these words finally have a place to exist.",prompts:["Today we gently address the things left unsaid.","Is there something you wish you had said? Let it rise to the surface.","In the safety of this space, say it now. In your mind. I love you. I'm sorry. I forgive you.","Let the words hang in the silence. They have been heard.","Now ask: is there anything you need to hear? Perhaps reassurance.","Give yourself permission to hear those words now. Receive them.","Unfinished doesn't mean unresolved. You can find your own closure.","What was left unsaid has now been given a voice. That is a kind of healing.","You've been very brave today."]},
+            5:{title:"Carrying Forward",type:"guided",prompts:["Our final session. Today, we find a way to carry what we love forward.","Close your eyes. Settle into your breath.","The person or thing you lost left an imprint on who you are.","Think of one quality they gave you. Kindness? Strength? Humor? Perspective?","That quality is alive in you right now. It didn't die. It transformed.","Every time you express that quality, you honor what you lost.","Grief doesn't end. But it changes shape. It becomes part of you.","You don't have to be okay. You just have to keep going. And you are.","This course is complete. You are braver and more tender than you know."]}
+        }
+    },
+    "self-love": {
+        id:"self-love", title:"Self-Love", titleHi:"\u0906\u0924\u094D\u092E-\u092A\u094D\u0930\u0947\u092E", days:5, level:"All levels",
+        theme: { bgFrom:"#2D1B2E", bgTo:"#4A2040", orbs:["#EC4899","#F472B6","#FBCFE8"], accent:"#F472B6", accentLight:"rgba(244,114,182,0.3)", particles:"petals", toneHz:528, bellVariant:"singing-bowl" },
+        sessions: {
+            1:{title:"You Are Enough",type:"guided",prompts:["Welcome. This course is about the most important relationship: with yourself.","Close your eyes. Breathe slowly. Notice how it feels to simply be still.","How often do you tell yourself you're not enough? Not smart, attractive, successful enough?","Those voices are not truth. They are habits of thinking. And habits can be changed.","Place a hand on your heart. Feel it beating. It has kept you alive through everything.","Say silently: I am enough. Exactly as I am. Right now. In this moment.","If that feels uncomfortable, notice the discomfort. It's just resistance to something unfamiliar.","Your worth is not earned by achievement. It is inherent. You were born worthy.","Carry this knowing with you: You are enough. You have always been enough."]},
+            2:{title:"The Inner Critic",type:"guided",prompts:["Today we meet the inner critic — that voice that judges everything you do.","Close your eyes. Breathe. Think of the last time you criticized yourself.","Notice the tone of that inner voice. Is it harsh? Impatient? Disappointed?","Now imagine saying those same words to a child. You wouldn't. Because it's cruel.","Your inner critic thinks it's protecting you. But criticism rarely leads to growth.","Today, when you hear that voice, respond with: Thank you for trying to protect me. I'm okay.","You can acknowledge the critic without obeying it. It's just a voice, not truth.","What if you spoke to yourself the way you speak to someone you love?","Practice this one shift: replace 'I should' with 'I choose to.' Feel the difference."]},
+            3:{title:"Mirror of Compassion",type:"visualization",prompts:["Today, we practice seeing ourselves clearly — with kindness.","Close your eyes. Imagine standing before a mirror, but this mirror shows your essence.","In this mirror, you don't see flaws. You see your journey. Every scar, every laugh line.","Each mark on you is a story of survival. Of trying. Of living.","What does your reflection say to you? Perhaps: You've been through so much. Look at you still standing.","Send love to the person in the mirror. They've done their best with what they had.","Now imagine the mirror expanding to show your whole life. The kindness you've given others.","You rarely count your own kindness. But it matters. It ripples outward.","Step away from the mirror knowing: you are kinder and stronger than you realize."]},
+            4:{title:"Setting Boundaries",type:"journaling",journalPrompt:"Where in your life do you need to say 'no' to protect your peace? Write about one boundary you want to set.",prompts:["Self-love isn't just affirmations. It's about protecting your peace.","Think of a situation where you said yes when you meant no. How did it feel?","Boundaries aren't selfish. They're necessary. They tell the world how to treat you.","Saying no to what drains you is saying yes to what nourishes you.","You don't need to justify your boundaries. 'No' is a complete sentence.","Think of one boundary you need to set this week. Hold it in your mind.","You may disappoint others. That's okay. You cannot pour from an empty cup.","Every time you honor your own needs, you teach yourself that you matter.","Setting boundaries is an act of self-love. Practice it."]},
+            5:{title:"A Letter to Yourself",type:"journaling",journalPrompt:"Write a letter to yourself from the perspective of someone who loves you unconditionally. What would they say?",prompts:["Our final session. Today, write a love letter — to yourself.","Think of someone who loves you deeply. A parent, friend, partner, or even a pet.","Now imagine writing to yourself through their eyes. What would they say?","They would remind you of your kindness. Your courage. Your humor.","They would say: I see you. All of you. And I love what I see.","They would say: Be gentler with yourself. You deserve your own compassion.","This letter is not fiction. It is the truth about you, seen through loving eyes.","Keep this letter. Read it when the inner critic is loud.","This course is complete. You are worthy of love. Especially your own."]}
+        }
+    }
+};
+
+var QUOTES = [
+    {text:"The present moment is filled with joy and happiness. If you are attentive, you will see it.",author:"Thich Nhat Hanh"},
+    {text:"Peace comes from within. Do not seek it without.",author:"Buddha"},
+    {text:"The quieter you become, the more you can hear.",author:"Rumi"},
+    {text:"Almost everything will work again if you unplug it for a few minutes, including you.",author:"Anne Lamott"},
+    {text:"Feelings come and go like clouds in a windy sky. Conscious breathing is my anchor.",author:"Thich Nhat Hanh"},
+    {text:"Within you, there is a stillness and a sanctuary to which you can retreat at any time.",author:"Hermann Hesse"},
+    {text:"Every morning we are born again. What we do today is what matters most.",author:"Buddha"},
+    {text:"The soul always knows what to do to heal itself. The challenge is to silence the mind.",author:"Caroline Myss"},
+    {text:"Quiet the mind, and the soul will speak.",author:"Ma Jaya Sati Bhagavati"},
+    {text:"You yourself, as much as anybody, deserve your love and affection.",author:"Buddha"}
+];
+
+var TYPE_LABELS = {
+    "guided": {label:"Guided Meditation", icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>'},
+    "breathing": {label:"Breathing Exercise", icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"/><path d="M8 12s1.5-4 4-4 4 4 4 4-1.5 4-4 4-4-4-4-4z"/></svg>'},
+    "body-scan": {label:"Body Scan", icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 100 6 3 3 0 000-6zM9 21V10h6v11"/></svg>'},
+    "journaling": {label:"Reflective Journaling", icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>'},
+    "visualization": {label:"Visualization", icon:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>'}
+};
+
+/* ===================== PARSE URL PARAMS ===================== */
+var params = new URLSearchParams(window.location.search);
+var courseId = params.get('course') || 'start-here';
+var dayNum = parseInt(params.get('day') || '1', 10);
+var course = COURSES[courseId];
+if(!course) { window.location.href = '/courses.html'; return; }
+if(dayNum < 1 || dayNum > course.days) dayNum = 1;
+var session = course.sessions[dayNum];
+var theme = course.theme;
+
+/* ===================== APPLY THEME ===================== */
+document.documentElement.style.setProperty('--bg-from', theme.bgFrom);
+document.documentElement.style.setProperty('--bg-to', theme.bgTo);
+document.documentElement.style.setProperty('--accent', theme.accent);
+document.documentElement.style.setProperty('--accent-light', theme.accentLight);
+document.getElementById('orb1').style.background = theme.orbs[0];
+document.getElementById('orb2').style.background = theme.orbs[1];
+document.getElementById('orb3').style.background = theme.orbs[2];
+
+/* ===================== GENERATE PARTICLES ===================== */
+(function(){
+    var container = document.getElementById('particles');
+    if(theme.particles === 'none') return;
+    var count = {fireflies:18, stars:35, leaves:10, snow:20, petals:12}[theme.particles] || 0;
+    for(var i = 0; i < count; i++){
+        var p = document.createElement('div');
+        p.className = 'particle particle-' + theme.particles;
+        p.style.left = Math.random()*100 + '%';
+        p.style.top = Math.random()*100 + '%';
+        p.style.setProperty('--delay', (Math.random()*10).toFixed(1) + 's');
+        p.style.setProperty('--dur', (12 + Math.random()*18).toFixed(1) + 's');
+        if(theme.particles === 'fireflies'){
+            p.style.setProperty('--dx1', (Math.random()*80-40)+'px');
+            p.style.setProperty('--dy1', (Math.random()*80-40)+'px');
+            p.style.setProperty('--dx2', (Math.random()*80-40)+'px');
+            p.style.setProperty('--dy2', (Math.random()*80-40)+'px');
+            p.style.setProperty('--dx3', (Math.random()*80-40)+'px');
+            p.style.setProperty('--dy3', (Math.random()*80-40)+'px');
+        }
+        if(theme.particles === 'stars'){
+            p.style.setProperty('--size', (1+Math.random()*2.5)+'px');
+        }
+        if(theme.particles === 'leaves'){
+            p.style.setProperty('--dx', (Math.random()*120-60)+'px');
+            p.style.setProperty('--rot', (Math.random()*720-360)+'deg');
+            p.style.setProperty('--leaf-color', theme.orbs[Math.floor(Math.random()*3)].replace(')', ',0.4)').replace('rgb', 'rgba'));
+        }
+        if(theme.particles === 'snow'){
+            p.style.setProperty('--size', (2+Math.random()*4)+'px');
+            p.style.setProperty('--dx', (Math.random()*60-30)+'px');
+        }
+        if(theme.particles === 'petals'){
+            p.style.setProperty('--dx', (Math.random()*100-50)+'px');
+            p.style.setProperty('--petal-color', theme.orbs[Math.floor(Math.random()*3)].replace(')', ',0.35)').replace('rgb', 'rgba'));
+        }
+        container.appendChild(p);
+    }
+})();
+
+/* ===================== STATE ===================== */
+var state = {
+    moodPre: 0, moodPost: 0,
+    duration: 600, ambient: session.type === 'breathing' ? 'silence' : (course.theme.particles === 'stars' ? 'ocean' : 'silence'),
+    ttsEnabled: true,
+    paused: false, running: false,
+    timeRemaining: 600, promptIndex: 0,
+    promptTimer: null, tickTimer: null,
+    dimTimer: null
+};
+
+/* ===================== AUDIO ===================== */
+var audioCtx = null;
+var ambientGain = null;
+var ambientChannel = null;
+var ambientBufferCache = {};
+var CROSSFADE = 4;
+
+function initAC(){
+    if(!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if(audioCtx.state === 'suspended') audioCtx.resume();
+}
+
+function bell(hz){
+    initAC(); var t = audioCtx.currentTime;
+    var base = hz || theme.toneHz || 528;
+    [[base,0.25,3.5],[base*2,0.08,2.6],[base*3,0.03,1.8],[base*1.5,0.05,2.2]].forEach(function(h){
+        var o = audioCtx.createOscillator(); var g = audioCtx.createGain();
+        o.type='sine'; o.frequency.setValueAtTime(h[0],t);
+        g.gain.setValueAtTime(h[1],t); g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);
+        o.connect(g); g.connect(audioCtx.destination);
+        o.start(t); o.stop(t+h[2]);
+    });
+}
+
+function playTone(freq, dur){
+    try{ initAC(); var o=audioCtx.createOscillator(); var g=audioCtx.createGain();
+    o.connect(g); g.connect(audioCtx.destination); o.frequency.value=freq; o.type='sine';
+    g.gain.setValueAtTime(0,audioCtx.currentTime); g.gain.linearRampToValueAtTime(0.06,audioCtx.currentTime+0.05);
+    g.gain.linearRampToValueAtTime(0,audioCtx.currentTime+dur);
+    o.start(audioCtx.currentTime); o.stop(audioCtx.currentTime+dur); }catch(e){}
+}
+
+async function loadBuf(type){
+    if(ambientBufferCache[type]) return ambientBufferCache[type];
+    try{ var r=await fetch('/audio/'+type+'.wav'); var ab=await r.arrayBuffer();
+    var d=await audioCtx.decodeAudioData(ab); ambientBufferCache[type]=d; return d; }catch(e){ return null; }
+}
+function startCrossfade(ch, buf, offset){
+    var src=audioCtx.createBufferSource(); src.buffer=buf; src.loop=false;
+    var fg=audioCtx.createGain(); fg.gain.setValueAtTime(0,audioCtx.currentTime);
+    src.connect(fg); fg.connect(ch.gain);
+    var dur=buf.duration; var ft=Math.min(CROSSFADE,dur*0.4); var now=audioCtx.currentTime;
+    src.start(now,offset||0); fg.gain.linearRampToValueAtTime(1,now+ft);
+    var fos=now+(dur-(offset||0)-ft);
+    if(fos>now+ft){ fg.gain.setValueAtTime(1,fos); fg.gain.linearRampToValueAtTime(0,fos+ft); }
+    var nd=(dur-(offset||0)-ft)*1000; if(nd<500)nd=500;
+    var timer=setTimeout(function(){ if(ambientChannel&&ambientChannel.active) startCrossfade(ch,buf,0); },nd);
+    src.onended=function(){ try{fg.disconnect();}catch(e){} };
+    ch.sources.push({src:src,gain:fg,timer:timer});
+    while(ch.sources.length>3){ var old=ch.sources.shift(); clearTimeout(old.timer); try{old.src.stop();}catch(e){} try{old.gain.disconnect();}catch(e){} }
+}
+async function startAmbient(type){
+    initAC(); killAmbient(); if(type==='silence') return;
+    var buf=await loadBuf(type); if(!buf) return;
+    ambientGain=audioCtx.createGain();
+    ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);
+    ambientGain.gain.linearRampToValueAtTime(0.2,audioCtx.currentTime+2);
+    ambientGain.connect(audioCtx.destination);
+    ambientChannel={gain:ambientGain,sources:[],active:true};
+    startCrossfade(ambientChannel,buf,0);
+    setTimeout(function(){ if(ambientChannel&&ambientChannel.active) startCrossfade(ambientChannel,buf,0); },(buf.duration/2)*1000);
+}
+function killAmbient(){
+    if(ambientChannel){ ambientChannel.active=false;
+        try{ ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);
+        ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value,audioCtx.currentTime);
+        ambientChannel.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.5);
+        var ch=ambientChannel;
+        setTimeout(function(){ ch.sources.forEach(function(s){ clearTimeout(s.timer); try{s.src.stop();}catch(e){} try{s.gain.disconnect();}catch(e){} }); try{ch.gain.disconnect();}catch(e){} },600);
+        }catch(e){} ambientChannel=null; ambientGain=null;
+    }
+}
+function duckAmbient(duck){
+    if(!ambientGain) return;
+    try{ ambientGain.gain.cancelScheduledValues(audioCtx.currentTime);
+    ambientGain.gain.setValueAtTime(ambientGain.gain.value,audioCtx.currentTime);
+    ambientGain.gain.linearRampToValueAtTime(duck?0.06:0.2,audioCtx.currentTime+0.5);
+    }catch(e){}
+}
+
+/* ===================== TTS ===================== */
+var tts = {
+    synth: window.speechSynthesis || null,
+    voice: null,
+    speaking: false,
+    init: function(){
+        if(!tts.synth) return;
+        var load = function(){
+            var voices = tts.synth.getVoices();
+            var prefs = ['Google UK English Female','Samantha','Karen','Moira','Fiona','Google US English'];
+            for(var i=0;i<prefs.length;i++){
+                var f=voices.find(function(v){return v.name===prefs[i];});
+                if(f){tts.voice=f;break;}
+            }
+            if(!tts.voice) tts.voice=voices.find(function(v){return v.lang.startsWith('en');});
+        };
+        if(tts.synth.getVoices().length) load();
+        tts.synth.onvoiceschanged = load;
+    },
+    speak: function(text, onEnd){
+        if(!state.ttsEnabled || !tts.synth || !tts.voice){ if(onEnd) setTimeout(onEnd,100); return; }
+        tts.synth.cancel();
+        // Break into sentences to avoid Chrome 15-second bug
+        var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
+        var idx = 0;
+        duckAmbient(true);
+        function speakNext(){
+            if(idx >= sentences.length || !state.running){
+                tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); return;
+            }
+            var u = new SpeechSynthesisUtterance(sentences[idx].trim());
+            u.voice = tts.voice; u.rate = 0.85; u.pitch = 0.95; u.volume = 0.85;
+            u.onend = function(){ idx++; if(idx<sentences.length) setTimeout(speakNext,300); else { tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); } };
+            u.onerror = function(){ tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); };
+            tts.speaking=true; tts.synth.speak(u);
+        }
+        speakNext();
+    },
+    stop: function(){ if(tts.synth) tts.synth.cancel(); tts.speaking=false; duckAmbient(false); }
+};
+tts.init();
+
+/* ===================== PHASE MANAGEMENT ===================== */
+function showPhase(id){
+    document.querySelectorAll('.phase').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById(id).classList.add('active');
+}
+
+/* ===================== PHASE 0: PRE MOOD ===================== */
+document.querySelectorAll('#moodPreFaces .mood-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+        document.querySelectorAll('#moodPreFaces .mood-btn').forEach(function(b){b.classList.remove('selected');});
+        btn.classList.add('selected');
+        state.moodPre = parseInt(btn.dataset.mood);
+        localStorage.setItem('sukoon-course-'+courseId+'-day-'+dayNum+'-mood-pre', state.moodPre);
+        setTimeout(function(){ showPhase('phaseSetup'); }, 500);
+    });
+});
+
+/* ===================== PHASE 1: SETUP ===================== */
+document.getElementById('setupBadge').textContent = course.title;
+document.getElementById('setupDayLabel').textContent = 'Day ' + dayNum + ' of ' + course.days;
+document.getElementById('setupTitle').textContent = session.title;
+var typeInfo = TYPE_LABELS[session.type] || TYPE_LABELS['guided'];
+document.getElementById('setupType').innerHTML = typeInfo.icon + ' ' + typeInfo.label;
+
+// Set default ambient based on course
+if(theme.particles === 'stars') state.ambient = 'ocean';
+if(theme.particles === 'fireflies') state.ambient = 'rain';
+if(theme.particles === 'snow') state.ambient = 'creek';
+if(theme.particles === 'petals') state.ambient = 'birds';
+document.querySelectorAll('#ambientPills .pill').forEach(function(p){
+    p.classList.toggle('active', p.dataset.snd === state.ambient);
+});
+
+// Duration pills
+document.querySelectorAll('#durationPills .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+        document.querySelectorAll('#durationPills .pill').forEach(function(b){b.classList.remove('active');});
+        p.classList.add('active');
+        state.duration = parseInt(p.dataset.min)*60;
+    });
+});
+// Ambient pills
+document.querySelectorAll('#ambientPills .pill').forEach(function(p){
+    p.addEventListener('click', function(){
+        document.querySelectorAll('#ambientPills .pill').forEach(function(b){b.classList.remove('active');});
+        p.classList.add('active');
+        state.ambient = p.dataset.snd;
+    });
+});
+// TTS toggle
+document.getElementById('ttsToggle').addEventListener('click', function(){
+    state.ttsEnabled = !state.ttsEnabled;
+    this.classList.toggle('on', state.ttsEnabled);
+    document.getElementById('ttsLabel').textContent = 'Voice Narration: ' + (state.ttsEnabled?'On':'Off');
+});
+
+// Begin button
+document.getElementById('beginBtn').addEventListener('click', function(){
+    startSession();
+});
+
+/* ===================== PHASE 2: SESSION ENGINE ===================== */
+var CIRC = 753.98;
+var $ring = document.getElementById('ringSvg');
+var $ringFill = document.getElementById('ringFill');
+var $timer = document.getElementById('sessionTimer');
+var $promptText = document.getElementById('promptText');
+var $promptDots = document.getElementById('promptDots');
+var $breathVisual = document.getElementById('breathVisual');
+var $breathPhaseText = document.getElementById('breathPhaseText');
+var $bodySvg = document.getElementById('bodySvg');
+var $journalArea = document.getElementById('journalArea');
+
+function setupVisual(){
+    // Hide all visuals first
+    $ring.style.display = 'none';
+    $breathVisual.style.display = 'none';
+    $bodySvg.style.display = 'none';
+    $journalArea.style.display = 'none';
+    document.getElementById('promptArea').style.display = '';
+    document.getElementById('breathGuide').style.display = '';
+
+    if(session.type === 'breathing'){
+        $breathVisual.style.display = 'flex';
+        $ring.style.display = 'none';
+        document.getElementById('breathGuide').style.display = 'none';
+    } else if(session.type === 'body-scan'){
+        $bodySvg.style.display = '';
+        $ring.style.display = 'none';
+    } else if(session.type === 'journaling'){
+        $journalArea.style.display = '';
+        $ring.style.display = 'none';
+        document.getElementById('promptArea').style.display = 'none';
+        document.getElementById('breathGuide').style.display = 'none';
+        document.getElementById('journalPrompt').textContent = session.journalPrompt || session.prompts[0];
+        // Load saved journal
+        var saved = localStorage.getItem('sukoon-course-'+courseId+'-day-'+dayNum+'-journal');
+        if(saved) document.getElementById('journalTextarea').value = saved;
+    } else {
+        // guided or visualization
+        $ring.style.display = '';
+    }
+}
+
+function startSession(){
+    showPhase('phaseSession');
+    state.running = true;
+    state.paused = false;
+    state.timeRemaining = state.duration;
+    state.promptIndex = 0;
+
+    document.getElementById('sessionMeta').textContent = course.title + '  \u2022  Day ' + dayNum;
+    setupVisual();
+
+    // Build prompt dots
+    var dotsHtml = '';
+    for(var i=0; i<session.prompts.length; i++) dotsHtml += '<div class="prompt-dot"></div>';
+    $promptDots.innerHTML = dotsHtml;
+
+    // Init ring
+    $ringFill.setAttribute('stroke-dashoffset', CIRC);
+    updateTimer();
+
+    // Start audio
+    initAC();
+    bell();
+    setTimeout(function(){ startAmbient(state.ambient); }, 1500);
+
+    // Start prompts after bell
+    setTimeout(function(){ showPrompt(0); }, 2500);
+
+    // Start timer tick
+    state.tickTimer = setInterval(tick, 1000);
+
+    // Start breathing if breathing type
+    if(session.type === 'breathing' && session.breathPhases){
+        setTimeout(function(){ runBreathCycle(0); }, 2500);
+    }
+
+    // Auto-save journal
+    if(session.type === 'journaling'){
+        setInterval(function(){
+            var val = document.getElementById('journalTextarea').value;
+            if(val) localStorage.setItem('sukoon-course-'+courseId+'-day-'+dayNum+'-journal', val);
+        }, 5000);
+    }
+
+    // Screen dimming
+    resetDimTimer();
+    document.addEventListener('touchstart', resetDimTimer);
+    document.addEventListener('mousemove', resetDimTimer);
+}
+
+function tick(){
+    if(state.paused || !state.running) return;
+    state.timeRemaining--;
+    updateTimer();
+    updateRing();
+    if(state.timeRemaining <= 0) endSession();
+}
+
+function updateTimer(){
+    var m = Math.floor(state.timeRemaining/60);
+    var s = state.timeRemaining % 60;
+    $timer.textContent = m + ':' + (s<10?'0':'') + s;
+}
+
+function updateRing(){
+    var pct = 1 - (state.timeRemaining / state.duration);
+    $ringFill.setAttribute('stroke-dashoffset', CIRC - (CIRC * pct));
+}
+
+function showPrompt(idx){
+    if(!state.running || idx >= session.prompts.length) return;
+    state.promptIndex = idx;
+
+    // Update dots
+    var dots = $promptDots.querySelectorAll('.prompt-dot');
+    dots.forEach(function(d,i){
+        d.classList.remove('active','done');
+        if(i < idx) d.classList.add('done');
+        if(i === idx) d.classList.add('active');
+    });
+
+    // Body scan: highlight zones
+    if(session.type === 'body-scan'){
+        var zones = ['bz-head','bz-neck','bz-shoulders','bz-chest','bz-belly','bz-arms','bz-hips','bz-legs','bz-legs2','bz-feet','bz-feet2'];
+        var zoneIdx = Math.min(idx, zones.length-1);
+        zones.forEach(function(z,i){
+            var el = document.getElementById(z);
+            if(el) el.classList.toggle('active', i <= zoneIdx);
+        });
+    }
+
+    // Fade out old text, show new
+    $promptText.classList.remove('visible');
+    setTimeout(function(){
+        $promptText.textContent = session.prompts[idx];
+        $promptText.classList.add('visible');
+
+        // TTS
+        tts.speak(session.prompts[idx], function(){
+            // After TTS, wait pause then next prompt
+            var pauseDur = session.type === 'visualization' ? 6000 : 4000;
+            state.promptTimer = setTimeout(function(){
+                if(state.running && !state.paused) showPrompt(idx+1);
+            }, pauseDur);
+        });
+    }, 400);
+}
+
+// Breathing cycle
+var breathTimer = null;
+function runBreathCycle(phaseIdx){
+    if(!state.running) return;
+    var phases = session.breathPhases;
+    if(!phases || !phases.length) return;
+    var phase = phases[phaseIdx % phases.length];
+
+    $breathPhaseText.textContent = phase.name;
+    $breathVisual.style.transitionDuration = phase.duration + 's';
+
+    if(phase.name === 'Breathe In') playTone(528, 0.4);
+    else if(phase.name.indexOf('Out') !== -1) playTone(396, 0.5);
+    else if(phase.name === 'Hold') playTone(432, 0.2);
+
+    if(phase.expand) $breathVisual.classList.add('expanded');
+    else $breathVisual.classList.remove('expanded');
+
+    breathTimer = setTimeout(function(){
+        if(state.running && !state.paused) runBreathCycle(phaseIdx+1);
+    }, phase.duration * 1000);
+}
+
+// Screen dimming
+function resetDimTimer(){
+    clearTimeout(state.dimTimer);
+    document.querySelectorAll('.session-header,.visual-center,.session-timer,.session-controls,.prompt-area,.breath-guide-corner').forEach(function(el){ el.classList.remove('dimmed'); });
+    state.dimTimer = setTimeout(function(){
+        if(state.running && !state.paused){
+            document.querySelectorAll('.session-header,.session-timer,.session-controls,.breath-guide-corner').forEach(function(el){ el.classList.add('dimmed'); });
+        }
+    }, 30000);
+}
+
+// Pause
+document.getElementById('pauseBtn').addEventListener('click', function(){
+    state.paused = !state.paused;
+    this.textContent = state.paused ? 'Resume' : 'Pause';
+    if(state.paused){ tts.stop(); clearTimeout(breathTimer); }
+    else {
+        showPrompt(state.promptIndex);
+        if(session.type==='breathing' && session.breathPhases) runBreathCycle(0);
+        resetDimTimer();
+    }
+});
+
+// Close
+document.getElementById('sessionClose').addEventListener('click', function(){
+    if(confirm('End this session?')) stopSession();
+});
+
+function stopSession(){
+    state.running = false;
+    clearInterval(state.tickTimer);
+    clearTimeout(state.promptTimer);
+    clearTimeout(breathTimer);
+    clearTimeout(state.dimTimer);
+    tts.stop(); killAmbient();
+    window.location.href = '/courses.html';
+}
+
+function endSession(){
+    state.running = false;
+    clearInterval(state.tickTimer);
+    clearTimeout(state.promptTimer);
+    clearTimeout(breathTimer);
+    clearTimeout(state.dimTimer);
+    tts.stop();
+
+    // Play end bell
+    bell();
+    setTimeout(function(){ killAmbient(); }, 3000);
+
+    // Mark day complete
+    localStorage.setItem('sukoon-course-'+courseId+'-day-'+dayNum+'-done', 'true');
+
+    // Bump streak
+    var streakData = JSON.parse(localStorage.getItem('sukoon-course-streak') || '{"count":0,"last":"","total":0,"minutes":0}');
+    var today = new Date().toISOString().split('T')[0];
+    var yesterday = new Date(Date.now()-86400000).toISOString().split('T')[0];
+    if(streakData.last === today) { /* already counted */ }
+    else if(streakData.last === yesterday) { streakData.count++; }
+    else { streakData.count = 1; }
+    streakData.last = today;
+    streakData.total = (streakData.total||0) + 1;
+    streakData.minutes = (streakData.minutes||0) + Math.round(state.duration/60);
+    localStorage.setItem('sukoon-course-streak', JSON.stringify(streakData));
+
+    // Save journal if journaling
+    if(session.type === 'journaling'){
+        var val = document.getElementById('journalTextarea').value;
+        if(val) localStorage.setItem('sukoon-course-'+courseId+'-day-'+dayNum+'-journal', val);
+    }
+
+    // Advance course day
+    var nextDay = dayNum + 1;
+    if(nextDay <= course.days) localStorage.setItem('sukoon-course-'+courseId+'-day', String(nextDay));
+
+    // Show complete
+    showComplete(streakData);
+}
+
+/* ===================== PHASE 3: COMPLETE ===================== */
+function showComplete(streakData){
+    showPhase('phaseComplete');
+    document.getElementById('statDuration').textContent = Math.round(state.duration/60);
+    document.getElementById('statDay').textContent = dayNum + '/' + course.days;
+    document.getElementById('completeStreak').innerHTML = '&#x1F525; ' + streakData.count + '-day streak';
+    var q = QUOTES[Math.floor(Math.random()*QUOTES.length)];
+    document.getElementById('completeQuote').innerHTML = '"' + q.text + '"<div class="complete-quote-author">\u2014 ' + q.author + '</div>';
+    if(dayNum < course.days){
+        var next = course.sessions[dayNum+1];
+        document.getElementById('completeNext').innerHTML = 'Next: <strong>Day ' + (dayNum+1) + ' \u2014 ' + next.title + '</strong>';
+    } else {
+        document.getElementById('completeNext').innerHTML = '<strong>Course Complete!</strong> You finished all ' + course.days + ' days.';
+        document.getElementById('completeIcon').textContent = '\uD83C\uDF89';
+    }
+    spawnConfetti();
+}
+
+function spawnConfetti(){
+    var container = document.getElementById('confettiContainer');
+    container.innerHTML = '';
+    var colors = theme.orbs.concat(['#fff', theme.accent]);
+    for(var i=0; i<40; i++){
+        var p = document.createElement('div');
+        p.className = 'confetti-piece';
+        p.style.left = '50%'; p.style.top = '40%';
+        p.style.background = colors[i % colors.length];
+        p.style.setProperty('--cx', (Math.random()*600-300)+'px');
+        p.style.setProperty('--cy', (Math.random()*400-200)+'px');
+        p.style.setProperty('--cr', (Math.random()*720)+'deg');
+        p.style.animationDelay = (Math.random()*0.3)+'s';
+        container.appendChild(p);
+    }
+}
+
+document.getElementById('completeDoneBtn').addEventListener('click', function(){
+    showPhase('phaseMoodPost');
+});
+document.getElementById('completeRepeatBtn').addEventListener('click', function(){
+    window.location.href = '/course-player.html?course='+courseId+'&day='+dayNum;
+});
+
+/* ===================== PHASE 4: POST MOOD ===================== */
+document.querySelectorAll('#moodPostFaces .mood-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+        document.querySelectorAll('#moodPostFaces .mood-btn').forEach(function(b){b.classList.remove('selected');});
+        btn.classList.add('selected');
+        state.moodPost = parseInt(btn.dataset.mood);
+        localStorage.setItem('sukoon-course-'+courseId+'-day-'+dayNum+'-mood-post', state.moodPost);
+
+        // Show mood shift
+        var shift = state.moodPost - state.moodPre;
+        var $ms = document.getElementById('moodShift');
+        var $arrow = document.getElementById('moodArrow');
+        var $text = document.getElementById('moodShiftText');
+        $ms.style.display = 'flex';
+        if(shift > 0){ $arrow.textContent = '\u2191'; $text.textContent = 'You feel better. Well done.'; }
+        else if(shift < 0){ $arrow.textContent = '\u2193'; $text.textContent = 'That\'s okay. Healing takes time.'; }
+        else { $arrow.textContent = '\u2194'; $text.textContent = 'Steady and present. That\'s growth.'; }
+
+        document.getElementById('moodDoneBtn').style.display = '';
+    });
+});
+
+document.getElementById('moodDoneBtn').addEventListener('click', function(){
+    // Save moods summary
+    var moods = JSON.parse(localStorage.getItem('sukoon-course-'+courseId+'-moods') || '{}');
+    moods[dayNum] = {pre:state.moodPre, post:state.moodPost, date:new Date().toISOString().split('T')[0]};
+    localStorage.setItem('sukoon-course-'+courseId+'-moods', JSON.stringify(moods));
+    window.location.href = '/courses.html';
+});
+
+})();
+</script>
+</body>
+</html>
