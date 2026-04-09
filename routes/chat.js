@@ -113,10 +113,14 @@ router.post('/', async (req, res) => {
   try {
     const { messages, language } = req.body;
 
+    if (!Array.isArray(messages) || messages.length === 0) {
+      return res.status(400).json({ error: 'Messages are required.' });
+    }
+
     const hasAnyKey = PROVIDERS.some(p => process.env[p.keyEnv]);
     if (!hasAnyKey) {
       return res.status(500).json({
-        error: 'AI Friend is not configured yet. Please set GROQ_API_KEY or OPENROUTER_API_KEY in the .env file.'
+        error: 'AI Friend is not configured yet. Please set GROQ_API_KEY or GEMINI_API_KEY in the .env file.'
       });
     }
 
@@ -127,7 +131,7 @@ router.post('/', async (req, res) => {
     const systemContent = SYSTEM_PROMPT + langInstruction;
     const userMessages = messages.map(m => ({ role: m.role, content: m.content }));
 
-    // Try providers in order (Groq first, OpenRouter fallback)
+    // Try providers in order (Groq first, Gemini fallback)
     for (const provider of PROVIDERS) {
       try {
         const reply = await callProvider(provider, systemContent, userMessages);
