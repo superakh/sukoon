@@ -58,13 +58,67 @@ WHAT YOU NEVER DO:
 - Never use corporate wellness language, therapy-speak, or hollow affirmations.
 - Never give long lists of suggestions. One insight, well-placed, is worth ten tips.`;
 
+/* ── Provider configs ─────────────────────────────────── */
+const PROVIDERS = [
+  {
+    name: 'Groq',
+    url: 'https://api.groq.com/openai/v1/chat/completions',
+    model: 'llama-3.3-70b-versatile',
+    keyEnv: 'GROQ_API_KEY',
+    headers: (key) => ({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key}`
+    })
+  },
+  {
+    name: 'OpenRouter',
+    url: 'https://openrouter.ai/api/v1/chat/completions',
+    model: 'anthropic/claude-haiku-4.5',
+    keyEnv: 'OPENROUTER_API_KEY',
+    headers: (key) => ({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key}`,
+      'HTTP-Referer': 'https://sukoon.cloud',
+      'X-Title': 'Sukoon - AI Friend'
+    })
+  }
+];
+
+async function callProvider(provider, systemContent, userMessages) {
+  const key = process.env[provider.keyEnv];
+  if (!key) return null;
+
+  const response = await fetch(provider.url, {
+    method: 'POST',
+    headers: provider.headers(key),
+    body: JSON.stringify({
+      model: provider.model,
+      max_tokens: 1024,
+      messages: [
+        { role: 'system', content: systemContent },
+        ...userMessages
+      ]
+    })
+  });
+
+  if (!response.ok) {
+    const errBody = await response.text();
+    console.error(`${provider.name} error:`, response.status, errBody);
+    return null;
+  }
+
+  const data = await response.json();
+  return data.choices?.[0]?.message?.content || null;
+}
+
 router.post('/', async (req, res) => {
   try {
     const { messages, language } = req.body;
 
-    if (!process.env.OPENROUTER_API_KEY) {
+    const hasAnyKey = PROVIDERS.some(p => process.env[p.keyEnv]);
+    if (!hasAnyKey) {
       return res.status(500).json({
-        error: 'AI Friend is not configured yet. Please set OPENROUTER_API_KEY in the .env file.'
+        error: 'AI Friend is not configured yet. Please set GROQ_API_KEY or OPENROUTER_API_KEY in the .env file.'
       });
     }
 
@@ -72,40 +126,29 @@ router.post('/', async (req, res) => {
       ? `\n\nIMPORTANT: The user prefers ${language}. Respond primarily in that language, with warmth and cultural sensitivity.`
       : '';
 
-    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        'HTTP-Referer': 'https://sukoon.app',
-        'X-Title': 'Sukoon - AI Friend'
-      },
-      body: JSON.stringify({
-        model: 'anthropic/claude-haiku-4.5',
-        max_tokens: 1024,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT + langInstruction },
-          ...messages.map(m => ({ role: m.role, content: m.content }))
-        ]
-      })
-    });
+    const systemContent = SYSTEM_PROMPT + langInstruction;
+    const userMessages = messages.map(m => ({ role: m.role, content: m.content }));
 
-    if (!response.ok) {
-      const errBody = await response.text();
-      console.error('OpenRouter error:', response.status, errBody);
-      return res.status(500).json({
-        error: 'I had trouble responding. Please try again in a moment.'
-      });
+    // Try providers in order (Groq first, OpenRouter fallback)
+    for (const provider of PROVIDERS) {
+      try {
+        const reply = await callProvider(provider, systemContent, userMessages);
+        if (reply) {
+          console.log(`[Chat] Served by ${provider.name}`);
+          return res.json({ message: reply });
+        }
+      } catch (err) {
+        console.error(`${provider.name} failed:`, err.message);
+      }
     }
 
-    const data = await response.json();
-    const reply = data.choices?.[0]?.message?.content || 'I\'m here for you. Could you try again?';
-
-    res.json({ message: reply });
+    res.status(500).json({
+      error: 'I had trouble responding. Please try again in a moment.'
+    });
   } catch (error) {
     console.error('Chat error:', error.message);
     res.status(500).json({
-      error: 'I had trouble connecting. Please try again in a moment. You are not alone. 💜'
+      error: 'I had trouble connecting. Please try again in a moment. You are not alone.'
     });
   }
 });
