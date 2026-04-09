@@ -403,6 +403,136 @@ button { font-family: var(--font-body); }
     margin-top: 2px;
 }
 
+/* ===================== PAGE TRANSITIONS ===================== */
+body {
+    animation: pageIn 0.35s var(--ease-out) both;
+}
+
+@keyframes pageIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+body.page-exit {
+    animation: pageOut 0.15s ease-in both;
+}
+
+@keyframes pageOut {
+    from { opacity: 1; }
+    to   { opacity: 0; }
+}
+
+/* ===================== SCROLL-REVEAL ===================== */
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out);
+}
+
+.fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.scale-in {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity var(--dur-slow) var(--ease-out),
+                transform var(--dur-slow) var(--ease-out);
+}
+
+.scale-in.visible {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ===================== TOUCH & HOVER POLISH ===================== */
+.card:active,
+.btn-primary:active,
+.btn-secondary:active,
+.pill-tab:active,
+.bottom-nav a:active {
+    transform: scale(0.97);
+    transition-duration: 0.05s;
+}
+
+.btn-primary:active {
+    box-shadow: none;
+}
+
+/* Clickable card variant */
+a.card, button.card, [role="button"].card {
+    cursor: pointer;
+}
+
+/* ===================== SKELETON LOADING ===================== */
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: var(--radius-md);
+}
+
+@keyframes shimmer {
+    0%   { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.skeleton-text {
+    height: 14px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+}
+
+.skeleton-card {
+    height: 120px;
+    border-radius: var(--radius-lg);
+}
+
+/* ===================== EMPTY STATES ===================== */
+.empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--color-text-tert);
+}
+
+.empty-state svg {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    opacity: 0.4;
+}
+
+.empty-state h3 {
+    font-family: var(--font-brand);
+    font-size: 1.1rem;
+    color: var(--color-text-sec);
+    margin-bottom: 6px;
+    font-weight: 400;
+}
+
+.empty-state p {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* ===================== REDUCED MOTION ===================== */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    body { animation: none; }
+    .fade-up, .scale-in {
+        opacity: 1;
+        transform: none;
+    }
+}
+
 /* ===================== SCROLLBAR ===================== */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: transparent; }
@@ -418,6 +548,17 @@ button { font-family: var(--font-body); }
     clip: rect(0,0,0,0);
     white-space: nowrap;
     border: 0;
+}
+
+/* Focus-visible outlines for keyboard navigation */
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Remove outline for mouse clicks */
+:focus:not(:focus-visible) {
+    outline: none;
 }
 
 .text-accent { color: var(--color-accent); }

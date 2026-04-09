@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Session - Sukoon</title>
+    <meta name="description" content="Guided meditation courses with voice narration. Follow structured programs for mindfulness, sleep, and emotional wellness. Free on Sukoon.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
@@ -687,6 +691,7 @@
     <button class="mood-done-btn" id="moodDoneBtn" style="display:none;">Done</button>
 </div>
 
+<script src="/js/sukoon-engine.js"></script>
 <script>
 (function(){
 "use strict";
@@ -1264,6 +1269,9 @@ function endSession(){
 
     // Mark day complete
     localStorage.setItem('sukoon-course-'+courseId+'-day-'+dayNum+'-done', 'true');
+
+    // Track with sukoon engine
+    if(window.sukoon) sukoon.track('courses', Math.round(state.duration / 60) || 5, document.title);
 
     // Bump streak
     var streakData = JSON.parse(localStorage.getItem('sukoon-course-streak') || '{"count":0,"last":"","total":0,"minutes":0}');

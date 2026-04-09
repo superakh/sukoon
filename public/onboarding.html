@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Sukoon</title>
+    <meta name="description" content="Begin your journey to inner peace. Free guided meditation, sleep stories, and mindfulness tools. No account needed.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/shell.css">
+    <style>
+        body {
+            background: var(--color-bg);
+            padding: 0;
+            overflow: hidden;
+            height: 100vh; height: 100dvh;
+        }
+
+        .ob-wrap {
+            height: 100vh; height: 100dvh;
+            display: flex;
+            flex-direction: column;
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Progress dots */
+        .ob-progress {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            padding: 20px 0 16px;
+            flex-shrink: 0;
+        }
+        .ob-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: var(--color-divider);
+            transition: all 0.3s var(--ease-out);
+        }
+        .ob-dot.active {
+            background: var(--color-accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+        .ob-dot.done { background: var(--color-accent); }
+
+        /* Screens */
+        .ob-screen {
+            flex: 1;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            animation: fadeSlideUp 0.4s var(--ease-out) both;
+            overflow-y: auto;
+        }
+        .ob-screen.active { display: flex; }
+
+        .ob-title {
+            font-family: var(--font-brand);
+            font-size: 1.7rem;
+            text-align: center;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+        .ob-subtitle {
+            text-align: center;
+            color: var(--color-text-sec);
+            font-size: 0.9rem;
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        /* Welcome */
+        .ob-leaf {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 20px;
+            color: var(--color-accent);
+        }
+        .ob-name-input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1.5px solid var(--color-divider);
+            border-radius: var(--radius-md);
+            font-size: 1rem;
+            font-family: var(--font-body);
+            background: var(--color-surface);
+            outline: none;
+            transition: border-color 0.2s;
+            text-align: center;
+        }
+        .ob-name-input:focus { border-color: var(--color-accent); }
+        .ob-name-input::placeholder { color: var(--color-text-tert); }
+        .ob-skip { font-size: 0.8rem; color: var(--color-text-tert); text-align: center; margin-top: 12px; }
+
+        /* Goal cards */
+        .ob-goals {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        .ob-goal {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 12px;
+            border: 1.5px solid var(--color-divider);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+            text-align: center;
+        }
+        .ob-goal:active { transform: scale(0.97); }
+        .ob-goal.selected {
+            border-color: var(--color-accent);
+            background: var(--color-accent-bg);
+        }
+        .ob-goal-icon { font-size: 1.5rem; }
+        .ob-goal-label { font-size: 0.82rem; font-weight: 500; color: var(--color-text); }
+        .ob-goal-hint { font-size: 0.7rem; color: var(--color-text-tert); margin-top: -4px; }
+
+        /* Wellbeing quiz */
+        .ob-quiz { display: flex; flex-direction: column; gap: 18px; }
+        .ob-q {
+            background: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-md);
+            padding: 16px;
+        }
+        .ob-q-text { font-size: 0.88rem; font-weight: 500; margin-bottom: 10px; }
+        .ob-q-scale {
+            display: flex;
+            justify-content: space-between;
+            gap: 6px;
+        }
+        .ob-q-btn {
+            flex: 1;
+            padding: 8px 4px;
+            border: 1.5px solid var(--color-divider);
+            border-radius: var(--radius-sm);
+            background: var(--color-surface);
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: var(--color-text-sec);
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: var(--font-body);
+        }
+        .ob-q-btn:active { transform: scale(0.95); }
+        .ob-q-btn.selected {
+            border-color: var(--color-accent);
+            background: var(--color-accent);
+            color: #fff;
+        }
+        .ob-q-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+        }
+        .ob-q-labels span { font-size: 0.65rem; color: var(--color-text-tert); }
+
+        /* Experience */
+        .ob-exp-cards { display: flex; flex-direction: column; gap: 10px; }
+        .ob-exp {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 18px;
+            border: 1.5px solid var(--color-divider);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+            cursor: pointer;
+            transition: all 0.2s var(--ease-out);
+        }
+        .ob-exp:active { transform: scale(0.98); }
+        .ob-exp.selected {
+            border-color: var(--color-accent);
+            background: var(--color-accent-bg);
+        }
+        .ob-exp-icon { font-size: 1.4rem; }
+        .ob-exp-text h4 { font-size: 0.92rem; font-weight: 600; margin-bottom: 2px; }
+        .ob-exp-text p { font-size: 0.78rem; color: var(--color-text-sec); }
+
+        /* First breath */
+        .ob-breath {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+        .breath-circle {
+            width: 160px; height: 160px;
+            border-radius: 50%;
+            border: 3px solid var(--color-accent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--color-accent);
+            font-weight: 500;
+            animation: breatheAnim 8s ease-in-out infinite;
+            background: var(--color-accent-bg);
+        }
+        @keyframes breatheAnim {
+            0%, 100% { transform: scale(0.85); opacity: 0.7; }
+            25%      { transform: scale(1);    opacity: 1; }
+            50%      { transform: scale(1);    opacity: 1; }
+            75%      { transform: scale(0.85); opacity: 0.7; }
+        }
+        .breath-instruction {
+            font-size: 0.9rem;
+            color: var(--color-text-sec);
+            text-align: center;
+        }
+        .breath-timer {
+            font-size: 0.8rem;
+            color: var(--color-text-tert);
+        }
+
+        /* Buttons */
+        .ob-actions {
+            flex-shrink: 0;
+            padding: 16px 0 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .ob-btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: var(--radius-md);
+            font-size: 0.95rem;
+            font-weight: 600;
+            font-family: var(--font-body);
+            cursor: pointer;
+            transition: all 0.15s;
+        }
+        .ob-btn:active { transform: scale(0.98); }
+        .ob-btn-primary {
+            background: var(--color-accent);
+            color: #fff;
+        }
+        .ob-btn-primary:hover { background: #245A42; }
+        .ob-btn-primary:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        .ob-btn-ghost {
+            background: none;
+            color: var(--color-text-tert);
+            padding: 10px;
+            font-size: 0.82rem;
+        }
+
+        /* Score reveal */
+        .ob-score-reveal {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .ob-score-num {
+            font-family: var(--font-brand);
+            font-size: 3rem;
+            color: var(--color-accent);
+            line-height: 1;
+        }
+        .ob-score-label {
+            font-size: 0.85rem;
+            color: var(--color-text-sec);
+            margin-top: 6px;
+        }
+        .ob-score-bar {
+            width: 100%;
+            height: 6px;
+            background: var(--color-divider);
+            border-radius: 3px;
+            margin-top: 16px;
+            overflow: hidden;
+        }
+        .ob-score-fill {
+            height: 100%;
+            background: var(--color-accent);
+            border-radius: 3px;
+            transition: width 1s var(--ease-out);
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ob-wrap">
+    <!-- Progress -->
+    <div class="ob-progress" id="progress">
+        <div class="ob-dot active"></div>
+        <div class="ob-dot"></div>
+        <div class="ob-dot"></div>
+        <div class="ob-dot"></div>
+        <div class="ob-dot"></div>
+    </div>
+
+    <!-- SCREEN 1: Welcome -->
+    <div class="ob-screen active" id="s1">
+        <div>
+            <div class="ob-leaf">&#9752;</div>
+            <h1 class="ob-title">Welcome to Sukoon</h1>
+            <p class="ob-subtitle">Peace for every soul. Free forever.<br>No account needed. No data collected.</p>
+            <input type="text" class="ob-name-input" id="nameInput" placeholder="What should we call you?" maxlength="30" autocomplete="off">
+            <p class="ob-skip">Optional — you can skip this</p>
+        </div>
+    </div>
+
+    <!-- SCREEN 2: Goals -->
+    <div class="ob-screen" id="s2">
+        <div>
+            <h1 class="ob-title">What brings you here?</h1>
+            <p class="ob-subtitle">Pick as many as you like. This helps us personalize your experience.</p>
+            <div class="ob-goals" id="goalGrid">
+                <div class="ob-goal" data-goal="stress">
+                    <span class="ob-goal-icon">&#127754;</span>
+                    <span class="ob-goal-label">Reduce Stress</span>
+                </div>
+                <div class="ob-goal" data-goal="sleep">
+                    <span class="ob-goal-icon">&#127769;</span>
+                    <span class="ob-goal-label">Sleep Better</span>
+                </div>
+                <div class="ob-goal" data-goal="focus">
+                    <span class="ob-goal-icon">&#127919;</span>
+                    <span class="ob-goal-label">Improve Focus</span>
+                </div>
+                <div class="ob-goal" data-goal="anxiety">
+                    <span class="ob-goal-icon">&#128167;</span>
+                    <span class="ob-goal-label">Manage Anxiety</span>
+                </div>
+                <div class="ob-goal" data-goal="growth">
+                    <span class="ob-goal-icon">&#127793;</span>
+                    <span class="ob-goal-label">Personal Growth</span>
+                </div>
+                <div class="ob-goal" data-goal="peace">
+                    <span class="ob-goal-icon">&#128330;</span>
+                    <span class="ob-goal-label">Find Inner Peace</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCREEN 3: Wellbeing Check -->
+    <div class="ob-screen" id="s3">
+        <div>
+            <h1 class="ob-title">Quick Wellbeing Check</h1>
+            <p class="ob-subtitle">Rate each area honestly. This creates your Sukoon Score baseline.</p>
+            <div class="ob-quiz" id="quizArea">
+                <div class="ob-q" data-q="stress">
+                    <div class="ob-q-text">How stressed do you feel day-to-day?</div>
+                    <div class="ob-q-scale">
+                        <button class="ob-q-btn" data-v="5">1</button>
+                        <button class="ob-q-btn" data-v="4">2</button>
+                        <button class="ob-q-btn" data-v="3">3</button>
+                        <button class="ob-q-btn" data-v="2">4</button>
+                        <button class="ob-q-btn" data-v="1">5</button>
+                    </div>
+                    <div class="ob-q-labels"><span>Very stressed</span><span>Very calm</span></div>
+                </div>
+                <div class="ob-q" data-q="sleep">
+                    <div class="ob-q-text">How well do you sleep?</div>
+                    <div class="ob-q-scale">
+                        <button class="ob-q-btn" data-v="1">1</button>
+                        <button class="ob-q-btn" data-v="2">2</button>
+                        <button class="ob-q-btn" data-v="3">3</button>
+                        <button class="ob-q-btn" data-v="4">4</button>
+                        <button class="ob-q-btn" data-v="5">5</button>
+                    </div>
+                    <div class="ob-q-labels"><span>Poorly</span><span>Very well</span></div>
+                </div>
+                <div class="ob-q" data-q="focus">
+                    <div class="ob-q-text">How easily can you focus on tasks?</div>
+                    <div class="ob-q-scale">
+                        <button class="ob-q-btn" data-v="1">1</button>
+                        <button class="ob-q-btn" data-v="2">2</button>
+                        <button class="ob-q-btn" data-v="3">3</button>
+                        <button class="ob-q-btn" data-v="4">4</button>
+                        <button class="ob-q-btn" data-v="5">5</button>
+                    </div>
+                    <div class="ob-q-labels"><span>Very distracted</span><span>Very focused</span></div>
+                </div>
+                <div class="ob-q" data-q="emotional">
+                    <div class="ob-q-text">How emotionally balanced do you feel?</div>
+                    <div class="ob-q-scale">
+                        <button class="ob-q-btn" data-v="1">1</button>
+                        <button class="ob-q-btn" data-v="2">2</button>
+                        <button class="ob-q-btn" data-v="3">3</button>
+                        <button class="ob-q-btn" data-v="4">4</button>
+                        <button class="ob-q-btn" data-v="5">5</button>
+                    </div>
+                    <div class="ob-q-labels"><span>Very reactive</span><span>Very stable</span></div>
+                </div>
+                <div class="ob-q" data-q="compassion">
+                    <div class="ob-q-text">How kind are you to yourself?</div>
+                    <div class="ob-q-scale">
+                        <button class="ob-q-btn" data-v="1">1</button>
+                        <button class="ob-q-btn" data-v="2">2</button>
+                        <button class="ob-q-btn" data-v="3">3</button>
+                        <button class="ob-q-btn" data-v="4">4</button>
+                        <button class="ob-q-btn" data-v="5">5</button>
+                    </div>
+                    <div class="ob-q-labels"><span>Very critical</span><span>Very compassionate</span></div>
+                </div>
+                <div class="ob-q" data-q="purpose">
+                    <div class="ob-q-text">How connected do you feel to your purpose?</div>
+                    <div class="ob-q-scale">
+                        <button class="ob-q-btn" data-v="1">1</button>
+                        <button class="ob-q-btn" data-v="2">2</button>
+                        <button class="ob-q-btn" data-v="3">3</button>
+                        <button class="ob-q-btn" data-v="4">4</button>
+                        <button class="ob-q-btn" data-v="5">5</button>
+                    </div>
+                    <div class="ob-q-labels"><span>Very lost</span><span>Very clear</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCREEN 4: Experience -->
+    <div class="ob-screen" id="s4">
+        <div>
+            <h1 class="ob-title">Your Sukoon Score</h1>
+            <div class="ob-score-reveal" id="scoreReveal">
+                <div class="ob-score-num" id="scoreNum">--</div>
+                <div class="ob-score-label">out of 30</div>
+                <div class="ob-score-bar"><div class="ob-score-fill" id="scoreFill"></div></div>
+            </div>
+            <p class="ob-subtitle" id="scoreMsg">We'll track this over time so you can see your growth.</p>
+
+            <p style="text-align:center;font-weight:500;margin-bottom:16px;font-size:0.9rem;">How experienced are you with meditation?</p>
+            <div class="ob-exp-cards" id="expCards">
+                <div class="ob-exp" data-exp="beginner">
+                    <span class="ob-exp-icon">&#127793;</span>
+                    <div class="ob-exp-text">
+                        <h4>Beginner</h4>
+                        <p>New to meditation or just starting out</p>
+                    </div>
+                </div>
+                <div class="ob-exp" data-exp="intermediate">
+                    <span class="ob-exp-icon">&#127795;</span>
+                    <div class="ob-exp-text">
+                        <h4>Intermediate</h4>
+                        <p>I meditate sometimes, know the basics</p>
+                    </div>
+                </div>
+                <div class="ob-exp" data-exp="advanced">
+                    <span class="ob-exp-icon">&#9968;</span>
+                    <div class="ob-exp-text">
+                        <h4>Advanced</h4>
+                        <p>Regular practice, looking for deeper tools</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCREEN 5: First Breath -->
+    <div class="ob-screen" id="s5">
+        <div class="ob-breath">
+            <h1 class="ob-title">Your First Moment of Peace</h1>
+            <p class="ob-subtitle">Follow the circle. Breathe in as it grows, out as it shrinks.</p>
+            <div class="breath-circle" id="breathCircle">
+                <span id="breathLabel">Breathe in...</span>
+            </div>
+            <div class="breath-instruction" id="breathInst">Just 60 seconds. You've already begun.</div>
+            <div class="breath-timer" id="breathTimer">1:00</div>
+        </div>
+    </div>
+
+    <!-- Actions -->
+    <div class="ob-actions" id="actions">
+        <button class="ob-btn ob-btn-primary" id="btnNext">Continue</button>
+        <button class="ob-btn ob-btn-ghost" id="btnSkip">Skip for now</button>
+    </div>
+</div>
+
+<script>
+(function() {
+    'use strict';
+
+    var currentScreen = 1;
+    var totalScreens = 5;
+    var selectedGoals = [];
+    var quizAnswers = {};
+    var selectedExp = '';
+    var breathInterval = null;
+
+    var dots = document.querySelectorAll('.ob-dot');
+    var btnNext = document.getElementById('btnNext');
+    var btnSkip = document.getElementById('btnSkip');
+
+    // Already onboarded? Go home
+    if (localStorage.getItem('sukoon_onboarded')) {
+        window.location.replace('/');
+        return;
+    }
+
+    function showScreen(n) {
+        currentScreen = n;
+        document.querySelectorAll('.ob-screen').forEach(function(s) { s.classList.remove('active'); });
+        document.getElementById('s' + n).classList.add('active');
+        // Update dots
+        dots.forEach(function(d, i) {
+            d.classList.remove('active', 'done');
+            if (i < n - 1) d.classList.add('done');
+            if (i === n - 1) d.classList.add('active');
+        });
+        // Button labels
+        if (n === 1) {
+            btnNext.textContent = 'Continue';
+            btnSkip.style.display = '';
+        } else if (n === 2) {
+            btnNext.textContent = 'Continue';
+            btnNext.disabled = selectedGoals.length === 0;
+            btnSkip.style.display = '';
+        } else if (n === 3) {
+            btnNext.textContent = 'See My Score';
+            btnNext.disabled = Object.keys(quizAnswers).length < 6;
+            btnSkip.style.display = '';
+        } else if (n === 4) {
+            btnNext.textContent = 'Begin My Journey';
+            btnNext.disabled = !selectedExp;
+            btnSkip.style.display = 'none';
+            // Animate score
+            var score = calcScore();
+            setTimeout(function() {
+                document.getElementById('scoreNum').textContent = score;
+                document.getElementById('scoreFill').style.width = Math.round(score / 30 * 100) + '%';
+                if (score <= 12) document.getElementById('scoreMsg').textContent = "You're carrying a lot. Sukoon is here for you. Let's build from here.";
+                else if (score <= 20) document.getElementById('scoreMsg').textContent = "A solid foundation. Sukoon will help you grow even stronger.";
+                else document.getElementById('scoreMsg').textContent = "You're doing well! Sukoon will help you maintain and deepen your peace.";
+            }, 200);
+        } else if (n === 5) {
+            btnNext.textContent = 'Enter Sukoon';
+            btnSkip.style.display = 'none';
+            startBreath();
+        }
+    }
+
+    function calcScore() {
+        var total = 0;
+        var keys = ['stress','sleep','focus','emotional','compassion','purpose'];
+        keys.forEach(function(k) { total += parseInt(quizAnswers[k]) || 0; });
+        return total;
+    }
+
+    function saveAndFinish() {
+        var name = document.getElementById('nameInput').value.trim();
+        if (name) localStorage.setItem('sukoon_user_name', name);
+        if (selectedGoals.length) localStorage.setItem('sukoon_goals', JSON.stringify(selectedGoals));
+        if (Object.keys(quizAnswers).length) {
+            localStorage.setItem('sukoon_wellbeing_baseline', JSON.stringify(quizAnswers));
+            localStorage.setItem('sukoon_score', calcScore());
+            localStorage.setItem('sukoon_score_date', new Date().toISOString().split('T')[0]);
+        }
+        if (selectedExp) localStorage.setItem('sukoon_experience', selectedExp);
+        localStorage.setItem('sukoon_onboarded', '1');
+        window.location.href = '/explore.html';
+    }
+
+    // Next button
+    btnNext.addEventListener('click', function() {
+        if (currentScreen < totalScreens) {
+            showScreen(currentScreen + 1);
+        } else {
+            if (breathInterval) clearInterval(breathInterval);
+            saveAndFinish();
+        }
+    });
+
+    // Skip button
+    btnSkip.addEventListener('click', function() {
+        if (breathInterval) clearInterval(breathInterval);
+        saveAndFinish();
+    });
+
+    // Goals
+    document.getElementById('goalGrid').addEventListener('click', function(e) {
+        var card = e.target.closest('.ob-goal');
+        if (!card) return;
+        var goal = card.dataset.goal;
+        card.classList.toggle('selected');
+        var idx = selectedGoals.indexOf(goal);
+        if (idx >= 0) selectedGoals.splice(idx, 1);
+        else selectedGoals.push(goal);
+        btnNext.disabled = false;
+    });
+
+    // Quiz
+    document.getElementById('quizArea').addEventListener('click', function(e) {
+        var btn = e.target.closest('.ob-q-btn');
+        if (!btn) return;
+        var q = btn.closest('.ob-q');
+        q.querySelectorAll('.ob-q-btn').forEach(function(b) { b.classList.remove('selected'); });
+        btn.classList.add('selected');
+        quizAnswers[q.dataset.q] = btn.dataset.v;
+        btnNext.disabled = Object.keys(quizAnswers).length < 6;
+    });
+
+    // Experience
+    document.getElementById('expCards').addEventListener('click', function(e) {
+        var card = e.target.closest('.ob-exp');
+        if (!card) return;
+        document.querySelectorAll('.ob-exp').forEach(function(c) { c.classList.remove('selected'); });
+        card.classList.add('selected');
+        selectedExp = card.dataset.exp;
+        btnNext.disabled = false;
+    });
+
+    // Breathing exercise
+    function startBreath() {
+        var circle = document.getElementById('breathCircle');
+        var label = document.getElementById('breathLabel');
+        var timerEl = document.getElementById('breathTimer');
+        var phases = ['Breathe in...', 'Hold...', 'Breathe out...', 'Hold...'];
+        var durations = [4, 4, 4, 4]; // 4-4-4-4 box breathing
+        var phase = 0;
+        var secs = 60;
+
+        function tick() {
+            label.textContent = phases[phase % 4];
+            phase++;
+        }
+        tick();
+        var phaseTimer = setInterval(function() {
+            tick();
+        }, 4000);
+
+        breathInterval = setInterval(function() {
+            secs--;
+            if (secs <= 0) {
+                clearInterval(breathInterval);
+                clearInterval(phaseTimer);
+                label.textContent = 'Namaste';
+                circle.style.animation = 'none';
+                circle.style.transform = 'scale(1)';
+                circle.style.opacity = '1';
+                document.getElementById('breathInst').textContent = "You did it. Your journey has begun.";
+                timerEl.textContent = '';
+            } else {
+                var m = Math.floor(secs / 60);
+                var s = secs % 60;
+                timerEl.textContent = m + ':' + (s < 10 ? '0' : '') + s;
+            }
+        }, 1000);
+    }
+
+    showScreen(1);
+})();
+</script>
+<script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+</body>
+</html>

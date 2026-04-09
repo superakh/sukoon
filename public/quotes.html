@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quotes & Wisdom - Sukoon</title>
     <meta name="description" content="Bilingual quotes and wisdom for the soul. Curated insights in English and Hindi. Save favorites, listen aloud, reflect in your journal.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
@@ -156,7 +159,7 @@
         <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
     </header>
 
-    <nav class="bottom-nav">
+    <nav class="bottom-nav" aria-label="Main navigation" role="navigation">
         <a href="/" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg><span>Home</span></a>
         <a href="/explore.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg><span>Explore</span></a>
         <a href="/meditate.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Meditate</span></a>
@@ -226,6 +229,7 @@
         </div>
     </div>
 
+    <script src="/js/sukoon-engine.js"></script>
     <script>
     (function() {
         'use strict';
@@ -440,6 +444,7 @@
         /* ====== TTS ====== */
         function speakQuote(text) {
             if (!window.speechSynthesis) return;
+            if(window.sukoon) sukoon.track('daily', 1, 'Quote Listen');
             speechSynthesis.cancel();
             var u = new SpeechSynthesisUtterance(text);
             u.rate = 0.88;
@@ -563,5 +568,7 @@
 
     })();
     </script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="/js/shell.js"></script>
 </body>
 </html>

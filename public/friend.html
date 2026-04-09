@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>AI Friend - Sukoon</title>
     <meta name="description" content="A compassionate AI companion who listens without judgment. No records, no accounts, just a friend.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
@@ -308,22 +311,8 @@
 <body>
 
     <!-- ==================== TOP HEADER ==================== -->
-    <header class="topbar">
-        <a href="/" class="topbar-brand">
-            Sukoon
-        </a>
-        <div class="topbar-status">
-            <span class="status-dot"></span>
-            Online
-        </div>
-        <select class="lang-select" id="langPicker">
-            <option value="en">EN</option>
-            <option value="hi">HI</option>
-            <option value="ur">UR</option>
-            <option value="ar">AR</option>
-            <option value="es">ES</option>
-            <option value="fr">FR</option>
-        </select>
+    <header class="top-header">
+        <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
     </header>
 
     <!-- ==================== CRISIS BANNER ==================== -->
@@ -332,26 +321,26 @@
     </div>
 
     <!-- ==================== BOTTOM NAV ==================== -->
-    <nav class="bottom-nav" id="bottomNav">
-        <a href="/" class="nav-tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-            <span class="nav-tab-label">Home</span>
+    <nav class="bottom-nav" id="bottomNav" aria-label="Main navigation" role="navigation">
+        <a href="/" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
+            <span>Home</span>
         </a>
-        <a href="/explore.html" class="nav-tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            <span class="nav-tab-label">Explore</span>
+        <a href="/explore.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
+            <span>Explore</span>
         </a>
-        <a href="/breathe.html" class="nav-tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-4-3.5-8-7.5-8-12a8 8 0 0116 0c0 4.5-4 8.5-8 12z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span class="nav-tab-label">Breathe</span>
+        <a href="/breathe.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+            <span>Breathe</span>
         </a>
-        <a href="/friend.html" class="nav-tab active">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            <span class="nav-tab-label">AI Friend</span>
+        <a href="/friend.html" class="nav-item active">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+            <span>AI Friend</span>
         </a>
-        <a href="/you.html" class="nav-tab">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <span class="nav-tab-label">You</span>
+        <a href="/you.html" class="nav-item">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            <span>You</span>
         </a>
     </nav>
 
@@ -398,6 +387,7 @@
         </div>
     </div>
 
+    <script src="/js/sukoon-engine.js"></script>
     <script>
     (function() {
         'use strict';
@@ -457,6 +447,9 @@
             if (!text) return;
 
             startChat();
+
+            // Track with sukoon engine (once per session)
+            if(window.sukoon && !window._sukoonFriendTracked) { window._sukoonFriendTracked = true; sukoon.track('meditation', 5, 'AI Friend Chat'); }
 
             messages.push({ role: 'user', content: text });
             appendMsg('user', text);
@@ -558,5 +551,7 @@
     })();
     </script>
     <script src="/js/i18n.js"></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="/js/shell.js"></script>
 </body>
 </html>

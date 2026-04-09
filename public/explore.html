@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore - Sukoon Wellness</title>
     <meta name="description" content="Explore meditations, sleep stories, breathing exercises, focus tools, ambient sounds, guided courses, and wisdom. Discover your path to inner peace.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Explore - Sukoon Wellness">
+    <meta property="og:description" content="Explore meditations, sleep stories, breathing exercises, focus tools, ambient sounds, guided courses, and wisdom. Discover your path to inner peace.">
+    <meta property="og:url" content="https://sukoon.cloud/explore.html">
+    <meta property="og:image" content="https://sukoon.cloud/icons/icon-512.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Explore - Sukoon Wellness">
+    <meta name="twitter:description" content="Explore meditations, sleep stories, breathing exercises, focus tools, ambient sounds, guided courses, and wisdom. Discover your path to inner peace.">
     <link rel="stylesheet" href="/css/shell.css">
     <style>
         /* ===================== SEARCH BAR ===================== */
@@ -324,9 +335,9 @@
         }
 
         /* Card icon color variants */
-        .icon-purple { background: #F3EEFF; }
+        .icon-purple { background: #E8F5E9; }
         .icon-blue { background: #EEF0FF; }
-        .icon-indigo { background: #EEEDFF; }
+        .icon-indigo { background: #E0F2E9; }
         .icon-teal { background: #E6FAF5; }
         .icon-amber { background: #FFF8EB; }
         .icon-rose { background: #FFF0F3; }
@@ -556,6 +567,25 @@
             margin-top: 6px;
         }
 
+        .rec-tag {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.62rem;
+            font-weight: 600;
+            background: #D8F3DC;
+            color: #2D6A4F;
+            margin-top: 6px;
+            line-height: 1.3;
+        }
+
+        /* Zen Mode: hide streak badges and level indicators in Continue */
+        body.zen-active .continue-streak-badge,
+        body.zen-active .continue-level-badge,
+        body.zen-active .card-progress-text {
+            display: none !important;
+        }
+
         @media (min-width: 961px) {
             .quick-grid {
                 max-width: 960px;
@@ -657,11 +687,15 @@
         </div>
 
         <!-- For You (dynamic, personalized) -->
-        <section class="smart-section" id="forYouSection">
+        <section class="smart-section has-items" id="forYouSection">
             <div class="section-header">
                 <h3 class="section-title">For You <span class="smart-badge">Personalized</span></h3>
             </div>
-            <div class="cards-scroll" id="forYouCards"></div>
+            <div class="cards-scroll" id="forYouCards">
+                <div class="card skeleton-placeholder" style="pointer-events:none;"><div class="skeleton skeleton-card" style="height:32px;width:32px;border-radius:10px;margin-bottom:12px;"></div><div class="skeleton skeleton-text" style="width:80%;"></div><div class="skeleton skeleton-text" style="width:60%;"></div></div>
+                <div class="card skeleton-placeholder" style="pointer-events:none;"><div class="skeleton skeleton-card" style="height:32px;width:32px;border-radius:10px;margin-bottom:12px;"></div><div class="skeleton skeleton-text" style="width:70%;"></div><div class="skeleton skeleton-text" style="width:50%;"></div></div>
+                <div class="card skeleton-placeholder" style="pointer-events:none;"><div class="skeleton skeleton-card" style="height:32px;width:32px;border-radius:10px;margin-bottom:12px;"></div><div class="skeleton skeleton-text" style="width:75%;"></div><div class="skeleton skeleton-text" style="width:55%;"></div></div>
+            </div>
         </section>
 
         <!-- Continue (in-progress items) -->
@@ -994,7 +1028,7 @@
     </main>
 
     <!-- ===== BOTTOM NAV ===== -->
-    <nav class="bottom-nav">
+    <nav class="bottom-nav" aria-label="Main navigation" role="navigation">
         <a href="/" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
             <span>Home</span>
@@ -1274,105 +1308,64 @@
             if (el('dailyDesc')) el('dailyDesc').textContent = t.desc;
         })();
 
-        /* ====== FOR YOU (PERSONALIZED) ====== */
+        /* ====== FOR YOU (PERSONALIZED — uses sukoon.recommend()) ====== */
         (function() {
             var forYouEl = document.getElementById('forYouSection');
             var forYouCards = document.getElementById('forYouCards');
             if (!forYouEl || !forYouCards) return;
 
-            var recs = [];
-
-            // Read last mood from various sources
-            var lastMood = null;
-            try {
-                var moodKeys = ['sukoon_daily_mood_pre', 'sukoon_last_mood'];
-                for (var i = 0; i < moodKeys.length; i++) {
-                    var m = localStorage.getItem(moodKeys[i]);
-                    if (m) { lastMood = m; break; }
+            // Wait for sukoon-engine to be loaded (it's at the bottom)
+            function renderForYou() {
+                if (typeof sukoon === 'undefined') {
+                    setTimeout(renderForYou, 50);
+                    return;
                 }
-            } catch(e) {}
 
-            // Mood-based recommendations
-            var moodMap = {
-                'anxious': [
-                    { href: '/meditate.html', icon: '&#127807;', bg: 'icon-teal', title: 'Calm Anxiety', meta: '5 min guided', desc: 'Gentle guidance to ease anxious thoughts', tag: 'For anxiety' },
-                    { href: '/sos.html', icon: '&#128168;', bg: 'icon-sky', title: 'SOS Breathing', meta: 'Instant relief', desc: 'Quick grounding when anxiety peaks', tag: 'Instant calm' }
-                ],
-                'sad': [
-                    { href: '/meditate.html', icon: '&#128156;', bg: 'icon-pink', title: 'Loving Kindness', meta: '10 min guided', desc: 'Wrap yourself in compassion', tag: 'For sadness' },
-                    { href: '/friend.html', icon: '&#128172;', bg: 'icon-teal', title: 'Talk It Out', meta: 'AI Friend', desc: 'Share what\'s on your heart', tag: 'Support' }
-                ],
-                'stressed': [
-                    { href: '/meditate.html', icon: '&#128477;&#65039;', bg: 'icon-purple', title: 'Quick Calm', meta: '3 min', desc: 'A brief pause to reset', tag: 'For stress' },
-                    { href: '/sounds.html', icon: '&#127783;&#65039;', bg: 'icon-sky', title: 'Rain Sounds', meta: 'Ambient', desc: 'Soothing rainfall for instant relief', tag: 'Relaxation' }
-                ],
-                'tired': [
-                    { href: '/sleep.html', icon: '&#127769;', bg: 'icon-indigo', title: 'Sleep Stories', meta: '15-30 min', desc: 'Drift off with a soothing tale', tag: 'For rest' },
-                    { href: '/sos.html', icon: '&#128716;', bg: 'icon-blue', title: 'Can\'t Sleep', meta: 'Guided', desc: 'Progressive relaxation for insomnia', tag: 'Sleep help' }
-                ],
-                'happy': [
-                    { href: '/meditate.html', icon: '&#10024;', bg: 'icon-amber', title: 'Gratitude Practice', meta: '5 min', desc: 'Amplify this beautiful feeling', tag: 'Joy' },
-                    { href: '/journal.html', icon: '&#128221;', bg: 'icon-green', title: 'Journal This', meta: 'Capture', desc: 'Write down what made you smile', tag: 'Reflect' }
-                ],
-                'calm': [
-                    { href: '/meditate.html', icon: '&#127795;', bg: 'icon-green', title: 'Deepen Your Peace', meta: '10 min', desc: 'A mindful awareness session', tag: 'Serenity' },
-                    { href: '/wisdom.html', icon: '&#128220;', bg: 'icon-amber', title: 'Soul Wisdom', meta: 'Read', desc: 'Timeless insights for the still mind', tag: 'Wisdom' }
-                ]
-            };
-
-            // Try to find matching mood recommendations
-            if (lastMood) {
-                var moodLower = lastMood.toLowerCase();
-                // Map numeric/emoji moods to text
-                var moodNames = { '1': 'sad', '2': 'anxious', '3': 'calm', '4': 'happy', '5': 'happy' };
-                if (moodNames[moodLower]) moodLower = moodNames[moodLower];
-
-                // Find matching recommendations
-                var keys = Object.keys(moodMap);
-                for (var k = 0; k < keys.length; k++) {
-                    if (moodLower.indexOf(keys[k]) !== -1 || keys[k].indexOf(moodLower) !== -1) {
-                        recs = moodMap[keys[k]];
-                        break;
+                // Personalize the section title with the user's name
+                var userName = null;
+                try { userName = localStorage.getItem('sukoon_user_name'); } catch(e) {}
+                if (userName) {
+                    var titleEl = forYouEl.querySelector('.section-title');
+                    if (titleEl) {
+                        titleEl.innerHTML = 'For You, ' + userName + ' <span class="smart-badge">Personalized</span>';
                     }
                 }
-            }
 
-            // Check recent activity for more recommendations
-            try {
-                var actLog = JSON.parse(localStorage.getItem('sukoon_activity_log') || '[]');
-                if (actLog.length > 0 && recs.length < 3) {
-                    var lastCat = actLog[actLog.length - 1].category;
-                    if (lastCat === 'meditation') {
-                        recs.push({ href: '/meditate.html', icon: '&#128477;&#65039;', bg: 'icon-purple', title: 'More Meditation', meta: 'Continue', desc: 'Pick up where you left off', tag: 'Recent' });
-                    } else if (lastCat === 'focus') {
-                        recs.push({ href: '/focus.html', icon: '&#127919;', bg: 'icon-rose', title: 'Focus Again', meta: 'Continue', desc: 'Get back into flow state', tag: 'Recent' });
-                    }
+                // Read last mood
+                var lastMood = sukoon.lastMood() || null;
+
+                // Get enhanced recommendations from engine
+                var recs = sukoon.recommend(lastMood);
+
+                // Icon background map by category
+                var bgMap = {
+                    'meditation': 'icon-purple',
+                    'breathing': 'icon-sky',
+                    'focus': 'icon-rose',
+                    'sleep': 'icon-indigo',
+                    'sounds': 'icon-sky',
+                    'journal': 'icon-green',
+                    'courses': 'icon-amber',
+                    'daily': 'icon-green'
+                };
+
+                // Render cards
+                var html = '';
+                for (var r = 0; r < recs.length; r++) {
+                    var rec = recs[r];
+                    var bg = bgMap[rec.category] || 'icon-green';
+                    html += '<a href="' + rec.href + '" class="card">' +
+                        '<div class="card-icon ' + bg + '">' + rec.icon + '</div>' +
+                        '<div class="card-title">' + rec.title + '</div>' +
+                        '<div class="card-desc">' + rec.desc + '</div>' +
+                        (rec.tag ? '<span class="rec-tag">' + rec.tag + '</span>' : '') +
+                        '</a>';
                 }
-            } catch(e) {}
-
-            // Default recommendations if nothing personalized
-            if (recs.length === 0) {
-                recs = [
-                    { href: '/meditate.html', icon: '&#128477;&#65039;', bg: 'icon-purple', title: 'Start Meditating', meta: '3-20 min', desc: 'Guided sessions for every mood', tag: 'Popular' },
-                    { href: '/daily.html', icon: '&#9752;', bg: 'icon-green', title: 'Daily Sukoon', meta: '10 min ritual', desc: 'Your personalized daily practice', tag: 'Try it' },
-                    { href: '/sos.html', icon: '&#128680;', bg: 'icon-red', title: 'SOS Support', meta: 'Instant', desc: 'Emotion-specific guided help', tag: 'Crisis' }
-                ];
+                forYouCards.innerHTML = html;
+                forYouEl.classList.add('has-items');
             }
 
-            // Render cards
-            var html = '';
-            for (var r = 0; r < recs.length; r++) {
-                var rec = recs[r];
-                html += '<a href="' + rec.href + '" class="card">' +
-                    '<div class="card-icon ' + rec.bg + '">' + rec.icon + '</div>' +
-                    '<div class="card-title">' + rec.title + '</div>' +
-                    '<div class="card-meta">' + rec.meta + '</div>' +
-                    '<div class="card-desc">' + rec.desc + '</div>' +
-                    (rec.tag ? '<span class="mood-tag">' + rec.tag + '</span>' : '') +
-                    '</a>';
-            }
-            forYouCards.innerHTML = html;
-            forYouEl.classList.add('has-items');
+            renderForYou();
         })();
 
         /* ====== CONTINUE (IN-PROGRESS) ====== */
@@ -1380,6 +1373,11 @@
             var contEl = document.getElementById('continueSection');
             var contCards = document.getElementById('continueCards');
             if (!contEl || !contCards) return;
+
+            // Check zen mode and add body class
+            var zenOn = false;
+            try { zenOn = localStorage.getItem('sukoon_zen_mode') === '1'; } catch(e) {}
+            if (zenOn) document.body.classList.add('zen-active');
 
             var items = [];
 
@@ -1416,7 +1414,7 @@
                 }
             } catch(e) {}
 
-            // Check daily streak
+            // Check daily streak (hide streak meta in zen mode)
             try {
                 var streak = localStorage.getItem('sukoon_daily_streak');
                 if (streak) {
@@ -1429,9 +1427,10 @@
                                 icon: '&#9752;',
                                 bg: 'icon-green',
                                 title: 'Daily Sukoon',
-                                meta: sd.count + '-day streak',
-                                desc: 'Don\'t break your streak!',
-                                progress: null
+                                meta: zenOn ? 'Continue' : (sd.count + '-day streak'),
+                                desc: zenOn ? 'Your daily practice awaits' : 'Don\'t break your streak!',
+                                progress: null,
+                                isStreak: true
                             });
                         }
                     }
@@ -1446,10 +1445,10 @@
                 html += '<a href="' + it.href + '" class="card">' +
                     '<div class="card-icon ' + it.bg + '">' + it.icon + '</div>' +
                     '<div class="card-title">' + it.title + '</div>' +
-                    '<div class="card-meta">' + it.meta + '</div>' +
+                    '<div class="card-meta' + (it.isStreak ? ' continue-streak-badge' : '') + '">' + it.meta + '</div>' +
                     '<div class="card-desc">' + it.desc + '</div>';
                 if (it.progress !== null) {
-                    html += '<div class="card-progress-wrap"><div class="card-progress-bar"><div class="card-progress-fill" style="width:' + it.progress + '%"></div></div></div>';
+                    html += '<div class="card-progress-wrap"><div class="card-progress-bar"><div class="card-progress-fill" style="width:' + it.progress + '%"></div></div><div class="card-progress-text">' + it.progress + '% complete</div></div>';
                 }
                 html += '</a>';
             }
@@ -1460,5 +1459,7 @@
     })();
     </script>
     <script src="/js/sukoon-engine.js"></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="/js/shell.js"></script>
 </body>
 </html>

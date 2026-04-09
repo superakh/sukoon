@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sleep Stories - Sukoon</title>
     <meta name="description" content="Drift off to sleep with calming AI-generated bedtime stories. Nature, folklore, travel & spiritual tales narrated in soothing prose.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sleep Stories - Sukoon">
+    <meta property="og:description" content="Drift off to sleep with calming AI-generated bedtime stories. Nature, folklore, travel & spiritual tales narrated in soothing prose.">
+    <meta property="og:url" content="https://sukoon.cloud/sleep.html">
+    <meta property="og:image" content="https://sukoon.cloud/icons/icon-512.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sleep Stories - Sukoon">
+    <meta name="twitter:description" content="Drift off to sleep with calming AI-generated bedtime stories. Nature, folklore, travel & spiritual tales narrated in soothing prose.">
     <link rel="stylesheet" href="/css/shell.css">
     <style>
         body {
@@ -114,7 +125,7 @@
         }
         .story-genre.folklore { background: #FEF3C7; color: #92400E; }
         .story-genre.travel { background: #DBEAFE; color: #1E40AF; }
-        .story-genre.spiritual { background: #F3E8FF; color: #6B21A8; }
+        .story-genre.spiritual { background: #E0EAF0; color: #1E3A5F; }
         .story-genre.fantasy { background: #FCE7F3; color: #9D174D; }
         .story-card-title {
             font-family: 'DM Serif Display', serif;
@@ -378,8 +389,8 @@
             display: inline-flex; align-items: center; gap: 0.3rem;
         }
         .auto-advance-btn.active {
-            background: rgba(198,139,89,0.1);
-            border-color: rgba(198,139,89,0.3); color: #C68B59;
+            background: rgba(45,106,79,0.1);
+            border-color: rgba(45,106,79,0.3); color: #2D6A4F;
         }
         .tts-reader-btn.active {
             background: rgba(45,106,79,0.1);
@@ -387,10 +398,342 @@
         }
         .tts-reader-btn svg { width: 13px; height: 13px; }
 
+        /* ===================== WIND-DOWN ROUTINE CARD ===================== */
+        .winddown-routine-card {
+            background: #FFFFFF;
+            border: 2px solid rgba(45,106,79,0.25);
+            border-radius: 14px;
+            padding: 1.5rem 1.75rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1.25rem;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .winddown-routine-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(45,106,79,0.03) 0%, rgba(45,106,79,0.08) 100%);
+            pointer-events: none;
+        }
+        .winddown-routine-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(45,106,79,0.12);
+            border-color: rgba(45,106,79,0.4);
+        }
+        .winddown-routine-icon {
+            width: 52px; height: 52px;
+            border-radius: 12px;
+            background: #D8F3DC;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        .winddown-routine-info {
+            flex: 1;
+            position: relative;
+            z-index: 1;
+        }
+        .winddown-routine-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.15rem; color: #1D1D1F;
+            margin-bottom: 0.15rem;
+        }
+        .winddown-routine-sub {
+            font-size: 0.8rem; color: #86868B; line-height: 1.45;
+        }
+        .winddown-routine-steps {
+            display: flex; gap: 0.5rem;
+            margin-top: 0.4rem;
+        }
+        .winddown-routine-step-pill {
+            padding: 0.15rem 0.55rem; border-radius: 100px;
+            font-size: 0.62rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.04em;
+            background: rgba(45,106,79,0.08); color: #2D6A4F;
+        }
+        .winddown-routine-arrow {
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: #2D6A4F;
+            display: flex; align-items: center; justify-content: center;
+            flex-shrink: 0;
+            position: relative;
+            z-index: 1;
+            transition: background 0.2s;
+        }
+        .winddown-routine-card:hover .winddown-routine-arrow { background: #1B4332; }
+        .winddown-routine-arrow svg { width: 16px; height: 16px; color: #fff; }
+
+        /* ===================== SLEEP TIMER STRIP ===================== */
+        .sleep-timer-section { margin-bottom: 2.5rem; }
+        .sleep-timer-strip {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+        }
+        .sleep-timer-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 0.75rem;
+        }
+        .sleep-timer-label {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1rem; color: #1D1D1F;
+            display: flex; align-items: center; gap: 0.5rem;
+        }
+        .sleep-timer-label svg { width: 18px; height: 18px; color: #2D6A4F; }
+        .sleep-timer-status {
+            font-size: 0.75rem; color: #86868B;
+            font-variant-numeric: tabular-nums;
+        }
+        .sleep-timer-status.active-timer { color: #2D6A4F; font-weight: 600; }
+        .sleep-timer-pills {
+            display: flex; gap: 0.5rem; flex-wrap: wrap;
+        }
+        .sleep-timer-pill {
+            padding: 0.45rem 1rem; border-radius: 100px;
+            font-size: 0.78rem; font-weight: 500;
+            border: 1px solid rgba(0,0,0,0.08);
+            background: #FFFFFF; color: #86868B;
+            cursor: pointer;
+            font-family: -apple-system, 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+        .sleep-timer-pill:hover { border-color: rgba(0,0,0,0.15); color: #1D1D1F; }
+        .sleep-timer-pill.active {
+            background: #2D6A4F; border-color: #2D6A4F; color: #FFFFFF;
+        }
+        .sleep-timer-pill.off-pill.active {
+            background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); color: #86868B;
+        }
+        .sleep-timer-desc {
+            font-size: 0.72rem; color: #AEAEB2;
+            margin-top: 0.6rem; line-height: 1.5;
+        }
+
+        /* ===================== SLEEP SOUNDS ===================== */
+        .sleep-sounds-section { margin-bottom: 3rem; }
+        .sleep-sounds-grid {
+            display: grid; grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+        .sleep-sound-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 1.25rem;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        .sleep-sound-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+        .sleep-sound-card.playing {
+            border-color: rgba(45,106,79,0.3);
+            box-shadow: 0 2px 12px rgba(45,106,79,0.1);
+        }
+        .sleep-sound-card.playing::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(135deg, rgba(45,106,79,0.03) 0%, rgba(45,106,79,0.06) 100%);
+            pointer-events: none;
+        }
+        .sleep-sound-top {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 0.6rem;
+        }
+        .sleep-sound-icon {
+            width: 40px; height: 40px; border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem; flex-shrink: 0;
+        }
+        .sleep-sound-icon.rain-icon { background: #DBEAFE; }
+        .sleep-sound-icon.ocean-icon { background: #D8F3DC; }
+        .sleep-sound-icon.forest-icon { background: #D1FAE5; }
+        .sleep-sound-icon.noise-icon { background: #F3E8FF; }
+        .sleep-sound-play-indicator {
+            width: 24px; height: 24px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .sleep-sound-card.playing .sleep-sound-play-indicator {
+            opacity: 1;
+        }
+        .sleep-sound-play-indicator .eq-bars {
+            display: flex; align-items: flex-end; gap: 2px; height: 14px;
+        }
+        .sleep-sound-play-indicator .eq-bar {
+            width: 3px; background: #2D6A4F; border-radius: 1px;
+            animation: eqBounce 0.8s ease-in-out infinite alternate;
+        }
+        .sleep-sound-play-indicator .eq-bar:nth-child(1) { height: 6px; animation-delay: 0s; }
+        .sleep-sound-play-indicator .eq-bar:nth-child(2) { height: 10px; animation-delay: 0.15s; }
+        .sleep-sound-play-indicator .eq-bar:nth-child(3) { height: 4px; animation-delay: 0.3s; }
+        @keyframes eqBounce {
+            from { height: 4px; } to { height: 12px; }
+        }
+        .sleep-sound-name {
+            font-family: 'DM Serif Display', serif;
+            font-size: 0.95rem; color: #1D1D1F;
+            margin-bottom: 0.15rem;
+        }
+        .sleep-sound-desc {
+            font-size: 0.75rem; color: #86868B; line-height: 1.5;
+        }
+        .sleep-sound-tag {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.15rem 0.5rem; border-radius: 100px;
+            font-size: 0.6rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.05em;
+            background: rgba(45,106,79,0.08); color: #2D6A4F;
+        }
+        .sleep-sound-card.playing .sleep-sound-tag {
+            background: #2D6A4F; color: #fff;
+        }
+
+        /* ===================== WIND-DOWN OVERLAY ===================== */
+        .winddown-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 10000;
+            background: rgba(15,23,20,0.97);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        .winddown-overlay.open { display: flex; opacity: 1; }
+        .winddown-overlay-close {
+            position: absolute;
+            top: 1.5rem; right: 1.5rem;
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.5);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 2;
+        }
+        .winddown-overlay-close:hover { background: rgba(255,255,255,0.15); color: #fff; }
+        .winddown-overlay-close svg { width: 18px; height: 18px; }
+        .winddown-step-indicator {
+            position: absolute;
+            top: 2rem; left: 50%;
+            transform: translateX(-50%);
+            display: flex; gap: 0.5rem;
+        }
+        .winddown-step-dot {
+            width: 8px; height: 8px; border-radius: 50%;
+            background: rgba(255,255,255,0.15);
+            transition: all 0.4s ease;
+        }
+        .winddown-step-dot.active {
+            background: #52B788;
+            box-shadow: 0 0 8px rgba(82,183,136,0.5);
+        }
+        .winddown-step-dot.done { background: rgba(82,183,136,0.4); }
+        .winddown-content {
+            text-align: center;
+            max-width: 500px;
+            padding: 2rem;
+        }
+        .winddown-step-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            color: #52B788;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+        }
+        .winddown-step-title {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.8rem;
+            color: #FFFFFF;
+            margin-bottom: 1.25rem;
+        }
+        .winddown-step-text {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.6);
+            line-height: 1.9;
+            font-family: 'DM Serif Display', serif;
+        }
+        .winddown-breathing-ring {
+            width: 120px; height: 120px;
+            border-radius: 50%;
+            border: 2px solid rgba(82,183,136,0.3);
+            margin: 2rem auto 0;
+            display: flex; align-items: center; justify-content: center;
+            animation: winddownBreathe 6s ease-in-out infinite;
+        }
+        .winddown-breathing-inner {
+            width: 40px; height: 40px;
+            border-radius: 50%;
+            background: rgba(82,183,136,0.15);
+            animation: winddownBreathe 6s ease-in-out infinite;
+        }
+        @keyframes winddownBreathe {
+            0%, 100% { transform: scale(0.8); opacity: 0.5; }
+            50% { transform: scale(1.15); opacity: 1; }
+        }
+        .winddown-progress-bar {
+            width: 200px; height: 2px;
+            border-radius: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 2rem auto 0;
+            overflow: hidden;
+        }
+        .winddown-progress-fill {
+            height: 100%; border-radius: 1px;
+            background: #52B788;
+            width: 0%;
+            transition: width 1s linear;
+        }
+        .winddown-sleep-well {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            z-index: 10001;
+            background: rgba(15,23,20,0.98);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        .winddown-sleep-well.show { display: flex; opacity: 1; }
+        .winddown-sleep-well h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.5rem;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+        }
+        .winddown-sleep-well p {
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.4);
+        }
+
         /* ===================== RESPONSIVE ===================== */
         @media (max-width: 768px) {
             .reader-bottom { gap: 0.75rem; padding: 0.6rem 1rem; }
             .winddown-grid { grid-template-columns: 1fr; }
+            .sleep-sounds-grid { grid-template-columns: 1fr; }
         }
         @media (max-width: 640px) {
             .stories-grid { grid-template-columns: 1fr; }
@@ -405,36 +748,40 @@
             .reader-body { padding: 2rem 1.25rem 5rem; }
             .reader-text p { font-size: 1.1rem; }
             .reader-progress-wrap { display: none; }
+            .winddown-routine-card { flex-wrap: wrap; }
+            .winddown-step-title { font-size: 1.4rem; }
+            .sleep-timer-pills { gap: 0.35rem; }
+            .sleep-timer-pill { padding: 0.4rem 0.75rem; font-size: 0.72rem; }
         }
     </style>
 </head>
 <body>
 
 <!-- ===================== TOP HEADER ===================== -->
-<header class="topbar">
-    <a href="index.html" class="topbar-brand">Sukoon</a>
+<header class="top-header">
+    <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
 </header>
 
 <!-- ===================== BOTTOM NAVIGATION ===================== -->
-<nav class="bottom-nav">
-    <a href="/">
-        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
+<nav class="bottom-nav" aria-label="Main navigation" role="navigation">
+    <a href="/" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
         <span>Home</span>
     </a>
-    <a href="/explore.html">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
+    <a href="/explore.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
         <span>Explore</span>
     </a>
-    <a href="/breathe.html">
-        <svg viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
+    <a href="/breathe.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
         <span>Breathe</span>
     </a>
-    <a href="/friend.html">
-        <svg viewBox="0 0 24 24"><path d="M21 12a9 9 0 01-9 9m0 0a9 9 0 01-9-9m9 9c-1.66 0-3-4.03-3-9s1.34-9 3-9m0 18c1.66 0 3-4.03 3-9s-1.34-9-3-9m-9 9h18"/></svg>
+    <a href="/friend.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         <span>AI Friend</span>
     </a>
-    <a href="/you.html">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+    <a href="/you.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
         <span>You</span>
     </a>
 </nav>
@@ -452,6 +799,93 @@
 
     <!-- ===================== CONTENT ===================== -->
     <div class="page-content">
+
+        <!-- ===================== WIND-DOWN ROUTINE ===================== -->
+        <div class="winddown-routine-card" id="winddownRoutineCard">
+            <div class="winddown-routine-icon">&#x1F319;</div>
+            <div class="winddown-routine-info">
+                <div class="winddown-routine-title">Wind Down</div>
+                <div class="winddown-routine-sub">3-step bedtime routine to prepare your mind and body for sleep</div>
+                <div class="winddown-routine-steps">
+                    <span class="winddown-routine-step-pill">Gratitude</span>
+                    <span class="winddown-routine-step-pill">Body Scan</span>
+                    <span class="winddown-routine-step-pill">Sleep Story</span>
+                </div>
+            </div>
+            <div class="winddown-routine-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+        </div>
+
+        <!-- ===================== SLEEP TIMER ===================== -->
+        <div class="sleep-timer-section">
+            <div class="section-label">Sleep Timer</div>
+            <div class="section-title">Auto-Stop Playback</div>
+            <div class="section-subtitle">Set a timer and audio will gently fade out before stopping</div>
+            <div class="sleep-timer-strip">
+                <div class="sleep-timer-header">
+                    <div class="sleep-timer-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5"/><path d="M5 3l2 2M19 3l-2 2"/></svg>
+                        Timer
+                    </div>
+                    <div class="sleep-timer-status" id="globalTimerStatus">No timer set</div>
+                </div>
+                <div class="sleep-timer-pills" id="globalTimerPills">
+                    <button class="sleep-timer-pill off-pill active" data-minutes="0">Off</button>
+                    <button class="sleep-timer-pill" data-minutes="15">15 min</button>
+                    <button class="sleep-timer-pill" data-minutes="30">30 min</button>
+                    <button class="sleep-timer-pill" data-minutes="45">45 min</button>
+                    <button class="sleep-timer-pill" data-minutes="60">60 min</button>
+                    <button class="sleep-timer-pill" data-minutes="90">90 min</button>
+                </div>
+                <div class="sleep-timer-desc">Volume will gently fade out over the last 2 minutes before stopping all audio.</div>
+            </div>
+        </div>
+
+        <!-- ===================== SLEEP SOUNDS ===================== -->
+        <div class="sleep-sounds-section">
+            <div class="section-label">Ambient Audio</div>
+            <div class="section-title">Sleep Sounds</div>
+            <div class="section-subtitle">Pre-mixed ambient loops to help you drift off</div>
+            <div class="sleep-sounds-grid" id="sleepSoundsGrid">
+                <div class="sleep-sound-card" data-sound="deep-rain">
+                    <div class="sleep-sound-top">
+                        <div class="sleep-sound-icon rain-icon">&#x1F327;&#xFE0F;</div>
+                        <div class="sleep-sound-play-indicator"><div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div></div>
+                    </div>
+                    <div class="sleep-sound-name">Deep Rain</div>
+                    <div class="sleep-sound-desc">Heavy rain with distant rumbling thunder</div>
+                    <span class="sleep-sound-tag">Tap to play</span>
+                </div>
+                <div class="sleep-sound-card" data-sound="ocean-drift">
+                    <div class="sleep-sound-top">
+                        <div class="sleep-sound-icon ocean-icon">&#x1F30A;</div>
+                        <div class="sleep-sound-play-indicator"><div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div></div>
+                    </div>
+                    <div class="sleep-sound-name">Ocean Drift</div>
+                    <div class="sleep-sound-desc">Gentle waves lapping with soft coastal wind</div>
+                    <span class="sleep-sound-tag">Tap to play</span>
+                </div>
+                <div class="sleep-sound-card" data-sound="forest-night">
+                    <div class="sleep-sound-top">
+                        <div class="sleep-sound-icon forest-icon">&#x1F333;</div>
+                        <div class="sleep-sound-play-indicator"><div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div></div>
+                    </div>
+                    <div class="sleep-sound-name">Forest Night</div>
+                    <div class="sleep-sound-desc">Crickets and owls with a gentle breeze</div>
+                    <span class="sleep-sound-tag">Tap to play</span>
+                </div>
+                <div class="sleep-sound-card" data-sound="white-noise">
+                    <div class="sleep-sound-top">
+                        <div class="sleep-sound-icon noise-icon">&#x1F4A8;</div>
+                        <div class="sleep-sound-play-indicator"><div class="eq-bars"><div class="eq-bar"></div><div class="eq-bar"></div><div class="eq-bar"></div></div></div>
+                    </div>
+                    <div class="sleep-sound-name">White Noise</div>
+                    <div class="sleep-sound-desc">Smooth, steady white and pink noise blend</div>
+                    <span class="sleep-sound-tag">Tap to play</span>
+                </div>
+            </div>
+        </div>
 
         <div class="section-label">Story Library</div>
         <div class="section-title">Bedtime Stories</div>
@@ -728,15 +1162,43 @@
         </div>
         <div class="reader-controls-group">
             <span class="reader-controls-label">Timer</span>
+            <button class="timer-btn active" data-timer="0">Off</button>
             <button class="timer-btn" data-timer="15">15m</button>
             <button class="timer-btn" data-timer="30">30m</button>
             <button class="timer-btn" data-timer="45">45m</button>
             <button class="timer-btn" data-timer="60">60m</button>
+            <button class="timer-btn" data-timer="90">90m</button>
             <span class="timer-countdown" id="readerTimerCD"></span>
         </div>
     </div>
 </div>
 
+<!-- ===================== WIND-DOWN ROUTINE OVERLAY ===================== -->
+<div class="winddown-overlay" id="winddownOverlay">
+    <button class="winddown-overlay-close" id="winddownClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    </button>
+    <div class="winddown-step-indicator">
+        <div class="winddown-step-dot" id="wdDot1"></div>
+        <div class="winddown-step-dot" id="wdDot2"></div>
+        <div class="winddown-step-dot" id="wdDot3"></div>
+    </div>
+    <div class="winddown-content" id="winddownContent">
+        <div class="winddown-step-label" id="wdStepLabel">Step 1 of 3</div>
+        <div class="winddown-step-title" id="wdStepTitle">Gratitude</div>
+        <div class="winddown-step-text" id="wdStepText"></div>
+        <div class="winddown-breathing-ring"><div class="winddown-breathing-inner"></div></div>
+        <div class="winddown-progress-bar"><div class="winddown-progress-fill" id="wdProgressFill"></div></div>
+    </div>
+</div>
+
+<!-- ===================== SLEEP WELL MESSAGE ===================== -->
+<div class="winddown-sleep-well" id="sleepWellMsg">
+    <h2>Sleep well</h2>
+    <p>All audio has stopped. Goodnight.</p>
+</div>
+
+<script src="/js/sukoon-engine.js"></script>
 <script>
 (function(){
     'use strict';
@@ -1105,7 +1567,9 @@
     function revealNext() {
         var paragraphs = readerText.querySelectorAll('p');
         if (revealIndex >= paragraphs.length) {
-            clearInterval(revealInterval); revealInterval = null; return;
+            clearInterval(revealInterval); revealInterval = null;
+            if(window.sukoon) sukoon.track('sleep', 10, 'Sleep Story');
+            return;
         }
         paragraphs[revealIndex].classList.add('visible');
         revealIndex++;
@@ -1142,6 +1606,7 @@
 
     function startSleepTimer(mins) {
         clearSleepTimer();
+        if (mins === 0) { timerCD.textContent = ''; return; }
         sleepTimerRemaining = mins * 60;
         timerCD.textContent = fmtTimer(sleepTimerRemaining);
         sleepTimerInterval = setInterval(function() {
@@ -1456,8 +1921,586 @@
         };
     }
 
+    /* ============================================================
+       FEATURE 1: GLOBAL SLEEP TIMER
+       Pills on the main page with 2-minute volume fade-out
+       ============================================================ */
+    var globalTimerStatus = document.getElementById('globalTimerStatus');
+    var globalTimerPills = document.getElementById('globalTimerPills');
+    var globalTimerInterval = null;
+    var globalTimerRemaining = 0;
+    var globalTimerDuration = 0;
+    var globalTimerFading = false;
+    var globalTimerGain = null; // master gain for sleep sounds
+    var FADE_DURATION = 120; // 2 minutes in seconds
+
+    // Restore last-used timer from localStorage
+    var savedTimer = parseInt(localStorage.getItem('sukoon_sleep_timer') || '0', 10);
+    if (savedTimer > 0) {
+        var savedPill = globalTimerPills.querySelector('[data-minutes="' + savedTimer + '"]');
+        if (savedPill) {
+            globalTimerPills.querySelectorAll('.sleep-timer-pill').forEach(function(p) { p.classList.remove('active'); });
+            savedPill.classList.add('active');
+            globalTimerStatus.textContent = savedTimer + ' min (tap a story to start)';
+        }
+    }
+
+    function fmtGlobalTimer(s) {
+        var m = Math.floor(s / 60);
+        var sec = s % 60;
+        return m + ':' + String(sec).padStart(2, '0');
+    }
+
+    function startGlobalTimer(mins) {
+        clearGlobalTimer();
+        if (mins === 0) {
+            globalTimerStatus.textContent = 'No timer set';
+            globalTimerStatus.classList.remove('active-timer');
+            return;
+        }
+        globalTimerDuration = mins * 60;
+        globalTimerRemaining = globalTimerDuration;
+        globalTimerFading = false;
+        globalTimerStatus.textContent = fmtGlobalTimer(globalTimerRemaining);
+        globalTimerStatus.classList.add('active-timer');
+
+        globalTimerInterval = setInterval(function() {
+            globalTimerRemaining--;
+            globalTimerStatus.textContent = fmtGlobalTimer(globalTimerRemaining);
+
+            // Start fade at (duration - 2 minutes)
+            if (globalTimerRemaining <= FADE_DURATION && globalTimerRemaining > 0 && !globalTimerFading) {
+                globalTimerFading = true;
+            }
+
+            if (globalTimerFading && globalTimerRemaining > 0) {
+                var fadeProgress = globalTimerRemaining / FADE_DURATION; // 1.0 -> 0.0
+                // Fade sleep sounds gain
+                if (sleepSoundsGain && sleepSoundsCtx) {
+                    sleepSoundsGain.gain.linearRampToValueAtTime(Math.max(fadeProgress * 0.35, 0), sleepSoundsCtx.currentTime + 0.5);
+                }
+                // Fade reader ambient gain
+                if (ambientGain && audioCtx) {
+                    ambientGain.gain.linearRampToValueAtTime(Math.max(fadeProgress * 0.25, 0), audioCtx.currentTime + 0.5);
+                }
+                // Fade TTS volume
+                if (ttsEnabled && ttsCurrentUtterance) {
+                    ttsCurrentUtterance.volume = Math.max(fadeProgress, 0);
+                }
+            }
+
+            if (globalTimerRemaining <= 0) {
+                // Timer complete: stop everything, show Sleep Well
+                clearGlobalTimer();
+                stopAllAudio();
+                showSleepWell();
+            }
+        }, 1000);
+    }
+
+    function clearGlobalTimer() {
+        if (globalTimerInterval) { clearInterval(globalTimerInterval); globalTimerInterval = null; }
+        globalTimerRemaining = 0;
+        globalTimerFading = false;
+    }
+
+    function stopAllAudio() {
+        // Stop sleep sounds
+        stopSleepSound();
+        // Stop reader ambient
+        stopAmbient();
+        // Stop TTS
+        ttsStop();
+        // Close reader if open
+        if (overlay.classList.contains('open')) {
+            _origCloseReader();
+        }
+    }
+
+    function showSleepWell() {
+        var sw = document.getElementById('sleepWellMsg');
+        sw.style.display = 'flex';
+        requestAnimationFrame(function() { sw.classList.add('show'); });
+        globalTimerStatus.textContent = 'Sleep well';
+        globalTimerStatus.classList.remove('active-timer');
+        // Auto-hide after 5 seconds
+        setTimeout(function() {
+            sw.classList.remove('show');
+            setTimeout(function() { sw.style.display = 'none'; }, 1000);
+            globalTimerStatus.textContent = 'No timer set';
+        }, 5000);
+    }
+
+    globalTimerPills.addEventListener('click', function(e) {
+        var pill = e.target.closest('.sleep-timer-pill');
+        if (!pill) return;
+        var mins = parseInt(pill.dataset.minutes, 10);
+        globalTimerPills.querySelectorAll('.sleep-timer-pill').forEach(function(p) { p.classList.remove('active'); });
+        pill.classList.add('active');
+        localStorage.setItem('sukoon_sleep_timer', String(mins));
+        startGlobalTimer(mins);
+    });
+
+    /* ============================================================
+       FEATURE 2: SLEEP SOUNDS (Web Audio API generated noise)
+       ============================================================ */
+    var sleepSoundsCtx = null;
+    var sleepSoundsGain = null;
+    var sleepSoundsSource = null;
+    var sleepSoundsNodes = []; // hold extra nodes for complex mixes
+    var currentSleepSound = null;
+
+    function initSleepSoundsCtx() {
+        if (!sleepSoundsCtx) {
+            sleepSoundsCtx = new (window.AudioContext || window.webkitAudioContext)();
+            sleepSoundsGain = sleepSoundsCtx.createGain();
+            sleepSoundsGain.gain.setValueAtTime(0.35, sleepSoundsCtx.currentTime);
+            sleepSoundsGain.connect(sleepSoundsCtx.destination);
+        }
+        if (sleepSoundsCtx.state === 'suspended') sleepSoundsCtx.resume();
+    }
+
+    function createWhiteNoiseBuffer(ctx, duration) {
+        var sampleRate = ctx.sampleRate;
+        var length = sampleRate * duration;
+        var buffer = ctx.createBuffer(2, length, sampleRate);
+        for (var ch = 0; ch < 2; ch++) {
+            var data = buffer.getChannelData(ch);
+            for (var i = 0; i < length; i++) {
+                data[i] = Math.random() * 2 - 1;
+            }
+        }
+        return buffer;
+    }
+
+    function createPinkNoiseBuffer(ctx, duration) {
+        var sampleRate = ctx.sampleRate;
+        var length = sampleRate * duration;
+        var buffer = ctx.createBuffer(2, length, sampleRate);
+        for (var ch = 0; ch < 2; ch++) {
+            var data = buffer.getChannelData(ch);
+            var b0 = 0, b1 = 0, b2 = 0, b3 = 0, b4 = 0, b5 = 0, b6 = 0;
+            for (var i = 0; i < length; i++) {
+                var white = Math.random() * 2 - 1;
+                b0 = 0.99886 * b0 + white * 0.0555179;
+                b1 = 0.99332 * b1 + white * 0.0750759;
+                b2 = 0.96900 * b2 + white * 0.1538520;
+                b3 = 0.86650 * b3 + white * 0.3104856;
+                b4 = 0.55000 * b4 + white * 0.5329522;
+                b5 = -0.7616 * b5 - white * 0.0168980;
+                data[i] = (b0 + b1 + b2 + b3 + b4 + b5 + b6 + white * 0.5362) * 0.11;
+                b6 = white * 0.115926;
+            }
+        }
+        return buffer;
+    }
+
+    function playSleepSound(soundId) {
+        initSleepSoundsCtx();
+        stopSleepSound();
+        currentSleepSound = soundId;
+
+        var ctx = sleepSoundsCtx;
+        var masterGain = sleepSoundsGain;
+        masterGain.gain.setValueAtTime(0.35, ctx.currentTime);
+
+        if (soundId === 'white-noise') {
+            // White + pink noise blend
+            var whiteBuffer = createWhiteNoiseBuffer(ctx, 4);
+            var pinkBuffer = createPinkNoiseBuffer(ctx, 4);
+
+            var whiteSrc = ctx.createBufferSource();
+            whiteSrc.buffer = whiteBuffer;
+            whiteSrc.loop = true;
+            var whiteGain = ctx.createGain();
+            whiteGain.gain.setValueAtTime(0.3, ctx.currentTime);
+            whiteSrc.connect(whiteGain);
+            whiteGain.connect(masterGain);
+            whiteSrc.start(0);
+
+            var pinkSrc = ctx.createBufferSource();
+            pinkSrc.buffer = pinkBuffer;
+            pinkSrc.loop = true;
+            var pinkGain = ctx.createGain();
+            pinkGain.gain.setValueAtTime(0.5, ctx.currentTime);
+            pinkSrc.connect(pinkGain);
+            pinkGain.connect(masterGain);
+            pinkSrc.start(0);
+
+            sleepSoundsNodes = [whiteSrc, pinkSrc, whiteGain, pinkGain];
+
+        } else if (soundId === 'deep-rain') {
+            // Filtered noise for rain + low rumble for thunder
+            var rainBuffer = createWhiteNoiseBuffer(ctx, 4);
+            var rainSrc = ctx.createBufferSource();
+            rainSrc.buffer = rainBuffer;
+            rainSrc.loop = true;
+
+            // Bandpass filter for rain sound
+            var rainFilter = ctx.createBiquadFilter();
+            rainFilter.type = 'bandpass';
+            rainFilter.frequency.setValueAtTime(800, ctx.currentTime);
+            rainFilter.Q.setValueAtTime(0.5, ctx.currentTime);
+
+            var rainGain = ctx.createGain();
+            rainGain.gain.setValueAtTime(0.6, ctx.currentTime);
+            rainSrc.connect(rainFilter);
+            rainFilter.connect(rainGain);
+            rainGain.connect(masterGain);
+            rainSrc.start(0);
+
+            // Low rumble for distant thunder
+            var thunderBuffer = createPinkNoiseBuffer(ctx, 4);
+            var thunderSrc = ctx.createBufferSource();
+            thunderSrc.buffer = thunderBuffer;
+            thunderSrc.loop = true;
+            var thunderFilter = ctx.createBiquadFilter();
+            thunderFilter.type = 'lowpass';
+            thunderFilter.frequency.setValueAtTime(120, ctx.currentTime);
+            var thunderGain = ctx.createGain();
+            thunderGain.gain.setValueAtTime(0.25, ctx.currentTime);
+            thunderSrc.connect(thunderFilter);
+            thunderFilter.connect(thunderGain);
+            thunderGain.connect(masterGain);
+            thunderSrc.start(0);
+
+            sleepSoundsNodes = [rainSrc, thunderSrc, rainFilter, thunderFilter, rainGain, thunderGain];
+
+        } else if (soundId === 'ocean-drift') {
+            // Filtered noise with slow modulation for waves
+            var oceanBuffer = createPinkNoiseBuffer(ctx, 6);
+            var oceanSrc = ctx.createBufferSource();
+            oceanSrc.buffer = oceanBuffer;
+            oceanSrc.loop = true;
+
+            var oceanFilter = ctx.createBiquadFilter();
+            oceanFilter.type = 'lowpass';
+            oceanFilter.frequency.setValueAtTime(500, ctx.currentTime);
+            oceanFilter.Q.setValueAtTime(1, ctx.currentTime);
+
+            // LFO to modulate filter frequency for wave effect
+            var lfo = ctx.createOscillator();
+            lfo.type = 'sine';
+            lfo.frequency.setValueAtTime(0.08, ctx.currentTime); // slow wave
+            var lfoGain = ctx.createGain();
+            lfoGain.gain.setValueAtTime(300, ctx.currentTime);
+            lfo.connect(lfoGain);
+            lfoGain.connect(oceanFilter.frequency);
+            lfo.start(0);
+
+            // Volume modulation for wave swell
+            var volLfo = ctx.createOscillator();
+            volLfo.type = 'sine';
+            volLfo.frequency.setValueAtTime(0.08, ctx.currentTime);
+            var volLfoGain = ctx.createGain();
+            volLfoGain.gain.setValueAtTime(0.15, ctx.currentTime);
+            volLfo.connect(volLfoGain);
+
+            var oceanGain = ctx.createGain();
+            oceanGain.gain.setValueAtTime(0.5, ctx.currentTime);
+            volLfoGain.connect(oceanGain.gain);
+
+            oceanSrc.connect(oceanFilter);
+            oceanFilter.connect(oceanGain);
+            oceanGain.connect(masterGain);
+            volLfo.start(0);
+
+            // Wind layer
+            var windBuffer = createWhiteNoiseBuffer(ctx, 4);
+            var windSrc = ctx.createBufferSource();
+            windSrc.buffer = windBuffer;
+            windSrc.loop = true;
+            var windFilter = ctx.createBiquadFilter();
+            windFilter.type = 'bandpass';
+            windFilter.frequency.setValueAtTime(400, ctx.currentTime);
+            windFilter.Q.setValueAtTime(2, ctx.currentTime);
+            var windGain = ctx.createGain();
+            windGain.gain.setValueAtTime(0.08, ctx.currentTime);
+            windSrc.connect(windFilter);
+            windFilter.connect(windGain);
+            windGain.connect(masterGain);
+            windSrc.start(0);
+
+            sleepSoundsNodes = [oceanSrc, lfo, volLfo, windSrc, oceanFilter, windFilter, lfoGain, volLfoGain, oceanGain, windGain];
+
+        } else if (soundId === 'forest-night') {
+            // High-pitched filtered noise for crickets + owl-like tone
+            var cricketBuffer = createWhiteNoiseBuffer(ctx, 4);
+            var cricketSrc = ctx.createBufferSource();
+            cricketSrc.buffer = cricketBuffer;
+            cricketSrc.loop = true;
+
+            var cricketFilter = ctx.createBiquadFilter();
+            cricketFilter.type = 'bandpass';
+            cricketFilter.frequency.setValueAtTime(4500, ctx.currentTime);
+            cricketFilter.Q.setValueAtTime(8, ctx.currentTime);
+
+            // Amplitude modulation for chirping effect
+            var chirpLfo = ctx.createOscillator();
+            chirpLfo.type = 'square';
+            chirpLfo.frequency.setValueAtTime(6, ctx.currentTime); // fast chirps
+            var chirpLfoGain = ctx.createGain();
+            chirpLfoGain.gain.setValueAtTime(0.12, ctx.currentTime);
+            chirpLfo.connect(chirpLfoGain);
+
+            var cricketGain = ctx.createGain();
+            cricketGain.gain.setValueAtTime(0.12, ctx.currentTime);
+            chirpLfoGain.connect(cricketGain.gain);
+            cricketSrc.connect(cricketFilter);
+            cricketFilter.connect(cricketGain);
+            cricketGain.connect(masterGain);
+            cricketSrc.start(0);
+            chirpLfo.start(0);
+
+            // Owl-like low tone
+            var owlOsc = ctx.createOscillator();
+            owlOsc.type = 'sine';
+            owlOsc.frequency.setValueAtTime(320, ctx.currentTime);
+            var owlGain = ctx.createGain();
+            owlGain.gain.setValueAtTime(0, ctx.currentTime);
+            owlOsc.connect(owlGain);
+            owlGain.connect(masterGain);
+            owlOsc.start(0);
+
+            // Schedule repeating owl hoots
+            function scheduleOwlHoot() {
+                if (currentSleepSound !== 'forest-night') return;
+                var now = sleepSoundsCtx.currentTime;
+                owlGain.gain.setValueAtTime(0, now);
+                owlGain.gain.linearRampToValueAtTime(0.06, now + 0.1);
+                owlGain.gain.linearRampToValueAtTime(0, now + 0.6);
+                owlGain.gain.setValueAtTime(0, now + 1.0);
+                owlGain.gain.linearRampToValueAtTime(0.05, now + 1.1);
+                owlGain.gain.linearRampToValueAtTime(0, now + 1.8);
+                setTimeout(scheduleOwlHoot, 6000 + Math.random() * 8000);
+            }
+            scheduleOwlHoot();
+
+            // Soft wind layer
+            var fWindBuffer = createPinkNoiseBuffer(ctx, 4);
+            var fWindSrc = ctx.createBufferSource();
+            fWindSrc.buffer = fWindBuffer;
+            fWindSrc.loop = true;
+            var fWindFilter = ctx.createBiquadFilter();
+            fWindFilter.type = 'lowpass';
+            fWindFilter.frequency.setValueAtTime(300, ctx.currentTime);
+            var fWindGain = ctx.createGain();
+            fWindGain.gain.setValueAtTime(0.1, ctx.currentTime);
+            fWindSrc.connect(fWindFilter);
+            fWindFilter.connect(fWindGain);
+            fWindGain.connect(masterGain);
+            fWindSrc.start(0);
+
+            sleepSoundsNodes = [cricketSrc, chirpLfo, owlOsc, fWindSrc, cricketFilter, fWindFilter, chirpLfoGain, cricketGain, owlGain, fWindGain];
+        }
+
+        // Update UI
+        document.querySelectorAll('.sleep-sound-card').forEach(function(c) { c.classList.remove('playing'); });
+        var activeCard = document.querySelector('.sleep-sound-card[data-sound="' + soundId + '"]');
+        if (activeCard) {
+            activeCard.classList.add('playing');
+            activeCard.querySelector('.sleep-sound-tag').textContent = 'Playing';
+        }
+
+        // If global timer was previously set but not started, start it now
+        var selectedMins = parseInt(localStorage.getItem('sukoon_sleep_timer') || '0', 10);
+        if (selectedMins > 0 && !globalTimerInterval) {
+            startGlobalTimer(selectedMins);
+        }
+    }
+
+    function stopSleepSound() {
+        sleepSoundsNodes.forEach(function(node) {
+            try { node.stop(); } catch(e) {}
+            try { node.disconnect(); } catch(e) {}
+        });
+        sleepSoundsNodes = [];
+        currentSleepSound = null;
+
+        document.querySelectorAll('.sleep-sound-card').forEach(function(c) {
+            c.classList.remove('playing');
+            c.querySelector('.sleep-sound-tag').textContent = 'Tap to play';
+        });
+    }
+
+    document.getElementById('sleepSoundsGrid').addEventListener('click', function(e) {
+        var card = e.target.closest('.sleep-sound-card');
+        if (!card) return;
+        var soundId = card.dataset.sound;
+        if (currentSleepSound === soundId) {
+            stopSleepSound();
+        } else {
+            playSleepSound(soundId);
+        }
+    });
+
+    /* ============================================================
+       FEATURE 3: WIND-DOWN ROUTINE
+       3-step bedtime routine: Gratitude -> Body Scan -> Sleep Story
+       ============================================================ */
+    var winddownOverlay = document.getElementById('winddownOverlay');
+    var winddownClose = document.getElementById('winddownClose');
+    var wdStepLabel = document.getElementById('wdStepLabel');
+    var wdStepTitle = document.getElementById('wdStepTitle');
+    var wdStepText = document.getElementById('wdStepText');
+    var wdProgressFill = document.getElementById('wdProgressFill');
+    var wdDots = [document.getElementById('wdDot1'), document.getElementById('wdDot2'), document.getElementById('wdDot3')];
+    var winddownActive = false;
+    var winddownStepTimer = null;
+    var winddownProgressTimer = null;
+
+    var winddownSteps = [
+        {
+            label: 'Step 1 of 3',
+            title: 'Gratitude',
+            text: 'Think of three things you are grateful for today. The first thing that brought you joy... the second... and the third. Hold each one in your heart for a moment.',
+            durationSec: 120 // 2 minutes
+        },
+        {
+            label: 'Step 2 of 3',
+            title: 'Body Scan',
+            text: 'Start with your feet. Release any tension... move to your calves... your thighs... your hips... your stomach... your chest... your shoulders... your arms... your hands... your neck... your face... your whole body is heavy and warm.',
+            durationSec: 180 // 3 minutes
+        },
+        {
+            label: 'Step 3 of 3',
+            title: 'Sleep Story',
+            text: 'Now settle in as a gentle story carries you to sleep...',
+            durationSec: 5 // brief transition
+        }
+    ];
+
+    function playChimeTone() {
+        // 528 Hz bell chime using Web Audio API
+        initSleepSoundsCtx();
+        var ctx = sleepSoundsCtx;
+        var osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(528, ctx.currentTime);
+        var chimeGain = ctx.createGain();
+        chimeGain.gain.setValueAtTime(0.2, ctx.currentTime);
+        chimeGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 2);
+        osc.connect(chimeGain);
+        chimeGain.connect(ctx.destination);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 2);
+    }
+
+    function winddownTTSSpeak(text, onDone) {
+        if (!('speechSynthesis' in window)) {
+            if (onDone) onDone();
+            return;
+        }
+        window.speechSynthesis.cancel();
+        var sentences = text.match(/[^.!?]+[.!?]+[\s]*/g) || [text];
+        var queue = sentences.map(function(s) { return s.trim(); }).filter(function(s) { return s.length > 0; });
+        var speakNext = function() {
+            if (queue.length === 0 || !winddownActive) {
+                if (onDone) onDone();
+                return;
+            }
+            var utt = new SpeechSynthesisUtterance(queue.shift());
+            utt.rate = 0.75;
+            utt.pitch = 0.88;
+            utt.volume = 1.0;
+            var voice = ttsPickVoice();
+            if (voice) utt.voice = voice;
+            utt.onend = speakNext;
+            utt.onerror = speakNext;
+            window.speechSynthesis.speak(utt);
+        };
+        speakNext();
+    }
+
+    function runWinddownStep(stepIndex) {
+        if (stepIndex >= winddownSteps.length) {
+            // All steps done, transition to first sleep story
+            closeWinddown();
+            var firstStoryKey = Object.keys(stories)[0];
+            var firstStory = stories[firstStoryKey];
+            if (firstStory) {
+                setTimeout(function() {
+                    openReader(firstStory.title, firstStory.genre, firstStory.paragraphs);
+                }, 600);
+            }
+            return;
+        }
+
+        var step = winddownSteps[stepIndex];
+
+        // Update dots
+        wdDots.forEach(function(dot, i) {
+            dot.classList.remove('active', 'done');
+            if (i < stepIndex) dot.classList.add('done');
+            if (i === stepIndex) dot.classList.add('active');
+        });
+
+        wdStepLabel.textContent = step.label;
+        wdStepTitle.textContent = step.title;
+        wdStepText.textContent = step.text;
+        wdProgressFill.style.transition = 'none';
+        wdProgressFill.style.width = '0%';
+
+        // Animate progress bar over duration
+        requestAnimationFrame(function() {
+            requestAnimationFrame(function() {
+                wdProgressFill.style.transition = 'width ' + step.durationSec + 's linear';
+                wdProgressFill.style.width = '100%';
+            });
+        });
+
+        // Play chime at step start (except first step)
+        if (stepIndex > 0) {
+            playChimeTone();
+        }
+
+        // Start TTS for this step (steps 1 and 2 only)
+        if (stepIndex < 2) {
+            setTimeout(function() {
+                if (winddownActive) {
+                    winddownTTSSpeak(step.text);
+                }
+            }, 500);
+        }
+
+        // Auto-advance after duration
+        winddownStepTimer = setTimeout(function() {
+            if (winddownActive) {
+                runWinddownStep(stepIndex + 1);
+            }
+        }, step.durationSec * 1000);
+    }
+
+    function startWinddown() {
+        winddownActive = true;
+        winddownOverlay.style.display = 'flex';
+        requestAnimationFrame(function() { winddownOverlay.classList.add('open'); });
+        document.body.style.overflow = 'hidden';
+        runWinddownStep(0);
+    }
+
+    function closeWinddown() {
+        winddownActive = false;
+        winddownOverlay.classList.remove('open');
+        setTimeout(function() { winddownOverlay.style.display = 'none'; }, 500);
+        document.body.style.overflow = '';
+        if (winddownStepTimer) { clearTimeout(winddownStepTimer); winddownStepTimer = null; }
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+    }
+
+    document.getElementById('winddownRoutineCard').addEventListener('click', startWinddown);
+    winddownClose.addEventListener('click', function() {
+        closeWinddown();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && winddownOverlay.classList.contains('open')) closeWinddown();
+    });
+
 })();
 </script>
 <script src="/js/i18n.js"></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="/js/shell.js"></script>
 </body>
 </html>

@@ -5,10 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Sukoon - Your Daily Wellness Companion</title>
     <meta name="description" content="Sukoon: free breathing exercises, meditation, ambient sounds, mood journal, AI friend & wisdom quotes. No account. No tracking. Just peace.">
-    <meta name="theme-color" content="#FAFAF7">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Sukoon - Your Daily Wellness Companion">
+    <meta property="og:description" content="Sukoon: free breathing exercises, meditation, ambient sounds, mood journal, AI friend & wisdom quotes. No account. No tracking. Just peace.">
+    <meta property="og:url" content="https://sukoon.cloud/">
+    <meta property="og:image" content="https://sukoon.cloud/icons/icon-512.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Sukoon - Your Daily Wellness Companion">
+    <meta name="twitter:description" content="Sukoon: free breathing exercises, meditation, ambient sounds, mood journal, AI friend & wisdom quotes. No account. No tracking. Just peace.">
+    <link rel="preconnect" href="https://openrouter.ai">
     <link rel="stylesheet" href="/css/shell.css">
     <style>
         .hindi {
@@ -332,13 +343,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(198, 139, 89, 0.12);
+            background: rgba(45, 106, 79, 0.12);
         }
 
         .rec-time-icon svg {
             width: 18px;
             height: 18px;
-            color: #C68B59;
+            color: #2D6A4F;
         }
 
         .rec-title {
@@ -493,11 +504,11 @@
         }
 
         .streak-icon {
-            background: rgba(198, 139, 89, 0.12);
+            background: rgba(45, 106, 79, 0.12);
         }
 
         .streak-icon svg {
-            color: #C68B59;
+            color: #2D6A4F;
         }
 
         .sessions-icon {
@@ -651,6 +662,7 @@
     </style>
 </head>
 <body>
+    <script>if(!localStorage.getItem('sukoon_onboarded'))window.location.replace('/onboarding.html');</script>
 
     <!-- ==================== TOP HEADER ==================== -->
     <header class="top-header">
@@ -877,8 +889,8 @@
                     <div class="explore-card-desc">Guided programs for growth and healing</div>
                 </a>
                 <a href="/wisdom.html" class="explore-card" data-feature="wisdom">
-                    <div class="explore-card-icon" style="background: rgba(198, 139, 89, 0.12);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#C68B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="explore-card-icon" style="background: rgba(45, 106, 79, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5"/>
                             <path d="M2 12l10 5 10-5"/>
@@ -898,8 +910,8 @@
                     <div class="explore-card-desc">Daily inspiration in English and Hindi</div>
                 </a>
                 <a href="/videos.html" class="explore-card" data-feature="videos">
-                    <div class="explore-card-icon" style="background: rgba(198, 139, 89, 0.12);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#C68B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="explore-card-icon" style="background: rgba(45, 106, 79, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="5 3 19 12 5 21 5 3"/>
                         </svg>
                     </div>
@@ -918,8 +930,8 @@
                     <div class="explore-card-desc">Pomodoro timer with calming sounds</div>
                 </a>
                 <a href="/friend.html" class="explore-card" data-feature="friend">
-                    <div class="explore-card-icon" style="background: rgba(198, 139, 89, 0.12);">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#C68B59" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <div class="explore-card-icon" style="background: rgba(45, 106, 79, 0.12);">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                             <path d="M8 10h.01"/>
                             <path d="M12 10h.01"/>
@@ -935,7 +947,7 @@
     </main>
 
     <!-- ==================== BOTTOM NAV ==================== -->
-    <nav class="bottom-nav" id="bottomNav">
+    <nav class="bottom-nav" id="bottomNav" aria-label="Main navigation" role="navigation">
         <div class="sidebar-brand" style="display:none;">Sukoon</div>
         <a href="/" class="nav-item active">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -974,6 +986,7 @@
     </nav>
 
     <!-- ==================== JAVASCRIPT ==================== -->
+    <script src="/js/sukoon-engine.js"></script>
     <script>
     (function() {
         'use strict';
@@ -1040,7 +1053,8 @@
             greetHi = '\u0936\u093e\u0902\u0924\u093f \u0915\u094b \u0905\u092a\u0928\u093e\u090f\u0901';
         }
 
-        document.getElementById('greetingText').textContent = greetEn;
+        var userName = localStorage.getItem('sukoon_user_name');
+        document.getElementById('greetingText').textContent = userName ? greetEn + ', ' + userName : greetEn;
         document.getElementById('greetingSub').textContent = subEn;
         document.getElementById('greetingHindi').textContent = greetHi;
 
@@ -1104,7 +1118,7 @@
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>',
                 cards: [
                     { title: 'Focus Timer', desc: 'Pomodoro with ambient sounds', link: '/focus.html', color: '#2D6A4F', bg: '#D8F3DC' },
-                    { title: 'Calming Sounds', desc: 'Rain, forest, ocean & more', link: '/sounds.html', color: '#C68B59', bg: 'rgba(198,139,89,0.12)' }
+                    { title: 'Calming Sounds', desc: 'Rain, forest, ocean & more', link: '/sounds.html', color: '#2D6A4F', bg: 'rgba(45,106,79,0.12)' }
                 ]
             },
             evening: {
@@ -1112,7 +1126,7 @@
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>',
                 cards: [
                     { title: 'Sleep Sounds', desc: 'Drift off with gentle melodies', link: '/sleep.html', color: '#2D6A4F', bg: '#D8F3DC' },
-                    { title: 'Evening Journal', desc: 'Reflect on your day', link: '/journal.html', color: '#C68B59', bg: 'rgba(198,139,89,0.12)' }
+                    { title: 'Evening Journal', desc: 'Reflect on your day', link: '/journal.html', color: '#2D6A4F', bg: 'rgba(45,106,79,0.12)' }
                 ]
             },
             night: {
@@ -1120,7 +1134,7 @@
                 icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/><path d="M14 5l1 2"/><path d="M18 8l2 1"/></svg>',
                 cards: [
                     { title: 'Sleep Stories', desc: 'Gentle tales for restful sleep', link: '/sleep.html', color: '#2D6A4F', bg: '#D8F3DC' },
-                    { title: 'Night Sounds', desc: 'Crickets, rain & soft ambience', link: '/sounds.html', color: '#C68B59', bg: 'rgba(198,139,89,0.12)' }
+                    { title: 'Night Sounds', desc: 'Crickets, rain & soft ambience', link: '/sounds.html', color: '#2D6A4F', bg: 'rgba(45,106,79,0.12)' }
                 ]
             }
         };
@@ -1252,5 +1266,7 @@
     })();
     </script>
 
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="/js/shell.js"></script>
 </body>
 </html>

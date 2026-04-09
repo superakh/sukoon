@@ -5,9 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meditate - Sukoon</title>
     <meta name="description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
+    <meta name="theme-color" content="#2D6A4F">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Meditate - Sukoon">
+    <meta property="og:description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
+    <meta property="og:url" content="https://sukoon.cloud/meditate.html">
+    <meta property="og:image" content="https://sukoon.cloud/icons/icon-512.svg">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Meditate - Sukoon">
+    <meta name="twitter:description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
     <link rel="stylesheet" href="/css/shell.css">
     <style>
         /* ===================== BROWSE VIEW ===================== */
@@ -162,41 +173,146 @@
         }
         .complete-btn:hover { background: #245A42; }
 
+        /* ===================== WHY THIS WORKS LESSON OVERLAY ===================== */
+        .lesson-overlay {
+            position: fixed; inset: 0; z-index: 3000;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
+            padding: 20px; opacity: 0; transition: opacity 0.35s ease;
+        }
+        .lesson-overlay.visible { opacity: 1; }
+        .lesson-card {
+            background: var(--color-surface); border: 1px solid var(--color-divider);
+            border-radius: var(--radius-lg); padding: 32px 28px 24px; max-width: 400px; width: 100%;
+            text-align: center; box-shadow: var(--shadow-lg); position: relative;
+        }
+        .lesson-badge {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--color-accent-bg); color: var(--color-accent); border: 1px solid var(--color-accent-border);
+            border-radius: 100px; padding: 5px 14px; font-size: 0.7rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;
+        }
+        .lesson-badge svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+        .lesson-text {
+            color: var(--color-text); font-size: 0.92rem; line-height: 1.7; margin-bottom: 24px;
+            font-weight: 400;
+        }
+        .lesson-actions { display: flex; flex-direction: column; gap: 10px; }
+        .lesson-btn-start {
+            padding: 14px 24px; border-radius: var(--radius-md);
+            background: var(--color-accent); color: #fff; border: none;
+            font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: var(--font-body);
+            transition: background 0.15s;
+        }
+        .lesson-btn-start:hover { background: #245A42; }
+        .lesson-btn-listen {
+            padding: 10px 24px; border-radius: var(--radius-md);
+            background: transparent; color: var(--color-accent); border: 1px solid var(--color-accent-border);
+            font-size: 0.8rem; font-weight: 500; cursor: pointer; font-family: var(--font-body);
+            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+            transition: all 0.15s;
+        }
+        .lesson-btn-listen:hover { background: var(--color-accent-bg); }
+        .lesson-btn-listen svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
+        .lesson-timer-bar {
+            position: absolute; bottom: 0; left: 0; height: 3px; background: var(--color-accent);
+            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+            transition: width 1s linear;
+        }
+
+        /* ===================== ON THE GO ACTIVE SESSION CARDS ===================== */
+        .active-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
+        .active-card {
+            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
+            padding: 20px 16px; text-align: center; cursor: pointer; transition: all 0.2s ease;
+        }
+        .active-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-accent-border); }
+        .active-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
+        .active-title { font-weight: 600; font-size: 0.88rem; color: var(--color-text); margin-bottom: 2px; }
+        .active-dur { font-size: 0.72rem; color: var(--color-accent); font-weight: 500; margin-bottom: 6px; }
+        .active-desc { font-size: 0.75rem; color: var(--color-text-sec); line-height: 1.4; }
+
+        /* ===================== ACTIVE SESSION PLAYER OVERLAY ===================== */
+        .active-player-overlay {
+            position: fixed; inset: 0; z-index: 3000;
+            display: none; flex-direction: column; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #1a3a2a 0%, #0d1f17 100%);
+            color: #fff; padding: 20px; text-align: center;
+        }
+        .active-player-overlay.active { display: flex; }
+        .active-player-icon { font-size: 2.4rem; margin-bottom: 12px; }
+        .active-player-title { font-family: var(--font-brand); font-size: 1.4rem; margin-bottom: 6px; }
+        .active-player-dur { font-size: 0.8rem; opacity: 0.6; margin-bottom: 28px; }
+        .active-player-script {
+            font-size: 1rem; line-height: 1.8; max-width: 440px; font-weight: 300;
+            opacity: 0.9; margin-bottom: 32px; min-height: 80px;
+        }
+        /* Breathing animation circle */
+        .breath-circle-wrap { position: relative; width: 120px; height: 120px; margin: 0 auto 28px; }
+        .breath-circle {
+            width: 120px; height: 120px; border-radius: 50%;
+            background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.2);
+            animation: breathPulse 6s ease-in-out infinite;
+        }
+        .breath-circle-label {
+            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5;
+        }
+        @keyframes breathPulse {
+            0%, 100% { transform: scale(0.8); opacity: 0.4; }
+            50% { transform: scale(1.15); opacity: 0.9; }
+        }
+        .active-player-close {
+            position: fixed; top: 16px; left: 16px; z-index: 10;
+            background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
+            color: rgba(255,255,255,0.8); cursor: pointer; backdrop-filter: blur(10px);
+        }
+        .active-player-close:hover { background: rgba(255,255,255,0.2); }
+        .active-player-stop {
+            padding: 12px 32px; border-radius: var(--radius-md);
+            background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.15);
+            font-size: 0.85rem; font-weight: 500; cursor: pointer; font-family: var(--font-body);
+            backdrop-filter: blur(10px); transition: background 0.15s;
+        }
+        .active-player-stop:hover { background: rgba(255,255,255,0.2); }
+
         @media(max-width:400px){
             .emotion-grid { grid-template-columns: repeat(2, 1fr); }
             .ring-wrap { width: 180px; height: 180px; }
             .ring-min { font-size: 2.4rem; }
+            .active-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
 
 <!-- TOPBAR -->
-<header class="topbar">
-    <a href="/" class="topbar-brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
+<header class="top-header">
+    <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
 </header>
 
 <!-- NAV -->
-<nav class="bottom-nav">
-    <a href="/">
-        <svg viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg>
+<nav class="bottom-nav" aria-label="Main navigation" role="navigation">
+    <a href="/" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
         <span>Home</span>
     </a>
-    <a href="/meditate.html" class="active">
-        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 1.5"/></svg>
-        <span>Meditate</span>
+    <a href="/explore.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
+        <span>Explore</span>
     </a>
-    <a href="/sleep.html">
-        <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-        <span>Sleep</span>
+    <a href="/breathe.html" class="nav-item active">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
+        <span>Breathe</span>
     </a>
-    <a href="/friend.html">
-        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+    <a href="/friend.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
         <span>AI Friend</span>
     </a>
-    <a href="/progress.html">
-        <svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-        <span>Progress</span>
+    <a href="/you.html" class="nav-item">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+        <span>You</span>
     </a>
 </nav>
 
@@ -250,6 +366,7 @@
         <button class="cat-tab" data-cat="loving-kindness">Loving-Kindness</button>
         <button class="cat-tab" data-cat="visualization">Visualization</button>
         <button class="cat-tab" data-cat="mindful">Mindful Minutes</button>
+        <button class="cat-tab" data-cat="on-the-go">On the Go</button>
     </div>
 
     <!-- Session list -->
@@ -304,6 +421,22 @@
     <div class="complete-stat" id="compDuration"></div>
     <div class="complete-stat" id="compSession"></div>
     <button class="complete-btn" id="compDone">Continue</button>
+</div>
+
+<!-- ==================== ACTIVE SESSION PLAYER ==================== -->
+<div class="active-player-overlay" id="activePlayerOverlay">
+    <button class="active-player-close" id="activePlayerClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="active-player-icon" id="activePlayerIcon"></div>
+    <div class="active-player-title" id="activePlayerTitle"></div>
+    <div class="active-player-dur" id="activePlayerDur"></div>
+    <div class="breath-circle-wrap">
+        <div class="breath-circle"></div>
+        <div class="breath-circle-label">breathe</div>
+    </div>
+    <div class="active-player-script" id="activePlayerScript"></div>
+    <button class="active-player-stop" id="activePlayerStop">End Session</button>
 </div>
 
 <script>
@@ -610,6 +743,66 @@ var SESSIONS = [
 ];
 
 /* ================================================================
+   WHY THIS WORKS — MICRO-LESSONS
+   ================================================================ */
+var LESSONS = {
+    breathing: "Slow, rhythmic breathing activates your vagus nerve, shifting your nervous system from fight-or-flight to rest-and-digest. Even 3 minutes can lower cortisol by up to 20%.",
+    bodyscan: "Body scan meditation strengthens the connection between your mind and body. Research shows it reduces chronic pain perception by 57% and improves sleep quality within 2 weeks.",
+    lovingkindness: "Loving-kindness practice activates brain regions associated with empathy and emotional regulation. A 7-week study showed it increased positive emotions by 30% and reduced self-criticism.",
+    visualization: "Guided visualization engages the same neural pathways as real experience. Athletes have used this for decades \u2014 your brain literally cannot tell the difference between vivid imagination and reality.",
+    mindful: "Mindfulness meditation increases gray matter density in brain regions responsible for self-awareness and compassion. Just 8 weeks of practice produces measurable structural brain changes.",
+    focus: "Focus meditation strengthens your prefrontal cortex \u2014 the brain's attention center. Studies show it can improve sustained attention by 16% after just 4 days of practice.",
+    sleep: "Progressive relaxation for sleep works by systematically releasing muscle tension your body holds unconsciously. This triggers melatonin production and lowers your core body temperature, both signals for sleep."
+};
+
+/* Category key to lesson key mapping */
+var CAT_TO_LESSON = {
+    'breathing': 'breathing',
+    'body-scan': 'bodyscan',
+    'loving-kindness': 'lovingkindness',
+    'visualization': 'visualization',
+    'mindful': 'mindful'
+};
+
+/* ================================================================
+   ON THE GO — ACTIVE MEDITATION SESSIONS
+   ================================================================ */
+var ACTIVE_SESSIONS = [
+    {
+        id: 'walk',
+        title: 'Walking Meditation',
+        duration: '5 min',
+        desc: 'Mindful steps. No mat needed.',
+        icon: '\uD83D\uDEB6',
+        script: 'As you walk, bring your attention to each step. Feel your foot lifting... moving forward... placing down. There is nowhere to rush to. Each step is the destination.'
+    },
+    {
+        id: 'commute',
+        title: 'Commute Calm',
+        duration: '3 min',
+        desc: 'Turn transit time into peace.',
+        icon: '\uD83D\uDE8C',
+        script: 'Close your eyes if safe, or soften your gaze. Feel the vibration of movement beneath you. Let the sounds around you become a river of noise \u2014 you are the riverbank, steady and still.'
+    },
+    {
+        id: 'cook',
+        title: 'Mindful Cooking',
+        duration: '5 min',
+        desc: 'Kitchen as meditation hall.',
+        icon: '\uD83C\uDF73',
+        script: 'As you prepare food, slow down. Notice the colors and textures. Feel the weight of each ingredient. Hear the sounds. Cooking is an act of love \u2014 let yourself be fully here for it.'
+    },
+    {
+        id: 'reset',
+        title: 'Work Break Reset',
+        duration: '3 min',
+        desc: 'Refresh between tasks.',
+        icon: '\u2615',
+        script: 'Push your chair back slightly. Plant your feet flat. Take three deep breaths. With each exhale, release one thing from the last hour. You are creating space for what comes next.'
+    }
+];
+
+/* ================================================================
    STATE
    ================================================================ */
 var state = {
@@ -727,6 +920,97 @@ var tts = {
 tts.init();
 
 /* ================================================================
+   "WHY THIS WORKS" LESSON OVERLAY
+   ================================================================ */
+function showLesson(category, callback){
+    var lessonKey = CAT_TO_LESSON[category] || category;
+    var text = LESSONS[lessonKey];
+    if(!text){ if(callback) callback(); return; }
+
+    // Create overlay
+    var overlay = document.createElement('div');
+    overlay.className = 'lesson-overlay';
+    overlay.innerHTML =
+        '<div class="lesson-card">' +
+            '<div class="lesson-badge">' +
+                '<svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg>' +
+                'Why This Works' +
+            '</div>' +
+            '<div class="lesson-text">' + text + '</div>' +
+            '<div class="lesson-actions">' +
+                '<button class="lesson-btn-start">Start Practice</button>' +
+                '<button class="lesson-btn-listen">' +
+                    '<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>' +
+                    'Read Aloud' +
+                '</button>' +
+            '</div>' +
+            '<div class="lesson-timer-bar" style="width:100%"></div>' +
+        '</div>';
+
+    document.body.appendChild(overlay);
+
+    // Force reflow then animate in
+    overlay.offsetHeight;
+    overlay.classList.add('visible');
+
+    var dismissed = false;
+    var autoTimer = null;
+    var countdownTimer = null;
+    var remaining = 15;
+
+    var timerBar = overlay.querySelector('.lesson-timer-bar');
+
+    function dismiss(){
+        if(dismissed) return;
+        dismissed = true;
+        if(autoTimer) clearTimeout(autoTimer);
+        if(countdownTimer) clearInterval(countdownTimer);
+        // Stop any lesson TTS
+        if(window.speechSynthesis) window.speechSynthesis.cancel();
+        overlay.classList.remove('visible');
+        setTimeout(function(){ try{ document.body.removeChild(overlay); }catch(e){} }, 350);
+        if(callback) callback();
+    }
+
+    // Start countdown bar
+    timerBar.style.width = '100%';
+    setTimeout(function(){ timerBar.style.transition = 'width 15s linear'; timerBar.style.width = '0%'; }, 50);
+
+    // Auto-dismiss after 15 seconds
+    autoTimer = setTimeout(dismiss, 15000);
+
+    // Start Practice button
+    overlay.querySelector('.lesson-btn-start').addEventListener('click', dismiss);
+
+    // Read Aloud button
+    overlay.querySelector('.lesson-btn-listen').addEventListener('click', function(){
+        var btn = this;
+        if(window.speechSynthesis){
+            window.speechSynthesis.cancel();
+            var u = new SpeechSynthesisUtterance(text);
+            if(tts.voice) u.voice = tts.voice;
+            u.rate = 0.88;
+            u.pitch = 0.95;
+            u.volume = 0.85;
+            btn.innerHTML =
+                '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>' +
+                'Speaking...';
+            u.onend = function(){
+                btn.innerHTML =
+                    '<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>' +
+                    'Read Aloud';
+            };
+            window.speechSynthesis.speak(u);
+        }
+    });
+
+    // Clicking outside the card dismisses
+    overlay.addEventListener('click', function(e){
+        if(e.target === overlay) dismiss();
+    });
+}
+
+/* ================================================================
    BROWSE VIEW — Render sessions
    ================================================================ */
 var sessionGrid = document.getElementById('sessionGrid');
@@ -734,8 +1018,28 @@ var catTabs = document.getElementById('catTabs');
 var currentCat = 'all';
 
 function renderSessions(cat){
-    var filtered = cat === 'all' ? SESSIONS : SESSIONS.filter(function(s){ return s.cat === cat; });
     sessionGrid.innerHTML = '';
+
+    // Handle "On the Go" tab separately
+    if(cat === 'on-the-go'){
+        var grid = document.createElement('div');
+        grid.className = 'active-grid';
+        ACTIVE_SESSIONS.forEach(function(s){
+            var card = document.createElement('div');
+            card.className = 'active-card';
+            card.innerHTML =
+                '<span class="active-icon">' + s.icon + '</span>' +
+                '<div class="active-title">' + s.title + '</div>' +
+                '<div class="active-dur">' + s.duration + '</div>' +
+                '<div class="active-desc">' + s.desc + '</div>';
+            card.addEventListener('click', function(){ openActiveSession(s); });
+            grid.appendChild(card);
+        });
+        sessionGrid.appendChild(grid);
+        return;
+    }
+
+    var filtered = cat === 'all' ? SESSIONS : SESSIONS.filter(function(s){ return s.cat === cat; });
     if(!filtered.length){ sessionGrid.innerHTML = '<div class="empty-cat">No sessions in this category yet.</div>'; return; }
     filtered.forEach(function(s){
         var card = document.createElement('div');
@@ -748,7 +1052,7 @@ function renderSessions(cat){
                 '<div class="sess-desc">'+s.desc+'</div>'+
             '</div>'+
             '<div class="sess-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>';
-        card.addEventListener('click', function(){ openSession(s); });
+        card.addEventListener('click', function(){ openSessionWithLesson(s); });
         sessionGrid.appendChild(card);
     });
 }
@@ -769,11 +1073,11 @@ document.getElementById('emotionGrid').addEventListener('click', function(e){
     var emotion = card.dataset.emotion;
     if(emotion === 'surprise'){
         var idx = Math.floor(Math.random() * SESSIONS.length);
-        openSession(SESSIONS[idx]);
+        openSessionWithLesson(SESSIONS[idx]);
         return;
     }
     var matches = SESSIONS.filter(function(s){ return s.emotion && s.emotion.indexOf(emotion) !== -1; });
-    if(matches.length){ openSession(matches[Math.floor(Math.random() * matches.length)]); }
+    if(matches.length){ openSessionWithLesson(matches[Math.floor(Math.random() * matches.length)]); }
 });
 
 renderSessions('all');
@@ -790,6 +1094,62 @@ var promptText = document.getElementById('promptText');
 var btnPlay = document.getElementById('btnPlay');
 var iconPlay = document.getElementById('iconPlay');
 var CIRC = 2 * Math.PI * 100; // 628.3
+
+/* Show the lesson overlay THEN open the session player */
+function openSessionWithLesson(session){
+    showLesson(session.cat, function(){
+        openSession(session);
+    });
+}
+
+/* Open an active/on-the-go session: lesson first, then simple TTS overlay */
+function openActiveSession(activeSession){
+    showLesson('mindful', function(){
+        var overlay = document.getElementById('activePlayerOverlay');
+        var scriptEl = document.getElementById('activePlayerScript');
+        document.getElementById('activePlayerIcon').textContent = activeSession.icon;
+        document.getElementById('activePlayerTitle').textContent = activeSession.title;
+        document.getElementById('activePlayerDur').textContent = activeSession.duration;
+        scriptEl.textContent = activeSession.script;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+
+        // Start TTS narration of the script
+        if(window.speechSynthesis && tts.voice){
+            window.speechSynthesis.cancel();
+            var u = new SpeechSynthesisUtterance(activeSession.script);
+            u.voice = tts.voice;
+            u.rate = 0.82;
+            u.pitch = 0.95;
+            u.volume = 0.85;
+            u.onend = function(){
+                // Log completion
+                try{
+                    var log = JSON.parse(localStorage.getItem('sukoon_activity_log')||'[]');
+                    log.unshift({ type:'active-meditation', text: activeSession.title+' ('+activeSession.duration+')', minutes: parseInt(activeSession.duration)||3, timestamp: new Date().toISOString() });
+                    if(log.length>200) log=log.slice(0,200);
+                    localStorage.setItem('sukoon_activity_log', JSON.stringify(log));
+                    var stats = JSON.parse(localStorage.getItem('sukoon_progress_stats')||'{}');
+                    stats.totalMinutes = (stats.totalMinutes||0) + (parseInt(activeSession.duration)||3);
+                    stats.totalSessions = (stats.totalSessions||0) + 1;
+                    if(!stats.typeCounts) stats.typeCounts={};
+                    stats.typeCounts.meditation = (stats.typeCounts.meditation||0)+1;
+                    localStorage.setItem('sukoon_progress_stats', JSON.stringify(stats));
+                }catch(e){}
+                if(window.sukoon) sukoon.track('active-meditation', parseInt(activeSession.duration)||3, activeSession.title);
+            };
+            window.speechSynthesis.speak(u);
+        }
+    });
+}
+
+function closeActivePlayer(){
+    if(window.speechSynthesis) window.speechSynthesis.cancel();
+    document.getElementById('activePlayerOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+document.getElementById('activePlayerClose').addEventListener('click', closeActivePlayer);
+document.getElementById('activePlayerStop').addEventListener('click', closeActivePlayer);
 
 function openSession(session){
     state.currentSession = session;
@@ -984,5 +1344,7 @@ document.getElementById('btnSound').addEventListener('click', function(){
 })();
 </script>
     <script src="/js/sukoon-engine.js"></script>
+    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
+    <script src="/js/shell.js"></script>
 </body>
 </html>
