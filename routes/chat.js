@@ -71,15 +71,13 @@ const PROVIDERS = [
     })
   },
   {
-    name: 'OpenRouter',
-    url: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'anthropic/claude-haiku-4.5',
-    keyEnv: 'OPENROUTER_API_KEY',
+    name: 'Gemini',
+    url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',
+    model: 'gemini-2.0-flash',
+    keyEnv: 'GEMINI_API_KEY',
     headers: (key) => ({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${key}`,
-      'HTTP-Referer': 'https://sukoon.cloud',
-      'X-Title': 'Sukoon - AI Friend'
+      'Authorization': `Bearer ${key}`
     })
   }
 ];
