@@ -405,9 +405,12 @@
         var starterPills = document.getElementById('starterPills');
 
         // -- Language --
-        document.getElementById('langPicker').addEventListener('change', function(e) {
-            lang = e.target.value;
-        });
+        var langPicker = document.getElementById('langPicker');
+        if (langPicker) {
+            langPicker.addEventListener('change', function(e) {
+                lang = e.target.value;
+            });
+        }
 
         // -- Starter Pills --
         starterPills.addEventListener('click', function(e) {

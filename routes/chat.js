@@ -79,6 +79,16 @@ const PROVIDERS = [
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${key}`
     })
+  },
+  {
+    name: 'OpenRouter',
+    url: 'https://openrouter.ai/api/v1/chat/completions',
+    model: 'meta-llama/llama-3.3-70b-instruct:free',
+    keyEnv: 'OPENROUTER_API_KEY',
+    headers: (key) => ({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${key}`
+    })
   }
 ];
 
@@ -120,7 +130,7 @@ router.post('/', async (req, res) => {
     const hasAnyKey = PROVIDERS.some(p => process.env[p.keyEnv]);
     if (!hasAnyKey) {
       return res.status(500).json({
-        error: 'AI Friend is not configured yet. Please set GROQ_API_KEY or GEMINI_API_KEY in the .env file.'
+        error: 'AI Friend is not configured yet. Please set GROQ_API_KEY, GEMINI_API_KEY, or OPENROUTER_API_KEY in the .env file.'
       });
     }
 
@@ -131,7 +141,7 @@ router.post('/', async (req, res) => {
     const systemContent = SYSTEM_PROMPT + langInstruction;
     const userMessages = messages.map(m => ({ role: m.role, content: m.content }));
 
-    // Try providers in order (Groq first, Gemini fallback)
+    // Try providers in order (Groq → Gemini → OpenRouter)
     for (const provider of PROVIDERS) {
       try {
         const reply = await callProvider(provider, systemContent, userMessages);
