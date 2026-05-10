@@ -21,9 +21,16 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', name: 'Sukoon', version: '1.0.0' });
 });
 
-// SPA fallback - serve index.html for any unknown route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+// 404 for unknown API routes (don't return HTML to API callers)
+app.use('/api', (req, res) => {
+  res.status(404).json({ error: 'Not found' });
+});
+
+// 404 for unknown HTML routes (prevents SEO duplicate-content penalty)
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(__dirname, 'public', '404.html'), (err) => {
+    if (err) res.status(404).send('Not Found');
+  });
 });
 
 app.listen(PORT, () => {

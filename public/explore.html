@@ -1278,13 +1278,13 @@
         /* ====== LANGUAGE PICKER ====== */
         var langPicker = document.getElementById('langPicker');
         try {
-            var savedLang = localStorage.getItem('sukoon_lang');
+            var savedLang = localStorage.getItem('sukoon-lang');
             if (savedLang) langPicker.value = savedLang;
         } catch(e) {}
 
         langPicker.addEventListener('change', function() {
             try {
-                localStorage.setItem('sukoon_lang', this.value);
+                localStorage.setItem('sukoon-lang', this.value);
             } catch(e) {}
         });
 

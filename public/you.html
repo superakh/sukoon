@@ -1490,12 +1490,12 @@
            ================================================================ */
 
         var settingsLang = document.getElementById('settingsLang');
-        var currentLang = localStorage.getItem('sukoon_lang') || 'en';
+        var currentLang = localStorage.getItem('sukoon-lang') || 'en';
 
         settingsLang.value = currentLang;
 
         function setLang(lang) {
-            localStorage.setItem('sukoon_lang', lang);
+            localStorage.setItem('sukoon-lang', lang);
             settingsLang.value = lang;
 
             try {

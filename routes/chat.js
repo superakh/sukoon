@@ -96,27 +96,36 @@ async function callProvider(provider, systemContent, userMessages) {
   const key = process.env[provider.keyEnv];
   if (!key) return null;
 
-  const response = await fetch(provider.url, {
-    method: 'POST',
-    headers: provider.headers(key),
-    body: JSON.stringify({
-      model: provider.model,
-      max_tokens: 1024,
-      messages: [
-        { role: 'system', content: systemContent },
-        ...userMessages
-      ]
-    })
-  });
+  // Bound upstream latency so a hung provider doesn't pin a request open
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 15000);
 
-  if (!response.ok) {
-    const errBody = await response.text();
-    console.error(`${provider.name} error:`, response.status, errBody);
-    return null;
+  try {
+    const response = await fetch(provider.url, {
+      method: 'POST',
+      headers: provider.headers(key),
+      body: JSON.stringify({
+        model: provider.model,
+        max_tokens: 1024,
+        messages: [
+          { role: 'system', content: systemContent },
+          ...userMessages
+        ]
+      }),
+      signal: controller.signal
+    });
+
+    if (!response.ok) {
+      const errBody = await response.text();
+      console.error(`${provider.name} error:`, response.status, errBody);
+      return null;
+    }
+
+    const data = await response.json();
+    return data.choices?.[0]?.message?.content || null;
+  } finally {
+    clearTimeout(timeout);
   }
-
-  const data = await response.json();
-  return data.choices?.[0]?.message?.content || null;
 }
 
 router.post('/', async (req, res) => {
@@ -127,6 +136,25 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'Messages are required.' });
     }
 
+    // Cap conversation history to prevent runaway costs/token bombs
+    const MAX_MESSAGES = 30;
+    const MAX_CONTENT_LEN = 4000;
+    const trimmed = messages.slice(-MAX_MESSAGES);
+
+    // Sanitize: only accept user/assistant roles from the client.
+    // System role is server-authored only — clients cannot inject system turns.
+    const ALLOWED_ROLES = new Set(['user', 'assistant']);
+    const userMessages = trimmed
+      .filter(m => m && typeof m === 'object' && ALLOWED_ROLES.has(m.role) && typeof m.content === 'string')
+      .map(m => ({
+        role: m.role,
+        content: m.content.slice(0, MAX_CONTENT_LEN)
+      }));
+
+    if (userMessages.length === 0) {
+      return res.status(400).json({ error: 'No valid messages.' });
+    }
+
     const hasAnyKey = PROVIDERS.some(p => process.env[p.keyEnv]);
     if (!hasAnyKey) {
       return res.status(500).json({
@@ -134,12 +162,14 @@ router.post('/', async (req, res) => {
       });
     }
 
-    const langInstruction = language && language !== 'en'
-      ? `\n\nIMPORTANT: The user prefers ${language}. Respond primarily in that language, with warmth and cultural sensitivity.`
+    // Whitelist languages — never trust client-supplied free-form strings into the system prompt
+    const ALLOWED_LANGS = new Set(['en', 'hi', 'ur', 'ar', 'es', 'fr', 'pa', 'bn', 'ta', 'te', 'mr']);
+    const safeLang = ALLOWED_LANGS.has(language) ? language : 'en';
+    const langInstruction = safeLang && safeLang !== 'en'
+      ? `\n\nIMPORTANT: The user prefers ${safeLang}. Respond primarily in that language, with warmth and cultural sensitivity.`
       : '';
 
     const systemContent = SYSTEM_PROMPT + langInstruction;
-    const userMessages = messages.map(m => ({ role: m.role, content: m.content }));
 
     // Try providers in order (Groq → Gemini → OpenRouter)
     for (const provider of PROVIDERS) {

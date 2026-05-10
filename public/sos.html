@@ -39,6 +39,12 @@
             display: flex; align-items: center; gap: 12px; padding: 14px 16px;
             background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-md);
             margin-bottom: 8px;
+            text-decoration: none; color: inherit;
+            transition: background 0.15s ease, transform 0.15s ease;
+        }
+        a.crisis-card:hover, a.crisis-card:focus {
+            background: rgba(239,68,68,0.04);
+            transform: translateY(-1px);
         }
         .crisis-card .cc-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(239,68,68,0.08); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #EF4444; }
         .crisis-card .cc-icon svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
@@ -157,18 +163,18 @@
 
     <div class="crisis-section">
         <div class="crisis-title">Crisis Support Lines</div>
-        <div class="crisis-card">
+        <a class="crisis-card" href="tel:18602662345" aria-label="Call Vandrevala Foundation crisis line">
             <div class="cc-icon"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.08 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.13.81.37 1.6.65 2.36a2 2 0 01-.45 2.11L8.09 11.41a16 16 0 006.5 6.5l2.22-2.22a2 2 0 012.11-.45c.76.28 1.55.52 2.36.65a2 2 0 011.72 2.01z"/></svg></div>
             <div class="cc-info"><div class="cc-name">Vandrevala Foundation</div><div class="cc-num">1860-2662-345</div></div>
-        </div>
-        <div class="crisis-card">
+        </a>
+        <a class="crisis-card" href="tel:9152987821" aria-label="Call iCall TISS helpline">
             <div class="cc-icon"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.08 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.13.81.37 1.6.65 2.36a2 2 0 01-.45 2.11L8.09 11.41a16 16 0 006.5 6.5l2.22-2.22a2 2 0 012.11-.45c.76.28 1.55.52 2.36.65a2 2 0 011.72 2.01z"/></svg></div>
             <div class="cc-info"><div class="cc-name">iCall (TISS)</div><div class="cc-num">9152987821</div></div>
-        </div>
-        <div class="crisis-card">
+        </a>
+        <a class="crisis-card" href="tel:988" aria-label="Call 988 Suicide and Crisis Lifeline">
             <div class="cc-icon"><svg viewBox="0 0 24 24" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2A19.86 19.86 0 013.08 5.18 2 2 0 015.11 3h3a2 2 0 012 1.72c.13.81.37 1.6.65 2.36a2 2 0 01-.45 2.11L8.09 11.41a16 16 0 006.5 6.5l2.22-2.22a2 2 0 012.11-.45c.76.28 1.55.52 2.36.65a2 2 0 011.72 2.01z"/></svg></div>
             <div class="cc-info"><div class="cc-name">988 Suicide & Crisis (US)</div><div class="cc-num">988</div></div>
-        </div>
+        </a>
     </div>
 </div>
 
