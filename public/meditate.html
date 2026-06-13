@@ -1,1777 +1,1614 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-tod="dawn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meditate - Sukoon</title>
-    <meta name="description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
-    <meta name="theme-color" content="#2D6A4F">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+    <title>Meditate — Begin where you are · Sukoon</title>
+    <meta name="description" content="A Headspace-style guided meditation hub. Begin where you are. Body scan, loving-kindness, grounding, breath. Free, private, no signup.">
+    <meta name="theme-color" content="#0F1B3D">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sukoon">
-    <meta property="og:url" content="https://sukoon.cloud/meditate.html">
-    <meta property="og:title" content="Free Guided Meditation — Body Scan, Loving-Kindness, Visualization · Sukoon">
-    <meta property="og:description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
-    <meta property="og:image" content="https://sukoon.cloud/og/meditate.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="669">
-    <meta property="og:image:alt" content="Peaceful old-growth forest with golden morning light">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Guided Meditation — Body Scan, Loving-Kindness, Visualization · Sukoon">
-    <meta name="twitter:description" content="Guided meditations with voice narration. Body scan, loving-kindness, visualization, breathing. Free, private, no account needed.">
-    <meta name="twitter:image" content="https://sukoon.cloud/og/meditate.jpg">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
     <link rel="stylesheet" href="/css/shell.css">
+
     <style>
-        /* ===================== BROWSE VIEW ===================== */
-        .browse-view { padding: calc(var(--topbar-h) + 16px) 16px 80px; max-width: 720px; margin: 0 auto; }
-        @media(min-width:961px){ .browse-view { margin-left: var(--sidebar-w); } }
+    /* ============================================================
+       SUKOON DESIGN TOKENS (page-scoped, self-contained)
+       ============================================================ */
+    :root {
+        /* Sanctum base */
+        --sk-night:        #0F1B3D;
+        --sk-twilight:     #1A2547;
+        --sk-aubergine:    #2B1F4A;
+        --sk-dusk:         #6B3E5E;
 
-        .page-intro { text-align: center; margin-bottom: 28px; }
-        .page-intro h1 { font-family: var(--font-brand); font-size: 1.6rem; margin-bottom: 4px; }
-        .page-intro p { color: var(--color-text-sec); font-size: 0.88rem; }
+        /* Brand accents */
+        --sk-saffron:      #E8A552;
+        --sk-marigold:     #D87A4A;
+        --sk-haldi:        #E8C547;
 
-        /* Emotion cards */
-        .emotion-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
-        .emotion-card {
-            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
-            padding: 18px 10px; text-align: center; cursor: pointer;
-            transition: all 0.2s ease; position: relative; overflow: hidden;
-        }
-        .emotion-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-accent-border); }
-        .emotion-card .em-icon { font-size: 1.6rem; margin-bottom: 6px; display: block; }
-        .emotion-card .em-label { font-size: 0.78rem; font-weight: 500; color: var(--color-text); line-height: 1.3; }
-        .emotion-card .em-sub { font-size: 0.65rem; color: var(--color-text-tert); margin-top: 2px; }
+        /* Healing & compassion */
+        --sk-tulsi:        #6FA286;
+        --sk-rose:         #C77D7D;
+        --sk-coral:        #F08679;
 
-        /* Category tabs — use accent-tint active state aligned with Phase 1 tokens */
-        .cat-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; margin-bottom: 24px; }
-        .cat-tabs::-webkit-scrollbar { display: none; }
-        .cat-tab {
-            padding: 9px 18px; border-radius: var(--radius-pill);
-            border: 1px solid var(--color-divider);
-            background: var(--color-surface); color: var(--color-text-sec);
-            font-size: 0.82rem; font-weight: 500; font-family: var(--font-sans);
-            cursor: pointer; white-space: nowrap;
-            transition: background var(--motion-fast,180ms) var(--ease-out,ease),
-                        color var(--motion-fast,180ms) var(--ease-out,ease),
-                        border-color var(--motion-fast,180ms) var(--ease-out,ease);
-        }
-        .cat-tab:hover { border-color: var(--color-accent-border); color: var(--color-text); }
-        .cat-tab.active {
-            background: var(--color-accent-tint);
-            color: var(--color-accent-deep);
-            border-color: var(--color-accent-tint);
-        }
+        /* Cream & neutrals */
+        --sk-cream:        #F5EFE2;
+        --sk-cream-dim:    rgba(245, 239, 226, 0.72);
+        --sk-cream-quiet:  rgba(245, 239, 226, 0.45);
+        --sk-mist:         #7FA8A2;
+        --sk-ink:          #1A1530;
+        --sk-paper:        #FAF6EE;
 
-        /* Session cards — card.card-interactive pattern */
-        .session-grid { display: grid; gap: 12px; }
-        .session-card {
-            display: flex; align-items: center; gap: 14px;
-            padding: 16px;
-            background: var(--color-surface);
-            border: 1px solid var(--color-divider);
-            border-radius: var(--radius-lg);
-            box-shadow: var(--shadow-sm);
-            cursor: pointer; position: relative;
-            transition: transform var(--motion-base,220ms) var(--ease-out,ease),
-                        box-shadow var(--motion-base,220ms) var(--ease-out,ease),
-                        border-color var(--motion-base,220ms) var(--ease-out,ease);
-        }
-        .session-card:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-            border-color: var(--color-accent-border);
-        }
-        .sess-icon {
-            width: 52px; height: 52px;
-            border-radius: var(--radius-md);
-            flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.5rem;
-        }
-        .sess-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
-        .sess-title {
-            font-family: var(--font-brand);
-            font-weight: 500;
-            font-size: 1.1rem;
-            line-height: 1.25;
-            color: var(--color-text);
-            letter-spacing: var(--tracking-tight, -0.01em);
-        }
-        .sess-row {
-            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-            margin-top: 2px;
-        }
-        .sess-duration {
-            font-size: var(--text-caption, 0.72rem);
-            color: var(--color-text-tert);
-            font-variant-numeric: tabular-nums;
-            letter-spacing: 0.02em;
-        }
-        .sess-cat-badge {
-            display: inline-flex; align-items: center;
-            padding: 3px 10px;
-            border-radius: var(--radius-pill);
-            background: var(--color-bg-elev-2);
-            color: var(--color-text-muted, var(--color-text-tert));
-            font-size: var(--text-micro, 0.65rem);
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            line-height: 1.4;
-        }
-        .sess-desc {
-            font-size: 0.8rem;
-            color: var(--color-text-sec);
-            line-height: 1.45;
-            margin-top: 2px;
-        }
-        .sess-play {
-            width: 40px; height: 40px;
-            border-radius: 50%; flex-shrink: 0;
-            background: var(--color-accent-bg);
-            border: 1px solid var(--color-accent-border);
-            display: flex; align-items: center; justify-content: center;
-            color: var(--color-accent);
-            opacity: 0;
-            transform: translateX(-4px) scale(0.9);
-            transition: opacity var(--motion-base,220ms) var(--ease-out,ease),
-                        transform var(--motion-base,220ms) var(--ease-out,ease),
-                        background var(--motion-fast,180ms) var(--ease-out,ease);
-        }
-        .session-card:hover .sess-play,
-        .session-card:focus-visible .sess-play {
-            opacity: 1;
-            transform: translateX(0) scale(1);
-            background: var(--color-accent);
-            color: #fff;
-            border-color: var(--color-accent);
-        }
-        @media (max-width: 600px) {
-            /* On touch devices the reveal-on-hover never fires; show always */
-            .sess-play { opacity: 1; transform: none; }
-        }
+        /* Shadows & overlays */
+        --sk-shadow:       rgba(8, 12, 28, 0.55);
+        --sk-overlay-btm:  linear-gradient(180deg, rgba(15,27,61,0) 0%, rgba(15,27,61,0.72) 70%, rgba(15,27,61,0.92) 100%);
+        --sk-overlay-top:  linear-gradient(180deg, rgba(15,27,61,0.6) 0%, rgba(15,27,61,0) 60%);
 
-        /* Empty state — elegant */
-        .empty-cat {
-            text-align: center;
-            padding: 56px 24px;
-            background: var(--color-surface);
-            border: 1px dashed var(--color-divider);
-            border-radius: var(--radius-lg);
-        }
-        .empty-cat .empty-icon {
-            font-size: 2rem;
-            margin-bottom: 12px;
-            opacity: 0.6;
-        }
-        .empty-cat .empty-title {
-            font-family: var(--font-brand);
-            font-size: 1.15rem;
-            color: var(--color-text);
-            margin-bottom: 6px;
-        }
-        .empty-cat .empty-sub {
-            font-size: 0.85rem;
-            color: var(--color-text-sec);
-            margin-bottom: 18px;
-            line-height: 1.5;
-        }
-        .empty-cat .empty-cta {
-            display: inline-flex; align-items: center; justify-content: center;
-            gap: 6px;
-            padding: 10px 20px;
-            background: transparent;
-            color: var(--color-accent);
-            border: 1px solid var(--color-accent-border);
-            border-radius: var(--radius-pill);
-            font-family: var(--font-sans);
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background var(--motion-fast,180ms) var(--ease-out,ease),
-                        border-color var(--motion-fast,180ms) var(--ease-out,ease);
-        }
-        .empty-cat .empty-cta:hover {
-            background: var(--color-accent-bg);
-            border-color: var(--color-accent);
-        }
+        /* Typography */
+        --sk-font-serif:  'Fraunces', 'Tiro Devanagari Hindi', Georgia, serif;
+        --sk-font-sans:   'Inter Tight', 'Hind', system-ui, sans-serif;
+        --sk-font-hindi:  'Tiro Devanagari Hindi', 'Hind', serif;
 
-        /* ===================== PLAYER VIEW (immersive fullscreen) ===================== */
-        .player-view {
-            position: fixed; inset: 0; z-index: 2000;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            transition: opacity 0.5s ease;
-        }
-        .player-view.active { display: flex; }
-        .player-bg {
-            position: absolute; inset: 0; z-index: 0;
-            transition: background 1s ease;
-        }
-        .player-content { position: relative; z-index: 2; text-align: center; padding: 20px; width: 100%; max-width: 480px; }
+        --sk-h1:       clamp(40px, 6vw, 76px);
+        --sk-h2:       clamp(32px, 4vw, 52px);
+        --sk-h3:       clamp(22px, 2.4vw, 28px);
+        --sk-body:     18px;
+        --sk-small:    14px;
+        --sk-eyebrow:  11px;
 
-        /* Player header */
-        .player-back {
-            position: fixed; top: 16px; left: 16px; z-index: 10;
-            background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.8); cursor: pointer; backdrop-filter: blur(10px);
-        }
-        .player-back:hover { background: rgba(255,255,255,0.2); }
+        --sk-lead-en:  1.65;
+        --sk-lead-hi:  1.78;
+        --sk-track-eyebrow: 0.16em;
+        --sk-track-h1:      -0.022em;
 
-        /* Particles */
-        #particles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
-        .particle {
-            position: absolute; border-radius: 50%; opacity: 0;
-            animation: particleFloat linear infinite;
-        }
-        @keyframes particleFloat {
-            0% { opacity: 0; transform: translateY(0) scale(0.5); }
-            15% { opacity: var(--po, 0.4); }
-            85% { opacity: var(--po, 0.4); }
-            100% { opacity: 0; transform: translateY(calc(var(--dy, -200px))) scale(1.2); }
-        }
+        /* Single global breath clock — published from JS */
+        --sk-breath-phase: 0;
+    }
 
-        /* Progress ring */
-        .ring-wrap { position: relative; width: 220px; height: 220px; margin: 0 auto 24px; }
-        .ring-svg { width: 100%; height: 100%; transform: rotate(-90deg); }
-        .ring-bg { fill: none; stroke: rgba(255,255,255,0.1); stroke-width: 4; }
-        .ring-fg { fill: none; stroke: rgba(255,255,255,0.6); stroke-width: 4; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
-        .ring-time {
-            position: absolute; inset: 0; display: flex; flex-direction: column;
-            align-items: center; justify-content: center; color: #fff;
-        }
-        .ring-min { font-size: 3rem; font-weight: 200; line-height: 1; font-variant-numeric: tabular-nums; }
-        .ring-label { font-size: 0.75rem; opacity: 0.6; margin-top: 4px; text-transform: uppercase; letter-spacing: 1px; }
+    [data-tod="dawn"]  { --scene-top:#3A2E5C; --scene-mid:#B96D6D; --scene-bottom:#E8A552; }
+    [data-tod="day"]   { --scene-top:#7FA3C7; --scene-mid:#C8D8E8; --scene-bottom:#F5EFE2; }
+    [data-tod="dusk"]  { --scene-top:#2B1F4A; --scene-mid:#6B3E5E; --scene-bottom:#E8A552; }
+    [data-tod="night"] { --scene-top:#0F1B3D; --scene-mid:#2B1F4A; --scene-bottom:#3A2645; }
+    [data-tod="late"]  { --scene-top:#080F25; --scene-mid:#14193A; --scene-bottom:#1F1A33; }
 
-        /* Prompt text */
-        .prompt-text {
-            color: rgba(255,255,255,0.9); font-size: 1.15rem; line-height: 1.7;
-            min-height: 80px; margin-bottom: 20px; font-weight: 300;
-            transition: opacity 0.5s ease;
-        }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
 
-        /* Player controls */
-        .player-controls { display: flex; align-items: center; justify-content: center; gap: 16px; }
-        .ctrl-btn {
-            width: 56px; height: 56px; border-radius: 50%; border: none; cursor: pointer;
-            display: flex; align-items: center; justify-content: center;
-            transition: all 0.2s ease;
-        }
-        .ctrl-main { background: rgba(255,255,255,0.15); color: #fff; backdrop-filter: blur(10px); }
-        .ctrl-main:hover { background: rgba(255,255,255,0.25); }
-        .ctrl-sm {
-            width: 40px; height: 40px;
-            background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.7);
-        }
-        .ctrl-sm:hover { background: rgba(255,255,255,0.15); }
-        .ctrl-btn svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    body.page-meditate {
+        background: var(--sk-night);
+        color: var(--sk-cream);
+        font-family: var(--sk-font-sans);
+        font-size: var(--sk-body);
+        line-height: var(--sk-lead-en);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }
 
-        /* Ambient selector in player */
-        .amb-row { display: flex; gap: 8px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
-        .amb-pill {
-            padding: 6px 14px; border-radius: 100px; font-size: 0.72rem; font-weight: 500;
-            background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.6); border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer; transition: all 0.15s; font-family: var(--font-body);
-        }
-        .amb-pill:hover { background: rgba(255,255,255,0.15); }
-        .amb-pill.active { background: rgba(255,255,255,0.2); color: #fff; border-color: rgba(255,255,255,0.3); }
+    body[data-lang="hi"] {
+        font-family: var(--sk-font-hindi);
+        line-height: var(--sk-lead-hi);
+    }
 
-        /* Completion screen */
-        .complete-view {
-            position: fixed; inset: 0; z-index: 2001; display: none; flex-direction: column;
-            align-items: center; justify-content: center; text-align: center;
-            background: linear-gradient(135deg, #1a3a2a 0%, #0d1f17 100%); color: #fff; padding: 20px;
-        }
-        .complete-view.active { display: flex; }
-        .complete-icon { font-size: 3rem; margin-bottom: 16px; }
-        .complete-title { font-family: var(--font-brand); font-size: 1.6rem; margin-bottom: 8px; }
-        .complete-stat { font-size: 0.85rem; opacity: 0.7; margin-bottom: 4px; }
-        .complete-btn {
-            margin-top: 24px; padding: 14px 36px; border-radius: var(--radius-md);
-            background: var(--color-accent); color: #fff; border: none;
-            font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: var(--font-body);
-        }
-        .complete-btn:hover { background: #245A42; }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    img, video { display: block; max-width: 100%; }
 
-        /* ===================== WHY THIS WORKS LESSON OVERLAY ===================== */
-        .lesson-overlay {
-            position: fixed; inset: 0; z-index: 3000;
-            display: flex; align-items: center; justify-content: center;
-            background: rgba(0,0,0,0.65); backdrop-filter: blur(8px);
-            padding: 20px; opacity: 0; transition: opacity 0.35s ease;
-        }
-        .lesson-overlay.visible { opacity: 1; }
-        .lesson-card {
-            background: var(--color-surface); border: 1px solid var(--color-divider);
-            border-radius: var(--radius-lg); padding: 32px 28px 24px; max-width: 400px; width: 100%;
-            text-align: center; box-shadow: var(--shadow-lg); position: relative;
-        }
-        .lesson-badge {
-            display: inline-flex; align-items: center; gap: 6px;
-            background: var(--color-accent-bg); color: var(--color-accent); border: 1px solid var(--color-accent-border);
-            border-radius: 100px; padding: 5px 14px; font-size: 0.7rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;
-        }
-        .lesson-badge svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
-        .lesson-text {
-            color: var(--color-text); font-size: 0.92rem; line-height: 1.7; margin-bottom: 24px;
-            font-weight: 400;
-        }
-        .lesson-actions { display: flex; flex-direction: column; gap: 10px; }
-        .lesson-btn-start {
-            padding: 14px 24px; border-radius: var(--radius-md);
-            background: var(--color-accent); color: #fff; border: none;
-            font-size: 0.9rem; font-weight: 600; cursor: pointer; font-family: var(--font-body);
-            transition: background 0.15s;
-        }
-        .lesson-btn-start:hover { background: #245A42; }
-        .lesson-btn-listen {
-            padding: 10px 24px; border-radius: var(--radius-md);
-            background: transparent; color: var(--color-accent); border: 1px solid var(--color-accent-border);
-            font-size: 0.8rem; font-weight: 500; cursor: pointer; font-family: var(--font-body);
-            display: inline-flex; align-items: center; justify-content: center; gap: 6px;
-            transition: all 0.15s;
-        }
-        .lesson-btn-listen:hover { background: var(--color-accent-bg); }
-        .lesson-btn-listen svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; }
-        .lesson-timer-bar {
-            position: absolute; bottom: 0; left: 0; height: 3px; background: var(--color-accent);
-            border-radius: 0 0 var(--radius-lg) var(--radius-lg);
-            transition: width 1s linear;
-        }
+    .eyebrow {
+        font-family: var(--sk-font-sans);
+        font-size: var(--sk-eyebrow);
+        font-weight: 600;
+        letter-spacing: var(--sk-track-eyebrow);
+        text-transform: uppercase;
+        color: var(--sk-saffron);
+    }
 
-        /* ===================== ON THE GO ACTIVE SESSION CARDS ===================== */
-        .active-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; }
-        .active-card {
-            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
-            padding: 20px 16px; text-align: center; cursor: pointer; transition: all 0.2s ease;
-        }
-        .active-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); border-color: var(--color-accent-border); }
-        .active-icon { font-size: 1.8rem; margin-bottom: 8px; display: block; }
-        .active-title { font-weight: 600; font-size: 0.88rem; color: var(--color-text); margin-bottom: 2px; }
-        .active-dur { font-size: 0.72rem; color: var(--color-accent); font-weight: 500; margin-bottom: 6px; }
-        .active-desc { font-size: 0.75rem; color: var(--color-text-sec); line-height: 1.4; }
+    .serif {
+        font-family: var(--sk-font-serif);
+        font-weight: 300;
+        font-variation-settings: "opsz" 96;
+        letter-spacing: var(--sk-track-h1);
+    }
 
-        /* ===================== ACTIVE SESSION PLAYER OVERLAY ===================== */
-        .active-player-overlay {
-            position: fixed; inset: 0; z-index: 3000;
-            display: none; flex-direction: column; align-items: center; justify-content: center;
-            color: #fff; padding: 32px 20px 28px; text-align: center;
-            overflow: hidden;
-        }
-        /* Soft full-bleed background — calming radial wash on top of accent gradient */
-        .active-player-overlay::before {
-            content: '';
-            position: absolute; inset: 0; z-index: 0;
-            background:
-              radial-gradient(circle at 22% 18%, rgba(64,145,108,0.55) 0%, transparent 55%),
-              radial-gradient(circle at 78% 82%, rgba(27,67,50,0.65) 0%, transparent 60%),
-              linear-gradient(135deg, #1a3a2a 0%, #0d1f17 100%);
-        }
-        .active-player-overlay::after {
-            content: '';
-            position: absolute; inset: 0; z-index: 0;
-            background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.06), transparent 60%);
-            pointer-events: none;
-        }
-        .active-player-overlay > * { position: relative; z-index: 1; }
-        .active-player-overlay.active { display: flex; }
-        .active-player-icon { font-size: 2.4rem; margin-bottom: 14px; opacity: 0.95; }
-        .active-player-title {
-            font-family: var(--font-brand);
-            font-size: var(--text-display, clamp(2.4rem, 6vw, 4rem));
-            font-weight: 400;
-            line-height: 1.05;
-            letter-spacing: var(--tracking-tight, -0.02em);
-            margin-bottom: 8px;
-            max-width: 640px;
-        }
-        .active-player-dur {
-            font-size: var(--text-caption, 0.72rem);
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            opacity: 0.6;
-            margin-bottom: 32px;
-        }
-        .active-player-script {
-            font-size: 1.05rem; line-height: 1.8;
-            max-width: 480px; font-weight: 300;
-            opacity: 0.92; margin-bottom: 36px; min-height: 80px;
-        }
-        /* Breathing animation circle */
-        .breath-circle-wrap { position: relative; width: 120px; height: 120px; margin: 0 auto 32px; }
-        .breath-circle {
-            width: 120px; height: 120px; border-radius: 50%;
-            background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.22);
-            animation: breathPulse 6s ease-in-out infinite;
-        }
-        .breath-circle-label {
-            position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.55;
-        }
-        @keyframes breathPulse {
-            0%, 100% { transform: scale(0.8); opacity: 0.4; }
-            50% { transform: scale(1.15); opacity: 0.9; }
-        }
-        .active-player-close {
-            position: fixed; top: 16px; left: 16px; z-index: 10;
-            background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
-            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.85); cursor: pointer; backdrop-filter: blur(10px);
-            transition: background 0.15s;
-        }
-        .active-player-close:hover { background: rgba(255,255,255,0.22); }
+    /* ============================================================
+       TOP BAR — brand · language · crisis trigger
+       ============================================================ */
+    .sk-topbar {
+        position: fixed; top: 0; left: 0; right: 0;
+        z-index: 50;
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 18px 28px;
+        background: linear-gradient(180deg, rgba(15,27,61,0.65), rgba(15,27,61,0));
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
+    .sk-brand {
+        display: flex; align-items: center; gap: 10px;
+        color: var(--sk-cream);
+        font-family: var(--sk-font-serif);
+        font-size: 22px;
+        font-weight: 400;
+        letter-spacing: -0.01em;
+    }
+    .sk-brand-glyph {
+        width: 28px; height: 28px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 35% 35%, var(--sk-saffron), var(--sk-marigold) 70%, transparent 75%);
+        opacity: 0.95;
+    }
+    .sk-topbar-right { display: flex; align-items: center; gap: 12px; }
 
-        /* Bottom control row: back 10s · play/pause (large) · forward 10s · end */
-        .active-player-controls {
-            display: flex; align-items: center; justify-content: center;
-            gap: 18px; margin-bottom: 18px;
-        }
-        .ap-ctrl {
-            border: 1px solid rgba(255,255,255,0.16);
-            background: rgba(255,255,255,0.08);
-            color: rgba(255,255,255,0.85);
-            border-radius: 50%;
-            cursor: pointer;
-            display: inline-flex; align-items: center; justify-content: center;
-            backdrop-filter: blur(10px);
-            transition: background 0.15s, transform 0.15s;
-        }
-        .ap-ctrl:hover { background: rgba(255,255,255,0.18); }
-        .ap-ctrl:active { transform: scale(0.96); }
-        .ap-ctrl svg {
-            fill: none; stroke: currentColor; stroke-width: 2;
-            stroke-linecap: round; stroke-linejoin: round;
-        }
-        .ap-ctrl-sm { width: 46px; height: 46px; }
-        .ap-ctrl-sm svg { width: 18px; height: 18px; }
-        .ap-ctrl-main {
-            width: 76px; height: 76px;
-            background: rgba(255,255,255,0.16);
-            border-color: rgba(255,255,255,0.22);
-            color: #fff;
-        }
-        .ap-ctrl-main:hover { background: rgba(255,255,255,0.26); }
-        .ap-ctrl-main svg { width: 30px; height: 30px; }
-        .ap-skip-label {
-            position: absolute;
-            font-size: 0.55rem;
-            font-weight: 700;
-            letter-spacing: 0.04em;
-            pointer-events: none;
-        }
-        .ap-skip { position: relative; }
+    .lang-toggle {
+        display: inline-flex;
+        background: rgba(245, 239, 226, 0.08);
+        border: 1px solid rgba(245, 239, 226, 0.14);
+        border-radius: 999px;
+        padding: 3px;
+        gap: 2px;
+    }
+    .lang-toggle button {
+        background: transparent;
+        border: none;
+        color: var(--sk-cream-dim);
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        padding: 6px 14px;
+        border-radius: 999px;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+    .lang-toggle button.active {
+        background: var(--sk-cream);
+        color: var(--sk-night);
+    }
 
-        /* End session — pill ghost button on dark */
-        .active-player-stop {
-            padding: 10px 24px; border-radius: var(--radius-pill);
-            background: transparent; color: rgba(255,255,255,0.85);
-            border: 1px solid rgba(255,255,255,0.22);
-            font-size: 0.78rem; font-weight: 600; cursor: pointer;
-            font-family: var(--font-sans);
-            text-transform: uppercase; letter-spacing: 0.08em;
-            transition: background 0.15s, border-color 0.15s, color 0.15s;
-        }
-        .active-player-stop:hover {
-            background: rgba(255,255,255,0.1);
-            border-color: rgba(255,255,255,0.35);
-            color: #fff;
-        }
+    .crisis-trigger {
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 8px 16px 8px 12px;
+        border-radius: 999px;
+        background: rgba(240, 134, 121, 0.14);
+        border: 1px solid rgba(240, 134, 121, 0.32);
+        color: var(--sk-coral);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .crisis-trigger::before {
+        content: '';
+        width: 8px; height: 8px;
+        border-radius: 50%;
+        background: var(--sk-coral);
+        box-shadow: 0 0 0 0 rgba(240, 134, 121, 0.55);
+        animation: crisisPulse 2.4s ease-in-out infinite;
+    }
+    .crisis-trigger:hover { background: rgba(240, 134, 121, 0.22); transform: translateY(-1px); }
+    @keyframes crisisPulse {
+        0%, 100% { box-shadow: 0 0 0 0 rgba(240, 134, 121, 0.55); }
+        50%      { box-shadow: 0 0 0 6px rgba(240, 134, 121, 0); }
+    }
 
-        /* Ambient mixer mini-control */
-        .ap-ambient-row {
-            display: flex; align-items: center; justify-content: center;
-            gap: 6px; flex-wrap: wrap;
-            margin-top: 22px;
-            padding-top: 18px;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            max-width: 480px;
-        }
-        .ap-ambient-label {
-            font-size: 0.62rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            opacity: 0.45;
-            margin-right: 4px;
-        }
-        .ap-ambient-pill {
-            padding: 5px 12px;
-            border-radius: var(--radius-pill);
-            font-size: 0.7rem; font-weight: 500;
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.65);
-            border: 1px solid rgba(255,255,255,0.1);
-            cursor: pointer;
-            font-family: var(--font-sans);
-            transition: background 0.15s, color 0.15s, border-color 0.15s;
-        }
-        .ap-ambient-pill:hover { background: rgba(255,255,255,0.14); color: #fff; }
-        .ap-ambient-pill.active {
-            background: rgba(255,255,255,0.22);
-            color: #fff;
-            border-color: rgba(255,255,255,0.32);
-        }
+    /* ============================================================
+       MOOD STRIP — appears above hero
+       ============================================================ */
+    .mood-strip {
+        position: relative;
+        z-index: 5;
+        padding: 96px 28px 0;
+        max-width: 1240px;
+        margin: 0 auto;
+    }
+    .mood-strip-inner {
+        display: flex; align-items: center; gap: 18px;
+        flex-wrap: wrap;
+    }
+    .mood-label {
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-weight: 300;
+        font-size: 22px;
+        color: var(--sk-cream-dim);
+        letter-spacing: -0.01em;
+        margin: 0;
+    }
+    .mood-pills {
+        display: flex; gap: 8px; flex-wrap: wrap;
+    }
+    .mood-pill {
+        background: rgba(245, 239, 226, 0.06);
+        border: 1px solid rgba(245, 239, 226, 0.18);
+        color: var(--sk-cream-dim);
+        border-radius: 999px;
+        padding: 9px 18px;
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+        transition: background 0.5s ease, color 0.5s ease, border-color 0.5s ease, transform 0.5s ease;
+    }
+    .mood-pill:hover {
+        background: rgba(245, 239, 226, 0.1);
+        color: var(--sk-cream);
+        transform: translateY(-1px);
+    }
+    .mood-pill.active {
+        background: var(--sk-saffron);
+        border-color: var(--sk-saffron);
+        color: var(--sk-night);
+    }
 
-        @media(max-width:400px){
-            .emotion-grid { grid-template-columns: repeat(2, 1fr); }
-            .ring-wrap { width: 180px; height: 180px; }
-            .ring-min { font-size: 2.4rem; }
-            .active-grid { grid-template-columns: 1fr; }
+    /* ============================================================
+       HERO — dawn-hills video loop
+       ============================================================ */
+    .hero {
+        position: relative;
+        margin: 28px 28px 0;
+        border-radius: 28px;
+        overflow: hidden;
+        min-height: 560px;
+        display: flex; align-items: flex-end;
+        isolation: isolate;
+    }
+    .hero-video, .hero-fallback {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        object-fit: cover;
+        z-index: 0;
+    }
+    .hero-fallback {
+        background:
+            radial-gradient(ellipse at 50% 100%, var(--scene-bottom, var(--sk-saffron)) 0%, transparent 55%),
+            radial-gradient(ellipse at 30% 70%, var(--scene-mid, var(--sk-dusk)) 0%, transparent 65%),
+            linear-gradient(180deg, var(--scene-top, var(--sk-aubergine)) 0%, var(--scene-mid, var(--sk-dusk)) 55%, var(--scene-bottom, var(--sk-saffron)) 100%);
+    }
+    .hero-hills {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%;
+        z-index: 1;
+        pointer-events: none;
+    }
+    .hero-overlay {
+        position: absolute; inset: 0;
+        background: var(--sk-overlay-btm);
+        z-index: 2;
+    }
+    .hero-sun {
+        position: absolute;
+        left: 50%; top: 58%;
+        transform: translate(-50%, -50%);
+        width: 220px; height: 220px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 220, 170, 0.95) 0%, rgba(232, 165, 82, 0.55) 35%, transparent 70%);
+        z-index: 1;
+        filter: blur(2px);
+        opacity: calc(0.7 + var(--sk-breath-phase, 0) * 0.3);
+        transition: opacity 1.2s ease;
+    }
+    .hero-content {
+        position: relative;
+        z-index: 3;
+        padding: 56px 56px 48px;
+        max-width: 760px;
+        width: 100%;
+    }
+    .hero-eyebrow { margin-bottom: 18px; }
+    .hero h1 {
+        font-family: var(--sk-font-serif);
+        font-weight: 300;
+        font-variation-settings: "opsz" 96;
+        font-size: var(--sk-h1);
+        line-height: 1.02;
+        letter-spacing: var(--sk-track-h1);
+        margin: 0 0 14px;
+        color: var(--sk-cream);
+    }
+    .hero-sub {
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-weight: 300;
+        font-size: clamp(18px, 1.6vw, 22px);
+        color: var(--sk-cream-dim);
+        max-width: 520px;
+        margin: 0 0 32px;
+    }
+
+    /* Featured scene card */
+    .scene-card {
+        background: rgba(15, 27, 61, 0.5);
+        border: 1px solid rgba(245, 239, 226, 0.16);
+        border-radius: 20px;
+        padding: 22px;
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 22px;
+        max-width: 620px;
+        transition: transform 0.6s ease, background 0.6s ease, border-color 0.6s ease;
+        text-align: left;
+        color: var(--sk-cream);
+    }
+    .scene-card:hover {
+        background: rgba(15, 27, 61, 0.65);
+        border-color: rgba(232, 165, 82, 0.4);
+        transform: translateY(-2px);
+    }
+    .scene-card-orb {
+        width: 64px; height: 64px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, var(--sk-saffron), var(--sk-marigold) 70%);
+        box-shadow:
+            0 0 30px rgba(232, 165, 82, 0.35),
+            inset 0 0 18px rgba(255, 255, 255, 0.15);
+        transform: scale(calc(0.94 + var(--sk-breath-phase, 0) * 0.12));
+        transition: transform 1.2s cubic-bezier(0.4, 0, 0.4, 1);
+    }
+    .scene-card-meta { min-width: 0; }
+    .scene-card-eyebrow {
+        display: block;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--sk-saffron);
+        margin-bottom: 6px;
+    }
+    .scene-card-title {
+        display: block;
+        font-family: var(--sk-font-serif);
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 1.15;
+        letter-spacing: -0.01em;
+        color: var(--sk-cream);
+        margin: 0 0 4px;
+    }
+    .scene-card-detail {
+        display: block;
+        font-size: 13px;
+        color: var(--sk-cream-quiet);
+    }
+    .scene-card-play {
+        width: 56px; height: 56px;
+        border-radius: 50%;
+        background: var(--sk-saffron);
+        border: none;
+        color: var(--sk-night);
+        display: flex; align-items: center; justify-content: center;
+        transition: background 0.4s ease, transform 0.4s ease;
+        flex-shrink: 0;
+    }
+    .scene-card-play svg { width: 22px; height: 22px; margin-left: 3px; }
+
+    /* ============================================================
+       JOURNEY STRIP
+       ============================================================ */
+    .journey {
+        max-width: 1240px;
+        margin: 88px auto 0;
+        padding: 0 28px;
+    }
+    .journey-inner {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        align-items: center;
+        gap: 32px;
+        padding: 28px 32px;
+        background: linear-gradient(135deg, rgba(43, 31, 74, 0.55), rgba(26, 37, 71, 0.55));
+        border: 1px solid rgba(245, 239, 226, 0.1);
+        border-radius: 24px;
+    }
+    .journey-text .eyebrow { margin-bottom: 8px; }
+    .journey-title {
+        font-family: var(--sk-font-serif);
+        font-weight: 300;
+        font-variation-settings: "opsz" 96;
+        font-size: clamp(24px, 2.4vw, 32px);
+        line-height: 1.1;
+        margin: 0 0 6px;
+        color: var(--sk-cream);
+    }
+    .journey-sub {
+        font-size: 14px;
+        color: var(--sk-cream-quiet);
+        margin: 0;
+    }
+    .journey-track {
+        display: flex; align-items: flex-start;
+        gap: 0;
+    }
+    .journey-dot {
+        width: 14px; height: 14px;
+        border-radius: 50%;
+        background: rgba(245, 239, 226, 0.15);
+        border: 1px solid rgba(245, 239, 226, 0.22);
+        position: relative;
+        transition: background 0.6s ease, border-color 0.6s ease, transform 0.6s ease;
+    }
+    .journey-dot.lit {
+        background: var(--sk-saffron);
+        border-color: var(--sk-saffron);
+        box-shadow: 0 0 16px rgba(232, 165, 82, 0.4);
+    }
+    .journey-dot.current {
+        transform: scale(1.5);
+        background: var(--sk-marigold);
+        border-color: var(--sk-marigold);
+        box-shadow: 0 0 24px rgba(216, 122, 74, 0.6);
+    }
+    .journey-line {
+        height: 2px;
+        background: linear-gradient(90deg, rgba(245, 239, 226, 0.2), rgba(245, 239, 226, 0.1));
+        flex: 1;
+        min-width: 28px;
+        margin-top: 6px;
+    }
+    .journey-line.lit {
+        background: linear-gradient(90deg, var(--sk-saffron), rgba(232, 165, 82, 0.3));
+    }
+    .journey-label {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--sk-cream-quiet);
+        margin-top: 8px;
+        text-align: center;
+        min-width: 48px;
+        display: block;
+    }
+    .journey-pair { display: flex; flex-direction: column; align-items: center; }
+
+    /* ============================================================
+       LIBRARY — session grid
+       ============================================================ */
+    .library {
+        max-width: 1240px;
+        margin: 80px auto 0;
+        padding: 0 28px 140px;
+    }
+    .library-head {
+        display: flex; align-items: flex-end; justify-content: space-between;
+        margin-bottom: 36px;
+        gap: 24px;
+        flex-wrap: wrap;
+    }
+    .library-title {
+        font-family: var(--sk-font-serif);
+        font-weight: 300;
+        font-variation-settings: "opsz" 96;
+        font-size: var(--sk-h2);
+        line-height: 1.05;
+        letter-spacing: -0.018em;
+        margin: 6px 0 0;
+        color: var(--sk-cream);
+    }
+    .library-count {
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-weight: 300;
+        font-size: 18px;
+        color: var(--sk-cream-quiet);
+    }
+
+    .session-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 18px;
+    }
+
+    .session-card {
+        position: relative;
+        background: linear-gradient(160deg, rgba(43, 31, 74, 0.55), rgba(15, 27, 61, 0.55));
+        border: 1px solid rgba(245, 239, 226, 0.1);
+        border-radius: 22px;
+        padding: 26px 24px 22px;
+        cursor: pointer;
+        overflow: hidden;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.4, 1), border-color 0.6s ease, background 0.6s ease;
+        text-align: left;
+        color: var(--sk-cream);
+        min-height: 220px;
+        display: flex; flex-direction: column; gap: 16px;
+        font: inherit;
+    }
+    .session-card::before {
+        content: '';
+        position: absolute;
+        top: -40px; right: -40px;
+        width: 160px; height: 160px;
+        border-radius: 50%;
+        background: radial-gradient(circle at 30% 30%, var(--card-glow, var(--sk-saffron)) 0%, transparent 70%);
+        opacity: 0.18;
+        transition: opacity 0.6s ease, transform 0.8s ease;
+        pointer-events: none;
+    }
+    .session-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(245, 239, 226, 0.22);
+        background: linear-gradient(160deg, rgba(43, 31, 74, 0.7), rgba(15, 27, 61, 0.7));
+    }
+    .session-card:hover::before { opacity: 0.3; transform: scale(1.1); }
+    .session-card.is-hidden { display: none; }
+
+    .session-icon {
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        background: rgba(245, 239, 226, 0.08);
+        border: 1px solid rgba(245, 239, 226, 0.14);
+        font-size: 20px;
+        line-height: 1;
+    }
+    .session-card[data-mood="anxious"] .session-icon { background: rgba(232, 165, 82, 0.18); border-color: rgba(232, 165, 82, 0.35); color: var(--sk-saffron); }
+    .session-card[data-mood="sad"]     .session-icon { background: rgba(199, 125, 125, 0.18); border-color: rgba(199, 125, 125, 0.35); color: var(--sk-rose); }
+    .session-card[data-mood="wired"]   .session-icon { background: rgba(216, 122, 74, 0.18); border-color: rgba(216, 122, 74, 0.35); color: var(--sk-marigold); }
+    .session-card[data-mood="foggy"]   .session-icon { background: rgba(111, 162, 134, 0.18); border-color: rgba(111, 162, 134, 0.35); color: var(--sk-tulsi); }
+    .session-card[data-mood="open"]    .session-icon { background: rgba(127, 168, 162, 0.18); border-color: rgba(127, 168, 162, 0.35); color: var(--sk-mist); }
+
+    .session-body { flex: 1; }
+    .session-title {
+        font-family: var(--sk-font-serif);
+        font-weight: 400;
+        font-variation-settings: "opsz" 48;
+        font-size: 22px;
+        line-height: 1.18;
+        letter-spacing: -0.01em;
+        margin: 0 0 6px;
+        color: var(--sk-cream);
+    }
+    .session-desc {
+        font-size: 14px;
+        line-height: 1.5;
+        color: var(--sk-cream-dim);
+        margin: 0;
+    }
+    .session-foot {
+        display: flex; align-items: center; justify-content: space-between;
+        margin-top: auto;
+        padding-top: 6px;
+    }
+    .session-duration {
+        font-family: var(--sk-font-sans);
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--sk-cream-quiet);
+        font-variant-numeric: tabular-nums;
+    }
+    .session-cta {
+        width: 36px; height: 36px;
+        border-radius: 50%;
+        background: rgba(245, 239, 226, 0.1);
+        border: 1px solid rgba(245, 239, 226, 0.2);
+        color: var(--sk-cream);
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: background 0.4s ease, color 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
+        flex-shrink: 0;
+    }
+    .session-card:hover .session-cta {
+        background: var(--sk-saffron);
+        color: var(--sk-night);
+        border-color: var(--sk-saffron);
+        transform: scale(1.05);
+    }
+    .session-cta svg { width: 14px; height: 14px; margin-left: 1px; }
+
+    .session-card[data-lang="hi"] .session-title { font-family: var(--sk-font-hindi); font-weight: 400; }
+
+    .library-empty {
+        grid-column: 1 / -1;
+        text-align: center;
+        padding: 64px 24px;
+        color: var(--sk-cream-quiet);
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-size: 18px;
+    }
+
+    /* ============================================================
+       PLAYER OVERLAY
+       ============================================================ */
+    .player {
+        position: fixed; inset: 0;
+        z-index: 200;
+        background: radial-gradient(ellipse at 50% 30%, var(--sk-aubergine) 0%, var(--sk-night) 65%, #060B22 100%);
+        display: none;
+        flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: 56px 28px 40px;
+        opacity: 0;
+        transition: opacity 0.7s ease;
+        overflow: hidden;
+    }
+    .player.is-open { display: flex; opacity: 1; }
+
+    .player::before, .player::after {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(80px);
+        pointer-events: none;
+        z-index: 0;
+    }
+    .player::before {
+        top: -120px; left: -120px;
+        width: 360px; height: 360px;
+        background: rgba(232, 165, 82, 0.18);
+    }
+    .player::after {
+        bottom: -160px; right: -120px;
+        width: 420px; height: 420px;
+        background: rgba(107, 62, 94, 0.32);
+    }
+
+    .player-close {
+        position: absolute;
+        top: 24px; right: 28px;
+        background: rgba(245, 239, 226, 0.08);
+        border: 1px solid rgba(245, 239, 226, 0.18);
+        color: var(--sk-cream);
+        width: 44px; height: 44px;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        z-index: 3;
+        transition: background 0.3s ease;
+    }
+    .player-close:hover { background: rgba(245, 239, 226, 0.16); }
+    .player-close svg { width: 18px; height: 18px; }
+
+    .player-content {
+        position: relative;
+        z-index: 2;
+        text-align: center;
+        max-width: 640px;
+        width: 100%;
+    }
+    .player-eyebrow { color: var(--sk-saffron); margin-bottom: 16px; display: block; }
+    .player-title {
+        font-family: var(--sk-font-serif);
+        font-weight: 300;
+        font-variation-settings: "opsz" 96;
+        font-size: clamp(28px, 4vw, 42px);
+        line-height: 1.05;
+        letter-spacing: -0.018em;
+        margin: 0 0 8px;
+        color: var(--sk-cream);
+    }
+    .player-meta {
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-weight: 300;
+        font-size: 16px;
+        color: var(--sk-cream-quiet);
+        margin: 0 0 44px;
+    }
+
+    .breath-ball-wrap {
+        position: relative;
+        width: 260px; height: 260px;
+        margin: 0 auto 36px;
+        display: flex; align-items: center; justify-content: center;
+    }
+    .breath-ring {
+        position: absolute; inset: 0;
+        border-radius: 50%;
+        border: 1px solid rgba(245, 239, 226, 0.12);
+        transform: scale(calc(0.92 + var(--sk-breath-phase, 0) * 0.16));
+        transition: transform 1.2s cubic-bezier(0.4, 0, 0.4, 1);
+    }
+    .breath-ring.ring-2 {
+        inset: 24px;
+        border-color: rgba(245, 239, 226, 0.08);
+        transform: scale(calc(0.94 + var(--sk-breath-phase, 0) * 0.12));
+    }
+    .breath-ball {
+        width: 180px; height: 180px;
+        border-radius: 50%;
+        background:
+            radial-gradient(circle at 35% 30%, rgba(255, 230, 190, 0.85), transparent 60%),
+            radial-gradient(circle at 50% 50%, var(--sk-saffron) 0%, var(--sk-marigold) 60%, var(--sk-dusk) 100%);
+        box-shadow:
+            0 0 60px rgba(232, 165, 82, 0.4),
+            inset 0 0 40px rgba(255, 255, 255, 0.15);
+        transform: scale(calc(0.84 + var(--sk-breath-phase, 0) * 0.22));
+        transition: transform 1.2s cubic-bezier(0.4, 0, 0.4, 1);
+    }
+    .breath-caption {
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-weight: 300;
+        font-size: 22px;
+        letter-spacing: -0.01em;
+        color: var(--sk-cream);
+        min-height: 32px;
+        transition: opacity 0.6s ease;
+    }
+    .player-script {
+        font-family: var(--sk-font-serif);
+        font-weight: 300;
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--sk-cream-dim);
+        max-width: 460px;
+        margin: 24px auto 32px;
+        font-style: italic;
+    }
+
+    .player-controls {
+        display: flex; align-items: center; justify-content: center;
+        gap: 18px;
+    }
+    .player-btn {
+        background: rgba(245, 239, 226, 0.08);
+        border: 1px solid rgba(245, 239, 226, 0.18);
+        color: var(--sk-cream);
+        border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        transition: background 0.3s ease, transform 0.3s ease;
+    }
+    .player-btn:hover { background: rgba(245, 239, 226, 0.16); }
+    .player-btn-sm { width: 48px; height: 48px; }
+    .player-btn-sm svg { width: 18px; height: 18px; }
+    .player-btn-main {
+        width: 72px; height: 72px;
+        background: var(--sk-saffron);
+        border-color: var(--sk-saffron);
+        color: var(--sk-night);
+    }
+    .player-btn-main:hover { background: #F2B568; transform: scale(1.04); }
+    .player-btn-main svg { width: 26px; height: 26px; }
+
+    .player-end {
+        margin-top: 28px;
+        background: transparent;
+        border: 1px solid rgba(245, 239, 226, 0.18);
+        color: var(--sk-cream-dim);
+        border-radius: 999px;
+        padding: 10px 24px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+    .player-end:hover { background: rgba(245, 239, 226, 0.1); color: var(--sk-cream); border-color: rgba(245, 239, 226, 0.32); }
+
+    /* ============================================================
+       CRISIS BAR
+       ============================================================ */
+    .crisis-bar {
+        position: fixed;
+        bottom: 0; left: 0; right: 0;
+        z-index: 40;
+        background: linear-gradient(180deg, rgba(15, 27, 61, 0.7), rgba(15, 27, 61, 0.95));
+        backdrop-filter: blur(14px);
+        -webkit-backdrop-filter: blur(14px);
+        border-top: 1px solid rgba(245, 239, 226, 0.1);
+        padding: 14px 28px;
+        display: flex; align-items: center; justify-content: space-between;
+        gap: 18px;
+        flex-wrap: wrap;
+    }
+    .crisis-bar-text {
+        font-family: var(--sk-font-serif);
+        font-style: italic;
+        font-weight: 300;
+        font-size: 15px;
+        color: var(--sk-cream-dim);
+        margin: 0;
+        max-width: 720px;
+    }
+    .crisis-bar-actions { display: flex; gap: 10px; }
+    .crisis-bar-cta {
+        background: rgba(240, 134, 121, 0.18);
+        border: 1px solid rgba(240, 134, 121, 0.4);
+        color: var(--sk-coral);
+        border-radius: 999px;
+        padding: 8px 18px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        transition: background 0.3s ease;
+    }
+    .crisis-bar-cta:hover { background: rgba(240, 134, 121, 0.28); }
+    .crisis-bar-cta.ghost {
+        background: transparent;
+        border-color: rgba(245, 239, 226, 0.2);
+        color: var(--sk-cream-dim);
+    }
+    .crisis-bar-cta.ghost:hover { background: rgba(245, 239, 226, 0.08); color: var(--sk-cream); }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 760px) {
+        .sk-topbar { padding: 14px 18px; }
+        .mood-strip { padding: 84px 18px 0; }
+        .hero { margin: 22px 18px 0; min-height: 480px; border-radius: 22px; }
+        .hero-content { padding: 36px 24px 32px; }
+        .scene-card { grid-template-columns: auto 1fr; padding: 18px; gap: 14px; }
+        .scene-card-play { grid-column: 1 / -1; justify-self: end; }
+        .journey { margin-top: 56px; padding: 0 18px; }
+        .journey-inner { grid-template-columns: 1fr; padding: 22px; }
+        .library { padding: 0 18px 160px; margin-top: 56px; }
+        .session-grid { grid-template-columns: 1fr; }
+        .crisis-bar { padding: 12px 18px; }
+        .crisis-bar-text { font-size: 13px; }
+        .breath-ball-wrap { width: 220px; height: 220px; }
+        .breath-ball { width: 150px; height: 150px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
         }
+        .breath-ball, .breath-ring, .scene-card-orb, .hero-sun { transform: none !important; }
+    }
+
+    body.page-meditate::before {
+        content: '';
+        position: fixed; inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        background: radial-gradient(ellipse at 80% 0%, rgba(232, 165, 82, 0.08), transparent 50%);
+    }
     </style>
 </head>
-<body>
+<body class="page-meditate" data-experience="meditate" data-lang="en">
 
-<!-- TOPBAR -->
-<header class="top-header">
-    <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
+<!-- ============================================================
+     TOP BAR
+     ============================================================ -->
+<header class="sk-topbar">
+    <a href="/" class="sk-brand">
+        <span class="sk-brand-glyph" aria-hidden="true"></span>
+        <span>Sukoon</span>
+    </a>
+    <div class="sk-topbar-right">
+        <div class="lang-toggle" role="group" aria-label="Language">
+            <button type="button" class="active" data-lang="en">EN</button>
+            <button type="button" data-lang="hi">हिं</button>
+        </div>
+        <a href="/sos.html" class="crisis-trigger">
+            <span data-i18n="crisis-trigger">In crisis?</span>
+        </a>
+    </div>
 </header>
 
-<!-- NAV -->
-<nav class="bottom-nav" aria-label="Main navigation" role="navigation">
-    <a href="/" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
-        <span>Home</span>
-    </a>
-    <a href="/explore.html" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
-        <span>Explore</span>
-    </a>
-    <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-        <span>SOS</span>
-    </a>
-    <a href="/breathe.html" class="nav-item active" aria-current="page">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
-        <span>Breathe</span>
-    </a>
-    <a href="/friend.html" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-        <span>AI Friend</span>
-    </a>
-    <a href="/you.html" class="nav-item">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-        <span>You</span>
-    </a>
-</nav>
-
-<!-- ==================== BROWSE VIEW ==================== -->
-<div class="browse-view" id="browseView">
-
-    <section class="page-hero">
-        <picture class="page-hero-bg">
-            <img src="/og/meditate.jpg" alt="Calm meditation scene" loading="eager" fetchpriority="high">
-        </picture>
-        <div class="page-hero-content">
-            <h1 class="page-hero-title">Meditate</h1>
-            <p class="page-hero-sub">Guided sessions for body, breath, and mind.</p>
-        </div>
-    </section>
-
-    <div class="page-intro stagger-1">
-        <h1>Guided Meditations</h1>
-        <p>Voice-guided sessions for every mood</p>
-    </div>
-
-    <!-- Emotion routing -->
-    <div class="emotion-grid stagger-2" id="emotionGrid">
-        <div class="emotion-card" data-emotion="anxious">
-            <span class="em-icon">&#127754;</span>
-            <span class="em-label">I feel anxious</span>
-            <span class="em-sub">Calm your mind</span>
-        </div>
-        <div class="emotion-card" data-emotion="sleepless">
-            <span class="em-icon">&#127769;</span>
-            <span class="em-label">Can't sleep</span>
-            <span class="em-sub">Drift off gently</span>
-        </div>
-        <div class="emotion-card" data-emotion="unfocused">
-            <span class="em-icon">&#127919;</span>
-            <span class="em-label">Need focus</span>
-            <span class="em-sub">Sharpen attention</span>
-        </div>
-        <div class="emotion-card" data-emotion="grieving">
-            <span class="em-icon">&#127811;</span>
-            <span class="em-label">I'm grieving</span>
-            <span class="em-sub">Healing compassion</span>
-        </div>
-        <div class="emotion-card" data-emotion="peaceful">
-            <span class="em-icon">&#127800;</span>
-            <span class="em-label">I want peace</span>
-            <span class="em-sub">Deep stillness</span>
-        </div>
-        <div class="emotion-card" data-emotion="surprise">
-            <span class="em-icon">&#10024;</span>
-            <span class="em-label">Surprise me</span>
-            <span class="em-sub">Random session</span>
+<!-- ============================================================
+     MOOD CHECK-IN STRIP — above hero
+     ============================================================ -->
+<section class="mood-strip" aria-label="How are you feeling?">
+    <div class="mood-strip-inner">
+        <p class="mood-label" data-i18n="mood-label">How are you feeling?</p>
+        <div class="mood-pills" role="group" aria-label="Mood">
+            <button type="button" class="mood-pill" data-mood="anxious" data-i18n="mood-anxious">Anxious</button>
+            <button type="button" class="mood-pill" data-mood="sad" data-i18n="mood-sad">Sad</button>
+            <button type="button" class="mood-pill" data-mood="wired" data-i18n="mood-wired">Wired</button>
+            <button type="button" class="mood-pill" data-mood="foggy" data-i18n="mood-foggy">Foggy</button>
+            <button type="button" class="mood-pill" data-mood="open" data-i18n="mood-open">Open</button>
         </div>
     </div>
+</section>
 
-    <!-- Category tabs -->
-    <div class="cat-tabs stagger-3" id="catTabs">
-        <button class="cat-tab active" data-cat="all">All</button>
-        <button class="cat-tab" data-cat="breathing">Breathing</button>
-        <button class="cat-tab" data-cat="body-scan">Body Scan</button>
-        <button class="cat-tab" data-cat="loving-kindness">Loving-Kindness</button>
-        <button class="cat-tab" data-cat="visualization">Visualization</button>
-        <button class="cat-tab" data-cat="mindful">Mindful Minutes</button>
-        <button class="cat-tab" data-cat="on-the-go">On the Go</button>
+<!-- ============================================================
+     HERO — dawn-hills video loop + featured scene card
+     ============================================================ -->
+<section class="hero" aria-label="Today's meditation">
+    <video class="hero-video" id="heroVideo" autoplay muted loop playsinline poster="">
+        <source src="/video/dawn-hills.mp4" type="video/mp4">
+    </video>
+    <div class="hero-fallback" aria-hidden="true"></div>
+
+    <svg class="hero-hills" viewBox="0 0 1440 600" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
+        <defs>
+            <linearGradient id="hillFar" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#6B3E5E" stop-opacity="0.55"/>
+                <stop offset="100%" stop-color="#2B1F4A" stop-opacity="0.95"/>
+            </linearGradient>
+            <linearGradient id="hillMid" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#3A2645" stop-opacity="0.85"/>
+                <stop offset="100%" stop-color="#0F1B3D" stop-opacity="1"/>
+            </linearGradient>
+            <linearGradient id="hillNear" x1="0" x2="0" y1="0" y2="1">
+                <stop offset="0%"  stop-color="#1A2547" stop-opacity="0.95"/>
+                <stop offset="100%" stop-color="#080F25" stop-opacity="1"/>
+            </linearGradient>
+        </defs>
+        <path d="M0,360 C220,300 380,420 620,360 C860,300 1080,420 1440,340 L1440,600 L0,600 Z" fill="url(#hillFar)"/>
+        <path d="M0,440 C260,380 460,500 720,440 C980,380 1220,500 1440,420 L1440,600 L0,600 Z" fill="url(#hillMid)"/>
+        <path d="M0,520 C220,480 480,560 760,500 C1040,440 1240,540 1440,500 L1440,600 L0,600 Z" fill="url(#hillNear)"/>
+    </svg>
+
+    <div class="hero-sun" aria-hidden="true"></div>
+    <div class="hero-overlay" aria-hidden="true"></div>
+
+    <div class="hero-content">
+        <div class="eyebrow hero-eyebrow" data-i18n="hero-eyebrow">Today's Meditation</div>
+        <h1 class="serif" data-i18n="hero-title">Begin where you are.</h1>
+        <p class="hero-sub" data-i18n="hero-sub">A single breath is enough to start. We'll go from there, slowly.</p>
+
+        <button type="button" class="scene-card" data-session-id="featured-body-scan" data-action="play-session" aria-label="Play today's featured meditation">
+            <span class="scene-card-orb" aria-hidden="true"></span>
+            <span class="scene-card-meta">
+                <span class="scene-card-eyebrow" data-i18n="featured-eyebrow">Featured · 10 min</span>
+                <span class="scene-card-title" data-i18n="featured-title">10-min Body Scan to Begin the Day</span>
+                <span class="scene-card-detail" data-i18n="featured-detail">A gentle head-to-toe arrival — perfect for slow mornings.</span>
+            </span>
+            <span class="scene-card-play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            </span>
+        </button>
+    </div>
+</section>
+
+<!-- ============================================================
+     JOURNEY STRIP — anonymous days
+     ============================================================ -->
+<section class="journey" aria-label="Your journey">
+    <div class="journey-inner">
+        <div class="journey-text">
+            <div class="eyebrow" data-i18n="journey-eyebrow">Your Quiet Journey</div>
+            <h2 class="journey-title">
+                <span id="journeyDayCount">Day 1</span> &middot; <span id="journeyDayWord">A beginning</span>
+            </h2>
+            <p class="journey-sub" data-i18n="journey-sub">No sign-up. No metrics. Just days you returned to yourself.</p>
+        </div>
+        <div class="journey-track" id="journeyTrack" aria-hidden="true">
+            <!-- populated by JS -->
+        </div>
+    </div>
+</section>
+
+<!-- ============================================================
+     LIBRARY
+     ============================================================ -->
+<section class="library" aria-label="Session library">
+    <div class="library-head">
+        <div>
+            <div class="eyebrow" data-i18n="library-eyebrow">The Library</div>
+            <h2 class="library-title" data-i18n="library-title">Twelve doorways in.</h2>
+        </div>
+        <div class="library-count" id="libraryCount">12 sessions</div>
     </div>
 
-    <!-- Session list -->
-    <div class="session-grid stagger-4" id="sessionGrid"></div>
-</div>
+    <div class="session-grid" id="sessionGrid"></div>
+</section>
 
-<!-- ==================== PLAYER VIEW ==================== -->
-<div class="player-view" id="playerView">
-    <div class="player-bg" id="playerBg"></div>
-    <div id="particles"></div>
-    <button class="player-back" id="playerBack" aria-label="Back">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+<!-- ============================================================
+     PLAYER OVERLAY
+     ============================================================ -->
+<div class="player" id="player" role="dialog" aria-modal="true" aria-labelledby="playerTitle">
+    <button type="button" class="player-close" id="playerClose" aria-label="Close player">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/>
+            <line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
     </button>
+
     <div class="player-content">
-        <div class="ring-wrap">
-            <svg class="ring-svg" viewBox="0 0 220 220">
-                <circle class="ring-bg" cx="110" cy="110" r="100"/>
-                <circle class="ring-fg" id="ringFg" cx="110" cy="110" r="100" stroke-dasharray="628.3" stroke-dashoffset="628.3"/>
-            </svg>
-            <div class="ring-time">
-                <div class="ring-min" id="ringTime">0:00</div>
-                <div class="ring-label" id="ringLabel">ready</div>
-            </div>
+        <span class="eyebrow player-eyebrow" id="playerEyebrow">In session</span>
+        <h2 class="player-title" id="playerTitle">10-min Body Scan</h2>
+        <p class="player-meta" id="playerMeta">10 minutes · with gentle voice</p>
+
+        <div class="breath-ball-wrap">
+            <span class="breath-ring" aria-hidden="true"></span>
+            <span class="breath-ring ring-2" aria-hidden="true"></span>
+            <span class="breath-ball" aria-hidden="true"></span>
         </div>
-        <div class="prompt-text" id="promptText"></div>
+        <div class="breath-caption" id="breathCaption">Breathe in</div>
+
+        <p class="player-script" id="playerScript">Let your body be where it is. Let your breath be what it is.</p>
+
         <div class="player-controls">
-            <button class="ctrl-btn ctrl-sm" id="btnSound" title="Toggle sound">
-                <svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+            <button type="button" class="player-btn player-btn-sm" id="playerBack10" aria-label="Back 10 seconds">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="11 17 6 12 11 7"/>
+                    <path d="M6 12h9a5 5 0 0 1 0 10h-3"/>
+                </svg>
             </button>
-            <button class="ctrl-btn ctrl-main" id="btnPlay" title="Play/Pause">
-                <svg viewBox="0 0 24 24" id="iconPlay"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+            <button type="button" class="player-btn player-btn-main" id="playerPlay" aria-label="Pause">
+                <svg viewBox="0 0 24 24" fill="currentColor" id="playerPlayIcon">
+                    <rect x="6" y="5" width="4" height="14" rx="1"/>
+                    <rect x="14" y="5" width="4" height="14" rx="1"/>
+                </svg>
             </button>
-            <button class="ctrl-btn ctrl-sm" id="btnVoice" title="Toggle voice">
-                <svg viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+            <button type="button" class="player-btn player-btn-sm" id="playerFwd10" aria-label="Forward 10 seconds">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="13 17 18 12 13 7"/>
+                    <path d="M18 12H9a5 5 0 0 0 0 10h3"/>
+                </svg>
             </button>
         </div>
-        <div class="amb-row" id="ambRow">
-            <button class="amb-pill active" data-amb="rain">Rain</button>
-            <button class="amb-pill" data-amb="ocean">Ocean</button>
-            <button class="amb-pill" data-amb="birds">Birds</button>
-            <button class="amb-pill" data-amb="fire">Fire</button>
-            <button class="amb-pill" data-amb="creek">Creek</button>
-            <button class="amb-pill" data-amb="silence">Silence</button>
-        </div>
+
+        <button type="button" class="player-end" id="playerEnd" data-i18n="end-session">End Session</button>
     </div>
 </div>
 
-<!-- ==================== COMPLETION VIEW ==================== -->
-<div class="complete-view" id="completeView">
-    <div class="complete-icon">&#9968;&#65039;</div>
-    <div class="complete-title" id="compTitle">Session Complete</div>
-    <div class="complete-stat" id="compDuration"></div>
-    <div class="complete-stat" id="compSession"></div>
-    <button class="complete-btn" id="compDone">Continue</button>
-</div>
-
-<!-- ==================== ACTIVE SESSION PLAYER ==================== -->
-<div class="active-player-overlay" id="activePlayerOverlay">
-    <button class="active-player-close" id="activePlayerClose" aria-label="Close">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
-    </button>
-    <div class="active-player-icon" id="activePlayerIcon"></div>
-    <h1 class="active-player-title text-display" id="activePlayerTitle"></h1>
-    <div class="active-player-dur" id="activePlayerDur"></div>
-    <div class="breath-circle-wrap">
-        <div class="breath-circle"></div>
-        <div class="breath-circle-label">breathe</div>
-    </div>
-    <div class="active-player-script" id="activePlayerScript"></div>
-
-    <!-- Bottom controls: back 10s · play/pause · forward 10s -->
-    <div class="active-player-controls" role="group" aria-label="Playback controls">
-        <button class="ap-ctrl ap-ctrl-sm ap-skip" id="apBack10" aria-label="Back 10 seconds" title="Back 10s">
-            <svg viewBox="0 0 24 24"><polyline points="11 17 6 12 11 7"/><path d="M6 12h9a5 5 0 010 10h-3"/></svg>
-            <span class="ap-skip-label">10</span>
-        </button>
-        <button class="ap-ctrl ap-ctrl-main" id="apPlayPause" aria-label="Pause" title="Pause / Play">
-            <svg viewBox="0 0 24 24" id="apPlayPauseIcon"><line x1="10" y1="5" x2="10" y2="19"/><line x1="14" y1="5" x2="14" y2="19"/></svg>
-        </button>
-        <button class="ap-ctrl ap-ctrl-sm ap-skip" id="apFwd10" aria-label="Forward 10 seconds" title="Forward 10s">
-            <svg viewBox="0 0 24 24"><polyline points="13 17 18 12 13 7"/><path d="M18 12H9a5 5 0 000 10h3"/></svg>
-            <span class="ap-skip-label">10</span>
-        </button>
-    </div>
-
-    <button class="active-player-stop" id="activePlayerStop">End Session</button>
-
-    <!-- Ambient sound mixer mini-control -->
-    <div class="ap-ambient-row" role="group" aria-label="Ambient sound">
-        <span class="ap-ambient-label">Ambient</span>
-        <button class="ap-ambient-pill active" data-ap-amb="silence" type="button">Silence</button>
-        <button class="ap-ambient-pill" data-ap-amb="rain" type="button">Rain</button>
-        <button class="ap-ambient-pill" data-ap-amb="ocean" type="button">Ocean</button>
-        <button class="ap-ambient-pill" data-ap-amb="birds" type="button">Birds</button>
-        <button class="ap-ambient-pill" data-ap-amb="fire" type="button">Fire</button>
+<!-- ============================================================
+     CRISIS BAR
+     ============================================================ -->
+<div class="crisis-bar" role="complementary" aria-label="Crisis support">
+    <p class="crisis-bar-text" data-i18n="crisis-bar-text">If meditation feels out of reach right now, that's okay. Help is one tap away.</p>
+    <div class="crisis-bar-actions">
+        <a href="tel:9152987821" class="crisis-bar-cta" data-i18n="crisis-call">Call iCall</a>
+        <a href="/sos.html" class="crisis-bar-cta ghost" data-i18n="crisis-sos">Crisis page</a>
     </div>
 </div>
+
+<!-- ============================================================
+     SHARED SUKOON EXPERIENCE
+     ============================================================ -->
+<script src="/js/sukoon-experience.js" defer></script>
 
 <script>
 (function(){
-'use strict';
+    'use strict';
 
-/* ================================================================
-   SESSION DATA — All guided meditations with TTS scripts
-   ================================================================ */
-var SESSIONS = [
-    // === BREATHING ===
-    { id:'calm-478', cat:'breathing', title:'4-7-8 Calm Breathing', duration:5, icon:'&#128168;', iconBg:'#E8F5E9',
-      bg:'linear-gradient(135deg,#1a3a2a,#0d2818)', emotion:['anxious','peaceful'],
-      desc:'Classic calming breath with guided counting',
-      prompts:[
-        'Welcome. Find a comfortable position and gently close your eyes.',
-        'We will practice the 4-7-8 breathing technique. This activates your parasympathetic nervous system, telling your body it is safe to relax.',
-        'Let us begin. Breathe in through your nose. 2. 3. 4.',
-        'Hold your breath gently. 2. 3. 4. 5. 6. 7.',
-        'Exhale slowly through your mouth. 2. 3. 4. 5. 6. 7. 8.',
-        'Good. Again. Breathe in. 2. 3. 4.',
-        'Hold. 2. 3. 4. 5. 6. 7.',
-        'Exhale slowly. 2. 3. 4. 5. 6. 7. 8.',
-        'Beautiful. One more round. Breathe in deeply. 2. 3. 4.',
-        'Hold with ease. 2. 3. 4. 5. 6. 7.',
-        'And release completely. 2. 3. 4. 5. 6. 7. 8.',
-        'Notice how your body feels now. Calmer. Quieter. This peace is always available to you.',
-        'Whenever anxiety rises, return to this breath. 4 counts in, 7 counts hold, 8 counts out. You carry this tool with you always.'
-      ]
-    },
-    { id:'box-breath', cat:'breathing', title:'Box Breathing', duration:5, icon:'&#11036;', iconBg:'#E3F2FD',
-      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['unfocused','anxious'],
-      desc:'Navy SEAL technique for focus and calm',
-      prompts:[
-        'Welcome to Box Breathing. This technique is used by Navy SEALs to stay calm under pressure.',
-        'Picture a square in your mind. We will trace its four sides with our breath.',
-        'Breathe in for 4. 2. 3. 4.',
-        'Hold for 4. 2. 3. 4.',
-        'Breathe out for 4. 2. 3. 4.',
-        'Hold empty for 4. 2. 3. 4.',
-        'Again. In. 2. 3. 4.',
-        'Hold. 2. 3. 4.',
-        'Out. 2. 3. 4.',
-        'Hold. 2. 3. 4.',
-        'You are tracing the square perfectly. Let the rhythm become automatic.',
-        'One more round. Breathe in. 2. 3. 4.',
-        'Hold. 2. 3. 4.',
-        'Release. 2. 3. 4.',
-        'And hold. 2. 3. 4.',
-        'Well done. You have just trained your nervous system to find calm on command. Use this before any stressful moment.'
-      ]
-    },
-    { id:'deep-calm', cat:'breathing', title:'Deep Calm', duration:7, icon:'&#127754;', iconBg:'#E8EAF6',
-      bg:'linear-gradient(135deg,#1a1a3a,#0d0d28)', emotion:['anxious','peaceful'],
-      desc:'Extended exhale for deep relaxation',
-      prompts:[
-        'Welcome to Deep Calm. In this practice, we use a longer exhale to activate your relaxation response.',
-        'Settle into your body. Feel the surface beneath you. You are supported.',
-        'Begin with a natural breath in.',
-        'Now exhale for twice as long. Let the air leave slowly, like a gentle stream.',
-        'Breathe in for 4 counts. 2. 3. 4.',
-        'And out for 8. 2. 3. 4. 5. 6. 7. 8.',
-        'The long exhale signals safety to your nervous system. You are telling your body all is well.',
-        'In. 2. 3. 4.',
-        'Out slowly. 2. 3. 4. 5. 6. 7. 8.',
-        'Feel a wave of calm washing through you with each exhale.',
-        'One more. Breathe in. 2. 3. 4.',
-        'And let everything go. 2. 3. 4. 5. 6. 7. 8.',
-        'Beautiful. Now just breathe naturally. Notice the quiet that has settled within you.',
-        'This calm is your natural state. The world may be noisy, but inside, you are still water.'
-      ]
-    },
-    { id:'energize', cat:'breathing', title:'Energizing Breath', duration:4, icon:'&#9889;', iconBg:'#FFF3E0',
-      bg:'linear-gradient(135deg,#3a2a1a,#281d0d)', emotion:['unfocused'],
-      desc:'Quick rhythmic breathing to boost energy',
-      prompts:[
-        'Welcome. This is an energizing breath to wake up your body and sharpen your mind.',
-        'Sit tall. Roll your shoulders back. Lift your chin slightly.',
-        'We will do quick rhythmic breathing. Short, sharp inhales and exhales through the nose.',
-        'Ready? Begin. In-out, in-out, in-out, in-out. Keep going.',
-        'Faster now. In-out, in-out, in-out. Feel the energy building.',
-        'Now take one deep breath in and hold. Hold. Hold.',
-        'Release with force. Ahh.',
-        'Again. Quick breaths. In-out, in-out, in-out, in-out.',
-        'Deep breath in. Hold. Feel the tingling energy throughout your body.',
-        'Release. Ahh.',
-        'Take a moment. Notice how alert you feel. Your mind is clear, your body is awake.',
-        'Carry this energy into whatever comes next. You are ready.'
-      ]
-    },
+    /* ========================================================
+       1. GLOBAL BREATH CLOCK
+       One requestAnimationFrame loop publishes --sk-breath-phase
+       on a 4-2-6 cycle. Every breath-reactive element subscribes
+       via calc().
+       ======================================================== */
+    var BREATH_IN   = 4000;
+    var BREATH_HOLD = 2000;
+    var BREATH_OUT  = 6000;
+    var BREATH_TOTAL = BREATH_IN + BREATH_HOLD + BREATH_OUT;
+    var breathStart = performance.now();
+    var captionEl = document.getElementById('breathCaption');
+    var lastPhase = '';
 
-    // === BODY SCAN ===
-    { id:'body-5', cat:'body-scan', title:'Quick Body Scan', duration:5, icon:'&#129497;', iconBg:'#F3E5F5',
-      bg:'linear-gradient(135deg,#2a1a3a,#180d28)', emotion:['anxious','peaceful'],
-      desc:'5-minute head-to-toe awareness scan',
-      prompts:[
-        'Welcome to this body scan. Close your eyes and take three deep breaths.',
-        'Bring your attention to the top of your head. Notice any tension there. Just notice it, without trying to change anything.',
-        'Move down to your forehead. Your eyes. Let the muscles around your eyes soften completely.',
-        'Your jaw. So much tension hides here. Let your mouth open slightly. Let the jaw hang loose.',
-        'Your neck and shoulders. Imagine warm sunlight melting any tightness. Let your shoulders drop away from your ears.',
-        'Your chest. Feel it rise and fall with each breath. Notice the rhythm of your own aliveness.',
-        'Your belly. Let it be soft. There is nothing to hold in, nothing to brace against.',
-        'Your hands. Fingers. Notice any tingling. Your hands do so much. Let them rest completely.',
-        'Your legs. Your thighs. Knees. Shins. Feel their weight against the surface beneath you.',
-        'Your feet. Feel the ground. You are here. You are supported. You are whole.',
-        'Now take a breath that fills your entire body, from feet to crown.',
-        'And exhale everything. You have just given your body the gift of attention. It will remember this kindness.'
-      ]
-    },
-    { id:'body-10', cat:'body-scan', title:'Deep Body Scan', duration:10, icon:'&#129497;&#8205;&#9792;&#65039;', iconBg:'#E8F5E9',
-      bg:'linear-gradient(135deg,#1a2a1a,#0d180d)', emotion:['sleepless','peaceful'],
-      desc:'10-minute progressive relaxation journey',
-      prompts:[
-        'Welcome to this deep body scan. Find a comfortable position, lying down if you can. Close your eyes.',
-        'Take three slow breaths. With each exhale, feel yourself sinking a little deeper into the surface beneath you.',
-        'We begin at the very top of your head. Imagine a warm golden light resting there. It is healing. It is gentle.',
-        'Let that light move down to your forehead. Feel the skin of your forehead smoothing out, softening.',
-        'The light moves to your eyes. Your eyelids are heavy with relaxation. There is nothing to see right now. Just rest.',
-        'Your cheeks. Your nose. The light touches each part with warmth.',
-        'Your mouth. Your lips. Let them part slightly. Your tongue rests gently behind your lower teeth.',
-        'Your jaw releases completely. So much emotion is stored here. Let it all go.',
-        'The golden light flows down to your neck. Feel each vertebra releasing, one by one.',
-        'Your shoulders. They have carried so much. In this moment, they carry nothing. Let them melt.',
-        'The warmth flows down your right arm. Upper arm. Elbow. Forearm. Wrist. Hand. Each finger relaxes.',
-        'Now your left arm. Upper arm. Elbow. Forearm. Wrist. Hand. Each finger lets go.',
-        'Your chest opens. Your heart beats steadily. You are alive. You are safe.',
-        'Your belly softens. Release any holding. There is no judgment here.',
-        'Your lower back. The golden light soothes every muscle, every fiber.',
-        'Your hips. Your pelvis. Grounding you.',
-        'The light flows down your right leg. Thigh. Knee. Calf. Ankle. Foot. Toes.',
-        'And your left leg. Thigh. Knee. Calf. Ankle. Foot. Toes.',
-        'Your entire body is now bathed in golden light. Every cell is relaxed. Every thought is quiet.',
-        'Stay here for a moment. This is your body at peace. Remember this feeling. You can return here anytime.',
-        'Gently begin to bring awareness back. Wiggle your fingers and toes. Take a deep breath. And when you are ready, open your eyes.'
-      ]
-    },
+    function breathLoop(now) {
+        var t = (now - breathStart) % BREATH_TOTAL;
+        var phaseVal, phaseName;
+        if (t < BREATH_IN) {
+            phaseVal = t / BREATH_IN;                       // 0 → 1
+            phaseName = 'in';
+        } else if (t < BREATH_IN + BREATH_HOLD) {
+            phaseVal = 1;                                    // hold
+            phaseName = 'hold';
+        } else {
+            var outT = t - BREATH_IN - BREATH_HOLD;
+            phaseVal = 1 - (outT / BREATH_OUT);             // 1 → 0
+            phaseName = 'out';
+        }
+        document.documentElement.style.setProperty('--sk-breath-phase', phaseVal.toFixed(3));
 
-    // === LOVING-KINDNESS ===
-    { id:'lk-self', cat:'loving-kindness', title:'Self-Compassion', duration:7, icon:'&#128156;', iconBg:'#FCE4EC',
-      bg:'linear-gradient(135deg,#3a1a2a,#280d18)', emotion:['grieving','peaceful'],
-      desc:'Direct loving-kindness toward yourself',
-      prompts:[
-        'Welcome to this loving-kindness meditation. Today, we focus on the most important person: you.',
-        'Close your eyes. Place one hand over your heart. Feel the warmth of your own touch.',
-        'Think of yourself as a child. Small, innocent, full of wonder. That child is still within you.',
-        'Silently repeat after me: May I be happy.',
-        'May I be healthy.',
-        'May I be safe.',
-        'May I live with ease.',
-        'Feel these words sinking into your heart like rain into dry soil.',
-        'May I be happy. May I be healthy. May I be safe. May I live with ease.',
-        'If resistance arises, that is okay. You are learning to love yourself. It takes practice.',
-        'One more time. May I be happy. May I be healthy. May I be safe. May I live with ease.',
-        'Now imagine warm light radiating from your heart outward, filling your entire body.',
-        'You are worthy of your own love. You always have been.',
-        'Take a deep breath and carry this warmth with you into the rest of your day.'
-      ]
-    },
-    { id:'lk-others', cat:'loving-kindness', title:'Compassion for All', duration:10, icon:'&#127758;', iconBg:'#E1F5FE',
-      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['grieving','peaceful'],
-      desc:'Extend loving-kindness from self to all beings',
-      prompts:[
-        'Welcome. In this practice, we will expand loving-kindness outward in ever-widening circles.',
-        'Close your eyes. Begin with yourself. Place your hand on your heart.',
-        'May I be happy. May I be healthy. May I be safe. May I live with ease.',
-        'Now bring to mind someone you love deeply. See their face. Feel your love for them.',
-        'May you be happy. May you be healthy. May you be safe. May you live with ease.',
-        'Now think of someone neutral. A stranger you passed today. The person who made your coffee.',
-        'May you be happy. May you be healthy. May you be safe. May you live with ease.',
-        'Now, the difficult one. Think of someone you are struggling with. This is the bravest act of love.',
-        'May you be happy. May you be healthy. May you be safe. May you live with ease.',
-        'Finally, expand your love to all beings everywhere. Every human, every animal, every living thing.',
-        'May all beings be happy. May all beings be healthy. May all beings be safe. May all beings live with ease.',
-        'Feel the vastness of your own compassion. It is limitless.',
-        'This love is not weakness. It is the strongest force in the universe. And it lives inside you.',
-        'Take a deep breath. Open your eyes when ready. Carry this love outward.'
-      ]
-    },
-
-    // === VISUALIZATION ===
-    { id:'vis-forest', cat:'visualization', title:'Forest Walk', duration:8, icon:'&#127795;', iconBg:'#E8F5E9',
-      bg:'linear-gradient(135deg,#1a3a1a,#0d280d)', emotion:['anxious','peaceful'],
-      desc:'A guided walk through a healing forest',
-      prompts:[
-        'Close your eyes. Take a deep breath. You are standing at the entrance to a beautiful forest.',
-        'The air is cool and fresh. It smells of pine needles and damp earth after rain.',
-        'A soft path stretches before you, covered in golden-brown leaves. You begin to walk.',
-        'With each step, you feel lighter. The worries of the day dissolve like morning mist.',
-        'Tall trees surround you on both sides. Their branches form a cathedral of green above.',
-        'Sunlight filters through the canopy in shafts of gold. Tiny dust motes dance in the light.',
-        'You hear a stream nearby. Its sound is gentle, constant, reassuring.',
-        'You reach a small clearing. In the center is a moss-covered stone, warm from the sun. You sit.',
-        'Here, in this clearing, there is no past and no future. Only this moment. Only peace.',
-        'A bird sings somewhere above you. Its song is simple and pure.',
-        'Feel the earth beneath you. Feel the sky above. You are held between them, perfectly safe.',
-        'When you are ready, stand slowly. Know that this forest is always here, inside you. You can return anytime.',
-        'Walk back along the path. With each step, you carry the peace of the forest with you.',
-        'Take a deep breath. Gently open your eyes. Welcome back.'
-      ]
-    },
-    { id:'vis-beach', cat:'visualization', title:'Beach at Sunset', duration:8, icon:'&#127773;', iconBg:'#FFF3E0',
-      bg:'linear-gradient(135deg,#3a2a1a,#281d0d)', emotion:['peaceful','anxious'],
-      desc:'Relax on a warm beach as the sun sets',
-      prompts:[
-        'Close your eyes and breathe deeply. You are on a quiet beach. The day is ending.',
-        'The sand beneath you is warm and soft. You sink into it. It cradles your body perfectly.',
-        'The sun is low on the horizon. It paints the sky in streaks of orange, pink, and gold.',
-        'Waves roll gently toward you. Each one reaches just close enough to kiss your toes before retreating.',
-        'With each wave that comes in, feel peace washing over you. With each wave that pulls back, feel tension leaving.',
-        'The air is warm and salty. A gentle breeze touches your skin like a lover.',
-        'Seagulls call in the distance. Their cries are the sound of freedom.',
-        'The sun sinks lower. The colors deepen. Purple now. Crimson. The first star appears.',
-        'You are safe here. You are held by the sand, rocked by the waves, warmed by the dying light.',
-        'Breathe with the ocean. In as the wave comes. Out as it goes.',
-        'The sky darkens to deep blue. More stars appear. The universe reveals itself above you.',
-        'You are a part of this. Not separate from it. As vast and as beautiful as the sky above.',
-        'Take one more deep breath of this salty air. And slowly, gently, come back to the room.',
-        'Open your eyes. The peace of the ocean is inside you now.'
-      ]
-    },
-    { id:'vis-mountain', cat:'visualization', title:'Mountain Lake', duration:7, icon:'&#127956;', iconBg:'#E3F2FD',
-      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['peaceful'],
-      desc:'Find stillness at a crystal mountain lake',
-      prompts:[
-        'Close your eyes. Breathe deeply. You are high in the mountains, standing at the edge of a crystal-clear lake.',
-        'The water is perfectly still. It mirrors the sky above like a sheet of glass.',
-        'Snow-capped peaks surround you. They have stood here for millions of years. Silent witnesses to time.',
-        'You sit on a smooth rock at the water edge. The stone is cool and solid beneath you.',
-        'A gentle breeze creates tiny ripples on the lake surface. They spread outward and disappear.',
-        'Your thoughts are like those ripples. They arise, spread, and dissolve. You watch them without judgment.',
-        'The mountains do not react to the ripples. They simply stand. You can be like the mountain.',
-        'Breathe in the pure mountain air. It is thin and clean. Each breath fills you with clarity.',
-        'The lake is a mirror. What does it reflect? Only what is. Not what was or what will be.',
-        'You are the lake. Your true nature is stillness. Thoughts come and go on the surface, but deep below, you are always calm.',
-        'Take one more breath. Carry this mountain stillness with you. Open your eyes when ready.'
-      ]
-    },
-    { id:'vis-stars', cat:'visualization', title:'Starry Sky', duration:7, icon:'&#127747;', iconBg:'#E8EAF6',
-      bg:'linear-gradient(135deg,#0d0d2a,#05051a)', emotion:['sleepless','peaceful'],
-      desc:'Float among the stars and find perspective',
-      prompts:[
-        'Close your eyes. You are lying on your back in a vast meadow on a clear night.',
-        'Above you is the entire universe. Thousands of stars fill the sky from horizon to horizon.',
-        'With each breath, you feel yourself becoming lighter. You begin to float upward gently.',
-        'You rise above the meadow. Above the trees. Above the clouds.',
-        'Higher and higher. The earth becomes a blue marble below you. Beautiful and fragile.',
-        'You are surrounded by stars now. They are ancient lights. Some of these photons have traveled millions of years just to reach your eyes.',
-        'In this vast emptiness, you find a strange comfort. Your worries feel small. Not unimportant, but manageable.',
-        'You are made of the same atoms as these stars. Carbon, oxygen, iron. You are literally stardust having a human experience.',
-        'Float here for a moment. In the silence between the stars. This is the deepest quiet you have ever known.',
-        'Slowly, gently, you begin to descend. Back through the clouds. Back to the meadow.',
-        'You land softly in the grass. The stars are still above you. You are still made of them.',
-        'Take a deep breath. Open your eyes. Remember: you are vast. You contain galaxies.'
-      ]
-    },
-
-    // === MINDFUL MINUTES ===
-    { id:'mindful-1', cat:'mindful', title:'One Mindful Minute', duration:1, icon:'&#128337;', iconBg:'#F1F8E9',
-      bg:'linear-gradient(135deg,#1a2a1a,#0d180d)', emotion:['anxious','unfocused'],
-      desc:'A single minute of presence',
-      prompts:[
-        'Stop. You have one minute. That is enough.',
-        'Close your eyes. Take one deep breath.',
-        'Notice three sounds around you. Just listen. Do not name them.',
-        'Feel your feet on the ground. Feel your hands wherever they rest.',
-        'You are here. Right here. This moment is all there is.',
-        'Take one more breath. Open your eyes. You just meditated. It counts.'
-      ]
-    },
-    { id:'mindful-3', cat:'mindful', title:'Three Minutes of Calm', duration:3, icon:'&#128336;', iconBg:'#E8F5E9',
-      bg:'linear-gradient(135deg,#1a3a2a,#0d2818)', emotion:['anxious','unfocused','peaceful'],
-      desc:'A quick reset for busy moments',
-      prompts:[
-        'Welcome. Three minutes is all you need to reset. Close your eyes.',
-        'Take a deep breath in. And out. Let your shoulders drop.',
-        'For the next minute, just follow your breath. In and out. Nothing else matters right now.',
-        'If your mind wanders, that is perfectly normal. Just gently bring it back to the breath.',
-        'Now expand your awareness. Feel your entire body sitting or standing. Feel its weight. Its warmth.',
-        'Notice the sounds around you. Near and far. Let them come and go like clouds.',
-        'Take a final deep breath. Feel the aliveness in your body.',
-        'You have just created a pocket of peace in your day. Open your eyes. Carry this calm forward.'
-      ]
-    },
-    { id:'mindful-5', cat:'mindful', title:'Five Minutes of Stillness', duration:5, icon:'&#128338;', iconBg:'#E1F5FE',
-      bg:'linear-gradient(135deg,#1a2a3a,#0d1828)', emotion:['peaceful','anxious','unfocused'],
-      desc:'A gentle introduction to mindfulness',
-      prompts:[
-        'Welcome. Five minutes of stillness can change the entire texture of your day.',
-        'Find a comfortable position. Close your eyes. Take three deep breaths at your own pace.',
-        'Now let your breath return to its natural rhythm. Do not try to control it. Just watch it.',
-        'Thoughts will come. Plans, memories, worries. That is what minds do. Simply notice each thought and let it pass.',
-        'Imagine your thoughts are leaves floating down a stream. You sit on the bank, watching them pass. You do not chase them.',
-        'Come back to the breath. The rise and fall of your chest. The cool air entering your nose. The warm air leaving.',
-        'If you get lost in thought, smile. You just noticed. That noticing is mindfulness. You are doing it perfectly.',
-        'Now listen. What is the farthest sound you can hear? Just listen.',
-        'And the closest sound? Perhaps your own breathing.',
-        'Feel your body. The places where you contact the chair or the ground. The weight of your hands.',
-        'Take a deep breath in. Fill your lungs completely. And exhale everything.',
-        'You have given yourself five minutes of peace. That is a revolutionary act in a busy world. Well done.',
-        'Open your eyes slowly. The world is still here. But you are different now. Even just a little.'
-      ]
+        if (captionEl && phaseName !== lastPhase) {
+            lastPhase = phaseName;
+            var label = phaseName === 'in'   ? T('breathe-in')   :
+                        phaseName === 'hold' ? T('breathe-hold') : T('breathe-out');
+            captionEl.style.opacity = '0';
+            setTimeout(function(){ captionEl.textContent = label; captionEl.style.opacity = '1'; }, 200);
+        }
+        requestAnimationFrame(breathLoop);
     }
-];
+    requestAnimationFrame(breathLoop);
 
-/* ================================================================
-   WHY THIS WORKS — MICRO-LESSONS
-   ================================================================ */
-var LESSONS = {
-    breathing: "Slow, rhythmic breathing activates your vagus nerve, shifting your nervous system from fight-or-flight to rest-and-digest. Even 3 minutes can lower cortisol by up to 20%.",
-    bodyscan: "Body scan meditation strengthens the connection between your mind and body. Research shows it reduces chronic pain perception by 57% and improves sleep quality within 2 weeks.",
-    lovingkindness: "Loving-kindness practice activates brain regions associated with empathy and emotional regulation. A 7-week study showed it increased positive emotions by 30% and reduced self-criticism.",
-    visualization: "Guided visualization engages the same neural pathways as real experience. Athletes have used this for decades \u2014 your brain literally cannot tell the difference between vivid imagination and reality.",
-    mindful: "Mindfulness meditation increases gray matter density in brain regions responsible for self-awareness and compassion. Just 8 weeks of practice produces measurable structural brain changes.",
-    focus: "Focus meditation strengthens your prefrontal cortex \u2014 the brain's attention center. Studies show it can improve sustained attention by 16% after just 4 days of practice.",
-    sleep: "Progressive relaxation for sleep works by systematically releasing muscle tension your body holds unconsciously. This triggers melatonin production and lowers your core body temperature, both signals for sleep."
-};
+    /* ========================================================
+       2. TIME-OF-DAY SCENE
+       ======================================================== */
+    (function setTOD(){
+        var h = new Date().getHours();
+        var tod = (h >= 5  && h < 8)  ? 'dawn'  :
+                  (h >= 8  && h < 17) ? 'day'   :
+                  (h >= 17 && h < 20) ? 'dusk'  :
+                  (h >= 20 && h < 23) ? 'night' : 'late';
+        document.documentElement.setAttribute('data-tod', tod);
+    })();
 
-/* Category key to lesson key mapping */
-var CAT_TO_LESSON = {
-    'breathing': 'breathing',
-    'body-scan': 'bodyscan',
-    'loving-kindness': 'lovingkindness',
-    'visualization': 'visualization',
-    'mindful': 'mindful'
-};
+    /* ========================================================
+       3. I18N — EN + HI (Devanagari)
+       ======================================================== */
+    var DICT = {
+        en: {
+            'crisis-trigger': 'In crisis?',
+            'mood-label': 'How are you feeling?',
+            'mood-anxious': 'Anxious',
+            'mood-sad': 'Sad',
+            'mood-wired': 'Wired',
+            'mood-foggy': 'Foggy',
+            'mood-open': 'Open',
+            'hero-eyebrow': "Today's Meditation",
+            'hero-title': 'Begin where you are.',
+            'hero-sub': "A single breath is enough to start. We'll go from there, slowly.",
+            'featured-eyebrow': 'Featured · 10 min',
+            'featured-title': '10-min Body Scan to Begin the Day',
+            'featured-detail': 'A gentle head-to-toe arrival — perfect for slow mornings.',
+            'journey-eyebrow': 'Your Quiet Journey',
+            'journey-sub': 'No sign-up. No metrics. Just days you returned to yourself.',
+            'library-eyebrow': 'The Library',
+            'library-title': 'Twelve doorways in.',
+            'end-session': 'End Session',
+            'crisis-bar-text': "If meditation feels out of reach right now, that's okay. Help is one tap away.",
+            'crisis-call': 'Call iCall',
+            'crisis-sos': 'Crisis page',
+            'breathe-in': 'Breathe in',
+            'breathe-hold': 'Hold',
+            'breathe-out': 'Breathe out',
+            'day-word': 'Day',
+            'day-beginning': 'A beginning',
+            'day-returning': 'You returned',
+            'day-rooted':    'Rooted',
+            'minutes': 'min',
+            'sessions': 'sessions',
+            'with-voice': 'with gentle voice',
+            'in-session': 'In session',
+            'empty-mood': 'Nothing for this mood just now. Try another.'
+        },
+        hi: {
+            'crisis-trigger': 'संकट में हैं?',
+            'mood-label': 'आप कैसा महसूस कर रहे हैं?',
+            'mood-anxious': 'चिंतित',
+            'mood-sad': 'उदास',
+            'mood-wired': 'बेचैन',
+            'mood-foggy': 'धुंधला',
+            'mood-open': 'खुला',
+            'hero-eyebrow': 'आज का ध्यान',
+            'hero-title': 'जहाँ हैं, वहीं से शुरू करें।',
+            'hero-sub': 'एक साँस ही काफी है। आगे हम धीरे-धीरे चलेंगे।',
+            'featured-eyebrow': 'विशेष · १० मिनट',
+            'featured-title': 'दिन की शुरुआत के लिए १० मिनट का बॉडी स्कैन',
+            'featured-detail': 'सिर से पैर तक एक कोमल आगमन — धीमी सुबहों के लिए।',
+            'journey-eyebrow': 'आपकी शांत यात्रा',
+            'journey-sub': 'कोई साइन-अप नहीं। कोई आँकड़ा नहीं। बस वे दिन जब आप अपने पास लौटे।',
+            'library-eyebrow': 'पुस्तकालय',
+            'library-title': 'बारह द्वार भीतर के।',
+            'end-session': 'समाप्त करें',
+            'crisis-bar-text': 'अगर ध्यान अभी मुश्किल लगे, यह सामान्य है। मदद एक स्पर्श दूर है।',
+            'crisis-call': 'iCall पर कॉल',
+            'crisis-sos': 'संकट पृष्ठ',
+            'breathe-in': 'साँस लें',
+            'breathe-hold': 'रोकें',
+            'breathe-out': 'साँस छोड़ें',
+            'day-word': 'दिन',
+            'day-beginning': 'एक शुरुआत',
+            'day-returning': 'आप लौटे',
+            'day-rooted':    'जड़ें जमीं',
+            'minutes': 'मि',
+            'sessions': 'सत्र',
+            'with-voice': 'कोमल आवाज़ के साथ',
+            'in-session': 'सत्र में',
+            'empty-mood': 'इस मनोदशा के लिए अभी कुछ नहीं। कोई और चुनिए।'
+        }
+    };
 
-/* ================================================================
-   ON THE GO — ACTIVE MEDITATION SESSIONS
-   ================================================================ */
-var ACTIVE_SESSIONS = [
-    {
-        id: 'walk',
-        title: 'Walking Meditation',
-        duration: '5 min',
-        desc: 'Mindful steps. No mat needed.',
-        icon: '\uD83D\uDEB6',
-        script: 'As you walk, bring your attention to each step. Feel your foot lifting... moving forward... placing down. There is nowhere to rush to. Each step is the destination.'
-    },
-    {
-        id: 'commute',
-        title: 'Commute Calm',
-        duration: '3 min',
-        desc: 'Turn transit time into peace.',
-        icon: '\uD83D\uDE8C',
-        script: 'Close your eyes if safe, or soften your gaze. Feel the vibration of movement beneath you. Let the sounds around you become a river of noise \u2014 you are the riverbank, steady and still.'
-    },
-    {
-        id: 'cook',
-        title: 'Mindful Cooking',
-        duration: '5 min',
-        desc: 'Kitchen as meditation hall.',
-        icon: '\uD83C\uDF73',
-        script: 'As you prepare food, slow down. Notice the colors and textures. Feel the weight of each ingredient. Hear the sounds. Cooking is an act of love \u2014 let yourself be fully here for it.'
-    },
-    {
-        id: 'reset',
-        title: 'Work Break Reset',
-        duration: '3 min',
-        desc: 'Refresh between tasks.',
-        icon: '\u2615',
-        script: 'Push your chair back slightly. Plant your feet flat. Take three deep breaths. With each exhale, release one thing from the last hour. You are creating space for what comes next.'
+    var currentLang = 'en';
+    function T(key) { return (DICT[currentLang] && DICT[currentLang][key]) || DICT.en[key] || key; }
+
+    function applyLang(lang) {
+        currentLang = (lang === 'hi') ? 'hi' : 'en';
+        document.body.setAttribute('data-lang', currentLang);
+        document.documentElement.setAttribute('lang', currentLang);
+
+        document.querySelectorAll('[data-i18n]').forEach(function(el){
+            var k = el.getAttribute('data-i18n');
+            var v = T(k);
+            if (v) el.textContent = v;
+        });
+        document.querySelectorAll('.lang-toggle button').forEach(function(b){
+            b.classList.toggle('active', b.getAttribute('data-lang') === currentLang);
+        });
+
+        renderSessions();
+        renderJourney();
     }
-];
 
-/* ================================================================
-   STATE
-   ================================================================ */
-var state = {
-    currentSession: null,
-    running: false,
-    paused: false,
-    elapsed: 0,
-    duration: 0,
-    promptIdx: 0,
-    ttsEnabled: true,
-    ambientType: 'rain',
-    timer: null
-};
-
-/* ================================================================
-   AUDIO ENGINE (from course-player patterns)
-   ================================================================ */
-var audioCtx = null, ambientGain = null, ambientChannel = null, ambientBufferCache = {}, CROSSFADE = 4;
-
-function initAC(){ if(!audioCtx) audioCtx = new (window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended') audioCtx.resume(); }
-
-function bell(hz){
-    initAC(); var t=audioCtx.currentTime; var base=hz||528;
-    [[base,0.25,3.5],[base*2,0.08,2.6],[base*3,0.03,1.8],[base*1.5,0.05,2.2]].forEach(function(h){
-        var o=audioCtx.createOscillator(),g=audioCtx.createGain();
-        o.type='sine'; o.frequency.setValueAtTime(h[0],t);
-        g.gain.setValueAtTime(h[1],t); g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);
-        o.connect(g); g.connect(audioCtx.destination); o.start(t); o.stop(t+h[2]);
+    document.querySelectorAll('.lang-toggle button').forEach(function(btn){
+        btn.addEventListener('click', function(){ applyLang(btn.getAttribute('data-lang')); });
     });
-}
 
-async function loadBuf(type){
-    if(ambientBufferCache[type]) return ambientBufferCache[type];
-    try{ var r=await fetch('/audio/'+type+'.mp3'); var ab=await r.arrayBuffer();
-    var d=await audioCtx.decodeAudioData(ab); ambientBufferCache[type]=d; return d; }catch(e){ return null; }
-}
-function startCrossfade(ch,buf,offset){
-    var src=audioCtx.createBufferSource(); src.buffer=buf; src.loop=false;
-    var fg=audioCtx.createGain(); fg.gain.setValueAtTime(0,audioCtx.currentTime);
-    src.connect(fg); fg.connect(ch.gain);
-    var dur=buf.duration,ft=Math.min(CROSSFADE,dur*0.4),now=audioCtx.currentTime;
-    src.start(now,offset||0); fg.gain.linearRampToValueAtTime(1,now+ft);
-    var fos=now+(dur-(offset||0)-ft);
-    if(fos>now+ft){ fg.gain.setValueAtTime(1,fos); fg.gain.linearRampToValueAtTime(0,fos+ft); }
-    var nd=(dur-(offset||0)-ft)*1000; if(nd<500) nd=500;
-    var timer=setTimeout(function(){ if(ambientChannel&&ambientChannel.active) startCrossfade(ch,buf,0); },nd);
-    src.onended=function(){ try{fg.disconnect();}catch(e){} };
-    ch.sources.push({src:src,gain:fg,timer:timer});
-    while(ch.sources.length>3){ var old=ch.sources.shift(); clearTimeout(old.timer); try{old.src.stop();}catch(e){} try{old.gain.disconnect();}catch(e){} }
-}
-async function startAmbient(type){
-    initAC(); killAmbient(); if(type==='silence') return;
-    var buf=await loadBuf(type); if(!buf) return;
-    ambientGain=audioCtx.createGain(); ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);
-    ambientGain.gain.linearRampToValueAtTime(0.2,audioCtx.currentTime+2);
-    ambientGain.connect(audioCtx.destination);
-    ambientChannel={gain:ambientGain,sources:[],active:true};
-    startCrossfade(ambientChannel,buf,0);
-    setTimeout(function(){ if(ambientChannel&&ambientChannel.active) startCrossfade(ambientChannel,buf,0); },(buf.duration/2)*1000);
-}
-function killAmbient(){
-    if(ambientChannel){ ambientChannel.active=false;
-        try{ ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);
-        ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value,audioCtx.currentTime);
-        ambientChannel.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.5);
-        var ch=ambientChannel;
-        setTimeout(function(){ ch.sources.forEach(function(s){ clearTimeout(s.timer); try{s.src.stop();}catch(e){} try{s.gain.disconnect();}catch(e){} }); try{ch.gain.disconnect();}catch(e){} },600);
-        }catch(e){} ambientChannel=null; ambientGain=null;
+    /* ========================================================
+       4. SESSION DATA — 12 sessions as specified
+       ======================================================== */
+    var SESSIONS = [
+        {
+            id: 'body-scan-end-day',
+            mood: ['open', 'wired'],
+            duration: 15,
+            icon: '☾',
+            title: { en: 'Body Scan to End the Day',            hi: 'दिन के अंत का बॉडी स्कैन' },
+            desc:  { en: 'A long, soft unspooling — for tired shoulders and busy minds.',
+                     hi: 'थके कंधों और व्यस्त मन के लिए एक लंबा, कोमल विश्राम।' },
+            script:{ en: 'Let the day fall off your shoulders, piece by piece.',
+                     hi: 'दिन को कंधों से उतरने दीजिए, टुकड़ा-दर-टुकड़ा।' }
+        },
+        {
+            id: 'lk-yourself',
+            mood: ['sad', 'open'],
+            duration: 9,
+            icon: '♥',
+            title: { en: 'Loving-kindness for Yourself',         hi: 'अपने लिए करुणा-भावना' },
+            desc:  { en: 'A practice of turning warmth inward, the way a friend would.',
+                     hi: 'जैसे एक मित्र करता है — गर्मजोशी को भीतर की ओर मोड़ने का अभ्यास।' },
+            script:{ en: 'May I be at ease. May I be held. May I be enough.',
+                     hi: 'मैं शांत रहूँ। मुझे सहारा मिले। मैं पर्याप्त हूँ।' }
+        },
+        {
+            id: 'grounding-54321',
+            mood: ['anxious', 'wired'],
+            duration: 5,
+            icon: '⛰',
+            title: { en: '5-4-3-2-1 Grounding',                  hi: '५-४-३-२-१ ज़मीन से जुड़ाव' },
+            desc:  { en: 'Senses-first anchor — for panic, dissociation, or sudden overwhelm.',
+                     hi: 'इंद्रियों से शुरू — घबराहट या अचानक भार के लिए एक लंगर।' },
+            script:{ en: 'Five things you can see. Four you can touch. Three you can hear.',
+                     hi: 'पाँच चीज़ें जो दिखें। चार जो छू सकें। तीन जो सुन सकें।' }
+        },
+        {
+            id: 'box-breathing-hard-talk',
+            mood: ['anxious'],
+            duration: 4,
+            icon: '□',
+            title: { en: 'Box Breathing Before a Hard Conversation',
+                     hi: 'कठिन बातचीत से पहले बॉक्स साँस' },
+            desc:  { en: 'Four-count breath to steady the hands and clear the voice.',
+                     hi: 'चार-चार गिनती की साँस, हाथों को स्थिर और आवाज़ को साफ़ करने के लिए।' },
+            script:{ en: 'Inhale four. Hold four. Exhale four. Hold four. You are ready.',
+                     hi: 'चार साँस लें। चार रोकें। चार छोड़ें। चार रुकें। आप तैयार हैं।' }
+        },
+        {
+            id: 'daily-sukoon-wed',
+            mood: ['open', 'foggy'],
+            duration: 5,
+            icon: '☀',
+            title: { en: 'Daily Sukoon — Wednesday Reset',       hi: 'दैनिक सुकून — बुधवार का विराम' },
+            desc:  { en: 'A midweek pause to remember why we started.',
+                     hi: 'सप्ताह के बीच एक ठहराव — याद करने के लिए कि हम क्यों शुरू हुए।' },
+            script:{ en: 'Halfway through the week. Halfway back to yourself.',
+                     hi: 'सप्ताह के बीच में। अपने भीतर लौटने के आधे रास्ते पर।' }
+        },
+        {
+            id: 'let-go-thought',
+            mood: ['anxious', 'foggy'],
+            duration: 7,
+            icon: '☁',
+            title: { en: 'Letting Go of a Thought',              hi: 'एक विचार को छोड़ देना' },
+            desc:  { en: 'For the loop that will not quit. Watch it pass like a cloud.',
+                     hi: 'उस विचार के लिए जो रुकता नहीं। बादल की तरह जाने दीजिए।' },
+            script:{ en: 'The thought is not you. You are the sky it passes through.',
+                     hi: 'विचार आप नहीं हैं। आप वह आकाश हैं जिसमें वह गुज़रता है।' }
+        },
+        {
+            id: 'meditation-anger',
+            mood: ['wired', 'sad'],
+            duration: 8,
+            icon: '✦',
+            title: { en: 'Meditation for Anger',                 hi: 'क्रोध के लिए ध्यान' },
+            desc:  { en: 'Not to suppress, but to meet the heat with curiosity.',
+                     hi: 'दबाने के लिए नहीं — गर्मी से जिज्ञासा के साथ मिलने के लिए।' },
+            script:{ en: 'The anger has a message. We listen, then we let it cool.',
+                     hi: 'क्रोध में एक संदेश है। हम सुनते हैं, फिर उसे शांत होने देते हैं।' }
+        },
+        {
+            id: 'mountain-meditation',
+            mood: ['open'],
+            duration: 12,
+            icon: '⛰',
+            title: { en: 'Mountain Meditation',                  hi: 'पर्वत ध्यान' },
+            desc:  { en: 'Borrow the steadiness of something older than your day.',
+                     hi: 'अपने दिन से पुरानी किसी चीज़ की स्थिरता उधार लीजिए।' },
+            script:{ en: 'The mountain does not move. Weather comes and goes across it.',
+                     hi: 'पर्वत हिलता नहीं। मौसम उसके ऊपर आता-जाता है।' }
+        },
+        {
+            id: 'awareness-breath',
+            mood: ['open', 'foggy'],
+            duration: 6,
+            icon: '✶',
+            title: { en: 'Awareness of Breath',                  hi: 'श्वास के प्रति जागरूकता' },
+            desc:  { en: 'The most ancient instruction: notice what is already here.',
+                     hi: 'सबसे पुरानी सीख: जो पहले से है, उसे देखिए।' },
+            script:{ en: 'Do not change the breath. Just keep it company.',
+                     hi: 'साँस को बदलिए मत। बस उसके साथ रहिए।' }
+        },
+        {
+            id: 'forgive-self-hi',
+            mood: ['sad', 'open'],
+            duration: 11,
+            icon: '❀',
+            lang: 'hi',
+            title: { en: 'Forgiveness — Apne aap se',            hi: 'क्षमा — अपने आप से' },
+            desc:  { en: 'Hindi-led. Soft work on the harder things we carry against ourselves.',
+                     hi: 'हिंदी में। अपने प्रति जो भारी है, उस पर कोमल काम।' },
+            script:{ en: 'Jo galat hua, woh hua. Aaj, hum khud ko maaf karna seekhte hain.',
+                     hi: 'जो हुआ, वह हुआ। आज, हम अपने आप को क्षमा करना सीखते हैं।' }
+        },
+        {
+            id: 'presleep-winddown',
+            mood: ['wired', 'sad'],
+            duration: 10,
+            icon: '☾',
+            title: { en: 'Pre-sleep Wind-down',                  hi: 'सोने से पहले विश्राम' },
+            desc:  { en: 'For when the lights are out but the mind is still working.',
+                     hi: 'जब बत्ती बुझ गई हो पर मन अभी काम कर रहा हो।' },
+            script:{ en: 'You can put the day down now. The day will still be there tomorrow.',
+                     hi: 'दिन को अब रख दीजिए। कल भी वह वहीं होगा।' }
+        },
+        {
+            id: 'self-compassion-break',
+            mood: ['anxious', 'sad'],
+            duration: 8,
+            icon: '♥',
+            title: { en: 'Self-compassion Break',                hi: 'आत्म-करुणा विराम' },
+            desc:  { en: 'Three short steps for a hard moment — mindfulness, common humanity, kindness.',
+                     hi: 'कठिन क्षण के लिए तीन छोटे कदम — सजगता, साझा मानवता, कोमलता।' },
+            script:{ en: 'This is a moment of suffering. Suffering is part of life. May I be kind to myself.',
+                     hi: 'यह एक कष्ट का क्षण है। कष्ट जीवन का हिस्सा है। मैं अपने प्रति कोमल रहूँ।' }
+        }
+    ];
+
+    /* ========================================================
+       5. LIBRARY — render filtered by mood
+       ======================================================== */
+    var grid    = document.getElementById('sessionGrid');
+    var libCount = document.getElementById('libraryCount');
+    var activeMood = null;
+
+    function renderSessions() {
+        if (!grid) return;
+        grid.innerHTML = '';
+        var visible = SESSIONS.filter(function(s){
+            if (!activeMood) return true;
+            return s.mood.indexOf(activeMood) !== -1;
+        });
+
+        if (visible.length === 0) {
+            var empty = document.createElement('div');
+            empty.className = 'library-empty';
+            empty.textContent = T('empty-mood');
+            grid.appendChild(empty);
+        } else {
+            visible.forEach(function(s){
+                var card = document.createElement('button');
+                card.type = 'button';
+                card.className = 'session-card';
+                card.setAttribute('data-session-id', s.id);
+                card.setAttribute('data-action', 'play-session');
+                card.setAttribute('data-mood', s.mood[0]);
+                if (s.lang === 'hi') card.setAttribute('data-lang', 'hi');
+
+                var title = s.title[currentLang] || s.title.en;
+                var desc  = s.desc[currentLang]  || s.desc.en;
+
+                card.innerHTML =
+                    '<span class="session-icon" aria-hidden="true">' + s.icon + '</span>' +
+                    '<div class="session-body">' +
+                        '<h3 class="session-title">' + title + '</h3>' +
+                        '<p class="session-desc">' + desc + '</p>' +
+                    '</div>' +
+                    '<div class="session-foot">' +
+                        '<span class="session-duration">' + s.duration + ' ' + T('minutes') + '</span>' +
+                        '<span class="session-cta" aria-hidden="true">' +
+                            '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>' +
+                        '</span>' +
+                    '</div>';
+                grid.appendChild(card);
+            });
+        }
+
+        if (libCount) libCount.textContent = visible.length + ' ' + T('sessions');
     }
-}
-function duckAmbient(duck){
-    if(!ambientGain) return;
-    try{ ambientGain.gain.cancelScheduledValues(audioCtx.currentTime);
-    ambientGain.gain.setValueAtTime(ambientGain.gain.value,audioCtx.currentTime);
-    ambientGain.gain.linearRampToValueAtTime(duck?0.06:0.2,audioCtx.currentTime+0.5);
-    }catch(e){}
-}
 
-/* ================================================================
-   TTS ENGINE
-   ================================================================ */
-var tts = {
-    synth: window.speechSynthesis || null, voice: null, speaking: false,
-    init: function(){
-        if(!tts.synth) return;
-        var load=function(){
-            var voices=tts.synth.getVoices();
-            var prefs=['Google UK English Female','Samantha','Karen','Moira','Fiona','Google US English'];
-            for(var i=0;i<prefs.length;i++){ var f=voices.find(function(v){return v.name===prefs[i];}); if(f){tts.voice=f;break;} }
-            if(!tts.voice) tts.voice=voices.find(function(v){return v.lang.startsWith('en');});
-        };
-        if(tts.synth.getVoices().length) load();
-        tts.synth.onvoiceschanged = load;
-    },
-    speak: function(text, onEnd){
-        if(!state.ttsEnabled || !tts.synth || !tts.voice){ if(onEnd) setTimeout(onEnd,100); return; }
-        tts.synth.cancel();
-        var sentences = text.match(/[^.!?]+[.!?]+/g) || [text];
-        var idx=0;
-        duckAmbient(true);
-        function speakNext(){
-            if(idx>=sentences.length || !state.running){
-                tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); return;
+    /* ========================================================
+       6. MOOD CHECK-IN — filters library
+       ======================================================== */
+    document.querySelectorAll('.mood-pill').forEach(function(pill){
+        pill.addEventListener('click', function(){
+            var mood = pill.getAttribute('data-mood');
+            if (activeMood === mood) {
+                activeMood = null;
+                pill.classList.remove('active');
+            } else {
+                activeMood = mood;
+                document.querySelectorAll('.mood-pill').forEach(function(p){ p.classList.remove('active'); });
+                pill.classList.add('active');
             }
-            var u=new SpeechSynthesisUtterance(sentences[idx].trim());
-            u.voice=tts.voice; u.rate=0.85; u.pitch=0.95; u.volume=0.85;
-            u.onend=function(){ idx++; if(idx<sentences.length) setTimeout(speakNext,300); else { tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); } };
-            u.onerror=function(){ tts.speaking=false; duckAmbient(false); if(onEnd) onEnd(); };
-            tts.speaking=true; tts.synth.speak(u);
-        }
-        speakNext();
-    },
-    stop: function(){ if(tts.synth) tts.synth.cancel(); tts.speaking=false; duckAmbient(false); }
-};
-tts.init();
+            renderSessions();
+            var lib = document.querySelector('.library');
+            if (lib) lib.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    });
 
-/* ================================================================
-   "WHY THIS WORKS" LESSON OVERLAY
-   ================================================================ */
-function showLesson(category, callback){
-    var lessonKey = CAT_TO_LESSON[category] || category;
-    var text = LESSONS[lessonKey];
-    if(!text){ if(callback) callback(); return; }
+    /* ========================================================
+       7. JOURNEY — anonymous days from localStorage
+       Key: 'sukoon_meditate_days' = number of days returned.
+       Auto-increments at most once per calendar day on any
+       interaction (mood click, play, lang change).
+       ======================================================== */
+    var STORE_KEY  = 'sukoon_meditate_days';
+    var STORE_LAST = 'sukoon_meditate_last';
+    var MILESTONES = [1, 7, 30];
 
-    // Create overlay
-    var overlay = document.createElement('div');
-    overlay.className = 'lesson-overlay';
-    overlay.innerHTML =
-        '<div class="lesson-card">' +
-            '<div class="lesson-badge">' +
-                '<svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 017 7c0 2.38-1.19 4.47-3 5.74V17a2 2 0 01-2 2h-4a2 2 0 01-2-2v-2.26C6.19 13.47 5 11.38 5 9a7 7 0 017-7z"/><line x1="9" y1="21" x2="15" y2="21"/></svg>' +
-                'Why This Works' +
-            '</div>' +
-            '<div class="lesson-text">' + text + '</div>' +
-            '<div class="lesson-actions">' +
-                '<button class="lesson-btn-start">Start Practice</button>' +
-                '<button class="lesson-btn-listen">' +
-                    '<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>' +
-                    'Read Aloud' +
-                '</button>' +
-            '</div>' +
-            '<div class="lesson-timer-bar" style="width:100%"></div>' +
-        '</div>';
-
-    document.body.appendChild(overlay);
-
-    // Force reflow then animate in
-    overlay.offsetHeight;
-    overlay.classList.add('visible');
-
-    var dismissed = false;
-    var autoTimer = null;
-    var countdownTimer = null;
-    var remaining = 15;
-
-    var timerBar = overlay.querySelector('.lesson-timer-bar');
-
-    function dismiss(){
-        if(dismissed) return;
-        dismissed = true;
-        if(autoTimer) clearTimeout(autoTimer);
-        if(countdownTimer) clearInterval(countdownTimer);
-        // Stop any lesson TTS
-        if(window.speechSynthesis) window.speechSynthesis.cancel();
-        overlay.classList.remove('visible');
-        setTimeout(function(){ try{ document.body.removeChild(overlay); }catch(e){} }, 350);
-        if(callback) callback();
+    function readDays() {
+        try {
+            var n = parseInt(localStorage.getItem(STORE_KEY) || '0', 10);
+            return isNaN(n) ? 0 : n;
+        } catch (e) { return 0; }
+    }
+    function writeDays(n) {
+        try { localStorage.setItem(STORE_KEY, String(n)); } catch (e) {}
+    }
+    function markVisitToday() {
+        try {
+            var today = new Date().toISOString().slice(0, 10);
+            var last  = localStorage.getItem(STORE_LAST);
+            if (last === today) return;
+            var n = readDays() + 1;
+            writeDays(n);
+            localStorage.setItem(STORE_LAST, today);
+        } catch (e) {}
     }
 
-    // Start countdown bar
-    timerBar.style.width = '100%';
-    setTimeout(function(){ timerBar.style.transition = 'width 15s linear'; timerBar.style.width = '0%'; }, 50);
+    function dayWord(n) {
+        if (n <= 1) return T('day-beginning');
+        if (n <= 7) return T('day-returning');
+        return T('day-rooted');
+    }
 
-    // Auto-dismiss after 15 seconds
-    autoTimer = setTimeout(dismiss, 15000);
+    function renderJourney() {
+        var n = readDays();
+        if (n < 1) n = 1;
+        var track   = document.getElementById('journeyTrack');
+        var countEl = document.getElementById('journeyDayCount');
+        var wordEl  = document.getElementById('journeyDayWord');
 
-    // Start Practice button
-    overlay.querySelector('.lesson-btn-start').addEventListener('click', dismiss);
+        if (countEl) countEl.textContent = T('day-word') + ' ' + n;
+        if (wordEl)  wordEl.textContent  = dayWord(n);
+        if (!track) return;
 
-    // Read Aloud button
-    overlay.querySelector('.lesson-btn-listen').addEventListener('click', function(){
-        var btn = this;
-        if(window.speechSynthesis){
-            window.speechSynthesis.cancel();
-            var u = new SpeechSynthesisUtterance(text);
-            if(tts.voice) u.voice = tts.voice;
-            u.rate = 0.88;
-            u.pitch = 0.95;
-            u.volume = 0.85;
-            btn.innerHTML =
-                '<svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>' +
-                'Speaking...';
-            u.onend = function(){
-                btn.innerHTML =
-                    '<svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>' +
-                    'Read Aloud';
+        track.innerHTML = '';
+        MILESTONES.forEach(function(m, i){
+            var pair = document.createElement('div');
+            pair.className = 'journey-pair';
+
+            var dot = document.createElement('span');
+            dot.className = 'journey-dot';
+            if (n >= m) dot.classList.add('lit');
+            pair.appendChild(dot);
+
+            var label = document.createElement('span');
+            label.className = 'journey-label';
+            label.textContent = T('day-word') + ' ' + m;
+            pair.appendChild(label);
+
+            track.appendChild(pair);
+
+            if (i < MILESTONES.length - 1) {
+                var line = document.createElement('span');
+                line.className = 'journey-line';
+                if (n >= MILESTONES[i + 1] || n > m) line.classList.add('lit');
+                track.appendChild(line);
+            }
+        });
+
+        var dots = track.querySelectorAll('.journey-dot');
+        var currentIdx = 0;
+        for (var i = 0; i < MILESTONES.length; i++) {
+            if (n >= MILESTONES[i]) currentIdx = i;
+        }
+        if (dots[currentIdx]) dots[currentIdx].classList.add('current');
+    }
+
+    /* ========================================================
+       8. PLAYER OVERLAY
+       ======================================================== */
+    var player        = document.getElementById('player');
+    var playerTitle   = document.getElementById('playerTitle');
+    var playerMeta    = document.getElementById('playerMeta');
+    var playerScript  = document.getElementById('playerScript');
+    var playerEyebrow = document.getElementById('playerEyebrow');
+    var playerPlay    = document.getElementById('playerPlay');
+    var playerPlayIcon = document.getElementById('playerPlayIcon');
+    var playerClose   = document.getElementById('playerClose');
+    var playerEnd     = document.getElementById('playerEnd');
+
+    var isPlaying = true;
+
+    function findSession(id) {
+        for (var i = 0; i < SESSIONS.length; i++) {
+            if (SESSIONS[i].id === id) return SESSIONS[i];
+        }
+        if (id === 'featured-body-scan') {
+            return {
+                id: 'featured-body-scan',
+                duration: 10,
+                title: { en: '10-min Body Scan to Begin the Day', hi: 'दिन की शुरुआत के लिए १० मिनट का बॉडी स्कैन' },
+                script:{ en: 'Let your attention move slowly, head to toe, like sunlight crossing a room.',
+                         hi: 'अपना ध्यान धीरे-धीरे चलने दीजिए — सिर से पाँव तक, जैसे कमरे में धूप सरकती है।' }
             };
-            window.speechSynthesis.speak(u);
         }
-    });
-
-    // Clicking outside the card dismisses
-    overlay.addEventListener('click', function(e){
-        if(e.target === overlay) dismiss();
-    });
-}
-
-/* ================================================================
-   BROWSE VIEW — Render sessions
-   ================================================================ */
-var sessionGrid = document.getElementById('sessionGrid');
-var catTabs = document.getElementById('catTabs');
-var currentCat = 'all';
-
-function renderSessions(cat){
-    sessionGrid.innerHTML = '';
-
-    // Handle "On the Go" tab separately
-    if(cat === 'on-the-go'){
-        var grid = document.createElement('div');
-        grid.className = 'active-grid';
-        ACTIVE_SESSIONS.forEach(function(s){
-            var card = document.createElement('div');
-            card.className = 'active-card';
-            card.innerHTML =
-                '<span class="active-icon">' + s.icon + '</span>' +
-                '<div class="active-title">' + s.title + '</div>' +
-                '<div class="active-dur">' + s.duration + '</div>' +
-                '<div class="active-desc">' + s.desc + '</div>';
-            card.addEventListener('click', function(){ openActiveSession(s); });
-            grid.appendChild(card);
-        });
-        sessionGrid.appendChild(grid);
-        return;
+        return null;
     }
 
-    var filtered = cat === 'all' ? SESSIONS : SESSIONS.filter(function(s){ return s.cat === cat; });
-    if(!filtered.length){
-        var empty = document.createElement('div');
-        empty.className = 'empty-cat';
-        var eIcon = document.createElement('div');
-        eIcon.className = 'empty-icon';
-        eIcon.textContent = '🍃'; // herb / leaf
-        var eTitle = document.createElement('div');
-        eTitle.className = 'empty-title';
-        eTitle.textContent = 'No sessions here yet';
-        var eSub = document.createElement('div');
-        eSub.className = 'empty-sub';
-        eSub.textContent = 'We haven’t added meditations to this category. Browse all sessions to find one that fits your moment.';
-        var eCta = document.createElement('button');
-        eCta.type = 'button';
-        eCta.className = 'empty-cta';
-        eCta.textContent = 'Browse all';
-        eCta.addEventListener('click', function(){
-            var allTab = catTabs.querySelector('[data-cat="all"]');
-            if(allTab) allTab.click();
-        });
-        empty.appendChild(eIcon);
-        empty.appendChild(eTitle);
-        empty.appendChild(eSub);
-        empty.appendChild(eCta);
-        sessionGrid.appendChild(empty);
-        return;
-    }
-    var SVG_NS = 'http://www.w3.org/2000/svg';
-    filtered.forEach(function(s){
-        var card = document.createElement('div');
-        card.className = 'session-card card card-interactive';
-        card.setAttribute('role','button');
-        card.setAttribute('tabindex','0');
+    function openPlayer(id) {
+        var s = findSession(id);
+        if (!s) return;
 
-        var iconEl = document.createElement('div');
-        iconEl.className = 'sess-icon';
-        iconEl.style.background = s.iconBg;
-        // s.icon contains HTML entities (e.g. &#128168;) — decode via a temp element
-        var iconDecoder = document.createElement('span');
-        iconDecoder.innerHTML = s.icon; // session data is static, not user input
-        iconEl.textContent = iconDecoder.textContent;
+        var title  = s.title[currentLang]  || s.title.en;
+        var script = (s.script && (s.script[currentLang] || s.script.en)) || '';
+        playerTitle.textContent  = title;
+        playerMeta.textContent   = s.duration + ' ' + T('minutes') + ' · ' + T('with-voice');
+        playerScript.textContent = script;
+        playerEyebrow.textContent = T('in-session');
 
-        var info = document.createElement('div');
-        info.className = 'sess-info';
-
-        var titleEl = document.createElement('div');
-        titleEl.className = 'sess-title';
-        titleEl.textContent = s.title;
-
-        var row = document.createElement('div');
-        row.className = 'sess-row';
-        var durEl = document.createElement('span');
-        durEl.className = 'sess-duration';
-        durEl.textContent = s.duration + ' min';
-        var badgeEl = document.createElement('span');
-        badgeEl.className = 'badge badge-muted sess-cat-badge';
-        badgeEl.textContent = s.cat.replace('-',' ');
-        row.appendChild(durEl);
-        row.appendChild(badgeEl);
-
-        var descEl = document.createElement('div');
-        descEl.className = 'sess-desc';
-        descEl.textContent = s.desc;
-
-        info.appendChild(titleEl);
-        info.appendChild(row);
-        info.appendChild(descEl);
-
-        var play = document.createElement('div');
-        play.className = 'sess-play';
-        play.setAttribute('aria-hidden','true');
-        var svg = document.createElementNS(SVG_NS, 'svg');
-        svg.setAttribute('viewBox','0 0 24 24');
-        svg.setAttribute('width','16');
-        svg.setAttribute('height','16');
-        svg.setAttribute('fill','none');
-        svg.setAttribute('stroke','currentColor');
-        svg.setAttribute('stroke-width','2');
-        var poly = document.createElementNS(SVG_NS,'polygon');
-        poly.setAttribute('points','5 3 19 12 5 21 5 3');
-        svg.appendChild(poly);
-        play.appendChild(svg);
-
-        card.appendChild(iconEl);
-        card.appendChild(info);
-        card.appendChild(play);
-
-        card.addEventListener('click', function(){ openSessionWithLesson(s); });
-        card.addEventListener('keydown', function(e){
-            if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openSessionWithLesson(s); }
-        });
-        sessionGrid.appendChild(card);
-    });
-}
-
-catTabs.addEventListener('click', function(e){
-    var tab = e.target.closest('.cat-tab');
-    if(!tab) return;
-    catTabs.querySelectorAll('.cat-tab').forEach(function(t){ t.classList.remove('active'); });
-    tab.classList.add('active');
-    currentCat = tab.dataset.cat;
-    renderSessions(currentCat);
-});
-
-// Emotion routing
-document.getElementById('emotionGrid').addEventListener('click', function(e){
-    var card = e.target.closest('.emotion-card');
-    if(!card) return;
-    var emotion = card.dataset.emotion;
-    if(emotion === 'surprise'){
-        var idx = Math.floor(Math.random() * SESSIONS.length);
-        openSessionWithLesson(SESSIONS[idx]);
-        return;
-    }
-    var matches = SESSIONS.filter(function(s){ return s.emotion && s.emotion.indexOf(emotion) !== -1; });
-    if(matches.length){ openSessionWithLesson(matches[Math.floor(Math.random() * matches.length)]); }
-});
-
-renderSessions('all');
-
-/* ================================================================
-   PLAYER VIEW — Immersive session
-   ================================================================ */
-var playerView = document.getElementById('playerView');
-var playerBg = document.getElementById('playerBg');
-var ringFg = document.getElementById('ringFg');
-var ringTime = document.getElementById('ringTime');
-var ringLabel = document.getElementById('ringLabel');
-var promptText = document.getElementById('promptText');
-var btnPlay = document.getElementById('btnPlay');
-var iconPlay = document.getElementById('iconPlay');
-var CIRC = 2 * Math.PI * 100; // 628.3
-
-/* Show the lesson overlay THEN open the session player */
-function openSessionWithLesson(session){
-    showLesson(session.cat, function(){
-        openSession(session);
-    });
-}
-
-/* Open an active/on-the-go session: lesson first, then simple TTS overlay */
-function openActiveSession(activeSession){
-    showLesson('mindful', function(){
-        var overlay = document.getElementById('activePlayerOverlay');
-        var scriptEl = document.getElementById('activePlayerScript');
-        document.getElementById('activePlayerIcon').textContent = activeSession.icon;
-        document.getElementById('activePlayerTitle').textContent = activeSession.title;
-        document.getElementById('activePlayerDur').textContent = activeSession.duration;
-        scriptEl.textContent = activeSession.script;
-        overlay.classList.add('active');
+        player.setAttribute('data-session-id', s.id);
+        player.classList.add('is-open');
         document.body.style.overflow = 'hidden';
 
-        // Start TTS narration of the script
-        if(window.speechSynthesis && tts.voice){
-            window.speechSynthesis.cancel();
-            var u = new SpeechSynthesisUtterance(activeSession.script);
-            u.voice = tts.voice;
-            u.rate = 0.82;
-            u.pitch = 0.95;
-            u.volume = 0.85;
-            u.onend = function(){
-                // Log completion
-                try{
-                    var log = JSON.parse(localStorage.getItem('sukoon_activity_log')||'[]');
-                    log.unshift({ type:'active-meditation', text: activeSession.title+' ('+activeSession.duration+')', minutes: parseInt(activeSession.duration)||3, timestamp: new Date().toISOString() });
-                    if(log.length>200) log=log.slice(0,200);
-                    localStorage.setItem('sukoon_activity_log', JSON.stringify(log));
-                    var stats = JSON.parse(localStorage.getItem('sukoon_progress_stats')||'{}');
-                    stats.totalMinutes = (stats.totalMinutes||0) + (parseInt(activeSession.duration)||3);
-                    stats.totalSessions = (stats.totalSessions||0) + 1;
-                    if(!stats.typeCounts) stats.typeCounts={};
-                    stats.typeCounts.meditation = (stats.typeCounts.meditation||0)+1;
-                    localStorage.setItem('sukoon_progress_stats', JSON.stringify(stats));
-                }catch(e){}
-                if(window.sukoon) sukoon.track('active-meditation', parseInt(activeSession.duration)||3, activeSession.title);
-            };
-            window.speechSynthesis.speak(u);
+        isPlaying = true;
+        setPlayIcon(true);
+
+        markVisitToday();
+        renderJourney();
+    }
+
+    function closePlayer() {
+        player.classList.remove('is-open');
+        document.body.style.overflow = '';
+    }
+
+    function setPlayIcon(playing) {
+        if (!playerPlayIcon) return;
+        if (playing) {
+            playerPlayIcon.innerHTML = '<rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/>';
+            playerPlay.setAttribute('aria-label', 'Pause');
+        } else {
+            playerPlayIcon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+            playerPlay.setAttribute('aria-label', 'Play');
         }
+    }
+
+    // Delegated click for all session cards (incl. hero featured)
+    document.addEventListener('click', function(e){
+        var trigger = e.target.closest('[data-action="play-session"]');
+        if (!trigger) return;
+        var id = trigger.getAttribute('data-session-id');
+        if (id) openPlayer(id);
     });
-}
 
-function closeActivePlayer(){
-    if(window.speechSynthesis) window.speechSynthesis.cancel();
-    document.getElementById('activePlayerOverlay').classList.remove('active');
-    document.body.style.overflow = '';
-}
-document.getElementById('activePlayerClose').addEventListener('click', closeActivePlayer);
-document.getElementById('activePlayerStop').addEventListener('click', closeActivePlayer);
-
-/* ----- Active player UI controls (pause/play, skip, ambient) -----
-   Note: these are UI affordances only; they do not modify the
-   underlying TTS narration engine — they call existing public APIs
-   (speechSynthesis pause/resume, startAmbient/killAmbient). */
-(function(){
-    var SVG_NS_AP = 'http://www.w3.org/2000/svg';
-    var playPauseBtn = document.getElementById('apPlayPause');
-    var playPauseIcon = document.getElementById('apPlayPauseIcon');
-    var isPaused = false;
-
-    function setIconToPause(){
-        while(playPauseIcon.firstChild) playPauseIcon.removeChild(playPauseIcon.firstChild);
-        var l1 = document.createElementNS(SVG_NS_AP,'line');
-        l1.setAttribute('x1','10'); l1.setAttribute('y1','5'); l1.setAttribute('x2','10'); l1.setAttribute('y2','19');
-        var l2 = document.createElementNS(SVG_NS_AP,'line');
-        l2.setAttribute('x1','14'); l2.setAttribute('y1','5'); l2.setAttribute('x2','14'); l2.setAttribute('y2','19');
-        playPauseIcon.appendChild(l1);
-        playPauseIcon.appendChild(l2);
-    }
-    function setIconToPlay(){
-        while(playPauseIcon.firstChild) playPauseIcon.removeChild(playPauseIcon.firstChild);
-        var poly = document.createElementNS(SVG_NS_AP,'polygon');
-        poly.setAttribute('points','7 4 19 12 7 20 7 4');
-        playPauseIcon.appendChild(poly);
-    }
-
-    if(playPauseBtn){
-        playPauseBtn.addEventListener('click', function(){
-            if(!window.speechSynthesis) return;
-            if(isPaused){
-                window.speechSynthesis.resume();
-                isPaused = false;
-                setIconToPause();
-                playPauseBtn.setAttribute('aria-label','Pause');
-            } else {
-                window.speechSynthesis.pause();
-                isPaused = true;
-                setIconToPlay();
-                playPauseBtn.setAttribute('aria-label','Play');
-            }
+    if (playerClose) playerClose.addEventListener('click', closePlayer);
+    if (playerEnd)   playerEnd.addEventListener('click', closePlayer);
+    if (playerPlay) {
+        playerPlay.addEventListener('click', function(){
+            isPlaying = !isPlaying;
+            setPlayIcon(isPlaying);
         });
     }
 
-    // Skip controls are visual affordances; a static TTS script has no
-    // seekable timeline. Provide subtle visual feedback only.
-    function pulse(btn){
-        if(!btn) return;
-        btn.animate(
-            [{ transform:'scale(1)' }, { transform:'scale(1.12)' }, { transform:'scale(1)' }],
-            { duration: 240, easing:'ease-out' }
-        );
-    }
-    var back = document.getElementById('apBack10');
-    var fwd  = document.getElementById('apFwd10');
-    if(back) back.addEventListener('click', function(){ pulse(back); });
-    if(fwd)  fwd.addEventListener('click', function(){ pulse(fwd); });
-
-    // Ambient mixer mini-control inside the active player overlay
-    var ambRow = document.querySelectorAll('.ap-ambient-pill');
-    ambRow.forEach(function(pill){
-        pill.addEventListener('click', function(){
-            ambRow.forEach(function(p){ p.classList.remove('active'); });
-            pill.classList.add('active');
-            var type = pill.getAttribute('data-ap-amb');
-            if(type === 'silence'){
-                if(typeof killAmbient === 'function') killAmbient();
-            } else {
-                if(typeof startAmbient === 'function') startAmbient(type);
-            }
-        });
+    document.addEventListener('keydown', function(e){
+        if (e.key === 'Escape' && player.classList.contains('is-open')) closePlayer();
     });
-})();
 
-function openSession(session){
-    state.currentSession = session;
-    state.elapsed = 0;
-    state.duration = session.duration * 60;
-    state.promptIdx = 0;
-    state.running = false;
-    state.paused = false;
-
-    // Set background
-    playerBg.style.background = session.bg;
-
-    // Reset UI
-    ringFg.style.strokeDashoffset = CIRC;
-    ringTime.textContent = session.duration + ':00';
-    ringLabel.textContent = session.title;
-    promptText.textContent = 'Tap play to begin';
-    promptText.style.opacity = '1';
-    iconPlay.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
-
-    // Spawn particles
-    spawnParticles(session);
-
-    // Show player
-    playerView.classList.add('active');
-    document.body.style.overflow = 'hidden';
-}
-
-function spawnParticles(session){
-    var container = document.getElementById('particles');
-    container.innerHTML = '';
-    var colors = ['rgba(255,255,255,0.3)','rgba(200,230,210,0.25)','rgba(180,220,255,0.2)'];
-    for(var i = 0; i < 20; i++){
-        var p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = Math.random()*100+'%';
-        p.style.top = (60+Math.random()*40)+'%';
-        p.style.width = p.style.height = (2+Math.random()*4)+'px';
-        p.style.background = colors[i%colors.length];
-        p.style.setProperty('--dy', (-200-Math.random()*400)+'px');
-        p.style.setProperty('--po', (0.2+Math.random()*0.4).toFixed(2));
-        p.style.animationDuration = (12+Math.random()*18)+'s';
-        p.style.animationDelay = (Math.random()*10)+'s';
-        container.appendChild(p);
+    /* ========================================================
+       9. VIDEO FALLBACK
+       Hide video element when it cannot load so the SVG hills
+       and radial gradient remain the hero.
+       ======================================================== */
+    var heroVid = document.getElementById('heroVideo');
+    if (heroVid) {
+        heroVid.addEventListener('error', function(){ heroVid.style.display = 'none'; });
+        setTimeout(function(){
+            if (heroVid.readyState === 0) heroVid.style.display = 'none';
+        }, 1500);
     }
-}
 
-function closePlayer(){
-    state.running = false;
-    state.paused = false;
-    clearInterval(state.timer);
-    tts.stop();
-    killAmbient();
-    playerView.classList.remove('active');
-    document.getElementById('completeView').classList.remove('active');
-    document.body.style.overflow = '';
-}
-
-document.getElementById('playerBack').addEventListener('click', closePlayer);
-
-// Play/Pause
-btnPlay.addEventListener('click', function(){
-    if(!state.running && !state.paused){
-        // Start session
-        state.running = true;
-        bell(528);
-        startAmbient(state.ambientType);
-        iconPlay.innerHTML = '<line x1="10" y1="4" x2="10" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/>';
-        // Start timer
-        state.timer = setInterval(tick, 1000);
-        // First prompt after bell
-        setTimeout(function(){ showPrompt(0); }, 2000);
-    } else if(state.running && !state.paused){
-        // Pause
-        state.paused = true;
-        state.running = false;
-        clearInterval(state.timer);
-        tts.stop();
-        iconPlay.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
-    } else if(state.paused){
-        // Resume
-        state.paused = false;
-        state.running = true;
-        state.timer = setInterval(tick, 1000);
-        iconPlay.innerHTML = '<line x1="10" y1="4" x2="10" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/>';
-    }
-});
-
-function tick(){
-    if(!state.running) return;
-    state.elapsed++;
-    var remaining = Math.max(0, state.duration - state.elapsed);
-    var m = Math.floor(remaining/60), s = remaining%60;
-    ringTime.textContent = m + ':' + (s<10?'0':'') + s;
-    // Update ring
-    var progress = state.elapsed / state.duration;
-    ringFg.style.strokeDashoffset = CIRC * (1 - Math.min(progress, 1));
-
-    if(state.elapsed >= state.duration){
-        sessionComplete();
-    }
-}
-
-function showPrompt(idx){
-    if(!state.running || !state.currentSession) return;
-    var prompts = state.currentSession.prompts;
-    if(idx >= prompts.length) return;
-    state.promptIdx = idx;
-
-    promptText.style.opacity = '0';
-    setTimeout(function(){
-        promptText.textContent = prompts[idx];
-        promptText.style.opacity = '1';
-
-        // Speak the prompt
-        tts.speak(prompts[idx], function(){
-            // After speaking, wait a bit then show next
-            var delay = state.currentSession.duration <= 3 ? 2000 : 4000;
-            setTimeout(function(){ showPrompt(idx + 1); }, delay);
-        });
-    }, 300);
-}
-
-function sessionComplete(){
-    state.running = false;
-    clearInterval(state.timer);
-    tts.stop();
-    bell(528);
-
-    // Fade out ambient after 2 seconds
-    setTimeout(killAmbient, 2000);
-
-    // Log activity
-    try{
-        var log = JSON.parse(localStorage.getItem('sukoon_activity_log')||'[]');
-        log.unshift({ type:'meditation', text: state.currentSession.title+' ('+state.currentSession.duration+' min)', minutes: state.currentSession.duration, timestamp: new Date().toISOString() });
-        if(log.length>200) log=log.slice(0,200);
-        localStorage.setItem('sukoon_activity_log', JSON.stringify(log));
-        var stats = JSON.parse(localStorage.getItem('sukoon_progress_stats')||'{}');
-        stats.totalMinutes = (stats.totalMinutes||0) + state.currentSession.duration;
-        stats.totalSessions = (stats.totalSessions||0) + 1;
-        if(!stats.typeCounts) stats.typeCounts={};
-        stats.typeCounts.meditation = (stats.typeCounts.meditation||0)+1;
-        localStorage.setItem('sukoon_progress_stats', JSON.stringify(stats));
-    }catch(e){}
-
-    // Track via engine
-    if(window.sukoon) sukoon.track('meditation', state.currentSession.duration, state.currentSession.title);
-
-    // Show completion
-    setTimeout(function(){
-        document.getElementById('compTitle').textContent = 'Session Complete';
-        document.getElementById('compDuration').textContent = state.currentSession.duration + ' minutes of mindfulness';
-        document.getElementById('compSession').textContent = state.currentSession.title;
-        document.getElementById('completeView').classList.add('active');
-    }, 1500);
-}
-
-document.getElementById('compDone').addEventListener('click', closePlayer);
-
-// Ambient selector
-document.getElementById('ambRow').addEventListener('click', function(e){
-    var pill = e.target.closest('.amb-pill');
-    if(!pill) return;
-    document.querySelectorAll('.amb-pill').forEach(function(p){ p.classList.remove('active'); });
-    pill.classList.add('active');
-    state.ambientType = pill.dataset.amb;
-    if(state.running) startAmbient(state.ambientType);
-});
-
-// Voice toggle
-var voiceOn = true;
-document.getElementById('btnVoice').addEventListener('click', function(){
-    voiceOn = !voiceOn;
-    state.ttsEnabled = voiceOn;
-    this.style.opacity = voiceOn ? '1' : '0.4';
-    if(!voiceOn) tts.stop();
-});
-
-// Sound toggle
-var soundOn = true;
-document.getElementById('btnSound').addEventListener('click', function(){
-    soundOn = !soundOn;
-    this.style.opacity = soundOn ? '1' : '0.4';
-    if(soundOn && state.running){ startAmbient(state.ambientType); }
-    else { killAmbient(); }
-});
-
+    /* ========================================================
+       10. BOOT
+       ======================================================== */
+    applyLang('en');
 })();
 </script>
-    <script src="/js/sukoon-engine.js"></script>
-    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-    <script src="/js/shell.js"></script>
+
 </body>
 </html>

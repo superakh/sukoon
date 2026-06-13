@@ -1,0 +1,884 @@
+/* ============================================================
+   SUKOON ALIVE: cinematic rebuild
+   Living-scene design system — Indian dusk, cream on indigo.
+   Source of truth: Sukoon Final Implementation Spec.
+   ------------------------------------------------------------
+   Loaded via @import from shell.css. New tokens are namespaced
+   under --sk-* so they coexist with the legacy palette without
+   clobbering it. Pages opt into the cinematic look by adding
+   .sukoon-alive on <body> (or by using the new components).
+   ============================================================ */
+
+/* ============================================================
+   1. TOKENS — palette, type, motion, layout, shadow
+   ============================================================ */
+:root {
+    /* ---------- Sanctum base: backgrounds, deep surfaces ---------- */
+    --sk-night:        #0F1B3D;
+    --sk-twilight:     #1A2547;
+    --sk-aubergine:    #2B1F4A;
+    --sk-dusk:         #6B3E5E;
+
+    /* ---------- Brand accents, used with restraint ---------- */
+    --sk-saffron:      #E8A552;
+    --sk-marigold:     #D87A4A;
+    --sk-haldi:        #E8C547;
+
+    /* ---------- Healing & compassion accents ---------- */
+    --sk-tulsi:        #6FA286;
+    --sk-rose:         #C77D7D;
+    --sk-coral:        #F08679;
+
+    /* ---------- Text & neutrals: always cream, never pure white ---------- */
+    --sk-cream:        #F5EFE2;
+    --sk-cream-dim:    rgba(245, 239, 226, 0.72);
+    --sk-cream-quiet:  rgba(245, 239, 226, 0.45);
+    --sk-mist:         #7FA8A2;
+    --sk-ink:          #1A1530;
+    --sk-paper:        #FAF6EE;
+
+    /* ---------- Shadows & overlays ---------- */
+    --sk-shadow:       rgba(8, 12, 28, 0.55);
+    --sk-overlay-btm:  linear-gradient(180deg, rgba(15,27,61,0) 0%, rgba(15,27,61,0.65) 100%);
+    --sk-overlay-top:  linear-gradient(180deg, rgba(15,27,61,0.6) 0%, rgba(15,27,61,0) 60%);
+
+    /* ---------- Typography stack ---------- */
+    --sk-font-serif:  'Fraunces', 'Tiro Devanagari Hindi', Georgia, serif;
+    --sk-font-sans:   'Inter Tight', 'Hind', system-ui, sans-serif;
+    --sk-font-hindi:  'Tiro Devanagari Hindi', 'Hind', serif;
+
+    /* ---------- Type scale: clamp curves, no media queries ---------- */
+    --sk-h1:       clamp(40px, 6vw, 76px);
+    --sk-h2:       clamp(32px, 4vw, 52px);
+    --sk-h3:       clamp(22px, 2.4vw, 28px);
+    --sk-body:     18px;
+    --sk-small:    14px;
+    --sk-eyebrow:  11px;
+
+    --sk-lead-en:        1.65;
+    --sk-lead-hi:        1.78;
+    --sk-track-eyebrow:  0.16em;
+    --sk-track-h1:       -0.022em;
+
+    /* ---------- Motion ---------- */
+    --sk-ease-calm:    cubic-bezier(0.22, 1, 0.36, 1);
+    --sk-ease-breath:  cubic-bezier(0.45, 0, 0.55, 1);
+    --sk-ease-spring:  cubic-bezier(0.34, 1.4, 0.64, 1);
+    --sk-dur-quick:    300ms;
+    --sk-dur-soft:     600ms;
+    --sk-dur-ambient:  1200ms;
+    --sk-loop-breath:  12s;
+    --sk-loop-ken:     22s;
+    --sk-breath-phase: 0;
+
+    /* ---------- Layout ---------- */
+    --sk-radius-card:   20px;
+    --sk-radius-tile:   28px;
+    --sk-radius-pill:   999px;
+    --sk-radius-sheet:  24px;
+    --sk-space-section: clamp(96px, 12vw, 160px);
+    --sk-space-block:   clamp(48px, 6vw, 80px);
+    --sk-max-prose:     640px;
+    --sk-max-content:   1120px;
+    --sk-tap-min:       48px;
+    --sk-gap:           16px;
+    --sk-gap-lg:        24px;
+    --sk-tab-h:         64px;
+
+    /* ---------- Shadows ---------- */
+    --sk-shadow-card:   0 4px 24px rgba(8, 12, 28, 0.25);
+    --sk-shadow-float:  0 16px 40px var(--sk-shadow);
+    --sk-shadow-glow:   0 0 48px 8px rgba(232, 165, 82, 0.18);
+
+    /* ---------- Default scene gradient stops (overridden by time-of-day) ---------- */
+    --scene-top:    var(--sk-night);
+    --scene-mid:    var(--sk-aubergine);
+    --scene-bottom: var(--sk-dusk);
+}
+
+/* ============================================================
+   2. TIME-OF-DAY THEMING
+   Applied to <html data-tod="..."> OR <body class="scene-*">
+   Both surfaces are supported so JS can flip either one.
+   ============================================================ */
+[data-tod="dawn"],
+body.scene-dawn {
+    --scene-top:    #3A2E5C;
+    --scene-mid:    #B96D6D;
+    --scene-bottom: #E8A552;
+}
+[data-tod="day"],
+body.scene-day {
+    --scene-top:    #7FA3C7;
+    --scene-mid:    #C8D8E8;
+    --scene-bottom: #F5EFE2;
+}
+[data-tod="dusk"],
+body.scene-dusk {
+    --scene-top:    #2B1F4A;
+    --scene-mid:    #6B3E5E;
+    --scene-bottom: #E8A552;
+}
+[data-tod="night"],
+body.scene-night {
+    --scene-top:    #0F1B3D;
+    --scene-mid:    #2B1F4A;
+    --scene-bottom: #3A2645;
+}
+[data-tod="late"],
+body.scene-late {
+    --scene-top:    #080F25;
+    --scene-mid:    #14193A;
+    --scene-bottom: #1F1A33;
+}
+
+/* Hindi prose breathing room */
+[lang="hi"] body,
+[data-lang="hi"] body {
+    line-height: var(--sk-lead-hi);
+}
+
+/* ============================================================
+   3. KEYFRAMES — slow, breath-coupled, never twitchy
+   ============================================================ */
+@keyframes sk-ken-burns {
+    from { transform: scale(1) translate(0, 0); }
+    to   { transform: scale(1.08) translate(-1%, -1%); }
+}
+
+@keyframes sk-drift-up {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes sk-twinkle {
+    0%, 100% { opacity: 0.3; }
+    50%      { opacity: 1; }
+}
+
+@keyframes sk-soul-pulse {
+    0%, 100% { transform: scale(1); opacity: 0.8; }
+    50%      { transform: scale(1.4); opacity: 1; }
+}
+
+@keyframes sk-flame {
+    from { transform: scale(1) rotate(-2deg); }
+    to   { transform: scale(1.08) rotate(2deg); }
+}
+
+@keyframes sk-pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(232, 165, 82, 0); }
+    50%      { box-shadow: 0 0 48px 8px rgba(232, 165, 82, 0.18); }
+}
+
+/* Named alias keyframes requested by the spec: breath-pulse, scene-shift,
+   reveal-up, ambient-drift, counter-tick. */
+@keyframes breath-pulse {
+    0%, 100% { transform: scale(0.92); opacity: 0.85; }
+    50%      { transform: scale(1.06); opacity: 1; }
+}
+
+@keyframes scene-shift {
+    from { filter: brightness(0.95); }
+    to   { filter: brightness(1.03); }
+}
+
+@keyframes reveal-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes ambient-drift {
+    0%   { transform: translate3d(0, 0, 0); opacity: 0.6; }
+    50%  { transform: translate3d(4px, -6px, 0); opacity: 1; }
+    100% { transform: translate3d(0, 0, 0); opacity: 0.6; }
+}
+
+@keyframes counter-tick {
+    0%   { opacity: 0.6; transform: translateY(2px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   4. LIVING SCENE CANVAS
+   Fixed full-viewport gradient that breathes with the global
+   --sk-breath-phase value. Children of <main>/<section>/<footer>
+   stack above via z-index 10.
+   ============================================================ */
+.sk-scene {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg,
+        var(--scene-top)    0%,
+        var(--scene-mid)   55%,
+        var(--scene-bottom) 100%);
+    filter: brightness(calc(0.95 + var(--sk-breath-phase) * 0.08));
+    transition: filter 200ms linear, background 60s linear;
+}
+.sk-scene canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+body.sukoon-alive > main,
+body.sukoon-alive > section,
+body.sukoon-alive > footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* ============================================================
+   5. HERO — video / image with Ken Burns and overlay
+   ============================================================ */
+.sk-hero,
+.hero-video {
+    position: relative;
+    min-height: 78vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+.sk-hero__media,
+.hero-video__media {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+.sk-hero__media video,
+.sk-hero__media img,
+.hero-video__media video,
+.hero-video__media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: sk-ken-burns var(--sk-loop-ken) var(--sk-ease-calm) infinite alternate;
+}
+.sk-hero__media::after,
+.hero-video__overlay {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--sk-overlay-btm);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.sk-hero__copy,
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: var(--sk-max-prose);
+    padding-inline: var(--sk-gap-lg);
+    color: var(--sk-cream);
+    text-align: center;
+}
+.sk-hero__copy h1,
+.hero-content h1 {
+    font: 300 var(--sk-h1)/1.05 var(--sk-font-serif);
+    letter-spacing: var(--sk-track-h1);
+    margin-bottom: 16px;
+    color: var(--sk-cream);
+}
+
+.sk-hero__copy .sk-hi,
+.hero-content .sk-hi {
+    display: block;
+    font-family: var(--sk-font-hindi);
+    color: var(--sk-cream-dim);
+    line-height: var(--sk-lead-hi);
+    opacity: 0;
+    animation: sk-drift-up 1.2s var(--sk-ease-calm) 400ms forwards;
+}
+
+.hero-eyebrow,
+.sk-eyebrow {
+    display: inline-block;
+    font: 600 var(--sk-eyebrow)/1 var(--sk-font-sans);
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-cream-dim);
+    margin-bottom: 16px;
+}
+
+/* ============================================================
+   6. BREATH BALL — global brand mark, JS-pulsed
+   ============================================================ */
+.sk-breath-ball,
+.breath-ball {
+    position: relative;
+    width: 360px;
+    height: 360px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 50%,
+        var(--sk-cream) 0%,
+        rgba(245,239,226,0.3) 45%,
+        transparent 70%);
+    transform: scale(calc(0.7 + var(--sk-breath-phase) * 0.3));
+    transition: transform 200ms linear;
+    box-shadow: 0 0 calc(80px * var(--sk-breath-phase)) rgba(232, 165, 82, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.sk-breath-ball::before,
+.breath-ball::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    background: inherit;
+    border-radius: 50%;
+    filter: blur(28px);
+    opacity: calc(0.4 + var(--sk-breath-phase) * 0.4);
+    pointer-events: none;
+}
+
+.sk-breath-ball__label,
+.breath-ball__core {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font: 500 14px/1 var(--sk-font-sans);
+    color: var(--sk-ink);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+/* Optional outer ring layer for the parameterized JS ball */
+.breath-ball__ring {
+    position: absolute;
+    inset: -8px;
+    border-radius: 50%;
+    border: 1px solid var(--sk-cream-quiet);
+    transform: scale(1);
+    transition: transform 800ms var(--sk-ease-breath),
+                opacity   800ms var(--sk-ease-breath);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.sk-breath-ball--nav  { width: 24px;  height: 24px; }
+.sk-breath-ball--card { width: 80px;  height: 80px; }
+
+/* ============================================================
+   7. AMBIENT AUDIO — floating dial + pill
+   ============================================================ */
+.sk-ambient-dial,
+.ambient-audio {
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    z-index: 60;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--sk-cream);
+    color: var(--sk-ink);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--sk-shadow-card);
+    transition: transform var(--sk-dur-quick) var(--sk-ease-spring),
+                width     var(--sk-dur-quick) var(--sk-ease-calm);
+    font: 500 12px/1 var(--sk-font-sans);
+}
+.sk-ambient-dial:hover,
+.ambient-audio:hover {
+    transform: scale(1.06);
+}
+.sk-ambient-dial[data-state="off"] svg,
+.ambient-audio[data-state="off"] svg {
+    opacity: 0.4;
+}
+
+.ambient-audio__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: var(--sk-radius-pill);
+    background: rgba(15, 27, 61, 0.72);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    color: var(--sk-cream);
+    border: 1px solid var(--sk-cream-quiet);
+    font: 500 12px/1 var(--sk-font-sans);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    user-select: none;
+}
+.ambient-audio__pill[data-state="off"] { opacity: 0.6; }
+
+/* ============================================================
+   8. BUTTONS — pill, sacred, ghost
+   ============================================================ */
+.sk-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: var(--sk-tap-min);
+    padding: 16px 32px;
+    border-radius: var(--sk-radius-pill);
+    font: 500 16px/1 var(--sk-font-sans);
+    letter-spacing: 0.01em;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: transform var(--sk-dur-quick) var(--sk-ease-calm),
+                filter    var(--sk-dur-quick) var(--sk-ease-calm);
+}
+.sk-btn:hover  { transform: scale(1.02); filter: brightness(1.05); }
+.sk-btn:active { transform: scale(0.98); }
+
+.sk-btn--primary { background: var(--sk-cream);  color: var(--sk-ink);   }
+.sk-btn--ghost   { background: transparent;       color: var(--sk-cream); border: 1px solid var(--sk-cream-dim); }
+.sk-btn--sacred  { background: var(--sk-saffron); color: var(--sk-ink);   }
+
+/* ============================================================
+   9. CARDS — base, portrait, tile, scene-card
+   ============================================================ */
+.sk-card {
+    background: var(--sk-twilight);
+    border-radius: var(--sk-radius-card);
+    padding: 24px;
+    color: var(--sk-cream);
+    transition: transform 400ms var(--sk-ease-calm),
+                box-shadow 400ms var(--sk-ease-calm);
+}
+.sk-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sk-shadow-float);
+}
+.sk-card--portrait { aspect-ratio: 3/4; padding: 0; overflow: hidden; position: relative; }
+.sk-card--tile     { aspect-ratio: 1/1; }
+
+.scene-card {
+    position: relative;
+    background: var(--sk-twilight);
+    border-radius: var(--sk-radius-tile);
+    overflow: hidden;
+    color: var(--sk-cream);
+    transition: transform 400ms var(--sk-ease-calm),
+                box-shadow 400ms var(--sk-ease-calm);
+    isolation: isolate;
+}
+.scene-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--sk-shadow-float);
+}
+.scene-card__media {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+.scene-card__media > img,
+.scene-card__media > video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.scene-card__media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--sk-overlay-btm);
+    pointer-events: none;
+}
+
+/* ============================================================
+   10. MOOD PICKER — five soft dots, no emoji
+   ============================================================ */
+.mood-picker,
+.sk-mood-picker {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 16px 0;
+}
+.mood-pill,
+.sk-mood-pill {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: linear-gradient(135deg, var(--sk-cream), var(--sk-rose));
+    opacity: 0.5;
+    transition: opacity var(--sk-dur-quick) var(--sk-ease-calm),
+                transform var(--sk-dur-quick) var(--sk-ease-spring);
+}
+.mood-pill:hover,
+.sk-mood-pill:hover {
+    opacity: 0.85;
+    transform: scale(1.08);
+}
+.mood-pill[aria-pressed="true"],
+.sk-mood-pill[aria-pressed="true"] {
+    opacity: 1;
+    transform: scale(1.12);
+    box-shadow: var(--sk-shadow-glow);
+}
+
+/* ============================================================
+   11. SOULS COUNTER — privacy-preserving live count
+   ============================================================ */
+.sk-souls,
+.souls-counter {
+    position: fixed;
+    bottom: 24px;
+    left: 24px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font: 500 12px/1 var(--sk-font-sans);
+    color: var(--sk-cream-dim);
+    letter-spacing: 0.04em;
+}
+.sk-souls__dot,
+.souls-counter__dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--sk-saffron);
+    animation: sk-soul-pulse 2.5s var(--sk-ease-breath) infinite;
+}
+.souls-counter__count {
+    font-variant-numeric: tabular-nums;
+    transition: opacity 300ms var(--sk-ease-calm);
+}
+.souls-counter__count.is-ticking {
+    animation: counter-tick 400ms var(--sk-ease-calm);
+}
+
+/* ============================================================
+   12. DIYA STREAK — terracotta flame in the corner
+   ============================================================ */
+.sk-diya {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    z-index: 60;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+}
+.sk-diya__flame {
+    width: 12px;
+    height: 18px;
+    background: radial-gradient(ellipse at 50% 70%,
+        var(--sk-marigold),
+        var(--sk-saffron) 60%,
+        transparent);
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    animation: sk-flame 0.8s var(--sk-ease-breath) infinite alternate;
+}
+
+/* ============================================================
+   13. LANGUAGE TOGGLE — A · अ
+   ============================================================ */
+.sk-lang,
+.lang-toggle {
+    position: fixed;
+    top: 16px;
+    right: 72px;
+    z-index: 60;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: var(--sk-radius-pill);
+    background: rgba(15, 27, 61, 0.55);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--sk-cream-dim);
+    border: 1px solid var(--sk-cream-quiet);
+    font: 500 14px/1 var(--sk-font-sans);
+    cursor: pointer;
+    user-select: none;
+}
+.sk-lang__opt,
+.lang-toggle__opt {
+    cursor: pointer;
+    opacity: 0.4;
+    transition: opacity 200ms;
+}
+.sk-lang__opt[aria-current="true"],
+.lang-toggle__opt[aria-current="true"] {
+    opacity: 1;
+    color: var(--sk-cream);
+}
+.sk-lang__sep,
+.lang-toggle__sep {
+    color: var(--sk-cream-quiet);
+}
+
+/* ============================================================
+   14. SCROLL REVEAL — single observer, staggered children
+   ============================================================ */
+.sk-reveal,
+.reveal-up {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 800ms var(--sk-ease-calm),
+                transform 800ms var(--sk-ease-calm);
+}
+.sk-reveal.is-visible,
+.reveal-up.is-visible,
+.reveal-up.is-revealed {
+    opacity: 1;
+    transform: none;
+}
+.sk-stagger > *,
+.reveal-up.is-stagger > * {
+    transition-delay: calc(var(--i, 0) * 80ms);
+}
+
+/* ============================================================
+   15. REDUCED MOTION
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+    .sk-scene canvas { display: none; }
+    .sk-breath-ball,
+    .breath-ball     { transform: scale(0.92); }
+}
+
+/* ============================================================
+   16. MOBILE-FIRST BREAKPOINTS
+   Base = 390px mobile. Scale up at 480 / 600 / 768 / 1024.
+   ============================================================ */
+@media (max-width: 480px) {
+    .sk-hero,
+    .hero-video        { min-height: 62vh; }
+    .sk-hero__copy,
+    .hero-content      { padding-inline: var(--sk-gap); }
+    .sk-breath-ball,
+    .breath-ball       { width: 240px; height: 240px; }
+    .sk-ambient-dial,
+    .ambient-audio     { bottom: calc(var(--sk-tab-h) + 12px); }
+    .sk-souls,
+    .souls-counter     { bottom: calc(var(--sk-tab-h) + 12px); }
+}
+
+@media (min-width: 600px) {
+    .sk-grid-library { grid-template-columns: repeat(2, 1fr); gap: var(--sk-gap-lg); }
+}
+
+@media (min-width: 768px) {
+    .sk-hero,
+    .hero-video      { min-height: 70vh; }
+}
+
+@media (min-width: 1024px) {
+    .sk-grid-library { grid-template-columns: repeat(3, 1fr); }
+    .sk-hero,
+    .hero-video      { min-height: 78vh; }
+}
+
+/* ============================================================
+   POST-LAUNCH FIXES — pillar grid, mood pill labels, hero markup
+   aliases. These close gaps the first verifier caught.
+   ============================================================ */
+
+/* Home container — used by index.html as a wrapping width-constrained box */
+.home-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 64px clamp(20px, 4vw, 48px);
+}
+@media (min-width: 768px) {
+    .home-container { padding: 96px clamp(24px, 4vw, 56px); }
+}
+
+/* Home bands — color-themed sections between hero and footer */
+.home-band              { position: relative; }
+.home-band--dusk        { background: linear-gradient(180deg, var(--sk-twilight), var(--sk-aubergine)); color: var(--sk-cream); }
+.home-band--night       { background: var(--sk-night); color: var(--sk-cream); }
+.home-band--twilight    { background: linear-gradient(180deg, var(--sk-aubergine), var(--sk-night)); color: var(--sk-cream); }
+
+.home-section-head { margin-bottom: clamp(28px, 4vw, 48px); }
+.home-section-head--center { text-align: center; }
+.home-section-title { font: 400 var(--sk-h2)/1.15 var(--sk-font-serif); margin: 4px 0 8px; letter-spacing: var(--sk-track-h1); }
+.home-section-sub   { font: 400 18px/1.6 var(--sk-font-hindi); color: var(--sk-cream-dim); margin: 4px 0 0; }
+.section-eyebrow    { font: 600 var(--sk-eyebrow)/1 var(--sk-font-sans); letter-spacing: var(--sk-track-eyebrow); text-transform: uppercase; color: var(--sk-saffron); margin: 0 0 4px; display: block; }
+
+/* Pillar grid — 4 scene cards on the homepage */
+.pillar-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-top: clamp(16px, 2vw, 24px);
+}
+@media (min-width: 600px) {
+    .pillar-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+}
+@media (min-width: 1024px) {
+    .pillar-grid { grid-template-columns: repeat(4, 1fr); gap: 28px; }
+}
+
+/* Scene-card variants used by index.html */
+.scene-card--feature {
+    display: grid;
+    grid-template-columns: 1fr;
+    text-decoration: none;
+    color: inherit;
+}
+@media (min-width: 768px) {
+    .scene-card--feature { grid-template-columns: 5fr 4fr; }
+}
+.scene-card--feature .scene-card__media { aspect-ratio: 16/9; }
+@media (min-width: 768px) {
+    .scene-card--feature .scene-card__media { aspect-ratio: auto; height: 100%; }
+}
+.scene-card--feature .scene-card__media-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, rgba(15,27,61,0) 50%, rgba(15,27,61,0.55) 100%);
+    pointer-events: none;
+}
+
+.scene-card--pillar {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    min-height: 320px;
+    max-height: 480px;
+}
+.scene-card--pillar .scene-card__media { aspect-ratio: 4/3; }
+@media (min-width: 1024px) {
+    .scene-card--pillar .scene-card__media { aspect-ratio: 1/1; }
+}
+.scene-card__body {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.scene-card__eyebrow { font: 600 11px/1 var(--sk-font-sans); letter-spacing: 0.14em; text-transform: uppercase; color: var(--sk-saffron); }
+.scene-card__title   { font: 400 var(--sk-h3)/1.2 var(--sk-font-serif); margin: 0; color: var(--sk-cream); }
+.scene-card__desc    { font: 400 15px/1.55 var(--sk-font-sans); color: var(--sk-cream-dim); margin: 0; }
+.scene-card__cta     { margin-top: 8px; font: 500 13px/1 var(--sk-font-sans); color: var(--sk-saffron); letter-spacing: 0.04em; }
+
+/* Mood pill — pill shape with glyph + label (the markup uses both) */
+.mood-picker {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 24px 0 8px;
+}
+.mood-pill {
+    width: auto;
+    height: auto;
+    min-width: 0;
+    border-radius: var(--sk-radius-pill);
+    background: rgba(245, 239, 226, 0.10);
+    border: 1px solid rgba(245, 239, 226, 0.18);
+    color: var(--sk-cream);
+    padding: 10px 18px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font: 500 14px/1 var(--sk-font-sans);
+    text-decoration: none;
+    opacity: 1;
+    cursor: pointer;
+    transition: background var(--sk-dur-quick) var(--sk-ease-calm),
+                transform var(--sk-dur-quick) var(--sk-ease-spring),
+                border-color var(--sk-dur-quick) var(--sk-ease-calm);
+}
+.mood-pill:hover {
+    background: rgba(232, 165, 82, 0.18);
+    border-color: rgba(232, 165, 82, 0.5);
+    transform: translateY(-2px);
+}
+.mood-pill__glyph {
+    width: 22px; height: 22px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sk-saffron), var(--sk-coral));
+    color: var(--sk-night);
+    font-size: 11px;
+}
+.mood-pill__label { white-space: nowrap; }
+
+/* Crisis bar (index.html) */
+.crisis-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 10px 16px;
+    background: rgba(15, 27, 61, 0.92);
+    color: var(--sk-cream);
+    font: 500 13px/1 var(--sk-font-sans);
+    text-decoration: none;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.crisis-bar__dot { width: 8px; height: 8px; border-radius: 50%; background: var(--sk-coral); box-shadow: 0 0 0 3px rgba(240,134,121,0.25); }
+.crisis-bar__text strong { color: var(--sk-saffron); font-weight: 600; }
+.crisis-bar__arrow { color: var(--sk-saffron); }
+
+/* Top header (transparent variant on hero) */
+.top-header { position: fixed; top: 36px; left: 0; right: 0; z-index: 150; display: flex; align-items: center; justify-content: space-between; padding: 12px clamp(20px, 4vw, 48px); }
+.top-header--transparent { background: transparent; }
+.brand { font: 500 18px/1 var(--sk-font-serif); color: var(--sk-cream); text-decoration: none; letter-spacing: 0.02em; }
+.lang-select { background: rgba(245, 239, 226, 0.10); border: 1px solid rgba(245, 239, 226, 0.25); color: var(--sk-cream); border-radius: var(--sk-radius-pill); padding: 6px 12px; font: 500 12px/1 var(--sk-font-sans); cursor: pointer; }
+
+/* Hero content scoping for cinematic homepage */
+.hero-video { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.hero-video__media { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; }
+.hero-video__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,27,61,0.25) 0%, rgba(15,27,61,0.45) 60%, rgba(15,27,61,0.7) 100%); z-index: 1; }
+.hero-content { position: relative; z-index: 2; text-align: center; padding: 0 clamp(20px, 4vw, 48px); max-width: 760px; color: var(--sk-cream); }
+.hero-eyebrow { font: 600 var(--sk-eyebrow)/1 var(--sk-font-sans); letter-spacing: var(--sk-track-eyebrow); text-transform: uppercase; color: var(--sk-cream-dim); margin: 0 0 16px; }
+.hero-content h1 { font: 400 var(--sk-h1)/1.05 var(--sk-font-serif); margin: 0 0 18px; letter-spacing: var(--sk-track-h1); color: var(--sk-cream); }
+.hero-content p { font: 400 18px/1.6 var(--sk-font-sans); color: var(--sk-cream-dim); margin: 0 0 12px; }
+.hero-hindi { font: 400 18px/1.6 var(--sk-font-hindi); color: var(--sk-cream-dim); }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 32px; }
+
+/* Buttons (cinematic theme) */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: var(--sk-radius-pill); font: 500 15px/1 var(--sk-font-sans); text-decoration: none; cursor: pointer; transition: transform var(--sk-dur-quick) var(--sk-ease-spring), background var(--sk-dur-quick) var(--sk-ease-calm); border: 1px solid transparent; }
+.btn--lg { padding: 16px 30px; font-size: 16px; }
+.btn--primary { background: var(--sk-saffron); color: var(--sk-night); }
+.btn--primary:hover { transform: translateY(-2px); background: var(--sk-marigold); }
+.btn--ghost { background: rgba(245,239,226,0.10); color: var(--sk-cream); border-color: rgba(245,239,226,0.30); }
+.btn--ghost:hover { transform: translateY(-2px); background: rgba(245,239,226,0.18); }
+
+/* Footer for cinematic homepage */
+.home-footer { padding: clamp(48px, 6vw, 80px) clamp(20px, 4vw, 48px); background: var(--sk-night); color: var(--sk-cream-quiet); font: 400 13px/1.6 var(--sk-font-sans); text-align: center; }
+.home-footer a { color: var(--sk-saffron); text-decoration: none; }
+
+/* Aliases so meditate.html .hero-video and breathe.html .sk-hero__video pick up shared rules where appropriate */
+.sk-hero__video, video.hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* Reveal-up safety: ensure content is visible even if JS doesn't bind the observer */
+.reveal-up { opacity: 1; transform: none; }

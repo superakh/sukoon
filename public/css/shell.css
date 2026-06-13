@@ -1,7 +1,12 @@
+@import url('./sukoon-alive.css');
+
 /* ============================================================
    SUKOON DESIGN SYSTEM — shell.css
    Single source of truth for layout, typography, colors, nav.
    Every page imports this. Page-specific styles stay inline.
+   sukoon-alive.css is @imported FIRST (CSS-spec requires
+   @import precede all other rules) so its --sk-* tokens are
+   available everywhere.
    ------------------------------------------------------------
    Brand: Apple/Mindvalley premium minimal.
    Deep forest green #2D6A4F + cream #FAFAF7.
@@ -1391,3 +1396,5 @@ body.page-exit {
 
     a { color: inherit; text-decoration: underline; }
 }
+
+
