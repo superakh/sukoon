@@ -188,72 +188,37 @@ is sit with what's underneath the question. Something is making tonight feel
 unmanageable. Tell me what's happening."`;
 }
 
-/* ── Provider configs ───────────────────────────────────────────────── */
+/* ── Anthropic (single-provider, native Messages API) ───────────────── */
 
-const PROVIDERS = [
-  {
-    name: 'Groq',
-    url: 'https://api.groq.com/openai/v1/chat/completions',
-    model: 'llama-3.3-70b-versatile',
-    keyEnv: 'GROQ_API_KEY',
-    headers: (key) => ({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` })
-  },
-  {
-    name: 'Cerebras',
-    url: 'https://api.cerebras.ai/v1/chat/completions',
-    model: 'llama-3.3-70b',
-    keyEnv: 'CEREBRAS_API_KEY',
-    headers: (key) => ({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` })
-  },
-  {
-    name: 'Gemini',
-    url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions',
-    model: 'gemini-2.0-flash',
-    keyEnv: 'GEMINI_API_KEY',
-    headers: (key) => ({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` })
-  },
-  {
-    name: 'OpenRouter-Llama',
-    url: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'meta-llama/llama-3.3-70b-instruct:free',
-    keyEnv: 'OPENROUTER_API_KEY',
-    headers: (key) => ({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` })
-  },
-  {
-    name: 'OpenRouter-Mistral',
-    url: 'https://openrouter.ai/api/v1/chat/completions',
-    model: 'mistralai/mistral-7b-instruct:free',
-    keyEnv: 'OPENROUTER_API_KEY',
-    headers: (key) => ({ 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` })
-  }
-];
+const ANTHROPIC = {
+  url: 'https://api.anthropic.com/v1/messages',
+  model: 'claude-sonnet-4-6',
+  apiVersion: '2023-06-01'
+};
 
-async function callProvider(provider, systemContent, userMessages) {
-  const key = process.env[provider.keyEnv];
+async function callAnthropic(systemContent, userMessages) {
+  const key = process.env.ANTHROPIC_API_KEY;
   if (!key) return { ok: false, reason: 'no-key' };
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 7000);
+  const timeout = setTimeout(() => controller.abort(), 15000);
   const startedAt = Date.now();
 
   try {
-    const body = {
-      model: provider.model,
-      max_tokens: 500,
-      temperature: 0.7,
-      messages: [
-        { role: 'system', content: systemContent },
-        ...userMessages
-      ]
-    };
-    if (provider.name !== 'Gemini') {
-      body.presence_penalty = 0.3;
-    }
-
-    const response = await fetch(provider.url, {
+    const response = await fetch(ANTHROPIC.url, {
       method: 'POST',
-      headers: provider.headers(key),
-      body: JSON.stringify(body),
+      headers: {
+        'x-api-key': key,
+        'anthropic-version': ANTHROPIC.apiVersion,
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: ANTHROPIC.model,
+        max_tokens: 500,
+        temperature: 0.7,
+        system: systemContent,
+        messages: userMessages
+      }),
       signal: controller.signal
     });
 
@@ -261,21 +226,21 @@ async function callProvider(provider, systemContent, userMessages) {
 
     if (!response.ok) {
       const errBody = await response.text();
-      console.error(`[Chat] ${provider.name} ${response.status} in ${ms}ms:`, errBody.slice(0, 200));
-      return { ok: false, reason: `http-${response.status}`, ms };
+      console.error(`[Chat] Anthropic ${response.status} in ${ms}ms:`, errBody.slice(0, 200));
+      return { ok: false, reason: `http-${response.status}`, ms, status: response.status };
     }
 
     const data = await response.json();
-    const text = data.choices?.[0]?.message?.content;
+    const text = data.content?.[0]?.text;
     if (!text) {
-      console.error(`[Chat] ${provider.name} empty response in ${ms}ms`);
+      console.error(`[Chat] Anthropic empty response in ${ms}ms`);
       return { ok: false, reason: 'empty', ms };
     }
     return { ok: true, text, ms };
   } catch (err) {
     const ms = Date.now() - startedAt;
     const reason = err.name === 'AbortError' ? 'timeout' : `error:${err.message.slice(0, 80)}`;
-    console.error(`[Chat] ${provider.name} ${reason} in ${ms}ms`);
+    console.error(`[Chat] Anthropic ${reason} in ${ms}ms`);
     return { ok: false, reason, ms };
   } finally {
     clearTimeout(timeout);
@@ -306,10 +271,9 @@ router.post('/', async (req, res) => {
       return res.status(400).json({ error: 'No valid messages.' });
     }
 
-    const hasAnyKey = PROVIDERS.some(p => process.env[p.keyEnv]);
-    if (!hasAnyKey) {
+    if (!process.env.ANTHROPIC_API_KEY) {
       return res.status(500).json({
-        error: 'AI Friend is not configured yet. Please set at least one of GROQ_API_KEY, GEMINI_API_KEY, OPENROUTER_API_KEY, or CEREBRAS_API_KEY in the .env file.'
+        error: 'AI Friend is not configured yet. Please set ANTHROPIC_API_KEY in the .env file.'
       });
     }
 
@@ -317,25 +281,21 @@ router.post('/', async (req, res) => {
     const safeLang = ALLOWED_LANGS.has(language) ? language : 'en';
     const systemContent = buildSystemPrompt(safeLang);
 
-    const deadline = Number(new Date()) + 25000;
+    // First attempt, then a single retry on transient 5xx (network blip, model overloaded)
+    let result = await callAnthropic(systemContent, userMessages);
+    if (!result.ok && (result.status === 429 || (result.status && result.status >= 500))) {
+      console.log(`[Chat] Anthropic ${result.status} — retrying once`);
+      result = await callAnthropic(systemContent, userMessages);
+    }
 
-    const attempts = [];
-    for (const provider of PROVIDERS) {
-      if (Number(new Date()) > deadline) {
-        console.error(`[Chat] outer deadline (25000ms) exceeded before trying ${provider.name}`);
-        break;
-      }
-      const result = await callProvider(provider, systemContent, userMessages);
-      attempts.push({ name: provider.name, ok: result.ok, reason: result.reason, ms: result.ms });
-      if (result.ok) {
-        const totalMs = Date.now() - requestStart;
-        console.log(`[Chat] ✓ ${provider.name} (${result.ms}ms, total ${totalMs}ms, after ${attempts.length - 1} failures)`);
-        return res.json({ message: result.text });
-      }
+    if (result.ok) {
+      const totalMs = Date.now() - requestStart;
+      console.log(`[Chat] ✓ Anthropic (${result.ms}ms, total ${totalMs}ms)`);
+      return res.json({ message: result.text });
     }
 
     const totalMs = Date.now() - requestStart;
-    console.error(`[Chat] ✗ All ${PROVIDERS.length} providers failed in ${totalMs}ms:`, JSON.stringify(attempts));
+    console.error(`[Chat] ✗ Anthropic failed (${result.reason}) in ${totalMs}ms`);
     res.status(503).json({
       error: 'I had trouble responding right now. Please try again in a moment.'
     });
