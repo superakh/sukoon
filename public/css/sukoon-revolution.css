@@ -1,0 +1,985 @@
+/* ============================================================
+   SUKOON REVOLUTION
+   The 8-page sanctuary system: /, /be-with-me, /breathe, /sit,
+   /rest, /now, /today, /journal (+ /about, /privacy).
+
+   This sheet builds ON sukoon-alive.css. It refines the type
+   scale + motion library and adds the component surfaces the
+   revolution needs. Mobile-first; breakpoints at 480, 600,
+   768, 1024. Honors prefers-reduced-motion and dark-mode.
+   ============================================================ */
+
+@import url('./sukoon-alive.css');
+
+/* ============================================================
+   0. REFINED TOKENS — type scale & motion library
+   ============================================================
+   We don't redefine palette tokens; we layer a more precise
+   modular scale and a richer motion vocabulary on top of the
+   foundation already in sukoon-alive.
+   ============================================================ */
+:root {
+    /* Modular type scale (1.250 — major third), clamped */
+    --sk-fs-eyebrow:  clamp(10px,  0.8vw,  12px);
+    --sk-fs-micro:    clamp(12px,  0.9vw,  13px);
+    --sk-fs-small:    clamp(13px,  1.0vw,  15px);
+    --sk-fs-body:     clamp(15px,  1.15vw, 18px);
+    --sk-fs-lead:     clamp(17px,  1.4vw,  21px);
+    --sk-fs-h4:       clamp(20px,  1.8vw,  24px);
+    --sk-fs-h3:       clamp(22px,  2.4vw,  30px);
+    --sk-fs-h2:       clamp(30px,  4vw,    48px);
+    --sk-fs-h1:       clamp(40px,  6vw,    76px);
+    --sk-fs-display:  clamp(52px,  8vw,    108px);
+
+    /* Numeric / mono for counters and timers */
+    --sk-font-mono:   'IBM Plex Mono', 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Motion library — extended */
+    --sk-ease-arrive:   cubic-bezier(0.16, 1, 0.3, 1);     /* hero rise */
+    --sk-ease-settle:   cubic-bezier(0.4, 0, 0.2, 1);      /* card land */
+    --sk-ease-pulse:    cubic-bezier(0.6, 0, 0.4, 1);      /* heartbeat */
+    --sk-ease-drift:    cubic-bezier(0.5, 0.05, 0.5, 0.95);/* slow drift */
+    --sk-dur-tap:        180ms;
+    --sk-dur-page:       720ms;
+    --sk-dur-mood:      1100ms;
+    --sk-dur-cinematic: 1800ms;
+    --sk-loop-heartbeat: 1.4s;
+    --sk-loop-mantra:    8s;
+    --sk-loop-pulse:    18s;
+
+    /* Component surfaces */
+    --sk-surface-1:  rgba(245, 239, 226, 0.06);
+    --sk-surface-2:  rgba(245, 239, 226, 0.10);
+    --sk-surface-3:  rgba(245, 239, 226, 0.16);
+    --sk-stroke-1:   rgba(245, 239, 226, 0.12);
+    --sk-stroke-2:   rgba(245, 239, 226, 0.22);
+    --sk-glass:      saturate(140%) blur(18px);
+}
+
+/* ============================================================
+   1. ENTRY PROMPT — the first heartbeat of /
+   ============================================================ */
+.sk-entry-prompt {
+    width: 100%;
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 28px 24px 32px;
+    border-radius: var(--sk-radius-sheet);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    backdrop-filter: var(--sk-glass);
+    -webkit-backdrop-filter: var(--sk-glass);
+    color: var(--sk-cream);
+    text-align: center;
+    box-shadow: var(--sk-shadow-card);
+    animation: skRiseSoft var(--sk-dur-page) var(--sk-ease-arrive) both;
+}
+.sk-entry-prompt__eyebrow {
+    font-size: var(--sk-fs-eyebrow);
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-cream-quiet);
+    margin: 0 0 10px;
+}
+.sk-entry-prompt__question {
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h3);
+    line-height: 1.25;
+    margin: 0 0 18px;
+}
+.sk-entry-prompt__moods {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+.sk-entry-prompt__mood {
+    appearance: none;
+    background: transparent;
+    color: var(--sk-cream);
+    border: 1px solid var(--sk-stroke-2);
+    border-radius: var(--sk-radius-pill);
+    padding: 10px 16px;
+    font: 500 var(--sk-fs-small)/1 var(--sk-font-sans);
+    min-height: var(--sk-tap-min);
+    cursor: pointer;
+    transition: background var(--sk-dur-tap) var(--sk-ease-calm),
+                transform var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-entry-prompt__mood:hover,
+.sk-entry-prompt__mood:focus-visible { background: var(--sk-surface-2); transform: translateY(-1px); }
+.sk-entry-prompt__mood[aria-pressed="true"] {
+    background: var(--sk-saffron);
+    color: var(--sk-ink);
+    border-color: transparent;
+}
+
+/* ============================================================
+   2. PULSE TICKER — the "you are not alone" counter
+   ============================================================ */
+.sk-pulse-ticker {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 18px;
+    border-radius: var(--sk-radius-pill);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    color: var(--sk-cream-dim);
+    font: 500 var(--sk-fs-small)/1 var(--sk-font-sans);
+}
+.sk-pulse-ticker__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--sk-tulsi);
+    box-shadow: 0 0 0 0 rgba(111, 162, 134, 0.55);
+    animation: skHeartbeat var(--sk-loop-heartbeat) var(--sk-ease-pulse) infinite;
+}
+.sk-pulse-ticker__count {
+    font-family: var(--sk-font-mono);
+    font-variant-numeric: tabular-nums;
+    color: var(--sk-cream);
+    font-size: var(--sk-fs-body);
+}
+@keyframes skHeartbeat {
+    0%   { transform: scale(1);   box-shadow: 0 0 0 0    rgba(111,162,134,0.55); }
+    50%  { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(111,162,134,0); }
+    100% { transform: scale(1);   box-shadow: 0 0 0 0    rgba(111,162,134,0); }
+}
+
+/* ============================================================
+   3. FESTIVAL BANNER — soft contextual ribbon on /today, /
+   ============================================================ */
+.sk-festival-banner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 20px;
+    border-radius: var(--sk-radius-card);
+    background: linear-gradient(120deg,
+                rgba(232, 165, 82, 0.18),
+                rgba(216, 122, 74, 0.10) 60%,
+                rgba(245, 239, 226, 0.04));
+    border: 1px solid rgba(232, 165, 82, 0.30);
+    color: var(--sk-cream);
+    text-align: left;
+}
+.sk-festival-banner__glyph {
+    flex: 0 0 auto;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    display: grid; place-items: center;
+    background: rgba(232, 197, 71, 0.18);
+    font-size: 20px;
+}
+.sk-festival-banner__name {
+    margin: 0;
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h4);
+}
+.sk-festival-banner__sub {
+    margin: 2px 0 0;
+    font-size: var(--sk-fs-small);
+    color: var(--sk-cream-dim);
+}
+.sk-festival-banner__cta {
+    margin-left: auto;
+    color: var(--sk-saffron);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-festival-banner__cta:hover { border-color: var(--sk-saffron); }
+
+/* ============================================================
+   4. LIBRARY GRID — meditations, stories, breath patterns
+   ============================================================ */
+.sk-library-grid {
+    display: grid;
+    gap: var(--sk-gap);
+    grid-template-columns: 1fr;
+    width: 100%;
+}
+.sk-library-grid__filters {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 4px 2px 12px;
+    -webkit-overflow-scrolling: touch;
+}
+.sk-library-grid__filter {
+    flex: 0 0 auto;
+    scroll-snap-align: start;
+    padding: 8px 14px;
+    border-radius: var(--sk-radius-pill);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    color: var(--sk-cream-dim);
+    font: 500 var(--sk-fs-small)/1 var(--sk-font-sans);
+    min-height: 40px;
+    cursor: pointer;
+    transition: background var(--sk-dur-tap) var(--sk-ease-calm),
+                color var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-library-grid__filter[aria-pressed="true"] {
+    background: var(--sk-cream);
+    color: var(--sk-ink);
+    border-color: transparent;
+}
+
+/* ============================================================
+   5. TRACK CARD — library item (used in /sit, /rest, /breathe)
+   ============================================================ */
+.sk-track-card {
+    position: relative;
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    border-radius: var(--sk-radius-card);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    color: var(--sk-cream);
+    text-align: left;
+    text-decoration: none;
+    transition: background var(--sk-dur-soft) var(--sk-ease-settle),
+                transform var(--sk-dur-soft) var(--sk-ease-settle),
+                border-color var(--sk-dur-soft) var(--sk-ease-settle);
+}
+.sk-track-card:hover,
+.sk-track-card:focus-visible {
+    background: var(--sk-surface-2);
+    border-color: var(--sk-stroke-2);
+    transform: translateY(-2px);
+}
+.sk-track-card__art {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    background: linear-gradient(140deg, var(--sk-aubergine), var(--sk-dusk));
+    display: grid; place-items: center;
+    color: var(--sk-cream);
+    font-size: 24px;
+    overflow: hidden;
+}
+.sk-track-card__art img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.sk-track-card__body { min-width: 0; }
+.sk-track-card__title {
+    margin: 0;
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h4);
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.sk-track-card__meta {
+    margin: 4px 0 0;
+    color: var(--sk-cream-dim);
+    font-size: var(--sk-fs-small);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.sk-track-card__meta span::before { content: "·"; margin-right: 10px; color: var(--sk-cream-quiet); }
+.sk-track-card__meta span:first-child::before { content: ""; margin: 0; }
+.sk-track-card__play {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--sk-saffron);
+    color: var(--sk-ink);
+    border: 0;
+    display: grid; place-items: center;
+    cursor: pointer;
+    transition: transform var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-track-card__play:hover { transform: scale(1.06); }
+
+/* Variant: generated (Claude) */
+.sk-track-card--generated {
+    border-style: dashed;
+    border-color: rgba(232, 165, 82, 0.45);
+}
+.sk-track-card--generated .sk-track-card__art {
+    background: linear-gradient(140deg, var(--sk-saffron), var(--sk-marigold));
+    color: var(--sk-ink);
+}
+
+/* ============================================================
+   6. TRACK PLAYER — unified player overlay
+   ============================================================ */
+.sk-track-player {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 60;
+    padding: 16px 16px calc(16px + env(safe-area-inset-bottom));
+    background: linear-gradient(180deg,
+                rgba(15, 27, 61, 0.0) 0%,
+                rgba(15, 27, 61, 0.85) 30%,
+                rgba(15, 27, 61, 0.96) 100%);
+    backdrop-filter: var(--sk-glass);
+    -webkit-backdrop-filter: var(--sk-glass);
+    color: var(--sk-cream);
+    transform: translateY(calc(100% + 32px));
+    transition: transform var(--sk-dur-soft) var(--sk-ease-arrive);
+}
+.sk-track-player[data-open="true"] { transform: translateY(0); }
+
+.sk-track-player__inner {
+    max-width: 720px;
+    margin: 0 auto;
+    display: grid;
+    gap: 14px;
+}
+.sk-track-player__header {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+}
+.sk-track-player__art {
+    width: 56px; height: 56px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: var(--sk-aubergine);
+}
+.sk-track-player__art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.sk-track-player__title {
+    margin: 0;
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h4);
+    line-height: 1.2;
+}
+.sk-track-player__chapter {
+    margin: 2px 0 0;
+    font-size: var(--sk-fs-small);
+    color: var(--sk-cream-dim);
+}
+.sk-track-player__close {
+    margin-left: auto;
+    background: transparent;
+    color: var(--sk-cream-dim);
+    border: 0;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+.sk-track-player__close:hover { background: var(--sk-surface-1); color: var(--sk-cream); }
+
+.sk-track-player__scrub {
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--sk-surface-2);
+    border-radius: 2px;
+    outline: none;
+}
+.sk-track-player__scrub::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--sk-saffron);
+    cursor: pointer;
+    border: 0;
+}
+.sk-track-player__scrub::-moz-range-thumb {
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    background: var(--sk-saffron);
+    cursor: pointer;
+    border: 0;
+}
+.sk-track-player__times {
+    display: flex;
+    justify-content: space-between;
+    font: 500 var(--sk-fs-micro)/1 var(--sk-font-mono);
+    color: var(--sk-cream-dim);
+}
+
+.sk-track-player__chapters {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding-bottom: 4px;
+    -webkit-overflow-scrolling: touch;
+}
+.sk-track-player__chapter-chip {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    border-radius: var(--sk-radius-pill);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    color: var(--sk-cream-dim);
+    font: 500 var(--sk-fs-micro)/1 var(--sk-font-sans);
+    cursor: pointer;
+}
+.sk-track-player__chapter-chip[aria-current="true"] {
+    background: var(--sk-cream);
+    color: var(--sk-ink);
+    border-color: transparent;
+}
+
+.sk-track-player__controls {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+.sk-track-player__btn {
+    appearance: none;
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: var(--sk-surface-2);
+    color: var(--sk-cream);
+    border: 1px solid var(--sk-stroke-1);
+    cursor: pointer;
+    display: grid; place-items: center;
+}
+.sk-track-player__btn--primary {
+    width: 64px; height: 64px;
+    background: var(--sk-saffron);
+    color: var(--sk-ink);
+    border: 0;
+    box-shadow: var(--sk-shadow-glow);
+}
+.sk-track-player__btn:hover { background: var(--sk-surface-3); }
+.sk-track-player__btn--primary:hover { background: var(--sk-marigold); }
+
+/* ============================================================
+   7. VOICE TOGGLE — EN / HI / bilingual switcher
+   ============================================================ */
+.sk-voice-toggle {
+    display: inline-flex;
+    padding: 4px;
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    border-radius: var(--sk-radius-pill);
+    gap: 2px;
+}
+.sk-voice-toggle__btn {
+    appearance: none;
+    background: transparent;
+    color: var(--sk-cream-dim);
+    border: 0;
+    padding: 8px 14px;
+    border-radius: var(--sk-radius-pill);
+    font: 600 var(--sk-fs-micro)/1 var(--sk-font-sans);
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    min-height: 36px;
+    transition: background var(--sk-dur-tap) var(--sk-ease-calm),
+                color var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-voice-toggle__btn[aria-pressed="true"] {
+    background: var(--sk-cream);
+    color: var(--sk-ink);
+}
+.sk-voice-toggle__btn:hover { color: var(--sk-cream); }
+
+/* ============================================================
+   8. MANTRA CARD — daily mantra on / and /today
+   ============================================================ */
+.sk-mantra-card {
+    position: relative;
+    padding: 28px 24px;
+    border-radius: var(--sk-radius-tile);
+    background: linear-gradient(160deg,
+                rgba(43, 31, 74, 0.65),
+                rgba(107, 62, 94, 0.55));
+    border: 1px solid var(--sk-stroke-1);
+    color: var(--sk-cream);
+    text-align: center;
+    overflow: hidden;
+}
+.sk-mantra-card::before {
+    content: "";
+    position: absolute;
+    inset: -20% -20% auto auto;
+    width: 220px; height: 220px;
+    background: radial-gradient(circle at center,
+                rgba(232, 197, 71, 0.18),
+                rgba(232, 197, 71, 0) 70%);
+    pointer-events: none;
+    animation: skDrift var(--sk-loop-mantra) var(--sk-ease-drift) infinite alternate;
+}
+.sk-mantra-card__eyebrow {
+    font-size: var(--sk-fs-eyebrow);
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-haldi);
+    margin: 0 0 14px;
+}
+.sk-mantra-card__sanskrit {
+    margin: 0;
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h2);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+}
+.sk-mantra-card__translation {
+    margin: 14px auto 0;
+    max-width: 30ch;
+    font-family: var(--sk-font-serif);
+    font-style: italic;
+    font-size: var(--sk-fs-lead);
+    color: var(--sk-cream-dim);
+    line-height: 1.5;
+}
+.sk-mantra-card__source {
+    margin: 18px 0 0;
+    font-size: var(--sk-fs-small);
+    color: var(--sk-cream-quiet);
+    letter-spacing: 0.05em;
+}
+@keyframes skDrift {
+    from { transform: translate(0,0); }
+    to   { transform: translate(-12%, 8%); }
+}
+
+/* ============================================================
+   9. TTS CONTROLS — Text-To-Speech panel inside the player
+   ============================================================ */
+.sk-tts-controls {
+    display: grid;
+    gap: 12px;
+    padding: 14px;
+    border-radius: var(--sk-radius-card);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+}
+.sk-tts-controls__row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.sk-tts-controls__label {
+    font-size: var(--sk-fs-small);
+    color: var(--sk-cream-dim);
+    min-width: 80px;
+}
+.sk-tts-controls__select {
+    flex: 1 1 140px;
+    appearance: none;
+    background: var(--sk-surface-2);
+    color: var(--sk-cream);
+    border: 1px solid var(--sk-stroke-1);
+    border-radius: var(--sk-radius-pill);
+    padding: 8px 14px;
+    font: 500 var(--sk-fs-small)/1 var(--sk-font-sans);
+    cursor: pointer;
+}
+.sk-tts-controls__range {
+    flex: 1 1 140px;
+    appearance: none;
+    height: 4px;
+    background: var(--sk-surface-2);
+    border-radius: 2px;
+}
+.sk-tts-controls__range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--sk-cream);
+    cursor: pointer;
+}
+.sk-tts-controls__render {
+    appearance: none;
+    background: var(--sk-saffron);
+    color: var(--sk-ink);
+    border: 0;
+    border-radius: var(--sk-radius-pill);
+    padding: 12px 22px;
+    font: 600 var(--sk-fs-small)/1 var(--sk-font-sans);
+    cursor: pointer;
+    min-height: 44px;
+    transition: background var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-tts-controls__render:hover { background: var(--sk-marigold); }
+.sk-tts-controls__render[data-loading="true"] {
+    background: var(--sk-surface-2);
+    color: var(--sk-cream-dim);
+    cursor: progress;
+}
+
+/* ============================================================
+   10. JOURNAL CARD — local-only writing surface
+   ============================================================ */
+.sk-journal-card {
+    display: grid;
+    gap: 14px;
+    padding: 22px;
+    border-radius: var(--sk-radius-tile);
+    background: rgba(250, 246, 238, 0.96); /* paper, deliberately bright */
+    color: var(--sk-ink);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    box-shadow: var(--sk-shadow-float);
+}
+.sk-journal-card__header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+}
+.sk-journal-card__date {
+    font-family: var(--sk-font-mono);
+    font-size: var(--sk-fs-small);
+    color: rgba(26, 21, 48, 0.55);
+}
+.sk-journal-card__private {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 10px;
+    border-radius: var(--sk-radius-pill);
+    background: rgba(111, 162, 134, 0.18);
+    color: #2f6a4d;
+    font: 600 var(--sk-fs-micro)/1 var(--sk-font-sans);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+.sk-journal-card__textarea {
+    width: 100%;
+    min-height: 240px;
+    resize: vertical;
+    background: transparent;
+    border: 0;
+    outline: none;
+    color: var(--sk-ink);
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-lead);
+    line-height: 1.7;
+}
+.sk-journal-card__textarea::placeholder {
+    color: rgba(26, 21, 48, 0.35);
+    font-style: italic;
+}
+.sk-journal-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: rgba(26, 21, 48, 0.55);
+    font-size: var(--sk-fs-small);
+}
+.sk-journal-card__count {
+    font-family: var(--sk-font-mono);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ============================================================
+   11. HELPLINE TILE — real crisis numbers on /now
+   ============================================================ */
+.sk-helpline-tile {
+    display: grid;
+    grid-template-columns: 48px 1fr auto;
+    gap: 16px;
+    align-items: center;
+    padding: 18px;
+    border-radius: var(--sk-radius-card);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-2);
+    color: var(--sk-cream);
+    text-decoration: none;
+    transition: background var(--sk-dur-soft) var(--sk-ease-settle),
+                border-color var(--sk-dur-soft) var(--sk-ease-settle);
+}
+.sk-helpline-tile:hover,
+.sk-helpline-tile:focus-visible {
+    background: var(--sk-surface-2);
+    border-color: var(--sk-saffron);
+}
+.sk-helpline-tile__glyph {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(232, 165, 82, 0.18);
+    color: var(--sk-saffron);
+    display: grid; place-items: center;
+    font-size: 22px;
+}
+.sk-helpline-tile__name {
+    margin: 0;
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h4);
+    line-height: 1.2;
+}
+.sk-helpline-tile__meta {
+    margin: 4px 0 0;
+    font-size: var(--sk-fs-small);
+    color: var(--sk-cream-dim);
+}
+.sk-helpline-tile__number {
+    font-family: var(--sk-font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: var(--sk-fs-h4);
+    color: var(--sk-cream);
+    background: var(--sk-saffron);
+    color: var(--sk-ink);
+    padding: 10px 16px;
+    border-radius: var(--sk-radius-pill);
+    white-space: nowrap;
+}
+
+/* ============================================================
+   12. GROUNDING STEP — 5-4-3-2-1 panic protocol on /now
+   ============================================================ */
+.sk-grounding-step {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 18px;
+    align-items: flex-start;
+    padding: 22px;
+    border-radius: var(--sk-radius-card);
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    color: var(--sk-cream);
+    position: relative;
+}
+.sk-grounding-step__number {
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(140deg, var(--sk-tulsi), var(--sk-aubergine));
+    color: var(--sk-cream);
+    font-family: var(--sk-font-serif);
+    font-size: 28px;
+    font-weight: 600;
+    display: grid; place-items: center;
+}
+.sk-grounding-step__prompt {
+    margin: 4px 0 0;
+    font-family: var(--sk-font-serif);
+    font-size: var(--sk-fs-h4);
+    line-height: 1.3;
+}
+.sk-grounding-step__hint {
+    margin: 8px 0 0;
+    color: var(--sk-cream-dim);
+    font-size: var(--sk-fs-small);
+    line-height: 1.55;
+}
+.sk-grounding-step[data-state="done"] {
+    background: var(--sk-surface-2);
+    opacity: 0.7;
+}
+.sk-grounding-step[data-state="done"] .sk-grounding-step__number {
+    background: var(--sk-tulsi);
+}
+
+/* ============================================================
+   13. BOTTOM NAV — refresh for the 8-page system
+   ============================================================ */
+.sk-bottom-nav {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 50;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    background: rgba(15, 27, 61, 0.78);
+    backdrop-filter: var(--sk-glass);
+    -webkit-backdrop-filter: var(--sk-glass);
+    border-top: 1px solid var(--sk-stroke-1);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+}
+.sk-bottom-nav__item {
+    display: grid;
+    place-items: center;
+    gap: 4px;
+    padding: 8px 4px;
+    border-radius: 12px;
+    color: var(--sk-cream-dim);
+    text-decoration: none;
+    font: 600 var(--sk-fs-micro)/1 var(--sk-font-sans);
+    min-height: 56px;
+    transition: color var(--sk-dur-tap) var(--sk-ease-calm),
+                background var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-bottom-nav__item:hover { color: var(--sk-cream); }
+.sk-bottom-nav__item[aria-current="page"] {
+    color: var(--sk-cream);
+    background: var(--sk-surface-1);
+}
+.sk-bottom-nav__item[aria-current="page"] .sk-bottom-nav__icon {
+    color: var(--sk-saffron);
+    transform: scale(1.06);
+}
+.sk-bottom-nav__icon {
+    font-size: 20px;
+    transition: transform var(--sk-dur-tap) var(--sk-ease-calm);
+}
+.sk-bottom-nav__label {
+    font-size: 10px;
+    letter-spacing: 0.04em;
+}
+
+/* /now is a 6th destination — slot it into the top nav, not bottom */
+.sk-bottom-nav--with-now { grid-template-columns: repeat(6, 1fr); }
+
+/* ============================================================
+   14. /NOW BACKGROUND — lighthouse loop, calmer than the rest
+   ============================================================ */
+.sk-now-bg {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0A1228 0%, #1A2547 60%, #2B1F4A 100%);
+}
+.sk-now-bg__video {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    opacity: 0.55;
+    filter: saturate(0.85) brightness(0.85);
+}
+.sk-now-bg__glow {
+    position: absolute;
+    left: 50%; top: 18%;
+    transform: translateX(-50%);
+    width: 60vmin; height: 60vmin;
+    background: radial-gradient(circle at center,
+                rgba(232, 165, 82, 0.30),
+                rgba(232, 165, 82, 0) 70%);
+    pointer-events: none;
+    animation: skLighthouse var(--sk-loop-pulse) var(--sk-ease-drift) infinite alternate;
+}
+.sk-now-bg__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+                rgba(10, 18, 40, 0.35) 0%,
+                rgba(10, 18, 40, 0.85) 100%);
+}
+@keyframes skLighthouse {
+    0%   { opacity: 0.55; transform: translateX(-50%) scale(1); }
+    100% { opacity: 1.0;  transform: translateX(-50%) scale(1.12); }
+}
+
+/* ============================================================
+   15. SHARED — arrive animation, crisis bar tighten
+   ============================================================ */
+@keyframes skRiseSoft {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================================
+   16. RESPONSIVE — mobile-first, breakpoints at 480/600/768/1024
+   ============================================================ */
+@media (min-width: 480px) {
+    .sk-library-grid { grid-template-columns: repeat(2, 1fr); }
+    .sk-track-card { grid-template-columns: 72px 1fr auto; }
+    .sk-track-card__art { width: 72px; height: 72px; }
+}
+
+@media (min-width: 600px) {
+    .sk-entry-prompt { padding: 32px 32px 36px; }
+    .sk-grounding-step { grid-template-columns: 64px 1fr; }
+    .sk-grounding-step__number { width: 64px; height: 64px; font-size: 32px; }
+}
+
+@media (min-width: 768px) {
+    .sk-library-grid { grid-template-columns: repeat(3, 1fr); gap: var(--sk-gap-lg); }
+    .sk-track-player { padding: 20px 24px calc(20px + env(safe-area-inset-bottom)); }
+    .sk-track-player__inner { grid-template-columns: 1fr; gap: 16px; }
+    .sk-mantra-card { padding: 36px 32px; }
+
+    .sk-bottom-nav {
+        position: sticky;
+        top: 0; inset-inline: 0; inset-block-end: auto;
+        padding: 10px 16px;
+        border-top: 0;
+        border-bottom: 1px solid var(--sk-stroke-1);
+        grid-template-columns: auto repeat(5, max-content) 1fr;
+        align-items: center;
+        gap: 8px;
+    }
+    .sk-bottom-nav--with-now { grid-template-columns: auto repeat(6, max-content) 1fr; }
+    .sk-bottom-nav__item {
+        grid-template-columns: auto auto;
+        grid-auto-flow: column;
+        padding: 10px 14px;
+        min-height: 44px;
+    }
+    .sk-bottom-nav__label { font-size: var(--sk-fs-small); }
+}
+
+@media (min-width: 1024px) {
+    .sk-library-grid { grid-template-columns: repeat(4, 1fr); }
+    .sk-track-player { border-radius: var(--sk-radius-sheet) var(--sk-radius-sheet) 0 0; }
+    .sk-entry-prompt { max-width: 640px; }
+    .sk-festival-banner { padding: 18px 26px; }
+    .sk-mantra-card__sanskrit { font-size: var(--sk-fs-h1); }
+}
+
+/* ============================================================
+   17. REDUCED MOTION — honor user preference
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+    .sk-pulse-ticker__dot { animation: none; box-shadow: none; }
+    .sk-mantra-card::before { animation: none; }
+    .sk-now-bg__glow { animation: none; opacity: 0.75; }
+    .sk-now-bg__video { display: none; }
+    .sk-entry-prompt { animation: none; }
+    .sk-track-card:hover,
+    .sk-track-card:focus-visible { transform: none; }
+}
+
+/* ============================================================
+   18. DARK MODE AWARE — sukoon is dark by default, but we
+   adapt the journal "paper" surface to the user's system
+   preference so it remains comfortable in either context.
+   ============================================================ */
+@media (prefers-color-scheme: light) {
+    .sk-journal-card {
+        background: #FAF6EE;
+        box-shadow: 0 16px 40px rgba(26, 21, 48, 0.12);
+    }
+}
+@media (prefers-color-scheme: dark) {
+    .sk-journal-card {
+        background: #F5EFE2;
+    }
+    .sk-track-player {
+        background: linear-gradient(180deg,
+                    rgba(8, 12, 28, 0.0) 0%,
+                    rgba(8, 12, 28, 0.88) 30%,
+                    rgba(8, 12, 28, 0.98) 100%);
+    }
+}
+
+/* ============================================================
+   19. FOCUS — visible, accessible, calm
+   ============================================================ */
+.sk-entry-prompt__mood:focus-visible,
+.sk-library-grid__filter:focus-visible,
+.sk-track-card:focus-visible,
+.sk-track-player__btn:focus-visible,
+.sk-voice-toggle__btn:focus-visible,
+.sk-helpline-tile:focus-visible,
+.sk-bottom-nav__item:focus-visible,
+.sk-tts-controls__render:focus-visible {
+    outline: 2px solid var(--sk-saffron);
+    outline-offset: 3px;
+}
+
+/* ============================================================
+   END sukoon-revolution.css
+   ============================================================ */

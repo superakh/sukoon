@@ -1,0 +1,2387 @@
+[
+  {
+    "id": "7-days-of-sukoon",
+    "title_en": "7 Days of Sukoon",
+    "title_hi": "सुकून के सात दिन",
+    "subtitle_en": "A gentle first week for anyone who has never meditated or practised yoga.",
+    "subtitle_hi": "उन लोगों के लिए पहला सप्ताह जिन्होंने कभी ध्यान या योग नहीं किया।",
+    "days": 7,
+    "level": "beginner",
+    "focus_tag": "foundations",
+    "intro_en": "Most people who want to start a meditation or yoga practice never do — not because they lack motivation, but because every entry point they find assumes too much. It assumes you know how to sit still. It assumes you have thirty minutes. It assumes you already believe it will work.\n\nThis course assumes nothing except that you showed up today.\n\nOver seven days you will spend ten minutes each morning or evening — whichever fits — doing three simple things: arriving in your body through breath, meeting one gentle posture, and sitting quietly with your own thoughts for just a few minutes. No chanting. No philosophy lectures. No performance.\n\nBy day seven something small but real will have shifted. You will have a felt sense of what it means to pause. That is the only goal of this week — to give you one experience of genuine stillness so that you know, from your own body, that it is available to you.",
+    "intro_hi": "अधिकतर लोग जो ध्यान या योग शुरू करना चाहते हैं, वे कभी शुरू नहीं कर पाते — इसलिए नहीं कि उनमें इच्छाशक्ति नहीं है, बल्कि इसलिए कि हर शुरुआती बिंदु बहुत कुछ मान लेता है। मान लेता है कि आप शांत बैठना जानते हैं। मान लेता है कि आपके पास तीस मिनट हैं। मान लेता है कि आप पहले से विश्वास करते हैं कि यह काम करेगा।\n\nयह कोर्स कुछ नहीं मानता — सिवाय इसके कि आप आज यहाँ आए।\n\nसात दिनों में आप हर सुबह या शाम — जो भी सुविधाजनक हो — दस मिनट तीन सरल काम करेंगे: साँस के माध्यम से अपने शरीर में उपस्थित होना, एक कोमल आसन से मिलना, और कुछ मिनट चुपचाप अपने विचारों के साथ बैठना। कोई मंत्र नहीं। कोई दर्शन के व्याख्यान नहीं।\n\nसातवें दिन तक कुछ छोटा लेकिन वास्तविक बदला होगा। आपको ठहराव का एक वास्तविक अनुभव मिलेगा।",
+    "estimated_daily_minutes": 10,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Just Arrive",
+        "title_hi": "बस आ जाओ",
+        "intro_en": "Today asks almost nothing. You will sit, breathe, and notice. That is all. The hardest part of any practice is the first time you do it — so today's only job is to show up and let yourself be a complete beginner without embarrassment.",
+        "intro_hi": "आज बहुत कम माँगा जाएगा। बस बैठना, साँस लेना और महसूस करना। किसी भी अभ्यास का सबसे कठिन हिस्सा पहली बार होता है — इसलिए आज का काम सिर्फ उपस्थित रहना है।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-010",
+            "duration_sec": 240,
+            "notes_en": "Deep Belly Breath — four slow rounds. No counting needed. Just feel the belly rise and fall.",
+            "notes_hi": "गहरी पेट की साँस — चार धीमे चक्र। गिनती की जरूरत नहीं। बस पेट को उठते और गिरते महसूस करें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "sukhasana",
+            "duration_sec": 120,
+            "notes_en": "Sit in Sukhasana — Easy Pose. No expectation of stillness. Just feel the floor beneath you.",
+            "notes_hi": "सुखासन में बैठें। स्थिरता की कोई उम्मीद नहीं। बस अपने नीचे ज़मीन को महसूस करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-001",
+            "duration_sec": 240,
+            "notes_en": "A short grounding meditation — simple body scan from feet to crown.",
+            "notes_hi": "एक छोटा ग्राउंडिंग ध्यान — पैरों से सिर तक सरल बॉडी स्कैन।"
+          }
+        ],
+        "reflection_prompt_en": "What did you notice in your body in the first thirty seconds? Don't judge it — just write it down.",
+        "reflection_prompt_hi": "पहले तीस सेकंड में आपने अपने शरीर में क्या महसूस किया? इसे आंकें नहीं — बस लिख दें।"
+      },
+      {
+        "day": 2,
+        "title_en": "The Breath Is Always There",
+        "title_hi": "साँस हमेशा वहाँ है",
+        "intro_en": "Yesterday you arrived. Today you learn the most fundamental skill in all of yoga and meditation: returning to the breath when the mind wanders. This is not a failure state — it is the practice itself.",
+        "intro_hi": "कल आप आए। आज आप योग और ध्यान का सबसे बुनियादी कौशल सीखेंगे: जब मन भटके तो साँस पर वापस लौटना। यह असफलता नहीं है — यही अभ्यास है।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-009",
+            "duration_sec": 240,
+            "notes_en": "Three-Part Breath (Dirga Pranayama) — belly, ribcage, collarbone. Teaches the full arc of breath.",
+            "notes_hi": "तीन-भाग की साँस (दीर्घ प्राणायाम) — पेट, पसलियाँ, कंधे। साँस के पूरे विस्तार को सिखाता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "tadasana",
+            "duration_sec": 120,
+            "notes_en": "Mountain Pose — stand quietly and breathe. Notice how standing still is its own effort.",
+            "notes_hi": "ताड़ासन — शांति से खड़े हों और साँस लें। महसूस करें कि चुपचाप खड़े रहना भी एक प्रयास है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-002",
+            "duration_sec": 240,
+            "notes_en": "Breath-anchored awareness — when the mind drifts, gently return without self-criticism.",
+            "notes_hi": "साँस-आधारित जागरूकता — जब मन भटके, बिना आत्म-आलोचना के धीरे से वापस लौटें।"
+          }
+        ],
+        "reflection_prompt_en": "How many times did your mind wander? (There is no right number. The point is that you noticed.)",
+        "reflection_prompt_hi": "आपका मन कितनी बार भटका? (कोई सही संख्या नहीं है। महत्वपूर्ण यह है कि आपने नोटिस किया।)"
+      },
+      {
+        "day": 3,
+        "title_en": "The Body Remembers",
+        "title_hi": "शरीर याद रखता है",
+        "intro_en": "Stress lives in the body as tension — in the shoulders, the jaw, the belly. Today's session introduces your first gentle asana that directly addresses where most of us hold stress: the hips and lower back.",
+        "intro_hi": "तनाव शरीर में कसाव के रूप में रहता है — कंधों में, जबड़े में, पेट में। आज का सत्र पहला कोमल आसन पेश करता है जो सीधे उस जगह पर काम करता है जहाँ हम में से अधिकतर तनाव रखते हैं: कूल्हे और पीठ के निचले हिस्से।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 180,
+            "notes_en": "Coherent Breathing (5-5) — equal inhale and exhale. Activates the calm-response in the nervous system.",
+            "notes_hi": "सुसंगत श्वास (5-5) — समान श्वास और उच्छ्वास। तंत्रिका तंत्र में शांति-प्रतिक्रिया को सक्रिय करता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "balasana",
+            "duration_sec": 180,
+            "notes_en": "Child's Pose — hold for 90 seconds each side. Breathe into the back body. Let the floor receive your weight.",
+            "notes_hi": "बालासन — प्रत्येक तरफ 90 सेकंड। पीठ में साँस लें। ज़मीन को अपना वजन उठाने दें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-003",
+            "duration_sec": 240,
+            "notes_en": "Body-release meditation — scan for held tension and soften it on the exhale.",
+            "notes_hi": "शरीर-मुक्ति ध्यान — कसाव को स्कैन करें और उच्छ्वास पर उसे नरम करें।"
+          }
+        ],
+        "reflection_prompt_en": "Where in your body did you feel the most tension today? Did it change over the ten minutes?",
+        "reflection_prompt_hi": "आज आपके शरीर में सबसे ज्यादा कसाव कहाँ महसूस हुआ? क्या यह दस मिनट में बदला?"
+      },
+      {
+        "day": 4,
+        "title_en": "Halfway Here",
+        "title_hi": "आधा रास्ता",
+        "intro_en": "You have shown up four days in a row. That is already more than most people manage. Today's session introduces the concept of intention — not a goal, not a to-do, but a single quality you want to carry through the day.",
+        "intro_hi": "आप चार दिन लगातार आए हैं। यह पहले से ही अधिकांश लोगों से ज्यादा है। आज का सत्र संकल्प की अवधारणा पेश करता है — कोई लक्ष्य नहीं, कोई काम नहीं, बल्कि एक गुण जिसे आप पूरे दिन साथ रखना चाहते हैं।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-001",
+            "duration_sec": 300,
+            "notes_en": "Sunrise Intention — setting a single quality for the day. Works equally well in the evening for tomorrow.",
+            "notes_hi": "सूर्योदय संकल्प — दिन के लिए एक गुण तय करना। शाम को कल के लिए भी उतना ही काम करता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "apanasana",
+            "duration_sec": 180,
+            "notes_en": "Apanasana (Knees-to-Chest) — gentle compression and release. Massages the lower back.",
+            "notes_hi": "अपानासन — कोमल दबाव और मुक्ति। पीठ के निचले हिस्से की मालिश करता है।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-023",
+            "duration_sec": 120,
+            "notes_en": "Gratitude Breath — three cycles. Close the session by anchoring the intention with breath.",
+            "notes_hi": "कृतज्ञता साँस — तीन चक्र। साँस के साथ संकल्प को जोड़कर सत्र समाप्त करें।"
+          }
+        ],
+        "reflection_prompt_en": "What one word would describe the quality you want more of right now? Write it somewhere you will see it today.",
+        "reflection_prompt_hi": "एक शब्द क्या होगा जो उस गुण को बताए जो आप अभी और चाहते हैं? इसे कहीं लिखें जहाँ आज दिखे।"
+      },
+      {
+        "day": 5,
+        "title_en": "Moving and Still at the Same Time",
+        "title_hi": "एक साथ गतिशील और स्थिर",
+        "intro_en": "Today you discover that movement and stillness are not opposites — that a body in a gentle pose is also a body in meditation. This is the insight at the heart of hatha yoga: the asana is the meditation.",
+        "intro_hi": "आज आप खोजते हैं कि गति और स्थिरता विरोधी नहीं हैं — एक कोमल आसन में शरीर ध्यान में भी है। यही हठ योग का मूल ज्ञान है: आसन ही ध्यान है।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 120,
+            "notes_en": "Ujjayi — Ocean Breath. Introduce the audible breath that links movement and awareness.",
+            "notes_hi": "उज्जायी — समुद्र की साँस। वह श्रव्य श्वास जो गति और जागरूकता को जोड़ती है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "baddha-konasana",
+            "duration_sec": 180,
+            "notes_en": "Baddha Konasana (Bound Angle) — hold for 2 minutes. Breathe with Ujjayi. Notice where sensation lives.",
+            "notes_hi": "बद्धकोणासन — 2 मिनट रुकें। उज्जायी से साँस लें। महसूस करें कि संवेदना कहाँ है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-004",
+            "duration_sec": 300,
+            "notes_en": "Sensation-based meditation — follow the physical sensations left by the posture into stillness.",
+            "notes_hi": "संवेदना-आधारित ध्यान — आसन की शारीरिक संवेदनाओं को स्थिरता में ले जाएँ।"
+          }
+        ],
+        "reflection_prompt_en": "Did the Ujjayi breath feel strange or natural? What changed when you used it in the pose?",
+        "reflection_prompt_hi": "क्या उज्जायी साँस अजीब लगी या स्वाभाविक? आसन में इसका उपयोग करने पर क्या बदला?"
+      },
+      {
+        "day": 6,
+        "title_en": "The Quiet Under the Noise",
+        "title_hi": "शोर के नीचे का सन्नाटा",
+        "intro_en": "Six days in, something has begun to establish itself — a tiny thread of familiarity with stillness. Today's session goes a little deeper: you will sit for five full minutes without guided audio, using only the breath as anchor.",
+        "intro_hi": "छह दिनों में कुछ स्थापित होने लगा है — स्थिरता से एक छोटी सी परिचितता। आज का सत्र थोड़ा गहरा जाता है: आप बिना निर्देशित ऑडियो के केवल साँस को लंगर के रूप में उपयोग करते हुए पाँच पूरे मिनट बैठेंगे।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 180,
+            "notes_en": "Nadi Shodhana — Alternate Nostril Breathing. Balancing and calming before the silent sit.",
+            "notes_hi": "नाड़ी शोधन — अनुलोम-विलोम। मौन बैठक से पहले संतुलन और शांति।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "sukhasana",
+            "duration_sec": 120,
+            "notes_en": "Return to Sukhasana from Day 1 — notice if it feels different. It may feel like an old friend.",
+            "notes_hi": "पहले दिन के सुखासन में वापस आएँ — देखें क्या यह अलग महसूस होता है। शायद किसी पुराने दोस्त जैसा।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-005",
+            "duration_sec": 300,
+            "notes_en": "Longer grounding sit — five minutes. Minimal guidance. The student is learning to self-practice.",
+            "notes_hi": "लंबी ग्राउंडिंग बैठक — पाँच मिनट। न्यूनतम मार्गदर्शन। छात्र स्वयं-अभ्यास सीख रहा है।"
+          }
+        ],
+        "reflection_prompt_en": "What came up in the five minutes of relative silence? Was it harder or easier than the guided sessions?",
+        "reflection_prompt_hi": "अपेक्षाकृत मौन के पाँच मिनट में क्या आया? क्या यह निर्देशित सत्रों से कठिन था या आसान?"
+      },
+      {
+        "day": 7,
+        "title_en": "You Have a Practice Now",
+        "title_hi": "अब आपका अभ्यास है",
+        "intro_en": "Seven days. You did it — not perfectly, perhaps, but you did it. Today's session is a gentle integration: the same structure as Day 1, but with a different quality of attention. You are not a beginner in the same way you were seven days ago.",
+        "intro_hi": "सात दिन। आपने किया — शायद पूरी तरह नहीं, लेकिन किया। आज का सत्र एक कोमल एकीकरण है: पहले दिन जैसी संरचना, लेकिन ध्यान की एक अलग गुणवत्ता के साथ। आप वैसे शुरुआती नहीं हैं जैसे सात दिन पहले थे।",
+        "duration_min": 10,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-010",
+            "duration_sec": 120,
+            "notes_en": "Deep Belly Breath — same as Day 1. Notice how your relationship with it has changed.",
+            "notes_hi": "गहरी पेट की साँस — पहले दिन जैसी। देखें इसके साथ आपका रिश्ता कैसे बदला है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "savasana",
+            "duration_sec": 240,
+            "notes_en": "Savasana — Corpse Pose. Full surrender. The culmination of all seven days.",
+            "notes_hi": "शवासन — पूर्ण समर्पण। सातों दिनों का समापन।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-001",
+            "duration_sec": 240,
+            "notes_en": "A brief self-compassion close — acknowledge what you have done this week, without inflation.",
+            "notes_hi": "एक संक्षिप्त आत्म-करुणा समापन — बिना अतिशयोक्ति के इस सप्ताह जो किया उसे स्वीकार करें।"
+          }
+        ],
+        "reflection_prompt_en": "Compare Day 1 to today. What is different — not in the practice, but in you?",
+        "reflection_prompt_hi": "पहले दिन की तुलना आज से करें। क्या अलग है — अभ्यास में नहीं, बल्कि आप में?"
+      }
+    ],
+    "closing_en": "You have completed seven days of Sukoon. That means you have given yourself seventy minutes of genuine stillness — more than most people manage in a month. You have learned three things that will serve you for life: how to arrive in your body through breath, how to return when the mind wanders, and how to sit with your own presence without needing it to be different than it is. These are not small things. They are the whole of the practice, held in miniature. Whatever comes next — a longer course, a return to this one, or simply carrying these ten minutes into your mornings — the door is now open from the inside.",
+    "closing_hi": "आपने सुकून के सात दिन पूरे किए। इसका मतलब है कि आपने खुद को सत्तर मिनट की वास्तविक स्थिरता दी — जितना अधिकांश लोग एक महीने में नहीं दे पाते। आपने तीन बातें सीखी हैं जो जीवन भर काम आएंगी: साँस के माध्यम से शरीर में उपस्थित कैसे हों, जब मन भटके तो कैसे लौटें, और अपनी उपस्थिति के साथ बिना उसे बदलने की ज़रूरत के कैसे बैठें। ये छोटी बातें नहीं हैं। ये सूक्ष्म रूप में पूरा अभ्यास हैं।",
+    "recommended_next_course_id": "21-day-morning-practice"
+  },
+  {
+    "id": "21-day-morning-practice",
+    "title_en": "21-Day Morning Practice",
+    "title_hi": "इक्कीस दिन का प्रभात अभ्यास",
+    "subtitle_en": "Build a sunrise habit — Surya Namaskar progressively learned, morning intention deeply set.",
+    "subtitle_hi": "सूर्योदय की आदत बनाएँ — सूर्य नमस्कार क्रमशः सीखें, प्रभात संकल्प गहराई से स्थापित करें।",
+    "days": 21,
+    "level": "beginner",
+    "focus_tag": "morning",
+    "intro_en": "Morning is the most leveraged fifteen minutes of the day. What you do in the first quarter-hour after waking sets the tone of your nervous system, your attention, and your relationship with yourself for the next sixteen hours. Most of us spend it scrolling.\n\nThis course builds a morning practice from scratch — not a rigid sequence you must perform perfectly, but a living rhythm that adapts as you do. Over twenty-one days you will progressively learn Surya Namaskar A, the ancient sun salutation sequence, broken into digestible stages so you understand what you are doing and why. Each morning begins with a breath technique to wake the body without caffeine, moves into the movement sequence, and closes with a three-minute intention meditation.\n\nBy day twenty-one, fifteen minutes of sunrise practice will feel like something you do for yourself — not something you force yourself to do.",
+    "intro_hi": "सुबह दिन के सबसे महत्वपूर्ण पंद्रह मिनट हैं। जागने के पहले पंद्रह मिनट में आप जो करते हैं वह आपके तंत्रिका तंत्र, ध्यान और अगले सोलह घंटों के लिए खुद के साथ आपके रिश्ते को तय करता है। अधिकांश हम स्क्रीन स्क्रॉल करते हैं।\n\nयह कोर्स शुरू से एक सुबह का अभ्यास बनाता है — कोई कठोर अनुक्रम नहीं जिसे आपको परफेक्ट करना हो, बल्कि एक जीवंत लय जो आपके साथ अनुकूल हो। इक्कीस दिनों में आप क्रमशः सूर्य नमस्कार A सीखेंगे, प्राचीन सूर्य अभिवादन अनुक्रम को छोटे-छोटे चरणों में।",
+    "estimated_daily_minutes": 15,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Before the World Wakes",
+        "title_hi": "दुनिया जागने से पहले",
+        "intro_en": "The first morning. No alarm guilt, no performance. Just fifteen minutes before the day begins — for you, by you.",
+        "intro_hi": "पहली सुबह। कोई अलार्म-अपराधबोध नहीं, कोई प्रदर्शन नहीं। बस दिन शुरू होने से पहले पंद्रह मिनट।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-022",
+            "duration_sec": 300,
+            "notes_en": "Morning Awakening Breath — energising without overstimulating. Replaces the urge to check the phone.",
+            "notes_hi": "प्रभात जागरण साँस — बिना अति-उत्तेजना के ऊर्जावान। फोन चेक करने की इच्छा को बदलता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "tadasana",
+            "duration_sec": 300,
+            "notes_en": "Tadasana — Mountain Pose. Stand outside if possible. Feel the quality of morning air. This is the foundation of Surya Namaskar.",
+            "notes_hi": "ताड़ासन — पहाड़ की मुद्रा। यदि संभव हो तो बाहर खड़े हों। सुबह की हवा की गुणवत्ता महसूस करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-001",
+            "duration_sec": 300,
+            "notes_en": "Sunrise Intention — set one quality for the day. Three minutes. No more.",
+            "notes_hi": "सूर्योदय संकल्प — दिन के लिए एक गुण। तीन मिनट। इससे ज्यादा नहीं।"
+          }
+        ],
+        "reflection_prompt_en": "What time did you practice? How did it feel to start the day this way rather than your usual way?",
+        "reflection_prompt_hi": "आपने किस समय अभ्यास किया? इस तरह दिन शुरू करना अपने सामान्य तरीके से कैसा लगा?"
+      },
+      {
+        "day": 2,
+        "title_en": "The First Sun Greeting",
+        "title_hi": "पहली सूर्य नमस्कार",
+        "intro_en": "Today you learn the first three positions of Surya Namaskar A: Pranamasana, Urdhva Hastasana, and Uttanasana. Just three. Learned well, these three are a complete morning practice on their own.",
+        "intro_hi": "आज आप सूर्य नमस्कार A के पहले तीन आसन सीखते हैं: प्रणामासन, ऊर्ध्व हस्तासन और उत्तानासन। बस तीन। अच्छी तरह सीखे, ये तीन अपने आप में एक पूरा सुबह का अभ्यास हैं।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-022",
+            "duration_sec": 180,
+            "notes_en": "Morning Awakening Breath — three minutes to wake the respiratory system.",
+            "notes_hi": "प्रभात जागरण साँस — श्वसन तंत्र को जगाने के लिए तीन मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "tadasana",
+            "duration_sec": 360,
+            "notes_en": "Tadasana → arms raise overhead (Urdhva Hastasana) → forward fold (Uttanasana). Repeat 4 times with the breath. Inhale to rise, exhale to fold.",
+            "notes_hi": "ताड़ासन → हाथ ऊपर उठाएँ → आगे झुकें (उत्तानासन)। साँस के साथ 4 बार दोहराएँ।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-002",
+            "duration_sec": 360,
+            "notes_en": "Morning meditation — carry the warmth of the movement into stillness.",
+            "notes_hi": "प्रभात ध्यान — गति की ऊष्मा को स्थिरता में ले जाएँ।"
+          }
+        ],
+        "reflection_prompt_en": "How did moving with the breath feel different from holding a static pose?",
+        "reflection_prompt_hi": "साँस के साथ गतिशील होना स्थिर आसन से कैसे अलग लगा?"
+      },
+      {
+        "day": 3,
+        "title_en": "Adding the Lunge",
+        "title_hi": "आगे का कदम जोड़ना",
+        "intro_en": "Three more positions today: Ashwa Sanchalanasana (low lunge), Adho Mukha Svanasana (Downward Dog), and Ashtanga Namaskara (eight-limb salutation). The sequence is half built.",
+        "intro_hi": "आज तीन और आसन: अश्व संचालनासन (लो लंज), अधो मुख श्वानासन (डाउनवर्ड डॉग) और अष्टांग नमस्कार। अनुक्रम आधा बन गया।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — Ocean Breath. You will use this breath throughout all Surya Namaskar from today forward.",
+            "notes_hi": "उज्जायी — समुद्र की साँस। आज से आप सूर्य नमस्कार में यही साँस उपयोग करेंगे।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "adho-mukha-svanasana",
+            "duration_sec": 420,
+            "notes_en": "Add low lunge R + Downward Dog + eight-limb salutation to the Day 2 sequence. 3 half-rounds with rest.",
+            "notes_hi": "दिन 2 के अनुक्रम में दाहिना लंज + डाउनवर्ड डॉग + अष्टांग नमस्कार जोड़ें। आराम के साथ 3 आधे चक्र।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-003",
+            "duration_sec": 300,
+            "notes_en": "Morning stillness — let the body settle after its first real exertion.",
+            "notes_hi": "प्रभात स्थिरता — शरीर को पहले वास्तविक प्रयास के बाद स्थिर होने दें।"
+          }
+        ],
+        "reflection_prompt_en": "Where did you feel the lunge most? Hips, quads, or somewhere unexpected?",
+        "reflection_prompt_hi": "लंज आपने कहाँ सबसे ज्यादा महसूस किया? कूल्हों में, जाँघों में, या कहीं अप्रत्याशित?"
+      },
+      {
+        "day": 4,
+        "title_en": "The Full Salutation",
+        "title_hi": "पूर्ण नमस्कार",
+        "intro_en": "Today you complete the full twelve-position Surya Namaskar A for the first time. Take it slowly. It is not about speed — it is about breath meeting movement, one transition at a time.",
+        "intro_hi": "आज आप पहली बार पूरे बारह-आसन सूर्य नमस्कार A को पूरा करते हैं। धीरे-धीरे लें। यह गति के बारे में नहीं है — साँस और गति का मिलन है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 120,
+            "notes_en": "Ujjayi warm-up — two minutes to establish the audible breath before moving.",
+            "notes_hi": "उज्जायी वार्म-अप — गतिशील होने से पहले श्रव्य साँस स्थापित करने के लिए दो मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 480,
+            "notes_en": "Full Surya Namaskar A × 2 rounds. Both sides of the lunge. Slow. Every transition linked to inhale or exhale.",
+            "notes_hi": "पूर्ण सूर्य नमस्कार A × 2 चक्र। लंज के दोनों तरफ। धीमे। हर संक्रमण श्वास या उच्छ्वास से जुड़ा।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-004",
+            "duration_sec": 300,
+            "notes_en": "Post-movement meditation in Savasana — five minutes of integration.",
+            "notes_hi": "शवासन में गतिविधि के बाद ध्यान — पाँच मिनट एकीकरण।"
+          }
+        ],
+        "reflection_prompt_en": "Did any transition feel natural today? Did any feel like a mystery? Note both.",
+        "reflection_prompt_hi": "क्या आज कोई संक्रमण स्वाभाविक लगा? क्या कोई रहस्यमय लगा? दोनों नोट करें।"
+      },
+      {
+        "day": 5,
+        "title_en": "Breath Is the Teacher",
+        "title_hi": "साँस ही गुरु है",
+        "intro_en": "You know the shape of the sequence now. Today you stop thinking about the shape and start listening to the breath. The sequence is just a vehicle — the breath is the journey.",
+        "intro_hi": "अब आप अनुक्रम की आकृति जानते हैं। आज आप आकृति के बारे में सोचना बंद करें और साँस को सुनना शुरू करें। अनुक्रम सिर्फ एक वाहन है — साँस ही यात्रा है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-009",
+            "duration_sec": 180,
+            "notes_en": "Three-Part Breath before the sequence — charge the lungs fully before moving.",
+            "notes_hi": "अनुक्रम से पहले तीन-भाग की साँस — गतिशील होने से पहले फेफड़ों को पूरी तरह चार्ज करें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 3 rounds. Focus: breath leads movement. If breath hurries, slow down.",
+            "notes_hi": "सूर्य नमस्कार A × 3 चक्र। ध्यान: साँस गति का नेतृत्व करे। अगर साँस जल्दी हो जाए, धीमे हो जाएँ।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-005",
+            "duration_sec": 240,
+            "notes_en": "Resting awareness — four minutes of post-practice quiet.",
+            "notes_hi": "विश्राम जागरूकता — अभ्यास के बाद चार मिनट की शांति।"
+          }
+        ],
+        "reflection_prompt_en": "Was there a moment today where movement and breath felt synchronised — even briefly?",
+        "reflection_prompt_hi": "क्या आज कोई ऐसा क्षण था जब गति और साँस समन्वित लगे — भले ही संक्षेप में?"
+      },
+      {
+        "day": 6,
+        "title_en": "Rest Is Practice",
+        "title_hi": "विश्राम भी अभ्यास है",
+        "intro_en": "On day six, you rest the body while training the mind. Today is entirely meditation and pranayama — no asana. Rest is not a gap in the practice; it is part of the practice.",
+        "intro_hi": "छठे दिन, शरीर को विश्राम देते हुए मन को प्रशिक्षित करें। आज पूरी तरह ध्यान और प्राणायाम — कोई आसन नहीं। विश्राम अभ्यास में खालीपन नहीं है; यह अभ्यास का हिस्सा है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 360,
+            "notes_en": "Nadi Shodhana — six minutes. Alternating nostril breathing to balance the nervous system on a rest day.",
+            "notes_hi": "नाड़ी शोधन — छह मिनट। विश्राम दिवस पर तंत्रिका तंत्र को संतुलित करने के लिए अनुलोम-विलोम।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-006",
+            "duration_sec": 540,
+            "notes_en": "Nine-minute morning meditation — longer sit, deeper settling. This is the reward of the rest day.",
+            "notes_hi": "नौ मिनट का प्रभात ध्यान — लंबी बैठक, गहरी स्थिरता। यही विश्राम दिवस का पुरस्कार है।"
+          }
+        ],
+        "reflection_prompt_en": "How did a practice day without movement feel? Was anything missing — or was something gained?",
+        "reflection_prompt_hi": "बिना गति का अभ्यास दिवस कैसा लगा? कुछ कमी थी — या कुछ मिला?"
+      },
+      {
+        "day": 7,
+        "title_en": "One Week of Mornings",
+        "title_hi": "एक सप्ताह की सुबहें",
+        "intro_en": "Seven mornings. The first week of a habit is the hardest — and you have cleared it. Today is a celebration disguised as a practice. Four rounds of Surya Namaskar and a proper closing meditation.",
+        "intro_hi": "सात सुबहें। आदत का पहला सप्ताह सबसे कठिन होता है — और आपने इसे पार कर लिया। आज अभ्यास के रूप में एक उत्सव है। चार चक्र सूर्य नमस्कार और एक उचित समापन ध्यान।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-022",
+            "duration_sec": 180,
+            "notes_en": "Morning Awakening Breath — the same as Day 1. Feel the difference.",
+            "notes_hi": "प्रभात जागरण साँस — पहले दिन जैसी। अंतर महसूस करें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 4. This is your benchmark. Note how it feels compared to Day 4.",
+            "notes_hi": "सूर्य नमस्कार A × 4। यह आपकी कसौटी है। दिन 4 की तुलना में कैसा महसूस होता है नोट करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-002",
+            "duration_sec": 240,
+            "notes_en": "Self-appreciation close — acknowledge the consistency, not the perfection.",
+            "notes_hi": "आत्म-प्रशंसा समापन — निरंतरता को पहचानें, पूर्णता को नहीं।"
+          }
+        ],
+        "reflection_prompt_en": "Looking back at your seven journal entries — what pattern do you notice? What surprised you?",
+        "reflection_prompt_hi": "अपनी सात पत्रिका प्रविष्टियों को देखकर — आप क्या पैटर्न देखते हैं? क्या आपको आश्चर्यचकित किया?"
+      },
+      {
+        "day": 8,
+        "title_en": "The Second Week Begins",
+        "title_hi": "दूसरा सप्ताह शुरू",
+        "intro_en": "Week two deepens what week one established. You now add Bhujangasana (Cobra) as an alternative to Ashtanga Namaskara — a gentler option that makes the sequence accessible on stiffer mornings.",
+        "intro_hi": "दूसरा सप्ताह पहले सप्ताह को गहरा करता है। अब आप अष्टांग नमस्कार के विकल्प के रूप में भुजंगासन जोड़ते हैं।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — re-establish the audible breath. This is your constant companion.",
+            "notes_hi": "उज्जायी — श्रव्य साँस पुनः स्थापित करें। यह आपका निरंतर साथी है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "bhujangasana",
+            "duration_sec": 480,
+            "notes_en": "Introduce Bhujangasana as an option. Practice it in isolation first — feel the difference from Chaturanga. Then 3 rounds of Surya Namaskar using Cobra.",
+            "notes_hi": "भुजंगासन को एक विकल्प के रूप में पेश करें। पहले अकेले अभ्यास करें। फिर कोबरा के साथ 3 चक्र।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-001",
+            "duration_sec": 240,
+            "notes_en": "Intention renewal — the second week deserves a fresh intention.",
+            "notes_hi": "संकल्प नवीनीकरण — दूसरे सप्ताह में एक नया संकल्प लायक है।"
+          }
+        ],
+        "reflection_prompt_en": "Did Cobra feel more accessible than the eight-limb position? When would you choose one over the other?",
+        "reflection_prompt_hi": "क्या कोबरा अष्टांग नमस्कार से अधिक सुलभ लगा? आप कब किसे चुनेंगे?"
+      },
+      {
+        "day": 9,
+        "title_en": "Standing in the Sun",
+        "title_hi": "धूप में खड़ा होना",
+        "intro_en": "Today you add a standing pose after Surya Namaskar — Virabhadrasana I, Warrior I. The sequence now has a destination: after saluting the sun, you stand in its full light.",
+        "intro_hi": "आज सूर्य नमस्कार के बाद एक खड़े आसन जोड़ते हैं — वीरभद्रासन I। अनुक्रम का अब एक गंतव्य है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 120,
+            "notes_en": "Ujjayi — two minutes.",
+            "notes_hi": "उज्जायी — दो मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-i",
+            "duration_sec": 540,
+            "notes_en": "Surya Namaskar A × 2, then hold Warrior I for 5 breaths on each side. Feel the strength that the sun salutation has generated.",
+            "notes_hi": "सूर्य नमस्कार A × 2, फिर प्रत्येक तरफ 5 साँसों के लिए वीरभद्रासन I पकड़ें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-002",
+            "duration_sec": 240,
+            "notes_en": "Post-warrior close — bring the strength of the warrior into seated stillness.",
+            "notes_hi": "योद्धा के बाद समापन — योद्धा की शक्ति को बैठी हुई स्थिरता में लाएँ।"
+          }
+        ],
+        "reflection_prompt_en": "Warrior I asks you to be both grounded and expansive at once. Did you feel that contradiction — or that harmony?",
+        "reflection_prompt_hi": "वीरभद्रासन I माँगता है कि आप एक साथ स्थिर और विस्तृत हों। क्या आपने वह विरोधाभास महसूस किया — या वह सामंजस्य?"
+      },
+      {
+        "day": 10,
+        "title_en": "Ten Days of Rising",
+        "title_hi": "दस दिन का उदय",
+        "intro_en": "Halfway through the first fourteen. Today's session adds Virabhadrasana II — a more open, receptive shape than Warrior I. Together they teach two modes of strength: focused and expansive.",
+        "intro_hi": "पहले चौदह दिनों के बीच। आज का सत्र वीरभद्रासन II जोड़ता है — वीरभद्रासन I से अधिक खुला, ग्रहणशील आकार।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 180,
+            "notes_en": "Kapalabhati — Skull-Shining Breath. An energising pranayama for those mornings when the body wants to stay horizontal.",
+            "notes_hi": "कपालभाति — कपाल-चमकाने वाली साँस। उन सुबहों के लिए ऊर्जावान प्राणायाम जब शरीर लेटा रहना चाहे।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-ii",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 2, then Warrior I (3 breaths) flowing into Warrior II (5 breaths) on each side.",
+            "notes_hi": "सूर्य नमस्कार A × 2, फिर प्रत्येक तरफ वीरभद्रासन I (3 साँस) से वीरभद्रासन II (5 साँस)।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-003",
+            "duration_sec": 240,
+            "notes_en": "Warrior integration — how do the two faces of strength — focused versus open — show up in your day?",
+            "notes_hi": "योद्धा एकीकरण — केंद्रित बनाम खुली — शक्ति के दो चेहरे आपके दिन में कैसे प्रकट होते हैं?"
+          }
+        ],
+        "reflection_prompt_en": "Which warrior felt more natural to you — the focused forward gaze of Warrior I, or the wide open arms of Warrior II?",
+        "reflection_prompt_hi": "कौन सा योद्धा आपको अधिक स्वाभाविक लगा — वीरभद्रासन I की केंद्रित आगे की दृष्टि, या वीरभद्रासन II की चौड़ी खुली भुजाएँ?"
+      },
+      {
+        "day": 11,
+        "title_en": "The Fold and the Rise",
+        "title_hi": "झुकना और उठना",
+        "intro_en": "Today you deepen the forward fold that bookends every Surya Namaskar — Uttanasana and Ardha Uttanasana. Understanding these two postures unlocks the intelligence of the whole sequence.",
+        "intro_hi": "आज आप उस आगे के झुकाव को गहरा करते हैं जो हर सूर्य नमस्कार की सीमाएँ बनाता है — उत्तानासन और अर्ध उत्तानासन।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — three minutes.",
+            "notes_hi": "उज्जायी — तीन मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 480,
+            "notes_en": "Isolate Uttanasana and Ardha Uttanasana — 2 minutes each with breath awareness. Then 3 full Surya Namaskar rounds paying special attention to these transitions.",
+            "notes_hi": "उत्तानासन और अर्ध उत्तानासन अलग करें — प्रत्येक 2 मिनट। फिर इन संक्रमणों पर विशेष ध्यान के साथ 3 पूर्ण चक्र।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-004",
+            "duration_sec": 240,
+            "notes_en": "Quiet close — notice the quality of awareness after deeper folding.",
+            "notes_hi": "शांत समापन — गहरे झुकाव के बाद जागरूकता की गुणवत्ता नोट करें।"
+          }
+        ],
+        "reflection_prompt_en": "Forward folds are often associated with introspection and surrender. Did anything come up emotionally today?",
+        "reflection_prompt_hi": "आगे के झुकाव अक्सर आत्म-निरीक्षण और समर्पण से जुड़े होते हैं। क्या आज भावनात्मक रूप से कुछ आया?"
+      },
+      {
+        "day": 12,
+        "title_en": "The Dog and the Plank",
+        "title_hi": "कुत्ता और तख्ता",
+        "intro_en": "Adho Mukha Svanasana (Downward Dog) and Phalakasana (Plank) are two of the most anatomically rich positions in all of yoga. Today you give them each their own study.",
+        "intro_hi": "अधो मुख श्वानासन और फलकासन (प्लैंक) योग के सबसे शारीरिक रूप से समृद्ध आसनों में से दो हैं। आज आप इनमें से प्रत्येक को अपना अध्ययन समय देते हैं।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 180,
+            "notes_en": "Kapalabhati — builds the core heat needed for today's strength focus.",
+            "notes_hi": "कपालभाति — आज के शक्ति ध्यान के लिए आवश्यक आंतरिक ऊष्मा बनाता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "adho-mukha-svanasana",
+            "duration_sec": 480,
+            "notes_en": "Hold Downward Dog for 10 breaths — feel the full body stretch. Then Plank for 5 breaths. Alternate × 3. Then a slow Surya Namaskar A × 2.",
+            "notes_hi": "डाउनवर्ड डॉग 10 साँसों के लिए — पूरे शरीर की स्ट्रेच महसूस करें। फिर प्लैंक 5 साँसों के लिए। × 3 बारी-बारी।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-005",
+            "duration_sec": 240,
+            "notes_en": "Strength and stillness integration — the body has worked; the mind now rests.",
+            "notes_hi": "शक्ति और स्थिरता एकीकरण — शरीर ने काम किया; अब मन विश्राम करता है।"
+          }
+        ],
+        "reflection_prompt_en": "Where do you feel Downward Dog most — back of legs, shoulders, wrists? All of the above?",
+        "reflection_prompt_hi": "आप डाउनवर्ड डॉग सबसे ज्यादा कहाँ महसूस करते हैं — पैरों के पीछे, कंधों में, कलाइयों में? या सभी जगह?"
+      },
+      {
+        "day": 13,
+        "title_en": "Thirteen",
+        "title_hi": "तेरह",
+        "intro_en": "Today is a free practice. The sequence, the breath, the meditation — you choose the pace, the number of rounds, the length. This is the first test of self-practice.",
+        "intro_hi": "आज स्वतंत्र अभ्यास है। अनुक्रम, साँस, ध्यान — आप गति, चक्रों की संख्या, लंबाई चुनें। यह आत्म-अभ्यास की पहली परीक्षा है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-022",
+            "duration_sec": 180,
+            "notes_en": "Morning Awakening Breath — as always, breath leads.",
+            "notes_hi": "प्रभात जागरण साँस — हमेशा की तरह, साँस नेतृत्व करती है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 480,
+            "notes_en": "Self-guided Surya Namaskar — as many rounds as feels right. Minimum 2, maximum however many 8 minutes allows.",
+            "notes_hi": "स्व-निर्देशित सूर्य नमस्कार — जितने चक्र सही लगें। न्यूनतम 2, अधिकतम 8 मिनट में जितने।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-006",
+            "duration_sec": 240,
+            "notes_en": "Self-guided close — sit for the remaining time without guidance.",
+            "notes_hi": "स्व-निर्देशित समापन — बिना मार्गदर्शन के शेष समय बैठें।"
+          }
+        ],
+        "reflection_prompt_en": "What did you choose? Did you go harder or softer than the structured days? What does that tell you about what you need?",
+        "reflection_prompt_hi": "आपने क्या चुना? क्या आप संरचित दिनों से अधिक या कम गए? यह आपकी ज़रूरत के बारे में क्या बताता है?"
+      },
+      {
+        "day": 14,
+        "title_en": "Two Weeks",
+        "title_hi": "दो सप्ताह",
+        "intro_en": "Fourteen mornings. Research on habit formation consistently finds that the second week is where the neural pathway begins to solidify. You are in the window. Today honours that with the fullest practice yet.",
+        "intro_hi": "चौदह सुबहें। आदत निर्माण पर शोध लगातार पाता है कि दूसरे सप्ताह में तंत्रिका मार्ग मजबूत होने लगता है। आज अब तक के सबसे पूर्ण अभ्यास के साथ इसका सम्मान करें।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 180,
+            "notes_en": "Kapalabhati — three minutes for full energisation.",
+            "notes_hi": "कपालभाति — पूर्ण ऊर्जावर्धन के लिए तीन मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-ii",
+            "duration_sec": 480,
+            "notes_en": "Full sequence: Surya Namaskar A × 3, then Warrior I → Warrior II on each side. The fullest practice of the second week.",
+            "notes_hi": "पूर्ण अनुक्रम: सूर्य नमस्कार A × 3, फिर प्रत्येक तरफ वीरभद्रासन I → वीरभद्रासन II।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-006",
+            "duration_sec": 240,
+            "notes_en": "Closing meditation — deep rest after strong practice.",
+            "notes_hi": "समापन ध्यान — तीव्र अभ्यास के बाद गहरा विश्राम।"
+          }
+        ],
+        "reflection_prompt_en": "Does your body know what is coming before you start now? That recognition is the habit forming.",
+        "reflection_prompt_hi": "क्या आपका शरीर अब शुरू होने से पहले ही जानता है क्या आने वाला है? वह पहचान ही आदत बन रही है।"
+      },
+      {
+        "day": 15,
+        "title_en": "The Third Week Arrives",
+        "title_hi": "तीसरा सप्ताह आता है",
+        "intro_en": "Week three is the deepening week. You know the sequence. You trust the breath. Now we add the philosophical layer: each Surya Namaskar position corresponds to one of the twelve solar deities in the Vedic tradition. Today you learn the first three.",
+        "intro_hi": "तीसरा सप्ताह गहराई का सप्ताह है। आप अनुक्रम जानते हैं। आप साँस पर भरोसा करते हैं। अब दार्शनिक परत जुड़ती है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — settle into the third week with the familiar breath.",
+            "notes_hi": "उज्जायी — परिचित साँस के साथ तीसरे सप्ताह में स्थिर हों।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 420,
+            "notes_en": "Surya Namaskar A × 3. Before each round, silently acknowledge the sun — the literal source of all life on the planet. The salutation now has meaning beyond fitness.",
+            "notes_hi": "सूर्य नमस्कार A × 3। प्रत्येक चक्र से पहले, मौन में सूर्य को स्वीकार करें — ग्रह पर सभी जीवन का शाब्दिक स्रोत।"
+          },
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 300,
+            "notes_en": "Brief talk: The twelve Adityas — the solar deities of the Vedic tradition. Each position in Surya Namaskar is associated with one aspect of solar energy: Mitra (friendship), Ravi (radiance), Surya (the illuminator), Bhanu (the brilliant). Today's session invites the practitioner to hold Mitra — friendliness — through the sequence.",
+            "notes_hi": "संक्षिप्त वार्ता: बारह आदित्य — वैदिक परंपरा के सूर्य देवता। सूर्य नमस्कार की प्रत्येक स्थिति सौर ऊर्जा के एक पहलू से जुड़ी है। आज का सत्र मित्र — मित्रता — को अनुक्रम के माध्यम से धारण करने का निमंत्रण देता है।"
+          }
+        ],
+        "reflection_prompt_en": "Does knowing that the salutation has a cosmological meaning change how it feels to practice it?",
+        "reflection_prompt_hi": "यह जानना कि नमस्कार का एक ब्रह्माण्डीय अर्थ है — क्या यह अभ्यास की अनुभूति बदलता है?"
+      },
+      {
+        "day": 16,
+        "title_en": "Trikonasana Morning",
+        "title_hi": "त्रिकोणासन की सुबह",
+        "intro_en": "Today's standing peak pose is Trikonasana — Triangle Pose. It opens the side body and grounds through both feet simultaneously, creating a sense of both openness and stability.",
+        "intro_hi": "आज का खड़े आसन का शिखर त्रिकोणासन है — त्रिभुज मुद्रा। यह बगल के शरीर को खोलता है और एक साथ दोनों पैरों से जमीन से जुड़ता है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — settle into the breath before any movement.",
+            "notes_hi": "उज्जायी — किसी भी गतिविधि से पहले साँस में स्थिर हों।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "trikonasana",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 2, then Trikonasana held for 8 breaths on each side. Notice the lateral expansion.",
+            "notes_hi": "सूर्य नमस्कार A × 2, फिर प्रत्येक तरफ 8 साँसों के लिए त्रिकोणासन। पार्श्व विस्तार नोट करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-001",
+            "duration_sec": 240,
+            "notes_en": "Intention — what are you reaching toward?",
+            "notes_hi": "संकल्प — आप किस ओर पहुँच रहे हैं?"
+          }
+        ],
+        "reflection_prompt_en": "Triangle reaches in four directions at once. Where in your life are you reaching in multiple directions right now?",
+        "reflection_prompt_hi": "त्रिभुज एक साथ चार दिशाओं में पहुँचता है। अभी आपके जीवन में कहाँ आप एक साथ कई दिशाओं में पहुँच रहे हैं?"
+      },
+      {
+        "day": 17,
+        "title_en": "The Deep Rest",
+        "title_hi": "गहरा विश्राम",
+        "intro_en": "Day seventeen is a Yin day — slow, held, passive postures. The Surya Namaskar goes on rest; the connective tissue gets its week's deep release.",
+        "intro_hi": "सत्रहवाँ दिन यिन दिन है — धीमे, पकड़े हुए, निष्क्रिय आसन। सूर्य नमस्कार विश्राम पर जाता है; संयोजी ऊतक को सप्ताह की गहरी मुक्ति मिलती है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 180,
+            "notes_en": "Coherent Breathing — downshift the nervous system for the yin practice.",
+            "notes_hi": "सुसंगत श्वास — यिन अभ्यास के लिए तंत्रिका तंत्र को धीमा करें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "supta-baddha-konasana",
+            "duration_sec": 480,
+            "notes_en": "Supta Baddha Konasana held for 3-4 minutes — passive hip opener. Then Jathara Parivartanasana (supine twist) 2 minutes each side.",
+            "notes_hi": "सुप्त बद्धकोणासन 3-4 मिनट — निष्क्रिय हिप ओपनर। फिर जठर परिवर्तनासन प्रत्येक तरफ 2 मिनट।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sleep-001",
+            "duration_sec": 240,
+            "notes_en": "Deep rest awareness — let the body be completely passive while the mind stays lightly awake.",
+            "notes_hi": "गहरी विश्राम जागरूकता — शरीर को पूरी तरह निष्क्रिय रहने दें जबकि मन हल्का जागता रहे।"
+          }
+        ],
+        "reflection_prompt_en": "Yin asks you to be still and wait. What is it like to wait — in practice, and in life?",
+        "reflection_prompt_hi": "यिन आपसे शांत रहने और प्रतीक्षा करने को कहता है। प्रतीक्षा करना कैसा लगता है — अभ्यास में और जीवन में?"
+      },
+      {
+        "day": 18,
+        "title_en": "Strength Returns",
+        "title_hi": "शक्ति वापस आती है",
+        "intro_en": "After yesterday's rest, the body is ready for more. Today introduces Utkatasana — Chair Pose — as the standing peak. The legs learn to work hard so the mind can stay soft.",
+        "intro_hi": "कल के विश्राम के बाद, शरीर अधिक के लिए तैयार है। आज उत्कटासन — कुर्सी मुद्रा — को खड़े आसन के शिखर के रूप में पेश करता है।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 180,
+            "notes_en": "Kapalabhati — reawaken the fire after the yin rest day.",
+            "notes_hi": "कपालभाति — यिन विश्राम दिन के बाद अग्नि को फिर जगाएँ।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "utkatasana",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 3, then hold Utkatasana for 10 slow breaths. Drop into discomfort — the practice is meeting discomfort with steady breath.",
+            "notes_hi": "सूर्य नमस्कार A × 3, फिर 10 धीमी साँसों के लिए उत्कटासन। असुविधा में उतरें — अभ्यास स्थिर साँस से असुविधा से मिलना है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-005",
+            "duration_sec": 240,
+            "notes_en": "Post-strength close — observe the aliveness in the legs carried into stillness.",
+            "notes_hi": "शक्ति के बाद समापन — स्थिरता में जाते हुए पैरों में जीवंतता देखें।"
+          }
+        ],
+        "reflection_prompt_en": "Utkatasana builds tolerance for discomfort. Where in your life do you most need that tolerance right now?",
+        "reflection_prompt_hi": "उत्कटासन असुविधा के प्रति सहनशीलता बनाता है। अभी आपके जीवन में सबसे ज्यादा उस सहनशीलता की जरूरत कहाँ है?"
+      },
+      {
+        "day": 19,
+        "title_en": "Almost There",
+        "title_hi": "लगभग पहुँच गए",
+        "intro_en": "Nineteen days. You have missed some, perhaps — and come back anyway. That return is the practice, more than any single session. Today honours the return itself.",
+        "intro_hi": "उन्नीस दिन। शायद कुछ दिन छूट गए — और फिर भी आप वापस आए। वह वापसी ही अभ्यास है, किसी एकल सत्र से अधिक। आज उसी वापसी का सम्मान करते हैं।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — return to the original breath. Always a homecoming.",
+            "notes_hi": "उज्जायी — मूल साँस पर वापस लौटें। हमेशा घर वापसी।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-i",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 3, full warrior sequence. A strong penultimate session.",
+            "notes_hi": "सूर्य नमस्कार A × 3, पूर्ण योद्धा अनुक्रम। एक मजबूत उपांत्य सत्र।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-003",
+            "duration_sec": 240,
+            "notes_en": "Self-compassion close — for every return after absence.",
+            "notes_hi": "आत्म-करुणा समापन — अनुपस्थिति के बाद हर वापसी के लिए।"
+          }
+        ],
+        "reflection_prompt_en": "If you missed any days, how did it feel to come back? If you did not miss any — what kept you consistent?",
+        "reflection_prompt_hi": "यदि आपने कोई दिन छोड़ा, तो वापस आना कैसा लगा? यदि आपने नहीं छोड़ा — आपको क्या निरंतर रखा?"
+      },
+      {
+        "day": 20,
+        "title_en": "The Eve of the Last Day",
+        "title_hi": "आखिरी दिन की शाम",
+        "intro_en": "Tomorrow is day twenty-one. Today is preparation — physically and mentally. A longer, slower, more meditative practice. The body should arrive at day twenty-one well rested.",
+        "intro_hi": "कल इक्कीसवाँ दिन है। आज तैयारी है — शारीरिक और मानसिक रूप से। एक लंबा, धीमा, अधिक ध्यानशील अभ्यास। शरीर को इक्कीसवें दिन तक अच्छी तरह विश्राम करना चाहिए।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 240,
+            "notes_en": "Nadi Shodhana — four minutes. Deep balance before the final day.",
+            "notes_hi": "नाड़ी शोधन — चार मिनट। आखिरी दिन से पहले गहरा संतुलन।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 360,
+            "notes_en": "Slow Surya Namaskar A × 2. Every transition deliberate. This is not rehearsal — this is the practice at its truest.",
+            "notes_hi": "धीमा सूर्य नमस्कार A × 2। हर संक्रमण सोच-समझकर। यह पूर्वाभ्यास नहीं है — यह अपने सच्चे रूप में अभ्यास है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-006",
+            "duration_sec": 300,
+            "notes_en": "Preparation meditation — sit with tomorrow. Not anxious anticipation — just presence with what is coming.",
+            "notes_hi": "तैयारी ध्यान — कल के साथ बैठें। चिंतित प्रत्याशा नहीं — बस जो आ रहा है उसके साथ उपस्थिति।"
+          }
+        ],
+        "reflection_prompt_en": "What does the word 'practice' mean to you now versus what it meant on Day 1?",
+        "reflection_prompt_hi": "अभी 'अभ्यास' शब्द का आपके लिए क्या अर्थ है, बनाम पहले दिन क्या था?"
+      },
+      {
+        "day": 21,
+        "title_en": "Twenty-One Sunrises",
+        "title_hi": "इक्कीस सूर्योदय",
+        "intro_en": "The last morning. Not the end of the practice — the beginning of the practice as yours. Today is everything you have learned, done once more, with full presence.",
+        "intro_hi": "आखिरी सुबह। अभ्यास का अंत नहीं — अभ्यास की शुरुआत जो अब आपकी है। आज सब कुछ जो आपने सीखा, एक बार और, पूरी उपस्थिति के साथ।",
+        "duration_min": 15,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-022",
+            "duration_sec": 180,
+            "notes_en": "Morning Awakening Breath — day one, day twenty-one. The same breath, the same morning. Everything has changed.",
+            "notes_hi": "प्रभात जागरण साँस — पहला दिन, इक्कीसवाँ दिन। वही साँस, वही सुबह। सब कुछ बदल गया।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-ii",
+            "duration_sec": 480,
+            "notes_en": "Your full morning sequence — Surya Namaskar A × 4, full warrior sequence. Your practice, fully yours.",
+            "notes_hi": "आपका पूर्ण प्रभात अनुक्रम — सूर्य नमस्कार A × 4, पूर्ण योद्धा अनुक्रम। आपका अभ्यास, पूरी तरह आपका।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-004",
+            "duration_sec": 240,
+            "notes_en": "Completion meditation — not celebration, not pride. Just recognition: you did the thing.",
+            "notes_hi": "समापन ध्यान — उत्सव नहीं, अभिमान नहीं। बस पहचान: आपने यह किया।"
+          }
+        ],
+        "reflection_prompt_en": "Write one sentence about what this practice has given you. Not what you wanted it to give you — what it actually gave.",
+        "reflection_prompt_hi": "इस अभ्यास ने आपको क्या दिया, इसके बारे में एक वाक्य लिखें। जो आप चाहते थे वह नहीं — जो वास्तव में मिला।"
+      }
+    ],
+    "closing_en": "Twenty-one mornings. You have learned one of yoga's most complete sequences and made it your own, one sunrise at a time. The Surya Namaskar is not a warm-up — it is a complete practice: strength, flexibility, breath, presence, and a thread of devotion woven through it if you choose to hold it. What you have built is not just a physical habit. You have established a relationship with your own morning — which is the same as establishing a relationship with how you begin everything. Carry this forward any way you wish. You do not need this course anymore.",
+    "closing_hi": "इक्कीस सुबहें। आपने योग के सबसे पूर्ण अनुक्रमों में से एक सीखा और इसे अपना बनाया, एक सूर्योदय एक बार। सूर्य नमस्कार वार्म-अप नहीं है — यह एक पूर्ण अभ्यास है: शक्ति, लचीलापन, साँस, उपस्थिति। आपने सिर्फ एक शारीरिक आदत नहीं बनाई है। आपने अपनी सुबह के साथ एक रिश्ता स्थापित किया है।",
+    "recommended_next_course_id": "30-day-foundations"
+  },
+  {
+    "id": "30-day-foundations",
+    "title_en": "30-Day Foundations",
+    "title_hi": "तीस दिन की नींव",
+    "subtitle_en": "The complete Sukoon journey — meditation, breath, and yoga woven into one living practice.",
+    "subtitle_hi": "सुकून की पूरी यात्रा — ध्यान, प्राणायाम और योग एक जीवंत अभ्यास में।",
+    "days": 30,
+    "level": "beginner",
+    "focus_tag": "foundations",
+    "intro_en": "Thirty days is long enough to change something real — not just build a habit, but actually shift the baseline of your nervous system, your relationship with your breath, and your sense of what you are capable of each morning.\n\nThis course covers all three pillars of Sukoon practice: meditation, pranayama, and asana. Each week has a distinct theme. Week one is arrival — you learn to stop and feel. Week two is breath — you learn the pranayamas that will serve you for life. Week three is body — you build a functional movement practice from the ground up. Week four is integration — you hold all three together and discover that they were always one thing.\n\nSessions are twenty minutes daily. Some days will ask more of you; others will feel almost too gentle. Both are part of the design. The course does not assume continuity — if you miss a day, pick up exactly where you left off. The practice is patient. It has been waiting thousands of years for you to begin.",
+    "intro_hi": "तीस दिन वास्तव में कुछ बदलने के लिए पर्याप्त हैं — सिर्फ आदत बनाना नहीं, बल्कि अपने तंत्रिका तंत्र की आधार रेखा को वास्तव में बदलना।\n\nयह कोर्स सुकून अभ्यास के तीनों स्तंभों को कवर करता है: ध्यान, प्राणायाम और आसन। प्रत्येक सप्ताह का एक अलग विषय है। पहला सप्ताह है आगमन — रुकना और महसूस करना। दूसरा सप्ताह है साँस। तीसरा सप्ताह है शरीर। चौथा सप्ताह है एकीकरण।\n\nसत्र प्रतिदिन बीस मिनट के हैं। यदि कोई दिन छूट जाए तो वहीं से शुरू करें जहाँ छोड़ा था।",
+    "estimated_daily_minutes": 20,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "The First Stop",
+        "title_hi": "पहला ठहराव",
+        "intro_en": "Week one theme: Arrival. Today you simply stop — fully, without agenda — for twenty minutes. This is harder than it sounds.",
+        "intro_hi": "पहले सप्ताह का विषय: आगमन। आज आप बस रुकें — पूरी तरह, बिना किसी उद्देश्य के — बीस मिनट के लिए।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-010",
+            "duration_sec": 300,
+            "notes_en": "Deep Belly Breath — five minutes. The anchor for the entire thirty days.",
+            "notes_hi": "गहरी पेट की साँस — पाँच मिनट। पूरे तीस दिनों का लंगर।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "sukhasana",
+            "duration_sec": 240,
+            "notes_en": "Sukhasana — just sit. No adjustment, no perfection. Feel the ground.",
+            "notes_hi": "सुखासन — बस बैठें। कोई सुधार नहीं। ज़मीन महसूस करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-001",
+            "duration_sec": 660,
+            "notes_en": "Body scan grounding — eleven minutes of arriving in every part of the body.",
+            "notes_hi": "बॉडी स्कैन ग्राउंडिंग — शरीर के हर हिस्से में पहुँचने के ग्यारह मिनट।"
+          }
+        ],
+        "reflection_prompt_en": "What was the hardest part of stopping today?",
+        "reflection_prompt_hi": "आज रुकने का सबसे कठिन हिस्सा क्या था?"
+      },
+      {
+        "day": 2,
+        "title_en": "Breath as Anchor",
+        "title_hi": "साँस लंगर के रूप में",
+        "intro_en": "The single most important skill in all contemplative practice: returning to the breath when the mind wanders. Today you practice it deliberately.",
+        "intro_hi": "सभी चिंतनशील अभ्यासों में सबसे महत्वपूर्ण कौशल: जब मन भटके तो साँस पर वापस लौटना। आज आप इसका जानबूझकर अभ्यास करते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-009",
+            "duration_sec": 360,
+            "notes_en": "Three-Part Breath — six minutes. Fill belly, ribcage, collarbones. Exhale in reverse order.",
+            "notes_hi": "तीन-भाग की साँस — छह मिनट। पेट, पसलियाँ, कंधे। उल्टे क्रम में उच्छ्वास।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-002",
+            "duration_sec": 840,
+            "notes_en": "Fourteen-minute breath-anchor sit. Count ten breaths, restart from one when you lose count. This is the practice.",
+            "notes_hi": "चौदह मिनट की साँस-लंगर बैठक। दस साँसें गिनें, गिनती खोने पर एक से पुनः शुरू करें। यही अभ्यास है।"
+          }
+        ],
+        "reflection_prompt_en": "How many times did you lose count? Write the number without judgment.",
+        "reflection_prompt_hi": "आपने कितनी बार गिनती खोई? बिना निर्णय के संख्या लिखें।"
+      },
+      {
+        "day": 3,
+        "title_en": "The Body Speaks First",
+        "title_hi": "शरीर पहले बोलता है",
+        "intro_en": "Emotions live in the body before they reach the mind. Today's session introduces somatic awareness — the practice of reading the body's language.",
+        "intro_hi": "भावनाएँ मन तक पहुँचने से पहले शरीर में रहती हैं। आज का सत्र दैहिक जागरूकता पेश करता है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 300,
+            "notes_en": "Coherent Breathing 5-5 — five minutes. Equal in, equal out. The nervous system settles.",
+            "notes_hi": "सुसंगत श्वास 5-5 — पाँच मिनट। बराबर श्वास, बराबर उच्छ्वास। तंत्रिका तंत्र स्थिर होता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "balasana",
+            "duration_sec": 300,
+            "notes_en": "Child's Pose for five minutes. Breathe into the back body. Let the hips release completely.",
+            "notes_hi": "पाँच मिनट के लिए बालासन। पीठ में साँस लें। कूल्हों को पूरी तरह छोड़ दें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-003",
+            "duration_sec": 600,
+            "notes_en": "Ten-minute body-awareness sit — track sensation without naming emotion. Let the body lead.",
+            "notes_hi": "दस मिनट की शरीर-जागरूकता बैठक — भावना को नाम दिए बिना संवेदना को ट्रैक करें।"
+          }
+        ],
+        "reflection_prompt_en": "Where in your body did you feel most alive today? Most numb?",
+        "reflection_prompt_hi": "आज आपके शरीर में कहाँ सबसे ज्यादा जीवंतता महसूस हुई? सबसे ज्यादा सुन्नता?"
+      },
+      {
+        "day": 4,
+        "title_en": "Sound and Silence",
+        "title_hi": "ध्वनि और मौन",
+        "intro_en": "Today introduces Bhramari — the humming bee breath. Sound is one of the most direct routes to stillness; the vibration of your own voice settles the mind in ways that silence alone cannot.",
+        "intro_hi": "आज भ्रामरी पेश होती है — भौंरे की गुनगुनाहट वाली साँस। ध्वनि स्थिरता का सबसे सीधा मार्ग है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-006",
+            "duration_sec": 480,
+            "notes_en": "Bhramari — eight minutes. Close eyes, plug ears gently, hum on the exhale. Feel the vibration in the skull.",
+            "notes_hi": "भ्रामरी — आठ मिनट। आँखें बंद, कान हल्के से बंद, उच्छ्वास पर गुनगुनाएँ। खोपड़ी में कंपन महसूस करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-004",
+            "duration_sec": 720,
+            "notes_en": "Twelve-minute silence after the humming. Notice how the silence feels different after sound.",
+            "notes_hi": "गुनगुनाने के बाद बारह मिनट की चुप्पी। ध्वनि के बाद मौन कैसा लगता है।"
+          }
+        ],
+        "reflection_prompt_en": "Did the humming feel awkward or natural? What did the silence feel like immediately after?",
+        "reflection_prompt_hi": "क्या गुनगुनाना अजीब लगा या स्वाभाविक? तुरंत बाद मौन कैसा लगा?"
+      },
+      {
+        "day": 5,
+        "title_en": "The Compassionate Witness",
+        "title_hi": "करुणामय साक्षी",
+        "intro_en": "The single hardest skill in meditation is not stillness — it is non-judgment. Today you practise witnessing your own thoughts with the same patience you would offer a friend.",
+        "intro_hi": "ध्यान में सबसे कठिन कौशल स्थिरता नहीं है — यह निर्णय-रहितता है। आज आप अपने विचारों को उसी धैर्य से देखने का अभ्यास करते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-010",
+            "duration_sec": 300,
+            "notes_en": "Deep Belly Breath — arrival.",
+            "notes_hi": "गहरी पेट की साँस — आगमन।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-001",
+            "duration_sec": 900,
+            "notes_en": "Self-compassion meditation — fifteen minutes. Notice harsh self-talk and soften it.",
+            "notes_hi": "आत्म-करुणा ध्यान — पंद्रह मिनट। कठोर आत्म-वार्ता नोटिस करें और उसे नरम करें।"
+          }
+        ],
+        "reflection_prompt_en": "What did your inner critic say today during the meditation? Write it down and then rewrite it as a compassionate response.",
+        "reflection_prompt_hi": "ध्यान के दौरान आपके आंतरिक आलोचक ने क्या कहा? लिखें और फिर एक करुणामय उत्तर के रूप में फिर से लिखें।"
+      },
+      {
+        "day": 6,
+        "title_en": "The Week's Rest",
+        "title_hi": "सप्ताह का विश्राम",
+        "intro_en": "Day six is restorative — Yoga Nidra, the yogic sleep. You will remain completely still for eighteen minutes while awareness is gently guided through the body. This is both the gentlest and the most transformative practice in the course.",
+        "intro_hi": "छठा दिन पुनर्स्थापनात्मक है — योग निद्रा, योगिक नींद। आप अठारह मिनट तक पूरी तरह स्थिर रहेंगे जबकि जागरूकता को धीरे-धीरे शरीर में निर्देशित किया जाएगा।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-013",
+            "duration_sec": 240,
+            "notes_en": "Pre-Sleep Wind-Down Breath — four minutes to downshift before Nidra.",
+            "notes_hi": "पूर्व-निद्रा साँस — निद्रा से पहले चार मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "yoga-nidra-asana",
+            "duration_sec": 960,
+            "notes_en": "Yoga Nidra Savasana — sixteen minutes of guided body rotation of consciousness. Do not try to stay awake. Do not try to fall asleep.",
+            "notes_hi": "योग निद्रा शवासन — चेतना के शारीरिक घुमाव के सोलह मिनट। जागने की कोशिश मत करो। सोने की कोशिश मत करो।"
+          }
+        ],
+        "reflection_prompt_en": "Did you fall asleep? Did you hover between sleep and waking? Note what you remember.",
+        "reflection_prompt_hi": "क्या आप सो गए? क्या आप नींद और जागने के बीच रहे? जो याद है वह नोट करें।"
+      },
+      {
+        "day": 7,
+        "title_en": "One Week of Stopping",
+        "title_hi": "एक सप्ताह की रुकावट",
+        "intro_en": "Seven days of arrival practice. Today's session reviews everything week one established — breath, body scan, witnessing — in one continuous flow.",
+        "intro_hi": "आगमन अभ्यास के सात दिन। आज का सत्र पहले सप्ताह में स्थापित सब कुछ — साँस, बॉडी स्कैन, साक्षी — एक निरंतर प्रवाह में समीक्षा करता है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-009",
+            "duration_sec": 300,
+            "notes_en": "Three-Part Breath — five minutes.",
+            "notes_hi": "तीन-भाग की साँस — पाँच मिनट।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-005",
+            "duration_sec": 600,
+            "notes_en": "Ten-minute body scan into awareness.",
+            "notes_hi": "दस मिनट बॉडी स्कैन से जागरूकता में।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-002",
+            "duration_sec": 300,
+            "notes_en": "Five-minute self-compassion close — acknowledge the first week.",
+            "notes_hi": "पाँच मिनट आत्म-करुणा समापन — पहले सप्ताह को स्वीकार करें।"
+          }
+        ],
+        "reflection_prompt_en": "What is the most useful thing you have learned about yourself this week?",
+        "reflection_prompt_hi": "इस सप्ताह आपने अपने बारे में सबसे उपयोगी बात क्या सीखी?"
+      },
+      {
+        "day": 8,
+        "title_en": "The Breath Week Begins",
+        "title_hi": "साँस का सप्ताह शुरू होता है",
+        "intro_en": "Week two theme: Breath. This week is dedicated to pranayama — the science of breath extension. Each day introduces one technique you will carry for the rest of your life.",
+        "intro_hi": "दूसरे सप्ताह का विषय: साँस। यह सप्ताह प्राणायाम को समर्पित है। प्रत्येक दिन एक तकनीक पेश करती है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-001",
+            "duration_sec": 720,
+            "notes_en": "4-7-8 Breath — twelve minutes. Learn the pattern thoroughly. Six rounds minimum.",
+            "notes_hi": "4-7-8 साँस — बारह मिनट। पैटर्न अच्छी तरह सीखें। न्यूनतम छह चक्र।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-006",
+            "duration_sec": 480,
+            "notes_en": "Eight-minute post-pranayama sit — observe what the breath has done to the quality of mind.",
+            "notes_hi": "आठ मिनट पोस्ट-प्राणायाम बैठक — देखें साँस ने मन की गुणवत्ता पर क्या किया।"
+          }
+        ],
+        "reflection_prompt_en": "Where in your body did you feel the 4-7-8 pattern most strongly?",
+        "reflection_prompt_hi": "आपने 4-7-8 पैटर्न को अपने शरीर में सबसे ज्यादा कहाँ महसूस किया?"
+      },
+      {
+        "day": 9,
+        "title_en": "The Alternate Current",
+        "title_hi": "वैकल्पिक धारा",
+        "intro_en": "Nadi Shodhana — Alternate Nostril Breathing — is the pranayama that most directly addresses the balance between the nervous system's two hemispheres. It is the aspirin of the breath world.",
+        "intro_hi": "नाड़ी शोधन — अनुलोम-विलोम — वह प्राणायाम है जो तंत्रिका तंत्र के दो गोलार्धों के बीच संतुलन को सबसे सीधे संबोधित करता है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 840,
+            "notes_en": "Nadi Shodhana — fourteen minutes. Start with 4 counts each side, build to 6 if comfortable. Never force.",
+            "notes_hi": "नाड़ी शोधन — चौदह मिनट। प्रत्येक तरफ 4 काउंट से शुरू करें, सहज हो तो 6 तक बढ़ाएँ।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-001",
+            "duration_sec": 360,
+            "notes_en": "Six-minute grounding close — land back in the whole body.",
+            "notes_hi": "छह मिनट ग्राउंडिंग समापन — पूरे शरीर में वापस उतरें।"
+          }
+        ],
+        "reflection_prompt_en": "Did one nostril feel more open than the other at the start? Did that change by the end?",
+        "reflection_prompt_hi": "शुरुआत में क्या एक नासिका दूसरी से अधिक खुली लगी? क्या अंत तक यह बदला?"
+      },
+      {
+        "day": 10,
+        "title_en": "The Ocean Inside",
+        "title_hi": "अंदर का समुद्र",
+        "intro_en": "Ujjayi — Ocean Breath — bridges pranayama and asana. Today you spend an entire session with just this one breath, learning to sustain it through movement and stillness.",
+        "intro_hi": "उज्जायी — समुद्र की साँस — प्राणायाम और आसन को जोड़ता है। आज आप पूरा सत्र इसी एक साँस के साथ बिताते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 480,
+            "notes_en": "Ujjayi seated — eight minutes of learning the constriction at the throat.",
+            "notes_hi": "बैठे हुए उज्जायी — कंठ में संकुचन सीखने के आठ मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "tadasana",
+            "duration_sec": 480,
+            "notes_en": "Standing Ujjayi — four minutes in Tadasana, four minutes slow arm movements. Breath leads every micro-movement.",
+            "notes_hi": "खड़े हुए उज्जायी — ताड़ासन में चार मिनट, धीमी भुजा गतिविधि चार मिनट। साँस हर सूक्ष्म गति का नेतृत्व करती है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-002",
+            "duration_sec": 240,
+            "notes_en": "Four-minute listening close — let Ujjayi slow to natural breath and listen to the transition.",
+            "notes_hi": "चार मिनट सुनना समापन — उज्जायी को प्राकृतिक साँस में धीमा होने दें और संक्रमण सुनें।"
+          }
+        ],
+        "reflection_prompt_en": "What does the sound of Ujjayi do to your attention? Does it help you focus?",
+        "reflection_prompt_hi": "उज्जायी की ध्वनि आपके ध्यान पर क्या करती है? क्या यह आपको केंद्रित करने में मदद करती है?"
+      },
+      {
+        "day": 11,
+        "title_en": "Fire in the Belly",
+        "title_hi": "पेट में अग्नि",
+        "intro_en": "Kapalabhati — Skull-Shining Breath — is the most energising pranayama in the classical tradition. Today you learn it correctly: not as hyperventilation, but as abdominal percussion.",
+        "intro_hi": "कपालभाति — कपाल-चमकाने वाली साँस — शास्त्रीय परंपरा में सबसे ऊर्जावान प्राणायाम है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 720,
+            "notes_en": "Kapalabhati — twelve minutes. Start with one pump per second. Build to one per half-second only if comfortable. Three rounds of 30, resting between.",
+            "notes_hi": "कपालभाति — बारह मिनट। प्रति सेकंड एक पंप से शुरू करें। बीच में आराम के साथ 30 के तीन चक्र।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-003",
+            "duration_sec": 480,
+            "notes_en": "Post-fire grounding — bring the awakened energy downward into the earth.",
+            "notes_hi": "अग्नि के बाद ग्राउंडिंग — जागृत ऊर्जा को नीचे पृथ्वी में लाएँ।"
+          }
+        ],
+        "reflection_prompt_en": "How did your energy level compare before and after Kapalabhati?",
+        "reflection_prompt_hi": "कपालभाति से पहले और बाद में आपका ऊर्जा स्तर कैसे तुलनीय था?"
+      },
+      {
+        "day": 12,
+        "title_en": "The Cooling Breath",
+        "title_hi": "शीतलन साँस",
+        "intro_en": "Sheetali and Bhramari are the two pranayamas of the parasympathetic nervous system. Today you combine them into one session — stimulation through sound, then cooling through the tongue.",
+        "intro_hi": "शीतली और भ्रामरी पैरासिम्पेथेटिक तंत्रिका तंत्र के दो प्राणायाम हैं। आज आप उन्हें एक सत्र में मिलाते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-006",
+            "duration_sec": 360,
+            "notes_en": "Bhramari — six minutes. Humming to activate the vagus nerve.",
+            "notes_hi": "भ्रामरी — छह मिनट। वेगस तंत्रिका को सक्रिय करने के लिए गुनगुनाना।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-008",
+            "duration_sec": 360,
+            "notes_en": "Sheetali — six minutes. Curl the tongue, inhale across it, exhale through the nose. The body genuinely cools.",
+            "notes_hi": "शीतली — छह मिनट। जीभ मोड़ें, उस पर श्वास लें, नाक से उच्छ्वास करें। शरीर वास्तव में ठंडा होता है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-003",
+            "duration_sec": 480,
+            "notes_en": "Eight-minute compassionate close.",
+            "notes_hi": "आठ मिनट करुणामय समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Did you notice an actual physical cooling effect from Sheetali? Where?",
+        "reflection_prompt_hi": "क्या आपने शीतली से वास्तविक शारीरिक शीतलन प्रभाव देखा? कहाँ?"
+      },
+      {
+        "day": 13,
+        "title_en": "Breath Integration Day",
+        "title_hi": "साँस एकीकरण दिवस",
+        "intro_en": "You have now learned six pranayamas. Today you choose two — one energising and one calming — and practice them back to back. Your first self-assembled pranayama session.",
+        "intro_hi": "आपने अब छह प्राणायाम सीखे हैं। आज आप दो चुनते हैं — एक ऊर्जावान और एक शांत — और उन्हें एक के बाद एक अभ्यास करते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 480,
+            "notes_en": "Self-chosen energising pranayama — eight minutes. (Kapalabhati or Three-Part recommended.)",
+            "notes_hi": "स्व-चुना ऊर्जावान प्राणायाम — आठ मिनट। (कपालभाति या तीन-भाग अनुशंसित।)"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-001",
+            "duration_sec": 480,
+            "notes_en": "Self-chosen calming pranayama — eight minutes. (4-7-8 or Nadi Shodhana recommended.)",
+            "notes_hi": "स्व-चुना शांत प्राणायाम — आठ मिनट। (4-7-8 या नाड़ी शोधन अनुशंसित।)"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-004",
+            "duration_sec": 240,
+            "notes_en": "Four-minute grounding close.",
+            "notes_hi": "चार मिनट ग्राउंडिंग समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Which two did you choose and why? What was the transition between them like?",
+        "reflection_prompt_hi": "आपने कौन से दो चुने और क्यों? उनके बीच संक्रमण कैसा था?"
+      },
+      {
+        "day": 14,
+        "title_en": "Halfway",
+        "title_hi": "आधा रास्ता",
+        "intro_en": "Fourteen days. You are exactly halfway. This is typically where courses lose people — the initial enthusiasm has faded, the completion is not yet close enough to motivate. Today's session is specifically designed for this moment.",
+        "intro_hi": "चौदह दिन। आप बिल्कुल आधे रास्ते पर हैं। आज का सत्र विशेष रूप से इस क्षण के लिए बनाया गया है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 480,
+            "notes_en": "Nadi Shodhana — eight minutes. The balancing pranayama for the midpoint.",
+            "notes_hi": "नाड़ी शोधन — आठ मिनट। मध्य बिंदु के लिए संतुलन प्राणायाम।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-004",
+            "duration_sec": 720,
+            "notes_en": "Twelve-minute self-compassion sit — specifically for the feeling of being halfway through something.",
+            "notes_hi": "बारह मिनट आत्म-करुणा बैठक — किसी चीज़ के बीच होने की भावना के लिए।"
+          }
+        ],
+        "reflection_prompt_en": "What would you tell someone who was thinking about quitting at day fourteen?",
+        "reflection_prompt_hi": "आप किसी ऐसे व्यक्ति से क्या कहेंगे जो चौदहवें दिन छोड़ने के बारे में सोच रहा हो?"
+      },
+      {
+        "day": 15,
+        "title_en": "The Body Week Begins",
+        "title_hi": "शरीर का सप्ताह शुरू होता है",
+        "intro_en": "Week three theme: Body. Now that you have settled the mind and opened the breath, the body is ready to move. This week builds a complete asana foundation — standing, seated, supine, prone.",
+        "intro_hi": "तीसरे सप्ताह का विषय: शरीर। अब जब मन स्थिर हो गया और साँस खुल गई, शरीर हिलने के लिए तैयार है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 240,
+            "notes_en": "Ujjayi — four minutes. Establish the breath that will carry the movement.",
+            "notes_hi": "उज्जायी — चार मिनट। वह साँस स्थापित करें जो गतिविधि को ले जाएगी।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "tadasana",
+            "duration_sec": 720,
+            "notes_en": "Standing foundation: Tadasana → Uttanasana → Adho Mukha Svanasana. Three rounds, slow, breath-linked.",
+            "notes_hi": "खड़े होने की नींव: ताड़ासन → उत्तानासन → अधो मुख श्वानासन। तीन चक्र, धीमे, साँस-जुड़े।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-005",
+            "duration_sec": 360,
+            "notes_en": "Post-movement grounding — six minutes.",
+            "notes_hi": "गतिविधि के बाद ग्राउंडिंग — छह मिनट।"
+          }
+        ],
+        "reflection_prompt_en": "After two weeks of primarily seated practice, how did it feel to move the body today?",
+        "reflection_prompt_hi": "मुख्य रूप से बैठे अभ्यास के दो सप्ताह के बाद, आज शरीर को हिलाना कैसा लगा?"
+      },
+      {
+        "day": 16,
+        "title_en": "The Warrior Appears",
+        "title_hi": "योद्धा प्रकट होता है",
+        "intro_en": "The Virabhadra series — the three Warrior poses — are among the most complete standing postures in all of yoga. Today you meet Warrior I and Warrior II in a continuous flow.",
+        "intro_hi": "वीरभद्र श्रृंखला — तीन योद्धा मुद्राएँ — योग के सबसे पूर्ण खड़े आसनों में से हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 240,
+            "notes_en": "Ujjayi — four minutes.",
+            "notes_hi": "उज्जायी — चार मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-i",
+            "duration_sec": 600,
+            "notes_en": "Surya Namaskar A × 2, then Warrior I (5 breaths) → Warrior II (5 breaths) on each side. Repeat twice.",
+            "notes_hi": "सूर्य नमस्कार A × 2, फिर प्रत्येक तरफ वीरभद्रासन I (5 साँस) → वीरभद्रासन II (5 साँस)। दो बार।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-006",
+            "duration_sec": 360,
+            "notes_en": "Six-minute grounding after the warrior sequence.",
+            "notes_hi": "योद्धा अनुक्रम के बाद छह मिनट ग्राउंडिंग।"
+          }
+        ],
+        "reflection_prompt_en": "The warrior does not fight — in yoga, the warrior conquers the ego. What in yourself did today's practice challenge?",
+        "reflection_prompt_hi": "योग में योद्धा लड़ता नहीं — अहंकार पर विजय पाता है। आज के अभ्यास ने आप में क्या चुनौती दी?"
+      },
+      {
+        "day": 17,
+        "title_en": "The Seated Foundation",
+        "title_hi": "बैठने की नींव",
+        "intro_en": "Today you build the seated practice — the hip openers, forward folds, and twists that form the second arc of any complete asana session.",
+        "intro_hi": "आज आप बैठे हुए अभ्यास बनाते हैं — हिप ओपनर, आगे के झुकाव और मोड़ जो किसी भी पूर्ण आसन सत्र के दूसरे चाप बनाते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 240,
+            "notes_en": "Nadi Shodhana — four minutes to prepare.",
+            "notes_hi": "नाड़ी शोधन — तैयारी के लिए चार मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "paschimottanasana",
+            "duration_sec": 720,
+            "notes_en": "Seated sequence: Baddha Konasana (3 min) → Paschimottanasana (3 min) → Ardha Matsyendrasana each side (2 min each). Breath-led.",
+            "notes_hi": "बैठे अनुक्रम: बद्धकोणासन (3 मिनट) → पश्चिमोत्तानासन (3 मिनट) → अर्ध मत्स्येन्द्रासन प्रत्येक तरफ (2 मिनट)।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-001",
+            "duration_sec": 240,
+            "notes_en": "Four-minute grounding close.",
+            "notes_hi": "चार मिनट ग्राउंडिंग समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Forward folds ask you to let go. What are you holding that you could release?",
+        "reflection_prompt_hi": "आगे के झुकाव आपसे छोड़ने को कहते हैं। आप क्या पकड़े हुए हैं जिसे आप छोड़ सकते हैं?"
+      },
+      {
+        "day": 18,
+        "title_en": "The Floor Practice",
+        "title_hi": "ज़मीन का अभ्यास",
+        "intro_en": "Supine and prone postures — lying on the back and on the belly — are some of the most therapeutic in all of yoga. Today you build the floor sequence.",
+        "intro_hi": "सुपाइन और प्रवण आसन — पीठ के बल और पेट के बल लेटना — योग के सबसे चिकित्सीय आसनों में से हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 240,
+            "notes_en": "Coherent Breathing — four minutes. Settle before the floor work.",
+            "notes_hi": "सुसंगत श्वास — चार मिनट। फ्लोर वर्क से पहले स्थिर हों।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "bhujangasana",
+            "duration_sec": 720,
+            "notes_en": "Floor sequence: Bhujangasana (3 min) → Salabhasana (2 min) → Setu Bandhasana (3 min) → Supta Matsyendrasana each side (2 min each).",
+            "notes_hi": "फ्लोर अनुक्रम: भुजंगासन (3 मिनट) → शलभासन (2 मिनट) → सेतु बंधासन (3 मिनट) → सुप्त मत्स्येन्द्रासन प्रत्येक तरफ।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-005",
+            "duration_sec": 240,
+            "notes_en": "Four-minute compassionate close.",
+            "notes_hi": "चार मिनट करुणामय समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Backbends open the chest — the area associated with the heart. What did they bring up for you today?",
+        "reflection_prompt_hi": "बैकबेंड छाती खोलते हैं — हृदय से जुड़ा क्षेत्र। आज इन्होंने आप में क्या जगाया?"
+      },
+      {
+        "day": 19,
+        "title_en": "The Complete Arc",
+        "title_hi": "पूर्ण चाप",
+        "intro_en": "Today you put all three physical layers together for the first time: standing, seated, floor. This is a complete twenty-minute asana session — the template you will use for the rest of your practice life.",
+        "intro_hi": "आज आप पहली बार तीनों शारीरिक परतों को एक साथ रखते हैं: खड़े, बैठे, ज़मीन। यह एक पूर्ण बीस मिनट का आसन सत्र है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 180,
+            "notes_en": "Ujjayi — three minutes.",
+            "notes_hi": "उज्जायी — तीन मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-ii",
+            "duration_sec": 600,
+            "notes_en": "Full arc: Surya Namaskar A × 2 → Warrior II each side (3 breaths) → Paschimottanasana (2 min) → Setu Bandhasana (2 min) → Savasana (2 min).",
+            "notes_hi": "पूर्ण चाप: सूर्य नमस्कार A × 2 → वीरभद्रासन II प्रत्येक तरफ → पश्चिमोत्तानासन → सेतु बंधासन → शवासन।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-002",
+            "duration_sec": 420,
+            "notes_en": "Seven-minute integration sit.",
+            "notes_hi": "सात मिनट एकीकरण बैठक।"
+          }
+        ],
+        "reflection_prompt_en": "How did it feel to move through all three layers in sequence? What did you notice about transitions?",
+        "reflection_prompt_hi": "क्रम में तीनों परतों से गुज़रना कैसा लगा? संक्रमणों के बारे में आपने क्या नोट किया?"
+      },
+      {
+        "day": 20,
+        "title_en": "The Restorative Day",
+        "title_hi": "पुनर्स्थापनात्मक दिन",
+        "intro_en": "Week three closes with Yoga Nidra again — this time after a full body practice, so the Nidra lands in a body that has already opened. The difference is notable.",
+        "intro_hi": "तीसरा सप्ताह फिर से योग निद्रा के साथ बंद होता है — इस बार एक पूर्ण शरीर अभ्यास के बाद।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-013",
+            "duration_sec": 240,
+            "notes_en": "Pre-Sleep Wind-Down — four minutes.",
+            "notes_hi": "पूर्व-निद्रा साँस — चार मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "supta-baddha-konasana",
+            "duration_sec": 300,
+            "notes_en": "Five minutes of passive Supta Baddha Konasana — let the hips release before Nidra.",
+            "notes_hi": "पाँच मिनट निष्क्रिय सुप्त बद्धकोणासन — निद्रा से पहले कूल्हों को छोड़ दें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "yoga-nidra-asana",
+            "duration_sec": 660,
+            "notes_en": "Eleven-minute Yoga Nidra in full Savasana.",
+            "notes_hi": "पूर्ण शवासन में ग्यारह मिनट योग निद्रा।"
+          }
+        ],
+        "reflection_prompt_en": "Compare this Yoga Nidra to Day 6. Did the experience differ after a physical practice?",
+        "reflection_prompt_hi": "इस योग निद्रा की दिन 6 से तुलना करें। शारीरिक अभ्यास के बाद अनुभव अलग था?"
+      },
+      {
+        "day": 21,
+        "title_en": "Three Weeks",
+        "title_hi": "तीन सप्ताह",
+        "intro_en": "Week four theme: Integration. The final week holds all three pillars — breath, mind, body — simultaneously. Today you do a complete practice that honours each.",
+        "intro_hi": "चौथे सप्ताह का विषय: एकीकरण। अंतिम सप्ताह एक साथ तीनों स्तंभों को धारण करता है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 300,
+            "notes_en": "Nadi Shodhana — five minutes.",
+            "notes_hi": "नाड़ी शोधन — पाँच मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "trikonasana",
+            "duration_sec": 600,
+            "notes_en": "Full arc with Trikonasana as peak: Surya Namaskar × 2, Triangle each side, Seated forward fold, Savasana.",
+            "notes_hi": "त्रिकोणासन को शिखर के रूप में पूर्ण चाप: सूर्य नमस्कार × 2, त्रिभुज प्रत्येक तरफ, बैठे आगे झुकाव, शवासन।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-006",
+            "duration_sec": 300,
+            "notes_en": "Five-minute compassionate close — three weeks of showing up.",
+            "notes_hi": "पाँच मिनट करुणामय समापन — तीन सप्ताह की उपस्थिति।"
+          }
+        ],
+        "reflection_prompt_en": "What is the relationship between the three pillars for you now? Are they separate or one thing?",
+        "reflection_prompt_hi": "अब आपके लिए तीनों स्तंभों के बीच क्या संबंध है? क्या वे अलग हैं या एक चीज़?"
+      },
+      {
+        "day": 22,
+        "title_en": "Breath Meets Body",
+        "title_hi": "साँस शरीर से मिलती है",
+        "intro_en": "Integration means that pranayama is no longer a warm-up — it IS the session. Today you do Kapalabhati followed immediately by dynamic asana, observing how fired breath changes movement.",
+        "intro_hi": "एकीकरण का मतलब है कि प्राणायाम अब वार्म-अप नहीं है — यह सत्र IS है। आज आप कपालभाति के तुरंत बाद गतिशील आसन करते हैं।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 420,
+            "notes_en": "Kapalabhati — seven minutes. Three rounds of 40.",
+            "notes_hi": "कपालभाति — सात मिनट। 40 के तीन चक्र।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-i",
+            "duration_sec": 600,
+            "notes_en": "Immediate transition to full warrior sequence. Notice the heat already present in the body.",
+            "notes_hi": "पूर्ण योद्धा अनुक्रम में तत्काल संक्रमण। शरीर में पहले से मौजूद गर्मी नोट करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-003",
+            "duration_sec": 180,
+            "notes_en": "Three-minute close.",
+            "notes_hi": "तीन मिनट समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Did the Kapalabhati change how the asana felt? Describe the difference.",
+        "reflection_prompt_hi": "क्या कपालभाति ने आसन को महसूस करने के तरीके को बदला? अंतर का वर्णन करें।"
+      },
+      {
+        "day": 23,
+        "title_en": "The Quiet Practice",
+        "title_hi": "शांत अभ्यास",
+        "intro_en": "Today everything is slow, quiet, held. No Kapalabhati, no warriors. Yin postures and deep pranayama — the integration of the gentle pole of practice.",
+        "intro_hi": "आज सब कुछ धीमा, शांत, पकड़ा हुआ। यिन मुद्राएँ और गहरी प्राणायाम — अभ्यास के कोमल ध्रुव का एकीकरण।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-001",
+            "duration_sec": 480,
+            "notes_en": "4-7-8 Breath — eight minutes. The extended exhalation brings the deepest calm.",
+            "notes_hi": "4-7-8 साँस — आठ मिनट। विस्तारित उच्छ्वास सबसे गहरी शांति लाता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "jathara-parivartanasana",
+            "duration_sec": 600,
+            "notes_en": "Supine twist (4 min each side) → Ananda Balasana (4 min). Passive, breath-led, no muscular effort.",
+            "notes_hi": "सुपाइन मोड़ (प्रत्येक तरफ 4 मिनट) → आनंद बालासन (4 मिनट)। निष्क्रिय, साँस-नेतृत्व।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sleep-002",
+            "duration_sec": 120,
+            "notes_en": "Two-minute settling close.",
+            "notes_hi": "दो मिनट स्थिरता समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Which type of practice feels more like 'you' — the strong active days or the quiet yin days?",
+        "reflection_prompt_hi": "किस प्रकार का अभ्यास अधिक 'आप' जैसा लगता है — मजबूत सक्रिय दिन या शांत यिन दिन?"
+      },
+      {
+        "day": 24,
+        "title_en": "The Story of Today",
+        "title_hi": "आज की कहानी",
+        "intro_en": "Today you add a story to the practice — a short nature meditation from the Sukoon library. Stories bypass the analytical mind and allow the nervous system to rest in narrative.",
+        "intro_hi": "आज आप अभ्यास में एक कहानी जोड़ते हैं — सुकून पुस्तकालय से एक छोटा प्रकृति ध्यान।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 300,
+            "notes_en": "Coherent Breathing — five minutes. Neutral preparation.",
+            "notes_hi": "सुसंगत श्वास — पाँच मिनट। तटस्थ तैयारी।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "viparita-karani",
+            "duration_sec": 420,
+            "notes_en": "Viparita Karani (Legs Up the Wall) — seven minutes. A deeply restorative inversion.",
+            "notes_hi": "विपरीत करणी (दीवार पर पैर) — सात मिनट। एक गहरा पुनर्स्थापनात्मक उलटाव।"
+          },
+          {
+            "type": "story",
+            "ref_id": "story-in-en-001",
+            "duration_sec": 480,
+            "notes_en": "Eight-minute story from stories-india-en — a narrative from the Indian landscape. Remain in Savasana.",
+            "notes_hi": "भारतीय परिदृश्य की कहानी — आठ मिनट। शवासन में रहें।"
+          }
+        ],
+        "reflection_prompt_en": "Did the story take you somewhere? Where did your mind go?",
+        "reflection_prompt_hi": "क्या कहानी आपको कहीं ले गई? आपका मन कहाँ गया?"
+      },
+      {
+        "day": 25,
+        "title_en": "Five Days Remain",
+        "title_hi": "पाँच दिन बाकी",
+        "intro_en": "The home stretch. Today is a strong practice — the full arc, well executed. You know everything you need. Now the practice is about depth rather than acquisition.",
+        "intro_hi": "अंतिम खिंचाव। आज एक मजबूत अभ्यास है — पूर्ण चाप, अच्छी तरह से निष्पादित। आपको वह सब पता है जो आपको चाहिए।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 240,
+            "notes_en": "Ujjayi — four minutes.",
+            "notes_hi": "उज्जायी — चार मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "utkatasana",
+            "duration_sec": 720,
+            "notes_en": "Full strong sequence: Surya Namaskar A × 3, Utkatasana (10 breaths), Trikonasana each side, Paschimottanasana, Savasana.",
+            "notes_hi": "पूर्ण मजबूत अनुक्रम: सूर्य नमस्कार A × 3, उत्कटासन (10 साँस), त्रिकोणासन प्रत्येक तरफ, पश्चिमोत्तानासन, शवासन।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-005",
+            "duration_sec": 240,
+            "notes_en": "Post-practice integration — four minutes.",
+            "notes_hi": "अभ्यास के बाद एकीकरण — चार मिनट।"
+          }
+        ],
+        "reflection_prompt_en": "How has your relationship with effort changed over thirty days?",
+        "reflection_prompt_hi": "तीस दिनों में प्रयास के साथ आपका रिश्ता कैसे बदला है?"
+      },
+      {
+        "day": 26,
+        "title_en": "Devotion",
+        "title_hi": "समर्पण",
+        "intro_en": "Today introduces the concept of bhakti — devotion — not as religion, but as the quality of doing something with full love and attention. A practice done with bhakti is different in kind, not just in degree.",
+        "intro_hi": "आज भक्ति की अवधारणा पेश होती है — समर्पण — धर्म के रूप में नहीं, बल्कि पूर्ण प्रेम और ध्यान से कुछ करने की गुणवत्ता के रूप में।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-006",
+            "duration_sec": 360,
+            "notes_en": "Bhramari — six minutes. The humming breath is the closest pranayama to chant — a form of bhakti.",
+            "notes_hi": "भ्रामरी — छह मिनट। गुनगुनाने वाली साँस भजन के सबसे करीब प्राणायाम है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "uttanasana",
+            "duration_sec": 480,
+            "notes_en": "Surya Namaskar A × 3 with the explicit intention of offering each round to something beyond yourself. The sun. A teacher. A person you love.",
+            "notes_hi": "सूर्य नमस्कार A × 3 अपने से परे किसी को प्रत्येक चक्र अर्पित करने के स्पष्ट संकल्प के साथ।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-007",
+            "duration_sec": 360,
+            "notes_en": "Six-minute compassion close — extend warmth outward.",
+            "notes_hi": "छह मिनट करुणा समापन — बाहर की ओर गर्मजोशी फैलाएँ।"
+          }
+        ],
+        "reflection_prompt_en": "To whom or what did you dedicate the practice today? How did that change the quality of your attention?",
+        "reflection_prompt_hi": "आपने आज अभ्यास किसे या किसके लिए समर्पित किया? इसने आपके ध्यान की गुणवत्ता को कैसे बदला?"
+      },
+      {
+        "day": 27,
+        "title_en": "Pratyahara",
+        "title_hi": "प्रत्याहार",
+        "intro_en": "Pratyahara — the withdrawal of the senses — is the fifth limb of yoga, the bridge between the external and internal practice. Today you practice it literally: same sequence, eyes closed throughout.",
+        "intro_hi": "प्रत्याहार — इंद्रियों का निवृत्ति — योग का पाँचवाँ अंग है, बाह्य और आंतरिक अभ्यास के बीच सेतु। आज आप इसे शाब्दिक रूप से अभ्यास करते हैं: पूरे समय आँखें बंद।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 300,
+            "notes_en": "Nadi Shodhana with eyes closed — five minutes. Begin withdrawing outward attention.",
+            "notes_hi": "आँखें बंद के साथ नाड़ी शोधन — पाँच मिनट। बाहरी ध्यान वापस लेना शुरू करें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-ii",
+            "duration_sec": 600,
+            "notes_en": "Full sequence with eyes closed. Use walls/floor for safety as needed. Notice how the internal landscape becomes primary.",
+            "notes_hi": "आँखें बंद के साथ पूर्ण अनुक्रम। जरूरत पड़ने पर दीवारों/फर्श का उपयोग करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-004",
+            "duration_sec": 300,
+            "notes_en": "Five-minute internal close — stay in the inner landscape.",
+            "notes_hi": "पाँच मिनट आंतरिक समापन — आंतरिक परिदृश्य में रहें।"
+          }
+        ],
+        "reflection_prompt_en": "What changed when the eyes closed? What became louder internally?",
+        "reflection_prompt_hi": "आँखें बंद करने पर क्या बदला? आंतरिक रूप से क्या अधिक तीव्र हुआ?"
+      },
+      {
+        "day": 28,
+        "title_en": "The Penultimate Rest",
+        "title_hi": "अंतिम से पहले विश्राम",
+        "intro_en": "Day twenty-eight. Tomorrow is the final day. Today you rest completely — Yoga Nidra after passive hip openers, the deepest rest of the thirty days.",
+        "intro_hi": "अट्ठाईसवाँ दिन। कल अंतिम दिन है। आज आप पूरी तरह विश्राम करते हैं — निष्क्रिय हिप ओपनर के बाद योग निद्रा।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-013",
+            "duration_sec": 240,
+            "notes_en": "Pre-Sleep Wind-Down — four minutes.",
+            "notes_hi": "पूर्व-निद्रा साँस — चार मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "supta-baddha-konasana",
+            "duration_sec": 360,
+            "notes_en": "Supta Baddha Konasana — six minutes of complete release.",
+            "notes_hi": "सुप्त बद्धकोणासन — पूर्ण मुक्ति के छह मिनट।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "yoga-nidra-asana",
+            "duration_sec": 600,
+            "notes_en": "Ten-minute Yoga Nidra. The body before its final day of thirty.",
+            "notes_hi": "दस मिनट योग निद्रा। अपने तीस दिनों के अंतिम दिन से पहले का शरीर।"
+          }
+        ],
+        "reflection_prompt_en": "What would you like tomorrow — the last day — to feel like?",
+        "reflection_prompt_hi": "आप चाहते हैं कि कल — अंतिम दिन — कैसा महसूस हो?"
+      },
+      {
+        "day": 29,
+        "title_en": "Everything Together",
+        "title_hi": "सब कुछ एक साथ",
+        "intro_en": "The penultimate day. Today you hold all three pillars simultaneously in one session — the fullest expression of the integrated practice you have built.",
+        "intro_hi": "उपांत्य दिन। आज आप एक सत्र में एक साथ तीनों स्तंभों को धारण करते हैं — आपने जो एकीकृत अभ्यास बनाया है उसकी पूर्णतम अभिव्यक्ति।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-016",
+            "duration_sec": 300,
+            "notes_en": "Kapalabhati — five minutes. Open the fire.",
+            "notes_hi": "कपालभाति — पाँच मिनट। अग्नि खोलें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-i",
+            "duration_sec": 600,
+            "notes_en": "Full strong sequence — everything you have learned. Let intuition guide the order.",
+            "notes_hi": "पूर्ण मजबूत अनुक्रम — सब कुछ जो आपने सीखा। क्रम को अंतर्ज्ञान से निर्देशित होने दें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-008",
+            "duration_sec": 300,
+            "notes_en": "Five-minute compassionate gratitude close.",
+            "notes_hi": "पाँच मिनट करुणामय कृतज्ञता समापन।"
+          }
+        ],
+        "reflection_prompt_en": "When you let intuition guide the sequence, what did you choose? What does that reveal?",
+        "reflection_prompt_hi": "जब आपने अनुक्रम को अंतर्ज्ञान से निर्देशित होने दिया, तो आपने क्या चुना? यह क्या प्रकट करता है?"
+      },
+      {
+        "day": 30,
+        "title_en": "Thirty Days",
+        "title_hi": "तीस दिन",
+        "intro_en": "The last day. The practice is now yours — not this course's. Today is not a performance or a culmination. It is just the thirtieth morning of something that has no last day.",
+        "intro_hi": "अंतिम दिन। अभ्यास अब आपका है — इस कोर्स का नहीं। आज कोई प्रदर्शन या समापन नहीं है। यह बस किसी ऐसी चीज़ की तीसवीं सुबह है जिसका कोई आखिरी दिन नहीं है।",
+        "duration_min": 20,
+        "components": [
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 300,
+            "notes_en": "Nadi Shodhana — the breath of balance. Where you began, where you are.",
+            "notes_hi": "नाड़ी शोधन — संतुलन की साँस। जहाँ शुरू किया, जहाँ हैं।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "savasana",
+            "duration_sec": 600,
+            "notes_en": "Self-chosen practice — ten minutes. Whatever the body asks for on day thirty.",
+            "notes_hi": "स्व-चुना अभ्यास — दस मिनट। जो शरीर तीसवें दिन माँगे।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-009",
+            "duration_sec": 300,
+            "notes_en": "Five-minute final close — not an ending, a transition.",
+            "notes_hi": "पाँच मिनट अंतिम समापन — एक अंत नहीं, एक संक्रमण।"
+          }
+        ],
+        "reflection_prompt_en": "Write one paragraph about who you were on Day 1 and who you are today. Not better or worse — just different.",
+        "reflection_prompt_hi": "पहले दिन आप कौन थे और आज कौन हैं, इसके बारे में एक पैराग्राफ लिखें। बेहतर या बुरा नहीं — बस अलग।"
+      }
+    ],
+    "closing_en": "Thirty days. You have touched all eight limbs of yoga — asana, pranayama, pratyahara, dharana, dhyana — and planted seeds in the other three. You have built not one habit but three: how to breathe when the nervous system is distressed, how to move when the body is stiff, and how to sit with your own mind when it is loud. These are not yoga skills. They are life skills. The course is complete. The practice is not. Take what serves you and leave the rest. Return when you need to. The door is always open.",
+    "closing_hi": "तीस दिन। आपने योग के सभी आठ अंगों को छुआ है। आपने सिर्फ एक आदत नहीं बल्कि तीन बनाई हैं: जब तंत्रिका तंत्र परेशान हो तो कैसे साँस लें, जब शरीर कठोर हो तो कैसे हिलें, और जब मन ऊँचा हो तो उसके साथ कैसे बैठें। ये योग कौशल नहीं हैं। ये जीवन कौशल हैं। कोर्स पूरा हो गया। अभ्यास नहीं।",
+    "recommended_next_course_id": "14-days-of-patanjali"
+  },
+  {
+    "id": "14-days-of-patanjali",
+    "title_en": "14 Days of Patanjali",
+    "title_hi": "पतंजलि के चौदह दिन",
+    "subtitle_en": "One sutra per day — applied philosophy paired with the practice it illuminates.",
+    "subtitle_hi": "प्रतिदिन एक सूत्र — व्यावहारिक दर्शन जो उसे प्रकाशित करने वाले अभ्यास के साथ।",
+    "days": 14,
+    "level": "beginner",
+    "focus_tag": "sutras",
+    "intro_en": "Patanjali's Yoga Sutras were written approximately 400 CE — a collection of 196 aphorisms that remain the most precise map of consciousness ever composed. They are not a religious text. They are a phenomenology — a careful description of how the mind works and what happens when you systematically train it.\n\nThis course takes fourteen of the most essential sutras and brings each one into direct contact with practice. Each session follows a simple format: a brief talk explaining the sutra in plain language, a breath technique or meditation that embodies its insight, and a physical practice that expresses it in the body. The sutra is the lens; the practice is the laboratory.\n\nYou do not need Sanskrit, philosophy training, or any prior yoga background. You need only the willingness to sit with an idea and let it live in you for twelve minutes.",
+    "intro_hi": "पतंजलि के योग सूत्र लगभग 400 ईस्वी में लिखे गए थे — 196 अफोरिज्म का संग्रह जो आज तक चेतना का सबसे सटीक नक्शा है। ये धार्मिक ग्रंथ नहीं हैं। ये एक फेनोमेनोलॉजी है — मन कैसे काम करता है इसका सावधानीपूर्वक विवरण।\n\nयह कोर्स चौदह सबसे आवश्यक सूत्र लेता है और प्रत्येक को सीधे अभ्यास से जोड़ता है। प्रत्येक सत्र एक सरल प्रारूप का पालन करता है: सूत्र की सरल भाषा में संक्षिप्त वार्ता, एक श्वास तकनीक या ध्यान, और शरीर में इसे व्यक्त करने वाला एक शारीरिक अभ्यास।",
+    "estimated_daily_minutes": 12,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "1.2 — Yoga Is the Stilling of the Mind",
+        "title_hi": "1.2 — योग चित्त की वृत्तियों का निरोध है",
+        "intro_en": "Yogaś citta-vṛtti-nirodhaḥ. The second sutra — and arguably the only definition of yoga that matters. Yoga is not a posture or a lifestyle. It is the quieting of the fluctuations of consciousness. Everything in the Sutras unpacks this one sentence.",
+        "intro_hi": "योगश्चित्तवृत्तिनिरोधः। दूसरा सूत्र — और संभवतः योग की एकमात्र परिभाषा जो मायने रखती है। योग मुद्रा या जीवनशैली नहीं है। यह चेतना की उतार-चढ़ाव का शांत होना है।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Chitta (consciousness), vritti (fluctuations), nirodha (cessation). What does a mind that has stopped fluctuating feel like? You have already tasted it — in the moment just after a deep exhale.",
+            "notes_hi": "वार्ता: चित्त (चेतना), वृत्ति (उतार-चढ़ाव), निरोध (विराम)। जो मन उतार-चढ़ाव बंद कर चुका हो वह कैसा महसूस होता है?"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-001",
+            "duration_sec": 360,
+            "notes_en": "4-7-8 Breath — six minutes. The extended exhale is the closest pranayama to nirodha. Notice the pause at the bottom of the exhale — that is the taste of Yoga 1.2.",
+            "notes_hi": "4-7-8 साँस — छह मिनट। विस्तारित उच्छ्वास निरोध के सबसे करीब प्राणायाम है। उच्छ्वास के तल में विराम नोट करें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-001",
+            "duration_sec": 180,
+            "notes_en": "Three-minute close — sit in the stillness the breath has created.",
+            "notes_hi": "तीन मिनट समापन — साँस ने जो स्थिरता बनाई है उसमें बैठें।"
+          }
+        ],
+        "reflection_prompt_en": "Describe in your own words a moment in your life — not in meditation — when the mind was genuinely still.",
+        "reflection_prompt_hi": "अपने शब्दों में अपने जीवन का एक क्षण बताएँ — ध्यान में नहीं — जब मन वास्तव में शांत था।"
+      },
+      {
+        "day": 2,
+        "title_en": "1.12 — Practice and Non-Attachment",
+        "title_hi": "1.12 — अभ्यास और वैराग्य",
+        "intro_en": "Abhyāsa-vairāgyābhyāṁ tan-nirodhaḥ. The stilling is achieved through two things: abhyasa (regular practice) and vairagya (non-attachment to the fruits of practice). You cannot have one without the other.",
+        "intro_hi": "अभ्यासवैराग्याभ्यां तन्निरोधः। स्थिरता दो चीजों से प्राप्त होती है: अभ्यास (नियमित अभ्यास) और वैराग्य (अभ्यास के फलों में अनासक्ति)।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: The trap of practice without vairagya — we do yoga to become a 'yoga person', to perform flexibility, to earn calm. Patanjali says: practice with full effort and zero attachment to the result. This is not passive — it is the hardest thing.",
+            "notes_hi": "वार्ता: वैराग्य के बिना अभ्यास का जाल — हम 'योग व्यक्ति' बनने के लिए योग करते हैं। पतंजलि कहते हैं: पूर्ण प्रयास के साथ अभ्यास करें और परिणाम में शून्य आसक्ति।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "tadasana",
+            "duration_sec": 360,
+            "notes_en": "Tadasana for six minutes — the most effort-light posture. Practice the hardest thing: being fully present with zero ambition.",
+            "notes_hi": "ताड़ासन छह मिनट के लिए — सबसे कम प्रयास वाला आसन। सबसे कठिन बात अभ्यास करें: शून्य महत्वाकांक्षा के साथ पूरी तरह उपस्थित होना।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-002",
+            "duration_sec": 180,
+            "notes_en": "Three-minute close — notice any grasping at a 'good' meditation. That is what vairagya is releasing.",
+            "notes_hi": "तीन मिनट समापन — 'अच्छे' ध्यान की किसी भी पकड़ को नोटिस करें। वही वैराग्य मुक्त कर रहा है।"
+          }
+        ],
+        "reflection_prompt_en": "Where in your yoga or meditation practice do you most notice the grasping — the attachment to a specific outcome?",
+        "reflection_prompt_hi": "आपके योग या ध्यान अभ्यास में आप पकड़ को सबसे ज्यादा कहाँ नोटिस करते हैं?"
+      },
+      {
+        "day": 3,
+        "title_en": "1.33 — The Four Attitudes",
+        "title_hi": "1.33 — चार भाव",
+        "intro_en": "Maitrī karuṇā mudita upekṣā. Friendliness toward the happy; compassion for the suffering; delight in the virtuous; equanimity toward the wicked. Patanjali's prescription for social peace — and for the peace of one's own mind.",
+        "intro_hi": "मैत्री करुणा मुदिता उपेक्षा। सुखियों के प्रति मित्रता; दुखियों के प्रति करुणा; पुण्यात्माओं के प्रति प्रसन्नता; दुष्टों के प्रति उपेक्षा। सामाजिक शांति के लिए पतंजलि का नुस्खा।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: The four attitudes are not moral commands — they are descriptions of mental states that produce clarity. When you feel envy toward happy people, your own mind becomes turbulent. Maitri is the antidote — not because it is noble, but because it works.",
+            "notes_hi": "वार्ता: चार भाव नैतिक आदेश नहीं हैं — ये उन मानसिक अवस्थाओं के विवरण हैं जो स्पष्टता उत्पन्न करते हैं।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-001",
+            "duration_sec": 480,
+            "notes_en": "Eight-minute loving-kindness sit — extend maitri (friendliness) first to yourself, then to someone you love, then to a stranger, then to someone difficult.",
+            "notes_hi": "आठ मिनट मैत्री ध्यान — पहले खुद को, फिर प्रिय को, फिर अजनबी को, फिर कठिन व्यक्ति को मैत्री भेजें।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "sukhasana",
+            "duration_sec": 60,
+            "notes_en": "Close in Sukhasana — just one minute of sitting in the warmth.",
+            "notes_hi": "सुखासन में समापन — गर्मजोशी में एक मिनट।"
+          }
+        ],
+        "reflection_prompt_en": "Which of the four attitudes is hardest for you — maitri, karuna, mudita, or upeksha? Why?",
+        "reflection_prompt_hi": "चार भावों में से कौन सा आपके लिए सबसे कठिन है — मैत्री, करुणा, मुदिता या उपेक्षा? क्यों?"
+      },
+      {
+        "day": 4,
+        "title_en": "2.1 — Tapas, Svadhyaya, Ishvara-Pranidhana",
+        "title_hi": "2.1 — तपस, स्वाध्याय, ईश्वर-प्रणिधान",
+        "intro_en": "Tapaḥ svādhyāyeśvara-praṇidhānāni kriyā-yogaḥ. Kriya Yoga — the yoga of action — is three things: tapas (disciplined effort), svadhyaya (self-study), and ishvara-pranidhana (surrender to something larger). The entire practical path in eleven Sanskrit syllables.",
+        "intro_hi": "तपः स्वाध्यायेश्वरप्रणिधानानि क्रियायोगः। क्रिया योग तीन बातें हैं: तपस (अनुशासित प्रयास), स्वाध्याय (आत्म-अध्ययन), और ईश्वर-प्रणिधान (किसी बड़े को समर्पण)।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Tapas is not self-torture — it is the willingness to do the uncomfortable thing. Svadhyaya is studying yourself honestly. Ishvara-pranidhana does not require belief in God — it is the act of releasing the outcome.",
+            "notes_hi": "वार्ता: तपस आत्म-यातना नहीं है — यह असुविधाजनक काम करने की इच्छा है। स्वाध्याय खुद का ईमानदारी से अध्ययन है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "utkatasana",
+            "duration_sec": 360,
+            "notes_en": "Chair Pose held for six minutes — tapas in practice. Hold beyond comfort while keeping the breath steady. That is exactly tapas.",
+            "notes_hi": "कुर्सी मुद्रा छह मिनट के लिए — व्यवहार में तपस। आराम से परे रहें जबकि साँस स्थिर रखें।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-003",
+            "duration_sec": 180,
+            "notes_en": "Three-minute svadhyaya close — what did you study about yourself in the Chair Pose?",
+            "notes_hi": "तीन मिनट स्वाध्याय समापन — आपने कुर्सी मुद्रा में खुद के बारे में क्या अध्ययन किया?"
+          }
+        ],
+        "reflection_prompt_en": "Which of the three is hardest for you right now — tapas, svadhyaya, or ishvara-pranidhana? What would changing it look like?",
+        "reflection_prompt_hi": "अभी आपके लिए तीनों में से कौन सा सबसे कठिन है — तपस, स्वाध्याय या ईश्वर-प्रणिधान?"
+      },
+      {
+        "day": 5,
+        "title_en": "2.3 — The Five Kleshas",
+        "title_hi": "2.3 — पाँच क्लेश",
+        "intro_en": "Avidyāsmitārāga-dveṣābhiniveśāḥ kleśāḥ. The five afflictions that cause suffering: avidya (ignorance), asmita (ego), raga (attachment), dvesha (aversion), abhinivesha (fear of death). Patanjali is mapping the architecture of suffering.",
+        "intro_hi": "अविद्यास्मितारागद्वेषाभिनिवेशाः क्लेशाः। दुख के पाँच कारण: अविद्या, अस्मिता, राग, द्वेष, अभिनिवेश।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 240,
+            "notes_en": "Talk: Avidya (misidentification — mistaking what is impermanent for permanent, what is painful for pleasant) is the root klesha; the others grow from it. Raga and dvesha are simply attraction and aversion. Abhinivesha — the fear of ending — is present even in the wisest beings.",
+            "notes_hi": "वार्ता: अविद्या (गलत पहचान) मूल क्लेश है; बाकी इसी से उगते हैं। राग और द्वेष बस आकर्षण और विकर्षण हैं।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-anxiety-baseline-en",
+            "duration_sec": 360,
+            "notes_en": "Six-minute witnessing sit — notice which klesha is most active today. Not to fix it — to see it clearly.",
+            "notes_hi": "छह मिनट साक्षी बैठक — नोटिस करें कि आज कौन सा क्लेश सबसे सक्रिय है। ठीक करने के लिए नहीं — स्पष्ट रूप से देखने के लिए।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 120,
+            "notes_en": "Two minutes of Coherent Breathing — a clean close.",
+            "notes_hi": "दो मिनट सुसंगत श्वास — साफ समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Which klesha do you recognise most in your daily life — avidya, asmita, raga, dvesha, or abhinivesha?",
+        "reflection_prompt_hi": "आप अपने दैनिक जीवन में कौन सा क्लेश सबसे ज्यादा पहचानते हैं?"
+      },
+      {
+        "day": 6,
+        "title_en": "2.29 — The Eight Limbs",
+        "title_hi": "2.29 — अष्टांग",
+        "intro_en": "Yama niyama āsana prāṇāyāma pratyāhāra dhāraṇā dhyāna samādhayaḥ aṣṭāv aṅgāni. The eight limbs of yoga. Asana is third. Today you hold the entire map in mind.",
+        "intro_hi": "यम नियम आसन प्राणायाम प्रत्याहार धारणा ध्यान समाधि — अष्टांगानि। योग के आठ अंग। आसन तीसरा है।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 240,
+            "notes_en": "Talk: Walk through all eight limbs briefly. Yamas — ethical restraints. Niyamas — personal observances. Asana — posture. Pranayama — breath extension. Pratyahara — sense withdrawal. Dharana — concentration. Dhyana — meditation. Samadhi — absorption. Most yoga practice lives between limbs 1-4.",
+            "notes_hi": "वार्ता: सभी आठ अंगों का संक्षिप्त परिचय। यम, नियम, आसन, प्राणायाम, प्रत्याहार, धारणा, ध्यान, समाधि।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 360,
+            "notes_en": "Nadi Shodhana — six minutes. Pranayama as the bridge between external and internal practice.",
+            "notes_hi": "नाड़ी शोधन — छह मिनट। बाह्य और आंतरिक अभ्यास के बीच सेतु के रूप में प्राणायाम।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-005",
+            "duration_sec": 120,
+            "notes_en": "Two-minute dharana — single-pointed attention on the breath.",
+            "notes_hi": "दो मिनट धारणा — साँस पर एकाग्र ध्यान।"
+          }
+        ],
+        "reflection_prompt_en": "Which of the eight limbs do you feel is most underdeveloped in your current practice? What would nourishing it look like?",
+        "reflection_prompt_hi": "आठ अंगों में से कौन सा आपके वर्तमान अभ्यास में सबसे कम विकसित है?"
+      },
+      {
+        "day": 7,
+        "title_en": "2.46 — Sthira Sukham Asanam",
+        "title_hi": "2.46 — स्थिरसुखमासनम्",
+        "intro_en": "Sthira-sukham āsanam. The posture should be steady and comfortable. Patanjali's entire instruction on the physical practice — seven words. Not perfect, not painful, not Instagram-ready. Steady. Comfortable.",
+        "intro_hi": "स्थिरसुखमासनम्। आसन स्थिर और सुखद होना चाहिए। शारीरिक अभ्यास पर पतंजलि का पूरा निर्देश — सात शब्द। परफेक्ट नहीं, दर्दनाक नहीं। स्थिर। सुखद।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Sthira (steady, stable, alert) and sukha (comfortable, at ease, light). These two qualities must coexist. A pose that is stable but tense violates sukha. A pose that is comfortable but collapsed violates sthira. Today you find the middle.",
+            "notes_hi": "वार्ता: स्थिर (स्थिर, सतर्क) और सुख (आरामदायक, हल्का)। ये दोनों गुण सह-अस्तित्व में होने चाहिए।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "sukhasana",
+            "duration_sec": 480,
+            "notes_en": "Sukhasana for eight minutes — specifically practicing sthira-sukha. Every minute, check: am I stable? Am I comfortable? Adjust only if one is absent.",
+            "notes_hi": "सुखासन आठ मिनट के लिए — विशेष रूप से स्थिर-सुख का अभ्यास। हर मिनट जाँचें: क्या मैं स्थिर हूँ? क्या मैं सुखद हूँ?"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-010",
+            "duration_sec": 60,
+            "notes_en": "One-minute close — Deep Belly Breath in the same steady-comfortable seat.",
+            "notes_hi": "एक मिनट समापन — उसी स्थिर-सुखद आसन में गहरी पेट की साँस।"
+          }
+        ],
+        "reflection_prompt_en": "In your life right now, where are you sthira without sukha — stable but tense? Where are you sukha without sthira — comfortable but collapsed?",
+        "reflection_prompt_hi": "आपके जीवन में अभी कहाँ आप सुख के बिना स्थिर हैं — स्थिर लेकिन तनावपूर्ण? कहाँ स्थिरता के बिना सुखी — आरामदायक लेकिन ढीले?"
+      },
+      {
+        "day": 8,
+        "title_en": "2.47 — Release of Effort",
+        "title_hi": "2.47 — प्रयत्न का शैथिल्य",
+        "intro_en": "Prayatna-śaithilyānanta-samāpattibhyām. Posture is perfected by the relaxation of effort and meditation on the infinite. The paradox at the heart of physical practice: doing less achieves more.",
+        "intro_hi": "प्रयत्नशैथिल्यानन्तसमापत्तिभ्याम्। प्रयत्न की शिथिलता और अनंत पर ध्यान से आसन परिपूर्ण होता है।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Prayatna-shaithilya — release of effort. When you stop striving in a pose, the body often goes deeper. Ananta-samapatti — merging with the infinite. When you feel yourself as part of something vast, the personal discomfort becomes small.",
+            "notes_hi": "वार्ता: प्रयत्न शैथिल्य — प्रयत्न का छोड़ना। जब आप आसन में संघर्ष छोड़ते हैं, शरीर अक्सर गहरा जाता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "paschimottanasana",
+            "duration_sec": 480,
+            "notes_en": "Paschimottanasana for eight minutes — three minutes of active effort, then three minutes of release, then two minutes of the 'infinite' quality. Feel what changes in each phase.",
+            "notes_hi": "पश्चिमोत्तानासन आठ मिनट — तीन मिनट सक्रिय प्रयत्न, फिर तीन मिनट मुक्ति, फिर दो मिनट अनंत। हर चरण में क्या बदलता है।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-004",
+            "duration_sec": 60,
+            "notes_en": "One-minute close.",
+            "notes_hi": "एक मिनट समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Describe the moment in today's forward fold when you stopped trying. What happened physically? What happened mentally?",
+        "reflection_prompt_hi": "आज के आगे झुकाव में उस क्षण का वर्णन करें जब आपने कोशिश करना बंद किया। शारीरिक रूप से क्या हुआ? मानसिक रूप से?"
+      },
+      {
+        "day": 9,
+        "title_en": "2.48 — Freedom from the Pairs of Opposites",
+        "title_hi": "2.48 — द्वंद्वों से मुक्ति",
+        "intro_en": "Tato dvandvānabhighātaḥ. From that posture — stable and comfortable, effort released — one is not assailed by the pairs of opposites. Heat and cold, pleasure and pain, praise and blame. The practice makes the practitioner robust.",
+        "intro_hi": "ततो द्वन्द्वानभिघातः। उस आसन से — स्थिर और सुखद, प्रयत्न छोड़ा — द्वंद्वों का आक्रमण नहीं होता। गर्मी और ठंड, सुख और दर्द, प्रशंसा और निंदा।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Dvandva — pairs of opposites. Yoga does not eliminate experience; it builds the capacity to receive experience without being destabilised. The tree bends in the wind but the roots hold.",
+            "notes_hi": "वार्ता: द्वंद्व — विरोधों के जोड़े। योग अनुभव को समाप्त नहीं करता; यह अनुभव को बिना अस्थिर हुए प्राप्त करने की क्षमता बनाता है।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "virabhadrasana-ii",
+            "duration_sec": 480,
+            "notes_en": "Warrior II held for four minutes each side — eight minutes total. This is intentionally long. Hold through the discomfort. That is 2.48 in practice.",
+            "notes_hi": "वीरभद्रासन II प्रत्येक तरफ चार मिनट — कुल आठ मिनट। जानबूझकर लंबा। असुविधा के बावजूद पकड़ें।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-007",
+            "duration_sec": 60,
+            "notes_en": "One-minute Ujjayi close — the breath that held you through the warrior.",
+            "notes_hi": "एक मिनट उज्जायी समापन — वह साँस जो आपको योद्धा में थामे रही।"
+          }
+        ],
+        "reflection_prompt_en": "What 'pair of opposites' are you most sensitive to right now — praise/blame, success/failure, acceptance/rejection?",
+        "reflection_prompt_hi": "अभी आप किस 'विरोधी जोड़े' के प्रति सबसे संवेदनशील हैं — प्रशंसा/निंदा, सफलता/विफलता, स्वीकृति/अस्वीकृति?"
+      },
+      {
+        "day": 10,
+        "title_en": "3.1 — Dharana",
+        "title_hi": "3.1 — धारणा",
+        "intro_en": "Deśa-bandhaś cittasya dhāraṇā. Dharana is the binding of consciousness to a place — concentration. It is the sixth limb, the first of the three 'inner' limbs of yoga. It differs from meditation in that it still involves effort.",
+        "intro_hi": "देशबन्धश्चित्तस्य धारणा। धारणा एक स्थान पर चेतना का बंधन है — एकाग्रता। यह छठा अंग है, योग के तीन 'आंतरिक' अंगों में से पहला।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Dharana is active concentration — you are bringing the mind back repeatedly to the object. Dhyana (meditation) is when the mind stays on the object without effort. Samadhi is when the meditator disappears and only the object remains.",
+            "notes_hi": "वार्ता: धारणा सक्रिय एकाग्रता है — आप बार-बार मन को वस्तु पर वापस ला रहे हैं। ध्यान तब है जब मन बिना प्रयत्न के वस्तु पर रहता है।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-002",
+            "duration_sec": 480,
+            "notes_en": "Box Breathing — eight minutes. Box breath is the pranayama closest to dharana: four counts in, four hold, four out, four hold. The box is the 'place' consciousness is bound to.",
+            "notes_hi": "बॉक्स ब्रीदिंग — आठ मिनट। बॉक्स ब्रेथ धारणा के सबसे करीब प्राणायाम है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "focus-001",
+            "duration_sec": 60,
+            "notes_en": "One-minute dharana close — bind attention to one physical point.",
+            "notes_hi": "एक मिनट धारणा समापन — एक शारीरिक बिंदु पर ध्यान बाँधें।"
+          }
+        ],
+        "reflection_prompt_en": "What is your most reliable dharana object — the thing your mind returns to most readily?",
+        "reflection_prompt_hi": "आपकी सबसे विश्वसनीय धारणा वस्तु क्या है — वह चीज जिस पर आपका मन सबसे आसानी से वापस आता है?"
+      },
+      {
+        "day": 11,
+        "title_en": "3.2 — Dhyana",
+        "title_hi": "3.2 — ध्यान",
+        "intro_en": "Tatra pratyayaikatānatā dhyānam. Dhyana is the unbroken flow of awareness toward the object of concentration. The difference from dharana: no more deliberate return — the mind simply stays.",
+        "intro_hi": "तत्र प्रत्ययैकतानता ध्यानम्। ध्यान एकाग्रता की वस्तु की ओर जागरूकता का अटूट प्रवाह है।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: You cannot force dhyana — you can only create the conditions for it. Dharana is the cause; dhyana is the effect. The practice is always dharana; dhyana is the grace that sometimes arises from it.",
+            "notes_hi": "वार्ता: आप ध्यान को मजबूर नहीं कर सकते — आप केवल इसके लिए परिस्थितियाँ बना सकते हैं। धारणा कारण है; ध्यान प्रभाव है।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-006",
+            "duration_sec": 300,
+            "notes_en": "Bhramari — five minutes. The hum is the object of dharana. When the mind stays in the sound continuously, dhyana begins.",
+            "notes_hi": "भ्रामरी — पाँच मिनट। गुनगुनाहट धारणा की वस्तु है। जब मन लगातार ध्वनि में रहता है, ध्यान शुरू होता है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "grnd-en-006",
+            "duration_sec": 360,
+            "notes_en": "Six-minute open meditation — no instruction except: let whatever arose from the Bhramari continue without interference.",
+            "notes_hi": "छह मिनट खुला ध्यान — कोई निर्देश नहीं सिवाय: भ्रामरी से जो उत्पन्न हुआ उसे बिना हस्तक्षेप के जारी रहने दें।"
+          }
+        ],
+        "reflection_prompt_en": "Was there any moment today — even a few seconds — where you felt the mind was simply staying rather than being brought back? Describe it.",
+        "reflection_prompt_hi": "क्या आज कोई क्षण था — कुछ सेकंड भी — जहाँ आपको लगा मन बस रह रहा था बजाय वापस लाए जाने के?"
+      },
+      {
+        "day": 12,
+        "title_en": "1.14 — Long-Uninterrupted Practice",
+        "title_hi": "1.14 — दीर्घकाल निरंतर अभ्यास",
+        "intro_en": "Sa tu dīrgha-kāla-nairantarya-satkārāsevito dṛḍha-bhūmiḥ. Practice becomes firmly established when pursued earnestly over a long time, uninterruptedly, with devotion. Long. Uninterrupted. Earnest. This sutra is the entire rationale for the thirty-day course.",
+        "intro_hi": "स तु दीर्घकालनैरन्तर्यसत्कारासेवितो दृढभूमिः। अभ्यास दृढ़ भूमि बन जाता है जब लंबे समय तक, अनवरत, श्रद्धा के साथ।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Dirgha-kala — long time. What counts as long? Patanjali does not say years. He says: longer than feels comfortable. Nairantarya — without interruption (not 'never miss a day' — but 'keep returning'). Satkara — with respect, devotion, care.",
+            "notes_hi": "वार्ता: दीर्घकाल — लंबा समय। कितना लंबा? पतंजलि साल नहीं कहते। वे कहते हैं: जितना आरामदायक लगे उससे अधिक। नैरंतर्य — बिना रुकावट के (कभी दिन न छोड़ें नहीं — बल्कि वापस आते रहें)।"
+          },
+          {
+            "type": "asana_sequence",
+            "ref_id": "sukhasana",
+            "duration_sec": 480,
+            "notes_en": "Eight minutes in Sukhasana — the same posture as Day 1. Notice what has changed. That change is dirgha-kala at work.",
+            "notes_hi": "सुखासन में आठ मिनट — पहले दिन जैसी मुद्रा। देखें क्या बदला है। वह परिवर्तन ही दीर्घकाल कार्यरत है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-005",
+            "duration_sec": 60,
+            "notes_en": "One-minute close — acknowledge the practice lineage you have now entered.",
+            "notes_hi": "एक मिनट समापन — उस अभ्यास परंपरा को स्वीकार करें जिसमें आप अब प्रवेश कर चुके हैं।"
+          }
+        ],
+        "reflection_prompt_en": "What does 'uninterrupted' mean to you — is it literal continuity, or the quality of returning?",
+        "reflection_prompt_hi": "'नैरंतर्य' आपके लिए क्या मायने रखता है — शाब्दिक निरंतरता, या वापस आने की गुणवत्ता?"
+      },
+      {
+        "day": 13,
+        "title_en": "1.36 — Luminous Inner Light",
+        "title_hi": "1.36 — प्रकाशवती आंतरिक ज्योति",
+        "intro_en": "Viśokā vā jyotiṣmatī. Or by focusing on the sorrowless inner light. One of Patanjali's most enigmatic and beautiful sutras — an instruction to meditate on an inner luminosity that does not require any external object.",
+        "intro_hi": "विशोका वा ज्योतिष्मती। या दुःखरहित आंतरिक ज्योति पर एकाग्रता से। पतंजलि के सबसे रहस्यमय और सुंदर सूत्रों में से एक।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 180,
+            "notes_en": "Talk: Jyotishmati — 'luminous, radiant'. Vishoka — 'without grief, beyond sorrow'. Patanjali is pointing at a quality of awareness itself — before thought arises — that is naturally luminous and undisturbed. You do not create this light; you notice it.",
+            "notes_hi": "वार्ता: ज्योतिष्मती — 'चमकदार, दीप्तिमान'। विशोका — 'बिना दुःख के'। पतंजलि जागरूकता की एक गुणवत्ता की ओर इशारा कर रहे हैं — विचार उठने से पहले — जो स्वाभाविक रूप से चमकदार है।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-morning-003",
+            "duration_sec": 480,
+            "notes_en": "Eight-minute inner light meditation — place gentle attention in the space behind the sternum, the anahata region. Notice any quality of warmth, light, or openness that is already present. Do not create it.",
+            "notes_hi": "आठ मिनट आंतरिक ज्योति ध्यान — उरोस्थि के पीछे के स्थान में — अनाहत क्षेत्र में हल्का ध्यान दें। पहले से मौजूद किसी गर्मजोशी, प्रकाश या खुलेपन को नोट करें।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-023",
+            "duration_sec": 60,
+            "notes_en": "Gratitude Breath — one minute close.",
+            "notes_hi": "कृतज्ञता साँस — एक मिनट समापन।"
+          }
+        ],
+        "reflection_prompt_en": "Was there anything in the anahata region during the meditation — warmth, light, space, or just tightness? What did you find?",
+        "reflection_prompt_hi": "ध्यान के दौरान अनाहत क्षेत्र में कुछ था — गर्मजोशी, प्रकाश, स्थान, या बस कसाव? आपने क्या पाया?"
+      },
+      {
+        "day": 14,
+        "title_en": "4.34 — Kaivalya",
+        "title_hi": "4.34 — कैवल्य",
+        "intro_en": "Puruṣārtha-śūnyānāṁ guṇānāṁ pratiprasavaḥ kaivalyaṁ. Kaivalya — liberation — is the return of the gunas to their origin, when the purpose of the self has been fulfilled. The last sutra. The last day. The full arc of the teaching.",
+        "intro_hi": "पुरुषार्थशून्यानां गुणानां प्रतिप्रसवः कैवल्यम्। कैवल्य — मुक्ति — गुणों का अपने मूल में वापसी है। अंतिम सूत्र। अंतिम दिन।",
+        "duration_min": 12,
+        "components": [
+          {
+            "type": "talk",
+            "ref_id": null,
+            "duration_sec": 240,
+            "notes_en": "Talk: Kaivalya — aloneness, completeness, liberation. Not liberation from life but liberation within life. The gunas (the three qualities of nature — tamas, rajas, sattva) fall quiet when the Purusha — pure awareness — recognises itself as already free. This is not a future state. It is what is already here when nothing is added.",
+            "notes_hi": "वार्ता: कैवल्य — एकांत, पूर्णता, मुक्ति। जीवन से नहीं बल्कि जीवन के भीतर मुक्ति। जब पुरुष — शुद्ध जागरूकता — खुद को पहले से मुक्त पहचानती है।"
+          },
+          {
+            "type": "breath",
+            "ref_id": "breath-005",
+            "duration_sec": 300,
+            "notes_en": "Nadi Shodhana — five minutes. The balance pranayama on the last day.",
+            "notes_hi": "नाड़ी शोधन — पाँच मिनट। अंतिम दिन संतुलन प्राणायाम।"
+          },
+          {
+            "type": "meditation",
+            "ref_id": "med-sc-010",
+            "duration_sec": 360,
+            "notes_en": "Six-minute open awareness meditation — no technique, no object, no method. Just sitting as awareness itself. This is the closest approximation of what the sutras are pointing toward.",
+            "notes_hi": "छह मिनट खुली जागरूकता ध्यान — कोई तकनीक नहीं, कोई वस्तु नहीं, कोई विधि नहीं। बस जागरूकता के रूप में बैठना।"
+          }
+        ],
+        "reflection_prompt_en": "After fourteen days with the Sutras, what is the single idea that has stayed with you most persistently?",
+        "reflection_prompt_hi": "सूत्रों के साथ चौदह दिनों के बाद, कौन सा एक विचार आपके साथ सबसे अधिक बना रहा?"
+      }
+    ],
+    "closing_en": "Fourteen sutras. Fourteen days. You have moved through the architecture of the Yoga Sutras not as a scholar but as a practitioner — which is exactly how Patanjali intended them to be used. Each aphorism was tested in your own body, your own breath, your own quality of attention. The Sutras are not a destination; they are a language for describing a journey you are already on. If you return to this course a year from now, different sutras will land differently. The text does not change. You do. That is the whole point.",
+    "closing_hi": "चौदह सूत्र। चौदह दिन। आप योग सूत्रों की संरचना से विद्वान के रूप में नहीं बल्कि अभ्यासी के रूप में गुजरे हैं — जो बिल्कुल वैसा है जैसा पतंजलि ने उनके उपयोग का इरादा किया था। प्रत्येक अफोरिज्म आपके अपने शरीर, अपनी साँस, अपनी ध्यान गुणवत्ता में परखा गया। सूत्र गंतव्य नहीं हैं; वे उस यात्रा का वर्णन करने की भाषा हैं जो आप पहले से कर रहे हैं।",
+    "recommended_next_course_id": null
+  }
+]

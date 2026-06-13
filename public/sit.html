@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html lang="en" data-tod="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Sit — Begin where you are · Sukoon</title>
+    <meta name="description" content="A library of 100+ guided meditations across moods, durations, and languages. Pick one, or ask for a fresh meditation tuned to where you are right now. Free. Private. No signup.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sukoon">
+    <meta property="og:url" content="https://sukoon.cloud/sit.html">
+    <meta property="og:title" content="Sit — Begin where you are · Sukoon">
+    <meta property="og:description" content="100+ guided meditations. Library + generative. Free, private, no signup.">
+    <meta property="og:image" content="https://sukoon.cloud/og/meditate.jpg">
+    <meta name="theme-color" content="#0F1B3D">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/css/shell.css">
+    <link rel="stylesheet" href="/css/sukoon-revolution.css">
+    <script src="/js/sukoon-experience.js" defer></script>
+    <script src="/js/sukoon-pulse.js" defer></script>
+    <script src="/js/sukoon-safety.js" defer></script>
+    <script src="/js/sukoon-library.js" defer></script>
+    <script src="/js/sukoon-tts.js" defer></script>
+    <script src="/js/sukoon-engine.js" defer></script>
+    <script src="/js/sukoon-player.js" defer></script>
+    <script src="/js/sukoon-generative.js" defer></script>
+
+<style>
+/* ============================================================
+   SUKOON · /sit — MEDITATION (library + generative)
+   Page-scoped tokens. Inherits from shell.css + sukoon-revolution.css.
+   ============================================================ */
+:root {
+    --sk-night:        #0F1B3D;
+    --sk-twilight:     #1A2547;
+    --sk-aubergine:    #2B1F4A;
+    --sk-dusk:         #6B3E5E;
+    --sk-saffron:      #E8A552;
+    --sk-marigold:     #D87A4A;
+    --sk-haldi:        #E8C547;
+    --sk-tulsi:        #6FA286;
+    --sk-rose:         #C77D7D;
+    --sk-coral:        #F08679;
+    --sk-cream:        #F5EFE2;
+    --sk-cream-dim:    rgba(245, 239, 226, 0.72);
+    --sk-cream-quiet:  rgba(245, 239, 226, 0.45);
+    --sk-cream-ghost:  rgba(245, 239, 226, 0.14);
+    --sk-mist:         #7FA8A2;
+    --sk-shadow:       rgba(8, 12, 28, 0.55);
+    --sk-stroke-1:     rgba(245, 239, 226, 0.10);
+    --sk-stroke-2:     rgba(245, 239, 226, 0.20);
+    --sk-surface-1:    rgba(245, 239, 226, 0.06);
+    --sk-surface-2:    rgba(245, 239, 226, 0.10);
+
+    --sk-font-serif:   'Fraunces', 'Tiro Devanagari Hindi', Georgia, serif;
+    --sk-font-sans:    'Inter Tight', 'Hind', system-ui, sans-serif;
+    --sk-font-hindi:   'Tiro Devanagari Hindi', 'Hind', serif;
+
+    --sk-h1: clamp(40px, 6vw, 76px);
+    --sk-h2: clamp(28px, 4vw, 44px);
+    --sk-h3: clamp(20px, 2.4vw, 26px);
+    --sk-track-eyebrow: 0.16em;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body.page-sit {
+    background: var(--sk-night);
+    color: var(--sk-cream);
+    font-family: var(--sk-font-sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+body[data-lang="hi"] {
+    font-family: var(--sk-font-hindi);
+    line-height: 1.78;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+img, video { display: block; max-width: 100%; }
+
+[data-lang="en"] [data-lang-hi]:not([data-lang-en]) { display: none; }
+[data-lang="hi"] [data-lang-en]:not([data-lang-hi]) { display: none; }
+[data-lang="en"] [lang="hi"].sk-bi-hi { display: none; }
+[data-lang="hi"] [lang="en"].sk-bi-en { display: none; }
+
+/* ============================================================
+   SHELL
+   ============================================================ */
+.sit-shell {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: calc(96px + env(safe-area-inset-bottom));
+    overflow: hidden;
+}
+
+/* ============================================================
+   CRISIS BAR
+   ============================================================ */
+.sk-crisis-bar {
+    position: relative;
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 18px;
+    background: rgba(15, 27, 61, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--sk-stroke-1);
+    font-size: 13px;
+}
+.sk-crisis-bar__text {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--sk-cream-dim);
+}
+.sk-crisis-bar__dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--sk-coral);
+    box-shadow: 0 0 12px var(--sk-coral);
+    animation: skPulseDot 2.4s ease-in-out infinite;
+}
+@keyframes skPulseDot {
+    0%, 100% { opacity: 0.55; }
+    50% { opacity: 1; }
+}
+.sk-crisis-bar__cta {
+    padding: 7px 14px;
+    background: var(--sk-coral);
+    color: #fff;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    transition: background 0.18s ease;
+}
+.sk-crisis-bar__cta:hover { background: #ec7264; }
+
+/* ============================================================
+   LANG TOGGLE
+   ============================================================ */
+.sk-lang {
+    position: absolute;
+    top: 56px; right: 16px;
+    z-index: 25;
+    display: inline-flex;
+    background: rgba(15, 27, 61, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid var(--sk-stroke-1);
+    border-radius: 999px;
+    padding: 3px;
+}
+.sk-lang button {
+    background: transparent;
+    border: 0;
+    color: var(--sk-cream-quiet);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    padding: 6px 12px;
+    border-radius: 999px;
+    transition: all 0.18s ease;
+}
+.sk-lang button[aria-pressed="true"] {
+    background: var(--sk-saffron);
+    color: var(--sk-night);
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.sk-hero {
+    position: relative;
+    min-height: clamp(420px, 72vh, 720px);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    isolation: isolate;
+}
+.sk-hero__video {
+    position: absolute;
+    inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    z-index: -2;
+    filter: saturate(0.92) brightness(0.78);
+}
+.sk-hero__veil {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(circle at 70% 30%, rgba(232,165,82,0.18), transparent 55%),
+        linear-gradient(180deg, rgba(15,27,61,0.18) 0%, rgba(15,27,61,0.5) 55%, rgba(15,27,61,0.96) 100%);
+    z-index: -1;
+}
+.sk-hero__inner {
+    position: relative;
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto;
+    padding: 96px 22px 56px;
+    z-index: 1;
+    animation: skRise 1.2s cubic-bezier(.22,.61,.36,1) both;
+}
+@keyframes skRise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+.sk-hero__eyebrow {
+    font-family: var(--sk-font-sans);
+    font-size: 11px;
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-cream-dim);
+    margin-bottom: 18px;
+}
+.sk-hero__title {
+    font-family: var(--sk-font-serif);
+    font-weight: 300;
+    font-size: var(--sk-h1);
+    line-height: 1.04;
+    letter-spacing: -0.022em;
+    margin: 0 0 16px;
+    color: var(--sk-cream);
+}
+.sk-hero__title em {
+    font-style: italic;
+    color: var(--sk-saffron);
+    font-weight: 400;
+}
+.sk-hero__sub {
+    font-family: var(--sk-font-serif);
+    font-weight: 300;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.55;
+    color: var(--sk-cream-dim);
+    max-width: 620px;
+    margin: 0 0 18px;
+}
+.sk-hero__sub-hi {
+    font-family: var(--sk-font-hindi);
+    font-size: clamp(16px, 1.7vw, 19px);
+    line-height: 1.7;
+    color: var(--sk-cream-quiet);
+    max-width: 620px;
+    margin: 0;
+}
+.sk-hero__sutra {
+    margin-top: 28px;
+    padding-top: 18px;
+    border-top: 1px solid var(--sk-stroke-1);
+    font-family: var(--sk-font-serif);
+    font-style: italic;
+    font-size: 15px;
+    color: var(--sk-cream-quiet);
+    max-width: 640px;
+}
+.sk-hero__sutra strong { color: var(--sk-saffron); font-style: normal; font-weight: 500; letter-spacing: 0.04em; }
+
+/* ============================================================
+   MAIN BAND
+   ============================================================ */
+.sit-main {
+    position: relative;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 56px 22px 32px;
+}
+
+.sk-eyebrow-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 14px;
+}
+.sk-eyebrow {
+    font-size: 11px;
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-saffron);
+    font-weight: 600;
+}
+.sk-section-title {
+    font-family: var(--sk-font-serif);
+    font-weight: 300;
+    font-size: var(--sk-h2);
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    color: var(--sk-cream);
+    margin: 0 0 14px;
+}
+.sk-section-sub {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--sk-cream-dim);
+    margin: 0 0 28px;
+    max-width: 720px;
+}
+
+/* ============================================================
+   TODAY'S MEDITATION — featured card
+   ============================================================ */
+.sk-today {
+    position: relative;
+    margin-bottom: 64px;
+    padding: 30px 28px 32px;
+    border-radius: 22px;
+    background:
+        radial-gradient(circle at 88% 0%, rgba(232,165,82,0.16), transparent 60%),
+        linear-gradient(160deg, rgba(43,31,74,0.85) 0%, rgba(15,27,61,0.92) 100%);
+    border: 1px solid var(--sk-stroke-2);
+    overflow: hidden;
+}
+.sk-today::before {
+    content: "";
+    position: absolute;
+    top: -40%; right: -10%;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(232,197,71,0.10), transparent 70%);
+    pointer-events: none;
+}
+.sk-today__eyebrow {
+    font-size: 11px;
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-haldi);
+    font-weight: 600;
+    margin-bottom: 10px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.sk-today__eyebrow::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--sk-haldi);
+    box-shadow: 0 0 10px var(--sk-haldi);
+}
+.sk-today__title {
+    font-family: var(--sk-font-serif);
+    font-weight: 300;
+    font-size: clamp(26px, 3vw, 36px);
+    line-height: 1.15;
+    margin: 0 0 8px;
+    color: var(--sk-cream);
+}
+.sk-today__title-hi {
+    font-family: var(--sk-font-hindi);
+    font-size: clamp(20px, 2.2vw, 26px);
+    line-height: 1.5;
+    color: var(--sk-cream-quiet);
+    margin: 0 0 18px;
+}
+.sk-today__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--sk-cream-dim);
+    margin-bottom: 20px;
+}
+.sk-today__meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+}
+.sk-today__meta span:not(:first-child)::before {
+    content: "·";
+    color: var(--sk-cream-quiet);
+    margin-right: 10px;
+}
+.sk-today__desc {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--sk-cream-dim);
+    margin: 0 0 24px;
+    max-width: 680px;
+}
+.sk-today__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 26px;
+    background: var(--sk-saffron);
+    color: var(--sk-night);
+    border: 0;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: transform 0.18s ease, background 0.18s ease, box-shadow 0.18s ease;
+    box-shadow: 0 6px 24px rgba(232,165,82,0.25);
+}
+.sk-today__cta:hover {
+    transform: translateY(-1px);
+    background: #efb56a;
+    box-shadow: 0 10px 32px rgba(232,165,82,0.32);
+}
+.sk-today__cta svg { width: 18px; height: 18px; fill: currentColor; }
+
+/* ============================================================
+   STREAK RING (Apple Activity style)
+   ============================================================ */
+.sk-streak {
+    position: relative;
+    margin: 0 0 56px;
+    padding: 28px 26px;
+    border-radius: 22px;
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    display: grid;
+    grid-template-columns: 132px 1fr;
+    gap: 28px;
+    align-items: center;
+}
+.sk-streak__ring {
+    position: relative;
+    width: 132px;
+    height: 132px;
+}
+.sk-streak__ring svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.sk-streak__ring-bg {
+    fill: none;
+    stroke: rgba(245,239,226,0.08);
+    stroke-width: 14;
+}
+.sk-streak__ring-fg {
+    fill: none;
+    stroke: url(#sk-streak-gradient);
+    stroke-width: 14;
+    stroke-linecap: round;
+    stroke-dasharray: 0 999;
+    transition: stroke-dasharray 1.4s cubic-bezier(.22,.61,.36,1);
+}
+.sk-streak__center {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    text-align: center;
+}
+.sk-streak__count {
+    font-family: var(--sk-font-serif);
+    font-weight: 300;
+    font-size: 38px;
+    line-height: 1;
+    color: var(--sk-cream);
+}
+.sk-streak__count-label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sk-cream-quiet);
+    margin-top: 4px;
+}
+.sk-streak__copy h3 {
+    font-family: var(--sk-font-serif);
+    font-weight: 400;
+    font-size: 22px;
+    margin: 0 0 6px;
+    color: var(--sk-cream);
+}
+.sk-streak__copy p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--sk-cream-dim);
+}
+.sk-streak__stats {
+    display: flex;
+    gap: 22px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+}
+.sk-streak__stat {
+    font-size: 12px;
+    color: var(--sk-cream-quiet);
+}
+.sk-streak__stat strong {
+    display: block;
+    color: var(--sk-saffron);
+    font-size: 20px;
+    font-family: var(--sk-font-serif);
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+/* ============================================================
+   FILTERS
+   ============================================================ */
+.sk-filter-row { margin-bottom: 32px; }
+.sk-filter-label {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--sk-cream-quiet);
+    margin-bottom: 10px;
+    display: block;
+}
+.sk-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 22px;
+}
+.sk-chip {
+    background: transparent;
+    border: 1px solid var(--sk-stroke-2);
+    color: var(--sk-cream-dim);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    transition: all 0.18s ease;
+}
+.sk-chip:hover {
+    color: var(--sk-cream);
+    border-color: var(--sk-cream-ghost);
+    background: var(--sk-surface-1);
+}
+.sk-chip[aria-pressed="true"] {
+    background: var(--sk-saffron);
+    border-color: var(--sk-saffron);
+    color: var(--sk-night);
+    font-weight: 600;
+}
+
+/* ============================================================
+   GENERATIVE PROMPT
+   ============================================================ */
+.sk-generative {
+    margin: 0 0 48px;
+    padding: 26px 24px;
+    border-radius: 18px;
+    background:
+        linear-gradient(140deg, rgba(111,162,134,0.10) 0%, rgba(43,31,74,0.4) 100%);
+    border: 1px solid var(--sk-stroke-2);
+}
+.sk-generative__label {
+    font-size: 11px;
+    letter-spacing: var(--sk-track-eyebrow);
+    text-transform: uppercase;
+    color: var(--sk-tulsi);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+.sk-generative__title {
+    font-family: var(--sk-font-serif);
+    font-weight: 300;
+    font-size: clamp(22px, 2.4vw, 28px);
+    line-height: 1.2;
+    margin: 0 0 6px;
+    color: var(--sk-cream);
+}
+.sk-generative__sub {
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--sk-cream-dim);
+    margin: 0 0 18px;
+    max-width: 600px;
+}
+.sk-generative__form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: stretch;
+}
+.sk-generative__input {
+    background: rgba(15,27,61,0.6);
+    border: 1px solid var(--sk-stroke-2);
+    color: var(--sk-cream);
+    border-radius: 12px;
+    padding: 14px 16px;
+    font-family: var(--sk-font-sans);
+    font-size: 15px;
+    line-height: 1.5;
+    resize: none;
+    min-height: 52px;
+    transition: border-color 0.18s ease, background 0.18s ease;
+}
+.sk-generative__input:focus {
+    outline: 0;
+    border-color: var(--sk-saffron);
+    background: rgba(15,27,61,0.8);
+}
+.sk-generative__input::placeholder { color: var(--sk-cream-quiet); }
+.sk-generative__submit {
+    background: var(--sk-tulsi);
+    color: var(--sk-night);
+    border: 0;
+    border-radius: 12px;
+    padding: 0 22px;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    transition: background 0.18s ease, transform 0.18s ease;
+    white-space: nowrap;
+}
+.sk-generative__submit:hover { background: #82b598; transform: translateY(-1px); }
+.sk-generative__submit:disabled { opacity: 0.6; cursor: wait; transform: none; }
+.sk-generative__status {
+    margin-top: 12px;
+    font-size: 13px;
+    color: var(--sk-cream-quiet);
+    min-height: 18px;
+}
+
+/* ============================================================
+   LIBRARY GRID
+   ============================================================ */
+.sk-library-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+.sk-track-card {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    gap: 14px;
+    align-items: center;
+    padding: 14px;
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    border-radius: 16px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    text-align: left;
+    color: inherit;
+    font-family: inherit;
+    width: 100%;
+}
+.sk-track-card:hover,
+.sk-track-card:focus-visible {
+    transform: translateY(-2px);
+    background: var(--sk-surface-2);
+    border-color: var(--sk-stroke-2);
+    outline: 0;
+}
+.sk-track-card__art {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    background:
+        radial-gradient(circle at 30% 30%, rgba(232,165,82,0.42), transparent 60%),
+        linear-gradient(135deg, var(--sk-aubergine) 0%, var(--sk-night) 100%);
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: grid;
+    place-items: center;
+    color: var(--sk-saffron);
+}
+.sk-track-card__art svg { width: 26px; height: 26px; fill: currentColor; opacity: 0.85; }
+.sk-track-card__body { min-width: 0; }
+.sk-track-card__title {
+    font-family: var(--sk-font-serif);
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 1.25;
+    color: var(--sk-cream);
+    margin: 0 0 4px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+.sk-track-card__title-hi {
+    font-family: var(--sk-font-hindi);
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--sk-cream-quiet);
+    margin: 0 0 6px;
+}
+.sk-track-card__meta {
+    font-size: 12px;
+    color: var(--sk-cream-quiet);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.sk-track-card__meta span:not(:first-child)::before { content: "·"; margin-right: 10px; color: var(--sk-cream-quiet); }
+.sk-track-card__play {
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: var(--sk-saffron);
+    color: var(--sk-night);
+    border: 0;
+    display: grid;
+    place-items: center;
+    transition: transform 0.18s ease;
+    flex-shrink: 0;
+    pointer-events: none;
+}
+.sk-track-card__play svg { width: 14px; height: 14px; fill: currentColor; }
+.sk-track-card:hover .sk-track-card__play { transform: scale(1.1); }
+
+.sk-track-card--generated .sk-track-card__art {
+    background:
+        radial-gradient(circle at 30% 30%, rgba(111,162,134,0.4), transparent 60%),
+        linear-gradient(135deg, #2A3D38 0%, var(--sk-night) 100%);
+    color: var(--sk-tulsi);
+}
+
+.sk-grid-empty {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--sk-cream-quiet);
+    font-style: italic;
+    border: 1px dashed var(--sk-stroke-1);
+    border-radius: 14px;
+}
+
+.sk-grid-skeleton {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 14px;
+    padding: 14px;
+    background: var(--sk-surface-1);
+    border: 1px solid var(--sk-stroke-1);
+    border-radius: 16px;
+}
+.sk-grid-skeleton__art {
+    width: 64px; height: 64px;
+    border-radius: 14px;
+    background: linear-gradient(90deg, var(--sk-surface-1) 0%, var(--sk-surface-2) 50%, var(--sk-surface-1) 100%);
+    background-size: 200% 100%;
+    animation: skShimmer 1.6s ease-in-out infinite;
+}
+.sk-grid-skeleton__lines { display: grid; gap: 8px; }
+.sk-grid-skeleton__line {
+    height: 12px;
+    border-radius: 6px;
+    background: linear-gradient(90deg, var(--sk-surface-1) 0%, var(--sk-surface-2) 50%, var(--sk-surface-1) 100%);
+    background-size: 200% 100%;
+    animation: skShimmer 1.6s ease-in-out infinite;
+}
+.sk-grid-skeleton__line:nth-child(1) { width: 70%; }
+.sk-grid-skeleton__line:nth-child(2) { width: 40%; }
+@keyframes skShimmer {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.sk-count-line {
+    margin: 0 0 28px;
+    font-size: 13px;
+    color: var(--sk-cream-quiet);
+}
+
+/* ============================================================
+   BOTTOM NAV
+   ============================================================ */
+.sk-bottom-nav {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 50;
+    padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+    background: rgba(15, 27, 61, 0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid var(--sk-stroke-1);
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px;
+}
+.sk-bottom-nav__item {
+    display: grid;
+    place-items: center;
+    gap: 4px;
+    padding: 8px 4px;
+    border-radius: 12px;
+    color: var(--sk-cream-dim);
+    text-decoration: none;
+    font: 600 10px/1 var(--sk-font-sans);
+    letter-spacing: 0.04em;
+    min-height: 56px;
+    transition: color 0.18s ease, background 0.18s ease;
+}
+.sk-bottom-nav__item:hover { color: var(--sk-cream); }
+.sk-bottom-nav__item[aria-current="page"] {
+    color: var(--sk-cream);
+    background: var(--sk-surface-1);
+}
+.sk-bottom-nav__item[aria-current="page"] .sk-bottom-nav__icon { color: var(--sk-saffron); transform: scale(1.06); }
+.sk-bottom-nav__icon { font-size: 18px; line-height: 1; transition: transform 0.18s ease; }
+.sk-bottom-nav__icon svg { width: 22px; height: 22px; fill: currentColor; }
+.sk-bottom-nav__label { font-size: 10px; letter-spacing: 0.04em; }
+
+.sk-now-fab {
+    position: fixed;
+    right: 16px;
+    bottom: calc(80px + env(safe-area-inset-bottom));
+    z-index: 55;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--sk-coral);
+    color: #fff;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 8px 28px rgba(240,134,121,0.45);
+    text-decoration: none;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    transition: transform 0.18s ease;
+}
+.sk-now-fab:hover { transform: scale(1.06); }
+.sk-now-fab svg { width: 22px; height: 22px; fill: currentColor; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (min-width: 480px) {
+    .sk-library-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 768px) {
+    .sk-library-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .sk-streak { grid-template-columns: 160px 1fr; }
+    .sk-streak__ring { width: 160px; height: 160px; }
+    .sk-streak__count { font-size: 44px; }
+    .sit-main { padding: 72px 32px 48px; }
+}
+@media (min-width: 1024px) {
+    .sk-library-grid { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
+}
+
+.sk-chip:focus-visible,
+.sk-track-card:focus-visible,
+.sk-today__cta:focus-visible,
+.sk-generative__submit:focus-visible,
+.sk-generative__input:focus-visible,
+.sk-lang button:focus-visible {
+    outline: 2px solid var(--sk-saffron);
+    outline-offset: 2px;
+}
+</style>
+</head>
+<body class="page-sit" data-experience="sit" data-lang="en">
+
+<div class="sit-shell">
+
+    <!-- ===== CRISIS BAR ===== -->
+    <div class="sk-crisis-bar" role="region" aria-label="Crisis support">
+        <span class="sk-crisis-bar__text">
+            <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
+            <span data-lang-en="In crisis right now? You are not alone." data-lang-hi="अभी संकट में हैं? आप अकेले नहीं हैं।">In crisis right now? You are not alone.</span>
+        </span>
+        <a href="/now.html" class="sk-crisis-bar__cta" data-lang-en="Get help" data-lang-hi="मदद लें">Get help</a>
+    </div>
+
+    <!-- ===== LANG TOGGLE ===== -->
+    <div class="sk-lang" role="group" aria-label="Language">
+        <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang-set="hi" aria-pressed="false">हिं</button>
+    </div>
+
+    <!-- ===== HERO ===== -->
+    <section class="sk-hero" aria-label="Sit — meditation">
+        <video class="sk-hero__video" autoplay muted loop playsinline poster="/og/meditate.jpg" aria-hidden="true">
+            <source src="/video/hero-meditate.mp4" type="video/mp4">
+        </video>
+        <div class="sk-hero__veil" aria-hidden="true"></div>
+        <div class="sk-hero__inner">
+            <div class="sk-hero__eyebrow" data-lang-en="Sit · Meditate" data-lang-hi="बैठें · ध्यान">Sit · Meditate</div>
+            <h1 class="sk-hero__title">
+                <span data-lang-en="Begin where " data-lang-hi="जहाँ आप ">Begin where </span><em data-lang-en="you are." data-lang-hi="हैं वहीं से।">you are.</em>
+            </h1>
+            <p class="sk-hero__sub" data-lang-en="A hundred quiet voices, already written, already waiting. Or ask for one that fits the exact shape of this hour. Either way — no signup, no tracking. Just sit."
+               data-lang-hi="सौ शांत आवाज़ें, पहले से लिखी, पहले से प्रतीक्षा में। या अभी के लिए एक नई माँगें — आपकी इस घड़ी के अनुकूल। दोनों ही — कोई साइन-अप नहीं, कोई ट्रैकिंग नहीं। बस बैठें।">
+                A hundred quiet voices, already written, already waiting. Or ask for one that fits the exact shape of this hour. Either way — no signup, no tracking. Just sit.
+            </p>
+            <p class="sk-hero__sub-hi" lang="hi" aria-hidden="true">सौ शांत आवाज़ें — पहले से लिखी, पहले से प्रतीक्षा में।</p>
+            <p class="sk-hero__sutra">
+                <strong data-lang-en="Sthira-sukham-asanam" data-lang-hi="स्थिरम् सुखम् आसनम्">Sthira-sukham-asanam</strong>
+                <span data-lang-en=" · Patanjali's first instruction: the seat must be both steady and at ease. Not one or the other — both."
+                      data-lang-hi=" · पतंजलि का पहला निर्देश: आसन स्थिर भी हो और सुखद भी। एक या दूसरा नहीं — दोनों।">
+                    &nbsp;&middot; Patanjali's first instruction: the seat must be both steady and at ease. Not one or the other — both.
+                </span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ===== MAIN ===== -->
+    <main class="sit-main">
+
+        <!-- ===== TODAY'S MEDITATION (featured) ===== -->
+        <section class="sk-today" id="todayCard" aria-label="Today's meditation">
+            <div class="sk-today__eyebrow" data-lang-en="Today's meditation" data-lang-hi="आज का ध्यान">Today's meditation</div>
+            <h2 class="sk-today__title" id="todayTitle" data-lang-en="Loading today's offering…" data-lang-hi="आज की पेशकश लोड हो रही है…">Loading today's offering…</h2>
+            <p class="sk-today__title-hi" lang="hi" id="todayTitleHi"></p>
+            <div class="sk-today__meta" id="todayMeta"></div>
+            <p class="sk-today__desc" id="todayDesc" data-lang-en="A meditation matched to today's mood and the hour you are arriving at." data-lang-hi="आज की मनोदशा और इस समय के अनुकूल एक ध्यान।">A meditation matched to today's mood and the hour you are arriving at.</p>
+            <button type="button" class="sk-today__cta" id="todayBegin">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                <span data-lang-en="Begin" data-lang-hi="शुरू करें">Begin</span>
+            </button>
+        </section>
+
+        <!-- ===== STREAK RING ===== -->
+        <section class="sk-streak" aria-label="Your practice">
+            <div class="sk-streak__ring" aria-hidden="true">
+                <svg viewBox="0 0 132 132">
+                    <defs>
+                        <linearGradient id="sk-streak-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#E8C547"/>
+                            <stop offset="60%" stop-color="#E8A552"/>
+                            <stop offset="100%" stop-color="#F08679"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="sk-streak__ring-bg" cx="66" cy="66" r="56"/>
+                    <circle class="sk-streak__ring-fg" id="streakRingFg" cx="66" cy="66" r="56"/>
+                </svg>
+                <div class="sk-streak__center">
+                    <div class="sk-streak__count" id="streakCount">0</div>
+                    <div class="sk-streak__count-label" data-lang-en="Day streak" data-lang-hi="दिन">Day streak</div>
+                </div>
+            </div>
+            <div class="sk-streak__copy">
+                <h3 data-lang-en="Quiet, but counted." data-lang-hi="शांत, पर गिना गया।">Quiet, but counted.</h3>
+                <p data-lang-en="No leaderboard. No social share. Just the small private fact of having sat down today."
+                   data-lang-hi="कोई लीडरबोर्ड नहीं। कोई सामाजिक साझा नहीं। बस आज बैठने का छोटा निजी तथ्य।">
+                    No leaderboard. No social share. Just the small private fact of having sat down today.
+                </p>
+                <div class="sk-streak__stats">
+                    <div class="sk-streak__stat">
+                        <strong id="streakTotal">0</strong>
+                        <span data-lang-en="Sessions" data-lang-hi="सत्र">Sessions</span>
+                    </div>
+                    <div class="sk-streak__stat">
+                        <strong id="streakMinutes">0</strong>
+                        <span data-lang-en="Minutes" data-lang-hi="मिनट">Minutes</span>
+                    </div>
+                    <div class="sk-streak__stat">
+                        <strong id="streakLongest">0</strong>
+                        <span data-lang-en="Longest" data-lang-hi="सबसे लंबा">Longest</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== GENERATIVE PROMPT ===== -->
+        <section class="sk-generative" aria-label="Generate a fresh meditation">
+            <div class="sk-generative__label" data-lang-en="If nothing fits" data-lang-hi="अगर कुछ नहीं मिलता">If nothing fits</div>
+            <h2 class="sk-generative__title" data-lang-en="Tell me what you need." data-lang-hi="मुझे बताएँ क्या चाहिए।">Tell me what you need.</h2>
+            <p class="sk-generative__sub" data-lang-en="One sentence is enough. A mood, a situation, a sense of what the next ten minutes should feel like. A fresh meditation will be written for you, in your language, and read aloud the moment it's ready."
+               data-lang-hi="एक वाक्य काफ़ी है। एक मनोदशा, एक स्थिति, या आने वाले दस मिनट कैसा महसूस होना चाहिए — इतना ही। आपके लिए एक नया ध्यान आपकी भाषा में लिखा जाएगा और तैयार होते ही आपको सुनाया जाएगा।">
+                One sentence is enough. A mood, a situation, a sense of what the next ten minutes should feel like. A fresh meditation will be written for you, in your language, and read aloud the moment it's ready.
+            </p>
+            <form class="sk-generative__form" id="genForm" autocomplete="off">
+                <textarea class="sk-generative__input" id="genInput" rows="1"
+                          data-placeholder-en="Tense before a meeting. Eight minutes. English."
+                          data-placeholder-hi="मीटिंग से पहले तनाव। आठ मिनट। हिंदी।"
+                          placeholder="Tense before a meeting. Eight minutes. English."></textarea>
+                <button type="submit" class="sk-generative__submit" id="genSubmit"
+                        data-lang-en="Write it for me" data-lang-hi="मेरे लिए लिखें">Write it for me</button>
+            </form>
+            <div class="sk-generative__status" id="genStatus" role="status" aria-live="polite"></div>
+        </section>
+
+        <!-- ===== FILTERS ===== -->
+        <section class="sk-filter-row" aria-label="Filter library">
+            <div class="sk-eyebrow-row">
+                <div class="sk-eyebrow" data-lang-en="The library" data-lang-hi="संग्रह">The library</div>
+            </div>
+            <h2 class="sk-section-title" data-lang-en="A hundred ways to sit." data-lang-hi="बैठने के सौ तरीके।">A hundred ways to sit.</h2>
+            <p class="sk-section-sub" data-lang-en="Filter by what is true right now. The matches will surface; the rest will wait."
+               data-lang-hi="अभी जो सच है उससे चुनें। मिलते जुलते सामने आएँगे; बाकी प्रतीक्षा करेंगे।">
+                Filter by what is true right now. The matches will surface; the rest will wait.
+            </p>
+
+            <span class="sk-filter-label" data-lang-en="Mood" data-lang-hi="मनोदशा">Mood</span>
+            <div class="sk-chips" role="group" aria-label="Mood filter" data-filter-group="mood">
+                <button type="button" class="sk-chip" data-filter-value="all" aria-pressed="true" data-lang-en="All" data-lang-hi="सभी">All</button>
+                <button type="button" class="sk-chip" data-filter-value="anxiety" aria-pressed="false" data-lang-en="Anxiety" data-lang-hi="चिंता">Anxiety</button>
+                <button type="button" class="sk-chip" data-filter-value="self-compassion" aria-pressed="false" data-lang-en="Self-compassion" data-lang-hi="आत्म-करुणा">Self-compassion</button>
+                <button type="button" class="sk-chip" data-filter-value="sleep" aria-pressed="false" data-lang-en="Sleep" data-lang-hi="नींद">Sleep</button>
+                <button type="button" class="sk-chip" data-filter-value="grounding" aria-pressed="false" data-lang-en="Grounding" data-lang-hi="ज़मीन से जुड़ाव">Grounding</button>
+                <button type="button" class="sk-chip" data-filter-value="grief" aria-pressed="false" data-lang-en="Grief" data-lang-hi="दुख">Grief</button>
+                <button type="button" class="sk-chip" data-filter-value="morning" aria-pressed="false" data-lang-en="Morning" data-lang-hi="सुबह">Morning</button>
+                <button type="button" class="sk-chip" data-filter-value="evening" aria-pressed="false" data-lang-en="Evening" data-lang-hi="शाम">Evening</button>
+                <button type="button" class="sk-chip" data-filter-value="focus" aria-pressed="false" data-lang-en="Focus" data-lang-hi="ध्यान-केंद्रित">Focus</button>
+            </div>
+
+            <span class="sk-filter-label" data-lang-en="Language" data-lang-hi="भाषा">Language</span>
+            <div class="sk-chips" role="group" aria-label="Language filter" data-filter-group="lang">
+                <button type="button" class="sk-chip" data-filter-value="both" aria-pressed="true" data-lang-en="Both" data-lang-hi="दोनों">Both</button>
+                <button type="button" class="sk-chip" data-filter-value="en" aria-pressed="false">EN</button>
+                <button type="button" class="sk-chip" data-filter-value="hi" aria-pressed="false">हिं</button>
+            </div>
+
+            <span class="sk-filter-label" data-lang-en="Duration" data-lang-hi="अवधि">Duration</span>
+            <div class="sk-chips" role="group" aria-label="Duration filter" data-filter-group="duration">
+                <button type="button" class="sk-chip" data-filter-value="all" aria-pressed="true" data-lang-en="Any" data-lang-hi="कोई भी">Any</button>
+                <button type="button" class="sk-chip" data-filter-value="short" aria-pressed="false" data-lang-en="Under 5 min" data-lang-hi="5 मिनट से कम">&lt; 5 min</button>
+                <button type="button" class="sk-chip" data-filter-value="mid" aria-pressed="false" data-lang-en="5–10 min" data-lang-hi="5–10 मिनट">5–10 min</button>
+                <button type="button" class="sk-chip" data-filter-value="long" aria-pressed="false" data-lang-en="10–15 min" data-lang-hi="10–15 मिनट">10–15 min</button>
+                <button type="button" class="sk-chip" data-filter-value="deep" aria-pressed="false" data-lang-en="15 min +" data-lang-hi="15 मिनट +">15 min +</button>
+            </div>
+        </section>
+
+        <!-- ===== LIBRARY GRID ===== -->
+        <p class="sk-count-line" id="countLine"></p>
+        <section class="sk-library-grid" id="libraryGrid" role="list" aria-label="Meditation library">
+            <div class="sk-grid-skeleton"><div class="sk-grid-skeleton__art"></div><div class="sk-grid-skeleton__lines"><div class="sk-grid-skeleton__line"></div><div class="sk-grid-skeleton__line"></div></div></div>
+            <div class="sk-grid-skeleton"><div class="sk-grid-skeleton__art"></div><div class="sk-grid-skeleton__lines"><div class="sk-grid-skeleton__line"></div><div class="sk-grid-skeleton__line"></div></div></div>
+            <div class="sk-grid-skeleton"><div class="sk-grid-skeleton__art"></div><div class="sk-grid-skeleton__lines"><div class="sk-grid-skeleton__line"></div><div class="sk-grid-skeleton__line"></div></div></div>
+            <div class="sk-grid-skeleton"><div class="sk-grid-skeleton__art"></div><div class="sk-grid-skeleton__lines"><div class="sk-grid-skeleton__line"></div><div class="sk-grid-skeleton__line"></div></div></div>
+        </section>
+
+    </main>
+
+    <!-- ===== BOTTOM NAV (5 tabs) ===== -->
+    <nav class="sk-bottom-nav" aria-label="Primary">
+        <a href="/today.html" class="sk-bottom-nav__item">
+            <span class="sk-bottom-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 18a8 8 0 110-16 8 8 0 010 16zm.75-13.5h-1.5v6.31l5.06 3.04.75-1.23-4.31-2.56V6.5z"/></svg></span>
+            <span class="sk-bottom-nav__label" data-lang-en="Today" data-lang-hi="आज">Today</span>
+        </a>
+        <a href="/breathe.html" class="sk-bottom-nav__item">
+            <span class="sk-bottom-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3c-3.31 0-6 2.69-6 6 0 1.51.56 2.89 1.48 3.94L6 14.41 7.41 16l1.47-1.48A5.97 5.97 0 0012 16c3.31 0 6-2.69 6-6s-2.69-7-6-7zm0 11a4 4 0 110-8 4 4 0 010 8z"/></svg></span>
+            <span class="sk-bottom-nav__label" data-lang-en="Breathe" data-lang-hi="साँस">Breathe</span>
+        </a>
+        <a href="/sit.html" class="sk-bottom-nav__item" aria-current="page">
+            <span class="sk-bottom-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 4a3 3 0 100 6 3 3 0 000-6zm-4 9c-1.66 0-3 1.34-3 3v3h14v-3c0-1.66-1.34-3-3-3H8z"/></svg></span>
+            <span class="sk-bottom-nav__label" data-lang-en="Sit" data-lang-hi="बैठें">Sit</span>
+        </a>
+        <a href="/rest.html" class="sk-bottom-nav__item">
+            <span class="sk-bottom-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg></span>
+            <span class="sk-bottom-nav__label" data-lang-en="Rest" data-lang-hi="विश्राम">Rest</span>
+        </a>
+        <a href="/be-with-me.html" class="sk-bottom-nav__item">
+            <span class="sk-bottom-nav__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 00-9 9 8.93 8.93 0 002 5.6L3 21l3.4-2a9 9 0 105.6-16zm0 16a7 7 0 01-3.7-1.07l-.42-.26-2.04 1.2.6-2.13-.28-.43A7 7 0 1112 19z"/></svg></span>
+            <span class="sk-bottom-nav__label" data-lang-en="Listen" data-lang-hi="सुनें">Listen</span>
+        </a>
+    </nav>
+
+    <!-- ===== SOS FAB ===== -->
+    <a href="/now.html" class="sk-now-fab" aria-label="Crisis support — go now">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-3zm0 18.93C7.81 19.7 5 15.45 5 11V6.3l7-2.33 7 2.33V11c0 4.45-2.81 8.7-7 9.93zM11 7h2v6h-2zm0 8h2v2h-2z"/></svg>
+    </a>
+
+</div>
+
+<script>
+/* ============================================================
+   /sit — page controller (vanilla, defensive, no build step)
+   Uses safe DOM construction; never assigns innerHTML from untrusted
+   library text. Static SVG glyphs are embedded as authored markup.
+   ============================================================ */
+(function () {
+    'use strict';
+
+    // ---------- TOD setter ----------
+    (function setTod() {
+        if (document.documentElement.getAttribute('data-tod') !== 'auto') return;
+        var h = new Date().getHours();
+        var tod = 'night';
+        if (h >= 5 && h < 8) tod = 'dawn';
+        else if (h >= 8 && h < 16) tod = 'day';
+        else if (h >= 16 && h < 19) tod = 'dusk';
+        else if (h >= 19 && h < 23) tod = 'night';
+        else tod = 'late';
+        document.documentElement.setAttribute('data-tod', tod);
+    })();
+
+    // ---------- Language toggle ----------
+    var lang = (localStorage.getItem('sukoon.lang') || 'en');
+
+    function applyLangAttr(el, key) {
+        var hi = el.getAttribute('data-lang-hi');
+        var en = el.getAttribute('data-lang-en');
+        var v = (lang === 'hi' && hi) ? hi : en;
+        if (v == null) return;
+        // textContent is always safe — never inject HTML from data-attrs.
+        el.textContent = v;
+    }
+
+    function applyLang(next) {
+        lang = next;
+        document.body.setAttribute('data-lang', next);
+        document.documentElement.setAttribute('lang', next === 'hi' ? 'hi' : 'en');
+        try { localStorage.setItem('sukoon.lang', next); } catch (e) {}
+        document.querySelectorAll('[data-lang-en]').forEach(function (el) { applyLangAttr(el); });
+        document.querySelectorAll('[data-placeholder-en]').forEach(function (el) {
+            var hi = el.getAttribute('data-placeholder-hi');
+            var en = el.getAttribute('data-placeholder-en');
+            el.setAttribute('placeholder', next === 'hi' && hi ? hi : en);
+        });
+        document.querySelectorAll('.sk-lang button').forEach(function (b) {
+            b.setAttribute('aria-pressed', String(b.getAttribute('data-lang-set') === next));
+        });
+        if (state.lastItems) renderGrid(state.lastItems);
+        if (state.today) renderToday(state.today);
+    }
+    document.querySelectorAll('.sk-lang button').forEach(function (b) {
+        b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang-set')); });
+    });
+    applyLang(lang);
+
+    // ---------- State ----------
+    var state = {
+        all: [],
+        lastItems: null,
+        today: null,
+        filters: { mood: 'all', lang: 'both', duration: 'all' }
+    };
+
+    // ---------- Filter chips ----------
+    document.querySelectorAll('[data-filter-group]').forEach(function (group) {
+        var key = group.getAttribute('data-filter-group');
+        group.addEventListener('click', function (e) {
+            var btn = e.target.closest('.sk-chip');
+            if (!btn) return;
+            group.querySelectorAll('.sk-chip').forEach(function (b) { b.setAttribute('aria-pressed', 'false'); });
+            btn.setAttribute('aria-pressed', 'true');
+            state.filters[key] = btn.getAttribute('data-filter-value');
+            applyFilters();
+        });
+    });
+
+    // ---------- Library load (api/library + curated JSON fallback) ----------
+    var MEDITATION_SOURCES = [
+        '/content/meditations.json',
+        '/content/meditations-anxiety-en.json',
+        '/content/meditations-anxiety-hi.json',
+        '/content/meditations-focus-work.json',
+        '/content/meditations-grief-anger.json',
+        '/content/meditations-grounding.json',
+        '/content/meditations-morning-evening.json',
+        '/content/meditations-self-compassion.json',
+        '/content/meditations-sleep.json'
+    ];
+
+    function fetchJson(url) {
+        return fetch(url, { credentials: 'same-origin' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; });
+    }
+
+    function loadLibrary() {
+        return fetch('/api/library', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ kind: 'meditations', limit: 50 }),
+            credentials: 'same-origin'
+        }).then(function (r) {
+            if (!r.ok) throw new Error('api-library ' + r.status);
+            return r.json();
+        }).then(function (data) {
+            var items = (data && (data.items || data)) || [];
+            if (items.length) return items;
+            throw new Error('empty');
+        }).catch(function () {
+            return Promise.all(MEDITATION_SOURCES.map(fetchJson)).then(function (chunks) {
+                var seen = Object.create(null);
+                var merged = [];
+                chunks.forEach(function (chunk) {
+                    if (!chunk) return;
+                    var arr = Array.isArray(chunk) ? chunk : (chunk.items || []);
+                    arr.forEach(function (item) {
+                        if (!item || !item.id || seen[item.id]) return;
+                        seen[item.id] = true;
+                        merged.push(item);
+                    });
+                });
+                return merged;
+            });
+        });
+    }
+
+    function loadToday() {
+        return fetch('/api/daily', { credentials: 'same-origin' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .catch(function () { return null; });
+    }
+
+    // ---------- Filter logic ----------
+    function itemMatchesMood(item, mood) {
+        if (mood === 'all') return true;
+        var raw = (item.mood_tags || item.tags || item.mood || []);
+        if (typeof raw === 'string') raw = [raw];
+        var tags = raw.concat(item.situations || []).map(function (t) { return String(t).toLowerCase(); });
+        var aliases = {
+            anxiety: ['anxiety', 'anxious', 'worry', 'panic', 'overwhelm', 'restless', 'tension'],
+            'self-compassion': ['self-compassion', 'self-love', 'kindness', 'metta', 'shame', 'inner-critic'],
+            sleep: ['sleep', 'insomnia', 'bedtime', 'wind-down', 'rest'],
+            grounding: ['grounding', 'grounded', 'present', 'scattered', 'dissociation', 'body-scan'],
+            grief: ['grief', 'loss', 'sad', 'mourning', 'heartbreak'],
+            morning: ['morning', 'sunrise', 'dawn', 'wake', 'start-the-day'],
+            evening: ['evening', 'dusk', 'end-of-day', 'unwind'],
+            focus: ['focus', 'concentration', 'work', 'study', 'clarity', 'distracted']
+        };
+        var needles = aliases[mood] || [mood];
+        return needles.some(function (n) { return tags.indexOf(n) >= 0; });
+    }
+    function itemHasLang(item, langSel) {
+        if (langSel === 'both') return true;
+        if (langSel === 'en') return !!(item.title_en || item.script_en || item.body_en);
+        if (langSel === 'hi') return !!(item.title_hi || item.script_hi || item.body_hi);
+        return true;
+    }
+    function itemMatchesDuration(item, bucket) {
+        var d = Number(item.duration_min || item.duration_minutes || 0);
+        if (bucket === 'all') return true;
+        if (bucket === 'short') return d > 0 && d < 5;
+        if (bucket === 'mid')   return d >= 5 && d <= 10;
+        if (bucket === 'long')  return d > 10 && d <= 15;
+        if (bucket === 'deep')  return d > 15;
+        return true;
+    }
+
+    function applyFilters() {
+        var f = state.filters;
+        var filtered = state.all.filter(function (item) {
+            return itemMatchesMood(item, f.mood)
+                && itemHasLang(item, f.lang)
+                && itemMatchesDuration(item, f.duration);
+        });
+        filtered.sort(function (a, b) {
+            var bothA = (a.title_en && a.title_hi) ? -1 : 0;
+            var bothB = (b.title_en && b.title_hi) ? -1 : 0;
+            return bothA - bothB;
+        });
+        renderGrid(filtered);
+    }
+
+    // ---------- Helpers ----------
+    function fmtDuration(min) {
+        var m = Number(min || 0);
+        if (!m) return '';
+        return (lang === 'hi') ? (m + ' मिनट') : (m + ' min');
+    }
+    function titleOf(item) {
+        if (lang === 'hi') return item.title_hi || item.title_en || item.title || 'Untitled';
+        return item.title_en || item.title || item.title_hi || 'Untitled';
+    }
+    function altTitleOf(item) {
+        if (lang === 'hi') return item.title_en || '';
+        return item.title_hi || '';
+    }
+    function moodLabel(item) {
+        var t = item.mood_tags || item.tags || [];
+        if (!t.length) return '';
+        var first = String(t[0]).replace(/-/g, ' ');
+        return first.charAt(0).toUpperCase() + first.slice(1);
+    }
+
+    // Safe DOM builders ----------
+    function el(tag, attrs, children) {
+        var node = document.createElement(tag);
+        if (attrs) {
+            for (var k in attrs) {
+                if (!Object.prototype.hasOwnProperty.call(attrs, k)) continue;
+                if (k === 'class') node.className = attrs[k];
+                else if (k === 'text') node.textContent = attrs[k];
+                else if (k === 'lang') node.setAttribute('lang', attrs[k]);
+                else node.setAttribute(k, attrs[k]);
+            }
+        }
+        if (children) {
+            for (var i = 0; i < children.length; i++) {
+                var c = children[i];
+                if (c == null) continue;
+                if (typeof c === 'string') node.appendChild(document.createTextNode(c));
+                else node.appendChild(c);
+            }
+        }
+        return node;
+    }
+    function svgGlyph(d, viewBox) {
+        // SVG paths used here are static, authored above; safe to write as DOM.
+        var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', viewBox || '0 0 24 24');
+        svg.setAttribute('aria-hidden', 'true');
+        var p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        p.setAttribute('d', d);
+        svg.appendChild(p);
+        return svg;
+    }
+    var GLYPH_FIGURE = 'M12 4a3 3 0 100 6 3 3 0 000-6zm-4 9c-1.66 0-3 1.34-3 3v3h14v-3c0-1.66-1.34-3-3-3H8z';
+    var GLYPH_PLAY = 'M8 5v14l11-7z';
+
+    function renderGrid(items) {
+        state.lastItems = items;
+        var grid = document.getElementById('libraryGrid');
+        var countLine = document.getElementById('countLine');
+        if (!grid) return;
+        // Replace children safely (no innerHTML)
+        while (grid.firstChild) grid.removeChild(grid.firstChild);
+
+        if (!items.length) {
+            var empty = el('div', { class: 'sk-grid-empty' });
+            empty.textContent = (lang === 'hi'
+                ? 'इस फ़िल्टर में अभी कुछ नहीं मिला। "मुझे बताएँ क्या चाहिए" से नया लिखवाएँ।'
+                : 'Nothing in this filter right now. Ask above for a fresh one.');
+            grid.appendChild(empty);
+            countLine.textContent = '';
+            return;
+        }
+
+        countLine.textContent = (lang === 'hi'
+            ? items.length + ' ध्यान मिले'
+            : items.length + ' meditation' + (items.length === 1 ? '' : 's') + ' to choose from');
+
+        items.forEach(function (item) {
+            var generated = !!item.generated;
+            var card = el('button', {
+                type: 'button',
+                class: 'sk-track-card' + (generated ? ' sk-track-card--generated' : ''),
+                role: 'listitem',
+                'data-id': item.id || '',
+                'aria-label': titleOf(item) + ', ' + fmtDuration(item.duration_min || item.duration_minutes)
+            });
+
+            // Art
+            var art = el('div', { class: 'sk-track-card__art' });
+            art.appendChild(svgGlyph(GLYPH_FIGURE));
+            card.appendChild(art);
+
+            // Body
+            var body = el('div', { class: 'sk-track-card__body' });
+            var title = el('h3', { class: 'sk-track-card__title' });
+            title.textContent = titleOf(item);
+            body.appendChild(title);
+
+            var altTitle = altTitleOf(item);
+            if (altTitle) {
+                var sub = el('div', { class: 'sk-track-card__title-hi', lang: (lang === 'hi' ? 'en' : 'hi') });
+                sub.textContent = altTitle;
+                body.appendChild(sub);
+            }
+
+            var meta = el('div', { class: 'sk-track-card__meta' });
+            var metaBits = [];
+            var dur = fmtDuration(item.duration_min || item.duration_minutes);
+            if (dur) metaBits.push(dur);
+            var ml = moodLabel(item);
+            if (ml) metaBits.push(ml);
+            if (item.tradition_hint) metaBits.push(String(item.tradition_hint).replace(/-/g, ' '));
+            metaBits.forEach(function (m) {
+                var s = document.createElement('span');
+                s.textContent = m;
+                meta.appendChild(s);
+            });
+            body.appendChild(meta);
+            card.appendChild(body);
+
+            // Play
+            var play = el('div', { class: 'sk-track-card__play', 'aria-hidden': 'true' });
+            play.appendChild(svgGlyph(GLYPH_PLAY));
+            card.appendChild(play);
+
+            card.addEventListener('click', function () { openPlayer(item); });
+            grid.appendChild(card);
+        });
+    }
+
+    // ---------- Today's meditation ----------
+    function pickTodayFromLibrary(items) {
+        if (!items.length) return null;
+        var d = new Date();
+        var doy = Math.floor((Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - Date.UTC(d.getUTCFullYear(), 0, 0)) / 86400000);
+        var pool = items.filter(function (i) {
+            var dur = Number(i.duration_min || i.duration_minutes || 0);
+            return dur >= 5 && dur <= 12;
+        });
+        if (!pool.length) pool = items;
+        return pool[doy % pool.length];
+    }
+
+    function renderToday(item) {
+        if (!item) return;
+        state.today = item;
+        var title = document.getElementById('todayTitle');
+        var titleHi = document.getElementById('todayTitleHi');
+        var meta = document.getElementById('todayMeta');
+        var desc = document.getElementById('todayDesc');
+
+        title.textContent = titleOf(item);
+        titleHi.textContent = altTitleOf(item);
+
+        while (meta.firstChild) meta.removeChild(meta.firstChild);
+        var bits = [];
+        var dur = fmtDuration(item.duration_min || item.duration_minutes);
+        if (dur) bits.push(dur);
+        var ml = moodLabel(item);
+        if (ml) bits.push(ml);
+        if (item.tradition_hint) bits.push(String(item.tradition_hint).replace(/-/g, ' '));
+        bits.forEach(function (m) {
+            var s = document.createElement('span');
+            s.textContent = m;
+            meta.appendChild(s);
+        });
+
+        var script = (lang === 'hi' ? item.script_hi : item.script_en) || item.script_en || item.script_hi || item.script;
+        var first = '';
+        if (Array.isArray(script) && script.length) first = String(script[0]);
+        else if (typeof script === 'string') first = script.split(/\n{2,}/)[0];
+        if (first) {
+            var trimmed = first.split(/[.!?।]\s/)[0];
+            if (trimmed.length > 200) trimmed = trimmed.slice(0, 197) + '…';
+            desc.textContent = trimmed + '.';
+        }
+    }
+
+    function openPlayer(item) {
+        if (window.SukoonPlayer) {
+            try {
+                if (!state._player) {
+                    state._player = new window.SukoonPlayer({
+                        lang: lang,
+                        tts: window.SukoonTTS ? new window.SukoonTTS() : null,
+                        library: window.SukoonLibrary ? new window.SukoonLibrary() : null,
+                        engine: window.SukoonEngine || null
+                    });
+                }
+                state._player.lang = lang;
+                state._player.open(item);
+                recordSession(item);
+                return;
+            } catch (e) { /* fall through */ }
+        }
+        var slug = item.id || item.slug || '';
+        window.location.href = '/sit.html?id=' + encodeURIComponent(slug);
+    }
+
+    // ---------- Streak ----------
+    var STREAK_KEY = 'sukoon.sit.streak';
+    function loadStreak() {
+        if (window.SukoonEngine && typeof window.SukoonEngine.streak === 'function') {
+            try { return window.SukoonEngine.streak('sit'); } catch (e) {}
+        }
+        try {
+            var raw = localStorage.getItem(STREAK_KEY);
+            return raw ? JSON.parse(raw) : { days: 0, lastDate: null, totalSessions: 0, totalMinutes: 0, longest: 0 };
+        } catch (e) {
+            return { days: 0, lastDate: null, totalSessions: 0, totalMinutes: 0, longest: 0 };
+        }
+    }
+    function saveStreak(s) {
+        try { localStorage.setItem(STREAK_KEY, JSON.stringify(s)); } catch (e) {}
+    }
+    function renderStreak(s) {
+        var n = Number(s.days || 0);
+        document.getElementById('streakCount').textContent = String(n);
+        document.getElementById('streakTotal').textContent = String(s.totalSessions || 0);
+        document.getElementById('streakMinutes').textContent = String(s.totalMinutes || 0);
+        document.getElementById('streakLongest').textContent = String(s.longest || n);
+        var ring = document.getElementById('streakRingFg');
+        var target = Math.max(7, Math.min(30, s.longest || 7));
+        var pct = Math.min(1, n / target);
+        var c = 2 * Math.PI * 56;
+        ring.style.strokeDasharray = (c * pct).toFixed(1) + ' ' + c.toFixed(1);
+    }
+    function recordSession(item) {
+        var s = loadStreak();
+        var today = new Date().toISOString().slice(0, 10);
+        if (s.lastDate !== today) {
+            var yest = new Date(Date.now() - 86400000).toISOString().slice(0, 10);
+            s.days = (s.lastDate === yest) ? (s.days + 1) : 1;
+            s.lastDate = today;
+        }
+        s.totalSessions = (s.totalSessions || 0) + 1;
+        s.totalMinutes = (s.totalMinutes || 0) + Number(item.duration_min || item.duration_minutes || 0);
+        s.longest = Math.max(s.longest || 0, s.days || 0);
+        saveStreak(s);
+        renderStreak(s);
+    }
+
+    // ---------- Generative prompt ----------
+    var genForm = document.getElementById('genForm');
+    var genInput = document.getElementById('genInput');
+    var genSubmit = document.getElementById('genSubmit');
+    var genStatus = document.getElementById('genStatus');
+
+    genInput.addEventListener('input', function () {
+        genInput.style.height = 'auto';
+        genInput.style.height = Math.min(220, genInput.scrollHeight) + 'px';
+    });
+
+    genForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var prompt = (genInput.value || '').trim();
+        if (!prompt) { genInput.focus(); return; }
+        genSubmit.disabled = true;
+        genStatus.textContent = (lang === 'hi'
+            ? 'आपके लिए लिखा जा रहा है… इसमें कुछ क्षण लग सकते हैं।'
+            : 'Writing one for you… this can take a moment.');
+
+        var body = {
+            mood: prompt,
+            language: (lang === 'hi') ? 'hi' : 'en',
+            theme: prompt
+        };
+        var dm = prompt.match(/(\d{1,2})\s*(?:min|minute|minutes|मिनट)/i);
+        if (dm) body.duration = Number(dm[1]);
+
+        fetch('/api/generate-meditation', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(body),
+            credentials: 'same-origin'
+        })
+        .then(function (r) {
+            if (!r.ok) throw new Error('http ' + r.status);
+            return r.json();
+        })
+        .then(function (data) {
+            genSubmit.disabled = false;
+            genStatus.textContent = '';
+            if (!data || !data.script) {
+                genStatus.textContent = (lang === 'hi'
+                    ? 'अभी नहीं बना पाए। थोड़ी देर बाद कोशिश करें।'
+                    : 'Could not write one just now. Please try again in a moment.');
+                return;
+            }
+            var item = {
+                id: 'gen-' + Date.now(),
+                title_en: data.title || 'A meditation, just now',
+                title_hi: (lang === 'hi' ? (data.title || 'अभी के लिए एक ध्यान') : ''),
+                duration_min: data.duration_min || body.duration || 8,
+                mood_tags: [prompt.toLowerCase().split(/\s+/).slice(0, 2).join('-')],
+                tradition_hint: 'generated',
+                generated: true
+            };
+            var paragraphs = String(data.script).split(/\n{2,}|\[pause\s*\d*\]/i)
+                .map(function (s) { return s.trim(); }).filter(Boolean);
+            if (lang === 'hi') item.script_hi = paragraphs;
+            else                item.script_en = paragraphs;
+            openPlayer(item);
+        })
+        .catch(function () {
+            genSubmit.disabled = false;
+            genStatus.textContent = (lang === 'hi'
+                ? 'सर्वर अभी जवाब नहीं दे रहा। कृपया फिर कोशिश करें।'
+                : 'The server is quiet right now. Please try again in a moment.');
+        });
+    });
+
+    // ---------- Today's CTA ----------
+    document.getElementById('todayBegin').addEventListener('click', function () {
+        if (state.today) openPlayer(state.today);
+    });
+
+    // ---------- Boot ----------
+    renderStreak(loadStreak());
+
+    loadLibrary().then(function (items) {
+        state.all = Array.isArray(items) ? items.slice(0, 200) : [];
+        applyFilters();
+
+        loadToday().then(function (daily) {
+            var matched = null;
+            if (daily && daily.mantra && daily.mantra.focus) {
+                var focus = String(daily.mantra.focus).toLowerCase();
+                matched = state.all.find(function (it) {
+                    var tags = (it.mood_tags || it.tags || []).map(function (t) { return String(t).toLowerCase(); });
+                    return tags.some(function (t) { return focus.indexOf(t) >= 0 || t.indexOf(focus) >= 0; });
+                });
+            }
+            renderToday(matched || pickTodayFromLibrary(state.all));
+        });
+    });
+})();
+</script>
+
+</body>
+</html>

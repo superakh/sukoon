@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en" data-tod="auto">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Right now — you are not alone · Sukoon</title>
+  <meta name="description" content="If you are in crisis or overwhelm, stay here. Helplines, a quiet breath, and grounding tools — no signup, no rush.">
+  <meta name="theme-color" content="#0F1B3D">
+  <meta name="robots" content="index,follow">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sukoon">
+  <meta property="og:url" content="https://sukoon.cloud/now.html">
+  <meta property="og:title" content="Right now — you are not alone · Sukoon">
+  <meta property="og:description" content="Helplines, a quiet breath, and grounding tools. There is no rush. Pick what helps.">
+  <meta property="og:image" content="https://sukoon.cloud/og/sos.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Right now — you are not alone · Sukoon">
+  <meta name="twitter:description" content="Helplines, a quiet breath, and grounding tools.">
+  <meta name="twitter:image" content="https://sukoon.cloud/og/sos.jpg">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/sukoon-revolution.css">
+  <script src="/js/sukoon-experience.js" defer></script>
+  <script src="/js/sukoon-pulse.js" defer></script>
+  <script src="/js/sukoon-safety.js" defer></script>
+  <script src="/js/sukoon-library.js" defer></script>
+  <style>
+    /* ================================================================
+       /now — crisis-first page. Quiet. Slow. WCAG AAA contrast.
+       Bottom nav hidden per spec. Floating SOS hidden (we ARE SOS).
+       ================================================================ */
+    html, body { background: #0A1228; }
+    body.sk-now-page {
+      color: var(--sk-cream);
+      font-family: var(--sk-font-sans);
+      min-height: 100vh;
+      padding: 0;
+      margin: 0;
+      line-height: 1.6;
+    }
+    body.sk-now-page .sk-floating-sos,
+    body.sk-now-page .sk-bottom-nav,
+    body.sk-now-page .bottom-nav,
+    body.sk-now-page .sk-floating-sos-btn { display: none !important; }
+
+    body.sk-now-page .crisis-bar {
+      background: rgba(10, 18, 40, 0.92);
+      border-bottom: 1px solid var(--sk-stroke-1);
+      backdrop-filter: var(--sk-glass);
+      -webkit-backdrop-filter: var(--sk-glass);
+    }
+
+    /* ----- Ambient video — ultra soft ----- */
+    .sk-now-ambient {
+      position: fixed; inset: 0; z-index: -1; overflow: hidden;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(232,165,82,0.10), transparent 55%),
+        linear-gradient(180deg, #0A1228 0%, #14204A 60%, #1F1838 100%);
+    }
+    .sk-now-ambient__video {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.22;
+      filter: saturate(0.7) brightness(0.75) blur(2px);
+    }
+    .sk-now-ambient__veil {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(10,18,40,0.55) 0%, rgba(10,18,40,0.85) 100%);
+    }
+
+    /* ----- Layout container ----- */
+    .sk-now {
+      max-width: 720px; margin: 0 auto;
+      padding: clamp(24px, 4vw, 40px) clamp(18px, 4vw, 28px) clamp(60px, 8vw, 100px);
+    }
+
+    /* ----- Hero ----- */
+    .sk-now-hero {
+      padding: clamp(32px, 6vw, 56px) 0 clamp(28px, 5vw, 40px);
+      text-align: left;
+      animation: skRiseSoft 1100ms var(--sk-ease-arrive) both;
+    }
+    .sk-now-hero__eyebrow {
+      font-size: var(--sk-fs-eyebrow);
+      letter-spacing: var(--sk-track-eyebrow);
+      text-transform: uppercase;
+      color: var(--sk-saffron);
+      margin: 0 0 14px; font-weight: 600;
+    }
+    .sk-now-hero__title {
+      font-family: var(--sk-font-serif); font-weight: 300;
+      font-size: clamp(34px, 6vw, 56px); line-height: 1.15;
+      letter-spacing: -0.015em; color: var(--sk-cream); margin: 0 0 14px;
+    }
+    .sk-now-hero__sub {
+      font-size: var(--sk-fs-lead); color: var(--sk-cream-dim);
+      max-width: 540px; line-height: 1.6; margin: 0 0 10px;
+    }
+    .sk-now-hero__hindi {
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-body);
+      color: var(--sk-cream-dim); line-height: 1.75; max-width: 540px; margin: 0;
+    }
+
+    /* ----- Section ----- */
+    .sk-now-section { margin: clamp(36px, 6vw, 60px) 0; }
+    .sk-now-section__head { margin: 0 0 18px; }
+    .sk-now-section__num {
+      display: inline-block; font-size: var(--sk-fs-eyebrow);
+      letter-spacing: var(--sk-track-eyebrow); text-transform: uppercase;
+      color: var(--sk-saffron); font-weight: 600; margin: 0 0 6px;
+    }
+    .sk-now-section__title {
+      font-family: var(--sk-font-serif); font-weight: 400;
+      font-size: clamp(22px, 3vw, 30px); color: var(--sk-cream);
+      margin: 0 0 4px; line-height: 1.25;
+    }
+    .sk-now-section__title-hi {
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-body);
+      color: var(--sk-cream-dim); line-height: 1.75; margin: 0;
+    }
+
+    /* ----- Helpline tiles ----- */
+    .sk-helplines { display: grid; grid-template-columns: 1fr; gap: 10px; }
+    @media (min-width: 600px) {
+      .sk-helplines { grid-template-columns: 1fr 1fr; gap: 12px; }
+    }
+    .sk-helpline {
+      display: grid; grid-template-columns: 44px 1fr auto;
+      align-items: center; gap: 14px;
+      padding: 18px 18px; min-height: 76px;
+      background: rgba(245, 239, 226, 0.04);
+      border: 1px solid var(--sk-stroke-2); border-radius: 18px;
+      color: var(--sk-cream); text-decoration: none;
+      transition: background 200ms var(--sk-ease-calm),
+                  border-color 200ms var(--sk-ease-calm),
+                  transform 200ms var(--sk-ease-calm);
+    }
+    .sk-helpline:hover,
+    .sk-helpline:focus-visible {
+      background: rgba(232, 165, 82, 0.08);
+      border-color: rgba(232, 165, 82, 0.55);
+      transform: translateY(-1px); outline: none;
+    }
+    .sk-helpline:focus-visible {
+      box-shadow: 0 0 0 3px rgba(232, 165, 82, 0.35);
+    }
+    .sk-helpline__icon {
+      width: 44px; height: 44px; border-radius: 12px;
+      background: rgba(232, 165, 82, 0.14); color: var(--sk-saffron);
+      display: grid; place-items: center; flex-shrink: 0;
+    }
+    .sk-helpline__icon svg { width: 22px; height: 22px; }
+    .sk-helpline__body { min-width: 0; }
+    .sk-helpline__name {
+      font-family: var(--sk-font-sans); font-weight: 600;
+      font-size: var(--sk-fs-body); color: var(--sk-cream); line-height: 1.25;
+    }
+    .sk-helpline__meta {
+      font-size: var(--sk-fs-micro); color: var(--sk-cream-dim);
+      margin-top: 3px; line-height: 1.4;
+    }
+    .sk-helpline__num {
+      font-family: var(--sk-font-mono); font-size: var(--sk-fs-small);
+      color: var(--sk-saffron); font-weight: 600;
+      letter-spacing: 0.02em; white-space: nowrap;
+    }
+    .sk-helplines__intl-head {
+      grid-column: 1 / -1; font-size: var(--sk-fs-eyebrow);
+      text-transform: uppercase; letter-spacing: var(--sk-track-eyebrow);
+      color: var(--sk-cream-quiet); margin: 14px 0 2px;
+    }
+
+    /* ----- Breath circle ----- */
+    .sk-breath {
+      display: grid; place-items: center;
+      padding: clamp(20px, 4vw, 36px) 0 clamp(10px, 2vw, 20px);
+      background: rgba(245, 239, 226, 0.03);
+      border: 1px solid var(--sk-stroke-1); border-radius: 24px;
+    }
+    .sk-breath__stage {
+      width: clamp(180px, 38vw, 240px); height: clamp(180px, 38vw, 240px);
+      position: relative; display: grid; place-items: center;
+    }
+    .sk-breath__halo {
+      position: absolute; inset: 0; border-radius: 50%;
+      background: radial-gradient(circle, rgba(232,165,82,0.22) 0%, rgba(232,165,82,0) 70%);
+      transform: scale(0.7); opacity: 0.7;
+      transition: transform 4s var(--sk-ease-breath), opacity 4s var(--sk-ease-breath);
+    }
+    .sk-breath__circle {
+      width: 60%; height: 60%; border-radius: 50%;
+      background: radial-gradient(circle at 35% 30%, rgba(245,239,226,0.18), rgba(245,239,226,0.06) 70%);
+      border: 1px solid rgba(245,239,226,0.30);
+      transition: transform 4s var(--sk-ease-breath), background 4s var(--sk-ease-breath);
+      box-shadow: 0 0 60px rgba(232,165,82,0.15);
+    }
+    .sk-breath__label {
+      margin-top: 18px;
+      font-family: var(--sk-font-serif); font-weight: 300;
+      font-size: clamp(20px, 2.4vw, 26px); color: var(--sk-cream);
+      letter-spacing: 0.02em; text-align: center; min-height: 1.4em;
+    }
+    .sk-breath__label-hi {
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-small);
+      color: var(--sk-cream-dim); margin-top: 4px; text-align: center; min-height: 1.4em;
+    }
+    .sk-breath__pattern {
+      font-size: var(--sk-fs-eyebrow); letter-spacing: var(--sk-track-eyebrow);
+      text-transform: uppercase; color: var(--sk-cream-quiet);
+      margin: 14px 0 2px; text-align: center;
+    }
+    .sk-breath[data-phase="in"]    .sk-breath__circle { transform: scale(1.35); background: radial-gradient(circle at 35% 30%, rgba(245,239,226,0.30), rgba(232,165,82,0.10) 70%); }
+    .sk-breath[data-phase="in"]    .sk-breath__halo   { transform: scale(1.05); opacity: 0.95; }
+    .sk-breath[data-phase="hold"]  .sk-breath__circle { transform: scale(1.35); }
+    .sk-breath[data-phase="hold"]  .sk-breath__halo   { transform: scale(1.05); opacity: 0.95; }
+    .sk-breath[data-phase="out"]   .sk-breath__circle { transform: scale(0.85); }
+    .sk-breath[data-phase="out"]   .sk-breath__halo   { transform: scale(0.7);  opacity: 0.5; }
+
+    /* ----- Grounding ----- */
+    .sk-ground-list {
+      display: grid; grid-template-columns: 1fr; gap: 10px;
+      list-style: none; padding: 0; margin: 0;
+    }
+    @media (min-width: 600px) {
+      .sk-ground-list { grid-template-columns: 1fr 1fr; gap: 12px; }
+    }
+    .sk-ground-card {
+      background: rgba(245, 239, 226, 0.04);
+      border: 1px solid var(--sk-stroke-1); border-radius: 18px;
+      overflow: hidden;
+      transition: border-color 220ms var(--sk-ease-calm),
+                  background 220ms var(--sk-ease-calm);
+    }
+    .sk-ground-card[open] {
+      border-color: rgba(232, 165, 82, 0.40);
+      background: rgba(245, 239, 226, 0.06);
+      grid-column: 1 / -1;
+    }
+    .sk-ground-card__head {
+      display: grid; grid-template-columns: 36px 1fr 22px;
+      align-items: center; gap: 14px;
+      padding: 18px 18px; cursor: pointer; list-style: none;
+      min-height: 72px; color: var(--sk-cream);
+      font-family: var(--sk-font-sans);
+    }
+    .sk-ground-card__head::-webkit-details-marker { display: none; }
+    .sk-ground-card__head:hover { background: rgba(245, 239, 226, 0.04); }
+    .sk-ground-card__head:focus-visible {
+      outline: none; box-shadow: inset 0 0 0 2px rgba(232, 165, 82, 0.55);
+    }
+    .sk-ground-card__num {
+      width: 36px; height: 36px; border-radius: 10px;
+      background: rgba(111, 162, 134, 0.16); color: var(--sk-tulsi);
+      display: grid; place-items: center;
+      font-family: var(--sk-font-mono); font-size: var(--sk-fs-small); font-weight: 600;
+    }
+    .sk-ground-card__title {
+      display: block;
+      font-weight: 600; font-size: var(--sk-fs-body); line-height: 1.3; color: var(--sk-cream);
+    }
+    .sk-ground-card__title-hi {
+      display: block;
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-micro);
+      color: var(--sk-cream-dim); margin-top: 3px; line-height: 1.5;
+    }
+    .sk-ground-card__chev {
+      width: 22px; height: 22px; color: var(--sk-cream-quiet);
+      transition: transform 200ms var(--sk-ease-calm), color 200ms var(--sk-ease-calm);
+    }
+    .sk-ground-card[open] .sk-ground-card__chev {
+      transform: rotate(180deg); color: var(--sk-saffron);
+    }
+    .sk-ground-card__body {
+      padding: 4px 22px 22px 22px;
+      border-top: 1px solid var(--sk-stroke-1);
+      background: rgba(10, 18, 40, 0.30);
+    }
+    .sk-ground-card__steps { list-style: none; padding: 0; margin: 18px 0 0; counter-reset: step; }
+    .sk-ground-card__step {
+      display: grid; grid-template-columns: 32px 1fr;
+      gap: 14px; padding: 14px 0;
+      border-bottom: 1px solid var(--sk-stroke-1);
+      transition: opacity 400ms var(--sk-ease-calm);
+    }
+    .sk-ground-card__step:last-child { border-bottom: 0; }
+    .sk-ground-card__step[data-active="false"] { opacity: 0.35; }
+    .sk-ground-card__step[data-active="true"]  { opacity: 1; }
+    .sk-ground-card__step[data-done="true"]    { opacity: 0.55; }
+    .sk-ground-card__step-dot {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(245, 239, 226, 0.06);
+      border: 1px solid var(--sk-stroke-2);
+      display: grid; place-items: center;
+      font-family: var(--sk-font-mono); font-size: var(--sk-fs-micro);
+      color: var(--sk-cream-dim); counter-increment: step;
+    }
+    .sk-ground-card__step-dot::before { content: counter(step); }
+    .sk-ground-card__step[data-active="true"] .sk-ground-card__step-dot {
+      background: var(--sk-saffron); color: var(--sk-ink);
+      border-color: var(--sk-saffron);
+    }
+    .sk-ground-card__step[data-done="true"] .sk-ground-card__step-dot {
+      background: var(--sk-tulsi); color: var(--sk-ink);
+      border-color: var(--sk-tulsi);
+    }
+    .sk-ground-card__step-text {
+      display: block;
+      font-size: var(--sk-fs-body); line-height: 1.6; color: var(--sk-cream);
+    }
+    .sk-ground-card__step-text-hi {
+      display: block;
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-small);
+      color: var(--sk-cream-dim); margin-top: 4px; line-height: 1.8;
+    }
+    .sk-ground-card__progress {
+      margin-top: 16px; height: 3px;
+      background: rgba(245, 239, 226, 0.08);
+      border-radius: 2px; overflow: hidden;
+    }
+    .sk-ground-card__progress-bar {
+      height: 100%; background: var(--sk-saffron); width: 0%;
+      transition: width 400ms linear;
+    }
+    .sk-ground-card__loading {
+      padding: 16px; color: var(--sk-cream-dim);
+      font-size: var(--sk-fs-small); text-align: center;
+      grid-column: 1 / -1;
+    }
+
+    /* ----- Talk CTA ----- */
+    .sk-talk-card {
+      padding: clamp(24px, 4vw, 36px);
+      background: linear-gradient(135deg, rgba(232,165,82,0.10), rgba(111,162,134,0.06));
+      border: 1px solid var(--sk-stroke-2); border-radius: 22px;
+      text-align: center;
+    }
+    .sk-talk-card__title {
+      font-family: var(--sk-font-serif); font-weight: 300;
+      font-size: clamp(22px, 3vw, 28px); color: var(--sk-cream);
+      margin: 0 0 8px; line-height: 1.3;
+    }
+    .sk-talk-card__sub { font-size: var(--sk-fs-body); color: var(--sk-cream-dim); margin: 0 0 6px; }
+    .sk-talk-card__hi {
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-small);
+      color: var(--sk-cream-quiet); margin: 0 0 22px;
+    }
+    .sk-talk-card__btn {
+      display: inline-block; padding: 16px 32px; min-height: 52px;
+      background: var(--sk-cream); color: var(--sk-ink);
+      font-family: var(--sk-font-sans); font-weight: 600;
+      font-size: var(--sk-fs-body); text-decoration: none;
+      border-radius: 999px;
+      transition: transform 200ms var(--sk-ease-calm), box-shadow 200ms var(--sk-ease-calm);
+    }
+    .sk-talk-card__btn:hover,
+    .sk-talk-card__btn:focus-visible {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 24px rgba(245, 239, 226, 0.18);
+      outline: none;
+    }
+    .sk-talk-card__btn:focus-visible {
+      box-shadow: 0 0 0 3px rgba(232, 165, 82, 0.55), 0 6px 24px rgba(245, 239, 226, 0.18);
+    }
+
+    /* ----- Save ----- */
+    .sk-save {
+      padding: 20px 22px;
+      background: rgba(245, 239, 226, 0.03);
+      border: 1px dashed var(--sk-stroke-2); border-radius: 18px;
+    }
+    .sk-save__title {
+      font-family: var(--sk-font-serif); font-weight: 400;
+      font-size: var(--sk-fs-lead); color: var(--sk-cream); margin: 0 0 10px;
+    }
+    .sk-save__text {
+      font-size: var(--sk-fs-small); color: var(--sk-cream-dim);
+      line-height: 1.7; margin: 0 0 6px;
+    }
+    .sk-save__text-hi {
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-small);
+      color: var(--sk-cream-quiet); margin: 0; line-height: 1.8;
+    }
+    .sk-save__url {
+      display: inline-block; margin-top: 12px;
+      padding: 8px 14px; background: rgba(232, 165, 82, 0.12);
+      color: var(--sk-saffron); font-family: var(--sk-font-mono);
+      font-size: var(--sk-fs-small); border-radius: 999px;
+    }
+
+    /* ----- Closing ----- */
+    .sk-closing {
+      margin-top: clamp(40px, 6vw, 60px);
+      padding: clamp(24px, 4vw, 36px) 0;
+      text-align: center;
+      border-top: 1px solid var(--sk-stroke-1);
+    }
+    .sk-closing__line {
+      font-family: var(--sk-font-serif); font-weight: 300; font-style: italic;
+      font-size: clamp(18px, 2.4vw, 22px); color: var(--sk-cream);
+      line-height: 1.5; margin: 0 0 6px;
+    }
+    .sk-closing__hi {
+      font-family: var(--sk-font-hindi); font-size: var(--sk-fs-small);
+      color: var(--sk-cream-dim); margin: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sk-breath__halo,
+      .sk-breath__circle { transition: none !important; transform: none !important; }
+      .sk-breath[data-phase] .sk-breath__halo,
+      .sk-breath[data-phase] .sk-breath__circle { transform: none !important; }
+      .sk-now-ambient__video { display: none; }
+      .sk-now-hero { animation: none; }
+      .sk-ground-card__step { transition: none; }
+    }
+
+    @media print {
+      .sk-now-ambient, .crisis-bar { display: none !important; }
+      body.sk-now-page { background: #fff; color: #000; }
+      .sk-helpline { background: #fff; border: 1px solid #000; color: #000; page-break-inside: avoid; }
+      .sk-helpline__name, .sk-helpline__num, .sk-helpline__meta { color: #000; }
+      .sk-ground-card { background: #fff; border: 1px solid #000; color: #000; }
+    }
+  </style>
+</head>
+<body class="sk-now-page" data-experience="now">
+
+  <!-- Ambient -->
+  <div class="sk-now-ambient" aria-hidden="true">
+    <video class="sk-now-ambient__video" autoplay loop muted playsinline poster="/og/sos.jpg">
+      <source src="/video/hero-sos.mp4" type="video/mp4">
+    </video>
+    <div class="sk-now-ambient__veil"></div>
+  </div>
+
+  <!-- Crisis bar -->
+  <a class="crisis-bar" href="/now.html" aria-label="You are on the crisis page. sukoon.cloud/now">
+    <span class="crisis-bar__dot" aria-hidden="true"></span>
+    <span class="crisis-bar__text">You are here. <strong>sukoon.cloud/now</strong> &mdash; saved is safe.</span>
+    <span class="crisis-bar__arrow" aria-hidden="true">&#8594;</span>
+  </a>
+
+  <main class="sk-now" role="main">
+
+    <!-- HERO -->
+    <header class="sk-now-hero">
+      <p class="sk-now-hero__eyebrow">You are not alone.</p>
+      <h1 class="sk-now-hero__title">Stay with us for a moment.</h1>
+      <p class="sk-now-hero__sub">There is no rush. Pick what helps. You can do just one thing on this page and that is enough.</p>
+      <p class="sk-now-hero__hindi" lang="hi">आप अकेले नहीं हैं। एक पल यहीं ठहरें। कोई जल्दी नहीं है — जो ठीक लगे, वही चुनें।</p>
+    </header>
+
+    <!-- 1. CALL -->
+    <section class="sk-now-section" aria-labelledby="sec-call">
+      <div class="sk-now-section__head">
+        <span class="sk-now-section__num">01 &mdash; First step</span>
+        <h2 id="sec-call" class="sk-now-section__title">Call someone now.</h2>
+        <p class="sk-now-section__title-hi" lang="hi">अभी किसी से बात करें — असली लोग हैं, जो जवाब देना चाहते हैं।</p>
+      </div>
+
+      <div class="sk-helplines">
+
+        <a class="sk-helpline" href="tel:+919152987821" aria-label="Call iCall, India — 9152987821">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">iCall</span>
+            <span class="sk-helpline__meta">India &middot; Mon&ndash;Sat, 8am&ndash;10pm &middot; Free, multilingual</span>
+          </span>
+          <span class="sk-helpline__num">9152987821</span>
+        </a>
+
+        <a class="sk-helpline" href="tel:+91186026623" aria-label="Call Vandrevala Foundation, India — 1860 266 2345, 24/7">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">Vandrevala Foundation</span>
+            <span class="sk-helpline__meta">India &middot; 24/7 &middot; Free &middot; EN / HI / regional</span>
+          </span>
+          <span class="sk-helpline__num">1860-266-2345</span>
+        </a>
+
+        <a class="sk-helpline" href="tel:+919820466726" aria-label="Call AASRA, India — 9820 466 726, 24/7">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">AASRA</span>
+            <span class="sk-helpline__meta">India &middot; 24/7 &middot; Suicide prevention &middot; EN / HI</span>
+          </span>
+          <span class="sk-helpline__num">9820-46-6726</span>
+        </a>
+
+        <a class="sk-helpline" href="tel:1098" aria-label="Call CHILDLINE India — 1098, free for children in distress">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">CHILDLINE</span>
+            <span class="sk-helpline__meta">India &middot; For anyone under 18 &middot; 24/7 &middot; Free</span>
+          </span>
+          <span class="sk-helpline__num">1098</span>
+        </a>
+
+        <p class="sk-helplines__intl-head">Outside India</p>
+
+        <a class="sk-helpline" href="tel:988" aria-label="Call 988 Suicide and Crisis Lifeline, United States">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">988 Lifeline</span>
+            <span class="sk-helpline__meta">United States &middot; 24/7 &middot; Call or text 988</span>
+          </span>
+          <span class="sk-helpline__num">988</span>
+        </a>
+
+        <a class="sk-helpline" href="tel:116123" aria-label="Call Samaritans, United Kingdom — 116 123, 24/7">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">Samaritans</span>
+            <span class="sk-helpline__meta">UK &amp; Ireland &middot; 24/7 &middot; Free</span>
+          </span>
+          <span class="sk-helpline__num">116 123</span>
+        </a>
+
+        <a class="sk-helpline" href="tel:131114" aria-label="Call Lifeline Australia — 13 11 14, 24/7">
+          <span class="sk-helpline__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.72A2 2 0 0 1 22 16.92z"/></svg>
+          </span>
+          <span class="sk-helpline__body">
+            <span class="sk-helpline__name">Lifeline</span>
+            <span class="sk-helpline__meta">Australia &middot; 24/7 &middot; Free</span>
+          </span>
+          <span class="sk-helpline__num">13 11 14</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- 2. BREATHE -->
+    <section class="sk-now-section" aria-labelledby="sec-breathe">
+      <div class="sk-now-section__head">
+        <span class="sk-now-section__num">02 &mdash; Or just stay</span>
+        <h2 id="sec-breathe" class="sk-now-section__title">Breathe with us, right now.</h2>
+        <p class="sk-now-section__title-hi" lang="hi">हमारे साथ साँस लें। कुछ करना नहीं है — बस देखें।</p>
+      </div>
+
+      <div class="sk-breath" id="skBreath" data-phase="rest" role="group" aria-label="Auto-guided 4-7-8 breath. No interaction required.">
+        <div class="sk-breath__stage" aria-hidden="true">
+          <div class="sk-breath__halo"></div>
+          <div class="sk-breath__circle"></div>
+        </div>
+        <div class="sk-breath__label" id="skBreathLabel">Begin when you are ready</div>
+        <div class="sk-breath__label-hi" id="skBreathLabelHi" lang="hi">जब तैयार हों, शुरू करें</div>
+        <p class="sk-breath__pattern" aria-hidden="true">4 &mdash; 7 &mdash; 8 &middot; calming breath</p>
+      </div>
+    </section>
+
+    <!-- 3. GROUND -->
+    <section class="sk-now-section" aria-labelledby="sec-ground">
+      <div class="sk-now-section__head">
+        <span class="sk-now-section__num">03 &mdash; Bring your body back</span>
+        <h2 id="sec-ground" class="sk-now-section__title">Ground yourself.</h2>
+        <p class="sk-now-section__title-hi" lang="hi">अपने शरीर को वापस यहीं ले आएं। एक भी काफ़ी है।</p>
+      </div>
+
+      <ol class="sk-ground-list" id="skGroundList" aria-label="Grounding tools">
+        <li class="sk-ground-card__loading" id="skGroundLoading">Loading grounding tools&hellip;</li>
+      </ol>
+    </section>
+
+    <!-- 4. TALK -->
+    <section class="sk-now-section" aria-labelledby="sec-talk">
+      <div class="sk-now-section__head">
+        <span class="sk-now-section__num">04 &mdash; If you need words</span>
+        <h2 id="sec-talk" class="sk-now-section__title">Talk to Sukoon.</h2>
+        <p class="sk-now-section__title-hi" lang="hi">अगर शब्दों की ज़रूरत हो — सुकून यहाँ है।</p>
+      </div>
+
+      <div class="sk-talk-card">
+        <h3 class="sk-talk-card__title">Sometimes typing it out helps.</h3>
+        <p class="sk-talk-card__sub">No signup. No notes saved. Sukoon listens, gently and in your language.</p>
+        <p class="sk-talk-card__hi" lang="hi">कोई साइन-अप नहीं। कुछ रिकॉर्ड नहीं होता। सुकून आपकी भाषा में सुनता है।</p>
+        <a class="sk-talk-card__btn" href="/be-with-me.html">Be with me</a>
+      </div>
+    </section>
+
+    <!-- 5. SAVE -->
+    <section class="sk-now-section" aria-labelledby="sec-save">
+      <div class="sk-now-section__head">
+        <span class="sk-now-section__num">05 &mdash; For next time</span>
+        <h2 id="sec-save" class="sk-now-section__title">Save this page.</h2>
+        <p class="sk-now-section__title-hi" lang="hi">इस पेज को सेव कर लें — अगली बार बस एक टैप दूर हो।</p>
+      </div>
+
+      <div class="sk-save">
+        <p class="sk-save__title">Bookmark this. Pin it to your home screen.</p>
+        <p class="sk-save__text">
+          <strong>iPhone / iPad:</strong> Tap the share icon below your browser, then choose <em>Add to Home Screen</em>.
+          <br>
+          <strong>Android:</strong> Tap the three-dot menu at the top right, then <em>Add to Home screen</em> or <em>Install app</em>.
+          <br>
+          <strong>Desktop:</strong> Press <kbd>Ctrl</kbd>/<kbd>Cmd</kbd> + <kbd>D</kbd> to bookmark.
+        </p>
+        <p class="sk-save__text-hi" lang="hi">
+          <strong>iPhone:</strong> शेयर आइकन दबाएं &rarr; "Add to Home Screen"।
+          <strong>Android:</strong> ऊपर तीन-डॉट मेनू &rarr; "Add to Home screen"।
+          <strong>कंप्यूटर:</strong> <kbd>Ctrl/Cmd + D</kbd> दबाकर बुकमार्क करें।
+        </p>
+        <span class="sk-save__url">sukoon.cloud/now</span>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <footer class="sk-closing">
+      <p class="sk-closing__line">&ldquo;This feeling is real. And it will pass. You are still here.&rdquo;</p>
+      <p class="sk-closing__hi" lang="hi">यह भावना असली है। और यह गुज़र जाएगी। आप अभी भी हैं।</p>
+    </footer>
+
+  </main>
+
+  <!-- ================================================================
+       SCRIPTS (inline, safe DOM only — no innerHTML)
+       ================================================================ -->
+  <script>
+  (function () {
+    'use strict';
+
+    var prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ----------- Helper: build elements safely (no HTML strings) -----------
+    function el(tag, attrs, children) {
+      var node = document.createElement(tag);
+      if (attrs) {
+        for (var k in attrs) {
+          if (!Object.prototype.hasOwnProperty.call(attrs, k)) continue;
+          var v = attrs[k];
+          if (v == null) continue;
+          if (k === 'text') {
+            node.textContent = String(v);
+          } else if (k === 'lang') {
+            node.setAttribute('lang', String(v));
+          } else if (k === 'aria') {
+            for (var a in v) { if (Object.prototype.hasOwnProperty.call(v, a)) node.setAttribute('aria-' + a, String(v[a])); }
+          } else if (k === 'data') {
+            for (var d in v) { if (Object.prototype.hasOwnProperty.call(v, d)) node.setAttribute('data-' + d, String(v[d])); }
+          } else if (k === 'className') {
+            node.className = String(v);
+          } else {
+            node.setAttribute(k, String(v));
+          }
+        }
+      }
+      if (children) {
+        for (var i = 0; i < children.length; i += 1) {
+          var c = children[i];
+          if (c == null) continue;
+          if (typeof c === 'string') node.appendChild(document.createTextNode(c));
+          else node.appendChild(c);
+        }
+      }
+      return node;
+    }
+
+    function svgChevronDown() {
+      var ns = 'http://www.w3.org/2000/svg';
+      var svg = document.createElementNS(ns, 'svg');
+      svg.setAttribute('class', 'sk-ground-card__chev');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('stroke-width', '2');
+      svg.setAttribute('stroke-linecap', 'round');
+      svg.setAttribute('stroke-linejoin', 'round');
+      svg.setAttribute('aria-hidden', 'true');
+      var poly = document.createElementNS(ns, 'polyline');
+      poly.setAttribute('points', '6 9 12 15 18 9');
+      svg.appendChild(poly);
+      return svg;
+    }
+
+    // ============================================================
+    // 1) Auto-guided 4-7-8 breath circle
+    // ============================================================
+    (function initBreath() {
+      var stage = document.getElementById('skBreath');
+      var label = document.getElementById('skBreathLabel');
+      var labelHi = document.getElementById('skBreathLabelHi');
+      if (!stage || !label || !labelHi) return;
+
+      var phases = [
+        { name: 'in',   secs: 4, text: 'Breathe in…',       hi: 'साँस अंदर…' },
+        { name: 'hold', secs: 7, text: 'Hold, gently.',          hi: 'हल्के से रोकें।' },
+        { name: 'out',  secs: 8, text: 'Breathe out, slow.',     hi: 'धीरे-धीरे छोड़ें।' }
+      ];
+      var idx = 0;
+      var timer = null;
+
+      function setPhase(p) {
+        stage.setAttribute('data-phase', p.name);
+        label.style.opacity = '0.5';
+        labelHi.style.opacity = '0.5';
+        setTimeout(function () {
+          label.textContent = p.text;
+          labelHi.textContent = p.hi;
+          label.style.opacity = '1';
+          labelHi.style.opacity = '1';
+        }, 220);
+      }
+
+      function tick() {
+        var p = phases[idx];
+        setPhase(p);
+        timer = setTimeout(function () {
+          idx = (idx + 1) % phases.length;
+          tick();
+        }, p.secs * 1000);
+      }
+
+      if (prefersReduced) {
+        stage.setAttribute('data-phase', 'rest');
+        label.textContent = 'In · 4    Hold · 7    Out · 8';
+        labelHi.textContent = 'साँस लें · रोकें · छोड़ें';
+        return;
+      }
+
+      setTimeout(tick, 800);
+
+      document.addEventListener('visibilitychange', function () {
+        if (document.hidden) {
+          if (timer) { clearTimeout(timer); timer = null; }
+          stage.setAttribute('data-phase', 'rest');
+        } else if (!timer) {
+          tick();
+        }
+      });
+    })();
+
+    // ============================================================
+    // 2) Crisis grounding library — load crisis.json, render cards
+    //    Uses safe DOM construction (no innerHTML, no template strings).
+    // ============================================================
+    (function initGrounding() {
+      var list = document.getElementById('skGroundList');
+      var loadingEl = document.getElementById('skGroundLoading');
+      if (!list) return;
+
+      function getCrisis() {
+        if (window.LibraryClient) {
+          try {
+            var client = new window.LibraryClient();
+            return client.load('crisis');
+          } catch (_) { /* fall through */ }
+        }
+        return fetch('/content/crisis.json', { credentials: 'same-origin' })
+          .then(function (r) {
+            if (!r.ok) throw new Error('crisis.json HTTP ' + r.status);
+            return r.json();
+          });
+      }
+
+      getCrisis().then(function (tools) {
+        if (!Array.isArray(tools) || tools.length === 0) {
+          loadingEl.textContent = 'Could not load grounding tools. Please try the breath circle above, or call a helpline.';
+          return;
+        }
+        renderTools(tools);
+      }).catch(function () {
+        loadingEl.textContent = 'Could not load grounding tools. The breath circle above and the helplines work without any network.';
+      });
+
+      function buildCard(tool, index) {
+        var isOpen = (tool.id === 'crisis-001');
+        var num = String(index + 1).padStart(2, '0');
+        var stepsEn = Array.isArray(tool.steps_en) ? tool.steps_en : [];
+        var stepsHi = Array.isArray(tool.steps_hi) ? tool.steps_hi : [];
+        var totalSec = Number(tool.duration_sec) || (stepsEn.length * 14);
+        var perStep = Math.max(8, Math.round(totalSec / Math.max(1, stepsEn.length)));
+
+        // --- summary head ---
+        var numSpan = el('span', { className: 'sk-ground-card__num', 'aria-hidden': 'true', text: num });
+
+        var titleSpan = el('span', { className: 'sk-ground-card__title', text: String(tool.title_en || 'Grounding tool') });
+        var titleHiSpan = tool.title_hi
+          ? el('span', { className: 'sk-ground-card__title-hi', lang: 'hi', text: String(tool.title_hi) })
+          : null;
+        var titleGroup = el('span', null, [titleSpan, titleHiSpan]);
+
+        var head = el('summary', { className: 'sk-ground-card__head' }, [numSpan, titleGroup, svgChevronDown()]);
+
+        // --- steps list ---
+        var stepsOl = el('ol', { className: 'sk-ground-card__steps' });
+        for (var s = 0; s < stepsEn.length; s += 1) {
+          var dotSpan = el('span', { className: 'sk-ground-card__step-dot', 'aria-hidden': 'true' });
+          var textSpan = el('span', { className: 'sk-ground-card__step-text', text: String(stepsEn[s]) });
+          var hiSpan = stepsHi[s]
+            ? el('span', { className: 'sk-ground-card__step-text-hi', lang: 'hi', text: String(stepsHi[s]) })
+            : null;
+          var bodySpan = el('span', null, [textSpan, hiSpan]);
+          var stepLi = el('li', {
+            className: 'sk-ground-card__step',
+            data: { active: 'false', done: 'false' }
+          }, [dotSpan, bodySpan]);
+          stepsOl.appendChild(stepLi);
+        }
+
+        // --- progress bar ---
+        var bar = el('div', { className: 'sk-ground-card__progress-bar' });
+        var prog = el('div', { className: 'sk-ground-card__progress', 'aria-hidden': 'true' }, [bar]);
+
+        var body = el('div', { className: 'sk-ground-card__body' }, [stepsOl, prog]);
+
+        // --- details + wrapper li ---
+        var details = el('details', {
+          className: 'sk-ground-card',
+          data: { id: String(tool.id || ''), perstep: String(perStep) }
+        }, [head, body]);
+        if (isOpen) details.setAttribute('open', '');
+
+        var wrapper = el('li', null, [details]);
+        return { wrapper: wrapper, details: details, stepEls: stepsOl.children, bar: bar, perStep: perStep };
+      }
+
+      function renderTools(tools) {
+        // Clear placeholder
+        while (list.firstChild) list.removeChild(list.firstChild);
+
+        var built = [];
+        for (var i = 0; i < tools.length; i += 1) {
+          var item = buildCard(tools[i], i);
+          list.appendChild(item.wrapper);
+          built.push(item);
+        }
+
+        // Wire each card
+        built.forEach(function (item) {
+          var card = item.details;
+          var perStep = item.perStep;
+          var stepEls = item.stepEls;
+          var bar = item.bar;
+          var advanceTimer = null;
+
+          function resetSteps() {
+            for (var j = 0; j < stepEls.length; j += 1) {
+              stepEls[j].setAttribute('data-active', 'false');
+              stepEls[j].setAttribute('data-done', 'false');
+            }
+            if (bar) bar.style.width = '0%';
+          }
+
+          function activate(i) {
+            for (var j = 0; j < stepEls.length; j += 1) {
+              if (j < i) {
+                stepEls[j].setAttribute('data-active', 'false');
+                stepEls[j].setAttribute('data-done', 'true');
+              } else if (j === i) {
+                stepEls[j].setAttribute('data-active', 'true');
+                stepEls[j].setAttribute('data-done', 'false');
+              } else {
+                stepEls[j].setAttribute('data-active', 'false');
+                stepEls[j].setAttribute('data-done', 'false');
+              }
+            }
+            if (bar && stepEls.length > 0) {
+              var pct = Math.min(100, Math.round(((i + 1) / stepEls.length) * 100));
+              bar.style.width = pct + '%';
+            }
+          }
+
+          function runFrom(i) {
+            if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+            if (i >= stepEls.length) {
+              for (var j = 0; j < stepEls.length; j += 1) {
+                stepEls[j].setAttribute('data-active', 'false');
+                stepEls[j].setAttribute('data-done', 'true');
+              }
+              if (bar) bar.style.width = '100%';
+              return;
+            }
+            activate(i);
+            advanceTimer = setTimeout(function () { runFrom(i + 1); }, perStep * 1000);
+          }
+
+          function stop() {
+            if (advanceTimer) { clearTimeout(advanceTimer); advanceTimer = null; }
+          }
+
+          card.addEventListener('toggle', function () {
+            if (card.open) {
+              // Close siblings
+              built.forEach(function (other) {
+                if (other.details !== card && other.details.open) other.details.open = false;
+              });
+              resetSteps();
+              runFrom(0);
+              try { card.scrollIntoView({ behavior: prefersReduced ? 'auto' : 'smooth', block: 'start' }); } catch (_) {}
+            } else {
+              stop();
+              resetSteps();
+            }
+          });
+
+          document.addEventListener('visibilitychange', function () {
+            if (document.hidden) stop();
+          });
+        });
+
+        // Default-open card: kick off step progression now
+        for (var k = 0; k < built.length; k += 1) {
+          if (built[k].details.open) {
+            // Manually start since `open` attribute was set before listener attached
+            (function (entry) {
+              var stepEls = entry.stepEls;
+              var bar = entry.bar;
+              var perStep = entry.perStep;
+              var i = 0;
+              function go() {
+                if (i >= stepEls.length) {
+                  for (var j = 0; j < stepEls.length; j += 1) {
+                    stepEls[j].setAttribute('data-active', 'false');
+                    stepEls[j].setAttribute('data-done', 'true');
+                  }
+                  if (bar) bar.style.width = '100%';
+                  return;
+                }
+                for (var j2 = 0; j2 < stepEls.length; j2 += 1) {
+                  if (j2 < i) {
+                    stepEls[j2].setAttribute('data-active', 'false');
+                    stepEls[j2].setAttribute('data-done', 'true');
+                  } else if (j2 === i) {
+                    stepEls[j2].setAttribute('data-active', 'true');
+                  } else {
+                    stepEls[j2].setAttribute('data-active', 'false');
+                  }
+                }
+                if (bar) bar.style.width = Math.round(((i + 1) / stepEls.length) * 100) + '%';
+                i += 1;
+                setTimeout(go, perStep * 1000);
+              }
+              go();
+            })(built[k]);
+            break;
+          }
+        }
+      }
+    })();
+
+    // ============================================================
+    // 3) Quiet offline awareness — tel: links still work.
+    // ============================================================
+    (function offlineHint() {
+      function show() {
+        var heads = document.querySelectorAll('.sk-helplines__intl-head');
+        if (!heads.length) return;
+        if (document.getElementById('skOfflineNote')) return;
+        var note = document.createElement('p');
+        note.id = 'skOfflineNote';
+        note.className = 'sk-helplines__intl-head';
+        note.style.color = 'var(--sk-saffron)';
+        note.textContent = 'You are offline — but these phone numbers will still dial.';
+        heads[0].parentNode.insertBefore(note, heads[0]);
+      }
+      function hide() {
+        var n = document.getElementById('skOfflineNote');
+        if (n && n.parentNode) n.parentNode.removeChild(n);
+      }
+      window.addEventListener('offline', show);
+      window.addEventListener('online', hide);
+      if (typeof navigator !== 'undefined' && navigator.onLine === false) show();
+    })();
+
+  })();
+  </script>
+
+</body>
+</html>

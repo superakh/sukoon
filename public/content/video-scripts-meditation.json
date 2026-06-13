@@ -1,0 +1,1003 @@
+[
+  {
+    "id": "med-body-scan-morning",
+    "title_en": "10-Minute Body Scan to Begin the Day",
+    "title_hi": "दिन की शुरुआत — शरीर का जागरण",
+    "target_duration_min": 10,
+    "type": "meditation_guided",
+    "location": "Ground-floor room in a stone-and-plaster South Indian home. Pre-dawn. Tall wooden window half-open, gauze curtain lifting faintly in morning breeze. Instructor seated on a thin cotton dhurrie on bare stone floor. Behind her: a low undecorated white-washed wall, one shelf holding a single clay lamp (unlit), a small copper vessel with water. Dawn light entering from camera-right, pale grey-blue transitioning to warm amber over the course of the shoot. Ambient sound: distant birds, one far-off temple bell (naturally occurring — do not stage). No candles, no incense smoke, no decorative items.",
+    "location_alt": "Rooftop terrace of a mid-century apartment in Pune or Mysuru. Pre-dawn. Instructor on mat at rooftop level, city below softly out of focus, sky above. Same colour palette — grey-blue to amber. No city noise. A single potted neem or tulsi plant in soft background focus.",
+    "time_of_day": "blue_hour_dawn",
+    "talent_direction": "South Indian or North Indian woman, 30–45 years. Not a celebrity — relatable, quiet authority. Natural face: no visible foundation, light kajal only if naturally her own. Hair: loose single braid resting over one shoulder, or pulled back simply with a cloth scrunchie. No jewellery except possibly small stud earrings (gold or plain metal — no statement pieces). Demeanour: newly awake but fully present. Eyes soft, not stage-bright. Voice in script is barely above conversational — she is not performing, she is accompanying. Wardrobe as specified below. She should not look like a studio yoga instructor — she looks like someone who has been doing this quietly for fifteen years.",
+    "wardrobe": "Loose linen trousers in off-white or pale clay. Long kurta-style top in the same family — dusty blush or stone grey, full sleeves, no pattern, no embroidery. Fabric: natural linen or handloom cotton only — no polyester sheen. No logos. No visible brand labels. Feet bare. No orange, no saffron, no red — avoids guru-costume associations. No athletic wear. If colour correction reads too warm, costume can go to soft sage green or faded indigo.",
+    "camera_setup": "Primary: Sony FX3 or FX6, 35mm prime at f/1.8–f/2.0 for main seated address (shallow depth, stone wall soft behind). Secondary: 85mm prime at f/2.8 for close-up face and hands. Slider: 60cm horizontal slider for slow push-in on opening shot and pull-back on close. No handheld — this session is still and interior. All movement motivated by breath rhythm. Shot changes timed to natural pauses in script, never mid-sentence. Total camera setups: 3. Shoot all setups in single dawn window (approximately 45 minutes of usable light).",
+    "lighting": "Natural light primary. Light from window camera-right. Add one 1×1 Aputure 300d through diffusion scrim outside window to extend the blue-hour quality if natural light shifts too quickly. White bounce card camera-left for fill — ratio approximately 3:1 (key to fill). No artificial light visible within frame. If shooting after dawn window: replicate with HMI balanced to 5600K, diffused through silk. Colour temperature should read 4900–5200K at peak, slightly cooler (5600K) at open, warming toward 4000K at close — matching the dawn transition naturally.",
+    "audio_direction": "Primary: Sennheiser MKH 50 on boom, positioned above and slightly in front of talent, out of frame. Secondary: DJI Mic 2 lavalier clipped inside neckline of kurta, run as backup. No ambient music during any spoken section. During three designated silence pauses (marked [SILENCE] in script), record room tone for 30 seconds each — do not add music in post for these pauses. Underbed: Tanpura drone in Sa (C) beginning at 0:00, mixed at -18dB behind all voice, present but not distracting. Natural ambient sound (birds, distant bell) should be preserved in final mix at -30dB — do not clean completely. Avoid room reverb — use acoustic panels if stone room is reflective.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing. Full frame of the room. Instructor already seated on dhurrie, facing slightly away from camera, looking toward window. Dawn light entering. Her silhouette against pale grey light. Camera on slider, completely still. Hold 8 seconds.",
+        "duration_sec": 8,
+        "notes": "This is the first frame. No motion, no fade-in. Cut directly to image. The stillness of the first frame should feel earned."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "35mm. Instructor turns to face camera. Eye contact — soft, not performed. She breathes once, visibly. Then begins to speak the opening line. Light from window falling across her left shoulder.",
+        "duration_sec": 45,
+        "notes": "She does not smile on the turn. The turn is simply a body turning. The eye contact is an invitation, not a greeting."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "85mm. Her hands resting in her lap — one palm up, one palm down. Slow rack focus from hands to her face as she speaks the first instruction. Light catching the fine texture of the fabric on her lap.",
+        "duration_sec": 30,
+        "notes": "Hands must be still. If subject fidgets, retake. The stillness of the hands communicates the stillness we are asking the viewer to find."
+      },
+      {
+        "shot_number": 4,
+        "type": "WS",
+        "description": "Full room from slightly higher angle — camera approximately 5 feet high, looking slightly down. Instructor small in frame, stone floor large, window large. Dawn light now slightly more amber. This shot used during body-scan instruction phase.",
+        "duration_sec": 60,
+        "notes": "The space around her matters. She should occupy roughly one-third of the vertical frame — not dominated, not dwarfed."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Eyes closed. 85mm. Frame fills with her face from mid-forehead to collarbones. Breath visible in the slight rise and fall of chest/shoulders. No movement from camera. Hold through 30 seconds of silence.",
+        "duration_sec": 40,
+        "notes": "The viewer's eyes will close with hers. This shot holds through the first major silence in the script. Do not cut away."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Morning light on bare stone floor. Camera low, wide-angle. Light travelling slowly across floor as sun rises. Grain of stone visible.",
+        "duration_sec": 20,
+        "notes": "Shoot for 90 seconds, editor selects 20 seconds. This can be used over any quiet instruction moment."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU",
+        "description": "The gauze curtain moving in morning breeze. Soft focus. Shot used during breath instruction — the movement of the curtain mirrors the instruction to notice the breath moving through the body.",
+        "duration_sec": 15,
+        "notes": "This is a metaphor shot. Use sparingly. One cut, not a repeated motif."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "Instructor from her right side — profile. Window behind her left shoulder, light spilling across her face. Eyes still closed. She speaks the body-scan instructions in this angle — the profile gives the viewer intimacy without confrontation.",
+        "duration_sec": 90,
+        "notes": "Primary workhorse angle for mid-session instruction. Hold this angle for the full body-scan section without cutting unless script calls for silence."
+      },
+      {
+        "shot_number": 9,
+        "type": "ECU",
+        "description": "Her feet, bare on the dhurrie. Stone floor beyond. This shot used during the instruction to feel the earth beneath the feet.",
+        "duration_sec": 12,
+        "notes": "Shot must be still. No motion. Even subtle camera breathing should be suppressed — lock off."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Return to main 35mm front-facing angle. Eyes open now. She holds eye contact for five full seconds of silence before speaking the closing line. Light has shifted to fuller amber — dawn complete.",
+        "duration_sec": 30,
+        "notes": "The shift in light between shot 2 and this shot — from grey-blue to amber — should be visible to the viewer without being dramatic. The day has actually arrived."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Final. Slider pull-back very slowly. Instructor growing smaller in frame as camera moves away from her. She remains seated, eyes open, looking at nothing in particular — just present. Hold until she is small in frame, stone floor large, window large. Fade to black over 3 seconds.",
+        "duration_sec": 12,
+        "notes": "This is the last shot. The pull-back is a departure, not an abandonment. The pace should be breath-speed — approximately 1 foot per second."
+      }
+    ],
+    "script_text_en": [
+      "You don't need to do anything with the next ten minutes. You only need to arrive in them.",
+      "Sit however you are comfortable. If you are in a chair, feet flat on the floor. If you are on the ground, cross your legs or stretch them out — it doesn't matter. What matters is that your spine has some length. Not rigid. Just awake.",
+      "Let your hands rest wherever they fall naturally.",
+      "Close your eyes.",
+      "[SILENCE — 8 seconds]",
+      "The body has been asleep. Before you ask it to do anything today — to carry things, to type, to speak, to perform — let's take ten minutes simply to notice it. Not to fix anything. Not to judge anything. Just to say: I'm here. You're here. Good morning.",
+      "We start at the feet.",
+      "Bring your attention — not your hands, just your attention — to the soles of your feet. Notice whatever is there. Maybe you feel the floor. Maybe you feel nothing yet. Both are fine. Stay with the feet for a few breaths.",
+      "[SILENCE — 10 seconds]",
+      "Now move your attention slowly upward to your ankles. The thin bones there, the soft hollows on either side. You don't need to move them. Just notice them. They've been carrying you your whole life.",
+      "Up to the calves. The shins. Sometimes there is a faint aliveness here — a subtle pulse, or warmth, or coolness. Sometimes nothing. Just notice.",
+      "Your knees. The fold of them. Whatever pressure or ease is there.",
+      "The thighs. Heavy or light. Resting on the floor or on the chair.",
+      "Your hips — and the place where you are sitting. The seat of your body. Notice the contact. The weight. The earth holding you.",
+      "[SILENCE — 12 seconds]",
+      "Move into the belly. This is where we hold a lot. Not just food — tension, worry, unprocessed days. You don't need to release anything right now. Simply arrive here. Notice if the belly is soft or held. Can you let it soften by five percent? Just five.",
+      "Up the ribcage, one breath at a time. The ribs expand as you breathe in — can you feel that? Not a big breath. Your normal breath. The small miracle it is.",
+      "The chest. The heart space. Whatever lives there this morning. You don't need to name it. Just acknowledge it exists.",
+      "Your shoulders. If they are up near your ears — and they often are — you can let them drop. Not dramatically. Just a small release. Like setting something down.",
+      "Your arms. Your forearms. The fine bones of your wrists. Your hands — the palms, the fingers, the spaces between.",
+      "[SILENCE — 10 seconds]",
+      "Up the back of your neck. The throat. Swallow once if you need to.",
+      "Your jaw. This is another place we hold things. Is your jaw clenched right now? Can you let the back teeth separate just a little? The tongue can rest on the floor of the mouth.",
+      "Your cheeks. The skin around your eyes. Your forehead.",
+      "The top of your skull.",
+      "[SILENCE — 15 seconds]",
+      "Now: your whole body at once. Not part by part anymore. Just the whole shape of you, sitting here, in this room, at this particular moment in time. Breathing. Alive. Beginning a day.",
+      "Before you open your eyes — one breath. Slow. In through the nose. And out through the mouth, with a soft sound if you like. Not performance. Just breath.",
+      "[BREATH]",
+      "Open your eyes when you're ready. There is no hurry. The day will wait the few extra seconds it takes to arrive in it gently.",
+      "Good morning."
+    ],
+    "script_text_hi": [
+      "अगले दस मिनट में आपको कुछ करने की ज़रूरत नहीं है। बस उनमें पहुँचना है।",
+      "जैसे भी आरामदायक लगे, बैठ जाएँ। कुर्सी पर हों तो पैर ज़मीन पर सपाट। ज़मीन पर हों तो पैर मोड़ लें या फैला लें — कोई फ़र्क नहीं पड़ता। बस रीढ़ में थोड़ी लम्बाई रहे। कड़ी नहीं — बस जागी हुई।",
+      "हाथ जहाँ भी स्वाभाविक रूप से आएँ, वहीं रख लें।",
+      "आँखें बंद करें।",
+      "[SILENCE — 8 seconds]",
+      "शरीर सोया हुआ था। आज उससे कुछ करवाने से पहले — चीज़ें उठवाने से, टाइप करवाने से, बोलवाने से, प्रदर्शन करवाने से — दस मिनट बस उसे महसूस करते हैं। कुछ ठीक करने के लिए नहीं। कुछ आँकने के लिए नहीं। बस यह कहने के लिए: मैं यहाँ हूँ। तुम यहाँ हो। सुप्रभात।",
+      "शुरू करते हैं पैरों से।",
+      "अपना ध्यान — हाथ नहीं, सिर्फ़ ध्यान — पैरों के तलवों पर लाएँ। जो कुछ भी वहाँ है, महसूस करें। शायद ज़मीन का स्पर्श हो। शायद अभी कुछ न हो। दोनों ठीक हैं। कुछ साँसें वहीं रहें।",
+      "[SILENCE — 10 seconds]",
+      "अब धीरे-धीरे ऊपर टखनों की ओर। वहाँ की पतली हड्डियाँ, दोनों तरफ़ की हल्की-सी गहराई। हिलाने की ज़रूरत नहीं। बस देखें। वे जीवन भर आपको उठाए चली आ रही हैं।",
+      "पिंडलियाँ। घुटने के नीचे का हिस्सा। कभी-कभी यहाँ हल्की-सी धड़कन या गर्माहट या ठंडक महसूस होती है। कभी-कभी कुछ नहीं। बस ध्यान दें।",
+      "घुटने। उनका मोड़। जो भी दबाव या राहत वहाँ है।",
+      "जाँघें। भारी या हल्की। ज़मीन या कुर्सी पर टिकी हुईं।",
+      "कूल्हे — और वह जगह जहाँ आप बैठे हैं। शरीर का आसन। स्पर्श महसूस करें। वज़न। धरती आपको थाम रही है।",
+      "[SILENCE — 12 seconds]",
+      "पेट की ओर आएँ। यहाँ बहुत कुछ रहता है — न सिर्फ़ खाना, बल्कि तनाव, चिंता, अनगिने दिन। अभी कुछ छोड़ने की ज़रूरत नहीं। बस यहाँ पहुँचें। देखें पेट नरम है या कसा हुआ। क्या उसे पाँच प्रतिशत नरम कर सकते हैं? बस पाँच।",
+      "पसलियाँ, एक-एक साँस के साथ। साँस लेने पर पसलियाँ फैलती हैं — क्या यह महसूस होता है? बड़ी साँस नहीं। अपनी सामान्य साँस। यह जो छोटा-सा चमत्कार है।",
+      "सीना। हृदय का स्थान। जो भी इस सुबह वहाँ है। उसे नाम देने की ज़रूरत नहीं। बस मानें कि यह है।",
+      "कंधे। अगर वे कानों के पास हों — और अक्सर होते हैं — तो उन्हें हल्का नीचे आने दें। नाटकीय नहीं। बस एक छोटी-सी राहत। जैसे कोई चीज़ रख देना।",
+      "भुजाएँ। कलाइयाँ। हाथ — हथेलियाँ, उँगलियाँ, बीच की जगह।",
+      "[SILENCE — 10 seconds]",
+      "गर्दन के पीछे का हिस्सा। गला। एक बार निगलें अगर ज़रूरत हो।",
+      "जबड़ा। यह भी एक जगह है जहाँ हम बहुत कुछ रोके रहते हैं। क्या जबड़ा अभी कसा है? क्या ऊपर-नीचे के दाँत थोड़े अलग हो सकते हैं? जीभ मुँह के तल पर विश्राम करे।",
+      "गाल। आँखों के आसपास की त्वचा। माथा।",
+      "सिर का ऊपरी हिस्सा।",
+      "[SILENCE — 15 seconds]",
+      "अब: पूरा शरीर एक साथ। अब हिस्सा-हिस्सा नहीं। बस आपका पूरा आकार — यहाँ बैठा हुआ, इस कमरे में, इस विशेष पल में। साँस लेता हुआ। जीवित। एक दिन की शुरुआत करता हुआ।",
+      "आँखें खोलने से पहले — एक साँस। धीरे। नाक से अंदर। और मुँह से बाहर, चाहें तो हल्की आवाज़ के साथ। प्रदर्शन नहीं। बस साँस।",
+      "[BREATH]",
+      "जब तैयार हों, आँखें खोलें। कोई जल्दी नहीं। दिन कुछ पल और रुक सकता है — ताकि आप उसमें धीरे से पहुँच सकें।",
+      "सुप्रभात।"
+    ],
+    "b_roll_list": [
+      "Dawn light moving across stone floor — 90-second continuous shot, camera locked off, wide angle",
+      "Single tulsi plant on windowsill, breeze moving leaves, backlit by dawn — 45 seconds",
+      "Bare feet on textured dhurrie, seen from slightly above — 30 seconds",
+      "Empty clay lamp on shelf — macro, dust on surface visible, window light from side — 20 seconds",
+      "Gauze curtain lifting and falling in natural breeze — 60 seconds",
+      "Outside the window: coconut palm fronds or neem tree, morning light through leaves — 45 seconds",
+      "Close-up of cotton dhurrie texture underfoot — 20 seconds",
+      "Copper vessel with water, light catching the surface — 15 seconds",
+      "The sky through the window changing from grey-blue to pale amber — time-lapse if possible, 5 seconds compressed, otherwise static 20-second shot at peak transition"
+    ],
+    "edit_notes": {
+      "color_grade": "Rec. 709 base. Lift shadows slightly — avoid crushed blacks. Highlights warm: skin tones at 4800K. Shadows cool: retain the grey-blue in floor and wall. No teal-and-orange. Reference: Chloé Zhao's Nomadland interior light. Grain: add 15% natural grain (6400 ISO film simulation) — not digital noise, grain.",
+      "pacing": "Average shot duration: 18–22 seconds. No cut under 8 seconds. Silence sections: hold the frame — do not cut to B-roll during any [SILENCE] marker unless running past 20 seconds. B-roll inserts maximum 3 times in 10 minutes — use sparingly.",
+      "music": "Tanpura drone Sa (C) at -18dB throughout. No percussion. No melody. At 9:30, fade drone to -28dB. At 10:00, silence. No music over the final line.",
+      "titles": "White sans-serif, lower-case, bottom-left corner. Title card at 0:08: 'body scan / शरीर का जागरण'. Duration indicator bottom-right: '10 min'. Both titles fade out at 0:20.",
+      "end_card": "Hold on instructor seated, still, after last line. 3 seconds. Slow fade to black. Sukoon wordmark appears in white, centred, on black — held 4 seconds. Fade."
+    },
+    "end_card_copy": {
+      "en": "Sukoon. Practice every day.",
+      "hi": "सुकून। हर दिन।"
+    }
+  },
+
+  {
+    "id": "med-before-difficult-conversation",
+    "title_en": "5 Minutes Before a Difficult Conversation",
+    "title_hi": "मुश्किल बातचीत से पहले — पाँच मिनट",
+    "target_duration_min": 5,
+    "type": "meditation_guided",
+    "location": "A stairwell landing, or a quiet corridor outside a glass-walled office. Contemporary urban interior — not a meditation studio. The point is this could be shot anywhere a person might actually pause before re-entering a difficult situation. Concrete walls, neutral palette. One window or skylight casting a beam of diffused natural light onto the floor. No plants, no decor, no props — the austerity is the point. Instructor stands (does not sit) for the first 90 seconds, then sits on the bottom stair or a low ledge for the remainder.",
+    "location_alt": "Exterior: a building's exterior staircase — Mumbai, Delhi, or Bengaluru. Mid-morning. Concrete and metal. City ambient muffled but present. The instructor sits on a stair, back against the railing. The ordinariness of the location is deliberate and essential.",
+    "time_of_day": "mid_morning",
+    "talent_direction": "Could be any adult — man or woman, 25–50. Wardrobe suggests office context (see below). This is not a retreat — it is a pause inside ordinary life. The instructor should convey composure, not calm — there is a difference. Composure is something you find; calm is something you perform. Her or his face shows that they know what is about to happen. Eyes are clear, not blank. Voice is lower and slightly slower than usual — this is breath practice, so voice pacing demonstrates the technique.",
+    "wardrobe": "Office-appropriate: dark trouser or straight-cut kurta pants, a muted shirt or blouse — slate blue, charcoal, warm grey. No bright colours. No logos. Footwear on (they're in a building). No athletic wear. Minimal jewellery. Hair tied back or short — nothing loose enough to become distracting during the camera's close attention.",
+    "camera_setup": "Sony FX3, 50mm prime throughout. f/2.0. This is an intimate, single-camera short. No slider — hand-held with gimbal stabilisation for the standing opening sequence (simulates the unsettled state before settling). Once instructor sits: locked off. Two setups only: (1) standing approach shot, (2) seated medium close-up for the full practice. Keep focal length consistent — the 50mm is emotionally neutral, which is correct for this content.",
+    "lighting": "Natural light or simulated natural: one beam from above (skylight or window). No fill light — let the shadows be present. This is a 3:1 key-to-shadow ratio minimum. The slightly dramatic light reinforces the emotional register — something is at stake here. No soft box. No ring light. If interior is too dark, add a single 1×1 panel with full diffusion at 3200K positioned where a skylight would be.",
+    "audio_direction": "Sennheiser MKH 50 boom only — no lavalier (lavalier hiss is wrong for this quiet intimate context). Room acoustics will have some live reflection — use it, don't pad it out completely. This is not a studio. The slight reverb of a stairwell or corridor is authentic and appropriate. No music whatsoever — not during, not under. Absolute silence between spoken cues. The silence is the practice.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "MS",
+        "description": "Instructor enters frame walking — approaching camera. Stops. Stands still. Looks directly at camera. Five full seconds of eye contact before speaking. Gimbal-stabilised — slight organic movement in the walk, then stillness.",
+        "duration_sec": 15,
+        "notes": "The walk and stop communicates: I was moving, I'm choosing to stop. This is the whole thesis of the session. Do not instruct her to smile. She can acknowledge the camera with a small nod."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Standing. She speaks the opening two lines. One hand comes to her own sternum — not theatrical, just natural. Camera locked off now — she stopped moving.",
+        "duration_sec": 30,
+        "notes": "The hand on the sternum should look unconscious, not choreographed. If it looks like a gesture, reshoot without it."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "She sits on the stair or ledge. 50mm. Seated — eye level with camera approximately. Spine straight, hands on thighs. She begins the first breath instruction.",
+        "duration_sec": 60,
+        "notes": "The sit should look like finding a seat, not like a yoga set-up. Natural, slightly effortful, ordinary."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Hands on thighs. Close. The small movements of the fingers during breath practice. Light from above casting subtle shadow of hand on fabric.",
+        "duration_sec": 20,
+        "notes": "Cut to this during the count-breath instruction. The hands are concrete, grounding — they counter any floating quality in the breathing cues."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Face. Eyes closing. One full breath cycle visible — the slight flare of nostrils, the slight lift of collarbone. Hold through 20 seconds of silence.",
+        "duration_sec": 25,
+        "notes": "This is the deepest intimacy in the piece. Hold it. Do not cut away."
+      },
+      {
+        "shot_number": 6,
+        "type": "CU",
+        "description": "The floor of the stairwell or corridor — concrete texture, dust, a crack. The ordinary ground. This is B-roll for the grounding instruction section.",
+        "duration_sec": 15,
+        "notes": "Shot must be in focus. The imperfection of the floor — not a pristine studio floor — is the point."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Eyes open. She looks directly at camera. Speaks the closing lines. Then: she stands. She turns. She walks away from camera — back into the building, the corridor, her day. She does not look back.",
+        "duration_sec": 20,
+        "notes": "The walk away is the most important shot in the piece. She is going back in. That is the whole point of this practice."
+      }
+    ],
+    "script_text_en": [
+      "Before you go in.",
+      "Just this. Five minutes. You don't need to fix anything about how you feel. You need to be able to speak clearly when you get in there. That's all.",
+      "Sit. Close your eyes.",
+      "Whatever story is running in your head right now — the thing they might say, the thing you'll have to defend, the worst version of how it goes — let it keep running. Don't fight it. Just don't add to it. Let it be a television in the background. You're not watching it. You're here, on this breath.",
+      "Four counts in. Hold four. Out four. Hold four. With me.",
+      "In — two — three — four. Hold — two — three — four. Out — two — three — four. Hold — two — three — four.",
+      "[SILENCE — 5 seconds]",
+      "Again.",
+      "In — two — three — four. Hold — two — three — four. Out — two — three — four. Hold — two — three — four.",
+      "[SILENCE — 5 seconds]",
+      "One more.",
+      "In — two — three — four. Hold — two — three — four. Out — two — three — four. Hold — two — three — four.",
+      "[SILENCE — 10 seconds]",
+      "Here is what has happened in your nervous system in the last ninety seconds: your heart rate has slowed. Your prefrontal cortex — the part that thinks and speaks — has a better blood supply than it had two minutes ago. You are more capable of clear language than you were before you sat down. That is not a feeling. That is a fact.",
+      "One more thing before you go in. Say this to yourself — not as a performance, just as a setting of intention:",
+      "I want to understand, not only to be understood.",
+      "[SILENCE — 5 seconds]",
+      "Again, quietly.",
+      "I want to understand, not only to be understood.",
+      "[SILENCE — 8 seconds]",
+      "Open your eyes.",
+      "You're ready. Go."
+    ],
+    "script_text_hi": [
+      "जाने से पहले।",
+      "बस यह। पाँच मिनट। आप जैसा महसूस कर रहे हैं उसे बदलने की ज़रूरत नहीं। ज़रूरत है कि जब आप अंदर जाएँ तो साफ़ बोल सकें। बस इतना।",
+      "बैठें। आँखें बंद करें।",
+      "इस वक्त दिमाग़ में जो भी कहानी चल रही है — वो क्या कहेंगे, आपको क्या सफ़ाई देनी होगी, सबसे बुरा क्या हो सकता है — उसे चलने दें। उससे लड़ें मत। बस उसमें कुछ जोड़ें मत। उसे पृष्ठभूमि में चलते टीवी की तरह होने दें। आप उसे देख नहीं रहे। आप यहाँ हैं, इस साँस के साथ।",
+      "चार तक गिनते हुए साँस अंदर। चार तक रोकें। चार तक बाहर। चार तक रोकें। मेरे साथ।",
+      "अंदर — दो — तीन — चार। रोकें — दो — तीन — चार। बाहर — दो — तीन — चार। रोकें — दो — तीन — चार।",
+      "[SILENCE — 5 seconds]",
+      "एक बार फिर।",
+      "अंदर — दो — तीन — चार। रोकें — दो — तीन — चार। बाहर — दो — तीन — चार। रोकें — दो — तीन — चार।",
+      "[SILENCE — 5 seconds]",
+      "एक और।",
+      "अंदर — दो — तीन — चार। रोकें — दो — तीन — चार। बाहर — दो — तीन — चार। रोकें — दो — तीन — चार।",
+      "[SILENCE — 10 seconds]",
+      "पिछले नब्बे सेकंड में आपके तंत्रिका तंत्र में क्या हुआ: दिल की गति धीमी हो गई। प्रीफ्रंटल कॉर्टेक्स — वह हिस्सा जो सोचता और बोलता है — को दो मिनट पहले से बेहतर रक्त प्रवाह मिल रहा है। आप बैठने से पहले की तुलना में अभी स्पष्ट भाषा में ज़्यादा सक्षम हैं। यह एक भावना नहीं है। यह एक तथ्य है।",
+      "जाने से पहले एक और बात। यह अपने आप से कहें — प्रदर्शन के रूप में नहीं, बस एक इरादे के रूप में:",
+      "मैं समझना चाहता हूँ — सिर्फ़ समझा जाना नहीं।",
+      "[SILENCE — 5 seconds]",
+      "फिर, धीरे से।",
+      "मैं समझना चाहता हूँ — सिर्फ़ समझा जाना नहीं।",
+      "[SILENCE — 8 seconds]",
+      "आँखें खोलें।",
+      "आप तैयार हैं। जाइए।"
+    ],
+    "b_roll_list": [
+      "Door handle — hand reaching for it, pausing, not turning it — held for 10 seconds",
+      "Corridor or stairwell from above — figure small in frame — 15 seconds",
+      "Concrete floor texture — close, slightly out of focus foreground, focused background — 15 seconds",
+      "A clock on the wall (no branding) showing time — held 8 seconds",
+      "The instructor's shoes/feet on the ground — still — 10 seconds"
+    ],
+    "edit_notes": {
+      "color_grade": "Slightly desaturated. Cool-neutral grade — not warm. Preserve the concrete and institutional tones. Skin should be accurate, not flattering. This is a utilitarian session — the grade should match. Reference: Steve McQueen's Shame interiors. No grain addition needed — the utilitarian setting reads cleaner.",
+      "pacing": "This is the fastest-cutting session in the set. Average shot duration 10–14 seconds. The box-breath count sequences should cut to a single locked-off CU of her face for the duration — no cutting during the counts. The silence sections: hold the frame.",
+      "music": "None. Absolute silence. Any temptation to add ambient underscore should be refused. The silence IS the instruction.",
+      "titles": "Minimal. White lower-case at bottom: '5 min / मुश्किल बातचीत से पहले'. Fade in at 0:05, fade out at 0:18.",
+      "end_card": "Cut to black the moment she walks away. 2-second black. Sukoon wordmark in white. Held 3 seconds. Hard cut off — no fade."
+    },
+    "end_card_copy": {
+      "en": "Sukoon. For the ordinary hard moments.",
+      "hi": "सुकून। उन पलों के लिए जो कठिन होते हैं।"
+    }
+  },
+
+  {
+    "id": "med-loving-kindness-self",
+    "title_en": "15 Minutes of Loving-Kindness for Yourself",
+    "title_hi": "अपने लिए करुणा — पंद्रह मिनट",
+    "target_duration_min": 15,
+    "type": "meditation_guided",
+    "location": "A dawn-lit room inside a small stone house in Himachal Pradesh or Uttarakhand. Mountains barely visible through a low square window — heavy mist, only suggestion of peaks. The instructor sits on a folded blanket on a wooden floor. Behind her: stone wall, old plaster, a very small framed image of any figure she might genuinely revere (not visible enough to be identified as religious branding — slightly out of focus, edge of frame only). A wool shawl over her shoulders — not draped like a costume, pulled up naturally against the cold. The light is pre-dawn grey-blue transitioning slowly to very soft gold as the session progresses. Room temperature is visibly cool — breath mist optional but beautiful if natural.",
+    "location_alt": "A south-facing room in a two-storey home in the Nilgiris or Kodaikanal. Large window, morning mist outside, green hillside beyond. Tea cup held in hands at opening (set aside before practice begins — this detail humanises the scene immediately). Same palette — grey-blue to soft gold.",
+    "time_of_day": "blue_hour_dawn",
+    "talent_direction": "Woman, 35–50. South Indian, Kashmiri, or Pahadi features — mountain or hill-station context reads correctly on screen. She should look like she has been doing this practice privately for years and is now, reluctantly, sharing it. Not performance energy — the energy of someone who finds this difficult and does it anyway. Voice: warm but careful. Not breathy-yoga-instructor. She pauses naturally when the material asks for it. The Metta phrases are delivered slowly, with the timing of a genuine wish — not a recitation.",
+    "wardrobe": "Handwoven wool or pashmina shawl — natural undyed ivory or pale grey, thrown over shoulders and loose around arms. Underneath: a simple full-sleeve top in cream or warm grey — no logos, no pattern. Loose trousers, also cream or natural. Bare feet. Hair: down and slightly dishevelled (just woke up) or in a loose low bun. No jewellery. No kajal. The face is unadorned — this is a private practice, not a performance.",
+    "camera_setup": "Sony FX3. Two lenses. 35mm at f/2.0 for establishing and medium — she's small enough in frame that we see the room, the window, the mountain suggestion. 85mm at f/1.8 for the Metta-phrase delivery sections — very shallow, face filling frame, background entirely bokeh. Slider used once: a 30cm very slow push-in during the 'May you be at ease' repetition (shot 7) — 30cm over 45 seconds. No other movement. Lock off all other setups.",
+    "lighting": "Natural primary. Pre-dawn requires: one 1×1 Aputure through the exterior of the window at 5600K, fully diffused, simulating pre-dawn sky glow. As session progresses, slowly warm this source from 5600K to 4200K to simulate dawn. No fill inside room — shadow side of her face should fall naturally. The wool shawl will hold texture beautifully in this light. Candle on the shelf (out of primary frame but visible in WS): add one candle for warmth of scene — not as spiritual prop, as heat and light source appropriate to the cold mountain morning.",
+    "audio_direction": "Sennheiser MKH 50 boom. Lavalier backup. Audio environment: cold silence. No birds (mountain pre-dawn). Occasionally: wind against window frame — natural, do not suppress in mix. No tanpura drone for this session — the silence should be denser, more interior. At the 8-minute mark, introduce at -26dB a very faint Tibetan singing bowl resonance — single strike, very long decay — used once only. The effect is not decorative: it is a gentle return to presence mid-practice.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing. The room, the window, the mountain-mist suggestion outside. Instructor not yet in frame. Hold 5 seconds on the empty room. Then: she walks slowly into frame from camera-left, sits on the blanket. Pulls the shawl up. Looks at the window for a moment. Then turns to camera.",
+        "duration_sec": 25,
+        "notes": "The moment of looking at the window before turning to camera is the session's emotional thesis: there is a world out there, and I am choosing to look inward for fifteen minutes."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "35mm. She speaks the opening lines. One hand holding the shawl closed at her chest. Not performing warmth — genuinely cool in the room.",
+        "duration_sec": 45,
+        "notes": "If she is visibly cold, that is perfect. Do not heat the room to eliminate this. The physical reality of sitting quietly in a cold room before dawn is part of what makes this practice honest."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "85mm. Her face as she gives the first instruction to close eyes. Slow. She closes her own eyes as she speaks.",
+        "duration_sec": 30,
+        "notes": "She closes her eyes before asking the viewer to. She is doing the practice herself — not instructing from outside it."
+      },
+      {
+        "shot_number": 4,
+        "type": "ECU",
+        "description": "Hands. Both hands now holding the shawl loosely in her lap. Very still. Morning light catching the texture of the wool. Used during the body-softening instruction.",
+        "duration_sec": 20,
+        "notes": "No motion whatsoever. Locked off."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "35mm. The room from the 35mm. Her face and the window behind her simultaneously. Used during the 'bring yourself to mind' instruction. The window — mountain suggestion — is present over her shoulder as she asks the viewer to see themselves clearly.",
+        "duration_sec": 60,
+        "notes": "This compositional choice matters: the vast world (mountain) is behind her; the subject of attention (the self) is in front. Keep this in the final cut."
+      },
+      {
+        "shot_number": 6,
+        "type": "CU",
+        "description": "85mm. Her face — eyes closed — during the first Metta phrase delivery. Her lips move slightly as she speaks. Breath faintly visible in the cool air (if natural — do not stage with dry ice).",
+        "duration_sec": 45,
+        "notes": "Let this hold. No cuts during any Metta phrase sequence."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "35mm. The very slow slider push-in over 45 seconds during the 'May you be at ease' repetition. Starting position: full room in frame. End position: instructor fills approximately half the horizontal frame. Movement: barely perceptible — viewer should not consciously register the camera moving until it has moved.",
+        "duration_sec": 45,
+        "notes": "This is the emotional peak of the session. The camera's slow approach mirrors the tenderness being asked of the viewer toward themselves."
+      },
+      {
+        "shot_number": 8,
+        "type": "B-roll",
+        "description": "Mountain suggestion through glass — mist, maybe peak, morning light beginning. Out of focus on the glass pane, in focus on the distance. 20 seconds. Used once only — during the 'expanding circle' section.",
+        "duration_sec": 20,
+        "notes": "Keep mist density. If the mountain becomes too clear (sun burning off mist), reshoot earlier in morning."
+      },
+      {
+        "shot_number": 9,
+        "type": "ECU",
+        "description": "Her closed eyes, extreme close. The fine movements of the eyelids. The slight asymmetry of the face. The realness of it. Hold through the final long silence.",
+        "duration_sec": 40,
+        "notes": "This shot should feel almost too intimate. That is correct."
+      },
+      {
+        "shot_number": 10,
+        "type": "WS",
+        "description": "Return to full-room 35mm establishing angle. Eyes open now. The room is slightly lighter — dawn has progressed. She sits for a moment looking at the window. Then turns to camera for the closing line.",
+        "duration_sec": 25,
+        "notes": "The light shift between shot 1 and this shot — from pre-dawn mist grey to soft gold — is the visual proof of time passed, of practice completed."
+      }
+    ],
+    "script_text_en": [
+      "This one is for you.",
+      "Not a generalised 'you'. The specific you who woke up this morning with whatever you woke up with — the weight of the week, something unsaid, a memory you don't need, a version of yourself you keep finding disappointing.",
+      "That person. This practice is for them.",
+      "Sit however is comfortable. Close your eyes.",
+      "Take one breath that is just for landing. In. And out. Let your shoulders be wherever they need to be. Let your hands rest.",
+      "[SILENCE — 10 seconds]",
+      "Metta is a Pali word — it means loving-kindness, but that translation is a little soft. It also means friendship. The kind of friendship that doesn't need you to be better than you are. That sees you clearly and chooses you anyway. That is what we are practicing offering — to ourselves first, which is always the hardest direction.",
+      "Bring yourself to mind. Not a flattering image. Just you. As you actually are right now, this morning, in this body, in this season of your life.",
+      "Let that image settle. Don't edit it.",
+      "[SILENCE — 15 seconds]",
+      "And now — to that person — say these phrases. Slowly. Meaning each one, or trying to:",
+      "May you be safe.",
+      "[SILENCE — 5 seconds]",
+      "May you be healthy.",
+      "[SILENCE — 5 seconds]",
+      "May you be happy.",
+      "[SILENCE — 5 seconds]",
+      "May you be at ease.",
+      "[SILENCE — 8 seconds]",
+      "Again. And if the phrases feel hollow — if part of you objects, if a voice says 'I don't deserve this' — notice that voice. That is not the truth. That is a habit. Continue.",
+      "May you be safe.",
+      "[SILENCE — 5 seconds]",
+      "May you be healthy.",
+      "[SILENCE — 5 seconds]",
+      "May you be happy.",
+      "[SILENCE — 5 seconds]",
+      "May you be at ease.",
+      "[SILENCE — 10 seconds]",
+      "Now — imagine the circle expanding slightly. Think of one person who is easy to love. A child, maybe. A close friend. An animal. Someone where the love is uncomplicated.",
+      "Include them in the wish. May you both be safe. May you both be at ease.",
+      "[SILENCE — 15 seconds]",
+      "And the circle widens a little more. Someone neutral — someone you pass every day without a feeling, without a story. The person at the counter. Your neighbour whose name you don't know. Include them too. May you all be safe. May you all be at ease.",
+      "[SILENCE — 15 seconds]",
+      "Now — before you close — one final return to yourself. Not the self you're trying to become. The one who is here.",
+      "May you be safe. May you be healthy. May you be happy. May you be at ease.",
+      "[SILENCE — 20 seconds]",
+      "When you open your eyes: gently. The practice does not end here — it moves with you into the day. If at any point in the next few hours something pulls at you harshly, you can return to just one phrase: May I be at ease. You don't need the whole sitting. Just those five words.",
+      "Open your eyes."
+    ],
+    "script_text_hi": [
+      "यह आपके लिए है।",
+      "कोई सामान्यीकृत 'आप' नहीं। वह खास 'आप' जो इस सुबह जो भी लेकर उठे — हफ़्ते का बोझ, कोई अनकही बात, एक याद जिसकी ज़रूरत नहीं, अपना एक रूप जिसे आप बार-बार निराशाजनक पाते हैं।",
+      "वह इंसान। यह अभ्यास उनके लिए है।",
+      "जैसे भी आराम हो, बैठें। आँखें बंद करें।",
+      "एक साँस लें — बस यहाँ पहुँचने के लिए। अंदर। और बाहर। कंधे जहाँ भी हों, रहने दें। हाथ विश्राम करें।",
+      "[SILENCE — 10 seconds]",
+      "मेत्ता एक पाली शब्द है — इसका अर्थ है प्रेमपूर्ण-करुणा, लेकिन यह अनुवाद थोड़ा कोमल है। इसका अर्थ मित्रता भी है। वह मित्रता जिसे आपको बेहतर होने की ज़रूरत नहीं। जो आपको स्पष्ट देखे और फिर भी आपको चुने। यही हम अभ्यास करने जा रहे हैं — अपने लिए पहले, जो हमेशा सबसे कठिन दिशा होती है।",
+      "अपने आप को मन में लाएँ। चापलूस छवि नहीं। बस आप — जैसे आप वास्तव में इस सुबह हैं, इस शरीर में, जीवन के इस मौसम में।",
+      "उस छवि को स्थिर होने दें। उसे संपादित न करें।",
+      "[SILENCE — 15 seconds]",
+      "और अब — उस इंसान के लिए — ये वाक्य कहें। धीरे-धीरे। हर एक को सच में महसूस करते हुए:",
+      "आप सुरक्षित रहें।",
+      "[SILENCE — 5 seconds]",
+      "आप स्वस्थ रहें।",
+      "[SILENCE — 5 seconds]",
+      "आप सुखी रहें।",
+      "[SILENCE — 5 seconds]",
+      "आप निश्चिंत रहें।",
+      "[SILENCE — 8 seconds]",
+      "फिर से। और अगर वाक्य खोखले लगें — अगर कोई आवाज़ कहे 'मैं इसके लायक नहीं' — उस आवाज़ को देखें। वह सच नहीं है। वह एक आदत है। जारी रखें।",
+      "आप सुरक्षित रहें।",
+      "[SILENCE — 5 seconds]",
+      "आप स्वस्थ रहें।",
+      "[SILENCE — 5 seconds]",
+      "आप सुखी रहें।",
+      "[SILENCE — 5 seconds]",
+      "आप निश्चिंत रहें।",
+      "[SILENCE — 10 seconds]",
+      "अब — वृत्त को थोड़ा बड़ा करें। एक ऐसे इंसान के बारे में सोचें जिसे प्यार करना आसान है। शायद कोई बच्चा। कोई करीबी दोस्त। कोई जानवर। कोई जिसके लिए प्रेम सरल है।",
+      "उन्हें भी इस कामना में शामिल करें। आप दोनों सुरक्षित रहें। आप दोनों निश्चिंत रहें।",
+      "[SILENCE — 15 seconds]",
+      "और वृत्त थोड़ा और फैलता है। कोई तटस्थ इंसान — जिसे आप रोज़ देखते हैं बिना किसी भावना के, बिना किसी कहानी के। दुकान पर बैठने वाला। पड़ोसी जिसका नाम नहीं जानते। उन्हें भी शामिल करें। आप सब सुरक्षित रहें। आप सब निश्चिंत रहें।",
+      "[SILENCE — 15 seconds]",
+      "अब — बंद करने से पहले — एक बार फिर अपने पास लौटें। वह नहीं जो आप बनने की कोशिश कर रहे हैं। वह जो यहाँ है।",
+      "आप सुरक्षित रहें। आप स्वस्थ रहें। आप सुखी रहें। आप निश्चिंत रहें।",
+      "[SILENCE — 20 seconds]",
+      "जब आँखें खोलें: धीरे से। अभ्यास यहाँ समाप्त नहीं होता — यह आपके साथ दिन में चलता है। अगले कुछ घंटों में अगर कभी कुछ कठोरता से खींचे, तो बस एक वाक्य पर लौट सकते हैं: मैं निश्चिंत रहूँ। पूरा बैठना नहीं चाहिए। बस ये पाँच शब्द।",
+      "आँखें खोलें।"
+    ],
+    "b_roll_list": [
+      "Mountain peaks in mist — static, through glass — 60 seconds. Shoot at the exact moment light begins to differentiate sky from mountain. This shot exists once in the world each day.",
+      "Wool shawl texture — close, fibres catching morning light — 20 seconds",
+      "Single candle flame (if used) — very close, slight movement — 30 seconds",
+      "Her hands holding the shawl in her lap — light crossing slowly — 25 seconds",
+      "Window frame with frost or dew on exterior glass (if present naturally) — 20 seconds",
+      "Stone wall texture, light raking across surface — macro — 15 seconds",
+      "The folded blanket she is seated on — before and after the practice (empty) — 15 seconds each"
+    ],
+    "edit_notes": {
+      "color_grade": "The warmest grade in the set. Start steel-blue (5800K, desaturated 10%) and end in deep gold (4200K, saturation +5%). The grade itself is a warmth arc — it mirrors the emotional journey of the practice. Skin tones very accurate — no flattening. Shadows: deep but not crushing. Reference: Terrence Malick's To the Wonder — interior light, morning, stone, warmth.",
+      "pacing": "Longest session in the set. Slowest cuts. Average hold: 22–28 seconds. The Metta phrase delivery sections: hold a single face shot through the entire phrase and silence — no cutting. The expansion sections (friend / neutral person): cut to room WS, allowing the frame to hold the larger feeling of the space.",
+      "music": "Pre-dawn silence until 8:00. At 8:00: single Tibetan bowl strike at -26dB, long decay, not repeated. After 12:00: very faint veena sustain at -22dB, no melody, single note, as session moves to close. Fade completely by 14:30.",
+      "titles": "White lower-case, bottom left. 'loving-kindness / अपने लिए करुणा'. Duration '15 min'. Fade in at 0:08, fade out at 0:25.",
+      "end_card": "Hold on empty room after she exits frame. 4 seconds. Fade to black. Sukoon wordmark. 5 second hold. Gentle fade."
+    },
+    "end_card_copy": {
+      "en": "Sukoon. You are already what you are looking for.",
+      "hi": "सुकून। आप वही हैं जिसे आप ढूँढ रहे हैं।"
+    }
+  },
+
+  {
+    "id": "med-sleep-yoga-nidra",
+    "title_en": "20 Minutes — Sleep Meditation (Yoga Nidra Adapted)",
+    "title_hi": "नींद का ध्यान — बीस मिनट",
+    "target_duration_min": 20,
+    "type": "meditation_guided",
+    "location": "A candlelit interior — could be any bedroom or simple room. The entire shoot is designed to be viewed lying down. Instructor is NOT lying down — she sits at the edge of frame, mostly heard, occasionally glimpsed. The primary visual of the video is NOT the instructor: it is a sequence of B-roll imagery of the night — a window with moonlight, sheets, the ceiling, flame, rain on glass. This is the only script in the set where the instructor's face is NOT the dominant visual. The voice is the instrument here.",
+    "location_alt": "Same room, same logic. No alternative location needed — the visual approach works in any interior. What matters: no overhead tube lighting, no LED strips, no phone screens in frame.",
+    "time_of_day": "candle_lit_evening",
+    "talent_direction": "The instructor's voice is the primary talent element. Face appears in 3 shots total — a brief establishing shot at 0:00, a mid-session glimpse at 10:00, and a closing frame at 19:30. When seen: she is seated cross-legged, side-lit by a single candle, facing slightly away from camera toward the viewer's implied sleeping position. She is very still. Her voice should be noticeably slower than the other sessions — a tempo that itself induces relaxation. Deliberate de-emphasis at the end of every sentence. No upward inflection. The pace at the opening should already feel slow; it should be slower still by minute ten.",
+    "wardrobe": "Soft white or pale ivory cotton. Not a studio outfit — pyjama-adjacent. Loose full-sleeve, loose trousers. Bare feet. No jewellery. Hair completely down. The softness of the clothing is a permission slip for the viewer to also soften.",
+    "camera_setup": "Sony FX3. 85mm prime for the three instructor face shots. For B-roll: 35mm at f/1.2 for extreme depth-of-field effects — candle flame, moonlight through window, sheets. All B-roll locked off, tripod only — no gimbal, no slider. Camera movement would be wrong for a sleep meditation. The stillness of the camera is part of the instruction.",
+    "lighting": "Candles only for instructor shots. Two candles: one at camera-left, one at camera-right, both at least 3 feet from her face — creating a very gentle wrap of warm light with soft shadows. No reflectors. No bounce. 2700K warmth. For B-roll: moonlight through window can be simulated with a 300d dimmed to 10% at 4200K through an exterior window frame — no other source. The darkness is deliberate. Do not light for broadcast brightness. Light for the feeling of night.",
+    "audio_direction": "Shure SM7B (broadcast mic, in studio, post-dubbed) OR Sennheiser MKH 50 in very quiet room. No ambient sound at all. The voice in Yoga Nidra-style practice is more intimate than any other format — it needs to feel like it is coming from within the listener's head. Mix at a slightly higher level than other sessions — this is headphone listening in bed. At 5:00, introduce rain on glass at -28dB (loop, no variation). Rain sustains through to 19:00 then slowly fades. No music. No drone. Only rain and voice.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "MS",
+        "description": "Instructor. 85mm. Side-lit by candle, facing away from camera, toward the viewer's implied sleeping space. She turns slightly to address the viewer — just her eyes and part of her face. She speaks the opening two lines. She does not fully face camera — she is companioning the viewer into sleep, not looking at them.",
+        "duration_sec": 20,
+        "notes": "This is the only shot where she makes near-eye-contact. After this, the visual journey moves away from her face."
+      },
+      {
+        "shot_number": 2,
+        "type": "B-roll",
+        "description": "A window at night. Moonlight or streetlight through light curtains. Slow, breathing quality to the light — breeze moving the curtain very slightly. Locked off. 30 seconds.",
+        "duration_sec": 30,
+        "notes": "This establishes: it is night. The world outside is continuing without you. You do not need to attend to it."
+      },
+      {
+        "shot_number": 3,
+        "type": "B-roll",
+        "description": "Candle flame. Extreme close-up. 85mm at f/1.2. The flame fills the frame and is slightly out of focus — the visual equivalent of unfocused attention. It breathes. It holds. 40 seconds.",
+        "duration_sec": 40,
+        "notes": "This is the visual during the body relaxation section — approximately minutes 2–6. The flame does not need to move dramatically. It should pulse very slightly."
+      },
+      {
+        "shot_number": 4,
+        "type": "B-roll",
+        "description": "Close shot of still fabric — sheets or clothing, seen from very close. The texture is all that is visible. No motion. A pure texture shot. This is used during the deepest stillness sections.",
+        "duration_sec": 40,
+        "notes": "This is an abstract shot. It communicates physical softness and rest without any representational content."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "Instructor glimpse — at the 10-minute mark, a brief cut back to her face. She is still seated. Her eyes are half-open. She speaks the mid-session orienting phrase. 12 seconds, then cut away.",
+        "duration_sec": 12,
+        "notes": "This is a brief anchor. The viewer has been in the dark for ten minutes — the glimpse of her face is a reassurance before descent into the deeper second half."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Rain on a glass window — macro, focused on the water droplets running, not the scene beyond. No sound yet — audio team adds rain in post. This image is used from approximately minute 12 onward.",
+        "duration_sec": 60,
+        "notes": "Shoot for 3 minutes continuous. Rain should be moderate — not stormy, not barely there. The kind of rain that is lullaby."
+      },
+      {
+        "shot_number": 7,
+        "type": "B-roll",
+        "description": "The ceiling of the room — seen from a low angle, as if lying on the floor. Candlelight moving across the ceiling very slowly. Complete stillness except for the light movement. This is the viewer's perspective — they are lying down.",
+        "duration_sec": 45,
+        "notes": "This is the visual POV of the viewer. The camera is on the floor, pointed up. The instructor's voice continues over this image."
+      },
+      {
+        "shot_number": 8,
+        "type": "ECU",
+        "description": "Candle flame going still. The moment when a candle stops flickering and simply burns steady. Hold for 20 seconds. This is used during the final deepening instruction.",
+        "duration_sec": 20,
+        "notes": "Wait for the natural stillness. Do not stage it."
+      },
+      {
+        "shot_number": 9,
+        "type": "MS",
+        "description": "Final shot. The instructor's face, fully side-lit now, candle very close. She speaks the closing line. Then turns fully away. Her back to camera. Stays still. Fade to black over 8 seconds.",
+        "duration_sec": 25,
+        "notes": "She does not turn back. The viewer goes forward into sleep. She stays."
+      }
+    ],
+    "script_text_en": [
+      "You can stop trying now. You don't need to fall asleep — that will happen. You just need to do nothing for the next twenty minutes, and let sleep come to you.",
+      "Find your position. On your back if possible — arms a few inches away from your sides, palms up, feet falling naturally outward. You can put a pillow under your knees if that helps your lower back.",
+      "If you are lying on your side — that is fine. Let your body be the shape it naturally wants to be.",
+      "Close your eyes.",
+      "[SILENCE — 10 seconds]",
+      "This is a practice called Yoga Nidra — yogic sleep. In it, you will stay at the edge between waking and sleeping, following the sound of the voice, while your body rests completely. You do not need to follow every instruction perfectly. If your mind wanders — good. If you drift — beautiful. If you fall asleep entirely — also good. All outcomes are correct.",
+      "We begin with the body.",
+      "Bring your attention to your right thumb. Just your right thumb. The tip of it. Sense it — you don't need to move it.",
+      "The second finger. Third. Fourth. Little finger. The right palm. Back of the right hand. The right wrist.",
+      "Right forearm. Right elbow. Upper right arm. Right shoulder.",
+      "Right side of the chest. Right side of the ribcage. Right hip. Right thigh. Right kneecap.",
+      "Right calf. Right ankle. Top of the right foot. Sole of the right foot. Right big toe. Second toe. Third. Fourth. Little toe.",
+      "The whole right side of the body — from shoulder to toes — simultaneously. Let it sink.",
+      "[SILENCE — 12 seconds]",
+      "Now the left side. Left thumb. Second finger. Third. Fourth. Little finger. Left palm. Back of the left hand.",
+      "Left forearm. Elbow. Upper arm. Left shoulder.",
+      "Left chest. Left ribcage. Left hip. Left thigh. Left kneecap.",
+      "Left calf. Ankle. Top of the foot. Sole. Left big toe. Second. Third. Fourth. Little toe.",
+      "The whole left side — shoulder to toes — simultaneously. Sinking.",
+      "[SILENCE — 12 seconds]",
+      "The back of the neck. The back of the skull. The top of the skull. The right side of the face. The left side of the face. The forehead — wide and smooth. Both eyes. The space between the eyebrows. The nose. Both nostrils. The upper lip. Lower lip. The chin. The throat.",
+      "The whole face — at once — release.",
+      "[SILENCE — 15 seconds]",
+      "The whole body now. From the top of the skull to the tips of the toes — as one single object. Heavy. Warm. Still. The floor beneath you holding every part of you. You do not need to hold yourself up. You never did, here, in this position.",
+      "[SILENCE — 20 seconds]",
+      "Now — instead of rotating attention through the body, I will ask you to hold a simple image. Let it be whatever comes. A still body of water. A field at dusk. A room you knew as a child. You do not need to choose — simply allow. An image will arrive.",
+      "[SILENCE — 15 seconds]",
+      "Stay with whatever image has come. It does not need to be vivid. Even the faint suggestion of something is enough.",
+      "[SILENCE — 20 seconds]",
+      "Let the image go. Let it go gently — not dismissed, just released. Like putting something down.",
+      "[SILENCE — 15 seconds]",
+      "Breath now. Without changing it — simply notice: the breath is breathing you. You are not doing it. It is doing you. The chest rises. Falls. The body takes what it needs without any instruction from you.",
+      "[SILENCE — 20 seconds]",
+      "There is nothing to resolve tonight. Whatever you carried into this room — it will still be there tomorrow. It is not going anywhere. But it does not need to be carried in sleep. Sleep is the one place where you set it all down.",
+      "[SILENCE — 15 seconds]",
+      "Let your attention become loose. Unspecific. If thoughts come — let them be like clouds passing. You are the sky. The clouds come and go and you remain.",
+      "[SILENCE — 30 seconds]",
+      "Continue breathing.",
+      "[SILENCE — 45 seconds]",
+      "I'll leave you now. The rest of this — the sliding, the going-under, the leaving the day behind — that belongs to you. There's nothing to do but follow.",
+      "Good night."
+    ],
+    "script_text_hi": [
+      "अब कोशिश बंद कर सकते हैं। नींद आनी ही है — आपको सोना नहीं है। बस अगले बीस मिनट कुछ नहीं करना है, और नींद को आने देना है।",
+      "अपनी स्थिति बना लें। हो सके तो पीठ के बल — भुजाएँ शरीर से थोड़ी दूर, हथेलियाँ ऊपर, पैर स्वाभाविक रूप से बाहर की ओर। अगर पीठ के नीचे तकिया चाहिए तो रख सकते हैं।",
+      "करवट लिए हों — ठीक है। शरीर जो आकार चाहे, उसे ले लेने दें।",
+      "आँखें बंद करें।",
+      "[SILENCE — 10 seconds]",
+      "यह योग निद्रा है — योगिक नींद। इसमें आप जागने और सोने की सीमा पर रहेंगे, आवाज़ का अनुसरण करते हुए, जबकि शरीर पूरी तरह विश्राम करेगा। हर निर्देश का पूरी तरह पालन नहीं करना है। अगर मन भटके — अच्छा। अगर बह जाएँ — बेहतर। अगर पूरी तरह सो जाएँ — वह भी ठीक है। सभी परिणाम सही हैं।",
+      "शरीर से शुरू करते हैं।",
+      "ध्यान दाहिने अँगूठे पर लाएँ। बस दाहिने अँगूठे पर। उसकी नोक पर। उसे महसूस करें — हिलाने की ज़रूरत नहीं।",
+      "दूसरी उँगली। तीसरी। चौथी। छोटी उँगली। दाहिनी हथेली। हाथ का पिछला हिस्सा। दाहिनी कलाई।",
+      "दाहिना अग्रबाहु। दाहिनी कोहनी। ऊपरी दाहिना बाहु। दाहिना कंधा।",
+      "सीने का दाहिना हिस्सा। दाहिनी पसलियाँ। दाहिना कूल्हा। दाहिनी जाँघ। दाहिना घुटना।",
+      "दाहिनी पिंडली। दाहिना टखना। पैर का ऊपरी हिस्सा। तलवा। दाहिना अँगूठा। दूसरी उँगली। तीसरी। चौथी। छोटी उँगली।",
+      "पूरा दाहिना हिस्सा — कंधे से उँगलियों तक — एक साथ। डूबने दें।",
+      "[SILENCE — 12 seconds]",
+      "अब बायाँ हिस्सा। बायाँ अँगूठा। दूसरी उँगली। तीसरी। चौथी। छोटी। बायीं हथेली। बायें हाथ का पिछला हिस्सा।",
+      "बायाँ अग्रबाहु। कोहनी। ऊपरी बाहु। बायाँ कंधा।",
+      "बायाँ सीना। बायीं पसलियाँ। बायाँ कूल्हा। बायीं जाँघ। बायाँ घुटना।",
+      "बायीं पिंडली। टखना। पैर का ऊपरी हिस्सा। तलवा। बायाँ अँगूठा। दूसरी। तीसरी। चौथी। छोटी।",
+      "पूरा बायाँ हिस्सा — कंधे से उँगलियों तक — एक साथ। डूबता हुआ।",
+      "[SILENCE — 12 seconds]",
+      "गर्दन का पिछला हिस्सा। खोपड़ी का पिछला हिस्सा। सिर का ऊपरी भाग। चेहरे का दाहिना हिस्सा। बायाँ हिस्सा। चौड़ा और चिकना माथा। दोनों आँखें। भौंहों के बीच की जगह। नाक। दोनों नथुने। ऊपरी होंठ। निचला होंठ। ठुड्डी। गला।",
+      "पूरा चेहरा — एक साथ — छोड़ दें।",
+      "[SILENCE — 15 seconds]",
+      "अब पूरा शरीर। खोपड़ी की चोटी से पैर की उँगलियों तक — एक वस्तु। भारी। गर्म। स्थिर। नीचे की ज़मीन आपके हर हिस्से को थाम रही है। आपको खुद को उठाए रखने की ज़रूरत नहीं। यहाँ, इस स्थिति में, कभी नहीं थी।",
+      "[SILENCE — 20 seconds]",
+      "अब — शरीर में ध्यान घुमाने के बजाय — एक सरल छवि को थामने दें। जो आए वही। एक शांत जलाशय। शाम की कोई मैदान। बचपन का कोई कमरा। चुनने की ज़रूरत नहीं — बस आने दें।",
+      "[SILENCE — 15 seconds]",
+      "जो भी छवि आई है, उसके साथ रहें। स्पष्ट होना ज़रूरी नहीं। किसी चीज़ का धुंधला-सा सुझाव भी काफ़ी है।",
+      "[SILENCE — 20 seconds]",
+      "छवि जाने दें। धीरे से — निरस्त नहीं, बस छोड़ दें। जैसे कोई चीज़ रख देना।",
+      "[SILENCE — 15 seconds]",
+      "अब साँस। बिना बदले — बस देखें: साँस आपको साँस ले रही है। आप नहीं कर रहे। वह कर रही है। सीना उठता है। गिरता है। शरीर बिना किसी निर्देश के वह लेता है जो उसे चाहिए।",
+      "[SILENCE — 20 seconds]",
+      "आज रात सुलझाने के लिए कुछ नहीं है। जो भी इस कमरे में लेकर आए — वह कल भी रहेगा। वह कहीं नहीं जा रहा। लेकिन नींद में उसे ढोने की ज़रूरत नहीं। नींद वह एकमात्र जगह है जहाँ सब कुछ रख दिया जाता है।",
+      "[SILENCE — 15 seconds]",
+      "अपना ध्यान ढीला होने दें। अनिश्चित। अगर विचार आएँ — उन्हें गुज़रते बादल मानें। आप आकाश हैं। बादल आते-जाते हैं और आप बने रहते हैं।",
+      "[SILENCE — 30 seconds]",
+      "साँस लेते रहें।",
+      "[SILENCE — 45 seconds]",
+      "मैं अब जाती हूँ। बाकी — वह फिसलना, वह डूबना, वह दिन को पीछे छोड़ना — वह आपका है। बस आगे चलते रहें।",
+      "शुभ रात्रि।"
+    ],
+    "b_roll_list": [
+      "Moonlight through curtain — very slow, 90 seconds continuous",
+      "Candle flame, 85mm f/1.2, slightly soft — 3 minutes continuous",
+      "Rain on glass — macro, water droplets tracking — 3 minutes continuous",
+      "Ceiling seen from floor level, candlelight moving — 2 minutes continuous",
+      "Still fabric texture — close, warm light — 60 seconds",
+      "The outside of a window at night — lights far away, slightly blurred — 45 seconds",
+      "An almost-closed door with light coming from the crack — held static — 30 seconds"
+    ],
+    "edit_notes": {
+      "color_grade": "Warmest grade in the set. 3200K throughout. Candle warmth — orange-amber in highlights. Deep shadows. Blacks can go slightly tinted toward warm brown rather than neutral black. Skin should be golden-warm. No cool tones at all except the moonlight B-roll (which should remain silver-cool as a contrast). Reference: Kubrick's Barry Lyndon — candlelit interiors.",
+      "pacing": "Cuts become progressively slower. First 5 minutes: average hold 18 seconds. Minutes 5–15: average hold 30 seconds. Minutes 15–20: average hold 45 seconds. The edit itself teaches the nervous system to slow. The last 5 minutes may have as few as 2 cuts.",
+      "music": "Rain at -28dB from minute 5, fading out at 19:00. No music, no drone, no bowl. Just rain and voice.",
+      "titles": "Title card appears at 0:10: 'sleep / नींद का ध्यान'. Duration '20 min'. Very soft fade-in, very soft fade-out. White, lower-case. Smaller than other sessions — this is sleep, not information.",
+      "end_card": "No end card. No Sukoon wordmark. The session ends in silence and dark. The wordmark is already known by the time someone is watching a sleep session. Not needed here."
+    },
+    "end_card_copy": {
+      "en": "",
+      "hi": ""
+    }
+  },
+
+  {
+    "id": "med-anxiety-5-4-3-2-1",
+    "title_en": "8 Minutes — Anxiety Grounding (5-4-3-2-1)",
+    "title_hi": "चिंता में ज़मीन — पाँच से एक",
+    "target_duration_min": 8,
+    "type": "meditation_guided",
+    "location": "Exterior. A ledge, low wall, or step in front of a large natural feature — a river, a hillside, a lake's edge. The instructor sits directly on the ground or on the ledge — not on a mat, not elevated. The ground is important: stone, earth, grass, concrete — real surface texture. Behind: something large and slow-moving in nature. Not mountain peaks (too grand for an anxiety-response video) — something at eye level or below. A river is ideal. The ordinary kind — not postcard Ganges, not Himalayan torrent. A river you'd see from a bus window. The city is not completely absent from frame — a building or road visible far in background adds to the 'this is where people actually are' quality.",
+    "location_alt": "An urban pocket park. Instructor seated on a low concrete planter or bench. Trees in background but city audible (but not visible). This location emphasizes: you do not need to escape to practice. You can do this here, right now, where you are.",
+    "time_of_day": "mid_morning",
+    "talent_direction": "This session has a different energy than the others. The instructor opens with a level of visible containment — not scripted distress, but the tonal quality of someone who has been there and speaks from that knowledge, not from a comfortable distance. The pacing is slightly faster than other sessions at the open — matching the agitated state it is addressing — then deliberately slows as the practice takes hold. This mirroring of the anxious state before offering the antidote is essential to the video's credibility. Voice should not start calm — it starts present, grounded, maybe a half-tone lower than comfortable. By the end, measurably slower.",
+    "wardrobe": "Casual, everyday. Dark jeans or simple straight trousers. A plain cotton shirt or kurta — not yoga wear, not formal. The point is this person could be anyone. Muted colour — olive, slate, navy. Jacket or light outer layer appropriate to exterior morning. Sturdy footwear — sneakers or sandals with grip. Hair casual — simply back or down. This is the most de-glamourised look in the set.",
+    "camera_setup": "Sony FX3. 50mm prime at f/2.0. One lens throughout — no lens change on a grounding video. Gimbal for the walk-into-frame shot at the open. Then locked off — not on slider, not moving. The locked-off camera communicates stability, which is what the practice is offering. Two setups: (1) 50mm medium from front, (2) a secondary 85mm from slightly behind and to one side for the B-roll of her face and the natural background simultaneously.",
+    "lighting": "Natural morning light entirely. No supplemental lighting. The ordinary light of wherever you are. If overcast: beautiful. If harsh sun: diffuse with a single 5-foot silk scrim, held by grip, just outside frame camera-right. This is the simplest lighting setup in the set — and that simplicity is a statement. This session should look like it was shot by someone with a good camera on a Tuesday morning.",
+    "audio_direction": "Lavalier primary for exterior — DJI Mic 2 or Rode Wireless Go II. Boom as backup. Exterior ambient: river/water sounds if present — preserve in mix at -22dB (they are grounding, consistent with the practice). Wind noise: use furry windscreen, keep lavalier tight to chest. City ambient: preserve very faintly. This is not a pristine acoustic environment. That is correct.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "MS",
+        "description": "Instructor walks into frame — purposeful walk, slightly fast (matching the anxious state). Sits directly on the ground or low surface. Looks at camera immediately — no settling ritual. Begins to speak within 3 seconds of sitting.",
+        "duration_sec": 15,
+        "notes": "The energy of arrival is everything here. She is not serenely unfolding a mat. She sat down. Like someone who needed to sit down."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "50mm locked off. She speaks the opening. Her pace is quick at the start — she's meeting you where you are. She names the experience directly.",
+        "duration_sec": 40,
+        "notes": "Do not ask her to slow down in the first 30 seconds. The quicker pace is correct — it has to feel like it starts where the viewer is, not where the instructor wants them to be."
+      },
+      {
+        "shot_number": 3,
+        "type": "WS",
+        "description": "Pull back to wider — include more of the river/park/natural context behind her. She is still speaking. The natural feature behind her is now visible and large. She does not move.",
+        "duration_sec": 20,
+        "notes": "The widening of the frame communicates scale — the world is large and continues. This is itself part of the grounding."
+      },
+      {
+        "shot_number": 4,
+        "type": "ECU",
+        "description": "Her eyes — open. Moving slightly as she names the 'five things you can see' instruction. Her own gaze demonstrates the technique — she actually looks at things in her environment as she speaks.",
+        "duration_sec": 30,
+        "notes": "Her eyes should actually be finding things in the environment. This is not a gaze shot — it is a doing shot."
+      },
+      {
+        "shot_number": 5,
+        "type": "B-roll",
+        "description": "Her hands flat on the surface she is sitting on — stone, earth, concrete. The texture beneath her palms. She presses her hands down slightly as she delivers the touch instruction.",
+        "duration_sec": 15,
+        "notes": "The hands on the ground is the visual centre of the grounding practice. Hold this for the full four-things-you-can-touch section."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Close of the natural feature behind her — river water, rustling leaves, grass. Simple close-up that corresponds to the 'three things you can hear' instruction.",
+        "duration_sec": 20,
+        "notes": "The B-roll should show what she is hearing — the sounds that are actually present. Not a generic 'nature beauty' shot. What is literally there."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "50mm locked-off return. She speaks the closing two-things/one-thing section. Her pace is measurably slower now — at least 20% slower than the opening. This difference should be audible and visible.",
+        "duration_sec": 50,
+        "notes": "The visual continuity — same locked-off 50mm setup as shot 2 — allows the change in her pace and quality to be the most obvious thing. The frame didn't change. She did."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Final WS. She is still seated. The natural world around her. She says the closing line and then stays — not performing stillness, just sitting. The camera holds on her sitting for 8 seconds after she stops speaking. Then hard cut to black.",
+        "duration_sec": 20,
+        "notes": "The 8-second hold after speech ends is the session's last instruction — an unspoken one. You can stay here for a moment. You don't have to leave the moment the voice does."
+      }
+    ],
+    "script_text_en": [
+      "Your nervous system is trying to protect you. That is what anxiety is — threat detection working harder than it needs to. The way to help it is not to argue with it. The way is to give it something concrete to do.",
+      "Sit down if you're not already sitting. Feet flat if you can. Eyes open.",
+      "We're going to use the five senses in sequence. This is not a metaphor or a belief system. This is neuroscience: sensory input competes with anxious thought for the same neural bandwidth. You are flooding the bandwidth with the present.",
+      "Five things you can see. Right now. Look around. Not in your memory — in this room, on this street, in this place. Name them in your head or quietly out loud:",
+      "[SILENCE — 12 seconds — she names them herself, eyes moving]",
+      "Good. Four things you can physically touch. The surface under your hands. The fabric against your skin. The air temperature on your face. The weight of your feet.",
+      "[SILENCE — 10 seconds]",
+      "Three things you can hear right now. This moment. Not the story inside your head — sounds in the space around you.",
+      "[SILENCE — 10 seconds]",
+      "Two things you can smell. You might have to lean in. The air. Your own skin. Something in the room.",
+      "[SILENCE — 8 seconds]",
+      "One thing you can taste. Even if it is just the taste of your own mouth right now — that is a sensation. Name it.",
+      "[SILENCE — 6 seconds]",
+      "Notice your breathing. Don't change it. Just notice: it is slower than it was when we started. Your hands, if you look at them, are still. The story that was running — it is quieter now. It did not disappear. But it is not the only thing.",
+      "You are here. That is enough. That is actually everything.",
+      "One more breath. Slowly.",
+      "[SILENCE — 8 seconds]",
+      "Come back when you need to. It will always work. The present is always available."
+    ],
+    "script_text_hi": [
+      "आपका तंत्रिका तंत्र आपकी रक्षा करने की कोशिश कर रहा है। यही चिंता है — खतरे की पहचान करने की प्रणाली जो ज़रूरत से ज़्यादा काम कर रही है। इसकी मदद करने का तरीका इससे बहस करना नहीं है। तरीका यह है कि इसे कोई ठोस काम दे दें।",
+      "अगर बैठे नहीं हैं तो बैठ जाएँ। पैर जितने हो सके सपाट। आँखें खुली।",
+      "हम पाँच इंद्रियों का क्रमशः उपयोग करेंगे। यह कोई रूपक या विश्वास प्रणाली नहीं है। यह तंत्रिका विज्ञान है: इंद्रिय संवेदन, चिंताजनक विचारों के साथ एक ही तंत्रिका बैंडविड्थ के लिए प्रतिस्पर्धा करता है। आप उस बैंडविड्थ को वर्तमान से भर रहे हैं।",
+      "पाँच चीज़ें जो आप देख सकते हैं। अभी। चारों ओर देखें। अपनी याद में नहीं — इस कमरे में, इस सड़क पर, इस जगह में। उन्हें मन में या धीरे से ज़ोर से नाम दें:",
+      "[SILENCE — 12 seconds — वह खुद नाम लेती हैं, आँखें घूमती हैं]",
+      "अच्छा। चार चीज़ें जिन्हें आप छू सकते हैं। हाथों के नीचे की सतह। त्वचा पर कपड़े का स्पर्श। चेहरे पर हवा का तापमान। पैरों का वज़न।",
+      "[SILENCE — 10 seconds]",
+      "तीन चीज़ें जो आप अभी सुन सकते हैं। इस पल। अपने दिमाग़ की कहानी नहीं — आसपास की जगह में आवाज़ें।",
+      "[SILENCE — 10 seconds]",
+      "दो चीज़ें जो आप सूँघ सकते हैं। शायद थोड़ा झुकना पड़े। हवा। अपनी त्वचा। कमरे में कुछ।",
+      "[SILENCE — 8 seconds]",
+      "एक चीज़ जो आप चख सकते हैं। भले ही यह अभी अपने मुँह का स्वाद हो — यह एक संवेदना है। उसे नाम दें।",
+      "[SILENCE — 6 seconds]",
+      "अपनी साँस देखें। बदलें नहीं। बस देखें: यह शुरू करने से धीमी है। हाथ, अगर देखें, स्थिर हैं। जो कहानी चल रही थी — वह अब शांत है। गई नहीं। लेकिन अकेली नहीं रही।",
+      "आप यहाँ हैं। यही काफ़ी है। यही दरअसल सब कुछ है।",
+      "एक साँस और। धीरे।",
+      "[SILENCE — 8 seconds]",
+      "जब ज़रूरत हो, वापस आएँ। यह हमेशा काम करेगा। वर्तमान हमेशा उपलब्ध है।"
+    ],
+    "b_roll_list": [
+      "Hands pressed flat on earth or stone — very close, texture emphasis — 30 seconds",
+      "Water surface — river or lake — at eye level — 45 seconds",
+      "Grass or leaves in very light wind — extreme close-up — 20 seconds",
+      "The instructor's shoes/feet on the ground, firmly planted — 15 seconds",
+      "A distant building or road through trees — the city present but far — 20 seconds",
+      "Bark of a nearby tree, close — texture — 15 seconds",
+      "Her face looking at actual things in the environment — eyes moving naturally — 20 seconds"
+    ],
+    "edit_notes": {
+      "color_grade": "Naturalistic. No stylisation. Accurate daylight colour — 5500K, full saturation, no LUTs that warm or cool significantly. This is the least 'cinematic' grade in the set — intentionally. It should look like the world as it actually is. Green is green. The colour grade says: there is nothing wrong with ordinary reality.",
+      "pacing": "Matches the content arc. First 90 seconds: quicker cuts (8–10 seconds). Minutes 2–6: progressively longer holds. Final 2 minutes: 20+ second holds. The edit arc is the grounding arc.",
+      "music": "None. The natural ambient sound (river, wind, city-at-distance) is the 'music'. Mix: river/ambient at -20dB behind all voice. This is the only session where the ambient sound is a featured element rather than atmospheric background.",
+      "titles": "White lower-case: 'anxiety grounding / चिंता में ज़मीन'. Duration '8 min'. Fade in at 0:05.",
+      "end_card": "Hard cut to black after the 8-second hold. Sukoon wordmark in white. 3 seconds. Cut off — no fade."
+    },
+    "end_card_copy": {
+      "en": "Sukoon. The present is always available.",
+      "hi": "सुकून। वर्तमान हमेशा उपलब्ध है।"
+    }
+  },
+
+  {
+    "id": "med-forgiveness-apne-aap-se",
+    "title_en": "12 Minutes — Forgiveness: Apne Aap Se",
+    "title_hi": "क्षमा — अपने आप से",
+    "target_duration_min": 12,
+    "type": "meditation_guided",
+    "primary_language": "hindi",
+    "location": "Interior. A simply furnished room in a home — not a meditation space, a living room or study. Late afternoon or early evening. The light is coming in from one window, at a low angle — golden hour interior but not dramatic. The room has books on a shelf, a plant in a corner — signs of ordinary habitation. The instructor sits on a simple chair or on a dhurrie on the floor. The setting should say: this is where someone actually lives. Not a retreat. Not a studio. A home.",
+    "location_alt": "A small courtyard garden — enclosed, private. Evening. A low wooden platform or stone step to sit on. A single tree casting long shadows. Not manicured — a real garden. This location works for the themes of the session: contained, private, the work done alone, in an ordinary place.",
+    "time_of_day": "golden_hour_evening",
+    "talent_direction": "This is the most demanding performance in the set — not because it requires acting, but because it requires the opposite of performance. The instructor is delivering a script about self-forgiveness. The temptation is toward visible emotion, visible softness. Resist this. The instructor should appear as someone who has already done the work — not someone doing it now in front of you. The tone is: I know how hard this is because I've been here. I'm not going to pretend it's easy. This is not a comforting voice. It is a clear voice. The clarity is its own kind of compassion. Voice is in Hindi primary — slower than conversational pace, mid-register, no tremolo or breathiness, no pauses for effect that are not already in the script.",
+    "wardrobe": "Simple salwar kameez in a muted colour — dusty blue, warm grey, faded terracotta. The kind worn at home, not dressed up. Dupatta is optional — if worn, draped simply and left alone. No jewellery except plain stud earrings. Flat chappals or bare feet. This is home clothes. The wardrobe says the same thing as the location: this is ordinary life, not a ceremony.",
+    "camera_setup": "Sony FX3. 85mm at f/2.0 for the main seated address — she fills approximately 40% of the horizontal frame, room visible around her. 50mm for the establishing shot and the wide shots used during the expanding-awareness sections. No slider, no gimbal after the first shot. All setups locked off. Slow zoom in (optical, not digital) from starting position: the 85mm begins slightly pulled back and slowly — over 2 minutes — the aperture changes and distance adjusts to render her progressively larger in frame as the session moves toward the difficult centre. By the midpoint (6 minutes) she is close. For the closing, the camera slowly reverses — pulling back — as the session opens outward again.",
+    "lighting": "Golden hour natural — warm side-light from window. White foam core on the shadow side at 4:1 ratio — so shadows are present and rich but the face is readable. No artificial lighting. If the natural window light is insufficient, add one Aputure 300d through a window frame outside, gelled to 3200K, fully diffused. The light should feel earned and finite — the way golden hour light always communicates: this will pass.",
+    "audio_direction": "Sennheiser MKH 50 boom — interior, with soft acoustic treatment to avoid too much live room. This session is Hindi-primary. Voice is the instrument — the mix should be closer and more intimate than in the other sessions: reduce room air, increase direct signal. Underbed: a faint tanpura drone in Ga (E) — slightly higher than Sa, subtly unresolved — at -20dB throughout. This pitch choice is intentional: Ga in raga theory carries a quality of longing and seeking. It should create a subliminal sense that something is unresolved, being worked through. Resolve at the very end by fading into silence — do not hold the drone into the credits.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing. The room. Instructor visible but not yet in focus of attention — we see the room first. Evening light on the books, the plant, the ordinary furniture. She is seated, still. Hold 6 seconds. Then she turns to camera.",
+        "duration_sec": 15,
+        "notes": "The room matters. It tells the viewer this is possible at home, in an ordinary life."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "85mm, slightly pulled back. She speaks the Hindi opening. Her pace is measured — not slow, not fast. The cadence of careful speech.",
+        "duration_sec": 40,
+        "notes": "The Hindi should be clean Khari Boli — not deliberately Sanskritised, not slang. The register of an educated person speaking at home."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "85mm, moving imperceptibly closer (as per setup notes — slow optical pull over next 4 minutes). Her face as she gives the first instruction to close eyes.",
+        "duration_sec": 30,
+        "notes": "The slow approach of the camera is not visible as a technique — it is felt as intimacy increasing."
+      },
+      {
+        "shot_number": 4,
+        "type": "ECU",
+        "description": "Her hands folded in her lap. Still. The specific quality of hands that are not doing anything — they have set down their tasks.",
+        "duration_sec": 20,
+        "notes": "Used during the instruction about letting go — the image of hands that are holding nothing is the physical metaphor."
+      },
+      {
+        "shot_number": 5,
+        "type": "CU",
+        "description": "Face, closest approach. Eyes closed. The script's central section — the direct naming of the hard thing. Her stillness here is everything. This is the session's centrepoint.",
+        "duration_sec": 50,
+        "notes": "Do not cut away from her face during the central naming section. Hold."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "The window with evening light — seen from inside, the light almost gone now. Transitional. Used during the 'letting go' section.",
+        "duration_sec": 15,
+        "notes": "The fading of the evening light is itself a forgiveness image — the day is ending, it is complete, it is not to be carried further."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Camera now beginning its slow reversal — pulling back from the close approach. She speaks the opening-outward section of the script. The frame widening mirrors the expansion being described.",
+        "duration_sec": 45,
+        "notes": "The camera reversal should be equally slow and imperceptible as the approach — felt rather than seen."
+      },
+      {
+        "shot_number": 8,
+        "type": "B-roll",
+        "description": "The plant in the corner of the room — evening light on it, slightly dramatic now that the golden hour has deepened. Something quietly alive, continuing.",
+        "duration_sec": 15,
+        "notes": "The plant is a living thing in an ordinary room. Its continued existence during this session is its own kind of presence."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Return to establishing wide shot — same framing as shot 1. She is exactly where she was. The room is the same. But the light has shifted — it is now deeper gold, lower, the day nearly done. She speaks the closing Hindi lines. Then sits in silence. Then turns back to the window. Camera holds on her back, looking at the window, for 8 seconds.",
+        "duration_sec": 30,
+        "notes": "The return to the establishing frame says: you began here, you have moved through something, you are back here, but something is different. The light is the proof."
+      }
+    ],
+    "script_text_hi": [
+      "यह अभ्यास किसी और के लिए नहीं है।",
+      "किसी रिश्ते के लिए नहीं। किसी बात के लिए नहीं जो दूसरे ने आपसे कही। यह आपके और आपके बीच के लिए है।",
+      "जो आपने किया या नहीं किया। जो आप थे और नहीं हो पाए। जो आपने चाहा और नहीं पाया। जो आप अब भी अपने आप को सुनाते हैं — वह आवाज़ जो कहती है: तुम्हें बेहतर होना चाहिए था। तुम्हें जानना चाहिए था। तुमने जानते हुए भी गलती की।",
+      "उस आवाज़ के लिए यह अभ्यास है।",
+      "बैठें। आँखें बंद करें।",
+      "[SILENCE — 8 seconds]",
+      "एक साँस — बस यहाँ पहुँचने के लिए।",
+      "[SILENCE — 6 seconds]",
+      "अब: जो बात सबसे पुरानी है, सबसे भारी है — जिसे आप बरसों से अपने साथ उठाए चल रहे हैं — उसे मन में आने दें। पूरी कहानी नहीं। बस उसकी एक झलक। वह जो आपने किया। या नहीं किया। या जो आप बन गए।",
+      "[SILENCE — 15 seconds]",
+      "देखें उसे। उससे बचें नहीं।",
+      "[SILENCE — 10 seconds]",
+      "अब यह समझें: जो भी आपने तब किया — आपने तब जो भी था, उससे किया। उस समय की समझ से। उस समय की ताकत से। उस समय के दर्द से। किसी ने भी जानते हुए खुद को या दूसरों को नहीं तोड़ा — उन्होंने वही किया जो उस पल उनसे बन पड़ा।",
+      "यह माफ़ी नहीं है — क्षमादान नहीं है। यह सच है।",
+      "[SILENCE — 12 seconds]",
+      "अब इस वाक्य को कहें — धीरे, अपने आप से:",
+      "जो हुआ, हुआ। मैंने जो किया, उस पल में मुझसे जो बन सका, वही किया। अब मैं उसे थोड़ा नीचे रखता हूँ।",
+      "[SILENCE — 10 seconds]",
+      "फिर से।",
+      "जो हुआ, हुआ। मैंने जो किया, उस पल में मुझसे जो बन सका, वही किया। अब मैं उसे थोड़ा नीचे रखता हूँ।",
+      "[SILENCE — 15 seconds]",
+      "नीचे रखना भूलना नहीं है। न ही यह कहना है कि कोई फ़र्क नहीं पड़ता। इसका मतलब है: मैं इसे हर रोज़ नहीं उठाऊँगा। मैं इसे सोने से पहले नहीं उठाऊँगा। मैं इसे उन लोगों पर नहीं उठाऊँगा जिन्हें मैं प्यार करता हूँ — सिर्फ़ इसलिए कि मैं इसे कहीं न कहीं रखने की जगह ढूँढ रहा हूँ।",
+      "यह ज़मीन पर है। यहाँ। इस पल में।",
+      "[SILENCE — 12 seconds]",
+      "अब: खुद के लिए एक छोटी-सी दयालुता। इतनी ही:",
+      "मैं ठीक होने का हकदार हूँ। अभी भी।",
+      "[SILENCE — 10 seconds]",
+      "एक बार और।",
+      "मैं ठीक होने का हकदार हूँ। अभी भी।",
+      "[SILENCE — 15 seconds]",
+      "साँस लें।",
+      "[SILENCE — 8 seconds]",
+      "आँखें खोलें — धीरे।",
+      "क्षमा एक पल में नहीं होती। यह एक अभ्यास है — जैसे बाकी सब। आज आपने एक बार किया। कल फिर करें। और अगले दिन। एक दिन वह बोझ वाकई हल्का हो जाएगा।",
+      "यह अभ्यास आपके लिए था।",
+      "सुकून।"
+    ],
+    "script_text_en": [
+      "This practice is not for anyone else.",
+      "Not for a relationship. Not for something someone said to you. This is between you and you.",
+      "Something you did or didn't do. Who you were and couldn't be. What you wanted and didn't get. What you still tell yourself — that voice that says: you should have been better. You should have known. You knew and you still made the mistake.",
+      "This practice is for that voice.",
+      "Sit. Close your eyes.",
+      "[SILENCE — 8 seconds]",
+      "One breath — just to arrive.",
+      "[SILENCE — 6 seconds]",
+      "Now: the oldest thing, the heaviest thing — the one you've been carrying for years — let it come to mind. Not the whole story. Just a glimpse. What you did. Or didn't do. Or became.",
+      "[SILENCE — 15 seconds]",
+      "See it. Don't look away.",
+      "[SILENCE — 10 seconds]",
+      "Now understand this: whatever you did then — you did it with what you had then. With the understanding you had then. With the strength you had then. With the pain you had then. Nobody knowingly breaks themselves or others — they do what is possible for them in that moment.",
+      "This is not forgiveness — not absolution. This is just the truth.",
+      "[SILENCE — 12 seconds]",
+      "Now say this phrase — quietly, to yourself:",
+      "What happened, happened. What I did, I did with what I had in that moment. Now I am setting it down a little.",
+      "[SILENCE — 10 seconds]",
+      "Again.",
+      "What happened, happened. What I did, I did with what I had in that moment. Now I am setting it down a little.",
+      "[SILENCE — 15 seconds]",
+      "Setting it down is not forgetting. It is not saying it doesn't matter. It means: I will not pick this up every morning. I will not pick this up before sleep. I will not pick this up and carry it into the people I love — just because I need somewhere to put it.",
+      "It is on the ground here. In this moment.",
+      "[SILENCE — 12 seconds]",
+      "Now: one small kindness for yourself. Just this:",
+      "I am still deserving of being well.",
+      "[SILENCE — 10 seconds]",
+      "Once more.",
+      "I am still deserving of being well.",
+      "[SILENCE — 15 seconds]",
+      "Breathe.",
+      "[SILENCE — 8 seconds]",
+      "Open your eyes — gently.",
+      "Forgiveness doesn't happen in one sitting. It is a practice — like everything else. Today you did it once. Tomorrow, again. And the day after. One day the weight will actually be lighter.",
+      "This practice was for you.",
+      "Sukoon."
+    ],
+    "b_roll_list": [
+      "Evening light entering through window — shot from inside room, the angle of light cutting low across the floor — 45 seconds",
+      "Books on a shelf, out of focus, warm light — 20 seconds",
+      "A plant in ordinary afternoon light, leaves slightly dusty — 25 seconds",
+      "Hands resting in lap, fingers unfurling from a slightly clenched position — close — 20 seconds",
+      "The window from outside at dusk — light inside the room just visible — 20 seconds",
+      "A cup of tea on a surface — steam, ordinary — 15 seconds"
+    ],
+    "edit_notes": {
+      "color_grade": "The warmest, heaviest grade. Deep amber-gold. Shadows lean toward warm brown — not cool. Skin tones should feel like late-afternoon skin — golden but real. Lift the highlights less than other sessions — the image should feel weighted, not airy. This is not a bright session. It is a held one. Reference: Andrei Tarkovsky's Mirror — interiors, golden light, weight.",
+      "pacing": "Deliberate. Average hold: 20–25 seconds throughout — unlike other sessions, the pacing does not start fast. It starts at the session's natural pace and maintains it. The only change: the two repetition sections (the phrases) should have a 1-second black flash between the first and second utterance — a tiny visual pause that communicates the effort of saying it again.",
+      "music": "Tanpura drone in Ga (E) at -20dB throughout. Fade completely to silence at 11:30 — before the final lines. The final two lines and 'Sukoon' should land in complete silence.",
+      "titles": "White lower-case: 'forgiveness / अपने आप से'. Duration '12 min'. Fade in at 0:08.",
+      "end_card": "Fade to black over 5 seconds after the final 'Sukoon.' Sukoon wordmark appears in white, very small, centred. Held 6 seconds. Gentle fade. This is the longest end card in the set — the session earns the pause."
+    },
+    "end_card_copy": {
+      "en": "Sukoon.",
+      "hi": "सुकून।"
+    }
+  }
+]

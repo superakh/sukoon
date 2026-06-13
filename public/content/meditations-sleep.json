@@ -1,0 +1,357 @@
+[
+  {
+    "id": "med-sleep-001",
+    "title_en": "Body Scan: Ending the Day",
+    "title_hi": "शरीर की यात्रा: दिन का विदाई",
+    "lang": "en",
+    "mood_tags": ["sleep", "exhaustion", "tension-release", "wind-down"],
+    "duration_min": 15,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "Arriving", "start_paragraph": 0 },
+      { "title": "The Scan", "start_paragraph": 3 },
+      { "title": "Dissolving", "start_paragraph": 8 }
+    ],
+    "script": [
+      "Lie down. You don't have to do anything right now. You don't have to fix anything, respond to anything, or be anything for anyone. This moment is just yours.",
+      "Let your arms rest somewhere they don't have to hold. Let your legs go. You've been carrying yourself around all day. You can put that down now.",
+      "Take one slow breath in through your nose — not a deep breath, just a natural one. And let it out through your mouth. Like a sigh you've been holding since morning.",
+      "Bring your attention to the soles of your feet. Not to change anything, just to notice. Are they cool? Warm? A little tight from the day? Just notice, like you'd notice a stranger on the street — without needing them to be different.",
+      "Let the soles soften, just slightly. Not because they should, but because they can. Move up to your heels, your ankles. Notice any holding. Let the weight of your legs sink into the bed. They can be heavy now.",
+      "Your calves, your shins. Your knees. If there's any ache, that's fine — just let the ache be there without you fighting it. Move your attention up your thighs. Let the muscles go. You don't need them to work anymore tonight.",
+      "Your hips. The base of your spine. Anything you've been bracing there — any low-grade tension you weren't even aware of — you can set it down. Let your lower back settle into the surface beneath you.",
+      "Your belly. Notice if you've been holding it in, even slightly, even out of old habit. Let it go soft. Let it rise and fall with your breath. There's no one watching. This is just you.",
+      "Your chest. Your ribs. Notice how they expand on the in-breath and settle on the out. You don't need to control it — your body knows how to breathe. It's been doing it your whole life.",
+      "Your shoulders. This is often where the day lives. Let them drop, just a fraction. Not because you're forcing them down — just because you're no longer asking them to carry anything.",
+      "Your arms. Your elbows, heavy. Your forearms. Your wrists. Your hands. Let your fingers uncurl. Open hands at rest are a signal to the nervous system that you are safe. That it's done.",
+      "Your jaw. Most of us hold our day in our jaw. Let your teeth part, just barely. Let your tongue lie easy in your mouth. Your face doesn't need to hold any expression right now.",
+      "Your eyes, already closed — let the space behind them go soft. Your forehead. The back of your head, heavy against the pillow. The very top of your skull.",
+      "Now your whole body, all at once. Heavy and warm. Held by the surface beneath you. You don't have to hold yourself up. That's done for tonight.",
+      "If thoughts come — about tomorrow, about the day that passed — just notice them like clouds moving through. You don't have to chase them or push them away. They'll move on their own. Your only job is to stay here, in your body, warm and heavy.",
+      "The day is complete. Whatever was unfinished can wait until morning. The version of you that needs to act and decide and respond is resting now. What remains is just this — breath, body, and the quiet."
+    ]
+  },
+  {
+    "id": "med-sleep-002",
+    "title_en": "Loving-Kindness for Yourself Before Sleep",
+    "title_hi": "सोने से पहले अपने लिए प्रेम",
+    "lang": "en",
+    "mood_tags": ["sleep", "self-compassion", "emotional-weight", "loneliness"],
+    "duration_min": 10,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "Coming Home", "start_paragraph": 0 },
+      { "title": "Offering Kindness", "start_paragraph": 4 },
+      { "title": "Resting in It", "start_paragraph": 8 }
+    ],
+    "script": [
+      "You made it to the end of the day. That's not a small thing. Some days are hard, and you carried yours all the way here. Let yourself arrive.",
+      "Place one hand on your chest if that feels right. Or just let your hands rest. Sometimes we go through a whole day without anyone offering us warmth, and we forget we can offer it to ourselves.",
+      "Take a breath. And as you exhale, see if you can soften toward yourself — just a little. Not forcing anything, not performing. Just the smallest gesture of turning toward yourself the way you'd turn toward someone you loved who was tired.",
+      "Think of something you did today — anything. Maybe you showed up somewhere when you didn't feel like it. Maybe you were kind when you were depleted. Maybe you just survived something. That counts. All of it counts.",
+      "Silently, or quietly if you want, offer yourself this: May I be at ease. Say it the way you'd say it to a child who can't sleep. Gently. Without conditions.",
+      "May I be at ease. May my body rest. May my mind go quiet.",
+      "May whatever I'm carrying feel a little lighter by morning.",
+      "If there's a part of you that feels you don't deserve this — notice that. You don't have to argue with it. Just offer the kindness anyway, right past it, the way you'd give a blanket to someone cold without asking if they'd earned it.",
+      "May I rest. May I be kind to myself tonight. May whatever tomorrow brings, I meet it from a softer place.",
+      "Let your hand rest easy against your chest or at your side. Feel the warmth there — the warmth of your own body, which has been keeping you alive your whole life without asking for anything in return.",
+      "You are allowed to rest now. Not because you've done enough — though you have — but because rest is just what bodies need. It's not a reward. It's just care.",
+      "Sleep, when it comes, is yours. You don't have to do anything to earn it. Just let the day go, and let yourself be held by the quiet."
+    ]
+  },
+  {
+    "id": "med-sleep-003",
+    "title_en": "Forgiveness Wind-Down",
+    "title_hi": "क्षमा के साथ दिन को विसर्जित करें",
+    "lang": "en",
+    "mood_tags": ["sleep", "guilt", "regret", "rumination", "anger"],
+    "duration_min": 10,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "What You're Carrying", "start_paragraph": 0 },
+      { "title": "Releasing", "start_paragraph": 4 },
+      { "title": "Softening", "start_paragraph": 8 }
+    ],
+    "script": [
+      "Sometimes when we lie down, the day talks back. Something you said, something you didn't say. A moment that didn't go the way you hoped. A face you can't stop seeing. That's normal. You're not broken. You're just human.",
+      "You don't have to fix any of it tonight. You can't, actually. What happened has happened. The only question is whether you want to carry it into sleep or whether you'd rather set it down here.",
+      "Take a breath. Let your body be heavy. Whatever is swirling in your mind — you don't have to fight it. Just notice it the way you'd notice weather outside a window. It's there, you see it, but you're inside and warm.",
+      "If someone hurt you today, or recently, or a long time ago that's still sitting in your chest — you don't have to forgive them tonight. But see if you can, just for now, set down the weight of carrying it. Not for their sake. For yours. So you can sleep.",
+      "And if you did something today — said something careless, lost your patience, fell short of who you want to be — try this: you were doing the best you could with what you had in that moment. That's not an excuse. It's just true.",
+      "You will have more chances tomorrow. Tonight, can you offer yourself the grace of not having to have been perfect? Can you put it down, just for these hours?",
+      "Breathe out slowly. And with that breath, let go of one thing you've been holding. Just one. You don't have to release everything — just one small piece of weight. Notice how the exhale carries it out.",
+      "Breathe out again. Let go of something else. Maybe the tension in the conversation you're still replaying. Maybe the version of yourself you think you should have been. Let it go into the dark, where it can dissolve.",
+      "What's left when the holding softens? Something quieter. Your body, breathing. The room around you, dark and still. You are here, and you are okay.",
+      "Tomorrow you can make amends, try again, do things differently. Tonight, you're allowed to just be a person who is tired and needs sleep. That's enough.",
+      "Let your face soften. Let your hands open. Let the stories of the day drift, like smoke, like cloud, like water finding its level. You'll meet tomorrow when it comes. For now — rest."
+    ]
+  },
+  {
+    "id": "med-sleep-004",
+    "title_en": "Letting Go of the Day",
+    "title_hi": "दिन को जाने देना",
+    "lang": "en",
+    "mood_tags": ["sleep", "busy-mind", "stress", "transition", "wind-down"],
+    "duration_min": 8,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "Crossing the Threshold", "start_paragraph": 0 },
+      { "title": "Setting Things Down", "start_paragraph": 3 },
+      { "title": "Into the Dark", "start_paragraph": 7 }
+    ],
+    "script": [
+      "There is a line you cross when you lie down. On one side is the day, with everything it asked of you. On the other side is sleep, which asks nothing. You've crossed it. You're here now.",
+      "The day is done. Not finished — days rarely feel finished — but done. Whatever is left undone will still be there in the morning. And you will be more capable of it then than you are now.",
+      "So here's what we're going to do. We're going to take all the pieces of the day — the tasks, the worries, the things you wish you'd said, the emails you haven't answered — and we're going to put them in a box. Not forever. Just for the night.",
+      "Think of one thing that's still buzzing in your mind. See it clearly. Now imagine placing it in a box. It's still there, you haven't lost it, you haven't forgotten it. You've just put it somewhere it can wait.",
+      "Think of another. Maybe it's tomorrow's list. Maybe it's a conversation you're dreading. Into the box. You can pick it up again in the morning. It will keep.",
+      "And another. Maybe something from the past few days that's been hovering. Into the box. Close the lid. The box is safe. Everything inside it is safe. You don't have to hold it.",
+      "Take a long breath out. That's the sound of the day leaving your body. Your chest is lighter. Your mind, a little quieter. There's more space now.",
+      "In that space, you can just exist for a while. Nothing to do. Nothing to prove. No version of yourself to maintain. Just breath and body and the dark room around you.",
+      "Let your thoughts slow down, the way a car slows when it turns onto a quiet road. No destination now. No urgency. Just the road winding down toward rest.",
+      "Sleep will come when it comes. You don't have to chase it or force it. Just stay here, in this body, in this breath, in this quiet. That's already rest. And rest is already something."
+    ]
+  },
+  {
+    "id": "med-sleep-005",
+    "title_en": "Yoga Nidra: The Descent Into Sleep",
+    "title_hi": "योग निद्रा: नींद की ओर उतरना",
+    "lang": "en",
+    "mood_tags": ["sleep", "insomnia", "deep-rest", "body-awareness"],
+    "duration_min": 20,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "Sankalpa", "start_paragraph": 0 },
+      { "title": "Body Rotation", "start_paragraph": 3 },
+      { "title": "Pairs of Opposites", "start_paragraph": 9 },
+      { "title": "The Descent", "start_paragraph": 13 }
+    ],
+    "script": [
+      "Lie flat on your back. Arms slightly away from your body, palms facing up. Allow your feet to fall apart naturally. This position — called Shavasana — is the body's signal to the nervous system: it is safe to let go.",
+      "Let your eyes close. Let them rest deeply in their sockets, as if they are retreating inward. There is nothing to see. There is nowhere to be but here.",
+      "If you have a sankalpa — a short intention, a single honest sentence of what you wish for your life — plant it now, quietly, in your mind. I am healing. I am enough. I am at peace. Say it without forcing it, as a simple truth you are rehearsing.",
+      "Now we will move through the body with awareness. As I name each part, bring your attention there for just a moment — not to change anything, just to touch it with your mind.",
+      "Right thumb. Right index finger. Middle finger. Ring finger. Little finger. Right palm. Back of the right hand. Right wrist. Right forearm. Elbow. Upper arm. Shoulder. Armpit. Right side of the chest. Right side of the waist. Hip. Thigh. Kneecap. Calf. Ankle. Heel. Sole of the right foot. Right big toe. Second toe. Third, fourth, fifth.",
+      "Left thumb. Left index finger. Middle finger. Ring finger. Little finger. Left palm. Back of the left hand. Wrist. Forearm. Elbow. Upper arm. Shoulder. Armpit. Left side of the chest. Left side of the waist. Hip. Thigh. Kneecap. Calf. Ankle. Heel. Sole of the left foot. Left big toe. Second toe. Third, fourth, fifth.",
+      "Right shoulder blade. Left shoulder blade. The whole of the upper back. Lower back. The right buttock. Left buttock. The back of the right leg. Back of the left leg. The back of the head. The crown.",
+      "Top of the head. Forehead. Right temple. Left temple. Right eyebrow. Left eyebrow. The space between the eyebrows. Right eyelid. Left eyelid. Right eye. Left eye. Right nostril. Left nostril. Right cheek. Left cheek. Upper lip. Lower lip. Both lips. Chin. Jaw. Right ear. Left ear. Throat. Right side of the chest. Left side of the chest. Middle of the chest.",
+      "Navel. Belly. Right side of the abdomen. Left side. The whole body. The whole body, at rest.",
+      "Now I will name pairs. As I name each, feel the sensation — briefly, lightly. Heaviness. Lightness. Heaviness. Lightness.",
+      "Warmth. Cold. Warmth. Cold.",
+      "Pain. Pleasure. Simply notice — without going anywhere, without changing anything.",
+      "A smile. A frown. A deep breath. A letting go.",
+      "Now imagine yourself somewhere that feels like rest. A cool room. A quiet morning. The smell of something familiar. See yourself, lying exactly as you are, utterly at ease. There is no distance between you and peace right now.",
+      "You are between waking and sleeping — in the borderland where the mind gets quiet and the body remembers how to fall. You do not need to stay awake. You do not need to follow these words anymore.",
+      "Let the words become background. Let your awareness soften like light fading. The body is heavy. The mind is quiet. You are on the surface of sleep, and below you is only depth, warmth, and rest.",
+      "Sink down. There is nothing you need to do. You have arrived. Let sleep take you from here."
+    ]
+  },
+  {
+    "id": "med-sleep-006",
+    "title_en": "Breath Countdown to Sleep",
+    "title_hi": "सांसों की गिनती से नींद तक",
+    "lang": "en",
+    "mood_tags": ["sleep", "racing-thoughts", "anxiety", "insomnia"],
+    "duration_min": 8,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "Slowing Down", "start_paragraph": 0 },
+      { "title": "The Count", "start_paragraph": 3 },
+      { "title": "Releasing", "start_paragraph": 8 }
+    ],
+    "script": [
+      "If your mind is racing tonight — if there's a loop playing, a worry circling, a conversation that won't end — this is for you. We're going to give your mind one job. Just one. And it's so simple that sleep can sneak in while it's doing it.",
+      "Lie still. Let your body be as it is. Don't force anything. If you're tense, that's fine. If you're restless, that's fine. We'll work with what's here.",
+      "Take a slightly longer breath in than usual. Not forced — just a little fuller. And a slightly longer breath out. The longer exhale is the key: it activates the part of your nervous system that slows everything down. You can do this any time. Your body will respond.",
+      "Now we count. We start at 10. With each exhale, we count down. If your mind wanders — and it will, that's not failing — you simply return to wherever you were and keep counting. If you lose count entirely, you start again at 10.",
+      "Ten. Breathe in slowly. Breathe out slowly. Ten.",
+      "Nine. A little slower now. The room around you. The surface beneath you. Nine.",
+      "Eight. Your hands, resting. Your jaw, softening. Eight.",
+      "Seven. You don't have to do anything else right now. Just this breath. Seven.",
+      "Six. The thoughts can come and go. You're not fighting them. Just watching them pass by while you count. Six.",
+      "Five. Halfway. Already quieter. Five.",
+      "Four. Your body getting heavier. The breath, slower. Four.",
+      "Three. If sleep is close, let it take you. You don't have to finish counting. Three.",
+      "Two. Almost there. Two.",
+      "One. Or if you're still here — start again. Ten. With the same ease, the same gentleness. No urgency. No goal except this breath, and the next.",
+      "You can keep counting as long as you need to. Or you can let the numbers go and just breathe. Either way, you're already resting. And rest is already the beginning of sleep."
+    ]
+  },
+  {
+    "id": "med-sleep-007",
+    "title_en": "Body Scan: Ending the Day",
+    "title_hi": "शरीर की यात्रा: दिन को विदाई",
+    "lang": "hi",
+    "mood_tags": ["sleep", "exhaustion", "tension-release", "wind-down"],
+    "duration_min": 15,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "आगमन", "start_paragraph": 0 },
+      { "title": "यात्रा", "start_paragraph": 3 },
+      { "title": "विसर्जन", "start_paragraph": 9 }
+    ],
+    "script": [
+      "लेट जाइए। अभी कुछ करने की ज़रूरत नहीं। कुछ ठीक करने की, किसी को जवाब देने की, या किसी के लिए कुछ होने की — कोई ज़रूरत नहीं। यह पल सिर्फ़ आपका है।",
+      "अपनी बाहों को कहीं टिकने दीजिए जहाँ उन्हें कुछ थामना न पड़े। पैरों को ढीला छोड़ दीजिए। आपने सारा दिन खुद को संभाला है। अब आप उसे नीचे रख सकते हैं।",
+      "नाक से एक धीमी सांस लीजिए — कोई गहरी सांस नहीं, बस स्वाभाविक। और मुँह से बाहर जाने दीजिए। जैसे वो आह जो आप सुबह से रोके हुए थे।",
+      "अपना ध्यान पैरों के तलवों पर लाइए। बदलने के लिए नहीं — बस महसूस करने के लिए। ठंडे हैं? गरम? दिन की थकान से थोड़े कसे हुए? बस देखिए, जैसे किसी अजनबी को देखते हैं — बिना उन्हें बदलने की चाह के।",
+      "तलवों को थोड़ा नरम होने दीजिए। इसलिए नहीं कि उन्हें होना चाहिए — बल्कि इसलिए कि वो हो सकते हैं। एड़ियों तक, टखनों तक ध्यान ले जाइए। पैरों का भार बिस्तर में डूबने दीजिए। वो अब भारी हो सकते हैं।",
+      "पिंडलियाँ, घुटने। अगर कोई दर्द है, वो ठीक है — उसे बस वहीं रहने दीजिए, लड़ाई मत कीजिए। जाँघों तक ध्यान लाइए। माँसपेशियों को छोड़ दीजिए। आज रात उनकी ज़रूरत नहीं।",
+      "कूल्हे। रीढ़ का निचला हिस्सा। जो भी वहाँ कसा हुआ था — जो तनाव आपको पता भी नहीं था — उसे नीचे रख दीजिए। कमर को अपनी जगह पर टिक जाने दीजिए।",
+      "पेट। देखिए कहीं पेट को अंदर खींचे तो नहीं रखा — पुरानी आदत से, बिना जाने। उसे नरम होने दीजिए। सांस के साथ उठने-गिरने दीजिए। कोई देख नहीं रहा। यह सिर्फ आप हैं।",
+      "छाती। पसलियाँ। सांस आती है तो फैलती हैं, जाती है तो बैठती हैं। आपको इसे चलाने की ज़रूरत नहीं — आपका शरीर जानता है। वो पूरी ज़िंदगी से जानता है।",
+      "कंधे। यहाँ अक्सर दिन रहता है। उन्हें थोड़ा नीचे आने दीजिए। जोर से नहीं — बस क्योंकि आप उनसे कुछ उठवाना नहीं चाहते अभी।",
+      "बाहें, कोहनियाँ, कलाइयाँ, हाथ। उँगलियों को खुला होने दीजिए। खुले हाथ नर्वस सिस्टम को संकेत देते हैं — कि आप सुरक्षित हैं। कि सब हो गया।",
+      "जबड़ा। हम में से ज़्यादातर लोग दिन को जबड़े में रखते हैं। दाँतों को थोड़ा अलग होने दीजिए। जीभ को मुँह में आराम से पड़ी रहने दीजिए। चेहरे को कोई भाव नहीं रखना अभी।",
+      "आँखें, पहले से बंद — उनके पीछे की जगह को नरम होने दीजिए। माथा। सिर का पिछला हिस्सा, तकिए पर भारी। सिर के ऊपर तक।",
+      "अब पूरा शरीर, एक साथ। भारी और गरम। जो सतह है उस पर टिका हुआ। आपको खुद को थामना नहीं है। आज रात के लिए बस इतना काफी है।",
+      "दिन पूरा हुआ। जो अधूरा है वो सुबह तक रुक सकता है। बस इतना — सांस, शरीर, और यह शांत अँधेरा।"
+    ]
+  },
+  {
+    "id": "med-sleep-008",
+    "title_en": "Loving-Kindness for Yourself Before Sleep",
+    "title_hi": "सोने से पहले अपने लिए मैत्री",
+    "lang": "hi",
+    "mood_tags": ["sleep", "self-compassion", "emotional-weight", "loneliness"],
+    "duration_min": 10,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "घर लौटना", "start_paragraph": 0 },
+      { "title": "मैत्री देना", "start_paragraph": 4 },
+      { "title": "उसमें विश्राम", "start_paragraph": 8 }
+    ],
+    "script": [
+      "आप दिन के अंत तक पहुँच गए। यह छोटी बात नहीं है। कुछ दिन कठिन होते हैं, और आपने इसे यहाँ तक लाया। खुद को यहाँ पहुँचने दीजिए।",
+      "एक हाथ सीने पर रख लीजिए अगर ठीक लगे। या बस रखे रहने दीजिए। कभी-कभी हम पूरा दिन बिता देते हैं बिना किसी से गर्मजोशी पाए, और भूल जाते हैं कि हम खुद को दे सकते हैं।",
+      "एक सांस लीजिए। और जैसे छोड़ते हैं, देखिए क्या अपने प्रति थोड़ा नरम हो सकते हैं — थोड़ा सा। कुछ जबरदस्ती नहीं, कोई नाटक नहीं। बस वैसे मुड़ना जैसे किसी थके हुए प्रिय की ओर मुड़ते हैं।",
+      "आज आपने कुछ किया — कुछ भी। शायद कहीं गए जब मन नहीं था। शायद थके होने पर भी दयालु रहे। शायद बस कुछ झेला। यह भी काफी है। सब कुछ मायने रखता है।",
+      "मन में, या धीमे से, खुद से कहिए: मैं शांति में रहूँ। ऐसे कहिए जैसे किसी सोते बच्चे से कहते। धीरे से। बिना शर्त के।",
+      "मैं शांति में रहूँ। मेरा शरीर विश्राम करे। मेरा मन शांत हो जाए।",
+      "जो मैं उठाए हुए हूँ, वो सुबह तक थोड़ा हल्का हो जाए।",
+      "अगर कोई हिस्सा कहे कि तुम इसके लायक नहीं — उसे देखिए। बहस मत कीजिए। फिर भी मैत्री दीजिए, उसके बावजूद — जैसे ठंड में किसी को कंबल देते हैं बिना यह पूछे कि उसने उसे कमाया है या नहीं।",
+      "मैं विश्राम करूँ। मैं आज रात अपने साथ दयालु रहूँ। कल जो भी आए, उससे थोड़ी नरम जगह से मिलूँ।",
+      "अपना हाथ सीने पर या पास में रहने दीजिए। वहाँ की गर्मी महसूस कीजिए — आपके अपने शरीर की गर्मी, जो पूरी ज़िंदगी आपको जिंदा रखती आई है बिना कुछ माँगे।",
+      "आप अब विश्राम कर सकते हैं। इसलिए नहीं कि आपने काफी किया — हालाँकि किया — बल्कि इसलिए कि विश्राम शरीर की ज़रूरत है। यह इनाम नहीं, बस देखभाल है।",
+      "नींद जब आए तब आए। आपको उसे कमाना नहीं। बस दिन को जाने दीजिए, और शांति में अपने आप को थमे रहने दीजिए।"
+    ]
+  },
+  {
+    "id": "med-sleep-009",
+    "title_en": "Forgiveness Wind-Down",
+    "title_hi": "क्षमा के साथ दिन विसर्जित करना",
+    "lang": "hi",
+    "mood_tags": ["sleep", "guilt", "regret", "rumination", "anger"],
+    "duration_min": 10,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "जो आप उठाए हैं", "start_paragraph": 0 },
+      { "title": "छोड़ना", "start_paragraph": 4 },
+      { "title": "नरम होना", "start_paragraph": 8 }
+    ],
+    "script": [
+      "कभी-कभी जब हम लेटते हैं तो दिन वापस बोलता है। कुछ जो आपने कहा, कुछ जो नहीं कहा। एक पल जो उम्मीद के मुताबिक नहीं गया। एक चेहरा जो आँखों से हटता नहीं। यह सामान्य है। आप टूटे नहीं हैं। आप बस इंसान हैं।",
+      "आज रात इसे ठीक नहीं करना है। कर भी नहीं सकते, असल में। जो हो गया, हो गया। बस यह है कि क्या उसे नींद तक साथ लेकर जाना है, या यहीं नीचे रख देना है।",
+      "एक सांस लीजिए। शरीर को भारी होने दीजिए। मन में जो भी घूम रहा है — उससे लड़ाई मत कीजिए। बस देखिए जैसे खिड़की से बाहर मौसम देखते हैं। वो है, आप देख रहे हैं, पर आप अंदर हैं और गरम हैं।",
+      "अगर किसी ने आपको आज — या हाल में, या बहुत पहले — चोट पहुँचाई है जो अभी भी सीने में बैठी है — आपको आज रात माफ नहीं करना है। पर क्या आप बस अभी के लिए, उसका बोझ थोड़ा नीचे रख सकते हैं? उनके लिए नहीं। अपने लिए। ताकि आप सो सकें।",
+      "और अगर आपने आज कुछ किया — लापरवाही से कुछ कह दिया, धैर्य खो दिया, खुद से कम रहे — तो यह कोशिश कीजिए: उस पल में आपके पास जो था, उससे बेहतर आप कर ही नहीं सकते थे। यह बहाना नहीं है। यह सच है।",
+      "कल के लिए और मौके हैं। आज रात, क्या आप खुद को परफेक्ट न होने की माफी दे सकते हैं? क्या इसे, बस इन घंटों के लिए, नीचे रख सकते हैं?",
+      "धीरे से सांस छोड़िए। और उस सांस के साथ, एक चीज़ छोड़िए जो आप थामे हुए हैं। बस एक। सब कुछ नहीं छोड़ना — बस एक छोटा सा बोझ। देखिए कैसे सांस उसे बाहर ले जाती है।",
+      "फिर सांस छोड़िए। और कुछ और जाने दीजिए। शायद वो बातचीत जो आप दोहरा रहे हैं। शायद वो रूप जो आप सोचते हैं आपको होना चाहिए था। अँधेरे में जाने दीजिए, जहाँ वो घुल जाए।",
+      "जब यह थामना नरम होता है, तो क्या बचता है? कुछ शांत। आपका शरीर, सांस लेता हुआ। आपके चारों ओर का कमरा, अंधेरा और स्थिर। आप यहाँ हैं, और आप ठीक हैं।",
+      "कल आप सुधार कर सकते हैं, फिर से कोशिश कर सकते हैं, अलग तरह से कर सकते हैं। आज रात बस एक थका हुआ इंसान होने की अनुमति है जिसे नींद चाहिए। इतना काफी है।",
+      "चेहरे को नरम होने दीजिए। हाथों को खुला होने दीजिए। दिन की कहानियाँ बहने दीजिए — धुएँ की तरह, बादल की तरह, पानी की तरह जो अपना तल खोज लेता है। कल से कल मिलेंगे। अभी — विश्राम।"
+    ]
+  },
+  {
+    "id": "med-sleep-010",
+    "title_en": "Letting Go of the Day",
+    "title_hi": "दिन को जाने देना",
+    "lang": "hi",
+    "mood_tags": ["sleep", "busy-mind", "stress", "transition", "wind-down"],
+    "duration_min": 8,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "दहलीज़ पार करना", "start_paragraph": 0 },
+      { "title": "चीज़ें नीचे रखना", "start_paragraph": 3 },
+      { "title": "अँधेरे में", "start_paragraph": 7 }
+    ],
+    "script": [
+      "जब आप लेटते हैं तो एक रेखा पार होती है। एक तरफ है दिन, उसकी सारी माँगों के साथ। दूसरी तरफ है नींद, जो कुछ नहीं माँगती। आपने वो रेखा पार कर ली। आप यहाँ हैं।",
+      "दिन हो गया। पूरा नहीं हुआ — दिन शायद ही पूरे होते हैं — पर हो गया। जो अधूरा है वो सुबह तक रहेगा। और आप उसे तब बेहतर कर पाएँगे जब आप अभी से ज़्यादा सक्षम होंगे।",
+      "तो हम यह करने वाले हैं। दिन के सारे टुकड़े — काम, चिंताएँ, वो बातें जो कहनी थीं, वो ईमेल जो नहीं भेजे — सबको एक डिब्बे में रखेंगे। हमेशा के लिए नहीं। बस रात भर के लिए।",
+      "एक चीज़ सोचिए जो अभी मन में गूँज रही है। उसे देखिए। और उसे डिब्बे में रखते हुए कल्पना कीजिए। वो अभी भी है, आपने उसे खोया नहीं, भूले नहीं। बस कहीं रख दिया जहाँ वो इंतज़ार कर सकती है।",
+      "एक और। शायद कल की सूची। शायद कोई बातचीत जिससे डर लग रहा है। डिब्बे में। सुबह उठाकर ले सकते हैं। वो रहेगी।",
+      "और एक। शायद पिछले कुछ दिनों से कुछ मंडरा रहा है। डिब्बे में। ढक्कन बंद। डिब्बा सुरक्षित है। उसमें सब कुछ सुरक्षित है। आपको उसे थामना नहीं है।",
+      "एक लंबी सांस बाहर जाने दीजिए। यह है दिन की आवाज़ शरीर से जाते हुए। छाती हल्की है। मन थोड़ा शांत। अब कुछ जगह है।",
+      "उस जगह में, आप बस कुछ देर रह सकते हैं। कुछ करने की ज़रूरत नहीं। कुछ साबित करने की नहीं। कोई रूप बनाए रखने की नहीं। बस सांस और शरीर और आपके चारों ओर का अँधेरा कमरा।",
+      "विचारों को धीमा होने दीजिए, जैसे कार किसी शांत सड़क पर मुड़ने पर धीमी होती है। अब कोई मंज़िल नहीं। कोई जल्दी नहीं। बस सड़क घूमती हुई विश्राम की ओर जाती है।",
+      "नींद जब आएगी आएगी। उसे खींचना नहीं है, जबरदस्ती नहीं लानी। बस यहाँ रहिए, इस शरीर में, इस सांस में, इस शांति में। यही पहले से विश्राम है। और विश्राम पहले से कुछ है।"
+    ]
+  },
+  {
+    "id": "med-sleep-011",
+    "title_en": "Yoga Nidra: The Descent Into Sleep",
+    "title_hi": "योग निद्रा: नींद की ओर उतरना",
+    "lang": "hi",
+    "mood_tags": ["sleep", "insomnia", "deep-rest", "body-awareness"],
+    "duration_min": 20,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "संकल्प", "start_paragraph": 0 },
+      { "title": "शरीर भ्रमण", "start_paragraph": 3 },
+      { "title": "विरोधी युगल", "start_paragraph": 9 },
+      { "title": "उतरना", "start_paragraph": 13 }
+    ],
+    "script": [
+      "पीठ के बल लेट जाइए। बाहें शरीर से थोड़ी दूर, हथेलियाँ ऊपर की ओर। पैर स्वाभाविक रूप से अलग हो जाएँ। यह स्थिति — शवासन — शरीर का नर्वस सिस्टम को संकेत है: जाने दो।",
+      "आँखें बंद कर लीजिए। उन्हें अपनी जगह में गहरे जाने दीजिए, जैसे वो अंदर की ओर लौट रही हों। देखने के लिए कुछ नहीं है। होने के लिए कहीं और जाना नहीं है।",
+      "अगर आपका एक संकल्प है — एक छोटा, ईमानदार वाक्य जो आपकी जीवन-इच्छा है — अभी उसे मन में रोपिए। मैं स्वस्थ हो रहा हूँ। मैं पर्याप्त हूँ। मैं शांत हूँ। जोर लगाए बिना कहिए, जैसे कोई सच जो आप अभ्यास कर रहे हैं।",
+      "अब हम शरीर से गुज़रेंगे जागरूकता के साथ। जैसे मैं हर हिस्से का नाम लूँ, एक पल के लिए वहाँ ध्यान ले जाइए — बदलने के लिए नहीं, बस छूने के लिए।",
+      "दाहिना अंगूठा। दाहिनी तर्जनी। मध्यमा। अनामिका। कनिष्ठा। दाहिनी हथेली। दाहिने हाथ का पिछला हिस्सा। दाहिनी कलाई। दाहिना अग्रबाहु। कोहनी। ऊपरी बाहु। कंधा। काँख। छाती का दाहिना हिस्सा। कमर का दाहिना हिस्सा। कूल्हा। जाँघ। घुटने की टोपी। पिंडली। टखना। एड़ी। दाहिने पैर का तलवा। दाहिना अंगूठा। दूसरी उँगली। तीसरी, चौथी, पाँचवीं।",
+      "बायाँ अंगूठा। बाईं तर्जनी। मध्यमा। अनामिका। कनिष्ठा। बाईं हथेली। बाएँ हाथ का पिछला हिस्सा। बाईं कलाई। बायाँ अग्रबाहु। कोहनी। ऊपरी बाहु। कंधा। काँख। छाती का बायाँ हिस्सा। कमर का बायाँ हिस्सा। कूल्हा। जाँघ। घुटने की टोपी। पिंडली। टखना। एड़ी। बाएँ पैर का तलवा। बायाँ अंगूठा। दूसरी उँगली। तीसरी, चौथी, पाँचवीं।",
+      "दाहिना कंधे का पिछला हिस्सा। बायाँ कंधे का पिछला हिस्सा। पूरी पीठ के ऊपर का भाग। पीठ के नीचे का भाग। दाहिना नितंब। बायाँ नितंब। दाहिनी टाँग का पिछला हिस्सा। बाईं टाँग का पिछला हिस्सा। सिर का पिछला हिस्सा। सिर का ऊपर।",
+      "सिर का ऊपरी भाग। माथा। दाहिनी कनपटी। बाईं कनपटी। दाहिनी भौंह। बाईं भौंह। दोनों भौंहों के बीच की जगह। दाहिनी पलक। बाईं पलक। दाहिनी आँख। बाईं आँख। दाहिनी नाक। बाईं नाक। दाहिना गाल। बायाँ गाल। ऊपरी होंठ। निचला होंठ। दोनों होंठ। ठुड्डी। जबड़ा। दाहिना कान। बायाँ कान। गला। छाती का दाहिना हिस्सा। बायाँ हिस्सा। बीच का हिस्सा।",
+      "नाभि। पेट। पेट का दाहिना हिस्सा। बायाँ हिस्सा। पूरा शरीर। पूरा शरीर, विश्राम में।",
+      "अब मैं युगल बोलूँगा। जैसे मैं बोलूँ, वो अनुभूति महसूस कीजिए — हल्के से। भारीपन। हल्कापन। भारीपन। हल्कापन।",
+      "गर्मी। ठंड। गर्मी। ठंड।",
+      "दर्द। आनंद। बस देखिए — कहीं गए बिना, कुछ बदले बिना।",
+      "मुस्कान। भ्रकुटि। एक गहरी सांस। जाने देना।",
+      "अब कल्पना कीजिए कहीं ऐसा जो विश्राम जैसा लगे। एक ठंडा कमरा। एक शांत सुबह। कुछ जाना-पहचाना खुशबू। खुद को वैसा देखिए जैसे आप अभी हैं — पूरी तरह शांत। शांति और आपके बीच अभी कोई दूरी नहीं।",
+      "आप जागने और सोने के बीच हैं — उस सीमा पर जहाँ मन शांत होता है और शरीर गिरना याद करता है। अब जागे रहने की ज़रूरत नहीं। इन शब्दों को और नहीं सुनना है।",
+      "शब्दों को पृष्ठभूमि बनने दीजिए। अपनी जागरूकता को नरम होने दीजिए, जैसे रोशनी धीमी पड़ती है। शरीर भारी है। मन शांत है। आप नींद की सतह पर हैं, और नीचे केवल गहराई, गर्मी और विश्राम है।",
+      "डूब जाइए। कुछ करने की ज़रूरत नहीं। आप पहुँच गए। नींद को यहाँ से ले जाने दीजिए।"
+    ]
+  },
+  {
+    "id": "med-sleep-012",
+    "title_en": "Breath Countdown to Sleep",
+    "title_hi": "सांसों की उलटी गिनती से नींद तक",
+    "lang": "hi",
+    "mood_tags": ["sleep", "racing-thoughts", "anxiety", "insomnia"],
+    "duration_min": 8,
+    "ambient_video": "hero-sleep.mp4",
+    "chapters": [
+      { "title": "धीमा होना", "start_paragraph": 0 },
+      { "title": "गिनती", "start_paragraph": 3 },
+      { "title": "छोड़ना", "start_paragraph": 8 }
+    ],
+    "script": [
+      "अगर आज रात मन दौड़ रहा है — कोई लूप चल रहा है, कोई चिंता घूम रही है, कोई बातचीत खत्म नहीं हो रही — यह आपके लिए है। हम मन को एक काम देने वाले हैं। बस एक। और इतना सरल कि नींद बीच में आ सकती है।",
+      "लेटे रहिए। शरीर जैसा है वैसा रहने दीजिए। कुछ जबरदस्ती नहीं। अगर तनाव है, ठीक है। अगर बेचैनी है, ठीक है। जो यहाँ है उसके साथ काम करेंगे।",
+      "सामान्य से थोड़ी लंबी सांस लीजिए। जोर से नहीं — बस थोड़ी भरी हुई। और सामान्य से थोड़ी लंबी सांस छोड़िए। लंबी साँस छोड़ना ही असली चाबी है: यह नर्वस सिस्टम के उस हिस्से को सक्रिय करती है जो सब कुछ धीमा करता है। आप यह कभी भी कर सकते हैं। शरीर माने।",
+      "अब हम गिनते हैं। दस से शुरू। हर सांस छोड़ने के साथ एक कम। अगर मन भटका — और भटकेगा, यह नाकामी नहीं — बस वापस आइए जहाँ थे और गिनते रहिए। अगर गिनती पूरी तरह भूल गई, दस से फिर शुरू।",
+      "दस। धीरे सांस लीजिए। धीरे छोड़िए। दस।",
+      "नौ। थोड़ा और धीमा। आपके चारों ओर का कमरा। आपके नीचे की सतह। नौ।",
+      "आठ। हाथ, टिके हुए। जबड़ा, नरम होता हुआ। आठ।",
+      "सात। अभी कुछ और करने की ज़रूरत नहीं। बस यह सांस। सात।",
+      "छह। विचार आ-जा सकते हैं। आप उनसे लड़ नहीं रहे। बस देख रहे हैं जाते हुए, गिनते हुए। छह।",
+      "पाँच। आधा रास्ता। पहले से शांत। पाँच।",
+      "चार। शरीर भारी होता जा रहा है। सांस धीमी। चार।",
+      "तीन। अगर नींद पास है, उसे ले जाने दीजिए। गिनती पूरी करने की ज़रूरत नहीं। तीन।",
+      "दो। लगभग। दो।",
+      "एक। या अगर अभी भी यहाँ हैं — फिर से शुरू। दस। उसी आसानी से, उसी कोमलता से। कोई जल्दी नहीं। कोई लक्ष्य नहीं, बस यह सांस और अगली।",
+      "आप जितनी देर चाहें गिनते रह सकते हैं। या संख्याओं को जाने दे सकते हैं और बस सांस ले सकते हैं। किसी भी तरह, आप पहले से ही विश्राम में हैं। और विश्राम पहले से ही नींद की शुरुआत है।"
+    ]
+  }
+]

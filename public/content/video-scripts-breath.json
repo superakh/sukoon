@@ -1,0 +1,724 @@
+[
+  {
+    "id": "breath-478-reset",
+    "title_en": "4-7-8 — The Breath That Resets in 60 Seconds",
+    "title_hi": "4-7-8 — 60 सेकंड में मन को शांत करने वाली श्वास",
+    "target_duration_min": 8,
+    "type": "breath_demonstration",
+    "location": "Traditional ashram meditation room — interior. Thick plastered walls in raw white, aged teakwood window frame with iron latch. A single deep-set window faces east; morning light cuts a clean rectangle across a hand-woven dhurrie on the stone floor. No furniture. A folded cotton blanket in natural undyed cream. Earthen oil lamp on a low stone ledge. No decorative iconography visible. Room breathes stillness.",
+    "location_alt": "Dawn window interior — urban apartment, Pune or Bangalore. Sheer white cotton curtains diffuse the pre-dawn blue light. Smooth concrete floor, one small plant in a terracotta pot. Absolutely minimal. The city is not visible but its quietness before 6am is felt.",
+    "time_of_day": "blue_hour_dawn",
+    "talent_direction": "Indian woman, late 20s to early 40s. Seated in Sukhasana on the dhurrie, spine naturally upright but not military-rigid — a composed ease that doesn't perform. Hair drawn back simply, no elaborate styling. Face unmade except for kohl liner if the talent prefers it; natural skin. Demeanor: a friend who has done this ten thousand times and is quietly showing you how, not teaching you. Eye contact with camera is intermittent and warm — not held like a TED talk. Hands rest in Jnana Mudra (forefinger and thumb touching) on knees for seated sections; one hand on chest, one on belly for the counting demonstration. No jewelry except stud earrings maximum. Voice quality: unhurried, soft but present, no breathy performance-wellness affectation.",
+    "wardrobe": "Soft natural-linen wide-leg trousers in warm clay/terracotta. Loose cotton top, full sleeves, in off-white or oatmeal. No logos, no activewear branding, no synthetic sheen. Bare feet. No orange. No spiritual costume.",
+    "camera_setup": "Sony FX3 body A: 85mm f/1.8, fixed tripod, eye-level to seated talent — this is the primary instructor lens. Body B: 35mm f/2.8 on a fluid-head Ronin, used for slow lateral reveals and breath-movement close-ups. Minimal rigging. No drone. No slider unless the B-roll list specifies. The camera should feel like it is breathing alongside the instructor.",
+    "lighting": "PRIMARY: Available dawn light through the eastern window, augmented with a 2x2ft Litepanels Astra Soft LED panel placed camera-left at 45 degrees to wrap fill light. Intensity matched to feel continuous with the window. No hard sources. No backlights that feel 'studio'. Goal: the scene looks lit by the room itself. MODIFIER: Muslin diffusion over the window if direct sun creates harsh patches. ACCENT: The oil lamp on the ledge is practical and should register as a warm point of interest in wide shots — do not blow it out. WHITE BALANCE: 4800-5200K for the dawn blend. Slight warmth is natural; avoid cool-blue wellness-clinic feel.",
+    "audio_direction": "Primary: Sennheiser MKH-50 short shotgun on a boom, positioned above frame at 45 degrees. Backup: DJI Mic 2 lavalier hidden in the neckline of the top. Room tone: record 60 seconds of room ambience with no one present before shooting. NO ambient music during any spoken instruction segment — the silence is part of the content. Breath sounds are intentional content — the boom operator must not move during hold sequences. Post-audio: a barely perceptible tanpura drone at -24dB under instructional pauses only (not under speech). Breathing counts will be synchronized in post to a click track the talent listens to in a discreet IFB earpiece (not visible on camera). No reverb added in post.",
+    "on_screen_graphics_direction": "For the counting sequences, a minimal circular timer animates on screen: a clean dark circle (no fill), a thin arc in warm gold sweeps clockwise as counts progress. Inhale arc is one color (soft gold), hold arc is another (pale silver), exhale arc is a third (soft dusty rose). Numbers appear in the center in the Sukoon typeface — no animation bounce, they simply fade in/out. Graphics appear only during the demonstration sequences, not during instructional speech. Entire graphic fits within the lower-center quadrant of a 16:9 frame so it never obscures the face. Designer reference: think Apple Watch breathing app — functional, beautiful, not medical-chart.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Full room establisher. Talent not yet in frame. Camera holds on empty dhurrie, morning light on stone floor, oil lamp warm in the corner. 4 seconds of stillness before talent enters frame from left and settles onto dhurrie.",
+        "duration_sec": 12,
+        "notes": "No camera movement. Let the room introduce itself. The sound of bare feet on stone is intentional — keep it."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Talent seated, settling, spine lengthening naturally. Frame waist-to-top-of-head. Hands come to knees. A long exhale settles the shoulders. She looks directly at camera.",
+        "duration_sec": 10,
+        "notes": "Hold. Do not cut early. The settling itself is content — audiences need to see that it's okay to not be immediately composed."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Introduction spoken. Talent explains 4-7-8 origin (Dr. Andrew Weil's formalization of ancient pranayama), what it does physiologically, when to use it. Slight natural hand gestures. Camera holds.",
+        "duration_sec": 90,
+        "notes": "Single take if possible. No insert cuts. The unbroken presence is the point."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Hands: one on belly (lower hand), one on chest (upper hand). Talent demonstrates natural belly-breath vs. chest-breath. We see the belly rise and the chest remains still for the correct breath.",
+        "duration_sec": 20,
+        "notes": "Camera B. 35mm at f/2.8. Shallow depth, belly hand sharp, chest hand soft. Do not add instruction voice-over — shoot silent, audio added in post."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "First demonstration round — talent performs 4-7-8 breathing slowly, counting aloud for the audience. Exhale through mouth with a soft 'whoosh' sound on the 8. Graphic timing overlay will be added in post (see on_screen_graphics_direction).",
+        "duration_sec": 35,
+        "notes": "Shoot at least three clean takes of this full cycle. Talent should feel genuinely present in the breath, not performing. If there is any performative quality, reset."
+      },
+      {
+        "shot_number": 6,
+        "type": "ECU",
+        "description": "Lips: the soft 'whoosh' exhale through parted lips. Clean profile or slight 3/4 angle. Natural light from window catches the breath moisture if temperature cooperates.",
+        "duration_sec": 10,
+        "notes": "Capture 5 clean takes. This is an insert for edit. Critical quality: it must not look clinical or strange — the moment should look effortless."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU",
+        "description": "Eyes closed during the hold phase (7 counts). Slight stillness of the whole face. The tiniest movement in the throat as the breath is held. No performance — just real stillness.",
+        "duration_sec": 12,
+        "notes": "Camera A, 85mm. This is the emotional center of the piece — the viewer's nervous system responds to a face in genuine stillness."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "Guided practice round — talent invites viewer to breathe along. Counted in real time. This is the core 2-3 minute practice section. Four full cycles.",
+        "duration_sec": 160,
+        "notes": "Shoot two full takes. Talent should NOT look at a script or prompter. The counting cadence must be internalized. Any hesitation breaks the viewer's nervous system engagement."
+      },
+      {
+        "shot_number": 9,
+        "type": "MS",
+        "description": "After the fourth cycle, talent opens eyes slowly. A natural pause. Then looks at camera and speaks the closing integration — noting how the body feels, anchoring the viewer to their own experience.",
+        "duration_sec": 40,
+        "notes": "No rush into the close. The pause after the last exhale is 5-7 seconds of silence. Do not cut it. It is the payoff."
+      },
+      {
+        "shot_number": 10,
+        "type": "WS",
+        "description": "Final wide. Talent remains still. Morning light has shifted slightly (real time passing is visible). Oil lamp. Silence. Camera holds 6 seconds before fade.",
+        "duration_sec": 10,
+        "notes": "This is not an end card shot. End card will be a separate clean plate. This is the breath-out of the session."
+      }
+    ],
+    "script_text_en": [
+      "Settle in for a moment. You don't need to change how you're breathing right now — just notice it.",
+      "There is a breathing pattern that has been used in yoga for thousands of years, and in the last few decades a doctor named Andrew Weil formalized it, named it 4-7-8, and began teaching it to patients dealing with anxiety, insomnia, and high stress. The research since has been consistent: this pattern activates the parasympathetic nervous system — what your body calls its 'rest and digest' mode — within a single minute.",
+      "The pattern is simple. Inhale for four counts. Hold for seven. Exhale for eight. The long hold builds a slight carbon dioxide tolerance that signals your nervous system to soften. The extended exhale activates the vagus nerve. You do not need to understand the physiology for it to work. But knowing why it works makes it easier to trust.",
+      "Before we begin — one hand on your belly, one on your chest. When you breathe correctly for this practice, the belly rises first. The chest stays relatively still. If the chest is rising first, the breath is too shallow. Let's adjust that before we count.",
+      "Take a natural breath in through the nose. Feel the belly expand. Good. Exhale completely through the mouth with a soft, audible sound — like you're fogging a mirror. Empty the lungs.",
+      "Now we begin. Inhale through your nose — one, two, three, four. Hold — one, two, three, four, five, six, seven. Exhale through your mouth — one, two, three, four, five, six, seven, eight. [pause] Good. Let's go again.",
+      "Inhale — one, two, three, four. Hold — one, two, three, four, five, six, seven. Exhale — one, two, three, four, five, six, seven, eight.",
+      "Two more rounds, and this time I want you to let go of the counting slightly and just feel. Trust the rhythm. Inhale... hold... and exhale.",
+      "One final cycle. After this exhale, we'll sit quietly for a moment.",
+      "[After final exhale] — Stay here. Notice what has changed. The quality of the air in your lungs. The weight of your hands on your knees. The room around you. This is your nervous system resetting. It happened in under two minutes.",
+      "Three to four cycles of this breath is a complete reset. You can do this before a difficult conversation. Before sleeping. In a bathroom stall at work if you need to. The environment doesn't matter. Only the breath does.",
+      "Come back whenever you need it."
+    ],
+    "script_text_hi": [
+      "एक पल के लिए यहाँ रुकें। अभी आपको अपनी श्वास बदलने की जरूरत नहीं — बस उसे महसूस करें।",
+      "यह एक श्वास की विधि है जो हजारों साल से योग में प्रयोग होती रही है। पिछले कुछ दशकों में डॉ. एंड्रयू वेइल ने इसे 4-7-8 का नाम दिया और चिंता, नींद की समस्या और तनाव से जूझते मरीजों को सिखाया।",
+      "तरीका सीधा है। चार गिनती तक सांस लें। सात गिनती रोकें। आठ गिनती तक छोड़ें। यह पैटर्न आपके तंत्रिका तंत्र को एक मिनट के भीतर शांत करता है।",
+      "शुरू करने से पहले — एक हाथ पेट पर, एक सीने पर। सही श्वास में पेट पहले उठता है। सीना स्थिर रहता है।",
+      "नाक से सांस लें — एक, दो, तीन, चार। रोकें — एक, दो, तीन, चार, पाँच, छह, सात। मुँह से छोड़ें — एक, दो, तीन, चार, पाँच, छह, सात, आठ।",
+      "अब आप भी साथ करें। सांस लें... रोकें... और छोड़ें। बस यहाँ रहें।",
+      "अंतिम चक्र के बाद, आँखें बंद रखें। देखें क्या बदला। यह आपका तंत्रिका तंत्र का रीसेट है।",
+      "जब भी जरूरत हो — लौट आएं।"
+    ],
+    "b_roll_list": [
+      "Dawn light entering a single window, dust motes visible in the beam — 30 seconds minimum, several takes at different apertures",
+      "Oil lamp flame — close, steady, no wind. Shoot at 120fps for slow-motion option in edit",
+      "Hands in Jnana Mudra resting on knees — both hands, clean frame, 15 seconds",
+      "Stone floor texture catching warm light — abstract, no human element",
+      "Bare feet on dhurrie/stone floor — close, grounded, present",
+      "Exterior pre-dawn establishing shot: village or urban, the world before it wakes — 20 seconds",
+      "Tree canopy or single tree silhouette against blue hour sky — for open/close sequence",
+      "Water in a clay vessel — not drinking, just still surface reflecting light",
+      "A single breath visible as vapor in cold air (if location cooperates) — extreme close, lips",
+      "The chest and belly rising with a natural breath — shot from the side, clinical framing avoided"
+    ],
+    "edit_notes": "COLOR GRADE: Warm but not golden-orange. Think Mubi-print quality — desaturated skin tones, warm shadows, clean highlights. Reference: Payal Kapadia's All We Imagine as Light interior sequences. No preset filters. Grade from scratch. PACING: The hold sequences (7 counts) should feel uncomfortably long to first-time viewers — that tension is intentional, do not cut around it. Let it breathe. MUSIC: No music during instruction. Tanpura drone enters at -20dB under the guided practice section only. Drone in B natural. Fades with practice, silent under closing speech. END TITLE CARD: Sukoon wordmark centered on black, fadeup 2 seconds, hold 4 seconds, fadedown. No animation beyond fade. No other text on end card.",
+    "end_card_copy": "सुकून\nSukoon\n\nReturn whenever you need it."
+  },
+
+  {
+    "id": "breath-box-focus",
+    "title_en": "Box Breathing — The Focus Breath",
+    "title_hi": "बॉक्स श्वास — एकाग्रता की श्वास",
+    "target_duration_min": 7,
+    "type": "breath_demonstration",
+    "location": "Nature outdoor — river or lake edge at mid-morning. Flat, smooth stone or wooden dock as the seating surface. Still water visible in background, softly blurred. Green or golden foliage framing the edges. The landscape should feel contained and calm, not vast and dramatic. The instructor is the foreground; the water is the ambient world. Preferably Karnataka, Coorg, or Himachal low-altitude valley. No mountains in the background — too epic. We want groundedness, not transcendence.",
+    "location_alt": "Terrace garden or rooftop of a traditional home — Jaipur or Mysore. Early morning haze in the sky, terracotta pots, a single banyan tree visible in mid-ground. No city skyline in frame.",
+    "time_of_day": "mid_morning",
+    "talent_direction": "Indian woman, mid 30s. Seated cross-legged on a flat stone or folded cotton mat (not a rubber yoga mat — keep materials natural). Posture of someone who has arrived and is settled — not performing arrival. Calm attentiveness. She is not serene in a removed sense; she is present and focused, which is what box breathing produces. Hair loose but neat, or a single low braid. No pins, clips. Eye contact with camera when speaking; eyes close only during the actual breathing demonstration. Voice is direct and steady, slightly lower register than the 4-7-8 script — this is the focus breath, not the sleep breath.",
+    "wardrobe": "Deep navy or slate-blue cotton kurta, three-quarter sleeves. Straight cut, no embroidery, no print. Natural cotton leggings or churidar in the same neutral. No rubber mat under her (use a folded pashmina or kilim weave). Bare feet again.",
+    "camera_setup": "Sony FX3 Body A: 85mm f/2.0, tripod, slightly lower angle than eye-level to put talent against the sky or tree canopy rather than the ground. This gives natural dignity without the guru-on-throne effect. Body B: 50mm f/1.8 handheld with a 3-axis gimbal, used only for the walking-to-seated opening and for slow push-ins during the box demonstration.",
+    "lighting": "Full natural mid-morning light. No supplemental lighting for the outdoor primary location — the soft indirect light from the open sky is the setup. If direct sun creates problems, a 4x4 ft silk overhead diffuser ('china silk') on a C-stand provides the quality control. One 2x2 bounce card (white) for shadow fill on the face if needed. NO artificial sources. The goal is for this to look like real outdoor natural light, not 'produced outdoor natural light.'",
+    "audio_direction": "Ambient outdoor: keep the natural water sound and light breeze — this is not to be eliminated in post. It is the bed. The outdoor ambient is mixed at -18dB under the voice in post. Primary: Sennheiser MKH-50 on a boom (boom op must have a wind jammer on all takes). Backup: lavalier beneath the kurta neckline. During breathing demonstration sequences, the mic placement must be consistent — any shift in lavalier position between takes will create continuity issues during the counts. Record the natural water ambience for 60 seconds as a room-tone plate before talent arrives on set.",
+    "on_screen_graphics_direction": "Box breathing visualization: a clean square drawn with a thin white or gold line animates as each phase progresses. Bottom-left corner: inhale travels up the left side. Top: hold travels across the top. Top-right: exhale travels down the right side. Bottom: hold travels across the bottom. The line traces at exactly the count speed. In the center of the box, the current phase label fades in/out ('Inhale' / 'Hold' / 'Exhale' / 'Hold') in Sukoon typeface, small and clean. The box occupies the lower-third without covering face. Background of the graphic element is fully transparent — the outdoor scene shows through. Reference: military/Navy SEAL tactical breathing infographics, but beautiful and stripped of military aesthetic.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Talent approaches the water edge from a distance, walks into frame calmly, and settles onto the stone. Natural movement. Camera holds on the empty stone, then talent enters. Real geography — we see the water, the stone, the light.",
+        "duration_sec": 20,
+        "notes": "This is the only movement in the entire piece. After she's seated, the camera is still for the rest. Let the arrival be human-scale — no cinematic sweeping walk."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Seated, settled. One breath naturally. Then she looks at camera and begins.",
+        "duration_sec": 8,
+        "notes": "Hold the before-speech moment. 3 seconds of her simply being present before the first word."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Introduction: Box breathing's origin — used by US Navy SEALs, by emergency room surgeons, by performance athletes under extreme pressure. Not to be cool — to make the point that this technique has been stress-tested in conditions far beyond a yoga mat. Then: the simple science — equal count in all four phases creates autonomic nervous system coherence.",
+        "duration_sec": 70,
+        "notes": "The Navy SEAL reference is intentional and should not be cut — it gives permission to people who would not open a meditation app. Deliver it without irony."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Talent traces the box shape slowly in the air with one finger — a teaching gesture. The hand movement is simple and clean. Camera on hand, face soft in background.",
+        "duration_sec": 12,
+        "notes": "This is a visual anchor for the box concept. Keep it unhurried. The finger traces each side of the square as she names the phase — up, across, down, across."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "First demonstration cycle — counted aloud clearly. Inhale 4, hold 4, exhale 4, hold 4. Full cycle twice through, spoken count.",
+        "duration_sec": 40,
+        "notes": "Shoot four clean takes. The hold phases are equal in length — this evenness is what creates the coherence. If the talent's count drifts, reset."
+      },
+      {
+        "shot_number": 6,
+        "type": "CU",
+        "description": "Face during the hold phases — the quality of attention in held breath is different from exhale stillness. Eyes closed, a kind of inner focus visible. Not performance — genuine.",
+        "duration_sec": 15,
+        "notes": "85mm at f/2.0. Very shallow. Background completely dissolved into green/water bokeh. Just the face."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Guided practice — three full cycles. Talent counts in real time, viewer breathes along. After the third cycle, a natural pause.",
+        "duration_sec": 100,
+        "notes": "Two takes. The pace must be absolutely consistent. An IFB earpiece with a click track at BPM equivalent to 4-count at comfortable pace. Talent internalizes the click."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "Post-practice: talent speaks about where this works. Specifically: before a presentation. Between meetings. Before a difficult conversation. Driving (eyes open version — just the breath count, no eye closure). The utility angle.",
+        "duration_sec": 45,
+        "notes": "This section is slightly more conversational than the instruction — a small gear-shift in energy is fine and appropriate."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Final wide. Talent faces the water, not the camera. A natural close. The world continues. Camera holds on her back, the water, the light.",
+        "duration_sec": 12,
+        "notes": "No words. No look-back. The session ends facing outward into the world she's about to reenter, focused."
+      }
+    ],
+    "script_text_en": [
+      "Sit for a moment with me. We're going to make your mind quiet in under four minutes. That's not a promise — it's a physiological result.",
+      "Box breathing. You may have heard of it from its unusual proponents. The United States Navy SEALs use it before high-risk operations. Emergency surgeons use it between critical decisions. Athletes use it before competition. This is not a spiritual practice borrowed from a tradition you may or may not share — it is a functional tool that works on human nervous systems regardless of belief.",
+      "The reason it works is straightforward. When all four phases of the breath — inhale, first hold, exhale, second hold — are equal in length, your heart rate variability shifts toward coherence. Your amygdala, which is the alarm system in your brain, receives a direct signal that says: the situation is under control. You did not think that signal. You breathed it.",
+      "The pattern: inhale for four counts through your nose. Hold for four. Exhale for four through your nose — not your mouth this time, unlike 4-7-8. Hold for four. Then repeat.",
+      "Let me show you once. Inhale — two, three, four. Hold — two, three, four. Exhale — two, three, four. Hold — two, three, four. Good.",
+      "Now together. Close your eyes if you're comfortable, or keep them soft and unfocused on a point in front of you. Inhale — two, three, four. Hold — two, three, four. Exhale — two, three, four. Hold — two, three, four.",
+      "Again. Inhale — two, three, four. Hold — two, three, four. Exhale — two, three, four. Hold — two, three, four.",
+      "One more. And this time, notice the quality of attention inside the holds. There's a kind of active stillness in held breath — not suppression, not strain. Just a held presence. Inhale — two, three, four. Hold — two, three, four. Exhale — two, three, four. Hold — two, three, four.",
+      "[Pause — 5 seconds of silence]",
+      "That's it. You can open your eyes. The focus you feel right now — this is not a feeling you have to wait for. It is always available, any time you can count to four.",
+      "You can do this with your eyes open in a meeting, in a car, at a desk. The breath doesn't need a mat. It doesn't need a room. It just needs four counts — and your willingness to pause."
+    ],
+    "script_text_hi": [
+      "एक पल यहाँ बैठें। हम चार मिनट में आपके मन को शांत करने जा रहे हैं।",
+      "बॉक्स ब्रीदिंग। इसे अमेरिकी नेवी SEALs उच्च-जोखिम अभियानों से पहले उपयोग करते हैं। सर्जन महत्वपूर्ण निर्णयों के बीच करते हैं। यह एक व्यावहारिक उपकरण है।",
+      "तरीका: नाक से चार गिनती तक सांस लें। चार गिनती रोकें। नाक से चार गिनती छोड़ें। चार गिनती रोकें। फिर दोहराएं।",
+      "साथ करें। सांस लें — दो, तीन, चार। रोकें — दो, तीन, चार। छोड़ें — दो, तीन, चार। रोकें — दो, तीन, चार।",
+      "यह एकाग्रता हमेशा उपलब्ध है — बस चार की गिनती चाहिए।"
+    ],
+    "b_roll_list": [
+      "Still water surface — absolutely flat, light reflecting. Shoot 60 seconds minimum, will be used as breathing background",
+      "Water edge — small stones, wet mud line, the border between earth and water — metaphor for the held breath",
+      "Tree canopy overhead shot — looking up through leaves at open sky, gentle movement in breeze at 60fps",
+      "A single stone dropped in water — concentric rings spreading outward (the visual metaphor for coherence spreading through the body). Multiple takes at different distances",
+      "Early morning fog or mist over water — if present, capture extensively, this is precious",
+      "Hands resting on knees — from slightly above, the stone/earth visible underneath",
+      "Feet on stone/earth — grounded, present, connected to the ground",
+      "A breath of vapor on a cool morning, from the side — barely visible",
+      "A single bird landing on water and sitting still — if it happens, capture it",
+      "The horizon line between water and sky — absolute stillness, held indefinitely"
+    ],
+    "edit_notes": "COLOR GRADE: Cool mid-tones with warm highlights — the outside world of nature, not interiorized warmth. Reference the palette of Samsara (Ron Fricke) without the grandeur — human scale nature. Desaturate the greens very slightly so they don't read 'lush lifestyle'; they should read 'real morning.' PACING: The box structure should be felt in the edit — equal-duration cuts in the practice sections if possible. Not rigid, but rhythmically intentional. MUSIC: Very light field recording texture under the spoken intro — real water, real birds, mixed at -22dB. COMPLETELY silent during the breathing instruction and guided practice. GRAPHICS: The box visualization enters only during demonstration shots, not during conversation. It must not feel like a YouTube tutorial annotation — it is a visual aid integrated cleanly into the Sukoon aesthetic.",
+    "end_card_copy": "सुकून\nSukoon\n\nFour counts. Any time."
+  },
+
+  {
+    "id": "breath-nadi-shodhana",
+    "title_en": "Nadi Shodhana — The Alternate Nostril Breath",
+    "title_hi": "नाड़ी शोधन — वैकल्पिक नासिका श्वास",
+    "target_duration_min": 10,
+    "type": "breath_demonstration",
+    "location": "Traditional ashram-style interior — different from script 1. Larger room with aged lime-washed walls in a very pale yellow-green (the color of dried grass, not paint). Low wooden ceiling beams. A single handloom cotton durrie with a subtle geometric weave in natural tones. Late morning light from a high south-facing window creates long shadows on the floor. A clay water pot in one corner. One potted tulsi plant. No altars, no deities, no incense visible — the spirituality is in the form, not the signifiers.",
+    "location_alt": "Covered veranda of a traditional house — Kerala or Tamil Nadu style. Terracotta-tiled floor, white-washed columns, morning light from the courtyard creating dappled patterns. A single wooden low bench or mat. The sound of a courtyard — light breeze, maybe a distant birdcall.",
+    "time_of_day": "mid_morning",
+    "talent_direction": "Indian woman, 35-45 years. This script requires the most anatomical precision of all six — the hand mudra (Vishnu mudra) and alternating nostril technique requires clarity in demonstration. Talent should have practiced this extensively before shoot day. She should be able to hold the Vishnu mudra for the full practice section without visible strain or repositioning. Face is calm and attentive with a quality of someone in genuine, focused internal experience. Hair back — a low bun is appropriate for this one since the camera will be close to the face and floating hair would create visual noise. No jewelry.",
+    "wardrobe": "Warm white cotton salwar kurta — slightly longer kurta length, three-quarter sleeves. The hand demonstrating the mudra should have clean wrists — no bangles, no watch, no henna. Dupatta set aside, not in frame. Bare feet.",
+    "camera_setup": "Sony FX3 Body A: 85mm f/1.8, eye-level tripod for the face/upper-body MS and CU. This is the most hand-detail-intensive script — Body B should be set on a low side-angle with a 50mm to capture the alternating nostril action clearly. The side profile clarifies the technique in a way the front-facing camera cannot. CRITICAL: the alternating nostril technique involves right-hand fingers on the face. This must be captured in a way that is clear and unobscured. Brief the DP on this before set-up.",
+    "lighting": "Warm mid-morning natural light. Primary source from high south window. A small 1x1 Aputure LED panel at warm white (3200K) as soft fill from camera left, bounced off a 42-inch collapsible reflector rather than aimed directly at talent. The warmth of this piece is slightly higher than the earlier two scripts — Nadi Shodhana is the most 'ancient practice' of the six and the visual quality should reflect that without becoming costume.",
+    "audio_direction": "This is the most demanding audio setup of the six scripts. The alternating nostril breath produces audible sound as each nostril opens and closes — this is intentional content, not noise to be filtered. The boom must be positioned to capture the quality of breath at the nose level without creating sibilance. Test positioning with the talent present before shoot. DJI Mic 2 lavalier at the collarbone. Room tone plate: 60 seconds. During practice sections, no post-processing on breath sounds — the natural texture of the breath through each nostril is the instruction.",
+    "on_screen_graphics_direction": "Split nostril visualization: a simple diagram of the nose (two circles representing nostrils) appears in the lower third. When the right nostril is closed, the right circle fills/dims; when left is closed, the left circle fills/dims. An animated flow line shows the direction of breath — entering the open nostril, traveling up, down, and out the other side. The animation is anatomically simplified but accurate. Reference: a medical illustration style stripped of clinical cold — warm line colors, not blue-and-red chart style. Additionally, for the first demonstration, a small label reads 'Right hand — Vishnu Mudra' with a clean line pointing to the hand position.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Room establisher. Empty space, morning light on durrie. Tulsi plant in corner. Talent not yet present. 6 seconds of stillness.",
+        "duration_sec": 10,
+        "notes": "The tulsi plant is a grounding detail — real domestic spirituality, not theatrical. Do not make it the focal point, just let it be present."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Talent seated, spine settled. Natural pause before she begins. She looks at camera.",
+        "duration_sec": 8,
+        "notes": "The pause is longer in this script — this is a more ancient, more precise technique than box breathing and the intro carries that weight."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Introduction: The Sanskrit name — Nadi (energy channels) Shodhana (purification). The classical claim: that the two nostrils correspond to the ida and pingala nadis, the lunar and solar channels of the body. What modern research shows: nasal cycle coordination with brain hemisphere lateralization — there is measurable science here, and the script addresses it.",
+        "duration_sec": 80,
+        "notes": "This is the most information-dense introduction of the six scripts. Talent must move through it with intelligence, not recitation. If it sounds memorized, reshoot."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU — right hand",
+        "description": "CRITICAL TECHNIQUE SHOT: Talent demonstrates Vishnu Mudra — index and middle finger folded to palm, thumb and ring finger active. She holds it and explains each finger's role. Camera close on the hand, face visible behind.",
+        "duration_sec": 25,
+        "notes": "This shot must be absolutely clear. Shoot from slightly above to see the finger positions cleanly. Multiple takes. This is the primary technique reference shot that users will pause and study."
+      },
+      {
+        "shot_number": 5,
+        "type": "SIDE PROFILE MS",
+        "description": "Body B — side angle. Talent demonstrates the first cycle: right thumb closes right nostril, inhale through left. Ring finger closes left nostril, hold. Ring finger releases, exhale through right. Then reverse. Spoken slowly.",
+        "duration_sec": 50,
+        "notes": "The side profile is essential for this technique. The front-facing camera cannot show the finger alternation as clearly. Body B is the instructional camera for this technique; Body A covers the face/expression."
+      },
+      {
+        "shot_number": 6,
+        "type": "ECU",
+        "description": "The moment of nostril opening — extreme close on nose and hand, the ring finger lifting. The quality of the inhale that follows. Not clinical. Intimate in a way that feels respectful of the practice.",
+        "duration_sec": 12,
+        "notes": "Shoot at 60fps for slow-motion option in edit. The detail of the breath entering an open nostril is subtle — the cameraman will need patience for a clean take."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS — front",
+        "description": "Guided practice — full 5 cycles. Talent leads in real time. Eyes closed after the first half-cycle once the technique is established. Voice counts for the first two cycles, then falls to silence and only cues the transitions.",
+        "duration_sec": 180,
+        "notes": "This is the longest single shot in the batch. Shoot two full takes. The talent must not lose count or shift the mudra hand position between cycles. An IFB click track for internal rhythm. No stop-starts within a take."
+      },
+      {
+        "shot_number": 8,
+        "type": "CU",
+        "description": "Face during the practice — particularly the moment of transition between nostrils. There is a brief internal shift that is visible in experienced practitioners. Not dramatic. Just a slight quality change.",
+        "duration_sec": 20,
+        "notes": "Insert. Shot separately after the main take while talent is still in practice mode. Do not break her concentration to set up this shot — be ready."
+      },
+      {
+        "shot_number": 9,
+        "type": "MS",
+        "description": "Closing — talent brings the hand down from the face. Long exhale. Then speaks the close: when to use it (before meditation, before sleep, before mentally demanding work), how many rounds (5-10), what to expect over time.",
+        "duration_sec": 50,
+        "notes": "The hand coming down from the face is a natural gesture of completion — do not rush past it for the verbal close. Hold on the gesture for 3 seconds before she speaks."
+      },
+      {
+        "shot_number": 10,
+        "type": "WS",
+        "description": "Final wide. Talent remains, eyes open, in the room. The tulsi. The light. The stillness.",
+        "duration_sec": 10,
+        "notes": "Hold. Fade."
+      }
+    ],
+    "script_text_en": [
+      "Place your hands on your knees for a moment. I want to show you something that is both thousands of years old and, in the last decade, beginning to show up in neuroscience research.",
+      "In Sanskrit, this practice is called Nadi Shodhana. Nadi means channel — the energy pathways in the body that yoga maps in extraordinary detail. Shodhana means purification, or cleansing. The tradition holds that each nostril corresponds to a different energy channel: the left nostril connects to the ida nadi, associated with lunar, cooling, calming energy. The right nostril to the pingala nadi — solar, activating, warming.",
+      "Modern neuroscience has found something that maps onto this ancient claim: your two nostrils have a 90-minute cycle of dominance. Right now, one is more open than the other. And the dominant nostril appears to correlate with which brain hemisphere is more active. This is measurable. It is real. Yoga described it three thousand years before fMRI machines existed.",
+      "We are going to balance the two sides intentionally, using the breath. The technique takes a few minutes to learn and becomes natural very quickly.",
+      "Your right hand takes Vishnu Mudra. The index and middle fingers fold into the palm. The thumb and ring finger remain active — the thumb controls the right nostril; the ring finger controls the left.",
+      "Let me show you one complete cycle before we begin together. Right thumb closes the right nostril. Inhale through the left — slow, full, unhurried. Now ring finger closes the left. Hold. Thumb releases. Exhale through the right. Now inhale through the right. Ring finger closes. Hold. Thumb releases. Exhale through the left. That's one full cycle.",
+      "We'll do five together. Bring your right hand to your nose. Close your eyes when you feel ready.",
+      "Right nostril closed. Inhale through the left — two, three, four. Close both. Hold — two, three, four. Open the right. Exhale — two, three, four. Inhale through the right — two, three, four. Close both. Hold — two, three, four. Open the left. Exhale — two, three, four. Good. Continue at your own pace.",
+      "[Two cycles in silence, talent practices with viewer, then guides the last cycle aloud]",
+      "Complete your exhale through the left nostril. Bring the hand down gently.",
+      "When you practice this over days, the first thing you'll notice is that one side usually feels more clear than the other. This tells you something about where your nervous system is. Over time, the practice begins to equalize this naturally. Five rounds in the morning, five before sleep. This is the complete entry-level dose."
+    ],
+    "script_text_hi": [
+      "अपने हाथ घुटनों पर रखें। मैं आपको कुछ ऐसा दिखाना चाहती हूँ जो हजारों साल पुराना है और आज न्यूरोसाइंस में भी सिद्ध हो रहा है।",
+      "नाड़ी शोधन — नाड़ी अर्थात ऊर्जा चैनल, शोधन अर्थात शुद्धि। बायीं नासिका इड़ा नाड़ी से जुड़ी है — शीतल, शांतिदायक। दायीं पिंगला नाड़ी से — सक्रिय, ऊर्जावान।",
+      "दायाँ हाथ विष्णु मुद्रा में लाएं। तर्जनी और मध्यमा अंगुली को हथेली में मोड़ें। अंगूठा दायीं नासिका नियंत्रित करेगा, अनामिका बायीं।",
+      "साथ करें। दायीं नासिका बंद। बायीं से सांस लें — दो, तीन, चार। दोनों बंद। रोकें। दायीं खोलें। छोड़ें। पाँच चक्र पूरे करें।",
+      "पाँच चक्र सुबह, पाँच चक्र रात को सोने से पहले — यह प्रारंभिक अभ्यास की पूरी मात्रा है।"
+    ],
+    "b_roll_list": [
+      "The tulsi plant in the corner — in morning light, the leaves catching sun. Not a hero shot. An ambient presence.",
+      "Old wooden ceiling beams, looking up — texture, age, permanence",
+      "Light from the high window creating shadow patterns on the durrie — shot at 120fps, let the pattern shift as clouds move",
+      "The clay water pot — simple, real, used",
+      "Right hand in Vishnu Mudra alone, plain background — multiple angles, this will be used as an instructional insert",
+      "Both nostrils close-up from the front — abstract near abstraction, just the nose and the fingers above it",
+      "A single flame of an oil lamp reflected in still water in a clay vessel — two elements, one frame",
+      "Exterior of the traditional building at mid-morning — just the architecture, no people",
+      "The courtyard or garden beyond a doorway — the outside world, framed by the doorway, from inside",
+      "Hands resting at rest after the practice — the ring finger and thumb still slightly curled from the mudra, then relaxing fully"
+    ],
+    "edit_notes": "COLOR GRADE: Warmest of the batch — the interior yellow-green walls, the oil lamp, the aged wood. Bring the shadows into amber-brown range. Reference: S. S. Rajamouli's interior light in early Baahubali — that quality of traditional Indian interior, but without the drama. Compress the highlights gently. PACING: This is the most technically complex technique — the edit must never rush through the technique explanation. Slow is correct here. The five-round practice should feel like the real duration it is — do not condense it in the edit. GRAPHICS: The Vishnu Mudra diagram and the nostril-cycle animation should be used prominently in the first demonstration section only. Once the viewer understands the technique, graphics should withdraw so the practice feels like practice, not tutorial.",
+    "end_card_copy": "सुकून\nSukoon\n\nTwo nostrils. One breath. Balance."
+  },
+
+  {
+    "id": "breath-bhramari-humming",
+    "title_en": "Bhramari — The Humming Bee Breath",
+    "title_hi": "भ्रामरी — भँवरे की गूँज वाली श्वास",
+    "target_duration_min": 8,
+    "type": "breath_demonstration",
+    "location": "Nature outdoor — dusk meadow, low hills, ideally Himachal Pradesh or Coorg altitude (900-1400m). The light is golden to amber, late afternoon. The instructor sits in a meadow of long grass, the hills soft and receding behind her. A single tree in the mid-distance. No structures visible. The sound environment is real: wind in grass, perhaps distant birds. This is the most acoustically intimate script — the humming of Bhramari will be the primary sound, and the location must honor that. Avoid locations with road noise, generator hum, or any mechanical sound within earshot.",
+    "location_alt": "Dawn window interior, facing a garden or courtyard. Window open. Pre-dawn silence. The hum she produces is the first sound in the scene apart from the ambient outside.",
+    "time_of_day": "golden_hour_evening",
+    "talent_direction": "Indian woman, any age 25-50. This technique involves closing the eyes, blocking ears with thumbs (Shanmukhi Mudra optional), and producing a sustained humming sound. The camera will spend considerable time on a closed face, producing sound. The talent's relationship with the hum must be genuine and internalized — this is not a sound she performs; it is a sound she lives in. The visible experience of Bhramari, when done by someone genuinely practicing, is unmistakably different from performance — a quality of inwardness, of hearing oneself from the inside. Casting note: if the talent cannot access this genuinely after two warm-up rounds, reshoot. Do not color-grade around a performance.",
+    "wardrobe": "Warm saffron-adjacent but NOT religious orange — a dusty amber or marigold in a fine cotton, full-length kurta or simple dress. This is the one script where a warmer color palette in the costume is appropriate because it rhymes with the golden hour light. Natural linen or hand-loom cotton. No polyester. Hair loose and natural in the breeze.",
+    "camera_setup": "Sony FX3 Body A: 85mm f/1.8 — this is the primary emotional camera for this piece. Because the talent's eyes are closed during most of the practice, the camera must be close enough to read the quality of inner attention in the closed face. Body B: wide 24mm on a slider, used only for the opening golden-hour landscape reveal and a slow B-roll push through the grass. DO NOT use a drone for this script — the drone noise would contaminate the audio capture of the hum. All other scripts: drone is acceptable for B-roll if not near the audio recording. This script: no drone, full stop.",
+    "lighting": "Natural golden hour. No supplemental lighting. The golden hour quality is the entire visual identity of this piece. The crew must be on location at least 90 minutes before sunset to set up and rehearse. The shooting window for the primary instruction shots is 25 minutes maximum — the crew must have all camera setups rehearsed and the talent prepped to begin at the first ideal light. DO NOT waste the golden hour on setup.",
+    "audio_direction": "This is the most sonically critical script in the batch. The hum of Bhramari is the content. Primary: Sennheiser MKH-50 on a boom, pointed at the face from above at 45 degrees, full windscreen. There will be wind — accept low-level wind noise as authentic ambience; filter only harsh gusts in post. The hum must be captured at full natural level — do not compress it during recording. Record at -12dB nominal to preserve headroom. The quality of the hum should reveal the fundamental tone, any natural overtones, and the slight vibration in the sinuses — this is real. Post-audio: NO pitch correction, NO harmonic enhancement, NO reverb added to the hum. The natural overtones of the human voice humming in an open meadow are more beautiful than anything added. Light outdoor ambient (grass, breeze, distance) mixed at -20dB under the hum.",
+    "on_screen_graphics_direction": "Minimal for this script. The primary visual is the humming face — graphic interruption would be counterproductive. During the introduction only, a simple waveform visualization shows the inhale (smooth horizontal line) and the exhale-hum (a gentle sine-wave pattern). Label reads 'Bhramari / भ्रामरी'. That is all. No graphics during the practice section. The experience of this breath is internal — the visualization should reflect that by stepping back.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS — landscape",
+        "description": "Body B, 24mm on slider. Opening golden-hour landscape: the meadow, the hills, the long grass in the foreground. Talent not yet visible. Slider moves very slowly left-to-right over 8 seconds. The world in its evening silence.",
+        "duration_sec": 15,
+        "notes": "This is the most overtly cinematic shot in the batch. It earns its beauty because the technique that follows is the most beautiful sound in the batch. Do not undersell the opener."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS — body B to body A cut",
+        "description": "Talent in the meadow, seated facing the hills. We see her from behind for 4 seconds (the hills, the light, her back), then Body A cuts to the front MS as she turns or as we cut to the front-facing frame.",
+        "duration_sec": 10,
+        "notes": "The back-to-front transition should feel natural, not choreographed. Let her settle facing the hills, let the camera find the front angle in the edit."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Introduction. The Sanskrit name — Bhramara means black bee. The practice imitates the bee's hum. Brief etymology, brief history (it appears in the Hatha Yoga Pradipika, 15th century). What it does: reduces cortisol measurably. Activates the vagus nerve through vibration. Helps insomnia. Is the fastest anxiety interrupt of all six techniques.",
+        "duration_sec": 65,
+        "notes": "The introduction is shorter here because the practice is the teacher. Get to the first hum quickly. The golden hour is burning."
+      },
+      {
+        "shot_number": 4,
+        "type": "MS",
+        "description": "Technique explanation — inhale fully through the nose. On the exhale, close the lips and produce a sustained humming sound from the back of the throat. The sound should resonate in the skull. Optional: Shanmukhi Mudra — thumbs close the ears, index fingers rest above eyebrows, middle fingers at closed eyelids, ring and little fingers below the eyes. Talent demonstrates both the simple version and the Shanmukhi version.",
+        "duration_sec": 35,
+        "notes": "Demonstrate the simple version first — lips closed, hands on knees, hum. Then introduce Shanmukhi as the deeper version. Two takes of each."
+      },
+      {
+        "shot_number": 5,
+        "type": "CU",
+        "description": "First hum — close on the closed lips, the face in full internal sound. The light catches the slight vibration in the jaw, the quality of the hum audible and real.",
+        "duration_sec": 20,
+        "notes": "85mm at f/1.8. This is the most intimate shot in the batch. The golden light on a vibrating, humming face — if captured correctly, this is the shot that goes into the app's promotional materials."
+      },
+      {
+        "shot_number": 6,
+        "type": "MS",
+        "description": "Guided practice — three full rounds. Inhale together. Then the talent hums, and the viewer hums along. The first round is led; the second and third the talent humbles into silence and the viewer continues alone. Only the talent's closed face and the sound.",
+        "duration_sec": 140,
+        "notes": "Two takes. The golden hour may shift color temperature between takes — note the exact conditions and match in grade. This is the heart of the piece."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU — Shanmukhi",
+        "description": "The deeper version — hands in Shanmukhi Mudra, face covered except the lips. The hum vibrates from behind the hands. This is an otherworldly image done correctly. Shoot it.",
+        "duration_sec": 25,
+        "notes": "This shot is for a fourth round — optional for viewers who want to go deeper. The hands-over-face image in golden light is striking without being theatrical."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "After the last round. Talent opens her eyes. Long silence. Looks at the hills. Then at camera. The close is simple: when to use this, what to notice, the before-sleep application.",
+        "duration_sec": 45,
+        "notes": "The eyes-opening moment is the most important beat in this script. It must not be rushed into. 8 seconds of her simply having returned from the hum before the first word."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS — golden light",
+        "description": "Final wide. Talent in meadow as the sun finishes its descent. She is still. The light is extraordinary. Hold until the light shifts.",
+        "duration_sec": 15,
+        "notes": "No words. This is the end of the session and the end of the day. They are the same thing."
+      }
+    ],
+    "script_text_en": [
+      "Let's begin with a breath that will teach you something about sound. Specifically, about the sound your own body makes — from the inside.",
+      "The name Bhramari comes from Bhramara, the Sanskrit word for the Indian black bee. The practice imitates the hum of a bee in flight — that low, continuous vibration. It appears in the Hatha Yoga Pradipika, written in the 15th century, as one of the most effective practices for quieting the mental field — what yogis called the vritti, the fluctuations of the mind.",
+      "Modern research has found that controlled humming activates the vagus nerve through mechanical vibration in the skull and throat, reduces cortisol levels acutely, and has shown significant effects on anxiety and insomnia within a single session. There is a reason every child instinctively hums to self-soothe. This practice is the formal version of that instinct.",
+      "The technique itself is simple. Inhale fully through your nose. Close your lips. And on your exhale, produce a humming sound from the back of your throat — not forced, not performed, but continuous, as long as the exhale allows. The vibration should be felt in the skull, behind the face, in the sinuses. If you cannot feel the vibration, bring the pitch down slightly.",
+      "Let me show you. [inhale] [hum — 6-8 seconds until exhale is complete]",
+      "Do you feel the silence that follows? That is the nervous system landing. We'll do this three times together.",
+      "Inhale now. [hum together — first round]",
+      "[pause — let the silence be the silence]",
+      "Again. Inhale. [hum — second round, talent gradually quiets, viewer continues]",
+      "[pause]",
+      "One more. And this time, if you'd like, bring your thumbs to your ears — close them gently. Your other fingers rest on your face. You're creating a closed chamber. What you will hear is your own voice from the inside of your skull. [hum — third round]",
+      "[Long pause after the final hum — at least 8 seconds before speaking]",
+      "Open your eyes when you're ready. There's a quality to the silence after Bhramari that is different from ordinary quiet. It has a texture. That's what the practice leaves behind.",
+      "Three rounds before sleep replaces three pages of anxious thought. This is not a metaphor. It is a measurable shift in the nervous system. Try it tonight."
+    ],
+    "script_text_hi": [
+      "एक ऐसी श्वास से शुरू करते हैं जो आपको आपकी अपनी आवाज़ से परिचित कराएगी — भीतर से।",
+      "भ्रामरी — भ्रमर अर्थात काली मधुमक्खी। इसकी गुनगुनाहट की नकल। हठ योग प्रदीपिका में 15वीं सदी में वर्णित। मन की तरंगों को शांत करने के लिए।",
+      "तकनीक: नाक से पूरी सांस लें। होंठ बंद। छोड़ते समय एक गुनगुनाहट उत्पन्न करें — कंठ से, लगातार। कंपन माथे और साइनस में महसूस होनी चाहिए।",
+      "साथ में। सांस लें। [गुनगुनाहट — तीन चक्र]",
+      "भ्रामरी के बाद की चुप्पी अलग होती है। उसमें एक बनावट होती है। सोने से पहले तीन चक्र — यह अभ्यास का पूरा प्रारंभिक डोज़ है।"
+    ],
+    "b_roll_list": [
+      "A bee on a flower — if catchable without disturbing. Extreme close at 120fps. Multiple attempts. This is the most valuable B-roll in this script.",
+      "Long grass in the golden hour light — moving in a light breeze, backlit, shot at 120fps for slow motion",
+      "The hill line against an amber sky — 20 seconds of held wide",
+      "Hands in Shanmukhi Mudra — close, the fingers covering the face, golden light on the backs of the hands",
+      "Pollen floating in a shaft of late-afternoon light — abstract, warm, tactile",
+      "A single tree silhouette against the evening sky — holding its shape in the fading light",
+      "Lips closed, the gentle vibration barely visible — ECU at 120fps, golden light on the face",
+      "The interior of a hive if accessible (licensed footage acceptable) — the hum of the collective is the ancestral sound reference",
+      "Grass blades and their shadows at golden hour — the ground, the earth, the particular light of evening",
+      "The sky after sunset — the moment the sun is gone, just the colors left"
+    ],
+    "edit_notes": "COLOR GRADE: The warmest of the batch by significant margin. Full amber-gold. The silhouette-against-sky shots can go darker. Skin tones warm but not orange. Reference: Terrence Malick's Badlands — that specific quality of late Texas-sun light applied to an Indian landscape. PACING: The hum sequences should run at real duration with no cut-away. The viewer must be in the hum. Cutting away during the hum to B-roll defeats the practice. Use B-roll only in the introduction and the closing. The practice section is entirely the face and the sound. MUSIC: None. The hum IS the music. Any added music during the practice section is an act of aesthetic violence. During the very opening wide shot only, the lightest imaginable tanpura at -26dB to establish key, then it disappears before the first word. AUDIO MIX: The hum should be mixed at full natural level. It should fill the viewer's headphones. This is the intent.",
+    "end_card_copy": "सुकून\nSukoon\n\nThe sound your body already knows."
+  },
+
+  {
+    "id": "breath-ujjayi-ocean",
+    "title_en": "Ujjayi — The Ocean Breath for Movement",
+    "title_hi": "उज्जायी — गति के लिए सागर की श्वास",
+    "target_duration_min": 9,
+    "type": "breath_demonstration",
+    "location": "Nature outdoor — ocean or large river at dawn. The actual sound of water is central to this script. Talent sits at the water's edge — not on the sand but on a flat rock or a low wooden dock, slightly elevated above the water line. The water is behind and below her. Early dawn light, blue transitioning to gold. Goa or Kerala coastal setting, OR the ghats at Varanasi at pre-dawn (the ghat stones, the wide river, the first light). Either works for entirely different reasons — pick based on the emotional temperature needed. Goa coast = physical, movement-adjacent. Varanasi ghat = ancient, interior.",
+    "location_alt": "Forest or mountain stream — Coorg or Himachal. Moving water in the background. The sound of the stream is the metaphor made audible. Talent sits on a smooth stone above the water.",
+    "time_of_day": "blue_hour_dawn",
+    "talent_direction": "Indian woman, 28-38. This is the most physically engaged script — Ujjayi is the breath of movement, and the talent should embody that. She is not static; she will begin in seated position, then demonstrate the breath while moving through a slow Surya Namaskar or slow Vinyasa sequence. The movement is secondary to the breath — but she must be able to move fluently enough that the movement does not distract from the instruction. The quality of a practitioner who has been breathing this way for years — the breath and the body are one system. Hair: tied back securely, this is a movement-present context. No jewellery except stud earrings.",
+    "wardrobe": "Deep teal or dark forest green in a fitted but not tight yoga top (not a branded activewear crop — a proper fitted kurta-style top with full neck). Natural cotton flared yoga trousers in charcoal or deep grey. This is the most movement-oriented piece and the wardrobe must work for both seated and standing movement. Bare feet on the rock.",
+    "camera_setup": "Sony FX3 Body A: 85mm on tripod, face and upper body for the seated instruction. Body B: 35mm on a 3-axis gimbal (Ronin RS3), used for the movement demonstration — slow tracking moves that stay close to the breath rather than the body in space. When the talent moves into Surya Namaskar, the camera moves with the breath, not the choreography. This is a critical directorial distinction: the camera follows the inhale/exhale cycle, not the pose transitions. This must be briefed to the DP.",
+    "lighting": "Blue hour to dawn transition. The shoot begins in blue hour (before the sun clears the horizon) and the sunrise is captured as B-roll. Primary instruction shots are in the 15-minute window of post-sunrise soft light. No supplemental lighting for the outdoor scenes. If the location is a ghat, torchlight from the ghat ceremony in the background is acceptable natural atmosphere — do not suppress it.",
+    "audio_direction": "The Ujjayi breath is an audible breath by definition — the slight constriction of the glottis creates a soft oceanic sound. This sound must be captured clearly and at natural level. Primary: Sennheiser MKH-50 boom, full windscreen. The boom must be close enough to capture the breath quality during the movement demonstration. This requires the boom operator to move with the talent during the Surya Namaskar sequence — brief and rehearse this with the operator before shooting. The ocean or river sound in the background should mix with the Ujjayi breath as a natural complement — the viewer should feel the metaphor of the breath sounding like the sea that surrounds them.",
+    "on_screen_graphics_direction": "For Ujjayi, the graphic is a simple waveform resembling an ocean wave. On inhale, the wave rises. On exhale, it falls and rolls. The animation is smooth, sine-curved, not sharp. Appears only during the initial technique demonstration. During the movement sequence, no graphics — the body in motion tells the story. A small label: 'Ujjayi / उज्जायी'. At the top of the frame during the movement section, a subtle directional arrow indicates 'Inhale' on rising movement and 'Exhale' on folding movement, but only for the first two cycles of Surya Namaskar — then it disappears and the viewer is on their own.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Blue hour at the water. The pre-dawn world. No human in frame yet. The sound of the water is the entire soundtrack for the first 8 seconds. Then talent walks into frame from one side, settles at the water edge.",
+        "duration_sec": 18,
+        "notes": "The water sound is the teacher before the instructor is. Do not cut it short."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Talent seated, looking at the water for a moment. Then turns to camera. A natural breath — and the viewer hears for the first time that her breath has the quality of the water behind her.",
+        "duration_sec": 12,
+        "notes": "If the breath quality is not audible or the connection is not felt, this may require audio sweetening in post — but try to get it naturally first. The first Ujjayi breath the viewer hears should happen before the word 'Ujjayi' is spoken."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Introduction. Ujjayi's etymology — Ud (upward) + Jaya (victory, conquest) — the victorious breath, the upward-rising breath. Its function in asana practice (regulating pace, maintaining internal heat, focusing the mind). Its standalone use (stress, focus, falling asleep). The characteristic sound.",
+        "duration_sec": 60,
+        "notes": "The introduction should feel like a conversation about something the talent loves, not a recitation. Ujjayi is the practitioner's breath — people who practice yoga have a personal relationship with it."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Technique demonstration: the glottis constriction. Talent explains: slightly constrict the back of the throat as if fogging a mirror, then close the mouth and breathe through the nose with that same constriction. The 'hah' sound with mouth open, then the same with mouth closed. The sound should resemble gentle ocean waves — or a distant sea in a conch shell.",
+        "duration_sec": 35,
+        "notes": "The conch shell reference is traditional and should be used if it resonates with the talent's delivery. Do not force it if it feels affected."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "First full breath demonstration — one complete Ujjayi inhale and exhale, counted slowly. The sound is clear. The chest rises. The face is soft. The quality is of moving air, not forced air.",
+        "duration_sec": 20,
+        "notes": "Shoot five clean takes. The Ujjayi sound is subtle — it requires listening to confirm. Have the audio monitor live during shooting."
+      },
+      {
+        "shot_number": 6,
+        "type": "ECU",
+        "description": "The closed lips and the throat — the slight movement at the larynx as the Ujjayi sound passes through it. Dawn light catches the skin of the throat.",
+        "duration_sec": 12,
+        "notes": "This shot exists because Ujjayi is anatomically unique — the site of sound production is visible. It is beautiful and instructional. Shoot at 60fps."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Guided standing practice: talent rises from sitting and moves through a very slow, breath-led Surya Namaskar — 3 complete rounds. Each movement is subordinate to the breath. Inhale: extend, open, rise. Exhale: fold, soften, earth. Body B on the gimbal follows the movement closely. The Ujjayi sound is continuous throughout.",
+        "duration_sec": 180,
+        "notes": "The ENTIRE purpose of the movement sequence is to demonstrate that the breath is the leader and the body follows. If the talent moves faster than the breath allows, direct them to slow until the breath commands again. Two full takes."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "End of the Surya Namaskar, talent returns to standing Tadasana at the water edge. The sun is visible. She breathes. The water breathes. One more full Ujjayi cycle, audible.",
+        "duration_sec": 20,
+        "notes": "No speech. Just the breath and the water and the light."
+      },
+      {
+        "shot_number": 9,
+        "type": "MS",
+        "description": "Closing — seated again. Brief: where to use Ujjayi (any asana practice, running, cycling, the moments before a decision). What it regulates (the heart rate during physical effort, the mind during any effort).",
+        "duration_sec": 40,
+        "notes": "The closing is grounded and practical after the movement section."
+      },
+      {
+        "shot_number": 10,
+        "type": "WS",
+        "description": "Final wide, talent by the water. The day has fully arrived.",
+        "duration_sec": 10,
+        "notes": "Sunrise is complete. Hold and fade."
+      }
+    ],
+    "script_text_en": [
+      "Listen for a moment. [The sound of water behind her]",
+      "That sound — the water's rhythm, the way it rises and falls — is the shape of this breath. In Sanskrit, this practice is called Ujjayi: Ud, meaning upward or rising. Jaya, meaning victory. The victorious, rising breath.",
+      "Ujjayi is what you hear in every yoga class where the room is truly practicing — not just moving. It's a sound that tells you the people in the room are breathing consciously, that each movement is answering to the breath rather than the other way around.",
+      "The technique: make the sound 'hah' with your mouth open — like fogging a mirror. Feel where that sound is made? Slightly at the back of the throat, at the glottis. Now make that same slight constriction, close your mouth, and breathe in through your nose. The result should be a sound like a gentle ocean — like holding a conch shell to your ear.",
+      "Let me show you. [inhale — clear Ujjayi sound] And exhale — [exhale — the sound is audible]. Do you hear the water behind me? The breath and the water are not so different.",
+      "Try it. Open your mouth, make the hah sound. Now close the mouth, keep the throat slightly engaged, and inhale through the nose. Hold that engagement on the exhale. That's it. You have it.",
+      "Now we're going to move. Every inhale will lift you, open you, extend you. Every exhale will fold you, ground you, bring you toward the earth. The breath decides the pace. Your body follows. If you lose the breath sound, you are moving too fast.",
+      "[Three rounds of Surya Namaskar, breath-led, with light verbal cues]",
+      "Return to standing. One more breath here — just for its own sake. [Ujjayi inhale] [Ujjayi exhale]",
+      "Ujjayi is the breath of effort made beautiful. It is what transforms exercise into practice. You can use it running. You can use it before a difficult meeting — three Ujjayi breaths, standing, bring the internal temperature and focus of a person already in their practice."
+    ],
+    "script_text_hi": [
+      "सुनिए — [पानी की आवाज़]। यह आवाज़ — पानी की लय — इस श्वास की आकृति है।",
+      "उज्जायी: उद् अर्थात ऊपर उठना, जय अर्थात विजय। विजयी, उदयशील श्वास।",
+      "तकनीक: मुँह खोलकर 'हाह' की ध्वनि करें — गले के पिछले हिस्से में हल्की सिकुड़न। मुँह बंद करें, यही संकुचन बनाए रखें, नाक से श्वास लें। ध्वनि समुद्र की लहरों जैसी होगी।",
+      "अब हम गति में जाएंगे। हर श्वास आपको उठाएगी। हर छोड़ पृथ्वी पर लाएगी। श्वास गति तय करती है।",
+      "[तीन सूर्य नमस्कार चक्र — श्वास के साथ]",
+      "उज्जायी परिश्रम को सुंदर बनाती है। यह व्यायाम को साधना में बदलती है।"
+    ],
+    "b_roll_list": [
+      "Ocean waves breaking — close on the water surface at 120fps, the foam, the recession. This is the primary B-roll metaphor for this entire piece.",
+      "The pre-dawn water — absolute stillness before the first wave. Blue-hour quality.",
+      "The sun cresting the horizon line over water — carefully exposed, multiple takes",
+      "Hands in water — just the hands, dipping into the water's surface. The connection between body and ocean.",
+      "Feet on rock at the water's edge — one slow tide or wave reaching the feet and receding",
+      "Tall trees or coastal vegetation silhouette at blue hour",
+      "The movement of the Surya Namaskar isolated shots — specific poses held in the morning light: Urdhva Hastasana (arms raised), Uttanasana (forward fold), Adho Mukha Svanasana (downward dog)",
+      "The throat close-up during Ujjayi — the larynx movement, shot at 60fps",
+      "A conch shell — if available at location. Not as a religious symbol. As the sound it makes when you hold it to your ear.",
+      "Light refracting through water surface — abstract, for the opening or transitional moments"
+    ],
+    "edit_notes": "COLOR GRADE: The coolest and most blue of the batch — this is the dawn, the water, the pre-sunrise world. Keep the blue-hour sequence genuinely blue. When the sun rises, the grade warms naturally. Do not artificially warm the pre-dawn footage — its coolness is the breath before the exhale. PACING: The Surya Namaskar sequence should be edited to the breath, not to the pose transitions. If the editor cuts on the movement, they are watching the wrong thing. The cut is on the inhale and the exhale. SOUND: The ocean/river sound should be used at a higher level in this piece than the others — mix it at -14dB under the voice during introduction, rising to -10dB during the movement section where the breath and water are the same sound. MUSIC: None during instruction or practice. Light Indian classical raga in the morning raga tradition (Bhairav or Todi) at -24dB can underlie the very final wide shot only.",
+    "end_card_copy": "सुकून\nSukoon\n\nThe breath that moves the body. The body that breathes the world."
+  },
+
+  {
+    "id": "breath-sheetali-cooling",
+    "title_en": "Sheetali — The Cooling Breath",
+    "title_hi": "शीतली — शीतल करने वाली श्वास",
+    "target_duration_min": 7,
+    "type": "breath_demonstration",
+    "location": "Nature outdoor — summer noon or mid-afternoon. A shaded garden or courtyard in a traditional Indian home — a walled garden in Rajasthan, an inner courtyard in Chettinad, or a simple terrace in Pune or Hyderabad with overhead shade. The quality of heat is present but the shade provides relief — the visual and sensory context should communicate warmth and the desire for cooling. A clay pot of water visible. A neem or peepal tree providing shade. The light is high and warm; the shadows are sharp.",
+    "location_alt": "Indoor room in afternoon light — window open, a ceiling fan moving slowly, thin white curtains moving. The suggestion of summer heat outside. The room is cool by comparison. The breath is what makes the difference.",
+    "time_of_day": "golden_hour_evening",
+    "talent_direction": "Indian woman, any age 25-50. The quality needed here is ease under warmth — she is comfortable, unhurried, not bothered by the heat in the way that someone who has a reliable cooling tool is not bothered. A sense of grace in hot weather. She may be fanning herself naturally at the start, then demonstrate how the breath replaces that need. Hair: pinned or tied up — this is warm weather, the neck is visible. A sense of naturalness and ease. Not meditation-solemn — this is the most practical, lightest-toned of the six scripts.",
+    "wardrobe": "White or ivory — cotton or linen, full but flowing. A simple salwar or a kurta in the Anokhi natural-print style but without a complex print (a subtle block print is acceptable). No dark colors — the visual warmth-and-cooling theme needs the lightness of the white clothing against the warm outdoor background. Thin cotton dupatta over one shoulder, loosely placed, not pinned.",
+    "camera_setup": "Sony FX3 Body A: 85mm, eye-level, face-forward for instruction. This script has one unique technical requirement: the tongue roll (or Sheetkari alternative). The face CU must show the tongue clearly — the tube formed by the rolled tongue is the visual anchor of this technique. Brief the DP. Body B: 35mm for the garden atmosphere and the B-roll of heat and cooling — the clay pot, the shadow patterns, the light on white fabric.",
+    "lighting": "High natural daylight in shade. The sharp shadow lines of the overhead trees or courtyard walls are desirable background elements — they communicate the heat of the day. No supplemental artificial lighting. If the talent is in open shade, the quality of light will be even and soft naturally. Do not move talent into direct sun for visual reasons — the entire premise of this script is the intelligent use of shade and breath to manage heat.",
+    "audio_direction": "The inhale sound of Sheetali is the primary audio content — air passing over the rolled tongue creates a distinctive, slightly cool hissing intake. This is the technique's sonic signature and must be captured clearly. Boom positioned slightly lower than other scripts — the mouth-level placement is critical for this technique. The exhale (through the nose, silent) is secondary. Natural outdoor afternoon ambience — cicadas, bird, light wind — mixed at -18dB as an authentic summer texture. The sound design of this piece should feel like summer afternoon — that specific quality of warm drowsy outdoor silence.",
+    "on_screen_graphics_direction": "The most graphic-light script of the batch. A simple temperature indicator — like an analog thermometer — shows a line dropping on the exhale (the body cooling). But this should be used very sparingly and only in the technique explanation section. An icon showing a tongue (stylized, tasteful — not anatomical) with directional arrows showing air flowing over it appears once during the technique description. Labels: 'Sheetali / शीतली' and 'Sheetkari / शीतकारी' (the teeth-based alternative for those who can't roll the tongue). No additional graphics.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Garden or courtyard in afternoon heat. No person. The sun on the ground, sharp shadows. The clay pot in frame. The sound of summer. 8 seconds of this before any movement.",
+        "duration_sec": 12,
+        "notes": "The viewer should feel the heat of the day before the breath is introduced."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Talent in the shade, seated on a simple cotton mat or low jhoola/swing if the location allows. She fans herself once or twice naturally, then sets the fan aside. Looks at camera.",
+        "duration_sec": 10,
+        "notes": "The fanning-and-setting-aside gesture is not required if it feels theatrical. Only if it's genuinely natural in context."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Introduction. Sheetali comes from Sheeta, Sanskrit for cold or cool. This is the only pranayama technique in the classical canon where the breath is inhaled through the mouth rather than the nose — and specifically over a rolled tongue. The cooling effect is physiological: the tongue acts as a heat exchanger. The traditional uses: cooling the body in summer, reducing fever heat, cooling anger and pitta imbalance, reducing blood pressure acutely.",
+        "duration_sec": 60,
+        "notes": "The Ayurvedic pitta reference is appropriate here — it connects to the system that many Indian viewers will recognize as relevant to their body type and the summer season."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU — face, slight side angle",
+        "description": "CRITICAL TECHNIQUE SHOT: Talent rolls her tongue into a tube and extends it slightly beyond the lips. Camera shows this clearly. She inhales through the rolled tongue — the slight hissing sound, the belly expanding. Then she withdraws the tongue, closes the lips, and exhales slowly through the nose. Two full cycles demonstrated silently.",
+        "duration_sec": 30,
+        "notes": "Multiple takes. The tongue roll must be clear — this is the technique's unique anatomical requirement and it confuses first-time practitioners if they cannot see it. 85mm from slightly below eye level so the tongue roll is visible from the front."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "Alternative technique for those who cannot roll the tongue: Sheetkari. Teeth together, tongue pressed to the roof of the mouth or behind the top teeth. Inhale through the gaps in the teeth — a different but related quality of cool air. Talent demonstrates briefly.",
+        "duration_sec": 20,
+        "notes": "Important inclusion — a significant percentage of people cannot roll their tongue (it is genetic). The alternative must be included or the technique is inaccessible to them."
+      },
+      {
+        "shot_number": 6,
+        "type": "MS",
+        "description": "Guided practice — eight to ten rounds. Talent leads with count. The instruction: feel the cooling sensation of the air on the tongue and in the throat. After several rounds, notice the internal temperature shift.",
+        "duration_sec": 120,
+        "notes": "Two takes. The counting cadence is relaxed and warm here — this is a summer afternoon breath, not a precision instrument. The pace should reflect the ease of the afternoon."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU",
+        "description": "Face in the practice — the eyes closed, the slight parting of lips on the inhale, the quiet exhale through the nose. The quality of someone who is genuinely cooler than they were 90 seconds ago.",
+        "duration_sec": 15,
+        "notes": "If this quality is not present in the talent's face — a real physiological shift happens during Sheetali — pause the shoot, let them do 8-10 genuine rounds, and shoot the face immediately after."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "Closing — practical applications: summer heat, hot flashes, anger management (fire/pitta reduction), high blood pressure moments, before bed in summer. Also: who should NOT practice Sheetali (people with respiratory conditions in cold or polluted air, those with kapha imbalance per Ayurveda). Brief but complete.",
+        "duration_sec": 45,
+        "notes": "The contraindication note is important for Sukoon's credibility — the app should not recommend indiscriminately. Include it simply and without alarm."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Final wide. The garden in the afternoon. The talent at rest in the shade. The clay pot. The light.",
+        "duration_sec": 10,
+        "notes": "Hold. Fade."
+      }
+    ],
+    "script_text_en": [
+      "It is warm. And we're going to do something about that with nothing but how we breathe.",
+      "In Sanskrit, Sheeta means cold, or cool. Sheetali is the cooling breath — the one practice in classical pranayama that asks you to inhale through your mouth. Specifically, through your tongue.",
+      "The technique is elegant in its logic. Curl your tongue into a tube and extend it slightly past your lips — like a straw. Inhale through this tube slowly and completely. The air traveling over the wet surface of your rolled tongue is cooled before it enters the body — the tongue is acting as a heat exchanger, the way sweat cools skin but from the inside. Then withdraw the tongue, close the mouth, and exhale long and slow through your nose.",
+      "Let me show you. [demonstrates — tongue roll, inhale, retract, nose exhale] Did you see the tongue? Like this. A tube. And the sound — [demonstrates again] — that slight coolness of air over the tongue.",
+      "If you cannot roll your tongue — some people simply cannot, it is genetic, not a failure — there is an equally effective alternative called Sheetkari. Bring your teeth together lightly, press your tongue against the roof of your mouth, and inhale through the gaps in your teeth. The result is slightly different but the physiological cooling is the same.",
+      "Eight rounds together. We'll count quietly. Tongue out — tube — inhale slowly, two, three, four. Tongue in, mouth closed — exhale through the nose, two, three, four, five, six.",
+      "Again. Tongue out. Inhale — two, three, four. Exhale — two, three, four, five, six.",
+      "[Continue for six more rounds — talent leads with gentle verbal cues]",
+      "Come back to natural breathing. What do you notice? There should be a quality of coolness in the throat and behind the eyes. A slight drop in the internal thermostat. This is not imagined — the body temperature measurably decreases after sustained Sheetali practice.",
+      "Ten rounds in the middle of a summer afternoon, or before an argument you'd rather not have, or before sleeping when the night is too warm — this is the complete initial practice. Carry it with you. The summer is long and the breath is always available."
+    ],
+    "script_text_hi": [
+      "गर्मी है। और हम इसे बिना किसी उपकरण के — सिर्फ अपनी श्वास से — ठीक करने वाले हैं।",
+      "शीत का अर्थ है ठंडा। शीतली — शीतल करने वाली श्वास। शास्त्रीय प्राणायाम में यही एकमात्र तकनीक है जहाँ मुँह से श्वास ली जाती है।",
+      "विधि: जीभ को नली की तरह मोड़ें, होंठों के बाहर थोड़ा निकालें। इस नली से धीरे-धीरे सांस लें। जीभ की नम सतह पर से गुज़रती हवा ठंडी होकर शरीर में जाती है। जीभ वापस लें, मुँह बंद करें, नाक से धीरे-धीरे छोड़ें।",
+      "जो लोग जीभ नहीं मोड़ सकते उनके लिए शीतकारी — दाँत हल्के से बंद, जीभ तालू पर, दाँतों की दरारों से सांस लें।",
+      "आठ चक्र साथ करें। [अभ्यास] गर्मियों की दोपहर में दस चक्र — यह प्रारंभिक अभ्यास का पूरा डोज़ है।"
+    ],
+    "b_roll_list": [
+      "Ice melting in a clay glass of water — extreme close, the droplets on the outside of the glass, the condensation. Summer heat made visible.",
+      "A ceiling fan turning slowly — seen from below, the white blades, the sky-blue ceiling. 120fps.",
+      "A neem or peepal tree in afternoon light — leaves moving in a light breeze, the quality of shade",
+      "The clay water pot — close on the surface, the water poured into a glass — the most cooling visual in Indian summer",
+      "Sharp afternoon shadow patterns on a white courtyard wall",
+      "A rolled tongue close-up — just the technique, anatomical but not clinical. Shoot several times as this is the key instructional insert.",
+      "Sweat on skin — an honest insert of a forearm in afternoon heat, before the practice. Contrast with the post-practice cool.",
+      "Dry earth in summer — cracked, warm, asking for rain. The Sheetali context.",
+      "The courtyard in full afternoon light — the quality of heat in a traditional Indian interior space",
+      "White fabric or curtain moving in a light breeze — the suggestion of coolness, of relief arriving"
+    ],
+    "edit_notes": "COLOR GRADE: Warm, slightly bleached highlights — the quality of summer overexposure in the background, while the face in shade is perfectly rendered. A slight warm-to-cool arc across the piece: begins warm (pre-practice context), shifts subtly cooler after the first practice section begins. Reference: the color palette of Mira Nair's Monsoon Wedding — that specific quality of Delhi/North India summer heat. PACING: The lightest and most conversational of the batch. This is not a solemn breath — it is a practical one, and the edit should reflect the ease of a summer afternoon. Not rushed, but also not heavy. MUSIC: None during instruction. After the final shot — the garden wide — the lightest possible Indian classical flute (bansuri) at -22dB, in a Yaman or Bhimpalasi raga association, for 8 seconds before the fade. The bansuri carries natural coolness in its timbre and is appropriate here specifically. GRAPHICS: Minimal. The tongue diagram once. The thermometer indicator once. Then gone.",
+    "end_card_copy": "सुकून\nSukoon\n\nThe coolness was always there. The breath finds it."
+  }
+]

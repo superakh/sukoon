@@ -1,0 +1,1046 @@
+[
+  {
+    "id": "surya-namaskar-a-beginner",
+    "title_en": "Sun Salutation A — Beginner Perfect",
+    "title_hi": "सूर्य नमस्कार A — शुरुआती के लिए",
+    "target_duration_min": 12,
+    "type": "sequence_flow",
+    "location": "Himachal Pradesh mountain meadow at golden hour morning — Kullu Valley, foreground of wild grass and small wildflowers, middle distance pine forest, background snow-dusted peaks catching first light. Soft ground mist at ankle height. No other humans visible.",
+    "location_alt": "Studio with floor-to-ceiling east-facing windows, morning light raking in at low angle across polished concrete floor, minimal — no props, no plants, no decoration.",
+    "time_of_day": "golden_hour_morning",
+    "talent_direction": "Indian woman, mid-30s, lean and grounded. Not a fitness influencer aesthetic — a practitioner aesthetic. Hair tied in a simple low bun with no accessories. Minimal makeup: even skin, subtle liner, nothing that reads as 'camera ready' — should look as though she simply stepped outside. Demeanor is unhurried, internally focused, occasionally makes eye contact with camera but mostly looks toward horizon or downward. Moves with deliberate slowness — every transition is a lesson, not a flow.",
+    "wardrobe": "Soft slate-grey fitted yoga top, full-length dusty terracotta leggings. Natural fabric — no shine, no compression-wear sheen. Bare feet throughout. No jewellery. No logo. Colour palette must not reference saffron, ochre, or anything that reads as ashram/monk costuming.",
+    "camera_setup": "Primary: Sony FX3 on fluid-head tripod, Sigma 24-70mm f/2.8 at f/3.2. Secondary: Sony FX3 on Ronin-S gimbal for slow walk-around and tracking. Third: Sony A7IV on slider for lateral B-roll. All cameras match LUT in post. Use 4K/24fps for master shots; 4K/120fps slow-motion for hand and foot detail inserts.",
+    "lighting": "100% natural light. Golden hour sun as key — instructor faces approximately east-southeast so light catches her face and shoulder. No artificial fill. White foam-core bounce board (4x4ft) positioned camera-right to open shadows slightly. No reflectors with metallic sheen — matte bounce only. If clouds diffuse sun, embrace it; do not chase direct light compulsively.",
+    "audio_direction": "Sennheiser MKH-50 on boom, operated off-frame. DJI Mic 2 lavalier on instructor as backup. No music during instruction segments — silence is the aesthetic. During transitions between postures (instructor repositions silently), ambient mountain wind and birdsong remain in mix. All instruction recorded on set — NO ADR unless a single word is inaudible.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing. Instructor stands in Tadasana (Mountain Pose) facing away from camera toward peaks. Camera static at 50mm equivalent. Hold 8 seconds. She is small in the frame — landscape dominates. Dawn light on peaks behind her.",
+        "duration_sec": 8,
+        "notes": "Do not slate on this shot. Roll camera before instructor enters frame — capture the empty meadow for 4 seconds first. This is the opening frame of the film."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Instructor turns to face camera. Natural pause. She speaks the opening: 'Surya Namaskar — the salutation to the sun. We begin not with movement but with stillness.' Static camera, instructor centred, horizon at upper third.",
+        "duration_sec": 18,
+        "notes": "Slight breathing visible in chest. Allow real silence before she speaks — do not cut this pause."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "Feet on earth. Instructor presses all four corners of both feet into ground. Slow tilt up from feet to knees.",
+        "duration_sec": 6,
+        "notes": "120fps slow motion. Dew on grass visible near feet preferred."
+      },
+      {
+        "shot_number": 4,
+        "type": "MS",
+        "description": "Samasthiti (equal standing). Instructor demonstrates neutral standing alignment — palms at thighs, chin level, eyes soft. She describes the starting position as she demonstrates.",
+        "duration_sec": 22,
+        "notes": "Camera slightly below instructor eye level — never above. This is a principle for the entire shoot."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "Pose 1 — Pranamasana (Prayer). Hands come to anjali mudra at sternum. Instructor cues: 'Bring your hands to prayer. Feel the weight of them against your heart.'",
+        "duration_sec": 15,
+        "notes": "Gimbal camera begins a very slow 180-degree arc from front to side profile during this shot. Speed: imperceptibly slow."
+      },
+      {
+        "shot_number": 6,
+        "type": "WS",
+        "description": "Pose 2 — Urdhva Hastasana. Arms sweep upward. Wide shot captures the full arc of the arms against the mountain sky. Sky fill approximately 40% of frame.",
+        "duration_sec": 12,
+        "notes": "120fps slow motion to be played at roughly 60% speed in edit. Capture arm arc against sky in silhouette option too — may be used as alternate cut."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Pose 3 — Uttanasana (Standing Forward Fold). Instructor folds forward slowly. Camera follows — begins at head level, tilts down as she folds. She cues breath and the feeling of release in the spine.",
+        "duration_sec": 18,
+        "notes": "Hold the fold for 6 seconds after she lands. No rush to the next pose."
+      },
+      {
+        "shot_number": 8,
+        "type": "CU",
+        "description": "Hands on earth. Pose 4 transition — fingertips touch ground beside feet. Close-up of hands making contact with earth (or mat in studio alt).",
+        "duration_sec": 5,
+        "notes": "120fps. Critical detail shot — repeat twice for coverage."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Pose 4 — Ashwa Sanchalanasana (Low Lunge). Right leg steps back. Wide shot from side (instructor faces frame left). Full body visible including sky and ground.",
+        "duration_sec": 12,
+        "notes": "Slider lateral movement — begin static then drift 60cm right, very slowly, over the full 12 seconds."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Pose 5 — Phalakasana (Plank). Instructor steps into plank and holds. She cues from the plank position: 'One long line from crown to heel. Breathe here.' Side-profile MS.",
+        "duration_sec": 14,
+        "notes": "Camera absolutely level with her hips — not above, not below."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Poses 6-7 — Ashtanga Namaskara to Bhujangasana (Cobra). Full sequence in one uncut wide shot from the side. No camera movement during this shot.",
+        "duration_sec": 18,
+        "notes": "This is the most technically demanding sequence to teach beginners. Instructor must slow each phase to at least 3 seconds per beat."
+      },
+      {
+        "shot_number": 12,
+        "type": "MS",
+        "description": "Pose 8 — Adho Mukha Svanasana (Downward Dog). Front three-quarter view. Instructor holds the pose and speaks: 'Rest here. This is not a transition — this is a pose. Let your heels soften toward the earth.'",
+        "duration_sec": 20,
+        "notes": "Hold shot full 20 seconds. Allow silence. No nervous cutting."
+      },
+      {
+        "shot_number": 13,
+        "type": "WS",
+        "description": "Return sequence — Lunge, Uttanasana, Urdhva Hastasana, Pranamasana. Wide shot, side profile, one continuous uncut take. Instructor moves at meditative pace.",
+        "duration_sec": 30,
+        "notes": "No camera movement. Static wide. Let the full arc of the return be seen."
+      },
+      {
+        "shot_number": 14,
+        "type": "ECU",
+        "description": "B-roll — instructor's closed eyes in Samasthiti at sequence end. 120fps. Hold 8 seconds. Slight breeze moves a strand of hair.",
+        "duration_sec": 8,
+        "notes": "This is the closing image. Do not use it as a transition — it is the last thing the viewer sees."
+      }
+    ],
+    "script_text_en": [
+      "Surya Namaskar — the salutation to the sun. This sequence has been practised on this subcontinent for centuries, not as exercise, but as gratitude. We are not trying to warm up a body. We are trying to wake up an awareness.",
+      "Stand in Samasthiti. Equal standing. Feel both feet on the earth — the four corners: the base of your big toe, the base of your little toe, the inner heel, the outer heel. Press down to rise up. This is the first instruction of all yoga.",
+      "Bring your hands to prayer at your chest. This is Pranamasana. Not a gesture of submission — a gesture of meeting. You are meeting this moment. You are meeting your own breath.",
+      "Inhale: sweep both arms wide and overhead. Urdhva Hastasana. Arms alongside your ears, gaze softly upward. Do not collapse into your lower back — lengthen before you arch. You are reaching, not bending.",
+      "Exhale: fold forward and down. Uttanasana. Knees may be soft. Let gravity do the work your muscles are trying so hard to do. Your head is heavy — trust that weight. Let the spine lengthen one vertebra at a time.",
+      "Inhale: bring your fingertips to the floor beside your feet, or to your shins. Look forward — lengthen your spine half-way up. This is Ardha Uttanasana, the halfway lift. The back is flat, the heart reaches forward.",
+      "Exhale: step or lightly jump your feet back to plank — Phalakasana. One long line from crown to heel. Your belly draws in and up. Your hands press the earth away. Breathe here — a full breath, unhurried.",
+      "From plank, lower slowly — knees, chest, chin — eight points to earth. Ashtanga Namaskara. This is a transition but treat it as a pose. Control is the practice.",
+      "Inhale: press into your hands, draw your chest forward and up. Bhujangasana — Cobra. Elbows stay close to the body and remain slightly bent. This is not a push-up. You are a snake rising from the earth, not a plank of wood tipping upright.",
+      "Exhale: press back and up. Adho Mukha Svanasana — Downward-Facing Dog. Hips to the sky, heels toward the earth. This is not a resting pose for beginners — but it will become one. Stay here for five breaths. Notice what shifts.",
+      "Inhale: step your right foot forward between your hands. Look forward. Low lunge. Exhale here.",
+      "Inhale: step your left foot forward to meet the right. Uttanasana again. Exhale: fold deeper.",
+      "Inhale: rise all the way up, arms sweeping wide. Stand tall. Urdhva Hastasana. Everything reverses — you are returning the way you came.",
+      "Exhale: hands to prayer. Pranamasana. Samasthiti. You have completed one round. This is Surya Namaskar A.",
+      "Rest for a moment in this stillness. Notice that the body is slightly warmer. The breath has deepened on its own — you did not have to force it. This is what the sequence does when you trust it."
+    ],
+    "script_text_hi": [
+      "सूर्य नमस्कार — सूर्य को अर्पित यह वंदना। इस अनुक्रम का अभ्यास इस उपमहाद्वीप पर सदियों से होता रहा है — व्यायाम के रूप में नहीं, बल्कि कृतज्ञता के रूप में।",
+      "समस्थिति में खड़े हों। दोनों पैरों को भूमि पर महसूस करें — चार कोने: अंगूठे का आधार, छोटी उंगली का आधार, भीतरी एड़ी, बाहरी एड़ी। नीचे दबाएं और ऊपर उठें।",
+      "हाथों को छाती के सामने प्रणाम में लाएं। यह प्रणामासन है। समर्पण का भाव नहीं — मिलन का भाव। आप इस क्षण से मिल रहे हैं, अपनी श्वास से मिल रहे हैं।",
+      "श्वास लें: दोनों भुजाएं चौड़ी करके ऊपर ले जाएं। ऊर्ध्व हस्तासन। भुजाएं कानों के पास, दृष्टि मृदु रूप से ऊपर।",
+      "श्वास छोड़ें: आगे और नीचे झुकें। उत्तानासन। घुटने थोड़े नरम हो सकते हैं। गुरुत्वाकर्षण को काम करने दें।",
+      "श्वास लें: हाथों की उंगलियां पैरों के पास भूमि पर लाएं। सामने देखें — रीढ़ को आधा ऊपर लंबा करें। अर्ध उत्तानासन।",
+      "श्वास छोड़ें: पैरों को पीछे ले जाएं — फलकासन। एक सीधी रेखा मस्तक से एड़ी तक।",
+      "धीरे-धीरे नीचे आएं — घुटने, छाती, ठोड़ी। अष्टांग नमस्कार।",
+      "श्वास लें: हाथों पर दबाव डालें, छाती आगे और ऊपर उठाएं। भुजंगासन।",
+      "श्वास छोड़ें: पीछे और ऊपर जाएं। अधोमुख श्वानासन। पांच श्वास यहां रुकें।",
+      "श्वास लें: दाहिना पैर हाथों के बीच आगे लाएं। नीचे देखें।",
+      "श्वास लें: बाएं पैर को भी आगे लाएं। उत्तानासन।",
+      "श्वास लें: भुजाएं चौड़ी करते हुए ऊपर उठें। वापसी।",
+      "श्वास छोड़ें: हाथ प्रणाम में। समस्थिति। एक चक्र पूर्ण हुआ।",
+      "इस स्थिरता में एक पल रुकें। देखें कि शरीर कुछ गर्म हो गया है। श्वास अपने आप गहरी हो गई है।"
+    ],
+    "b_roll_list": [
+      "Pre-dawn sky transitioning to golden light — 60 seconds minimum, wide, no instructor",
+      "Dew on meadow grass, macro lens, first light catching droplets — 30 seconds",
+      "Mountain peaks catching first light — distant, wide, 20 seconds",
+      "Bare feet pressing into earth — top-down overhead, 120fps, 10 seconds",
+      "Hands in anjali mudra, close, slight depth-of-field blur on background — 10 seconds",
+      "Full instructor silhouette in Urdhva Hastasana against dawn sky — 15 seconds",
+      "Side profile of Downward Dog against mountain backdrop — 120fps, 15 seconds",
+      "Wind moving through pine trees in background — 20 seconds, no instructor",
+      "Instructor's face, eyes closed, in final Samasthiti — 120fps, 12 seconds",
+      "Wide pull-back from meadow — drone if permitted, or long slider — empty meadow after instructor exits frame"
+    ],
+    "edit_notes": "Colour grade: warm golden-hour base, preserve skin tones without orange push. Avoid teal-orange Hollywood grade. Reference: short film 'Honeyland' (2019) — naturalistic warmth. Pacing: never cut before a pose is fully expressed. Minimum hold on any pose shot: 6 seconds. Music: tanpura drone (Sa in D) enters at 30% volume under Downward Dog sequence and fades before instructor resumes speaking. No music during instruction. Captions: Sanskrit name + English name appears as lower-third when each pose is named — white sans-serif, not overlaid on instructor's face.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  },
+  {
+    "id": "surya-namaskar-b-strength",
+    "title_en": "Sun Salutation B — Strength Progression",
+    "title_hi": "सूर्य नमस्कार B — शक्ति अनुक्रम",
+    "target_duration_min": 14,
+    "type": "sequence_flow",
+    "location": "Sikkim high-altitude meadow, Dzongri plateau or similar — elevation visible in scale of landscape, panoramic Kanchenjunga range in background. Instructor on flat rock or compressed earth — no mat. Morning light, slightly cooler and sharper than Himachal golden hour.",
+    "location_alt": "Studio floor-to-ceiling windows, morning, same setup as Script 1 but mat removed — instructor on bare polished concrete.",
+    "time_of_day": "golden_hour_morning",
+    "talent_direction": "Same instructor archetype as Script 1 — or a different Indian woman, mid-30s to early 40s, with visible physical strength. Not bodybuilder aesthetic — functional, quiet strength. She is not performing effort; she contains it. Hair tied back more firmly (practical for vigorous sequence). Demeanour slightly more focused, less contemplative than Script 1 — this is a sequence that demands attention.",
+    "wardrobe": "Deep charcoal fitted yoga top, slate-blue full-length leggings. Same natural-fabric, no-shine standard. Bare feet. No jewellery, no logo.",
+    "camera_setup": "Primary: Sony FX3 on fluid tripod, 24-70mm f/2.8. Gimbal operator for Warrior sequence tracking shots. Slider for lateral comparison shots in Virabhadrasana. 120fps for all explosive transitions (chaturanga, jump-throughs). Additional overhead rig for top-down shot of Chaturanga alignment.",
+    "lighting": "Natural. Slightly cooler, higher-altitude morning light. No bounce — embrace the slight edge and direction of mountain light. If overcast, do not reschedule — diffused high-altitude light is also acceptable and adds a different quality.",
+    "audio_direction": "Same mic setup as Script 1. This script has more breathing audible from instructor — do NOT reduce or remove that. Breath is part of the instruction. Ambient: wind across high plateau should remain in mix at low level throughout.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing wide. Instructor in Tadasana, tiny against Kanchenjunga backdrop. Static 6 seconds, then slow push-in to MS over 8 seconds.",
+        "duration_sec": 14,
+        "notes": "The push-in should be imperceptible at normal speed — only visible on frame-by-frame. Done on slider or gimbal walking forward slowly."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Instructor faces camera. Opening address: 'Surya Namaskar B adds two postures to the A sequence — Utkatasana and Virabhadrasana One. This is where sun salutation becomes a strength practice.'",
+        "duration_sec": 20,
+        "notes": "She is still. Her stillness is the contrast to what follows."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Utkatasana (Chair Pose) demonstration. Instructor moves into Chair and holds 10 seconds while describing it. 'Thighs parallel to earth. Sit bones down, heart up. Arms overhead — feel the diagonal from hips to fingertips.'",
+        "duration_sec": 22,
+        "notes": "Three-quarter side angle. Instructor faces frame-right. We see the full diagonal of the body."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Thighs and feet detail in Utkatasana. 120fps. We see the engagement — quads working, feet pressing, weight back in heels.",
+        "duration_sec": 6,
+        "notes": "Camera low, angled up slightly. Not a flattering angle — a technical one."
+      },
+      {
+        "shot_number": 5,
+        "type": "WS",
+        "description": "Transition: Utkatasana → Uttanasana → Chaturanga. Wide side profile. One continuous shot. Instructor cues each beat with breath audible.",
+        "duration_sec": 20,
+        "notes": "Critical: Chaturanga must not be rushed. Instructor holds Chaturanga for a full 3 seconds — this is the teaching moment."
+      },
+      {
+        "shot_number": 6,
+        "type": "CU overhead",
+        "description": "Chaturanga from directly above. Overhead rig. We see the back body — flat spine, elbows at 90 degrees, no hip sag.",
+        "duration_sec": 6,
+        "notes": "This overhead is educational — the one angle where Chaturanga alignment is fully legible."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Urdhva Mukha Svanasana (Upward-Facing Dog). Instructor lifts off ground — only hands and tops of feet touching. She speaks: 'Upward dog, not cobra. The thighs are off the earth. This distinction matters.'",
+        "duration_sec": 16,
+        "notes": "Side profile. Full body visible. Hold the explanation."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "Downward Dog → Virabhadrasana I (Warrior I). Instructor steps right foot forward, pivots back heel, rises. Camera tracks slightly with gimbal as she rises.",
+        "duration_sec": 18,
+        "notes": "Gimbal operator begins behind instructor and arcs slowly to side profile as Warrior I is established."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Virabhadrasana I held. Wide shot. Instructor holds and cues: 'Back heel grounded, hips squared forward, chest rising. This is the warrior who has already won — there is no aggression here, only presence.'",
+        "duration_sec": 22,
+        "notes": "Mountain backdrop fully visible behind her outstretched arms. Compose so arms align roughly with horizon."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Return through Chaturanga, Upward Dog, Downward Dog. Side profile. Continuous take. Instructor cues breath only — no alignment cues during this return.",
+        "duration_sec": 16,
+        "notes": "Let the breath be the primary audio here. Wind in background."
+      },
+      {
+        "shot_number": 11,
+        "type": "MS",
+        "description": "Left side Virabhadrasana I. Same framing as Shot 9 but mirrored. Hold.",
+        "duration_sec": 18,
+        "notes": "Identical coverage to right side. Editor will use both."
+      },
+      {
+        "shot_number": 12,
+        "type": "WS",
+        "description": "Full B sequence at pace — instructor runs through one complete round without narration, at 70% of normal practice speed. This is the demonstration take.",
+        "duration_sec": 55,
+        "notes": "Single continuous wide shot, no camera movement. This is the 'clean run' the editor uses for full-sequence B-roll."
+      },
+      {
+        "shot_number": 13,
+        "type": "MS",
+        "description": "Closing in Samasthiti. Instructor, still breathing, addresses camera: 'You will feel this tomorrow. That is not failure — that is the sequence working. Come back tomorrow.'",
+        "duration_sec": 15,
+        "notes": "Slight sweat visible. Do not powder between shots — this authenticity is intentional."
+      }
+    ],
+    "script_text_en": [
+      "Surya Namaskar B. This is not a harder version of A — it is a different conversation. Where A asks for attention, B asks for strength. Two postures enter: Utkatasana, the fierce seat, and Virabhadrasana One, the warrior. Both require something more than flexibility. They require will.",
+      "Begin in Samasthiti. Equal standing. Take one full breath.",
+      "Inhale: bend your knees deeply and raise your arms. Utkatasana — Chair Pose, though the translation does no justice to what it actually is. Your thighs work toward parallel with the earth. Sit bones descend. Chest rises. Arms reach upward alongside your ears. Stay here for three breaths and meet the discomfort — it is honest discomfort, the kind that builds something.",
+      "Exhale: straighten your legs and fold forward — Uttanasana. Inhale: half-lift, flat back — Ardha Uttanasana. Exhale: step or jump back to Chaturanga.",
+      "Chaturanga Dandasana. Four-limbed staff. This is perhaps the most misunderstood pose in modern yoga. Your elbows are at ninety degrees — not below the shoulder line, not collapsed. The body is one plank. Lower slowly. Three seconds down is better than one second collapsed.",
+      "Inhale: Urdhva Mukha Svanasana. Upward-Facing Dog. The thighs rise off the ground — this is what separates Upward Dog from Cobra. Only your hands and the tops of your feet are touching the earth. Chest moves forward and up. Shoulders away from ears.",
+      "Exhale: Adho Mukha Svanasana. Downward Dog. Three breaths.",
+      "Inhale: step your right foot forward between your hands. This is different from B's predecessor — the back heel pivots and presses to earth. Both hips square forward as best they can. Arms rise overhead. Virabhadrasana One. The first warrior.",
+      "There is a misunderstanding about Virabhadra — the warrior in this name is not a soldier. He is a being of complete presence. The warrior poses in yoga are not about aggression. They are about being entirely where you are.",
+      "Exhale: hands to earth, step back, Chaturanga. Inhale: Upward Dog. Exhale: Downward Dog. Now left side: step your left foot forward. Virabhadrasana One. Same precision, same presence. Hold.",
+      "Exhale: step back, Chaturanga, Upward Dog, Downward Dog. From here, step or jump your feet forward. Inhale into Utkatasana — the cycle completes as it began. Exhale: Uttanasana. Inhale: rise, arms wide. Exhale: Samasthiti. Hands to prayer.",
+      "One round of Surya Namaskar B. In a traditional Ashtanga practice, five rounds of this precede everything else that follows. That tells you something about what it contains.",
+      "Rest here. Notice your breath — it has changed not because you forced it, but because you did the work."
+    ],
+    "script_text_hi": [
+      "सूर्य नमस्कार B — यह A का कठिन संस्करण नहीं है, यह एक अलग संवाद है। जहाँ A ध्यान मांगता है, B शक्ति मांगता है।",
+      "समस्थिति में खड़े हों। एक पूरी श्वास लें।",
+      "श्वास लें: घुटनों को गहरा मोड़ें और भुजाएं उठाएं। उत्कटासन। जांघें लगभग भूमि के समानांतर। तीन श्वासें यहां रुकें।",
+      "श्वास छोड़ें: पैर सीधे करें और आगे झुकें। श्वास लें: अर्ध उत्तानासन। श्वास छोड़ें: पीछे जाएं — चतुरंग दंडासन।",
+      "चतुरंग दंडासन। कोहनियां नब्बे डिग्री पर। शरीर एक तख्त। धीरे-धीरे नीचे — तीन सेकंड।",
+      "श्वास लें: ऊर्ध्वमुख श्वानासन। जांघें ज़मीन से ऊपर उठती हैं। केवल हाथ और पैरों का ऊपरी भाग भूमि को स्पर्श करते हैं।",
+      "श्वास छोड़ें: अधोमुख श्वानासन। तीन श्वासें।",
+      "श्वास लें: दाहिना पैर हाथों के बीच आगे। पिछली एड़ी मुड़ती है और दबती है। दोनों कूल्हे आगे की ओर। भुजाएं ऊपर। वीरभद्रासन एक।",
+      "वीरभद्र एक योद्धा हैं — लेकिन इन आसनों में योद्धा का अर्थ आक्रामकता नहीं, पूर्ण उपस्थिति है।",
+      "श्वास छोड़ें: हाथ भूमि पर, पीछे जाएं, चतुरंग, ऊर्ध्वमुख, अधोमुख। अब बाईं ओर।",
+      "एक चक्र पूर्ण। पारंपरिक अष्टांग अभ्यास में इसके पांच चक्र होते हैं। यह बताता है कि इसमें क्या है।",
+      "यहां विश्राम करें। श्वास को महसूस करें।"
+    ],
+    "b_roll_list": [
+      "High-altitude plateau — wide establishing, no instructor, 30 seconds",
+      "Kanchenjunga or equivalent peaks in morning alpenglow — 20 seconds",
+      "Instructor's hands pressing rock/earth in Chaturanga — 120fps overhead CU, 8 seconds",
+      "Warrior I arms against peak backdrop — 120fps wide, 12 seconds",
+      "Breath visible in cold morning air — if temperature permits, this is a striking detail — 10 seconds",
+      "Transition Chaturanga to Upward Dog in 120fps side profile — 12 seconds",
+      "Wide empty plateau after instructor exits frame — 15 seconds",
+      "Feet in Warrior I — CU from behind, 10 seconds"
+    ],
+    "edit_notes": "Cooler colour grade than Script 1 — preserve the blue-grey of altitude. Skin tones remain warm but background skews cooler. No music during Warrior sequences — the wind and breath are enough. Short tanpura passage under closing Samasthiti only. Pacing: Chaturanga shots must never be rushed in edit — the 3-second lowering should play at real time.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  },
+  {
+    "id": "standing-foundations-tadasana-to-warrior",
+    "title_en": "Standing Foundations — Tadasana to Virabhadrasana",
+    "title_hi": "खड़े आसनों की नींव — ताड़ासन से वीरभद्रासन तक",
+    "target_duration_min": 15,
+    "type": "asana_demonstration",
+    "location": "Kerala backwaters — open pavilion or boathouse deck extending over still water, early morning before boat traffic. Instructor on wooden deck planks. Water visible on three sides. Coconut palms in background. Mist on water surface. Light is soft, directional, reflected off water creating gentle uplight.",
+    "location_alt": "Studio with floor-to-ceiling windows, mid-morning, polished wood floor — the reflected light element can be partially recreated with a large mirror panel positioned below frame.",
+    "time_of_day": "mid_morning",
+    "talent_direction": "Indian woman, late 20s to mid-30s. The quality required here is precision without rigidity — she demonstrates alignment with the care of a craftsperson, not the authority of a professor. Hair in a clean plait, practical. No ornament. Face neutral but warm — approachable expertise. She points to her own body as a teaching tool, not as a display. Demonstrating misalignment as well as correct form is part of this script — she must be comfortable with that.",
+    "wardrobe": "White fitted sleeveless top, deep forest-green full-length leggings. Clean, minimal. The white will catch the reflected water light beautifully. No logos. Bare feet.",
+    "camera_setup": "Sony FX3, 24-70mm on tripod for instruction segments. 70-200mm on second body for isolation shots of feet, knees, hips during alignment instruction. Slider for lateral movement in wide standing-pose shots. No gimbal for this script — this is a precise, still teaching piece and the camera should reflect that with stable, considered framing.",
+    "lighting": "Natural. The reflected-water uplight is essential to this location — it wraps light under the chin and arms in a way that is architecturally interesting and flattering without being artificial. Protect this quality. If overcast, a 4x4 silver bounce board low and in front of instructor can approximate the reflected water quality.",
+    "audio_direction": "Boom mic (Sennheiser MKH-50) as primary. This script has the most detailed verbal instruction of all seven — every cue must be clean. If boat or bird sounds interfere with a key alignment cue, the take must be repeated. Ambient water sounds are welcome; outboard engines are not.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing. Instructor stands in Tadasana facing camera. Water visible on both sides of her, palms behind. Mist on water. Static, 8 seconds.",
+        "duration_sec": 8,
+        "notes": "This is the most still, centred opening of all seven scripts. The water and mist do the work."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Instructor introduces the session: 'Every standing pose in yoga begins here — Tadasana, Mountain Pose. If you understand this pose completely, you understand all the others.' Static, centred.",
+        "duration_sec": 18,
+        "notes": "Water reflection light catches her. Allow this quality."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU feet",
+        "description": "Feet in Tadasana. 70-200mm isolation. Instructor describes the four-corner foundation while we see it. She presses each point in sequence.",
+        "duration_sec": 14,
+        "notes": "Her voice over CU of feet — she is not in frame face-on, we see only her feet responding to her own instructions."
+      },
+      {
+        "shot_number": 4,
+        "type": "MS profile",
+        "description": "Side profile of Tadasana. She describes spinal alignment from this angle — 'The spine has natural curves. We are not trying to flatten them. We are trying to let them stack cleanly.' She demonstrates sway-back versus neutral for contrast.",
+        "duration_sec": 22,
+        "notes": "The deliberate demonstration of a misalignment (sway-back) followed by correction is valuable instruction. Do not cut the misalignment — it is pedagogically necessary."
+      },
+      {
+        "shot_number": 5,
+        "type": "WS",
+        "description": "Vrksasana (Tree Pose) as Tadasana extension. She transitions to Tree and holds 20 seconds each side. Wide shot — full body visible, water behind.",
+        "duration_sec": 45,
+        "notes": "Both sides. No rush. The stillness of Tree over water is visually significant."
+      },
+      {
+        "shot_number": 6,
+        "type": "MS",
+        "description": "Utthita Trikonasana (Extended Triangle). She steps wide, demonstrates. 'The triangle is the most stable shape in geometry. This is a triangle made from a human body. Everything points away from centre.' Hold right side 15 seconds.",
+        "duration_sec": 28,
+        "notes": "Three-quarter front angle. We see the full triangular shape of the pose."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU hip-knee",
+        "description": "Isolation shot on front hip and knee in Triangle — showing the hip hinge (not a side-bend), knee tracking over middle toe. 70-200mm.",
+        "duration_sec": 8,
+        "notes": "This is the alignment detail that most practitioners get wrong. The CU makes it legible."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Left side Triangle. Mirror of Shot 6. Static.",
+        "duration_sec": 25,
+        "notes": "Same framing. Editor will cut these symmetrically."
+      },
+      {
+        "shot_number": 9,
+        "type": "MS",
+        "description": "Virabhadrasana II (Warrior II). She transitions from Triangle into Warrior II. 'The hips open to the side now. Feel the difference — same wide stance, entirely different relationship to space.' Hold.",
+        "duration_sec": 26,
+        "notes": "The transition from Triangle to Warrior II is itself instructive — the hip rotation is the lesson."
+      },
+      {
+        "shot_number": 10,
+        "type": "CU arms",
+        "description": "Arms in Warrior II — 70-200mm. 'Arms at shoulder height, parallel to earth. Not lifted in effort — suspended in awareness.' Hands visible, water behind.",
+        "duration_sec": 10,
+        "notes": "The reflected water light catches the arms from below. This is the most visually beautiful shot of the script."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Virabhadrasana I from side profile. She transitions from Warrior II to I — hips square forward, back heel presses. 'Warrior One is harder than Warrior Two for most people. The hips refuse to cooperate.'",
+        "duration_sec": 22,
+        "notes": "Side profile essential for reading hip squaring."
+      },
+      {
+        "shot_number": 12,
+        "type": "MS",
+        "description": "Prasarita Padottanasana (Wide-Leg Forward Fold). Wide stance, fold forward, crown toward earth. 'This is the landing strip between warriors and the floor.' She holds 20 seconds.",
+        "duration_sec": 25,
+        "notes": "The crown-toward-water reflection creates a nice visual symmetry."
+      },
+      {
+        "shot_number": 13,
+        "type": "WS",
+        "description": "Return to Tadasana. She rises slowly, steps feet together. 'Every standing sequence returns here. Not because we have arrived at the beginning — because we have arrived somewhere different in the same place.'",
+        "duration_sec": 18,
+        "notes": "Wide. Full body. Water behind. Static."
+      }
+    ],
+    "script_text_en": [
+      "Every standing pose in yoga begins here. Tadasana. The Mountain. It does not look like a pose — but everything you will ever do in a standing practice begins with whether you can stand here correctly.",
+      "Let us begin with the feet. Not with the breath, not with intention — with the feet. Press the base of your big toe into the earth. Now the base of your little toe. Now the inner heel. The outer heel. These four points form the foundation of the foundation. They are never not relevant.",
+      "When those four points are active, something happens up the chain. The inner arches lift slightly. The inner ankles draw inward. The inner thighs rotate subtly toward each other. The pelvis finds neutral — not tilted forward, not tucked under. The lower belly engages without gripping. The spine stacks. The chest opens without forcing. The shoulders descend away from the ears. The crown of the head rises as though a thread is drawing it upward.",
+      "This is Tadasana. It takes most practitioners years to actually stand in it — because we have spent decades standing wrong, and the body has decided that wrong is normal.",
+      "Now — Vrksasana. Tree Pose. This is Tadasana balanced on one leg. Nothing else changes except which foot is on the earth. If your Tree is unstable, return to Tadasana and ask which of the four corners you are missing.",
+      "Utthita Trikonasana — Extended Triangle. Step your feet wide — about a leg-length apart. Turn your right foot ninety degrees. Your left foot turns in fifteen degrees. Extend your arms at shoulder height. Now — and this is the key — hinge from the right hip. Not a side bend. The torso does not curve like a crescent moon. The right hip creases as the torso extends long over the right leg. Right hand reaches toward the right shin or the floor. Left arm rises. Three points of the triangle: your two feet, and where your hands point in space.",
+      "The front knee does not collapse inward — it tracks directly over the middle toe. The front hip does not drop forward — it revolves backward to open. This is where most triangles fail. The shape looks right from the front and is completely wrong from above.",
+      "Virabhadrasana II — Warrior Two. From Triangle, bend your front knee deeply. Hips open to the side. Gaze over the front fingers. Arms extend parallel to earth. This is perhaps the most iconic shape in the entire yoga canon — it appears on every studio wall, every app icon, every magazine cover. It is also one of the least understood.",
+      "The back foot grounds at a forty-five degree angle or more. The back leg is active — not abandoned. The front thigh works toward parallel with the earth. The arms are not held up in effort — they are suspended from a centre of attention. There is a quality of alertness here that is different from tension. Tension grips. Alertness opens.",
+      "Virabhadrasana One. From Warrior Two, turn your hips to face the front foot — completely, as completely as your body allows. This squaring of the hips is the defining action of Warrior One, and it is the hardest thing in the pose. The back hip wants to stay open. You are asking it, patiently and persistently, to come forward.",
+      "Arms rise overhead. Gaze forward or, if the neck allows without strain, slightly upward. Back heel presses into the earth as though you could make a footprint. Front knee stays over the ankle — not beyond it.",
+      "Prasarita Padottanasana — Wide-Legged Forward Fold. This is the landing strip between the standing poses and the floor. Hands to hips, hinge forward — long spine first, then let the crown release toward earth. Hands can walk to the floor directly below the shoulders, or further forward. Hold here and breathe. This is where the inner thighs begin to open, quietly and without negotiation.",
+      "Step your feet back to parallel. Rise slowly. Tadasana. You have moved through a standing sequence and returned to the beginning. The beginning looks the same. You do not."
+    ],
+    "script_text_hi": [
+      "हर खड़े आसन की शुरुआत यहां से होती है। ताड़ासन — पर्वत मुद्रा। यह कोई आसन नहीं लगता — लेकिन हर खड़े अभ्यास की नींव यही है।",
+      "पैरों से शुरू करते हैं। अंगूठे का आधार, छोटी उंगली का आधार, भीतरी एड़ी, बाहरी एड़ी — चार बिंदु। ये कभी अप्रासंगिक नहीं होते।",
+      "जब ये चार बिंदु सक्रिय होते हैं, पूरे शरीर में कुछ बदलता है। भीतरी मेहराब उठते हैं। श्रोणि तटस्थ होती है। रीढ़ ढेर होती है।",
+      "वृक्षासन — एक पैर पर ताड़ासन। और कुछ नहीं बदलता।",
+      "उत्थित त्रिकोणासन। पैरों में चौड़ाई। दाहिना पैर नब्बे डिग्री, बाएं पैर पंद्रह डिग्री अंदर। भुजाएं कंधों की ऊंचाई पर। दाहिनी जांघ से आगे झुकें — पार्श्व मोड़ नहीं, कूल्हे की क्रीज से झुकाव।",
+      "वीरभद्रासन II। घुटना गहरा मोड़ें। कूल्हे बगल में खुलते हैं। भुजाएं भूमि के समानांतर। यह योग का सबसे प्रतिष्ठित आकार है।",
+      "वीरभद्रासन I। कूल्हे आगे की ओर मुड़ते हैं — यही इस आसन की मुख्य क्रिया है। भुजाएं ऊपर।",
+      "प्रसारित पादोत्तानासन। चौड़े पैर, आगे झुकाव, मस्तक भूमि की ओर।",
+      "ताड़ासन में वापस आएं। अनुक्रम पूर्ण हुआ। शुरुआत वैसी ही दिखती है। आप वैसे नहीं।"
+    ],
+    "b_roll_list": [
+      "Still Kerala backwater at dawn, mist on surface — wide, 30 seconds, no instructor",
+      "Water surface with palm reflections — close, 15 seconds",
+      "Wooden deck planks detail, light on grain — 8 seconds",
+      "Instructor's feet on wooden deck — CU, all four corners pressed — 10 seconds",
+      "Tree Pose reflection in water if deck is over water — wide, 15 seconds",
+      "Triangle Pose silhouette against water — 12 seconds",
+      "Warrior II arms extended, water behind — 120fps, 12 seconds",
+      "Coconut palms moving in morning breeze — 15 seconds, no instructor"
+    ],
+    "edit_notes": "Grade: cool water-blues in background, warm skin tones. The reflected-light quality from water should be preserved — do not crush the uplight. Pacing: this is the most instructional of the seven scripts; let each alignment explanation breathe. Do not rush the CU insert shots — they are teaching tools. Music: none during any instruction. Brief tanpura passage (30 seconds max) under the closing Tadasana return.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  },
+  {
+    "id": "hip-opening-desk-bound",
+    "title_en": "Hip-Opening Sequence for Desk-Bound Bodies",
+    "title_hi": "डेस्क पर बैठने वालों के लिए कूल्हे खोलने का अनुक्रम",
+    "target_duration_min": 12,
+    "type": "sequence_flow",
+    "location": "North Goa beach, early morning before crowds — ideally Ashwem or Morjim, where the beach is backed by casuarina trees rather than beach shacks. Instructor on firm wet sand at the tide line, bare feet in sand. Horizon visible. Soft morning light from the east (behind the instructor as she faces west/sea).",
+    "location_alt": "Studio floor-to-ceiling windows, late afternoon light. Warm wood floor. No mat — this sequence works without one.",
+    "time_of_day": "golden_hour_morning",
+    "talent_direction": "Indian woman, early 30s. A quality of familiar tiredness — not exhausted, but recognisably someone who knows what it is to sit at a desk all day. She moves into these poses with the quality of relief — as though her hips are grateful. This emotional quality is the core of the script. She is not demonstrating perfect flexibility; she is demonstrating the practice of release. Hair down or loosely tied — not perfectly groomed. Relaxed presentation.",
+    "wardrobe": "Soft rust-orange sleeveless top, dark navy loose-fit yoga pants — wide leg, not fitted. The looser silhouette reads as relaxed, accessible. Bare feet. No jewellery.",
+    "camera_setup": "Sony FX3 on tripod for standing segments. Gimbal for walk-into-shot opening. Second camera (Sony A7IV) on low ground-level rig for floor-pose shots. 120fps for transitions. Sand and water in background for all wide shots.",
+    "lighting": "Morning backlight — sun behind instructor as she faces camera creates a rim/halo effect. Manage exposure carefully: expose for her face using a bounce or small LED panel just off camera, or shoot with slight overexposure and recover in grade. The backlit beach quality is non-negotiable — it is why we are here.",
+    "audio_direction": "Sennheiser MKH-50 is difficult on beach (wind). Primary: DJI Mic 2 lavalier with windshield. Backup: second lavalier. Boom as third option. Wave sound stays in mix — it is contextually perfect for a hip-opening practice.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Opening walk. Instructor walks along wet sand from frame-right toward camera, stops at approximate mark, turns to face camera. Dawn light behind her. Gimbal handheld follow shot becomes static as she stops.",
+        "duration_sec": 12,
+        "notes": "Footprints in wet sand visible. This is not a formal yoga opening — it is a person who came to the beach to practice."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Opening address. 'Your hips are not tight because you are inflexible. They are tight because you have been asking them to hold a ninety-degree angle for eight hours a day, and they have done exactly what you asked. This sequence is the apology.'",
+        "duration_sec": 20,
+        "notes": "Slight smile on the last line. The tone is warm and matter-of-fact, not clinical."
+      },
+      {
+        "shot_number": 3,
+        "type": "WS",
+        "description": "Standing hip circles. She stands, hands on hips, and makes large slow circles with her pelvis. 'Start here. No Sanskrit name. Just circles. Eight each direction. Wake the joint up before you ask anything of it.'",
+        "duration_sec": 22,
+        "notes": "This is permission to begin without formality. Wide shot to see the full movement."
+      },
+      {
+        "shot_number": 4,
+        "type": "WS",
+        "description": "Low Lunge (Anjaneyasana) right side. She lowers to sand slowly, right foot forward. 'Low lunge. Right knee over ankle, left knee on sand. Hips sink forward and down. Not a stretch you force — a stretch you invite.'",
+        "duration_sec": 25,
+        "notes": "Ground-level camera on second rig for this and all subsequent floor poses. We see her face and the sea in the same frame."
+      },
+      {
+        "shot_number": 5,
+        "type": "CU hip-crease",
+        "description": "Close-up of the right hip crease deepening in low lunge. 120fps. 'This is the psoas. This is the muscle that has been holding desk-chair shape for months. Breathe here and feel it soften.'",
+        "duration_sec": 10,
+        "notes": "Her voice over CU. No face visible — just the hip crease releasing."
+      },
+      {
+        "shot_number": 6,
+        "type": "MS",
+        "description": "Low lunge to Dragon (deeper lunge variation) — she walks hands back, drops hip further. 'Dragon pose — not traditional Sanskrit, but the feeling is accurate. The hip is a dragon and you are learning its language.'",
+        "duration_sec": 20,
+        "notes": "Low camera angle — she is large in frame, sea and sky behind."
+      },
+      {
+        "shot_number": 7,
+        "type": "WS",
+        "description": "Left side low lunge and Dragon. Mirror of shots 4-6. Same pacing.",
+        "duration_sec": 40,
+        "notes": "Combined coverage. Editor will cut."
+      },
+      {
+        "shot_number": 8,
+        "type": "MS",
+        "description": "Baddha Konasana (Butterfly). She sits, soles of feet together, knees wide. 'Butterfly. Soles together, knees like wings. Do not force the knees down — let them hang. Let gravity be the teacher here. Five long breaths.'",
+        "duration_sec": 30,
+        "notes": "Low ground camera. Waves visible behind."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Reclined Butterfly (Supta Baddha Konasana). She lowers onto her back on sand. Arms at sides, palms up. The sky becomes the background. 'Reclined butterfly. The earth holds you now. You do not have to hold yourself.'",
+        "duration_sec": 25,
+        "notes": "Camera overhead (low drone or overhead rig) — top-down shows the symmetry of the pose against the sand."
+      },
+      {
+        "shot_number": 10,
+        "type": "WS",
+        "description": "Eka Pada Rajakapotasana (Pigeon Pose). Right side. She comes to pigeon on the sand. 'Pigeon. The pose that makes strong people soft.' She lowers her torso over the front leg, forehead to sand.",
+        "duration_sec": 30,
+        "notes": "Side profile, low camera. Hold the lowering and the stillness in the full expression."
+      },
+      {
+        "shot_number": 11,
+        "type": "ECU face in Pigeon",
+        "description": "Her face resting on sand in Pigeon. Eyes closed. 120fps. One wave sound in background.",
+        "duration_sec": 8,
+        "notes": "This is the emotional centrepiece of the script. Do not rush past it."
+      },
+      {
+        "shot_number": 12,
+        "type": "WS",
+        "description": "Left side Pigeon. Same coverage as right.",
+        "duration_sec": 28,
+        "notes": "Include the lowering sequence — it is instruction."
+      },
+      {
+        "shot_number": 13,
+        "type": "MS",
+        "description": "Coming up slowly. She rises from Pigeon, looks out at the sea, then turns to camera. 'Your hips hold more than physical tension. Yogis have said for centuries that the hips store emotion. I cannot tell you if that is biochemically true. I can tell you that this sequence makes people cry sometimes. That is not a problem. That is the practice working.'",
+        "duration_sec": 25,
+        "notes": "Quiet delivery. Not dramatic. Matter-of-fact. The sea behind her."
+      }
+    ],
+    "script_text_en": [
+      "Your hips are not tight because you are inflexible. They are tight because you have been asking them to hold a ninety-degree angle — the chair position — for most of your waking hours, and they have done exactly what you asked. This sequence is the apology.",
+      "Begin standing. Hands on hips. Make circles — slow, large circles with your pelvis. Both directions, eight each. Not yoga yet. Just movement. Just waking the joint up before you ask it to do something it has not been asked to do all week.",
+      "Come to a Low Lunge on your right side. Right foot forward, right knee over right ankle. Left knee on the earth behind you. Now, let your hips sink forward and down. Not a stretch you force with effort — a stretch you invite with breath. There is a difference. Effort creates more tension. Breath creates space.",
+      "This is the psoas — the hip flexor. It attaches your lumbar spine to your femur. When you sit, it contracts and holds. In most people who sit for work, it has been in a shortened state for so long that it has forgotten its full length. Three breaths here. Then three more.",
+      "Walk your hands back and sink the hip lower — Dragon. The hip flexor opens further. You may feel this all the way into the lower back, into the groin. This is normal. Breathe through the sensation — not over it, not away from it. Through it.",
+      "Switch sides. Left foot forward. Same quality of invitation.",
+      "Come to seated. Soles of your feet together, knees wide — Baddha Konasana, Butterfly Pose. Do not press your knees down. Do not use your hands to push them toward the earth. Let them hang where they are and let gravity, over the next five breaths, take them wherever they go. That is enough. Whatever they do naturally is correct.",
+      "Lower onto your back. Supta Baddha Konasana — Reclined Butterfly. Soles together, knees fall wide, arms at your sides with palms facing the sky. The earth holds you. You do not have to hold yourself. Stay here for five full, unhurried breaths.",
+      "Pigeon Pose. Come to all fours, bring your right knee toward your right wrist, let your right shin angle across the mat or earth. Extend your left leg long behind you. Lower yourself — slowly, as slowly as you can — onto your front leg. Forehead to earth.",
+      "The pose that makes strong people soft. There is something about Pigeon Pose specifically — perhaps because it targets the piriformis and the external rotators deep in the hip, perhaps because the surrender it requires is so physical — that frequently moves people to tears. If that happens, let it happen. You are not falling apart. You are letting something go.",
+      "Left side. Same quality. Same patience.",
+      "Rise slowly when you are ready. Sit up and look — wherever you are — at the horizon for a moment. Yogis and somatics practitioners have said for a long time that the hips store emotional memory. I cannot tell you the exact mechanism. I can tell you that this sequence creates a quality of release that goes beyond what the fascia alone can explain. Take that as you wish. The practice is real regardless of how you explain it."
+    ],
+    "script_text_hi": [
+      "आपके कूल्हे इसलिए नहीं कड़े हैं कि आप लचीले नहीं। वे कड़े हैं क्योंकि आपने उन्हें दिन भर नब्बे डिग्री के कोण पर रखा है। यह अनुक्रम वह माफी है।",
+      "खड़े होकर शुरू करें। हाथ कूल्हों पर। धीरे-धीरे बड़े वृत्त बनाएं। दोनों दिशाओं में, आठ-आठ।",
+      "दाहिने पैर को आगे करके नीचे आएं — अंजनेयासन। दाहिना घुटना टखने के ऊपर। बाएं घुटने को पीछे भूमि पर। कूल्हों को आगे और नीचे जाने दें — श्वास से आमंत्रण, प्रयास से नहीं।",
+      "यह सोअस है — वह मांसपेशी जो आपकी काठ की रीढ़ को जांघ की हड्डी से जोड़ती है। तीन श्वासें। फिर तीन और।",
+      "हाथों को पीछे लाएं — ड्रैगन पोज़। कूल्हे और खुलते हैं। इस अनुभूति से गुजरें — उससे ऊपर नहीं, उससे दूर नहीं, उससे होकर।",
+      "बाईं ओर। बाएं पैर आगे।",
+      "बैठ जाएं। पैरों के तलवे आपस में, घुटने चौड़े — बद्ध कोणासन। घुटनों को नीचे न दबाएं। उन्हें जहाँ हैं वहाँ लटकने दें।",
+      "पीठ के बल लेट जाएं। सुप्त बद्ध कोणासन। पृथ्वी आपको थामे हुए है।",
+      "कबूतर आसन। घुटनों पर आएं, दाहिना घुटना दाहिनी कलाई की ओर। आगे झुकें — धीरे-धीरे, माथा भूमि पर।",
+      "वह आसन जो शक्तिशाली लोगों को नरम कर देता है।",
+      "बाईं ओर। वही धैर्य।",
+      "धीरे-धीरे उठें। क्षितिज की ओर देखें। कूल्हे बहुत कुछ थामते हैं।"
+    ],
+    "b_roll_list": [
+      "Pre-dawn beach, empty, wide — waves catching first light — 30 seconds",
+      "Wet sand and footprints at water's edge — CU, 10 seconds",
+      "Casuarina trees in morning breeze behind beach — 15 seconds",
+      "Sand detail — grains, texture — macro, 8 seconds",
+      "Instructor's face, eyes closed, forehead on sand in Pigeon — 120fps, 12 seconds",
+      "Wide overhead of Reclined Butterfly on sand — drone or rig, 15 seconds",
+      "Wave washing near her feet during Butterfly — 10 seconds",
+      "Horizon at golden hour, no instructor — 20 seconds, closing B-roll"
+    ],
+    "edit_notes": "Grade: warm golden beach tones, sand and sea colour preserved. Skin tones must not go orange — the backlight and bounce balance is delicate. Pacing: Pigeon Pose segments must breathe — do not cut until the full expression has been held for at least 8 seconds of screen time. The ECU of face in Pigeon should hold for 4-5 seconds minimum. Music: gentle tanpura and very subtle tabla undertone can enter during Reclined Butterfly. No music during any verbal instruction. Wave sound must stay in mix throughout — it is the emotional anchor of the piece.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  },
+  {
+    "id": "restorative-yoga-tired-evenings",
+    "title_en": "Restorative Yoga for Tired Evenings",
+    "title_hi": "थकी शाम के लिए पुनर्स्थापन योग",
+    "target_duration_min": 14,
+    "type": "sequence_flow",
+    "location": "Interior — a simply furnished Indian room, candle-lit evening. Neutral stone or plaster walls, warm light from 4-6 small clay diyas and one or two white candles. A handwoven cotton durrie on the floor. One bolster or rolled blanket visible as a prop. No clutter. The quality is quiet domesticity — a real Indian home pared to its essentials, not a lifestyle-magazine staging.",
+    "location_alt": "Studio with all window light blocked, lit entirely by practitioner-controlled warm LED panels (dimmed to candlelight equivalent 1800K). Same bolster and durrie.",
+    "time_of_day": "candle_lit_evening",
+    "talent_direction": "Indian woman, mid-30s to mid-40s. The quality here is tired and honest — she is someone who has had a long day and has chosen this over the sofa. Her movement is slow, not because she is performing slowness, but because she is genuinely allowing herself to move at the pace her body requests. Hair loosely tied or down. Face without makeup or with very minimal evening skin-care look — she is not performing for camera; she is simply here.",
+    "wardrobe": "Soft, worn-in warm-grey long-sleeve top, loose ivory pyjama-style pants. Natural cotton, slightly washed out. This is home clothing. Not yoga clothing. The implicit message is: you do not need yoga clothing for yoga.",
+    "camera_setup": "Sony FX3 on very low tripod — all shots are at floor level or slightly above floor level. 35mm prime lens for intimacy. No gimbal. No slider. This is a still, intimate piece — all camera moves are minimal or absent. 120fps for close-ups of breath and settling.",
+    "lighting": "Practical candle/diya light plus one very dim warm LED panel off-camera (1800K) at roughly 10% fill. The image is intentionally low-light, warm, and soft. Shadows fall naturally. No hard light sources. The quality should feel like watching someone through a doorway — present but not intrusive.",
+    "audio_direction": "Lav only (no boom — boom is too present for this intimate space). Sennheiser AVX or DJI Mic 2. All ambient sound recorded — clock, flame, settling house sounds are welcome. Her voice should be quiet, as though she is speaking to herself rather than to an audience. If she speaks at a louder volume, ask for another take quieter.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing interior. Empty room, diyas lit, durrie on floor, bolster at one end. No instructor yet. 6 seconds of ambient room before she enters from frame edge, sits quietly on durrie.",
+        "duration_sec": 14,
+        "notes": "This is one of the few scripts where the room is introduced before the instructor. The space is the first character."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "She sits cross-legged, hands resting on knees, eyes closed. 8 seconds of silence. Then she opens her eyes and speaks softly: 'This practice does not ask anything of you. Not flexibility, not strength, not focus. Only this — that you lie down and allow the ground to hold you.'",
+        "duration_sec": 25,
+        "notes": "The 8 seconds of silence before speaking is non-negotiable. Do not cut it."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU diya",
+        "description": "B-roll — diya flame close, slight movement in candlelight. 120fps. 8 seconds.",
+        "duration_sec": 8,
+        "notes": "Use for transitions. Capture multiple takes — the flame varies and gives editing options."
+      },
+      {
+        "shot_number": 4,
+        "type": "MS",
+        "description": "Supported Child's Pose (Salamba Balasana). She places bolster longways in front of her, lowers her torso onto it, cheek to bolster, arms alongside. 'Child's pose over a bolster. There is no other shape in yoga that says more clearly: I am resting now.'",
+        "duration_sec": 22,
+        "notes": "Low camera. We see her whole body on the floor. Hold the stillness."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Her cheek on the bolster fabric. Eyelashes. Breath slowing. 120fps. 10 seconds.",
+        "duration_sec": 10,
+        "notes": "The intimacy of this shot is the emotional core of the script. Light is from diyas only — the warmth of the flame on her face."
+      },
+      {
+        "shot_number": 6,
+        "type": "MS",
+        "description": "Supported Reclining Twist (right side). She rolls to her right side with bolster under her back upper body, knees stacked. 'A twist. Not for detox — the detox claims are marketing. For the simple physical comfort of the spine rotating.'",
+        "duration_sec": 25,
+        "notes": "Dry delivery on 'the detox claims are marketing' — she is gently irreverent. This is a character beat."
+      },
+      {
+        "shot_number": 7,
+        "type": "MS",
+        "description": "Left side twist. Mirror.",
+        "duration_sec": 22,
+        "notes": "Same coverage."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Viparita Karani (Legs-up-the-Wall). She moves to the wall, lies on her back, legs resting up the wall. Bolster under her hips if available. 'Legs up the wall. The simplest inversion there is. The nervous system interprets this as rest within seconds.'",
+        "duration_sec": 25,
+        "notes": "Wide shot showing her whole body and the wall. The candlelight plays on her upraised legs."
+      },
+      {
+        "shot_number": 9,
+        "type": "CU feet against wall",
+        "description": "Her bare feet resting against the wall, heels soft, toes relaxed. 120fps. Candlelight.",
+        "duration_sec": 8,
+        "notes": "Intimate and specific. The relaxed foot tells the whole story of the practice."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Savasana (Corpse Pose). She comes to lie flat on the durrie, arms slightly away from body, palms up. Bolster under knees. Eyes close. She speaks one final instruction: 'This is Savasana. Not sleep — though sleep is welcome. The instruction is simple: do nothing. Receive.'",
+        "duration_sec": 20,
+        "notes": "After she finishes speaking, hold 12 seconds of silence and stillness. This is the longest silence in any of the seven scripts."
+      },
+      {
+        "shot_number": 11,
+        "type": "ECU",
+        "description": "Her closed eyes, candlelight, complete stillness. 120fps. Hold 12 seconds.",
+        "duration_sec": 12,
+        "notes": "Final image. Fade to black slowly from this shot."
+      }
+    ],
+    "script_text_en": [
+      "This practice does not ask anything of you. Not flexibility. Not strength. Not focus or intention or presence. Only this — that you lie down and allow the ground to hold you. That is the entire instruction.",
+      "The name for this is Restorative Yoga, which is a somewhat clinical name for what is actually a practice of deliberate doing-nothing. You will use a bolster or a rolled blanket. You will hold each pose for longer than feels polite. You will likely feel, at some point, that you should be doing something more.",
+      "That feeling — the feeling that stillness is insufficient — is exactly what this practice is addressing.",
+      "Come to Child's Pose over the bolster. Bring the bolster longways in front of you, sit back on your heels, and lower your torso along its length. Turn your cheek one way — whichever feels natural. Arms fall wherever they go. There is no correct arm position in restorative yoga. Only the position that is most comfortable.",
+      "Close your eyes. Stay here for eight to ten breaths. If your mind says this is not enough — notice that, and let the next breath be your answer.",
+      "When you are ready, come up slowly. A restorative Twist. Roll onto your right side, place the bolster under your upper back and right shoulder, stack your knees one on top of the other. Arms can rest wherever they land. A twist is occurring in the thoracic spine — not forcefully, simply by the weight of the stacked legs.",
+      "I should say something about twists and detoxification, because the word detox appears in yoga marketing with some regularity: this pose does not detoxify your liver. Your liver is doing that work without your assistance. What a twist does do is move the connective tissue of the spine in a direction it rarely goes during a normal day, and that — not detox — is why it feels so good. Left side.",
+      "Legs up the wall. Move your body to a wall, lie on your back, and walk your legs up the surface. Hips as close to the wall as is comfortable — a bolster under the sacrum if you have one. Arms wide, palms up. The nervous system has a response to inversion — even this mild one — that begins within thirty to sixty seconds. Blood moves toward the torso. The parasympathetic system edges forward. You do not need to understand this mechanism to benefit from it.",
+      "Stay here for three to five minutes if you can. The legs will feel heavy when you come down. That heaviness is information — it is the body reporting a state change.",
+      "Savasana. Corpse Pose. Come to lie flat on your back. Let the legs fall wide, let the feet flop outward. Arms away from the body, palms facing the sky. A bolster or rolled blanket under the knees if your lower back asks for it. Close your eyes.",
+      "The instruction for Savasana is always the same and always the hardest: do nothing. Not deep breathing — breathing. Not body scanning — resting. Not receiving insight — receiving. The mind will produce thoughts; let them move through without pursuit. The body will have sensations; let them be present without narration. This is not sleep. Sleep takes you away. Savasana asks you to be entirely here while doing nothing about being here.",
+      "Rest. You have done enough today. This practice agrees with you."
+    ],
+    "script_text_hi": [
+      "यह अभ्यास आपसे कुछ नहीं मांगता। लचीलापन नहीं, शक्ति नहीं, एकाग्रता नहीं। केवल यह — कि आप लेट जाएं और भूमि को आपको थामने दें।",
+      "यह पुनर्स्थापन योग है — जानबूझकर कुछ न करने का अभ्यास।",
+      "बोल्स्टर के ऊपर बालासन। तकिए को आगे रखें, घुटनों पर बैठें, धड़ को तकिए पर झुकाएं। गाल को जो भी ओर स्वाभाविक लगे, घुमाएं। आंखें बंद करें। आठ-दस श्वासें।",
+      "धीरे उठें। दाहिनी ओर मुड़ें — तकिए को ऊपरी पीठ के नीचे रखें, घुटने एक पर एक। यह रीढ़ में एक नरम मोड़ है। बाईं ओर भी।",
+      "मैं मोड़ और विषहरण के बारे में कुछ कहूंगी — यह आसन आपके लीवर को डिटॉक्स नहीं करता। वह काम लीवर खुद करता है। जो होता है वह यह है कि रीढ़ का संयोजी ऊतक उस दिशा में खिंचता है जिसमें वह सामान्य दिन में कभी नहीं जाता।",
+      "दीवार पर पैर ऊपर। पीठ के बल लेटें, पैरों को दीवार पर टिकाएं। हथेलियां ऊपर। तंत्रिका तंत्र इस हल्के उलटाव पर तीस से साठ सेकंड में प्रतिक्रिया करता है।",
+      "शवासन। पीठ के बल सपाट लेटें। टांगें चौड़ी, भुजाएं दूर, हथेलियां ऊपर। आंखें बंद।",
+      "निर्देश हमेशा एक ही है और हमेशा सबसे कठिन: कुछ मत करो। यह नींद नहीं है। नींद आपको ले जाती है। शवासन आपसे पूरी तरह यहाँ रहने को कहता है — कुछ किए बिना।",
+      "विश्राम करें। आज आपने पर्याप्त किया है।"
+    ],
+    "b_roll_list": [
+      "Diya flame close, 120fps — multiple takes with different flame movement — 8 seconds each",
+      "Clay diyas arranged on floor — overhead, warm light — 10 seconds",
+      "Handwoven durrie texture detail — CU, warm light — 8 seconds",
+      "Instructor's hand resting on floor in Savasana, palm open — 120fps, 10 seconds",
+      "Candlelight on plaster wall — moving shadows — 15 seconds",
+      "Outside window at night — streetlight or moonlight, very brief — 6 seconds (contrast to interior warmth)",
+      "Bolster fabric detail — 8 seconds"
+    ],
+    "edit_notes": "Grade: warm, low-contrast, candlelight range (1800-2400K). Do not push the warm tones — let them exist naturally. Shadows are soft and deep — do not try to recover shadow detail in grade. The darkness is intentional. Pacing: this is the slowest-cut of all seven scripts. Minimum hold on any shot: 8 seconds. Savasana ECU should hold 10+ seconds before fade to black. Music: absolutely none. Ambient room sound only — flame flicker, slight house settling, her breath. Fade to black should be slow — 3 seconds.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  },
+  {
+    "id": "backbend-progression-gentle-to-wheel",
+    "title_en": "Backbend Progression — Gentle to Wheel",
+    "title_hi": "पश्चवक्रासन — नरम से चक्रासन तक",
+    "target_duration_min": 16,
+    "type": "sequence_flow",
+    "location": "Ladakh — Nubra Valley or Pangong Tso lakeside. High-altitude, sparse landscape. Sandy or rocky ground. Massive open sky — the sky is 60% of every wide shot. Morning before the tourist day begins. The scale and emptiness of Ladakh as visual contrast to the vulnerability of backbend practice.",
+    "location_alt": "Studio floor-to-ceiling windows, morning, mat on floor. Clean grey background — the openness of the Ladakh sky referenced through negative space in the studio.",
+    "time_of_day": "golden_hour_morning",
+    "talent_direction": "Indian woman, late 20s to mid-30s. Physical strength and suppleness are visible — this script includes advanced poses. But the quality to direct toward is not athleticism: it is the look of someone working at the edge of their capacity, with complete respect for that edge. Backbends are emotionally exposing poses (chest and throat open) — she should appear genuinely open, not performatively fearless. Hair tied back firmly. Focus rather than serenity.",
+    "wardrobe": "Deep burgundy fitted sleeveless top, black full-length leggings. The dark tones contrast against the pale Ladakh landscape. Bare feet or bare feet on thin travel mat.",
+    "camera_setup": "Sony FX3 on tripod. Second FX3 on gimbal for the Wheel sequence (moving around the full expression). Wide 16-35mm for establishing shots against Ladakh sky. 24-70mm for instruction. 70-200mm for detail work in progressive poses. 120fps for all peak pose entries.",
+    "lighting": "Ladakh morning light is exceptionally clear — the altitude removes atmospheric haze and the light has a quality found nowhere else. Expose carefully — no bounce needed. If overcast, reschedule; this location only works in its characteristic high-altitude clarity.",
+    "audio_direction": "Sennheiser MKH-50 boom in wind-protected position behind camera. DJI Mic 2 lav as backup. Ladakh wind is constant — the lav windshield is essential. If wind is excessive, prioritise lav recording and use boom for room texture. Ambient should retain wind.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Establishing. Massive Ladakh landscape — instructor is tiny at frame-bottom. Sky dominates. She is in Tadasana looking toward the mountains. 10 seconds static.",
+        "duration_sec": 10,
+        "notes": "The scale is the message. The backbend sequence is going to open the same space in the body that this landscape represents."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Opening address: 'Backbends are the poses the chest has been waiting for. We round forward at desks, in cars, on phones. The back body tightens. The front body closes. These poses are the answer.'",
+        "duration_sec": 18,
+        "notes": "She speaks to camera directly. Ladakh behind her."
+      },
+      {
+        "shot_number": 3,
+        "type": "MS",
+        "description": "Preparatory — Chest Opening. She stands, interlaces fingers behind her, squeezes shoulder blades together, lifts chest. 'Before we go to the floor, we open here. The chest. The thoracic spine. Gently. This is what we are preparing for in all that follows.'",
+        "duration_sec": 18,
+        "notes": "Side profile, slight three-quarter angle. Sky behind."
+      },
+      {
+        "shot_number": 4,
+        "type": "WS",
+        "description": "Sphinx Pose (Salamba Bhujangasana). She comes to the floor, forearms on ground, chest lifts. 'Begin here. Not in Cobra, not in Upward Dog — in Sphinx. The gentlest backbend. Forearms on the earth, elbows under shoulders, chest rises.' Hold 20 seconds while speaking.",
+        "duration_sec": 28,
+        "notes": "Low camera. Side profile. Ladakh landscape behind her."
+      },
+      {
+        "shot_number": 5,
+        "type": "MS",
+        "description": "Bhujangasana (Cobra). She transitions from Sphinx, places palms on ground and rises into Cobra — low Cobra, elbows bent. 'Cobra. Not the full expression — a working cobra, elbows soft, chest moving forward before it moves up. The lumbar spine is not the focus. The thoracic is.'",
+        "duration_sec": 22,
+        "notes": "The elbows remain bent — this is the pedagogical emphasis. Show it clearly."
+      },
+      {
+        "shot_number": 6,
+        "type": "CU thoracic",
+        "description": "70-200mm isolation shot on the upper back/thoracic region in Cobra. The chest broadens, the upper back opens.",
+        "duration_sec": 6,
+        "notes": "Technical detail shot. Voice continues over."
+      },
+      {
+        "shot_number": 7,
+        "type": "WS",
+        "description": "Salabhasana (Locust Pose). She lies flat, then lifts chest and legs simultaneously. 'Locust. All fours limbs and chest lift from the earth. This is the back body doing the work it was built for.' Hold 15 seconds.",
+        "duration_sec": 25,
+        "notes": "The effort is visible. Do not hide it."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Dhanurasana (Bow Pose). She bends knees, reaches back to hold ankles, kicks back and lifts. 'Bow. The legs and the chest find each other. The whole front body opens. Breathe here — do not hold the breath for the pose.'",
+        "duration_sec": 24,
+        "notes": "120fps as she kicks into the full expression. Side profile — the arc of the body is most legible from the side."
+      },
+      {
+        "shot_number": 9,
+        "type": "MS",
+        "description": "Setu Bandha Sarvangasana (Bridge Pose). She lies on her back, feet flat, lifts hips. 'Bridge. The transition toward the sky. Here is where we begin to work against gravity in a new direction.' Hold and cue.",
+        "duration_sec": 22,
+        "notes": "Camera angle from slightly to the side — we see the arch of the bridge against the sky."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Supported Bridge with block/bolster optional — she demonstrates variation. 'If the wheel is not today's pose, supported bridge is complete in itself. It does everything you need.'",
+        "duration_sec": 16,
+        "notes": "This is the off-ramp for practitioners who do not continue to Wheel."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Urdhva Dhanurasana (Wheel / Upward Bow). She places hands beside her head, tucks chin, and presses to full Wheel. Hold 10 seconds. She lowers and repeats. 'The wheel. Urdhva Dhanurasana — upward bow. This is not a goal; it is a possibility. Your wheel may look completely different from this. It is still a wheel.'",
+        "duration_sec": 35,
+        "notes": "Gimbal operator arcs slowly around the full expression — we see it from side, from back, from three-quarter. 120fps."
+      },
+      {
+        "shot_number": 12,
+        "type": "ECU face in Wheel",
+        "description": "Her face inverted, eyes open, Ladakh sky visible upside-down through her open chest. 120fps.",
+        "duration_sec": 8,
+        "notes": "The upside-down Ladakh sky through the open chest is the visual signature of this script."
+      },
+      {
+        "shot_number": 13,
+        "type": "WS",
+        "description": "Counter-pose — she lowers from Wheel and brings knees to chest in apanasana. Long hold. 'After every backbend, a forward fold or a neutral position. Never skip the counter-pose.' Then comes to seated, looks at camera.",
+        "duration_sec": 22,
+        "notes": "The relief visible in her body as she counter-poses is real and important."
+      },
+      {
+        "shot_number": 14,
+        "type": "MS",
+        "description": "Closing: 'Backbends are not about how far you can go. They are about how open you are willing to be. That is a different question entirely.'",
+        "duration_sec": 14,
+        "notes": "She is sitting comfortably, slightly flushed from the practice. This authenticity is the brand."
+      }
+    ],
+    "script_text_en": [
+      "Backbends are the poses the chest has been waiting for. We spend most of modern life in flexion — bent forward at desks, in cars, over phones, over children. The front body closes. The back body tightens in response. Backbends are the anatomical answer to the architectural problem of contemporary life.",
+      "But they require a progression. The spine does not open dramatically from the first session. It opens gradually, over weeks and months of patient preparation. The sequence we are practising now is that preparation — and also a complete practice in its own right.",
+      "Begin standing. Interlace your fingers behind your back. Squeeze your shoulder blades together as though you are trying to hold a pencil between them. Lift your chest. This is not a pose with a name — it is a preparation. It opens the thoracic spine, the upper and middle back, before we ask more of it.",
+      "Come to the floor. Sphinx Pose. Forearms on the earth, elbows directly under shoulders, legs long behind you. Let your chest rest on the earth first. Then, very gradually, allow it to rise. You are not pushing up with your arms — you are allowing the back muscles to lift the chest. The difference matters.",
+      "From Sphinx, place your palms flat on the earth and press into Bhujangasana — Cobra. But not the full expression. Elbows remain bent. The work happens in the thoracic spine — the upper and middle back. If your lumbar spine is screaming, come lower. The lumbar spine is not the target of this pose. The chest is.",
+      "Salabhasana — Locust Pose. Lower to the floor. Arms alongside your body or interlaced behind. On an inhale, simultaneously lift your chest, your arms, and your legs from the earth. Everything lifts. Hold for five breaths. This is the back body doing the eccentric work it was designed to do, and it is a work most of us have never asked of it.",
+      "Dhanurasana — Bow Pose. Bend your knees, reach back and hold your ankles. Kick your feet back into your hands and let that action lift your chest. The legs are the engine. The chest is lifted by them, not by the arms. Breathe here — the natural tendency is to hold the breath in a challenging pose. That is counterproductive. The breath is what allows the pose to deepen.",
+      "Setu Bandha Sarvangasana — Bridge Pose. Come to lie on your back. Feet flat on the earth, hip-width, close to the sitting bones. On an inhale, press through your feet and lift your hips. Interlace your fingers beneath you and press your arms into the earth to lift your chest higher. This is the pose where the sky begins to enter your practice.",
+      "If you stop here — if Bridge Pose is your peak backbend today, and tomorrow, and for the next six months — that is not a lesser practice. Bridge is complete. It opens the chest, strengthens the back body, and reverses the forward flexion of the day. The wheel is an intensification, not an improvement.",
+      "Urdhva Dhanurasana — Wheel Pose. Upward Bow. Come to Bridge setup. Place your palms flat on the earth beside your ears, fingers pointing toward your feet. Tuck your chin. Take a breath. On the exhale, press through your hands and feet simultaneously and lift your whole body. The crown of your head comes off the earth. And then you press further, straightening the arms.",
+      "Stay for three to five breaths. Lower with control — do not drop. Come immediately into a counter-pose: knees to chest, lower back on the earth. Rock gently side to side. The counter-pose is not optional. It is half the practice.",
+      "Backbends are not about how far you can go. They are about how open you are willing to be. The chest opens, the throat opens, the front of the body that we protect and hold closed — it opens. That is a vulnerable act. Do it at the pace that is honest for you."
+    ],
+    "script_text_hi": [
+      "पश्चवक्रासन वे मुद्राएं हैं जिनका छाती को इंतजार था। हम आधुनिक जीवन में अधिकतर आगे झुके रहते हैं। पश्चवक्रासन उसका शारीरिक उत्तर है।",
+      "लेकिन इसके लिए क्रमिक तैयारी चाहिए। रीढ़ धीरे-धीरे खुलती है।",
+      "खड़े होकर: उंगलियां पीठ के पीछे बांधें, कंधे के ब्लेड मिलाएं, छाती उठाएं।",
+      "भूमि पर आएं। स्फिंक्स — अग्रभुज पर, कोहनी कंधों के नीचे। छाती को धीरे-धीरे उठने दें।",
+      "भुजंगासन — कोबरा। कोहनियां मुड़ी रहें। वक्षीय रीढ़ — ऊपरी पीठ — पर ध्यान। काठ नहीं।",
+      "शलभासन — टिड्डी। सब कुछ एक साथ उठे — छाती, भुजाएं, टांगें। पांच श्वासें।",
+      "धनुरासन। घुटने मोड़ें, टखने थामें, पैर पीछे लात मारें। टांगें इंजन हैं — वे छाती उठाती हैं।",
+      "सेतुबंध सर्वांगासन — सेतु। पीठ के बल, पैर भूमि पर, कूल्हे उठाएं।",
+      "यदि यहीं रुकें — तो यह पूर्ण अभ्यास है। चक्रासन तीव्रता है, श्रेष्ठता नहीं।",
+      "ऊर्ध्व धनुरासन — चक्रासन। हाथ कानों के पास, उंगलियां पैरों की ओर। श्वास लें। श्वास छोड़ते हुए हाथ-पैर दोनों से दबाकर उठें।",
+      "तीन से पांच श्वासें। धीरे नीचे आएं। तुरंत प्रतिआसन — घुटने छाती पर।",
+      "पश्चवक्रासन इस बारे में नहीं कि आप कितना जा सकते हैं — यह इस बारे में है कि आप कितना खुले रहने के लिए तैयार हैं।"
+    ],
+    "b_roll_list": [
+      "Ladakh landscape — vast empty sky, mountains, sand — 30 seconds establishing",
+      "Pangong Tso lake surface at dawn — blue-grey, still — 20 seconds",
+      "Instructor's chest in full Wheel against Ladakh sky — 120fps wide — 12 seconds",
+      "Her face upside-down in Wheel, sky behind — 120fps ECU — 8 seconds",
+      "Wind moving through sparse Ladakh grass — 10 seconds",
+      "Side profile arc of Bow Pose — 120fps — 10 seconds",
+      "Empty Ladakh plateau after instructor exits — 15 seconds, closing B-roll"
+    ],
+    "edit_notes": "Grade: Ladakh's natural blue-grey-gold palette — preserve it. Do not warm the background sky tones. Skin tone warm, landscape cool — this contrast is intentional. Pacing: Wheel Pose hold must be shown in real time — do not speed up or cut away. The full expression held is the teaching. Music: Wheel entry is the one moment where a very brief musical accent (a single struck singing bowl) works. Otherwise no music.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  },
+  {
+    "id": "inversions-wall-to-sirsasana",
+    "title_en": "Inversions — Wall Variations to Full Sirsasana (Safety-Led)",
+    "title_hi": "उल्टे आसन — दीवार से शीर्षासन तक",
+    "target_duration_min": 18,
+    "type": "asana_demonstration",
+    "location": "Studio with floor-to-ceiling windows, mid-morning. Clean white wall clearly visible on one side. Natural light from windows. Polished concrete or pale wood floor. The wall is essential — it is not a prop to hide, but the central teaching tool of this script. A folded blanket on the floor near the wall.",
+    "location_alt": "No outdoor location alternative for this script — a clean, identifiable wall is non-negotiable for the safety instruction.",
+    "time_of_day": "mid_morning",
+    "talent_direction": "Indian woman, 30s, noticeably grounded. This script has the highest safety-instruction density of all seven — she must convey calm authority without being clinical or frightening. The subtext is: 'Inversions are safe when approached correctly, and I am going to show you how.' She is measured, specific, and unhurried. Hair very firmly tied — practical for being upside down. She should not appear to be showing off at any point, including in the full Sirsasana.",
+    "wardrobe": "Soft olive-green fitted long-sleeve top, charcoal leggings. The long sleeves provide forearm coverage relevant to demonstrating forearm stand setups. Bare feet.",
+    "camera_setup": "Sony FX3 on adjustable-height tripod — this script requires the camera to be at multiple heights including floor-level and above. 24-70mm primary. Wide-angle 16-35mm for establishing Sirsasana from a low angle. 120fps for all entry and exit moments. A second camera angle is strongly recommended: profile shots of Sirsasana from the side are essential for alignment reading.",
+    "lighting": "Natural window light from side. For shots where instructor is inverted, ensure the light direction still works — the face will be at floor-level in some shots. A small practical fill (LED panel at very low power) near floor level can prevent the face going dark in full inversions.",
+    "audio_direction": "Sennheiser MKH-50 boom. This script has the most safety-critical verbal content — every word of the safety instruction must be clean. No wind, no ambient interference. Studio mic conditions preferred.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Instructor stands beside the wall, hand lightly touching it. 'This is a wall. In this practice, the wall is not a failure. The wall is the teacher.' Simple, direct opening.",
+        "duration_sec": 16,
+        "notes": "Her relationship to the wall should be casual, familiar — not tentative. She is at ease with it."
+      },
+      {
+        "shot_number": 2,
+        "type": "MS",
+        "description": "Safety overview standing: 'Three conditions before any inversion. One: a warm body — do not go upside down from cold. Two: a strong neck — if you have any cervical spine issue, stop here and practise Viparita Karani only. Three: patience. Inversions are built over months, not sessions.'",
+        "duration_sec": 22,
+        "notes": "She holds up fingers as she names each condition. Clear, memorable."
+      },
+      {
+        "shot_number": 3,
+        "type": "WS",
+        "description": "Adho Mukha Svanasana (Downward Dog) as inversion preparation and first mild inversion. 'This is an inversion. Your heart is above your head. Most people have been inverting in yoga for years without calling it that.'",
+        "duration_sec": 16,
+        "notes": "This reframe — Dog as inversion — is both accurate and psychologically useful for inversion-fearful practitioners."
+      },
+      {
+        "shot_number": 4,
+        "type": "MS",
+        "description": "Uttanasana (Standing Forward Fold) with weight in balls of feet, hips over heels — another mild inversion. 'Head below heart. This is the quality we are building toward.'",
+        "duration_sec": 12,
+        "notes": "Brief. The point is made quickly."
+      },
+      {
+        "shot_number": 5,
+        "type": "WS",
+        "description": "Viparita Karani at wall (Legs Up the Wall). She sets up at the wall. 'If all you ever do is Legs Up the Wall, you will have all the inversion benefit most bodies need. I mean this seriously.' She lies with legs up wall and holds.",
+        "duration_sec": 25,
+        "notes": "Low camera angle — we see her full profile with legs up wall."
+      },
+      {
+        "shot_number": 6,
+        "type": "WS",
+        "description": "Half-Handstand at wall — legs up wall, hands walking toward wall. 'L-shaped handstand. Hips over wrists. Legs parallel to earth. This is the foundation of all arm balances and inversions.' She demonstrates the entry from Downward Dog.",
+        "duration_sec": 30,
+        "notes": "Entry and hold. Show both the setup and the hold clearly."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU wrist alignment",
+        "description": "70-200mm. Wrists in L-shaped handstand — fingers spread, middle finger pointing forward, weight distributed across the whole palm. 'The wrists. Every handstand lives or dies here.'",
+        "duration_sec": 10,
+        "notes": "Critical safety detail. Take time to show it clearly."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Sirsasana preparation — interlaced hands setup. She sits on heels, interlaces fingers, places forearms on floor, measures the correct elbow width. 'The elbow position is the safety. Too wide — the neck bears weight. Correct — the arms bear weight.'",
+        "duration_sec": 28,
+        "notes": "She demonstrates incorrect elbow width first, then corrects. This contrast makes the safety instruction memorable."
+      },
+      {
+        "shot_number": 9,
+        "type": "CU forearm setup",
+        "description": "Overhead shot of interlaced hands and forearms forming correct triangle on floor. 70-200mm from above.",
+        "duration_sec": 8,
+        "notes": "The overhead view makes the triangular base legible."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Head placement in Sirsasana setup. She places crown of head in the cup of her interlaced hands. 'The crown of the head — not the forehead, not the hairline, not the back of the skull. Exactly the crown. This is the only point of contact between your head and the earth in headstand.'",
+        "duration_sec": 22,
+        "notes": "She lifts and repositions the head placement twice to show incorrect versus correct."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Sirsasana with wall. She walks feet in, tucks knees, floats hips over shoulders, then very slowly extends legs up wall. Full Sirsasana, wall contact minimal (just one heel). Hold 15 seconds.",
+        "duration_sec": 35,
+        "notes": "120fps for the float-up moment. Low camera, wide angle — full pose against studio window light."
+      },
+      {
+        "shot_number": 12,
+        "type": "MS profile",
+        "description": "Full Sirsasana from side. She holds and speaks: 'The body is a straight line. Hips over shoulders, shoulders over wrists — in headstand, wrists are on the floor, shoulders are directly above. The spine is neutral. The legs are active, not limp.'",
+        "duration_sec": 22,
+        "notes": "Camera at mid-point of her body — we see both the floor foundation and the legs in the same frame."
+      },
+      {
+        "shot_number": 13,
+        "type": "WS",
+        "description": "Coming down from Sirsasana. Controlled descent — she lowers knees to chest, then feet to floor. 'The descent is half the practice. Come down before you tire. Never fall out of a headstand — always control the exit.'",
+        "duration_sec": 20,
+        "notes": "120fps. The controlled descent is as instructional as the pose itself."
+      },
+      {
+        "shot_number": 14,
+        "type": "WS",
+        "description": "Child's Pose counter-pose immediately after. Hold 10 seconds. Then she sits up and faces camera. 'Headstand changes your relationship to fear. That is its real gift.'",
+        "duration_sec": 20,
+        "notes": "The closing line is delivered quietly, without drama."
+      }
+    ],
+    "script_text_en": [
+      "The wall is not a failure. I want to begin with that because most yoga students are told, implicitly, that using the wall is the version for people who cannot do the real thing. This is incorrect. The wall is a teacher. It provides feedback, it provides safety, and for many inversions, it provides the conditions under which strength is actually built.",
+      "Before any inversion, three things must be present. First: the body must be warm. Do not move into inversions from cold — the neck, the shoulder girdle, and the wrists need time to prepare. Second: the cervical spine must be healthy. If you have any diagnosed issue with the discs or nerves of the neck — any tingling, any history of injury — stop at Legs Up the Wall and do not continue into bearing-weight inversions. Third: patience. Inversions are built over months of consistent practice. Rushing them is the only way to hurt yourself.",
+      "Downward-Facing Dog is an inversion. Your heart is above your head. The blood shifts. The nervous system responds. Most people who practise yoga have been inverting for years without applying the word to what they are doing. Start here. Three breaths.",
+      "Legs Up the Wall — Viparita Karani. Lie on your back, hips as close to the wall as is comfortable, legs resting up the surface. This is the complete inversion practice for a large percentage of practitioners. It delivers every systemic benefit of inversion — lymphatic return, nervous system downregulation, lower limb recovery — without any weight-bearing in the neck. If you stopped here, you would have made an excellent decision.",
+      "L-Shaped Handstand. From Downward Dog, walk your hands toward the wall until your feet can walk up the wall with your legs parallel to the floor. Hips directly over wrists. This is an arm balance and a mild inversion simultaneously. The wrists are the foundation: spread your fingers wide, press through the base of your index and middle fingers, distribute weight across the entire palm. Do not dump weight into the heels of the hands.",
+      "Sirsasana — Headstand. The king of asanas in the Iyengar lineage. We approach it systematically.",
+      "Interlace your fingers. Place your forearms on the earth. The elbows are precisely shoulder-width apart — no wider. Too wide and the neck bears the weight; correct, and the arms bear the weight. The forearms and interlaced hands form a triangular base. This triangle is the entire safety of the pose.",
+      "Place the crown of your head into the cup of your hands. Not the forehead. Not the hairline. Not the back of the skull. The crown — the topmost point. Tuck your toes, lift your hips, and walk your feet in toward your face until your hips are directly above your shoulders.",
+      "From here, two options: bend one knee and float it toward your chest, then the second. Or tuck both knees simultaneously. Either way — slowly. The goal is to find the balance point over the shoulders before the legs go anywhere. If the balance point is not found, extend the legs to the wall.",
+      "Full expression: body is one straight line from crown to heels. Hips over shoulders, shoulders over that triangular forearm base. The neck is long — not compressed. The legs are active — inner thighs rotating toward each other, feet reaching upward as though standing on a ceiling.",
+      "Come down before you tire. This is the instruction most practitioners ignore. The moment of fatigue is the moment of risk. Bend your knees, lower controlled, feet to earth. Child's Pose immediately.",
+      "Headstand changes your relationship to fear. That is not a metaphor. When you can hold your body inverted, supported, breathing, with equanimity — the architecture of fear in the rest of your life shifts. That is its real gift, beyond the physical."
+    ],
+    "script_text_hi": [
+      "दीवार विफलता नहीं है। मैं यहीं से शुरू करना चाहती हूं क्योंकि अधिकांश योग छात्रों को अप्रत्यक्ष रूप से बताया जाता है कि दीवार का उपयोग उनके लिए है जो असली आसन नहीं कर सकते। यह गलत है। दीवार एक गुरु है।",
+      "किसी भी उल्टे आसन से पहले तीन बातें आवश्यक हैं। पहली: शरीर गर्म हो। दूसरी: ग्रीवा रीढ़ स्वस्थ हो। तीसरी: धैर्य।",
+      "अधोमुख श्वानासन एक उल्टा आसन है। आपका हृदय सिर से ऊपर है। तीन श्वासें।",
+      "विपरीत करणी — दीवार पर पैर। यह अधिकांश अभ्यासकर्ताओं के लिए पूर्ण उलटाव अभ्यास है। गर्दन पर कोई भार नहीं।",
+      "L-आकार का हस्तासन। अधोमुख से पैर दीवार पर चढ़ाएं — जांघें भूमि के समानांतर। कलाइयां: उंगलियां फैलाएं, पूरी हथेली पर भार।",
+      "शीर्षासन। ऊर्ध्वासनों का राजा।",
+      "उंगलियां बांधें। अग्रभुज भूमि पर। कोहनियां कंधे की चौड़ाई पर — अधिक चौड़ी नहीं।",
+      "सिर का मुकुट हाथों की कप में रखें। माथा नहीं, बालों की रेखा नहीं — ठीक मुकुट।",
+      "धीरे-धीरे पैर उठाएं। कंधों के ऊपर कूल्हे आने तक।",
+      "पूर्ण अभिव्यक्ति: एक सीधी रेखा। गर्दन लंबी, टांगें सक्रिय।",
+      "थकने से पहले नीचे आएं। घुटने मोड़ें, नियंत्रित, बालासन तुरंत।",
+      "शीर्षासन भय से आपका संबंध बदलता है। यह रूपक नहीं है।"
+    ],
+    "b_roll_list": [
+      "Studio wall detail, clean white surface — 8 seconds",
+      "Forearm triangle setup overhead — 10 seconds",
+      "Full Sirsasana in studio light against window — wide, 120fps — 15 seconds",
+      "Instructor's face in Sirsasana (low camera at floor level looking up) — 10 seconds",
+      "Legs Up the Wall, full profile — 12 seconds",
+      "Controlled descent from headstand — 120fps, 10 seconds",
+      "Child's Pose after headstand — ECU of face — 8 seconds"
+    ],
+    "edit_notes": "Grade: clean, cooler studio tones for this technical piece. No warm grade — the clinical clarity is appropriate. Pacing: safety instruction segments must not be rushed — every numbered point must breathe. Sirsasana hold must be shown for a minimum of 8 seconds screen time. The controlled descent is shown in 120fps played at approximately 50% speed. Music: none throughout. Silence is appropriate for technically demanding safety instruction.",
+    "end_card_copy": "Sukoon. Ancient practice, modern life. Begin your free practice at sukoon.app"
+  }
+]

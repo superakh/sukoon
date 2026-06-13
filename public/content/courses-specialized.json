@@ -1,0 +1,869 @@
+[
+  {
+    "id": "10-days-of-pranayama",
+    "title_en": "10 Days of Pranayama",
+    "title_hi": "प्राणायाम के 10 दिन",
+    "subtitle_en": "A breath-by-breath journey through yoga's most powerful practice",
+    "subtitle_hi": "योग की सबसे शक्तिशाली साधना में श्वास-दर-श्वास यात्रा",
+    "days": 10,
+    "level": "beginner",
+    "focus_tag": "pranayama",
+    "intro_en": "Breath is the only function of the body we can do both consciously and unconsciously — and that bridge is where pranayama lives. In classical yoga, prana is not simply oxygen; it is the animating force underlying all physical and mental activity. When we learn to extend, restrain, and direct the breath with precision, we are not performing a relaxation technique — we are learning to regulate the nervous system at its root. This ten-day course moves through eight foundational pranayamas in a carefully sequenced progression. We begin with 4-7-8, the simplest ratio-based technique, and close with a fully integrated daily practice that you can sustain for life. Each session is ten minutes. Each technique is taught completely before it is asked of you. Safety is built into the sequence: kapalabhati, the only technique with contraindications, arrives on day seven — after the nervous system has been prepared and after you understand the difference between activating and calming breath. You will finish this course with a toolkit that addresses anxiety, fatigue, poor sleep, and shallow breathing — and with a direct, embodied understanding of why ancient texts call pranayama the highway to samadhi.",
+    "intro_hi": "श्वास ही शरीर का एकमात्र कार्य है जिसे हम सचेत और अचेत दोनों रूपों में कर सकते हैं — और वही सेतु प्राणायाम का आधार है। शास्त्रीय योग में प्राण केवल ऑक्सीजन नहीं है; यह वह चेतन शक्ति है जो समस्त शारीरिक और मानसिक गतिविधि का आधार है। जब हम श्वास को विस्तारित, संयमित और निर्देशित करना सीखते हैं, तो हम केवल विश्राम की तकनीक नहीं सीख रहे — हम तंत्रिका तंत्र को उसकी जड़ में नियंत्रित करना सीख रहे हैं। यह दस दिवसीय पाठ्यक्रम आठ मूलभूत प्राणायामों से होकर एक सुनियोजित क्रम में गुज़रता है। हम 4-7-8 से शुरू करते हैं और एक पूर्णतः एकीकृत दैनिक अभ्यास पर समाप्त होते हैं। प्रत्येक सत्र दस मिनट का है। सुरक्षा इस क्रम में अंतर्निहित है: कपालभाति, जो एकमात्र सावधानी वाली तकनीक है, सातवें दिन आती है।",
+    "estimated_daily_minutes": 10,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "4-7-8 Breath — The Nervous System's Reset Switch",
+        "title_hi": "4-7-8 श्वास — तंत्रिका तंत्र का रीसेट बटन",
+        "intro_en": "Before any technique, we learn to observe. Day one introduces the 4-7-8 ratio: four counts inhale, seven counts hold, eight counts exhale. This extended exhale activates the parasympathetic nervous system within two complete cycles. We practice seated, establish our baseline breath rate, and do three rounds.",
+        "intro_hi": "किसी भी तकनीक से पहले, हम निरीक्षण करना सीखते हैं। पहला दिन 4-7-8 अनुपात से परिचित कराता है: चार गिनती श्वास, सात गिनती रोककर, आठ गिनती श्वास छोड़ना। यह विस्तारित निःश्वास दो पूर्ण चक्रों में परानुकंपी तंत्रिका तंत्र को सक्रिय करता है।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Introduce prana as life force, not just air. Explain the three phases of breath: puraka (inhale), kumbhaka (retention), rechaka (exhale).", "notes_hi": "प्राण को जीवन शक्ति के रूप में परिचित कराएं। श्वास के तीन चरणों की व्याख्या करें: पूरक, कुम्भक, रेचक।"},
+          {"type": "breath", "ref_id": "breath-natural-observation", "duration_sec": 120, "notes_en": "Two minutes of natural breath observation. Count naturally occurring breath rate. Note chest vs belly movement.", "notes_hi": "दो मिनट का प्राकृतिक श्वास अवलोकन। स्वाभाविक श्वास दर गिनें। छाती बनाम पेट की गति नोट करें।"},
+          {"type": "breath", "ref_id": "breath-4-7-8", "duration_sec": 300, "notes_en": "Three rounds of 4-7-8. Begin with a teaching round at half speed. Exhale through the mouth on day one only — this helps beginners feel the full exhale. Note: anyone with high blood pressure omits the retention today.", "notes_hi": "4-7-8 के तीन चक्र। पहले दिन मुंह से श्वास छोड़ें। उच्च रक्तचाप वाले आज कुम्भक छोड़ें।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 60, "notes_en": "Close with one minute: return to natural breath, notice any shift in quality.", "notes_hi": "एक मिनट प्राकृतिक श्वास पर वापस आएं, गुणवत्ता में कोई बदलाव नोट करें।"}
+        ],
+        "reflection_prompt_en": "After tonight's session: put one hand on your chest, one on your belly. Which moved more? Which do you want to move more?",
+        "reflection_prompt_hi": "आज के सत्र के बाद: एक हाथ छाती पर, एक पेट पर रखें। कौन सा अधिक हिला? कौन सा अधिक हिलना चाहिए?"
+      },
+      {
+        "day": 2,
+        "title_en": "Box Breathing — The Equal-Ratio Square",
+        "title_hi": "बॉक्स ब्रीदिंग — समान अनुपात का वर्ग",
+        "intro_en": "Box breathing (sama vritti) uses equal counts for all four phases: 4-4-4-4 or 5-5-5-5. Used by Navy SEALs to enter calm under fire and by surgeons before procedures. Today we understand why equal ratios create mental steadiness and practice two rounds at each count.",
+        "intro_hi": "बॉक्स ब्रीदिंग (सम वृत्ति) चारों चरणों के लिए समान गिनती का उपयोग करती है। इसे नेवी SEALs और सर्जन उपयोग करते हैं। आज हम समझते हैं कि समान अनुपात मानसिक स्थिरता क्यों बनाते हैं।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Sama vritti: the principle of balance between sympathetic and parasympathetic. Compare yesterday's 4-7-8 (calming) to today's box (stabilizing). Different tools for different states.", "notes_hi": "सम वृत्ति: सहानुभूति और परानुकंपी के बीच संतुलन का सिद्धांत।"},
+          {"type": "breath", "ref_id": "breath-4-7-8", "duration_sec": 120, "notes_en": "Warm up: two rounds of yesterday's 4-7-8 to establish baseline calm.", "notes_hi": "वार्म-अप: कल का 4-7-8 दो बार।"},
+          {"type": "breath", "ref_id": "breath-box", "duration_sec": 300, "notes_en": "Two rounds at 4-4-4-4, then two rounds at 5-5-5-5. Visualization option: trace a square mentally — bottom edge on inhale, right edge on hold, top edge on exhale, left edge on hold.", "notes_hi": "4-4-4-4 के दो चक्र, फिर 5-5-5-5 के दो चक्र। एक वर्ग की कल्पना करें।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 90, "notes_en": "One minute natural breath. Ask: does the mind feel more spacious or more restricted than yesterday?", "notes_hi": "एक मिनट प्राकृतिक श्वास। क्या मन कल से अधिक विस्तृत लग रहा है?"}
+        ],
+        "reflection_prompt_en": "When today did you notice your breath was shallow or held? Write down one situation.",
+        "reflection_prompt_hi": "आज कब आपने महसूस किया कि आपकी श्वास उथली या रुकी हुई थी? एक स्थिति लिखें।"
+      },
+      {
+        "day": 3,
+        "title_en": "Nadi Shodhana — Alternate Nostril Breathing",
+        "title_hi": "नाड़ी शोधन — अनुलोम विलोम",
+        "intro_en": "Nadi shodhana, or alternate nostril breathing, is the most studied pranayama in neuroscience. It balances the two cerebral hemispheres, clears energetic channels (nadis), and has measurable effects on heart rate variability within four minutes. Today we learn the classical Vishnu mudra hand position and practice the foundational 1:1 ratio.",
+        "intro_hi": "नाड़ी शोधन, तंत्रिका विज्ञान में सर्वाधिक अध्ययन किया गया प्राणायाम है। यह दो मस्तिष्क गोलार्धों को संतुलित करता है और ऊर्जा चैनलों (नाड़ियों) को साफ करता है। आज हम विष्णु मुद्रा और 1:1 अनुपात सीखते हैं।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Introduce ida (left, lunar, cooling) and pingala (right, solar, heating) nadis. Sushumna as the central channel. Why alternating activates both. Vishnu mudra: fold index and middle fingers, use thumb for right nostril, ring + pinky for left.", "notes_hi": "इड़ा (बाईं, चंद्र, शीतल) और पिंगला (दाईं, सूर्य, उष्ण) नाड़ियों का परिचय। सुषुम्ना केंद्रीय नाड़ी के रूप में।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 360, "notes_en": "5 rounds: exhale left, inhale left, exhale right, inhale right = 1 round. 4-count each phase. Rest 30 seconds between rounds. Cue: the hand stays at the nose — do not lower between sides.", "notes_hi": "5 चक्र: बाईं से निःश्वास, बाईं से श्वास, दाईं से निःश्वास, दाईं से श्वास = 1 चक्र। प्रत्येक चरण 4 गिनती।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 120, "notes_en": "After practice: lower the hand, breathe naturally, notice if one nostril feels more open than before. This is common and confirms the technique worked.", "notes_hi": "अभ्यास के बाद: हाथ नीचे करें, स्वाभाविक श्वास लें, देखें कि क्या एक नासिका पहले से अधिक खुली लगती है।"}
+        ],
+        "reflection_prompt_en": "Which nostril was more blocked at the start? Did it change by the end? Note this — nasal dominance shifts every 90 minutes (the nasal cycle) and correlates with mental state.",
+        "reflection_prompt_hi": "शुरुआत में कौन सी नासिका अधिक बंद थी? क्या यह अंत तक बदल गई? यह नोट करें।"
+      },
+      {
+        "day": 4,
+        "title_en": "Bhramari — The Bee Breath That Calms the Nervous System",
+        "title_hi": "भ्रामरी — तंत्रिका तंत्र को शांत करने वाली भ्रमर श्वास",
+        "intro_en": "Bhramari (humming bee breath) generates internal sound vibration — specifically nitric oxide release in the sinuses, which has direct effects on lung function, blood pressure, and mood. It is also the first pranayama safe for everyone, including those who found the retentions difficult. Today we learn the classical full version with shanmukhi mudra and the accessible version without.",
+        "intro_hi": "भ्रामरी (भँवर श्वास) आंतरिक ध्वनि कंपन उत्पन्न करती है — विशेष रूप से साइनस में नाइट्रिक ऑक्साइड। यह पहला प्राणायाम है जो सभी के लिए सुरक्षित है। आज हम शंखमुखी मुद्रा और इसका सुलभ संस्करण सीखते हैं।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Bhramari from bhramara (bee). The humming on exhale. Shanmukhi mudra: thumbs in ears, index fingers on closed eyelids, middle on nostrils (lightly — not closing), ring on upper lip, pinky on lower. Accessible version: simply index fingers in the ears (tragus pressed gently).", "notes_hi": "भ्रामरी: भ्रमर (भँवर) से। शंखमुखी मुद्रा: अंगूठे कानों में, तर्जनी पलकों पर।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 120, "notes_en": "Two rounds nadi shodhana as transition from yesterday — this is now the warm-up protocol.", "notes_hi": "कल से संक्रमण के रूप में नाड़ी शोधन के दो चक्र।"},
+          {"type": "breath", "ref_id": "breath-bhramari", "duration_sec": 300, "notes_en": "5 rounds bhramari. Inhale naturally (4 counts), exhale with a continuous humming 'mmm' sound (6-8 counts, as long as comfortable). Feel the vibration in the skull. Between rounds, sit in silence — the post-bhramari silence is part of the technique.", "notes_hi": "5 चक्र भ्रामरी। 4 गिनती श्वास, 6-8 गिनती 'म्म्म' ध्वनि के साथ निःश्वास। खोपड़ी में कंपन महसूस करें।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 90, "notes_en": "Two minutes: sit in the resonance left by bhramari. Internal sound creates internal stillness.", "notes_hi": "दो मिनट: भ्रामरी द्वारा छोड़े गए अनुनाद में बैठें।"}
+        ],
+        "reflection_prompt_en": "Bhramari is recommended for anxiety, insomnia, and anger. When in your week would this two-minute technique be most useful?",
+        "reflection_prompt_hi": "भ्रामरी चिंता, अनिद्रा और क्रोध के लिए अनुशंसित है। आपके सप्ताह में यह दो मिनट की तकनीक कब सबसे उपयोगी होगी?"
+      },
+      {
+        "day": 5,
+        "title_en": "Ujjayi — The Ocean Breath That Anchors Practice",
+        "title_hi": "उज्जायी — अभ्यास को स्थिर रखने वाली महासागर श्वास",
+        "intro_en": "Ujjayi (victorious breath) is not a ratio technique — it is a textural one. By gently constricting the glottis, we create an oceanic sound and increase breath resistance, which extends the breath naturally and generates internal heat. It is the breath used throughout vinyasa yoga and the only pranayama practiced with movement. Today we learn it seated, and tomorrow we will use it in our first movement integration.",
+        "intro_hi": "उज्जायी (विजयी श्वास) अनुपात तकनीक नहीं है — यह बनावट की तकनीक है। स्वरयंत्र को हल्के से संकुचित करके, हम महासागरीय ध्वनि बनाते हैं। यह विन्यास योग में प्रयुक्त श्वास है।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Ujjayi from ud (upward/superior) + jayi (victorious). Glottal constriction: the sensation of fogging a mirror — slight throat narrowing, audible on both inhale and exhale. The sound is internal and private, not a stage whisper. Volume = rustling leaves, not crashing waves.", "notes_hi": "उज्जायी: उद् (ऊपर) + जयी (विजयी)। स्वरयंत्र संकुचन: शीशे को धुंधला करने की अनुभूति।"},
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 420, "notes_en": "Phase 1 (2 min): Practice the sound on exhale only through the open mouth — the 'hahhh' sound. Phase 2 (2 min): Move that constriction to exhale through closed mouth — now it is ujjayi exhale. Phase 3 (3 min): Apply the same constriction on inhale — now full ujjayi. Rest if jaw clenches or throat strains.", "notes_hi": "चरण 1: खुले मुंह से निःश्वास पर ध्वनि। चरण 2: बंद मुंह से उज्जायी निःश्वास। चरण 3: पूर्ण उज्जायी।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 60, "notes_en": "One minute: return to natural breath. Notice if breath feels longer and fuller without the conscious effort.", "notes_hi": "एक मिनट: प्राकृतिक श्वास। देखें कि बिना सचेत प्रयास के श्वास लंबी और भरपूर लगती है।"}
+        ],
+        "reflection_prompt_en": "Ujjayi builds concentration because the sound requires continuous monitoring. Did you notice your mind quieting when you focused on the sound?",
+        "reflection_prompt_hi": "उज्जायी एकाग्रता बनाता है क्योंकि ध्वनि को निरंतर निगरानी चाहिए। क्या आपने ध्वनि पर ध्यान केंद्रित करते समय मन का शांत होना महसूस किया?"
+      },
+      {
+        "day": 6,
+        "title_en": "Sheetali & Sheetkari — The Cooling Breaths",
+        "title_hi": "शीतली और शीतकारी — शीतल श्वासें",
+        "intro_en": "Sheetali (rolled tongue) and sheetkari (teeth together) are the only pranayamas where we inhale through the mouth — specifically to cool the system. They reduce body temperature, calm pitta (the fire constitution in Ayurveda), and are traditionally practiced in summer and in states of anger or inflammation. Today we learn both, since not everyone can roll the tongue (a genetic trait).",
+        "intro_hi": "शीतली और शीतकारी एकमात्र प्राणायाम हैं जिनमें मुंह से श्वास लेते हैं — ठंडा करने के लिए। ये शरीर का तापमान कम करते हैं। आज हम दोनों सीखते हैं, क्योंकि हर कोई जीभ नहीं मोड़ सकता।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Pitta and summer protocols in Ayurveda. Sheetali: roll the tongue into a tube, inhale through it (like sipping through a straw), exhale through the nose. Sheetkari: teeth together, lips slightly parted, inhale making a 'sss' sound, exhale through the nose. Both have the same effect.", "notes_hi": "आयुर्वेद में पित्त और ग्रीष्म प्रोटोकॉल। शीतली: जीभ को नली में मोड़ें। शीतकारी: दांत साथ।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 120, "notes_en": "Two rounds nadi shodhana as transition/warm-up.", "notes_hi": "नाड़ी शोधन के दो चक्र।"},
+          {"type": "breath", "ref_id": "breath-sheetali", "duration_sec": 300, "notes_en": "5 rounds of whichever variation is accessible. Inhale through the cooling mechanism (4-5 counts), exhale through nose (6-7 counts). Notice the cooling sensation on the back of the throat. Contraindication: avoid in very cold weather or with chronic respiratory congestion.", "notes_hi": "सुलभ संस्करण के 5 चक्र। 4-5 गिनती श्वास, 6-7 गिनती नाक से निःश्वास।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 90, "notes_en": "After: natural breath, notice if body temperature feels different. This is not imagination.", "notes_hi": "बाद में: प्राकृतिक श्वास, देखें कि शरीर का तापमान अलग लगता है।"}
+        ],
+        "reflection_prompt_en": "The ancient texts recommend sheetali specifically for anger, thirst, fever, and excessive hunger. Which of these states might this be useful for in your life?",
+        "reflection_prompt_hi": "प्राचीन ग्रंथ शीतली को क्रोध, प्यास, बुखार के लिए विशेष रूप से अनुशंसित करते हैं। आपके जीवन में इनमें से कौन सी अवस्था के लिए यह उपयोगी हो सकती है?"
+      },
+      {
+        "day": 7,
+        "title_en": "Kapalabhati — Fire Breath With Full Safety Protocol",
+        "title_hi": "कपालभाति — पूर्ण सुरक्षा के साथ अग्नि श्वास",
+        "intro_en": "Kapalabhati means skull-shining — the rapid forceful exhales oxygenate the brain, activate the sympathetic nervous system, and build internal heat. It is the only technique in this course with genuine contraindications. Today we cover all safety considerations first, practice at a slow 60 pumps per minute (not the frantic 120+ seen online), and understand why kapalabhati should be the last technique you do, not the first.",
+        "intro_hi": "कपालभाति का अर्थ है खोपड़ी को चमकाना — तेज़ निःश्वास मस्तिष्क को ऑक्सीजन देते हैं। यह इस पाठ्यक्रम की एकमात्र तकनीक है जिसमें वास्तविक सावधानियां हैं। आज हम पहले सभी सुरक्षा विचारों को कवर करते हैं।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 180, "notes_en": "SAFETY FIRST — Avoid kapalabhati if: pregnant, menstruating (first two days), hypertension, glaucoma, hernia, recent abdominal surgery, epilepsy, history of stroke, heart conditions, vertigo. If any doubt, skip and use ujjayi instead. The technique: passive inhale, sharp abdominal contraction drives the exhale. The navel pulls toward the spine. Start at 1 pump per second (60/min). The inhale is automatic.", "notes_hi": "सुरक्षा पहले — कपालभाति से बचें यदि: गर्भावस्था, उच्च रक्तचाप, ग्लूकोमा, हर्निया। तकनीक: निष्क्रिय श्वास, तेज़ पेट संकुचन से निःश्वास।"},
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 120, "notes_en": "Two minutes ujjayi to build warmth before kapalabhati.", "notes_hi": "कपालभाति से पहले उज्जायी से उष्मा बनाएं।"},
+          {"type": "breath", "ref_id": "breath-kapalabhati", "duration_sec": 300, "notes_en": "Three rounds of 30 pumps each (30 seconds of practice per round). Rest 60 seconds between rounds — natural breath. After each round: sit quietly and notice the energized clarity in the skull. Do NOT practice more than three rounds until comfortable for two weeks.", "notes_hi": "30 पंपों के तीन चक्र। चक्रों के बीच 60 सेकंड आराम। खोपड़ी में ऊर्जावान स्पष्टता नोट करें।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 120, "notes_en": "Close with two rounds nadi shodhana to balance the energetic activation.", "notes_hi": "ऊर्जावान सक्रियण को संतुलित करने के लिए नाड़ी शोधन के दो चक्र से समाप्त करें।"}
+        ],
+        "reflection_prompt_en": "How did the post-kapalabhati stillness feel different from the post-bhramari stillness on day four? Both lead to quiet, but the path is opposite.",
+        "reflection_prompt_hi": "कपालभाति के बाद की शांति चौथे दिन भ्रामरी के बाद की शांति से कैसे अलग लगी? दोनों शांति की ओर ले जाते हैं, पर रास्ता विपरीत है।"
+      },
+      {
+        "day": 8,
+        "title_en": "Three-Part Breath — The Foundation You Skipped",
+        "title_hi": "तीन-भाग श्वास — वह नींव जो आपने छोड़ी",
+        "intro_en": "Dirga (three-part breath) is technically the most basic pranayama — yet it arrives on day eight deliberately. By now you have experimented with complex techniques. Today we return to the foundation: belly first, then ribs, then collarbones on the inhale; collarbones first, then ribs, then belly on the exhale. Full diaphragmatic breathing is the substrate all other techniques depend on.",
+        "intro_hi": "दीर्घ (तीन-भाग श्वास) तकनीकी रूप से सबसे बुनियादी प्राणायाम है — फिर भी यह जानबूझकर आठवें दिन आता है। अब तक आपने जटिल तकनीकों का प्रयोग किया है। आज हम नींव पर वापस आते हैं।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Dirga from dirga (long/full). The diaphragm moves downward on inhale, creating negative pressure that draws air in — the belly rises because the abdominal organs are displaced, not because you are 'inflating' the belly. Understand the anatomy: dome-shaped diaphragm, its attachment to the spine, why chest breathing is emergency breathing.", "notes_hi": "दीर्घ: पूर्ण श्वास। डायाफ्राम श्वास पर नीचे जाता है। पेट उठता है क्योंकि अंग विस्थापित होते हैं।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 420, "notes_en": "Lie down or sit. Place hands: right on belly, left on chest. Phase 1 (2 min): belly only — right hand rises, left stays still. Phase 2 (2 min): belly then ribs — feel the ribcage expand sideways. Phase 3 (3 min): full three-part — belly, ribs, collarbones on inhale; reverse on exhale. 5-6 counts each direction.", "notes_hi": "लेटें या बैठें। दाहिना हाथ पेट पर, बाया छाती पर। चरण 1: केवल पेट। चरण 2: पेट फिर पसलियां। चरण 3: पूर्ण तीन-भाग।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 90, "notes_en": "Close with natural breath. Compare day one's baseline to today's baseline. The breath has almost certainly already changed.", "notes_hi": "प्राकृतिक श्वास से समाप्त करें। पहले दिन की आधार रेखा की तुलना आज से करें।"}
+        ],
+        "reflection_prompt_en": "When did shallow, chest-only breathing become your default? Stress, posture, clothing, trauma — all can compress the breath. What do you suspect is yours?",
+        "reflection_prompt_hi": "छाती से उथली श्वास आपका डिफ़ॉल्ट कब बन गई? तनाव, मुद्रा, कपड़े, आघात — सभी श्वास को संकुचित कर सकते हैं।"
+      },
+      {
+        "day": 9,
+        "title_en": "Coherent Breathing — 5.5 Breaths Per Minute",
+        "title_hi": "सुसंगत श्वास — प्रति मिनट 5.5 श्वास",
+        "intro_en": "Coherent breathing is the most researched pranayama protocol in modern clinical science — 5.5 breaths per minute (5.5 seconds inhale, 5.5 seconds exhale, no retention). At this rate, the heart rate variability peaks at its maximum, the baroreceptor reflex is optimized, and mind-body coherence is highest. This rate corresponds almost exactly to classical pranayama ratios described in the Hatha Yoga Pradipika.",
+        "intro_hi": "सुसंगत श्वास आधुनिक नैदानिक विज्ञान में सर्वाधिक शोधित प्राणायाम प्रोटोकॉल है — प्रति मिनट 5.5 श्वास। इस दर पर हृदय गति परिवर्तनशीलता अपने अधिकतम पर होती है।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "The resonant frequency of the baroreflex system is approximately 0.1 Hz — 6 breaths per minute. The average person breathes 12-20 times per minute. Slow this down and the autonomic nervous system synchronizes. James Nestor's Breath research: even 10 days of coherent breathing shows measurable physiological changes. This is science-backed pranayama.", "notes_hi": "बैरोरिफ्लेक्स प्रणाली की अनुनाद आवृत्ति लगभग 0.1 Hz है — प्रति मिनट 6 श्वास। औसत व्यक्ति 12-20 बार प्रति मिनट सांस लेता है।"},
+          {"type": "breath", "ref_id": "breath-coherent", "duration_sec": 480, "notes_en": "8 minutes of coherent breathing guided by a visual pacer (5.5 second inhale, 5.5 second exhale, audio cue marks each transition). This is longer than other techniques because coherence builds with time — the first 4 minutes are entrainment, the second 4 minutes are the benefit.", "notes_hi": "8 मिनट सुसंगत श्वास। 5.5 सेकंड श्वास, 5.5 सेकंड निःश्वास। पहले 4 मिनट एंट्रेनमेंट, दूसरे 4 मिनट लाभ।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 30, "notes_en": "Two minutes: sit in the resonance. No guidance needed — the body knows where to settle.", "notes_hi": "दो मिनट: अनुनाद में बैठें। कोई मार्गदर्शन नहीं — शरीर जानता है कहाँ स्थिर होना है।"}
+        ],
+        "reflection_prompt_en": "The natural human breath rate is approximately 5.5 breaths per minute. We breathe too fast. What conditions in modern life cause this?",
+        "reflection_prompt_hi": "प्राकृतिक मानव श्वास दर लगभग 5.5 प्रति मिनट है। हम बहुत तेज़ सांस लेते हैं। आधुनिक जीवन की कौन सी परिस्थितियाँ इसका कारण बनती हैं?"
+      },
+      {
+        "day": 10,
+        "title_en": "The Integrated Daily Practice — Your Lifelong Protocol",
+        "title_hi": "एकीकृत दैनिक अभ्यास — आपका जीवनकालीन प्रोटोकॉल",
+        "intro_en": "The final day is not a new technique — it is the synthesis. We build one 10-minute sequence that you can practice every day for life, rotating through the toolkit based on your state. We also name the contraindication framework you now carry: which techniques to use in anxiety (bhramari, nadi shodhana, 4-7-8), which in fatigue (kapalabhati, ujjayi), which in heat (sheetali), which as daily maintenance (coherent, three-part, box).",
+        "intro_hi": "अंतिम दिन कोई नई तकनीक नहीं है — यह संश्लेषण है। हम एक 10-मिनट अनुक्रम बनाते हैं जिसे आप जीवन भर प्रतिदिन अभ्यास कर सकते हैं।",
+        "duration_min": 10,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "The toolkit map: State → Technique. Anxiety/panic: 4-7-8 first, then bhramari. Pre-sleep: bhramari → nadi shodhana → coherent. Morning sluggishness: kapalabhati → ujjayi. Anger/inflammation: sheetali. Cognitive work: box breathing (5-5-5-5). Daily maintenance: three-part + coherent. The entire toolkit is available at any moment.", "notes_hi": "टूलकिट मानचित्र: अवस्था → तकनीक। चिंता: 4-7-8 → भ्रामरी। नींद पूर्व: भ्रामरी → नाड़ी शोधन → सुसंगत।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 120, "notes_en": "Final integrated session: 2 min three-part to arrive, 3 min nadi shodhana (5 rounds), 3 min coherent breathing, 2 min bhramari (5 rounds). This is the daily maintenance protocol.", "notes_hi": "अंतिम एकीकृत सत्र: 2 मिनट तीन-भाग, 3 मिनट नाड़ी शोधन, 3 मिनट सुसंगत, 2 मिनट भ्रामरी।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 180, "notes_en": "Three minutes of complete silence. No guidance. This is the first fully silent close in the course — a marker of arrival.", "notes_hi": "तीन मिनट पूर्ण मौन। कोई मार्गदर्शन नहीं। पाठ्यक्रम में पहला पूरी तरह मौन समापन।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 180, "notes_en": "Course closing talk (see closing_en/hi below).", "notes_hi": "पाठ्यक्रम समापन वार्ता।"}
+        ],
+        "reflection_prompt_en": "Which technique in this course surprised you most? Which will you return to first tomorrow? What did your breath teach you about your mind?",
+        "reflection_prompt_hi": "इस पाठ्यक्रम में कौन सी तकनीक ने आपको सबसे अधिक चौंकाया? कल सबसे पहले किसपर वापस जाएंगे? आपकी श्वास ने आपके मन के बारे में क्या सिखाया?"
+      }
+    ],
+    "closing_en": "You have arrived at the end of this course with something irreversible: the knowledge that your breath is not a passive background function but an active lever you now know how to use. Eight techniques. Ten days. A toolkit that practitioners of yoga have refined across three thousand years now lives in your body, not just your memory. The ancient texts say 'the mind follows the breath and the breath follows the mind' — you have now experienced both directions. Use the map from day ten whenever you need it. When nothing else works, return to three rounds of bhramari in the dark. It is enough.",
+    "closing_hi": "आप इस पाठ्यक्रम के अंत में कुछ अपरिवर्तनीय लेकर पहुंचे हैं: यह ज्ञान कि आपकी श्वास निष्क्रिय पृष्ठभूमि कार्य नहीं बल्कि एक सक्रिय उत्तोलक है। आठ तकनीकें। दस दिन। योग साधकों द्वारा तीन हजार वर्षों में परिष्कृत एक टूलकिट अब आपके शरीर में है। प्राचीन ग्रंथ कहते हैं 'मन श्वास का अनुसरण करता है और श्वास मन का' — आपने अब दोनों दिशाएं अनुभव की हैं।",
+    "recommended_next_course_id": "21-day-reset"
+  },
+  {
+    "id": "14-days-for-office-pain",
+    "title_en": "14 Days for Office Pain",
+    "title_hi": "ऑफिस दर्द के लिए 14 दिन",
+    "subtitle_en": "Eight minutes a day to undo what sitting does to your body",
+    "subtitle_hi": "बैठने से होने वाले नुकसान को ठीक करने के लिए दिन के आठ मिनट",
+    "days": 14,
+    "level": "beginner",
+    "focus_tag": "desk-recovery",
+    "intro_en": "The average desk worker spends eleven hours a day seated. In that position, the hip flexors shorten and weaken, the thoracic spine rounds, the neck juts forward, the shoulder blades wing out, and the wrists endure repetitive micro-strain. These are not inevitable consequences of working — they are consequences of working without counter-movement. This fourteen-day course targets each problem zone in a careful sequence that builds from the simplest to the most therapeutic. All sessions are eight minutes. All sessions can be done at or near a desk, in office clothes, without a mat. No session requires getting to the floor until day seven — and even then, a chair substitute is always offered. By day fourteen you will have a permanent desk-break protocol that addresses the five zones: neck and shoulders, thoracic spine, lower back, hips, wrists and hands. You will also understand why these patterns develop — because understanding the mechanism is the fastest way to consistently counter it.",
+    "intro_hi": "औसत डेस्क कर्मचारी एक दिन में ग्यारह घंटे बैठकर बिताता है। इस स्थिति में, हिप फ्लेक्सर्स छोटे हो जाते हैं, थोरेसिक रीढ़ गोल होती है, गर्दन आगे बढ़ती है। यह काम के अपरिहार्य परिणाम नहीं हैं — बल्कि प्रति-आंदोलन के बिना काम करने के परिणाम हैं। यह चौदह दिवसीय पाठ्यक्रम प्रत्येक समस्या क्षेत्र को सावधानीपूर्वक लक्षित करता है। सभी सत्र आठ मिनट के हैं और डेस्क के पास किए जा सकते हैं।",
+    "estimated_daily_minutes": 8,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Neck & Shoulder Reset — The Forward Head Pattern",
+        "title_hi": "गर्दन और कंधा रीसेट — आगे झुके सिर का पैटर्न",
+        "intro_en": "The average head weighs 5kg. For every inch it juts forward of the shoulders, the effective load on the cervical spine doubles. This is the single most common office injury pattern. Today we address it with four targeted movements: chin tuck, neck side stretch, shoulder rolls, and doorway chest opener. All done standing.",
+        "intro_hi": "औसत सिर का वजन 5 किग्रा है। कंधों से हर इंच आगे बढ़ने पर सर्वाइकल रीढ़ पर भार दोगुना होता है। आज हम इसे चार लक्षित आंदोलनों से संबोधित करते हैं।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Upper crossed syndrome: pecs and upper traps tight, deep neck flexors and lower traps weak. This pattern is fixable. The chin tuck is the single most evidence-backed cervical exercise in physiotherapy.", "notes_hi": "अपर क्रॉस्ड सिंड्रोम: पेक्स और अपर ट्रैप्स टाइट। यह पैटर्न ठीक किया जा सकता है।"},
+          {"type": "asana_sequence", "ref_id": "seq-neck-shoulder-desk", "duration_sec": 360, "notes_en": "Chin tuck (10 reps × 3 holds): standing, gently draw chin straight back without tilting — double chin motion. Neck side stretch: ear to shoulder, hold 30 sec each side. Shoulder rolls: 10 backward, 5 forward. Doorway chest opener: arms in goalpost position, step through any door frame, hold 30-60 sec. Repeat chin tuck series to close.", "notes_hi": "चिन टक (10 बार × 3 होल्ड)। गर्दन साइड स्ट्रेच। कंधे रोल। दरवाजे पर छाती खोलना।"},
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 60, "notes_en": "Close with three ujjayi breaths in good posture — ears over shoulders, shoulders over hips. Notice the difference from your normal seated position.", "notes_hi": "अच्छी मुद्रा में तीन उज्जायी श्वास। कान कंधों के ऊपर, कंधे कूल्हों के ऊपर।"}
+        ],
+        "reflection_prompt_en": "How many hours today did you sit with your head forward of your shoulders? Roughly estimate.",
+        "reflection_prompt_hi": "आज आप कितने घंटे कंधों के आगे सिर झुकाकर बैठे? मोटा अनुमान लगाएं।"
+      },
+      {
+        "day": 2,
+        "title_en": "Wrist & Hand Relief — Repetitive Strain Prevention",
+        "title_hi": "कलाई और हाथ राहत — दोहरावे वाले तनाव की रोकथाम",
+        "intro_en": "Carpal tunnel syndrome, trigger finger, and mouse elbow are not inevitable results of computer use — they are the result of never moving the wrists through their full range. Today's session takes the wrists and hands through every plane: flexion, extension, circumduction, finger spreading, forearm rotation, and the wrist flexor/extensor stretch that physiotherapists prescribe post-injury.",
+        "intro_hi": "कार्पल टनल सिंड्रोम कंप्यूटर उपयोग का अनिवार्य परिणाम नहीं है — यह कलाइयों को कभी भी पूरी सीमा तक न हिलाने का परिणाम है। आज का सत्र कलाइयों को हर दिशा में ले जाता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The extensor muscles of the wrist are chronically underworked in keyboard use. The flexors get all the action. This imbalance is the root of most repetitive strain. Today we restore balance.", "notes_hi": "कलाई की एक्सटेंसर मांसपेशियां कीबोर्ड उपयोग में पुरानी तरह से कम काम करती हैं। फ्लेक्सर्स को सारा काम मिलता है।"},
+          {"type": "asana_sequence", "ref_id": "seq-wrist-desk", "duration_sec": 360, "notes_en": "Wrist circles (10 each direction, both hands). Prayer position reverse: fingers pointing down, press backs of hands together — 30 sec. Table stretch: place palm flat on desk, fingers pointing toward body, gently lean back — 30 sec each. Finger spreads: max splay, hold 10 sec × 5. Forearm massage: use opposite thumb to roll along the forearm belly (60 sec each arm). Fist and flower: open and close hands 20 times.", "notes_hi": "कलाई घुमाव। प्रार्थना स्थिति उलटी। टेबल स्ट्रेच। उंगली फैलाव। बांह की मालिश।"},
+          {"type": "breath", "ref_id": "breath-box", "duration_sec": 60, "notes_en": "Two rounds box breathing. Notice hands in the lap — are they clenched or open?", "notes_hi": "दो चक्र बॉक्स ब्रीदिंग। गोद में हाथ देखें — बंद हैं या खुले?"}
+        ],
+        "reflection_prompt_en": "Are your hands relaxed or subtly tense right now, at this moment reading this? Most people find they were holding tension they didn't notice.",
+        "reflection_prompt_hi": "अभी इसे पढ़ते समय आपके हाथ शिथिल हैं या सूक्ष्म रूप से तनावग्रस्त? अधिकांश लोग पाते हैं कि वे बिना जाने तनाव धारण कर रहे थे।"
+      },
+      {
+        "day": 3,
+        "title_en": "Thoracic Mobility — Opening the Upper Back",
+        "title_hi": "थोरेसिक गतिशीलता — ऊपरी पीठ खोलना",
+        "intro_en": "The thoracic spine (mid-back) is the most mobile section of the spine in healthy people — yet desk work compresses it into a fixed kyphotic curve. Today's session uses a chair back as a thoracic extension prop and teaches two rotational techniques. Thoracic mobility is the upstream fix for both neck pain and lower back pain.",
+        "intro_hi": "थोरेसिक रीढ़ (मध्य पीठ) स्वस्थ लोगों में रीढ़ का सबसे गतिशील हिस्सा है — फिर भी डेस्क कार्य इसे एक निश्चित काइफोटिक वक्र में संकुचित करता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The thoracic spine should have 35-45 degrees of rotation. Most sedentary adults have 15-20. Loss of thoracic mobility forces the lumbar spine and cervical spine to compensate — which is why mid-back stiffness causes both neck pain and lower back pain.", "notes_hi": "थोरेसिक रीढ़ में 35-45 डिग्री रोटेशन होना चाहिए। अधिकांश गतिहीन वयस्कों में 15-20 डिग्री होती है।"},
+          {"type": "asana_sequence", "ref_id": "seq-thoracic-desk", "duration_sec": 360, "notes_en": "Chair thoracic extension: scoot to chair edge, clasp hands behind head, gently arch back over the top of the chair back at mid-spine level — hold 30 sec, repeat 3×. Seated cat-cow: hands on knees, round then arch the entire spine 10 times. Seated thoracic rotation: cross arms over chest, rotate to look behind you as far as comfortable — 10 each side, hold last rep 30 sec. Rib shift: slide ribs left and right laterally 10 times — mobilizes costovertebral joints.", "notes_hi": "कुर्सी पर थोरेसिक एक्सटेंशन। बैठे हुए कैट-काउ। बैठे हुए थोरेसिक रोटेशन। पसली शिफ्ट।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 60, "notes_en": "Three-part breath after thoracic opening — notice how much more the ribcage expands now.", "notes_hi": "थोरेसिक खोलने के बाद तीन-भाग श्वास — ध्यान दें पसलियां कितनी अधिक फैलती हैं।"}
+        ],
+        "reflection_prompt_en": "Place one hand on your mid-back now. Can you feel movement there as you breathe? If not, the thoracic mobility work is particularly important for you.",
+        "reflection_prompt_hi": "अभी एक हाथ अपनी मध्य पीठ पर रखें। क्या आप सांस लेते समय वहां हलचल महसूस कर सकते हैं?"
+      },
+      {
+        "day": 4,
+        "title_en": "Hip Flexor Release — The Cost of Sitting",
+        "title_hi": "हिप फ्लेक्सर रिलीज़ — बैठने की कीमत",
+        "intro_en": "The psoas muscle connects the lumbar vertebrae to the femur — it is the only muscle that bridges the spine and the legs. When we sit for hours, it shortens. A shortened psoas tilts the pelvis forward, creates an exaggerated lumbar curve, compresses the lower back discs, and contributes to anxiety (the psoas is directly connected to the diaphragm and is considered by some bodywork traditions to be where we store fight-or-flight response). Today we release it gently.",
+        "intro_hi": "सोआस मांसपेशी काठ की कशेरुकाओं को फीमर से जोड़ती है। घंटों बैठने पर यह छोटी हो जाती है, जिससे पेल्विस आगे झुकती है और पीठ के निचले हिस्से पर दबाव पड़ता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The psoas as the 'muscle of the soul' (Liz Koch's framework). Its anatomical connection to the diaphragm. Why hip flexor tightness is not a hip problem — it is a whole-body postural problem with emotional components.", "notes_hi": "सोआस 'आत्मा की मांसपेशी' के रूप में। डायाफ्राम से इसका शारीरिक संबंध।"},
+          {"type": "asana_sequence", "ref_id": "seq-hip-flexor-desk", "duration_sec": 360, "notes_en": "Standing lunge at desk (use desk for balance): step back into a lunge, front knee over ankle, back knee straight, lean torso slightly forward — feel the stretch in the back hip flexor. Hold 60 sec each side × 2. Seated figure-four: cross right ankle over left knee, flex the right foot, gently press right knee down, fold slightly forward — 60 sec each side. Standing hip circles: hands on hips, make large circles 10 each direction.", "notes_hi": "डेस्क पर खड़े लंज। बैठे हुए फिगर-फोर। खड़े हुए हिप सर्कल।"},
+          {"type": "breath", "ref_id": "breath-4-7-8", "duration_sec": 60, "notes_en": "4-7-8 after hip flexor release — the breath drops into the lower belly more easily with released psoas.", "notes_hi": "हिप फ्लेक्सर रिलीज़ के बाद 4-7-8 — मुक्त सोआस के साथ श्वास निचले पेट में आसानी से उतरती है।"}
+        ],
+        "reflection_prompt_en": "In the lunge position, which side felt tighter? The tighter side is the hip you favor when you sit — you likely always cross the same leg or lean to one side.",
+        "reflection_prompt_hi": "लंज में कौन सी तरफ अधिक कसी हुई लगी? वह हिप है जिसे आप बैठते समय पसंद करते हैं।"
+      },
+      {
+        "day": 5,
+        "title_en": "Lower Back Care — The Lumbar Decompression Protocol",
+        "title_hi": "पीठ के निचले हिस्से की देखभाल — काठ विसंपीड़न प्रोटोकॉल",
+        "intro_en": "Lower back pain affects 80% of desk workers at some point. The cause is almost never a single incident — it is accumulated compression from sitting, combined with weak stabilizers. Today we decompress the lumbar spine through three targeted positions and activate the deep stabilizing muscles (multifidus and transversus abdominis) that support the spine when your seat can't.",
+        "intro_hi": "पीठ के निचले हिस्से का दर्द 80% डेस्क कर्मचारियों को प्रभावित करता है। इसका कारण लगभग कभी एकल घटना नहीं है — यह बैठने से संचित संपीड़न है। आज हम तीन लक्षित स्थितियों के माध्यम से काठ रीढ़ को विसंपीड़ित करते हैं।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The lumbar discs absorb more pressure sitting than standing — a Nachemson study showed 40% more load on L3-L4 while sitting vs. standing. Gravity decompression (even for 60 seconds) reverses this. The multifidus — not the six-pack — is the spine's real protector.", "notes_hi": "काठ डिस्क खड़े होने की बजाय बैठने में अधिक दबाव अवशोषित करती हैं। मल्टीफिडस — सिक्स-पैक नहीं — रीढ़ का असली रक्षक है।"},
+          {"type": "asana_sequence", "ref_id": "seq-lower-back-desk", "duration_sec": 360, "notes_en": "Seated spinal twist: right hand on left knee, left hand on chair back, rotate left — hold 45 sec each side. Child's pose at chair: push chair back, fold forward with arms extended along desk — hold 60 sec. Seated knee-to-chest: bring one knee up, hug it gently — 30 sec each side. Pelvic tilts standing: hands on lower back, alternately tuck and release the pelvis 15 times — this activates multifidus. Heel raises: 20 calf raises standing — activates soleus pump, aids venous return from legs.", "notes_hi": "बैठे हुए स्पाइनल ट्विस्ट। कुर्सी पर बच्चा मुद्रा। बैठे हुए घुटना-छाती। पेल्विक टिल्ट खड़े।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 60, "notes_en": "Three-part breath in a tall seated position. Notice if the lower belly (below navel) is moving.", "notes_hi": "ऊंची बैठी स्थिति में तीन-भाग श्वास।"}
+        ],
+        "reflection_prompt_en": "Does your lower back feel different after five days? It should — the changes in these first days are neurological (pain patterns) before they are structural.",
+        "reflection_prompt_hi": "पांच दिनों के बाद आपकी पीठ का निचला हिस्सा अलग महसूस होता है? होना चाहिए — ये परिवर्तन संरचनात्मक होने से पहले तंत्रिकाशास्त्रीय हैं।"
+      },
+      {
+        "day": 6,
+        "title_en": "Eye & Jaw Release — The Tension Nobody Treats",
+        "title_hi": "आंख और जबड़ा रिलीज़ — वह तनाव जिसका कोई उपचार नहीं करता",
+        "intro_en": "Screen work strains the ciliary muscle (focusing the eye) and creates a phenomenon called 'screen tension' in the jaw from the unconscious clenching that accompanies concentration. TMJ dysfunction, headaches, and eye fatigue are common desk pathologies. This session targets both with the 20-20-20 rule for eyes, palming, and jaw/face release techniques from facial yoga.",
+        "intro_hi": "स्क्रीन काम सिलिअरी मांसपेशी पर दबाव डालता है और एकाग्रता के साथ जबड़े में 'स्क्रीन तनाव' पैदा करता है। आज का सत्र 20-20-20 नियम और फेशियल योग तकनीकों से दोनों को लक्षित करता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The 20-20-20 rule: every 20 minutes, look at something 20 feet away for 20 seconds. This resets the ciliary muscle. The trigeminal nerve — which innervates the jaw and face — has direct connections to the vagus nerve. Releasing jaw tension is a nervous system intervention, not just cosmetic.", "notes_hi": "20-20-20 नियम। ट्राइजेमिनल तंत्रिका वेगस तंत्रिका से जुड़ी है। जबड़े का तनाव छोड़ना तंत्रिका तंत्र हस्तक्षेप है।"},
+          {"type": "asana_sequence", "ref_id": "seq-eye-jaw-desk", "duration_sec": 360, "notes_en": "Eye movements: look up-down 10×, left-right 10×, diagonals 5× each, clockwise and counterclockwise circles 5×. Palming: rub hands warm, cup over closed eyes, breathe naturally 60 sec. Jaw release: open mouth wide, hold 10 sec, close — 5×. Tongue on roof: press tongue flat to palate and hold 30 sec (activates lateral pterygoid release). Facial scrunching: scrunch all face muscles tight, then release — 5×. Scalp massage: fingertips on scalp, make circular motions 60 sec.", "notes_hi": "आंख की गतिविधियां। पामिंग। जबड़ा खोलना। छत पर जीभ। चेहरे को सिकोड़ना। खोपड़ी की मालिश।"},
+          {"type": "breath", "ref_id": "breath-bhramari", "duration_sec": 60, "notes_en": "Two rounds bhramari — the vibration directly affects the facial and cranial sinuses, enhancing the eye and jaw release work.", "notes_hi": "दो चक्र भ्रामरी — कंपन सीधे चेहरे और कपाल साइनस को प्रभावित करता है।"}
+        ],
+        "reflection_prompt_en": "Is your jaw clenched right now? Most people's is. Gently let the top teeth float off the bottom teeth and notice the immediate release of tension in the temples.",
+        "reflection_prompt_hi": "क्या अभी आपका जबड़ा भिंचा हुआ है? अधिकांश लोगों का होता है। ऊपरी दांतों को निचले दांतों से हटाएं।"
+      },
+      {
+        "day": 7,
+        "title_en": "First Floor Session — Supine Lower Back & Hip Release",
+        "title_hi": "पहला फर्श सत्र — सुपाइन पीठ और हिप रिलीज़",
+        "intro_en": "Day seven introduces the first floor session. If a mat is not available, a folded blanket, a yoga mat equivalent, or a clean carpeted area works. A chair substitute is always offered. Today's sequence targets lower back and hips from a lying position — the most therapeutically effective angle for lumbar disc recovery.",
+        "intro_hi": "सातवां दिन पहला फर्श सत्र प्रस्तुत करता है। यदि मैट उपलब्ध नहीं है, तो मुड़ा हुआ कंबल काम करता है। आज का अनुक्रम लेटने की स्थिति से पीठ के निचले हिस्से और हिप्स को लक्षित करता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 45, "notes_en": "Gravity-assisted spinal decompression: lying on your back with knees bent reduces lumbar disc pressure more than any other position except inversion. This is the starting position of most physiotherapy protocols for disc issues.", "notes_hi": "गुरुत्वाकर्षण-सहायता प्राप्त रीढ़ विसंपीड़न। घुटने मुड़े होने पर पीठ के बल लेटना काठ डिस्क दबाव को सबसे अधिक कम करता है।"},
+          {"type": "asana_sequence", "ref_id": "seq-supine-back-hip", "duration_sec": 390, "notes_en": "Supine with knees bent — natural breath 60 sec. Knee-to-chest both legs, hug and rock gently side to side (30 sec). Supine figure-four (piriformis): right ankle on left knee, flex foot, gently push right knee away, option to interlace fingers behind left thigh and draw toward chest — 60 sec each side. Supine spinal twist: knees to chest, drop both to right, arms wide — 60 sec each side. Bridge: feet flat, lift hips, hold 5 sec × 5 reps. Savasana: 30 seconds of stillness before rising.", "notes_hi": "घुटने मुड़े सुपाइन। घुटने-छाती। सुपाइन फिगर-फोर। सुपाइन स्पाइनल ट्विस्ट। ब्रिज। शवासन।"},
+          {"type": "breath", "ref_id": "breath-coherent", "duration_sec": 45, "notes_en": "One minute coherent breathing in savasana.", "notes_hi": "शवासन में एक मिनट सुसंगत श्वास।"}
+        ],
+        "reflection_prompt_en": "How did one week of 8-minute daily movement change your experience at your desk? Be specific — identify one physical change and one mental shift.",
+        "reflection_prompt_hi": "आठ मिनट के दैनिक आंदोलन के एक सप्ताह ने आपके डेस्क पर अनुभव को कैसे बदला? एक शारीरिक परिवर्तन और एक मानसिक बदलाव पहचानें।"
+      },
+      {
+        "day": 8,
+        "title_en": "Full Shoulder Protocol — Rotator Cuff & Rhomboids",
+        "title_hi": "पूर्ण कंधा प्रोटोकॉल — रोटेटर कफ और रॉम्बॉइड्स",
+        "intro_en": "The rotator cuff (supraspinatus, infraspinatus, teres minor, subscapularis) is the most commonly injured structure in desk workers who also exercise. Internal rotation dominance from typing and mouse use weakens the external rotators. Today we target the full shoulder complex with a protocol used in sports physiotherapy.",
+        "intro_hi": "रोटेटर कफ डेस्क कर्मचारियों में सबसे आमतौर पर चोटिल संरचना है। टाइपिंग से आंतरिक रोटेशन प्रभुत्व बाहरी रोटेटर को कमजोर करता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Internal vs external shoulder rotation imbalance. The rhomboids (between the shoulder blades) are chronically lengthened and weak in people who type. The pecs are chronically short and tight. Today we strengthen rhomboids and stretch pecs.", "notes_hi": "आंतरिक बनाम बाहरी कंधा रोटेशन असंतुलन। रॉम्बॉइड्स लंबे और कमजोर हैं; पेक्स छोटे और कड़े हैं।"},
+          {"type": "asana_sequence", "ref_id": "seq-shoulder-desk", "duration_sec": 360, "notes_en": "Doorway pec stretch: arms in goalpost, one arm against door frame, rotate body away — 45 sec each. Shoulder blade squeezes: hands by sides, draw shoulder blades together and down, hold 5 sec × 15 reps. Cross-body arm stretch: pull straight arm across chest, use other hand at elbow — 45 sec each. Eagle arms: elbow of right arm under left at shoulder height, wrap — 45 sec each side. Overhead reach and side bend: interlace fingers overhead, push up and lean to each side — 30 sec each.", "notes_hi": "दरवाजे पर पेक स्ट्रेच। कंधे के ब्लेड निचोड़। क्रॉस-बॉडी आर्म स्ट्रेच। ईगल आर्म्स। ओवरहेड रीच।"},
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 60, "notes_en": "Three ujjayi breaths with shoulder blades actively retracted and depressed. Feel how the breath opens the chest differently.", "notes_hi": "कंधे के ब्लेड सक्रिय रूप से पीछे और नीचे के साथ तीन उज्जायी श्वास।"}
+        ],
+        "reflection_prompt_en": "Do your shoulders round forward habitually? Try: sit tall, imagine a marble rolling off the top of each shoulder toward your back. This is the shoulder position for breath depth.",
+        "reflection_prompt_hi": "क्या आपके कंधे आदतन आगे झुकते हैं? कल्पना करें: प्रत्येक कंधे के शीर्ष से एक गेंद पीछे की ओर लुढ़क रही है।"
+      },
+      {
+        "day": 9,
+        "title_en": "Spinal Decompression — The Full Spine Sequence",
+        "title_hi": "रीढ़ विसंपीड़न — पूर्ण रीढ़ अनुक्रम",
+        "intro_en": "Having addressed individual zones, day nine treats the spine as an integrated system. This session moves through all six spinal movements — flexion, extension, left lateral flexion, right lateral flexion, left rotation, right rotation — and ends with a standing forward fold for traction.",
+        "intro_hi": "अलग-अलग क्षेत्रों को संबोधित करने के बाद, नौवां दिन रीढ़ को एक एकीकृत प्रणाली के रूप में मानता है। यह सत्र सभी छह रीढ़ की गतिविधियों से गुज़रता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 45, "notes_en": "Wolff's Law: bone and connective tissue adapts to the loads placed on it. Spinal movement in all six planes daily prevents the calcification and stiffening that comes from movement restriction. This is not metaphor — it is biomechanics.", "notes_hi": "वुल्फ का नियम: हड्डी और संयोजी ऊतक लगाए गए भार के अनुकूल होते हैं। दैनिक छह दिशाओं में रीढ़ की गति अकड़न को रोकती है।"},
+          {"type": "asana_sequence", "ref_id": "seq-full-spine-desk", "duration_sec": 390, "notes_en": "Standing: (1) Forward fold with slight knee bend, hang and sway gently — 60 sec. (2) Gentle backbend: hands on lower back, lift chest — 30 sec. (3) Left side bend: right arm overhead, lean left — 30 sec each. (4) Seated rotations: full twist to each side — 45 sec each. Combine into a standing flow: forward fold → straighten → backbend → side bend → twist sequence, done 3× slowly.", "notes_hi": "खड़े होकर: फॉरवर्ड फोल्ड। हल्का बैकबेंड। साइड बेंड। बैठे हुए रोटेशन। प्रवाह में मिलाएं।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 45, "notes_en": "Three-part breath with the newly mobile spine. The breath should feel fuller.", "notes_hi": "नई गतिशील रीढ़ के साथ तीन-भाग श्वास।"}
+        ],
+        "reflection_prompt_en": "Did the forward fold feel different than it would have nine days ago? Where in the back do you feel traction?",
+        "reflection_prompt_hi": "क्या फॉरवर्ड फोल्ड नौ दिन पहले से अलग लगा? पीठ में कहाँ ट्रैक्शन महसूस होती है?"
+      },
+      {
+        "day": 10,
+        "title_en": "Nerve Mobility — Sciatic & Median Nerve Flossing",
+        "title_hi": "तंत्रिका गतिशीलता — सायटिक और मीडियन तंत्रिका फ्लॉसिंग",
+        "intro_en": "Nerve flossing (neural mobilization) is one of the most underused interventions in self-care. The sciatic nerve runs from the lower back through the buttock and down the leg — compression anywhere along its path creates pain anywhere along that path. The median nerve, the one compressed in carpal tunnel, runs from the neck through the shoulder and arm into the palm. Today we mobilize both.",
+        "intro_hi": "तंत्रिका फ्लॉसिंग (न्यूरल मोबिलाइजेशन) स्व-देखभाल में सबसे कम उपयोग किए जाने वाले हस्तक्षेपों में से एक है। सायटिक तंत्रिका पीठ के निचले हिस्से से नितंब और पैर के नीचे तक जाती है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Nerves need to glide freely through their sheaths. When they are compressed or restricted, they create sharp, radiating pain. Nerve flossing is gentle rhythmic movement that restores this glide — not a stretch, a glide. Stop if symptoms increase.", "notes_hi": "तंत्रिकाओं को अपनी म्यान के माध्यम से स्वतंत्र रूप से सरकने की जरूरत है। तंत्रिका फ्लॉसिंग एक ग्लाइड है, स्ट्रेच नहीं।"},
+          {"type": "asana_sequence", "ref_id": "seq-nerve-floss-desk", "duration_sec": 360, "notes_en": "Sciatic floss (seated): straighten right leg while pointing foot, then flex knee while flexing foot — alternate 20× slowly, then hold the straight leg position 15 sec. Repeat left. Median nerve floss (standing): arm out to side at shoulder height, wrist extended (hand back), tilt head away from the arm — hold 10 sec, release, tilt toward — alternate 15×. Femoral nerve floss: standing, hold ankle behind, bring it toward buttock, then release — 15× each side.", "notes_hi": "सायटिक फ्लॉस बैठे हुए। मीडियन तंत्रिका फ्लॉस खड़े होकर। फेमोरल तंत्रिका फ्लॉस।"},
+          {"type": "breath", "ref_id": "breath-box", "duration_sec": 60, "notes_en": "Box breathing after neural work — the nervous system appreciates rhythmic breath after neural mobilization.", "notes_hi": "न्यूरल कार्य के बाद बॉक्स ब्रीदिंग।"}
+        ],
+        "reflection_prompt_en": "Did the sciatic floss create any tingling or referral sensation down the leg? This is normal and indicates you have found the nerve. Gentle is the rule.",
+        "reflection_prompt_hi": "क्या सायटिक फ्लॉस ने पैर में कोई झुनझुनाहट पैदा की? यह सामान्य है और संकेत है कि आपने तंत्रिका पाई है।"
+      },
+      {
+        "day": 11,
+        "title_en": "Standing Practice — Posture as Active Choice",
+        "title_hi": "खड़े होकर अभ्यास — सक्रिय विकल्प के रूप में मुद्रा",
+        "intro_en": "Today's session addresses the standing posture that should punctuate every sitting hour. We cover the five postural cues for neutral standing spine, the standing desk setup, micro-movement protocols for standing workers, and a short yoga sequence that can be done at a standing desk without anyone in the office noticing.",
+        "intro_hi": "आज का सत्र खड़े होने की मुद्रा को संबोधित करता है। हम तटस्थ खड़े होने की रीढ़ के लिए पांच मुद्रा संकेतों और खड़े डेस्क पर किए जा सकने वाले योग अनुक्रम को कवर करते हैं।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Neutral standing spine: (1) feet hip-width, parallel. (2) knees soft, not locked. (3) pelvis neutral — not tilted forward or back. (4) lower ribs down, not flaring. (5) crown of head rising, chin level. Each of these five cues can be checked in 2 seconds.", "notes_hi": "तटस्थ खड़े होने की रीढ़: पैर कूल्हे-चौड़ाई, घुटने नरम, पेल्विस तटस्थ, पसलियां नीचे, सिर का ताज ऊपर।"},
+          {"type": "asana_sequence", "ref_id": "seq-standing-stealth", "duration_sec": 360, "notes_en": "At-desk standing sequence (can be done without moving from desk position): weight shifts side to side (30 sec), calf raises (20 reps), hip hinge forward fold (30 sec), standing quad stretch with desk for balance (30 sec each), lateral neck stretch (30 sec each), standing spinal rotation (10 each direction), shoulder blade squeezes (15 reps). Total cycle: 4 minutes. Do twice.", "notes_hi": "डेस्क पर खड़े अनुक्रम: वजन शिफ्ट, काफ रेज, हिप हिंज, क्वाड स्ट्रेच, गर्दन स्ट्रेच, रोटेशन, कंधे निचोड़।"},
+          {"type": "breath", "ref_id": "breath-coherent", "duration_sec": 60, "notes_en": "One minute coherent breathing standing — this grounds the nervous system after movement.", "notes_hi": "खड़े होकर एक मिनट सुसंगत श्वास।"}
+        ],
+        "reflection_prompt_en": "How often do you stand in a typical work hour? Research suggests standing or moving for 2 minutes every 30 seated minutes eliminates most of the metabolic harm of sitting.",
+        "reflection_prompt_hi": "एक सामान्य काम के घंटे में आप कितनी बार खड़े होते हैं? हर 30 मिनट बैठने के बाद 2 मिनट खड़े होना बैठने के अधिकांश नुकसान को समाप्त करता है।"
+      },
+      {
+        "day": 12,
+        "title_en": "Breath at the Desk — The Micro-Pranayama Protocol",
+        "title_hi": "डेस्क पर श्वास — माइक्रो-प्राणायाम प्रोटोकॉल",
+        "intro_en": "Today we address the breath specifically in the work context. Screen work causes unconscious breath holding (screen apnea, documented by Linda Stone) and shallow chest breathing. We install three micro-pranayama interventions that take 60 seconds each and can be done invisibly at a desk, plus the physiological sigh for acute stress.",
+        "intro_hi": "आज हम काम के संदर्भ में विशेष रूप से श्वास को संबोधित करते हैं। स्क्रीन कार्य अचेत श्वास रोकना (स्क्रीन एपनिया) और उथली छाती श्वास का कारण बनता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Screen apnea (Linda Stone, 2008): 80% of people hold their breath or breathe shallowly when reading email. The physiological sigh: double inhale through the nose (sniff, sniff) followed by long exhale — this is the fastest way to downregulate the nervous system (Stanford research, 2023). Two physiological sighs = faster anxiety reduction than any meditation technique in acute stress.", "notes_hi": "स्क्रीन एपनिया: 80% लोग ईमेल पढ़ते समय सांस रोकते हैं। शारीरिक सिसकी: दोहरी श्वास फिर लंबी निःश्वास।"},
+          {"type": "breath", "ref_id": "breath-box", "duration_sec": 420, "notes_en": "Three micro-protocols timed: (1) Physiological sigh × 3 — 60 sec total. (2) Box breathing 4-4-4-4 × 3 rounds — 90 sec. (3) Bhramari × 3 rounds without mudra (just humming) — 90 sec. (4) 4-7-8 × 2 rounds — 90 sec. Return to natural breath and notice.", "notes_hi": "तीन माइक्रो-प्रोटोकॉल: शारीरिक सिसकी, बॉक्स ब्रीदिंग, भ्रामरी, 4-7-8।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 60, "notes_en": "Sit at your desk, close eyes briefly, natural breath — 60 sec. This is the recovery.", "notes_hi": "डेस्क पर बैठें, आंखें बंद करें, प्राकृतिक श्वास — 60 सेकंड।"}
+        ],
+        "reflection_prompt_en": "At what point in the work day is your breath most restricted? After which activity do you notice you were holding it?",
+        "reflection_prompt_hi": "काम के दिन के किस बिंदु पर आपकी श्वास सबसे अधिक प्रतिबंधित है? किस गतिविधि के बाद आपको पता चलता है कि आप रोक रहे थे?"
+      },
+      {
+        "day": 13,
+        "title_en": "Deep Hip Opening — The Yin Holds for Fascia",
+        "title_hi": "गहरी हिप ओपनिंग — फेशिया के लिए यिन होल्ड्स",
+        "intro_en": "Fascia (connective tissue) requires long holds — three to five minutes — to release. Short holds (under 30 seconds) work muscles; long holds work fascia and connective tissue. Today introduces three yin-style hip opening holds, each three minutes. These are the deepest release in the entire course — and the session where many people notice unexpected emotion, because the hips are where chronic tension patterns and stress are stored in the body.",
+        "intro_hi": "फेशिया (संयोजी ऊतक) को छोड़ने के लिए लंबे होल्ड — तीन से पांच मिनट — चाहिए। आज तीन यिन-शैली हिप ओपनिंग होल्ड प्रस्तुत करता है, प्रत्येक तीन मिनट।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 45, "notes_en": "Fascia remodeling: 90 seconds minimum to begin deforming, 3-5 minutes for full release. Yin yoga principle: moderate edge, absolute stillness, long duration. The hip fascia — particularly the IT band, TFL, and deep six rotators — responds only to time. Props welcome: use books, folded blankets.", "notes_hi": "फेशिया रीमॉडलिंग: विकृत होना शुरू करने के लिए न्यूनतम 90 सेकंड। यिन योग सिद्धांत: मध्यम किनारा, पूर्ण स्थिरता, लंबी अवधि।"},
+          {"type": "asana_sequence", "ref_id": "seq-yin-hip-deep", "duration_sec": 435, "notes_en": "Three poses, 3 minutes each with 30 sec transition. (1) Sleeping swan (pigeon prep) on right: shin diagonal, fold forward if available, use a book under the hip if needed — 3 min. Transition 30 sec. (2) Sleeping swan left — 3 min. Transition 30 sec. (3) Reclined butterfly: soles of feet together, knees falling wide, reclined — 3 min. After each: slowly counter-pose with a forward fold or neutral position.", "notes_hi": "तीन पोज़, प्रत्येक 3 मिनट। (1) दाईं ओर स्लीपिंग स्वान। (2) बाईं ओर स्लीपिंग स्वान। (3) रिक्लाइन्ड बटरफ्लाई।"}
+        ],
+        "reflection_prompt_en": "Did you notice any emotional sensation in the hips — not pain, but something less physical? This is common. The hips are considered a storage site for unexpressed stress in both yoga and somatic therapy.",
+        "reflection_prompt_hi": "क्या आपने हिप्स में कोई भावनात्मक अनुभूति देखी — दर्द नहीं, बल्कि कुछ कम भौतिक? यह सामान्य है।"
+      },
+      {
+        "day": 14,
+        "title_en": "The Permanent Protocol — Your 8-Minute Daily Desk Reset",
+        "title_hi": "स्थायी प्रोटोकॉल — आपका 8-मिनट दैनिक डेस्क रीसेट",
+        "intro_en": "Day fourteen is not a new session — it is the synthesis. We build the permanent 8-minute protocol you will use every workday: a rotation through the five zones (neck/shoulders, thoracic, lower back, hips, wrists) that takes eight minutes and can be done entirely at a desk. This is the session to screenshot, save, and return to without the course.",
+        "intro_hi": "चौदहवां दिन नया सत्र नहीं है — यह संश्लेषण है। हम स्थायी 8-मिनट प्रोटोकॉल बनाते हैं जिसे आप हर कार्यदिवस उपयोग करेंगे।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The final protocol sequence: 90 sec neck/shoulders (chin tuck × 10, neck side stretch, shoulder rolls, doorway stretch). 60 sec thoracic (chair extension or seated rotation). 60 sec wrists (circles, prayer reverse, forearm massage). 90 sec hips (seated figure-four both sides). 60 sec lower back (seated twist, child's pose at chair). 30 sec standing reset (heel raises, neutral posture check). Total: 8 minutes.", "notes_hi": "अंतिम प्रोटोकॉल: 90 सेकंड गर्दन/कंधे, 60 सेकंड थोरेसिक, 60 सेकंड कलाई, 90 सेकंड हिप्स, 60 सेकंड पीठ, 30 सेकंड खड़े रीसेट।"},
+          {"type": "asana_sequence", "ref_id": "seq-desk-full-reset", "duration_sec": 360, "notes_en": "Full run-through of the permanent protocol at session pace. Done entirely at desk. The instructor runs the full sequence without pause — this is the production speed version.", "notes_hi": "स्थायी प्रोटोकॉल का पूर्ण संचालन। पूरी तरह डेस्क पर।"},
+          {"type": "breath", "ref_id": "breath-box", "duration_sec": 60, "notes_en": "Close with two rounds box breathing — this signals to the nervous system that work mode resumes in a regulated state.", "notes_hi": "दो चक्र बॉक्स ब्रीदिंग से समाप्त करें।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Closing talk — course completion (see closing_en/hi).", "notes_hi": "समापन वार्ता।"}
+        ],
+        "reflection_prompt_en": "Which of the five zones — neck/shoulders, thoracic, lower back, hips, wrists — needs the most attention in your body? Build your personal order around that zone first.",
+        "reflection_prompt_hi": "पांच क्षेत्रों में से — गर्दन/कंधे, थोरेसिक, पीठ का निचला हिस्सा, हिप्स, कलाई — किसे आपके शरीर में सबसे अधिक ध्यान चाहिए?"
+      }
+    ],
+    "closing_en": "Fourteen days. Eight minutes each. You now have a complete body maintenance protocol for the desk life you actually live — not the yoga retreat version, but the Tuesday afternoon at 3pm version. The five zones you worked through are not independent; the neck pain you came in with was likely downstream from the hip flexors you just released on day four. Bodies are connected systems, and you now have a map of yours. Use the permanent protocol from day fourteen every workday. When you only have three minutes, do the zone that is loudest that day. You will not regress to where you started. The body remembers.",
+    "closing_hi": "चौदह दिन। आठ मिनट प्रत्येक। अब आपके पास उस डेस्क जीवन के लिए एक पूर्ण शरीर रखरखाव प्रोटोकॉल है जो आप वास्तव में जीते हैं। आप जिस गर्दन दर्द के साथ आए थे, वह संभवतः चौथे दिन छोड़े गए हिप फ्लेक्सर्स से था। शरीर जुड़ी हुई प्रणालियां हैं, और अब आपके पास इसका नक्शा है।",
+    "recommended_next_course_id": "21-day-reset"
+  },
+  {
+    "id": "21-day-reset",
+    "title_en": "21-Day Reset",
+    "title_hi": "21-दिन रीसेट",
+    "subtitle_en": "A full mind-body rebuild for when life has accumulated",
+    "subtitle_hi": "जब जीवन जमा हो गया हो, तब पूर्ण मन-शरीर पुनर्निर्माण",
+    "days": 21,
+    "level": "beginner",
+    "focus_tag": "foundations",
+    "intro_en": "There are moments in life when the container needs emptying before it can be filled again. Not because something is broken — but because something has accumulated. Stress, decisions, interrupted sleep, compromised eating, reactive relationships, the particular exhaustion of being very busy for too long. The 21-Day Reset is the course for that moment. It is the most complete offering in Sukoon's catalog: yoga, meditation, pranayama, sleep preparation, and journaling, integrated into a 25-minute daily practice that addresses the body, the mind, the nervous system, and the inner life simultaneously. The twenty-one-day arc is not arbitrary. Research on habit formation suggests that twenty-one days of consistent practice creates new neural pathways that persist after the practice ends. The structure here is three weeks of three distinct phases: the first week establishes the body (physical practice, breath, physical sensation), the second week opens the heart (emotions, relationships, self-compassion, forgiveness), the third week addresses the mind and philosophy (attention, intention, the nature of the self). Each day's session is 25 minutes. Each session follows the five-beat structure — Arrive, Teach, Practice, Integrate, Close.",
+    "intro_hi": "जीवन में ऐसे क्षण आते हैं जब पात्र को भरे जाने से पहले खाली करने की जरूरत होती है। 21-दिन रीसेट उस क्षण के लिए है। यह सुकून की सूची में सबसे पूर्ण पेशकश है: योग, ध्यान, प्राणायाम, नींद की तैयारी, और जर्नलिंग — 25-मिनट के दैनिक अभ्यास में एकीकृत। इक्कीस दिनों की चाप तीन सप्ताह की तीन चरणों में है: पहला सप्ताह शरीर स्थापित करता है, दूसरा सप्ताह हृदय खोलता है, तीसरा सप्ताह मन और दर्शन को संबोधित करता है।",
+    "estimated_daily_minutes": 25,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Arriving — The Body as Home Base",
+        "title_hi": "आगमन — शरीर को घर बनाना",
+        "intro_en": "The reset begins not with ambition but with arrival. Before we build anything, we establish the one resource we have had all along and forgotten: the present-moment body. A simple sequence of grounding postures, the most basic breath awareness, and one short guided meditation.",
+        "intro_hi": "रीसेट महत्वाकांक्षा से नहीं बल्कि आगमन से शुरू होती है। हम वह एक संसाधन स्थापित करते हैं जो हमारे पास हमेशा था: वर्तमान-क्षण शरीर।",
+        "duration_min": 25,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 180, "notes_en": "Arrive talk: why you are here, what the next 21 days hold, one thing you are leaving at the door. The body as the location of practice — not metaphor but literal. You will spend the first week in the body before moving into the heart and mind.", "notes_hi": "आगमन वार्ता: आप यहाँ क्यों हैं, अगले 21 दिन क्या हैं, एक चीज़ जो आप दरवाजे पर छोड़ रहे हैं।"},
+          {"type": "asana_sequence", "ref_id": "seq-grounding-foundations", "duration_sec": 600, "notes_en": "Mountain pose (tadasana) — 2 min. Gentle neck rolls. Shoulder shrugs and drops × 10. Standing forward fold — 1 min. Child's pose — 2 min. Easy seated position. Cat-cow × 10. Simple twist each side. Savasana — 2 min.", "notes_hi": "ताड़ासन — 2 मिनट। गर्दन रोल। कंधे शग। खड़े फॉरवर्ड फोल्ड। बालासन। बैठे कैट-काउ। शवासन।"},
+          {"type": "breath", "ref_id": "breath-natural-observation", "duration_sec": 180, "notes_en": "3 minutes of natural breath observation. No technique. Simply notice: where does the breath move? Where does it not? Is the exhale longer than the inhale? Note without changing.", "notes_hi": "3 मिनट प्राकृतिक श्वास अवलोकन। कोई तकनीक नहीं। केवल नोटिस करें।"},
+          {"type": "meditation", "ref_id": "meditation-grounding-body-scan", "duration_sec": 480, "notes_en": "8-minute body scan: from feet to crown, noticing sensation without judgment. This is the first meditation of 21. Keep it simple — the goal is to stay present, not to relax.", "notes_hi": "8-मिनट बॉडी स्कैन: पैरों से मुकुट तक, बिना निर्णय के संवेदना नोट करना।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Brief close: one thing noticed. Tomorrow same time if possible.", "notes_hi": "संक्षिप्त समापन: एक चीज़ नोटिस की। कल यदि संभव हो उसी समय।"}
+        ],
+        "reflection_prompt_en": "Where in your body do you carry tension you did not know was there until you stopped to notice?",
+        "reflection_prompt_hi": "आपके शरीर में कहाँ तनाव है जिसे आपने तब तक नहीं जाना जब तक आपने रुककर ध्यान नहीं दिया?"
+      },
+      {
+        "day": 2,
+        "title_en": "Breath as Foundation — The One That Was Always There",
+        "title_hi": "श्वास आधार के रूप में — जो हमेशा से था",
+        "intro_en": "The second session introduces the breath not as a tool but as the most constant companion we have. We begin three-part diaphragmatic breathing and layer in the body scan from day one. By the end of week one, the body and breath will be friends.",
+        "intro_hi": "दूसरा सत्र श्वास को उपकरण के रूप में नहीं बल्कि हमारे सबसे स्थिर साथी के रूप में प्रस्तुत करता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-grounding-foundations", "duration_sec": 480, "notes_en": "Warm up from day one repeated with more comfort: mountain, forward fold, cat-cow, child's pose, savasana. 8 minutes. Move slowly.", "notes_hi": "पहले दिन का वार्म-अप अधिक आराम के साथ दोहराया।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 480, "notes_en": "Three-part breath: 8 minutes. Introduce the concept of the breath as the one action in the body that bridges voluntary and involuntary nervous systems. Practice lying down.", "notes_hi": "तीन-भाग श्वास: 8 मिनट। श्वास को स्वैच्छिक और अनैच्छिक तंत्रिका तंत्र के बीच सेतु के रूप में प्रस्तुत करें।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 420, "notes_en": "7-minute breath-anchor meditation: gentle return to breath whenever the mind wanders. No goal except noticing when the mind has left and returning. This is the practice.", "notes_hi": "7-मिनट श्वास-एंकर ध्यान। मन भटकने पर श्वास पर वापस आना।"}
+        ],
+        "reflection_prompt_en": "How many times did your mind wander in the 7-minute meditation? The number doesn't matter — that you noticed is the whole practice.",
+        "reflection_prompt_hi": "7-मिनट ध्यान में आपका मन कितनी बार भटका? संख्या मायने नहीं रखती — आपने देखा यही पूरा अभ्यास है।"
+      },
+      {
+        "day": 3,
+        "title_en": "Sun Salutation — Learning the Full Circle",
+        "title_hi": "सूर्य नमस्कार — पूर्ण वृत्त सीखना",
+        "intro_en": "Surya Namaskar A is one of yoga's most complete practices — twelve postures linked by breath, combining forward folds, backbends, inversions, and transitions in a single continuous movement. Today we learn it at half-speed, breaking each transition, understanding the breath pattern, and completing three full rounds.",
+        "intro_hi": "सूर्य नमस्कार A योग के सबसे पूर्ण अभ्यासों में से एक है। आज हम इसे आधी गति से सीखते हैं।",
+        "duration_min": 25,
+        "components": [
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 180, "notes_en": "3 minutes ujjayi practice before the sequence — this is the breath you will use throughout.", "notes_hi": "अनुक्रम से पहले 3 मिनट उज्जायी।"},
+          {"type": "asana_sequence", "ref_id": "surya-namaskar-a", "duration_sec": 900, "notes_en": "Teaching round (6 min): each of the 12 positions with full instruction. Positions: 1. Tadasana, 2. Urdhva Hastasana, 3. Uttanasana, 4. Ardha Uttanasana, 5. Plank, 6. Chaturanga (or knees-chest-chin), 7. Bhujangasana/Urdhva Mukha, 8. Adho Mukha Svanasana (5 breaths), 9. Ardha Uttanasana, 10. Uttanasana, 11. Urdhva Hastasana, 12. Tadasana. Practice rounds (9 min): three complete rounds at 9 breaths each.", "notes_hi": "शिक्षण चक्र: 12 स्थितियां। अभ्यास चक्र: 9 श्वास प्रत्येक पर तीन पूर्ण चक्र।"},
+          {"type": "meditation", "ref_id": "meditation-grounding-body-scan", "duration_sec": 420, "notes_en": "7-minute savasana with guided body scan. The body after movement accepts stillness differently — deeper.", "notes_hi": "7-मिनट शवासन बॉडी स्कैन के साथ।"}
+        ],
+        "reflection_prompt_en": "The sun salutation is a prayer to the sun — surya means sun, namaskar means I bow to. What was the last thing you genuinely felt grateful for?",
+        "reflection_prompt_hi": "सूर्य नमस्कार सूर्य को प्रार्थना है। आखिरी बार आपने वास्तव में किस चीज़ के लिए कृतज्ञता महसूस की?"
+      },
+      {
+        "day": 4,
+        "title_en": "Standing Strength — Finding Roots",
+        "title_hi": "खड़े होने की शक्ति — जड़ें ढूंढना",
+        "intro_en": "Week one's physical arc: grounding (day 1) → breath (day 2) → movement (day 3) → strength (day 4) → flexibility (day 5) → integration (day 6) → rest (day 7). Today we build standing strength — warrior sequences that teach the body what stability feels like when it is actively created.",
+        "intro_hi": "आज हम खड़े होने की शक्ति बनाते हैं — योद्धा अनुक्रम जो शरीर को सिखाते हैं कि सक्रिय रूप से निर्मित होने पर स्थिरता कैसी लगती है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "surya-namaskar-a", "duration_sec": 300, "notes_en": "Two sun salutations as warm-up.", "notes_hi": "वार्म-अप के रूप में दो सूर्य नमस्कार।"},
+          {"type": "asana_sequence", "ref_id": "seq-warrior-foundations", "duration_sec": 720, "notes_en": "Warrior I (Virabhadrasana I) — 5 breaths each side. Warrior II (Virabhadrasana II) — 8 breaths each side. Triangle (Trikonasana) — 5 breaths each side. Chair pose (Utkatasana) — 5 breaths × 3. Tree pose (Vrksasana) — 5 breaths each side. Between each posture: return to tadasana, breathe, reset.", "notes_hi": "योद्धा I, II, त्रिकोणासन, उत्कटासन, वृक्षासन।"},
+          {"type": "meditation", "ref_id": "meditation-grounding-body-scan", "duration_sec": 480, "notes_en": "8-minute body scan in savasana. Notice the difference in sensation after strength work.", "notes_hi": "शवासन में 8-मिनट बॉडी स्कैन।"}
+        ],
+        "reflection_prompt_en": "Warrior pose asks: can I be strong and soft at the same time? Where in your life are you strong where you could be soft, or soft where you could be strong?",
+        "reflection_prompt_hi": "योद्धा मुद्रा पूछती है: क्या मैं एक ही समय में मजबूत और कोमल हो सकता हूं?"
+      },
+      {
+        "day": 5,
+        "title_en": "Opening — Hip, Heart, and Hamstring",
+        "title_hi": "खोलना — हिप, हृदय और हैमस्ट्रिंग",
+        "intro_en": "Where day four built strength, day five opens. Hip openers, heart openers, and hamstring stretches — the three most common sources of held tension in the body. This session works longer holds (2-3 minutes each) to begin releasing the connective tissue layer.",
+        "intro_hi": "जहाँ चौथे दिन शक्ति बनाई, पाँचवाँ दिन खोलता है। हिप ओपनर, हार्ट ओपनर, हैमस्ट्रिंग स्ट्रेच।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "surya-namaskar-a", "duration_sec": 300, "notes_en": "Two sun salutations.", "notes_hi": "दो सूर्य नमस्कार।"},
+          {"type": "asana_sequence", "ref_id": "seq-hip-heart-hamstring", "duration_sec": 720, "notes_en": "Low lunge (Anjaneyasana) — 90 sec each. Pigeon prep — 2 min each. Seated forward fold (Paschimottanasana) — 90 sec. Bridge (Setu Bandha) — 5 breaths × 3. Camel prep (hands on lower back, chest open) — 5 breaths × 2. Reclined butterfly — 2 min. Allow full expression of any emotion that surfaces in hip openers.", "notes_hi": "निम्न लंज, पिजन प्रेप, पश्चिमोत्तानासन, ब्रिज, कैमल प्रेप, रिक्लाइन्ड बटरफ्लाई।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 480, "notes_en": "8-minute self-compassion meditation introduced for the first time. Metta (loving-kindness) toward the body that holds everything.", "notes_hi": "8-मिनट स्व-करुणा ध्यान पहली बार।"}
+        ],
+        "reflection_prompt_en": "Yoga teacher Kino MacGregor says the hips are 'where we store our entire life story.' What story do yours hold?",
+        "reflection_prompt_hi": "किनो मैकग्रेगर कहती हैं हिप्स 'हमारी पूरी जीवन कहानी' संग्रहीत करते हैं। आपके किसकी?"
+      },
+      {
+        "day": 6,
+        "title_en": "Flow — The First Moving Practice",
+        "title_hi": "प्रवाह — पहला चलायमान अभ्यास",
+        "intro_en": "Day six links everything from the week into a single flowing practice. The first time everything is sequenced without pause — a 15-minute gentle vinyasa where each movement is breath-led. This is the session where the body begins to feel like it belongs to you again.",
+        "intro_hi": "छठा दिन सप्ताह की सब कुछ को एक एकल प्रवाहमान अभ्यास में जोड़ता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 180, "notes_en": "3 min ujjayi — this is the breath for the entire flow.", "notes_hi": "3 मिनट उज्जायी — पूरे प्रवाह के लिए श्वास।"},
+          {"type": "asana_sequence", "ref_id": "seq-gentle-vinyasa-week1", "duration_sec": 900, "notes_en": "15-min flowing sequence: 2 sun salutations → warrior I and II (each side) → triangle (each side) → wide-legged forward fold → pigeon (each side) → seated forward fold → reclined twist (each side) → bridge → savasana 2 min. All transitions led by ujjayi breath.", "notes_hi": "15-मिनट प्रवाह: 2 सूर्य नमस्कार → योद्धा → त्रिकोण → पिजन → शवासन।"},
+          {"type": "meditation", "ref_id": "meditation-grounding-body-scan", "duration_sec": 420, "notes_en": "7-minute savasana with gratitude body scan: thanking each body part for carrying you through week one.", "notes_hi": "7-मिनट शवासन: प्रत्येक शरीर के भाग को धन्यवाद देना।"}
+        ],
+        "reflection_prompt_en": "After six days: how does your body feel compared to when you started? What has shifted that you didn't expect?",
+        "reflection_prompt_hi": "छह दिनों के बाद: आपका शरीर कैसा महसूस होता है? क्या बदला जो आपने उम्मीद नहीं किया?"
+      },
+      {
+        "day": 7,
+        "title_en": "Rest — Yoga Nidra for Week Completion",
+        "title_hi": "विश्राम — सप्ताह पूर्णता के लिए योग निद्रा",
+        "intro_en": "The seventh day of week one is dedicated to rest — not as a break from practice but as the practice itself. Yoga Nidra (yogic sleep) is the practice of conscious deep relaxation. It is said that 45 minutes of yoga nidra equals 3 hours of sleep in restorative value. Today's session is shorter — 25 minutes — but enters the same state.",
+        "intro_hi": "पहले सप्ताह का सातवाँ दिन विश्राम को समर्पित है। योग निद्रा (योगिक नींद) सचेत गहरी विश्राम का अभ्यास है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "breath", "ref_id": "breath-bhramari", "duration_sec": 300, "notes_en": "5 minutes bhramari to arrive at the threshold of the yogic sleep state.", "notes_hi": "योगिक नींद अवस्था की दहलीज पर पहुंचने के लिए 5 मिनट भ्रामरी।"},
+          {"type": "meditation", "ref_id": "meditation-yoga-nidra-short", "duration_sec": 1200, "notes_en": "20-minute yoga nidra: establish sankalpa (intention), rotate consciousness through body parts, pairs of opposites (heavy/light, warm/cool), visualization, return. Completely supine throughout. Do not sleep — this is the instruction — but do not resist sleep if it comes.", "notes_hi": "20-मिनट योग निद्रा: संकल्प स्थापित करें, शरीर के अंगों में चेतना घुमाएं, विपरीत जोड़े, दृश्यावलोकन, वापसी।"}
+        ],
+        "reflection_prompt_en": "What was your sankalpa (intention) for week one? Write it down. Same one will carry through week two.",
+        "reflection_prompt_hi": "पहले सप्ताह के लिए आपका संकल्प (इरादा) क्या था? इसे लिखें। यही दूसरे सप्ताह में आगे बढ़ेगा।"
+      },
+      {
+        "day": 8,
+        "title_en": "The Heart — Entering Week Two",
+        "title_hi": "हृदय — दूसरे सप्ताह में प्रवेश",
+        "intro_en": "Week two turns from the body to the emotional and relational field. Day eight introduces the concept of the heart center (anahata chakra) — not as mysticism but as the anatomical and neurological reality that the cardiac plexus is the most complex neural network in the body outside the brain. What we call 'heartache' is physiologically real.",
+        "intro_hi": "दूसरा सप्ताह शरीर से भावनात्मक क्षेत्र की ओर मुड़ता है। आठवाँ दिन हृदय केंद्र (अनाहत चक्र) को प्रस्तुत करता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "surya-namaskar-a", "duration_sec": 300, "notes_en": "Two sun salutations, now practiced with ease — the body knows this.", "notes_hi": "दो सूर्य नमस्कार, अब सहजता के साथ।"},
+          {"type": "asana_sequence", "ref_id": "seq-heart-opening", "duration_sec": 600, "notes_en": "Heart opening sequence: Camel (Ustrasana) — 5 breaths. Wild Thing (Camatkarasana) — 5 breaths each side. Wheel prep (supported backbend on blocks or blankets) — 5 breaths. Fish (Matsyasana) — 10 breaths. Supported Supta Baddha Konasana with bolster under spine — 3 min.", "notes_hi": "उष्ट्रासन, वाइल्ड थिंग, व्हील प्रेप, मत्स्यासन, सुप्त बद्ध कोणासन।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 600, "notes_en": "10-minute loving-kindness (metta) meditation: may I be happy, may I be safe, may I be free from suffering. Extend to loved ones, neutral people, difficult people.", "notes_hi": "10-मिनट मेत्ता ध्यान: मैं सुखी हो, मैं सुरक्षित हो। प्रियजनों, तटस्थ लोगों, कठिन लोगों तक बढ़ाएं।"}
+        ],
+        "reflection_prompt_en": "Who came up in the 'difficult person' category of the loving-kindness meditation? You don't have to like them. The practice asks only that you wish them free of suffering.",
+        "reflection_prompt_hi": "मेत्ता ध्यान में 'कठिन व्यक्ति' श्रेणी में कौन आया? आपको उन्हें पसंद नहीं करना है।"
+      },
+      {
+        "day": 9,
+        "title_en": "Emotions as Information — Not Enemies",
+        "title_hi": "भावनाएं जानकारी के रूप में — दुश्मन नहीं",
+        "intro_en": "The second week's theme is emotional intelligence in the yoga tradition. The Bhagavad Gita is explicit: suppression (tamas) and indulgence (rajas) are equally problematic. The middle path is sattva — presence with feeling without being ruled by it. Today's practice is built around emotions that commonly arise in reset periods.",
+        "intro_hi": "दूसरे सप्ताह का विषय योग परंपरा में भावनात्मक बुद्धि है। भगवद गीता स्पष्ट है: दमन और भोग दोनों समान रूप से समस्याग्रस्त हैं।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-grounding-foundations", "duration_sec": 300, "notes_en": "Grounding sequence to arrive before emotional work.", "notes_hi": "भावनात्मक कार्य से पहले आधार अनुक्रम।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 300, "notes_en": "5 minutes nadi shodhana — balancing before emotional exploration.", "notes_hi": "भावनात्मक अन्वेषण से पहले संतुलन के लिए 5 मिनट नाड़ी शोधन।"},
+          {"type": "meditation", "ref_id": "meditation-grief-anger", "duration_sec": 600, "notes_en": "10-minute RAIN meditation (Tara Brach): Recognize the emotion. Allow it to be present. Investigate with kindness. Nourish with self-compassion. This works for anger, grief, fear, shame — any strong emotion.", "notes_hi": "10-मिनट RAIN ध्यान: पहचानें, अनुमति दें, जांचें, पोषण करें।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 300, "notes_en": "Teaching: the difference between feeling an emotion and being the emotion. Yoga philosophy: witness consciousness (sakshi). The self that watches feeling is not the feeling itself.", "notes_hi": "शिक्षण: भावना को महसूस करने और भावना होने के बीच का अंतर। साक्षी चेतना।"}
+        ],
+        "reflection_prompt_en": "What emotion is most present for you right now — and can you name it precisely? Not 'stressed' — what kind: anxious, overwhelmed, sad, lonely, resentful?",
+        "reflection_prompt_hi": "अभी आपके लिए सबसे अधिक कौन सी भावना मौजूद है — और क्या आप इसे सटीक रूप से नाम दे सकते हैं?"
+      },
+      {
+        "day": 10,
+        "title_en": "Grief & Release — What Backbends Carry",
+        "title_hi": "शोक और मुक्ति — बैकबेंड क्या लेकर चलते हैं",
+        "intro_en": "Day ten is the emotional peak of week two. Loss — of a relationship, a version of yourself, a belief, a person, a possibility — lives in the chest and the upper back. Today's backbend practice is an invitation to open what has been protected and held closed. Grief is not failure. Grief is love with nowhere to go.",
+        "intro_hi": "दसवाँ दिन दूसरे सप्ताह का भावनात्मक शिखर है। हानि — किसी रिश्ते की, अपने किसी संस्करण की — छाती और ऊपरी पीठ में रहती है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "breath", "ref_id": "breath-bhramari", "duration_sec": 300, "notes_en": "5 minutes bhramari to soften before the heart practice.", "notes_hi": "हृदय अभ्यास से पहले नरम करने के लिए 5 मिनट भ्रामरी।"},
+          {"type": "asana_sequence", "ref_id": "seq-heart-opening", "duration_sec": 600, "notes_en": "Deep heart opening sequence with longer holds: Sphinx (3 min), Seal (2 min), Camel (full 5 breaths × 2), supported fish (5 min), final savasana with chest elevated on rolled blanket.", "notes_hi": "लंबे होल्ड के साथ गहरी हृदय ओपनिंग: स्फिंक्स, सील, उष्ट्रासन, मत्स्यासन।"},
+          {"type": "meditation", "ref_id": "meditation-grief-anger", "duration_sec": 600, "notes_en": "10-minute grief and transition meditation. Permission to feel fully. Visualize what you are releasing. Breathe. This is the most challenging session in the course and the most necessary.", "notes_hi": "10-मिनट शोक और संक्रमण ध्यान। पूरी तरह महसूस करने की अनुमति।"}
+        ],
+        "reflection_prompt_en": "What are you grieving that you have not named yet — not necessarily a death, but a loss? Write its name.",
+        "reflection_prompt_hi": "आप किसका शोक मना रहे हैं जिसे आपने अभी तक नाम नहीं दिया है — जरूरी नहीं मृत्यु, लेकिन एक हानि?"
+      },
+      {
+        "day": 11,
+        "title_en": "Self-Compassion — Turning the Practice Inward",
+        "title_hi": "स्व-करुणा — अभ्यास को अंदर की ओर मोड़ना",
+        "intro_en": "Kristin Neff's research on self-compassion shows that people who treat themselves with the same kindness they would show a friend recover faster from failure, report higher life satisfaction, and have lower rates of anxiety and depression. Yoga calls this ahimsa turned inward. Today we practice it directly.",
+        "intro_hi": "क्रिस्टिन नेफ का शोध दिखाता है कि जो लोग अपने साथ उसी दयालुता से व्यवहार करते हैं जो वे एक मित्र को दिखाएंगे, वे असफलता से तेजी से उबरते हैं।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-restorative-surrender", "duration_sec": 600, "notes_en": "Restorative sequence: legs up the wall (10 min), supported child's pose (5 min). Gentle, no effort.", "notes_hi": "पुनर्संग्रहीत अनुक्रम: दीवार पर पैर (10 मिनट), सहायक बालासन (5 मिनट)।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 780, "notes_en": "13-minute self-compassion meditation. Three components: mindfulness (feel what is), common humanity (you are not alone in this), self-kindness (what would you say to a friend?). Include a self-compassion break: 'This is a moment of suffering. Suffering is part of life. May I be kind to myself in this moment.'", "notes_hi": "13-मिनट स्व-करुणा ध्यान। तीन घटक: माइंडफुलनेस, साझा मानवता, स्व-दयालुता।"}
+        ],
+        "reflection_prompt_en": "Finish this sentence as kindly as you would to your closest friend: 'I see that you have been carrying _________ and it makes sense that you feel _________.'",
+        "reflection_prompt_hi": "इस वाक्य को उतनी दयालुता से पूरा करें जितनी आप अपने करीबी मित्र को दिखाएंगे: 'मैं देखता हूं कि तुम _______ उठाए हो।'"
+      },
+      {
+        "day": 12,
+        "title_en": "Relationships — The Yamas as Social Practice",
+        "title_hi": "संबंध — सामाजिक अभ्यास के रूप में यम",
+        "intro_en": "The yamas — the first of yoga's eight limbs — are relational ethics: ahimsa (non-harming), satya (truth), asteya (non-stealing), brahmacharya (right use of energy), aparigraha (non-grasping). They are not commandments but descriptions of how a person whose inner life is clean naturally behaves. Today we bring them into the relational context of the reset.",
+        "intro_hi": "यम — योग के आठ अंगों में से पहला — संबंधपरक नैतिकता हैं: अहिंसा, सत्य, अस्तेय, ब्रह्मचर्य, अपरिग्रह।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "surya-namaskar-a", "duration_sec": 300, "notes_en": "Two sun salutations.", "notes_hi": "दो सूर्य नमस्कार।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 600, "notes_en": "Teaching segment on each yama with relational application: Ahimsa in speech (the words we use about ourselves and others). Satya in relationships (the conversations we are avoiding). Asteya (not stealing time, attention, credit). Brahmacharya (where is your energy leaking?). Aparigraha (what are you holding onto that is past its time?).", "notes_hi": "प्रत्येक यम पर संबंध अनुप्रयोग के साथ शिक्षण खंड।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 600, "notes_en": "10-minute forgiveness meditation. Forgiveness of others (not condoning — releasing). Forgiveness of self.", "notes_hi": "10-मिनट क्षमा ध्यान। दूसरों की क्षमा। स्वयं की क्षमा।"}
+        ],
+        "reflection_prompt_en": "Which of the five yamas is the most challenging practice for you in your most important relationship?",
+        "reflection_prompt_hi": "आपके सबसे महत्वपूर्ण संबंध में पांच यमों में से कौन सा सबसे चुनौतीपूर्ण अभ्यास है?"
+      },
+      {
+        "day": 13,
+        "title_en": "Rest Two — Yoga Nidra for the Emotional Body",
+        "title_hi": "दूसरा विश्राम — भावनात्मक शरीर के लिए योग निद्रा",
+        "intro_en": "The second yoga nidra of the course is calibrated for the emotional opening of week two. The visualization in this session is different — rather than physical body rotation, it works with the witness self and emotional sensation directly.",
+        "intro_hi": "पाठ्यक्रम की दूसरी योग निद्रा दूसरे सप्ताह के भावनात्मक उद्घाटन के लिए अंशांकित है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "breath", "ref_id": "breath-4-7-8", "duration_sec": 360, "notes_en": "6 min 4-7-8 as entry into the nidra state.", "notes_hi": "निद्रा अवस्था में प्रवेश के रूप में 6 मिनट 4-7-8।"},
+          {"type": "meditation", "ref_id": "meditation-yoga-nidra-short", "duration_sec": 1140, "notes_en": "19-minute yoga nidra with emotional body focus: sankalpa, brief body rotation, awareness of opposite emotional states (joy/sorrow, courage/fear, acceptance/resistance), visualization of a safe place, return. This nidra specifically addresses emotional integration.", "notes_hi": "भावनात्मक शरीर फोकस के साथ 19-मिनट योग निद्रा।"}
+        ],
+        "reflection_prompt_en": "What was your experience in the 'safe place' visualization? Where did your mind take you?",
+        "reflection_prompt_hi": "'सुरक्षित स्थान' दृश्यावलोकन में आपका अनुभव क्या था? आपका मन आपको कहाँ ले गया?"
+      },
+      {
+        "day": 14,
+        "title_en": "Midpoint — What Has Changed",
+        "title_hi": "मध्यबिंदु — क्या बदला है",
+        "intro_en": "Fourteen days in. The midpoint of the reset. Today's session is deliberately shorter on instruction and longer on self-led practice — the first session where you make choices within the structure. We close with a midpoint check: body, breath, emotions, sleep, energy.",
+        "intro_hi": "चौदह दिन हो गए। रीसेट का मध्यबिंदु। आज का सत्र निर्देश पर जानबूझकर छोटा है और स्व-नेतृत्व अभ्यास पर लंबा।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-gentle-vinyasa-week1", "duration_sec": 600, "notes_en": "10-minute self-led movement practice: the instructor offers the sun salutation sequence and says: now you choose what feels good. No instruction for 8 of the 10 minutes.", "notes_hi": "10-मिनट स्व-नेतृत्व आंदोलन। सूर्य नमस्कार अनुक्रम प्रस्तावित, फिर 8 मिनट बिना निर्देश।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 600, "notes_en": "10-minute meditation: first 5 min breath anchor, then 5 min open awareness (no object — just being present to whatever arises).", "notes_hi": "10-मिनट ध्यान: 5 मिनट श्वास एंकर, फिर 5 मिनट खुली जागरूकता।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 300, "notes_en": "Midpoint reflection talk: what does your body feel like compared to day one? What does your mind feel like? What has surprised you? What is still hard?", "notes_hi": "मध्यबिंदु प्रतिबिंब वार्ता: आपका शरीर पहले दिन की तुलना में कैसा लगता है?"}
+        ],
+        "reflection_prompt_en": "Complete this midpoint assessment: Body: ___/10 Energy: ___/10 Sleep: ___/10 Emotional stability: ___/10 Mental clarity: ___/10. Compare to what you would have rated yourself on day one.",
+        "reflection_prompt_hi": "यह मध्यबिंदु मूल्यांकन पूरा करें: शरीर: ___/10 ऊर्जा: ___/10 नींद: ___/10 भावनात्मक स्थिरता: ___/10।"
+      },
+      {
+        "day": 15,
+        "title_en": "The Mind — Entering Week Three",
+        "title_hi": "मन — तीसरे सप्ताह में प्रवेश",
+        "intro_en": "Week three addresses the mind directly. The first five limbs of Patanjali's ashtanga yoga are preparatory — the external disciplines (yamas, niyamas), the physical practice (asana), the breath work (pranayama), and sense withdrawal (pratyahara). Week three works with the inner three: dharana (concentration), dhyana (meditation), and a glimpse of samadhi (absorption). Today: what is the mind?",
+        "intro_hi": "तीसरा सप्ताह सीधे मन को संबोधित करता है। पतंजलि के अष्टांग योग के पहले पांच अंग प्रारंभिक हैं। तीसरा सप्ताह तीन आंतरिक अंगों के साथ काम करता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "surya-namaskar-a", "duration_sec": 300, "notes_en": "Two sun salutations — now a natural start.", "notes_hi": "दो सूर्य नमस्कार — अब स्वाभाविक शुरुआत।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 600, "notes_en": "Teaching: the Yoga Sutras definition of yoga — 'yogas chitta vritti nirodhah' (yoga is the cessation of the fluctuations of the mind-field). Not the suppression of thought but the cultivation of a background of stillness in which thoughts arise and pass without disturbing the witness. The difference between the thinker and the thought. The Sanskrit terms: chitta (mind-field), vritti (fluctuation), nirodha (cessation/restraint).", "notes_hi": "शिक्षण: योग सूत्र की परिभाषा — 'योगश्चित्तवृत्तिनिरोधः'। विचारक और विचार के बीच का अंतर।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 600, "notes_en": "10-minute concentration practice (dharana): fix attention on a single point — the nostrils, where breath enters and exits. When attention leaves, return. The practice is the return. Count the returns if helpful.", "notes_hi": "10-मिनट एकाग्रता अभ्यास (धारणा): नासिका पर एकल बिंदु पर ध्यान।"}
+        ],
+        "reflection_prompt_en": "What is the difference between concentration and meditation? Yoga's answer: concentration is holding the attention on an object; meditation is when that holding becomes effortless.",
+        "reflection_prompt_hi": "एकाग्रता और ध्यान के बीच क्या अंतर है? योग का उत्तर: एकाग्रता किसी वस्तु पर ध्यान रखना है; ध्यान तब है जब यह रखना प्रयासरहित हो जाता है।"
+      },
+      {
+        "day": 16,
+        "title_en": "Attention — The Scarcest Resource",
+        "title_hi": "ध्यान — सबसे दुर्लभ संसाधन",
+        "intro_en": "The attention economy has made human attention the most monetized resource in history. Yoga's counter-practice: voluntary attention placed with intention. Today we practice the formal dharana techniques from the Hatha Yoga Pradipika — trataka (candle gazing) and its modern equivalent — alongside the philosophy of where we place our attention is what our life becomes.",
+        "intro_hi": "ध्यान अर्थव्यवस्था ने मानव ध्यान को इतिहास में सबसे मुद्रीकृत संसाधन बना दिया है। आज हम हठ योग प्रदीपिका से धारणा तकनीकें अभ्यास करते हैं।",
+        "duration_min": 25,
+        "components": [
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 300, "notes_en": "5 min nadi shodhana to balance the hemispheres before concentration work.", "notes_hi": "एकाग्रता कार्य से पहले गोलार्धों को संतुलित करने के लिए 5 मिनट नाड़ी शोधन।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 300, "notes_en": "Trataka: steady gazing at a point (traditionally a candle, equally valid: a dark dot on paper, a natural object). The instruction: do not move the eyes, do not blink if possible, if tears come let them. When eyes fatigue, close and visualize the afterimage. This trains the same neural circuits that meditation trains — voluntary sustained attention.", "notes_hi": "त्राटक: एक बिंदु पर स्थिर दृष्टि। परंपरागत रूप से मोमबत्ती।"},
+          {"type": "meditation", "ref_id": "meditation-focus-work", "duration_sec": 900, "notes_en": "15-minute session: 5 min trataka (fixed gaze), 10 min closed-eye concentration on breath with dharana focus — when attention leaves the object, note where it went (past, future, sensation, sound) before returning. The noting practice builds metacognition.", "notes_hi": "15 मिनट: 5 मिनट त्राटक, 10 मिनट बंद आंख एकाग्रता।"}
+        ],
+        "reflection_prompt_en": "Where does your attention go when it leaves the meditation object? Patterns in where the mind wanders reveal what is unresolved.",
+        "reflection_prompt_hi": "जब ध्यान ध्यान की वस्तु छोड़ता है, तो कहाँ जाता है? मन भटकने के पैटर्न यह प्रकट करते हैं कि क्या अनसुलझा है।"
+      },
+      {
+        "day": 17,
+        "title_en": "Intention — Sankalpa & the Architecture of Change",
+        "title_hi": "इरादा — संकल्प और परिवर्तन की वास्तुकला",
+        "intro_en": "A sankalpa is not a resolution — it is a seed intention planted in the deepest level of the mind during yoga nidra or the hypnagogic state between waking and sleep. Today we work with intentionality from the yogic and neuroscientific perspectives simultaneously, and we revisit and refine the sankalpa from day seven.",
+        "intro_hi": "संकल्प एक संकल्प नहीं है — यह एक बीज इरादा है जो योग निद्रा के दौरान मन के सबसे गहरे स्तर में लगाया जाता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-grounding-foundations", "duration_sec": 300, "notes_en": "Grounding sequence before intention work.", "notes_hi": "इरादे के काम से पहले आधार अनुक्रम।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 600, "notes_en": "The neuroscience of intention: the default mode network activates when we visualize future states; the same networks activate as when the event is actually occurring. A sankalpa is a short, present-tense, positive statement. Not 'I want to be calm' but 'I am at peace.' Formulate your sankalpa for the next three days.", "notes_hi": "इरादे का तंत्रिका विज्ञान। संकल्प: संक्षिप्त, वर्तमान काल, सकारात्मक।"},
+          {"type": "meditation", "ref_id": "meditation-yoga-nidra-short", "duration_sec": 900, "notes_en": "15-minute sankalpa nidra: enter the threshold state, plant the sankalpa three times at maximum depth of relaxation, allow the seed to settle without analysis.", "notes_hi": "15-मिनट संकल्प निद्रा: दहलीज अवस्था में प्रवेश, तीन बार संकल्प लगाएं।"}
+        ],
+        "reflection_prompt_en": "What is your sankalpa? Write it in the present tense, in one sentence, beginning with 'I am' or 'I have' rather than 'I want to.'",
+        "reflection_prompt_hi": "आपका संकल्प क्या है? इसे वर्तमान काल में, एक वाक्य में लिखें, 'मैं हूं' या 'मेरे पास है' से शुरू करें।"
+      },
+      {
+        "day": 18,
+        "title_en": "Sleep — Yoga for the Hours Between",
+        "title_hi": "नींद — बीच के घंटों के लिए योग",
+        "intro_en": "Sleep is not a passive state — it is the time the brain consolidates learning, the body repairs tissue, and the emotional system processes the day's unresolved feeling. Poor sleep quality compounds every difficulty. Today's session is specifically designed to be practiced 30-60 minutes before bed and includes a complete sleep preparation protocol.",
+        "intro_hi": "नींद निष्क्रिय अवस्था नहीं है — यह वह समय है जब मस्तिष्क ज्ञान को समेकित करता है। आज का सत्र सोने से 30-60 मिनट पहले अभ्यास के लिए बनाया गया है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-restorative-surrender", "duration_sec": 600, "notes_en": "Evening restorative sequence: supine butterfly (3 min), legs up wall (5 min), supine spinal twist (2 min each side), final savasana. No standing poses. All floor or wall.", "notes_hi": "शाम का पुनर्संग्रहीत अनुक्रम: सुपाइन बटरफ्लाई, दीवार पर पैर, सुपाइन स्पाइनल ट्विस्ट।"},
+          {"type": "breath", "ref_id": "breath-4-7-8", "duration_sec": 300, "notes_en": "5 min 4-7-8 in supine: 6 rounds. This is the sleep transition protocol — the extended exhale activates parasympathetic dominance.", "notes_hi": "सुपाइन में 5 मिनट 4-7-8: 6 चक्र।"},
+          {"type": "meditation", "ref_id": "meditation-sleep", "duration_sec": 600, "notes_en": "10-minute sleep meditation: body scan, progressive muscle relaxation (tense and release from feet to face), cooling visualization. Designed to be continued into sleep. Instructor instructs: 'if you fall asleep, the session is complete.'", "notes_hi": "10-मिनट नींद ध्यान: बॉडी स्कैन, प्रगतिशील मांसपेशी विश्राम, शीतल दृश्यावलोकन।"}
+        ],
+        "reflection_prompt_en": "What is your current pre-sleep routine? What is the last screen you look at and the last thought you have before sleeping? Both are interventions.",
+        "reflection_prompt_hi": "आपकी वर्तमान सोने से पहले की दिनचर्या क्या है? आप सोने से पहले जो आखिरी स्क्रीन देखते हैं वह क्या है?"
+      },
+      {
+        "day": 19,
+        "title_en": "The Philosophy — Yoga is Not Exercise",
+        "title_hi": "दर्शन — योग व्यायाम नहीं है",
+        "intro_en": "With three days remaining, we address the philosophical container that gives everything we have practiced its meaning. The Yoga Sutras, the Bhagavad Gita, the Upanishads — what do these texts actually say, and how does it change what we are doing on the mat? Today: yoga as the study of the self.",
+        "intro_hi": "तीन दिन शेष हैं, हम उस दार्शनिक पात्र को संबोधित करते हैं जो हमारे सभी अभ्यासों को उनका अर्थ देता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-warrior-foundations", "duration_sec": 300, "notes_en": "10-minute flowing warrior practice — the body knows this now.", "notes_hi": "10-मिनट प्रवाहमान योद्धा अभ्यास।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 900, "notes_en": "Philosophy session: (1) The Yoga Sutras: eight limbs, the goal of nirodha, the concept of the seer (drashtuh) being distinct from what is seen (drishya). (2) Bhagavad Gita 2.47: 'You have a right to action but not to the fruits of action.' What this means for the way we practice. (3) Advaita: the teaching that the small self (jiva) and the universal self (atman/brahman) are not two. How this transforms the inner critic.", "notes_hi": "दर्शन सत्र: योग सूत्र, भगवद गीता 2.47, अद्वैत।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 600, "notes_en": "10-minute open awareness meditation: no object, no goal, no technique. Just sitting. This is the hardest and most accurate form of meditation.", "notes_hi": "10-मिनट खुली जागरूकता ध्यान: कोई वस्तु नहीं, कोई लक्ष्य नहीं।"}
+        ],
+        "reflection_prompt_en": "'You have a right to action, not to the fruits.' What would change if you practiced your work, your relationships, your creative projects with this as your orientation?",
+        "reflection_prompt_hi": "'कर्म पर अधिकार है, फल पर नहीं।' अगर आप यह अभ्यास करें तो क्या बदलेगा?"
+      },
+      {
+        "day": 20,
+        "title_en": "Integration — Making the Practice Your Own",
+        "title_hi": "एकीकरण — अभ्यास को अपना बनाना",
+        "intro_en": "Day twenty is the first session with full student choice within structure: you are given the full toolkit (asana, breath, meditation) and 25 minutes. The guidance is minimal — a ten-minute framework, then silence. This is the bridge from course to independent practice.",
+        "intro_hi": "बीसवाँ दिन पहला सत्र है जिसमें संरचना के भीतर पूर्ण छात्र विकल्प है: आपको पूर्ण टूलकिट दिया जाता है।",
+        "duration_min": 25,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 180, "notes_en": "Minimal instruction: 'Today you choose. You have the body, the breath, and the mind. What does today ask for? Move if you need movement. Breathe if you need regulating. Sit if you need stillness. Twenty minutes, no instruction. Begin.'", "notes_hi": "न्यूनतम निर्देश: 'आज आप चुनते हैं। आपके पास शरीर, श्वास और मन है।'"},
+          {"type": "asana_sequence", "ref_id": "seq-grounding-foundations", "duration_sec": 600, "notes_en": "Student self-led practice — no instruction. Time marker at 10 minutes to transition to stillness if desired.", "notes_hi": "छात्र स्व-नेतृत्व अभ्यास — कोई निर्देश नहीं।"},
+          {"type": "meditation", "ref_id": "meditation-breath-anchor", "duration_sec": 600, "notes_en": "Student self-led meditation — no instruction. 10 minutes.", "notes_hi": "छात्र स्व-नेतृत्व ध्यान — कोई निर्देश नहीं।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Brief close: 'Tomorrow is the last day. Notice what comes up.'", "notes_hi": "संक्षिप्त समापन: 'कल आखिरी दिन है।'"}
+        ],
+        "reflection_prompt_en": "What did you choose to do in the unstructured time? Your choice reveals where you are in the practice.",
+        "reflection_prompt_hi": "असंरचित समय में आपने क्या करना चुना? आपकी पसंद यह बताती है कि आप अभ्यास में कहाँ हैं।"
+      },
+      {
+        "day": 21,
+        "title_en": "Completion — Not the End, the Beginning",
+        "title_hi": "पूर्णता — अंत नहीं, शुरुआत",
+        "intro_en": "The twenty-first day is not a climax — it is an arrival at ordinary. The most successful long-term practitioners are those who find the practice unremarkable — as natural as bathing, as expected as meals. Today we complete the reset, name what has changed, name what continues, and receive the one commitment that sustains everything beyond the course.",
+        "intro_hi": "इक्कीसवाँ दिन चरमोत्कर्ष नहीं है — यह साधारण पर आगमन है। सबसे सफल दीर्घकालिक साधक वे हैं जो अभ्यास को अनुल्लेखनीय पाते हैं।",
+        "duration_min": 25,
+        "components": [
+          {"type": "asana_sequence", "ref_id": "seq-gentle-vinyasa-week1", "duration_sec": 600, "notes_en": "The full first-week sequence from day six: now practiced entirely without instruction, only with the breath cue. The body knows this. 10 minutes.", "notes_hi": "छठे दिन का पूरा अनुक्रम: अब केवल श्वास संकेत के साथ।"},
+          {"type": "breath", "ref_id": "breath-nadi-shodhana", "duration_sec": 300, "notes_en": "5 rounds nadi shodhana as closing breath practice.", "notes_hi": "समापन श्वास अभ्यास के रूप में 5 चक्र नाड़ी शोधन।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 480, "notes_en": "8-minute loving-kindness completion: the same metta from day eight, extended to include every version of yourself across these 21 days.", "notes_hi": "8-मिनट मेत्ता समापन: इन 21 दिनों में अपने हर संस्करण को शामिल करके।"},
+          {"type": "talk", "ref_id": null, "duration_sec": 300, "notes_en": "Closing talk — see closing_en/hi. The one commitment: 10 minutes tomorrow morning, without reason.", "notes_hi": "समापन वार्ता। एक प्रतिबद्धता: कल सुबह 10 मिनट, बिना कारण।"}
+        ],
+        "reflection_prompt_en": "Complete this sentence: 'Twenty-one days ago I came because ___________. Today I continue because ___________.'",
+        "reflection_prompt_hi": "इस वाक्य को पूरा करें: 'इक्कीस दिन पहले मैं आया क्योंकि ___________। आज मैं जारी रखता हूं क्योंकि ___________।'"
+      }
+    ],
+    "closing_en": "Twenty-one days. The reset is complete. But 'complete' is not the right word — it implies this was a project with a finish line. What actually happened is different: you spent three weeks learning to feel your body, to meet your emotional life, and to begin a relationship with the witness behind the thoughts. None of these skills diminish when the course ends. They are yours. The body you practiced in on day one and the body you practiced in today are different — not because of the sessions, but because you showed up. In the Bhagavad Gita, Krishna says to Arjuna: 'Even a little of this dharma protects from great fear.' Ten minutes tomorrow morning. Not because the reset demands it. Because you have already proven to yourself that you can.",
+    "closing_hi": "इक्कीस दिन। रीसेट पूर्ण है। आपने तीन सप्ताह अपना शरीर महसूस करना, अपने भावनात्मक जीवन को मिलना, और विचारों के पीछे साक्षी के साथ एक संबंध शुरू करना सीखा। भगवद गीता में कृष्ण अर्जुन से कहते हैं: 'इस धर्म का थोड़ा भी महान भय से बचाता है।'",
+    "recommended_next_course_id": "10-days-of-pranayama"
+  },
+  {
+    "id": "7-days-for-new-mothers",
+    "title_en": "7 Days for New Mothers",
+    "title_hi": "नई माताओं के लिए 7 दिन",
+    "subtitle_en": "Gentle return to the body after birth, with full safety for C-section and diastasis recti",
+    "subtitle_hi": "प्रसव के बाद शरीर में धीरे-धीरे वापसी, सिजेरियन और डायस्टेसिस रेक्टाई के लिए पूर्ण सुरक्षा के साथ",
+    "days": 7,
+    "level": "beginner",
+    "focus_tag": "postnatal",
+    "intro_en": "This course is for you — not the body you had before pregnancy, not the body you hope to have in six months, but the body you are in right now: changed, capable, and deserving of the most careful attention. The postpartum period is the most physiologically and psychologically demanding phase most women will face, yet it receives the least dedicated support. Birth — whether vaginal or caesarean — leaves specific physical sequelae that require specific rehabilitation: the pelvic floor, the abdominal wall (particularly if diastasis recti is present), the thoracic spine compressed by feeding positions, the hip flexors weakened by the anterior pelvic tilt of late pregnancy. This course addresses all of these with the precision and care they deserve. Every session includes a full safety check for C-section recovery and diastasis recti. Nothing on the floor until your surgeon or midwife has cleared you; all early sessions are chair-supported or standing. The meditations address the emotional landscape of new motherhood — the love, the terror, the grief for the self that existed before, the particular loneliness, and the radical permission to take eight minutes for yourself without justification. This course is not designed to get you 'back.' There is no 'back.' There is only forward, from where you are, with what you have, as who you now are.",
+    "intro_hi": "यह पाठ्यक्रम आपके लिए है — उस शरीर के लिए नहीं जो गर्भावस्था से पहले था, बल्कि उस शरीर के लिए जिसमें आप अभी हैं: बदला हुआ, सक्षम, और सबसे सावधानीपूर्वक ध्यान का हकदार। प्रसव — चाहे योनि मार्ग से हो या सिजेरियन — विशिष्ट शारीरिक परिणाम छोड़ता है। यह पाठ्यक्रम उन सभी को देखभाल के साथ संबोधित करता है। सिजेरियन और डायस्टेसिस रेक्टाई के लिए हर सत्र में पूर्ण सुरक्षा जांच। ध्यान नई मातृत्व के भावनात्मक परिदृश्य को संबोधित करता है।",
+    "estimated_daily_minutes": 8,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "The Breath Returns — Your First Practice After Birth",
+        "title_hi": "श्वास वापस आती है — प्रसव के बाद पहला अभ्यास",
+        "intro_en": "The very first practice is breath — not movement. The diaphragm, pelvic floor, transversus abdominis, and multifidus form the 'canister' of core stability. Birth disrupts this canister. Before any exercise, we restore the neuromuscular communication between breath and pelvic floor. This is appropriate from 2-3 days postpartum.",
+        "intro_hi": "पहला अभ्यास श्वास है — आंदोलन नहीं। डायाफ्राम, पेल्विक फ्लोर, ट्रांसवर्सस एब्डोमिनिस और मल्टीफिडस 'कनस्तर' बनाते हैं। प्रसव इसे बाधित करता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "SAFETY NOTES for all sessions: (1) C-section: no twisting or abdominal pressure for minimum 6 weeks — all sessions offer modification. (2) Diastasis recti check: lie on back, lift head, place fingers below navel — if gap is wider than 2 fingers, avoid any exercise that creates midline 'coning' or 'doming.' This course avoids all such exercises by design. (3) Never practice on a full breast — use after feeding. (4) If pain, bleeding increases, or incision site feels strange — stop and call your provider. (5) This course is appropriate from 6 weeks postpartum for vaginal birth, 8-12 weeks for C-section with provider clearance.", "notes_hi": "सुरक्षा नोट्स: (1) सिजेरियन: न्यूनतम 6 सप्ताह तक कोई मुड़ना नहीं। (2) डायस्टेसिस रेक्टाई जांच। (3) भरे स्तन पर अभ्यास नहीं। (4) दर्द, रक्तस्राव, या चीरे की जगह असामान्य लगे तो रुकें।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 180, "notes_en": "Seated three-part breath with pelvic floor awareness: on the inhale, feel the pelvic floor gently descend/soften. On the exhale, feel it gently lift. This is not a kegel — it is the natural movement of the pelvic floor with breath. Practice this coordination for 3 minutes.", "notes_hi": "पेल्विक फ्लोर जागरूकता के साथ बैठे हुए तीन-भाग श्वास: श्वास पर, पेल्विक फ्लोर धीरे से उतरती/नरम होती है।"},
+          {"type": "breath", "ref_id": "breath-coherent", "duration_sec": 180, "notes_en": "4 min coherent breathing (5.5 sec inhale, 5.5 sec exhale). This is the most documented technique for postpartum anxiety reduction. No retention, no effort.", "notes_hi": "4 मिनट सुसंगत श्वास। यह प्रसवोत्तर चिंता में कमी के लिए सबसे अधिक प्रलेखित तकनीक है।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 120, "notes_en": "2-minute self-compassion close: 'You grew a human being. Your body did something extraordinary. You are allowed to rest.'", "notes_hi": "2-मिनट स्व-करुणा समापन: 'आपने एक इंसान पाला। आपके शरीर ने कुछ असाधारण किया।'"}
+        ],
+        "reflection_prompt_en": "What does your body need to hear from you right now — not what you think you should feel, but what is actually true for you?",
+        "reflection_prompt_hi": "आपके शरीर को अभी आपसे क्या सुनने की जरूरत है — आप क्या महसूस करना चाहिए नहीं, बल्कि आपके लिए जो वास्तव में सच है?"
+      },
+      {
+        "day": 2,
+        "title_en": "Pelvic Floor Foundations — Not Just Kegels",
+        "title_hi": "पेल्विक फ्लोर की नींव — केवल केगेल नहीं",
+        "intro_en": "The pelvic floor is not a single muscle — it is a hammock of muscles (levator ani, coccygeus) with connective tissue that supports the uterus, bladder, and bowel. After birth, it needs both to release and to strengthen — often simultaneously, in different areas. Today we address both with the help of pelvic floor physiotherapy principles.",
+        "intro_hi": "पेल्विक फ्लोर एक मांसपेशी नहीं है — यह मांसपेशियों का एक झूला है जो गर्भाशय, मूत्राशय और आंत को सहारा देता है। प्रसव के बाद, इसे रिलीज़ और मजबूत दोनों करने की जरूरत है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Pelvic floor as elevator: most people only know about contracting (kegel). But the pelvic floor must also fully release. If hypertonicity (too tight) is present — which is common after perineal trauma — kegels make it worse. The elevator: lift to floor 1 (10% effort), floor 2 (50%), floor 3 (full), hold, then release to ground floor AND below ground — this release component is what most people miss.", "notes_hi": "पेल्विक फ्लोर लिफ्ट के रूप में: केगेल के अलावा पूर्ण रिलीज़ भी आवश्यक है।"},
+          {"type": "asana_sequence", "ref_id": "seq-pelvic-floor-postnatal", "duration_sec": 240, "notes_en": "Seated: 5 elevator contractions with full release. Then: diaphragmatic breath coordinated with pelvic floor. Standing: 5 squats (modified, feet wider than hips, toes out) — on descent, pelvic floor releases; on ascent, gentle lift. This is the functional pelvic floor pattern. C-section modification: all squats seated as chair exercise.", "notes_hi": "बैठे हुए: 5 एलीवेटर संकुचन पूर्ण रिलीज़ के साथ। खड़े: 5 स्क्वाट। सिजेरियन संशोधन: सभी स्क्वाट बैठकर।"},
+          {"type": "breath", "ref_id": "breath-4-7-8", "duration_sec": 120, "notes_en": "3 rounds 4-7-8 in supine if cleared, or seated. The extended exhale activates parasympathetic recovery.", "notes_hi": "सुपाइन या बैठकर 3 चक्र 4-7-8।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 30, "notes_en": "Closing 30 seconds: one full breath of gratitude for your body's work.", "notes_hi": "30 सेकंड समापन: अपने शरीर के काम के लिए कृतज्ञता की एक श्वास।"}
+        ],
+        "reflection_prompt_en": "Do you feel tightness or weakness in the pelvic floor? Both are common — tightness requires release exercises, weakness requires careful strengthening. Knowing which you have guides the practice.",
+        "reflection_prompt_hi": "क्या आप पेल्विक फ्लोर में कठोरता या कमजोरी महसूस करती हैं? दोनों सामान्य हैं। यह जानना अभ्यास का मार्गदर्शन करता है।"
+      },
+      {
+        "day": 3,
+        "title_en": "Neck, Shoulders & Upper Back — The Feeding Posture Repair",
+        "title_hi": "गर्दन, कंधे और ऊपरी पीठ — फीडिंग मुद्रा की मरम्मत",
+        "intro_en": "Breastfeeding and bottle-feeding both create the same postural pattern: forward head, rounded shoulders, thoracic kyphosis, tight pecs, and a specific tension in the upper trapezius. This session is the antidote — entirely standing and chair-supported, designed to be done while the baby sleeps.",
+        "intro_hi": "स्तनपान और बोतल-फीडिंग दोनों एक ही मुद्रा पैटर्न बनाते हैं: आगे सिर, गोल कंधे, थोरेसिक काइफोसिस। यह सत्र उसका समाधान है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Feeding posture pattern: cumulative hours in forward head position (6-12+ hours daily in early weeks). The remedy is not sitting perfectly straight while feeding — it is consistent counter-movement between feeds.", "notes_hi": "फीडिंग मुद्रा पैटर्न: आगे के सिर की स्थिति में संचयी घंटे। उपाय फीड के बीच सुसंगत प्रति-आंदोलन है।"},
+          {"type": "asana_sequence", "ref_id": "seq-neck-shoulder-desk", "duration_sec": 360, "notes_en": "Chin tuck × 10 (the most important exercise). Neck side stretch — 30 sec each side. Doorway pec stretch — 45 sec each side. Eagle arms — 45 sec each side. Shoulder blade squeezes × 15. Gentle thoracic extension over chair back — 3×. Upper back foam roller equivalent: if no roller, clasp hands behind head and gently extend over the top of a chair. No floor postures.", "notes_hi": "चिन टक × 10। गर्दन साइड स्ट्रेच। दरवाजे पर पेक स्ट्रेच। ईगल आर्म्स। कंधे निचोड़। थोरेसिक एक्सटेंशन।"},
+          {"type": "breath", "ref_id": "breath-ujjayi", "duration_sec": 120, "notes_en": "3 rounds ujjayi with shoulder blades actively drawn back — feel how chest breath volume increases.", "notes_hi": "कंधे के ब्लेड सक्रिय रूप से पीछे के साथ 3 चक्र उज्जायी।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 60, "notes_en": "1-minute self-compassion: 'Feeding another person is one of the most physically demanding things you can do. Your body is doing something remarkable.'", "notes_hi": "1-मिनट स्व-करुणा: 'दूसरे व्यक्ति को दूध पिलाना सबसे अधिक शारीरिक रूप से मांग करने वाली चीजों में से एक है।'"}
+        ],
+        "reflection_prompt_en": "How are your shoulders positioned right now as you hold or feed your baby? Is your chin jutting forward? This is not criticism — it is information for the next session.",
+        "reflection_prompt_hi": "अभी जब आप अपने शिशु को पकड़ती हैं या दूध पिलाती हैं तो आपके कंधे कैसे हैं?"
+      },
+      {
+        "day": 4,
+        "title_en": "Gentle Movement — The Body's First Steps Back",
+        "title_hi": "कोमल आंदोलन — शरीर के पहले कदम वापस",
+        "intro_en": "Day four introduces the first flowing movement sequence of the course — entirely standing, no floor required. The Pawanmuktasana series from Bihar Yoga is the most carefully sequenced rehabilitation movement system in the Indian yoga tradition. Today we use the first section: joint-freeing series for the lower body.",
+        "intro_hi": "चौथा दिन पाठ्यक्रम का पहला प्रवाहमान आंदोलन अनुक्रम प्रस्तुत करता है। बिहार योग की पवनमुक्तासन श्रृंखला सबसे सावधानीपूर्वक क्रमबद्ध पुनर्वास आंदोलन प्रणाली है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Pawanmuktasana: pawan (wind/gas) + mukta (release) + asana. Developed at the Bihar School of Yoga under Satyananda Saraswati. Part 1 (anti-rheumatic group): systematically moves every joint from ankle to neck. The most appropriate movement sequence for postpartum — no compression, no strain, no abdominal loading.", "notes_hi": "पवनमुक्तासन: बिहार स्कूल ऑफ योग में विकसित। प्रसवोत्तर के लिए सबसे उपयुक्त आंदोलन अनुक्रम।"},
+          {"type": "asana_sequence", "ref_id": "seq-pawanmuktasana-lower", "duration_sec": 360, "notes_en": "Standing pawanmuktasana Part 1 (hold chair for balance): ankle rotations × 10 each direction both feet. Knee bends × 10. Hip circles × 10 each direction. Hip hinge × 10 (gentle forward bend with neutral spine). Side bends × 10 each. Gentle standing twist × 10 each (hands on shoulders, rotate upper body only — NO C-section twist until cleared at 12 weeks). Heel and toe raises × 15. Calf stretches × 2 each.", "notes_hi": "खड़े पवनमुक्तासन भाग 1: टखने रोटेशन, घुटने मोड़, हिप सर्कल, हिप हिंज, साइड बेंड, खड़े मोड़, एड़ी-पैर की उंगलियां उठाना।"},
+          {"type": "breath", "ref_id": "breath-three-part", "duration_sec": 120, "notes_en": "2 min three-part breath seated after movement.", "notes_hi": "आंदोलन के बाद 2 मिनट तीन-भाग श्वास।"},
+          {"type": "meditation", "ref_id": "meditation-grounding-body-scan", "duration_sec": 60, "notes_en": "1-minute body scan: does the body feel different after gentle movement? It should.", "notes_hi": "1-मिनट बॉडी स्कैन: क्या कोमल आंदोलन के बाद शरीर अलग लगता है?"}
+        ],
+        "reflection_prompt_en": "Was there any movement today that felt uncomfortable? Distinguish between 'this is working a healing area' (mild discomfort, no pain) versus 'this is strain' (sharp, pulling, or incision-site pain). Stop for the second category.",
+        "reflection_prompt_hi": "क्या आज कोई आंदोलन असुविधाजनक लगा? 'यह एक उपचार क्षेत्र में काम कर रहा है' बनाम 'यह तनाव है' के बीच अंतर करें।"
+      },
+      {
+        "day": 5,
+        "title_en": "Self-Compassion for Mothers — The Hardest Practice",
+        "title_hi": "माताओं के लिए स्व-करुणा — सबसे कठिन अभ्यास",
+        "intro_en": "The fifth session addresses what no one tells new mothers: the grief for the self that existed before. The loss of sleep, solitude, spontaneity, career momentum, body autonomy, and the particular identity of 'person who is not yet someone's mother.' These are real losses, and they coexist with real love. Both things are true. Today's meditation is for both.",
+        "intro_hi": "पाँचवाँ सत्र वह संबोधित करता है जो कोई नई माताओं को नहीं बताता: उस आत्मा के लिए शोक जो पहले मौजूद थी। ये वास्तविक हानियाँ हैं जो वास्तविक प्रेम के साथ सह-अस्तित्व में हैं।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Matrescence (Dana Raphael, 1970s; rediscovered by Alexandra Sacks): the developmental transformation of becoming a mother, as significant as adolescence. Postpartum depression affects 1 in 5 mothers; postpartum anxiety is even more common. This course is not therapy. If you are struggling, please tell your midwife or GP. But: the feelings of grief, ambivalence, inadequacy, and terror are not signs of failure. They are signs of the scale of what you are doing.", "notes_hi": "मातृत्व: माँ बनने का विकासात्मक परिवर्तन। प्रसवोत्तर अवसाद 5 में से 1 माँ को प्रभावित करता है। शोक, द्विधा, अपर्याप्तता की भावनाएं विफलता के संकेत नहीं हैं।"},
+          {"type": "breath", "ref_id": "breath-bhramari", "duration_sec": 180, "notes_en": "5 rounds bhramari. The vibration soothes both the practitioner and — if the baby is held — the baby, because the sound carries through the chest. Double-use practice.", "notes_hi": "5 चक्र भ्रामरी। कंपन अभ्यासकर्ता और — यदि शिशु को पकड़ा हो — शिशु दोनों को शांत करता है।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 300, "notes_en": "5-minute self-compassion meditation with specific focus on new motherhood: three rounds of the self-compassion break specifically for the experience of this season. 'This is a moment of suffering. Many mothers feel this way. May I be kind to myself in this moment.' Include permission: to need help, to not be doing it perfectly, to feel both love and loss.", "notes_hi": "5-मिनट स्व-करुणा ध्यान: नई मातृत्व पर विशेष ध्यान। 'यह पीड़ा का क्षण है। बहुत सी माताएं ऐसा महसूस करती हैं।'"}
+        ],
+        "reflection_prompt_en": "What part of your pre-motherhood self do you miss most? There is no wrong answer. Naming it is not ingratitude — it is honesty.",
+        "reflection_prompt_hi": "मातृत्व से पहले के अपने जीवन का कौन सा हिस्सा आपको सबसे ज्यादा याद आता है? इसे नाम देना कृतघ्नता नहीं है — यह ईमानदारी है।"
+      },
+      {
+        "day": 6,
+        "title_en": "Hip & Lower Back Restoration — Undoing the Pregnancy Arc",
+        "title_hi": "हिप और पीठ के निचले हिस्से की बहाली — गर्भावस्था के चाप को पूर्ववत करना",
+        "intro_en": "Late pregnancy creates an anterior pelvic tilt — hips tilting forward, lumbar spine exaggerating its curve — as the growing baby changes the center of gravity. This posture pattern often persists after birth because the muscles have adapted. Today we address hip flexor shortening, glute weakness, and the lower back tightness that results.",
+        "intro_hi": "देर से गर्भावस्था एक पूर्वकाल पेल्विक झुकाव बनाती है। यह मुद्रा पैटर्न अक्सर जन्म के बाद बना रहता है।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Relaxin (the hormone that softens joints in pregnancy) remains elevated for up to 5 months postpartum in breastfeeding mothers — joints are still more mobile and more vulnerable than pre-pregnancy. This means: no deep stretching to maximum range, no joint laxity. Work in the middle range, gently.", "notes_hi": "रिलैक्सिन स्तनपान कराने वाली माताओं में प्रसव के बाद 5 महीने तक ऊंचा रहता है। इसका अर्थ: कोई गहरी स्ट्रेचिंग नहीं।"},
+          {"type": "asana_sequence", "ref_id": "seq-hip-postnatal", "duration_sec": 360, "notes_en": "Standing hip flexor stretch at chair: step back into a gentle lunge, use chair for support, gentle lean forward — 45 sec each side. Seated figure-four: right ankle on left knee, gentle press on knee, fold slightly — 45 sec each side. Glute activation: standing clamshell with support (hold chair, side-lying option), 15 reps each side. Posterior pelvic tilt × 15 seated: rock pelvis backward, flattening lower back — this decompresses the lumbar. All movements in middle range, no end-range loading.", "notes_hi": "कुर्सी पर खड़े हिप फ्लेक्सर स्ट्रेच। बैठे फिगर-फोर। ग्लूट एक्टिवेशन। पोस्टीरियर पेल्विक टिल्ट।"},
+          {"type": "breath", "ref_id": "breath-coherent", "duration_sec": 120, "notes_en": "2-minute coherent breathing to close the hip work.", "notes_hi": "हिप कार्य बंद करने के लिए 2-मिनट सुसंगत श्वास।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 60, "notes_en": "1-minute gratitude for the hips that carried the pregnancy.", "notes_hi": "1-मिनट उन हिप्स के लिए कृतज्ञता जिन्होंने गर्भावस्था को वहन किया।"}
+        ],
+        "reflection_prompt_en": "Place your hands on your hips and stand in front of a mirror if available. Do your hips tilt forward (belly pops out, arch in lower back) or backward? This tells you which muscles to prioritize.",
+        "reflection_prompt_hi": "यदि उपलब्ध हो तो दर्पण के सामने खड़े हों। क्या आपके हिप्स आगे झुकते हैं या पीछे? यह आपको बताता है कि किन मांसपेशियों को प्राथमिकता दें।"
+      },
+      {
+        "day": 7,
+        "title_en": "The Practice That Continues — A Protocol for the Weeks Ahead",
+        "title_hi": "जारी रहने वाला अभ्यास — आगे के हफ्तों के लिए एक प्रोटोकॉल",
+        "intro_en": "The seventh session is not a graduation — it is the handoff. You now have a complete postpartum toolkit: pelvic floor coordination, breath as the core activator, upper back counter-movement for feeding, gentle joint mobility, and a self-compassion practice that can be done with a baby in your arms. Today we sequence them into a permanent 8-minute practice and name what comes next.",
+        "intro_hi": "सातवाँ सत्र स्नातक नहीं है — यह हस्तांतरण है। अब आपके पास एक पूर्ण प्रसवोत्तर टूलकिट है। आज हम उन्हें एक स्थायी 8-मिनट अभ्यास में अनुक्रमित करते हैं।",
+        "duration_min": 8,
+        "components": [
+          {"type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "The 8-minute permanent protocol: 2 min pelvic floor breath coordination (breath + elevator). 2 min neck/shoulder counter-movement (chin tuck, shoulder rolls, blade squeezes). 2 min hip/lower back (figure-four seated, posterior pelvic tilts). 2 min breath and compassion (bhramari 3 rounds + 1-minute self-compassion close). This is every day, indefinitely. It adapts as you heal.", "notes_hi": "8-मिनट स्थायी प्रोटोकॉल: 2 मिनट पेल्विक फ्लोर श्वास। 2 मिनट गर्दन/कंधा। 2 मिनट हिप/पीठ। 2 मिनट श्वास और करुणा।"},
+          {"type": "asana_sequence", "ref_id": "seq-postnatal-full-reset", "duration_sec": 240, "notes_en": "Full 4-minute run-through of the permanent protocol at real pace.", "notes_hi": "स्थायी प्रोटोकॉल का 4-मिनट पूर्ण संचालन।"},
+          {"type": "breath", "ref_id": "breath-bhramari", "duration_sec": 90, "notes_en": "3 rounds bhramari. Final breath practice of the course.", "notes_hi": "3 चक्र भ्रामरी। पाठ्यक्रम का अंतिम श्वास अभ्यास।"},
+          {"type": "meditation", "ref_id": "meditation-self-compassion-short", "duration_sec": 120, "notes_en": "2-minute closing self-compassion. The closing words: 'You showed up every day this week. So did your body. Both deserve acknowledgment.'", "notes_hi": "2-मिनट समापन स्व-करुणा। 'आप इस सप्ताह हर दिन आईं। आपका शरीर भी। दोनों पहचान के हकदार हैं।'"},
+          {"type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Course closing — see closing_en/hi.", "notes_hi": "पाठ्यक्रम समापन।"}
+        ],
+        "reflection_prompt_en": "What does your body need from you in the next seven days? Not what the internet says postpartum recovery looks like — what does your body, specifically, ask for?",
+        "reflection_prompt_hi": "अगले सात दिनों में आपके शरीर को आपसे क्या चाहिए? इंटरनेट नहीं — आपका शरीर, विशेष रूप से, क्या मांगता है?"
+      }
+    ],
+    "closing_en": "Seven days. Eight minutes each. You came to this course in the most demanding season of your life and you showed up anyway — for eight minutes — and that matters more than any measure of fitness or flexibility. The permanent protocol from day seven is yours now. When the baby sleeps in the wrong direction and you get four minutes instead of eight, do four. The pelvic floor breath can be done while feeding. The bhramari can be hummed with the baby in your arms. The self-compassion break takes 30 seconds. The practice fits into your life because it was designed for your life. One more thing: please tell someone you trust how you are actually doing. Not how you are 'managing.' How you are. You grew a person. You deserved support before this course, and you deserve it after.",
+    "closing_hi": "सात दिन। आठ मिनट प्रत्येक। आप अपने जीवन के सबसे मांगलिक मौसम में इस पाठ्यक्रम में आईं और फिर भी आईं। स्थायी प्रोटोकॉल अब आपका है। पेल्विक फ्लोर श्वास फीडिंग के दौरान की जा सकती है। भ्रामरी शिशु को गोद में लेकर गुनगुनाई जा सकती है। एक और बात: कृपया किसी विश्वसनीय व्यक्ति को बताएं कि आप वास्तव में कैसी हैं।",
+    "recommended_next_course_id": "7-days-of-sukoon"
+  }
+]

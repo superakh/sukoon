@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en" data-tod="auto">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Today — Sukoon</title>
+    <meta name="description" content="Today's mantra, today's breath, today's story. A small daily ritual that meets you where you are. Bilingual, festival-aware, made in India.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sukoon">
+    <meta property="og:url" content="https://sukoon.cloud/today.html">
+    <meta property="og:title" content="Today — Sukoon">
+    <meta property="og:description" content="Today's mantra, today's breath, today's story. A small daily ritual.">
+    <meta property="og:image" content="https://sukoon.cloud/og/home.jpg">
+    <meta name="theme-color" content="#0F1B3D">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/css/shell.css">
+    <link rel="stylesheet" href="/css/sukoon-revolution.css">
+    <script src="/js/sukoon-experience.js" defer></script>
+    <script src="/js/sukoon-pulse.js" defer></script>
+    <script src="/js/sukoon-safety.js" defer></script>
+    <script src="/js/sukoon-library.js" defer></script>
+
+    <style>
+        /* ============ TODAY — page tokens (scoped) ============ */
+        .page-today {
+            --sk-night:        #0F1B3D;
+            --sk-twilight:     #1A2547;
+            --sk-aubergine:    #2B1F4A;
+            --sk-dusk:         #6B3E5E;
+            --sk-saffron:      #E8A552;
+            --sk-marigold:     #D87A4A;
+            --sk-haldi:        #E8C547;
+            --sk-tulsi:        #6FA286;
+            --sk-rose:         #C77D7D;
+            --sk-coral:        #F08679;
+            --sk-cream:        #F5EFE2;
+            --sk-cream-dim:    rgba(245, 239, 226, 0.72);
+            --sk-cream-quiet:  rgba(245, 239, 226, 0.45);
+            --sk-mist:         #7FA8A2;
+            --sk-shadow:       rgba(8, 12, 28, 0.55);
+
+            --sk-font-serif:   'Fraunces', 'Tiro Devanagari Hindi', Georgia, serif;
+            --sk-font-sans:    'Inter Tight', 'Hind', system-ui, sans-serif;
+            --sk-font-hindi:   'Tiro Devanagari Hindi', 'Hind', serif;
+
+            --sk-h1: clamp(40px, 6vw, 76px);
+            --sk-h2: clamp(28px, 3.8vw, 44px);
+            --sk-h3: clamp(20px, 2.2vw, 26px);
+            --sk-track-eyebrow: 0.16em;
+
+            background: var(--sk-night);
+            color: var(--sk-cream);
+            font-family: var(--sk-font-sans);
+            min-height: 100vh;
+            margin: 0;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* TIME-OF-DAY palettes (driven by data-tod set in JS) */
+        .page-today[data-tod="dawn"]  { --sk-tod-glow: rgba(232, 197, 71, 0.20); --sk-tod-veil: linear-gradient(180deg, rgba(15,27,61,0.30) 0%, rgba(43,31,74,0.68) 70%, rgba(15,27,61,0.96) 100%); }
+        .page-today[data-tod="day"]   { --sk-tod-glow: rgba(232, 165, 82, 0.18); --sk-tod-veil: linear-gradient(180deg, rgba(15,27,61,0.30) 0%, rgba(15,27,61,0.65) 70%, rgba(15,27,61,0.95) 100%); }
+        .page-today[data-tod="dusk"]  { --sk-tod-glow: rgba(216, 122, 74, 0.24); --sk-tod-veil: linear-gradient(180deg, rgba(107,62,94,0.30) 0%, rgba(43,31,74,0.72) 70%, rgba(15,27,61,0.97) 100%); }
+        .page-today[data-tod="night"] { --sk-tod-glow: rgba(127, 168, 162, 0.18); --sk-tod-veil: linear-gradient(180deg, rgba(15,27,61,0.45) 0%, rgba(15,27,61,0.85) 70%, rgba(15,27,61,1) 100%); }
+
+        .page-today *:focus-visible {
+            outline: 2px solid var(--sk-saffron);
+            outline-offset: 3px;
+            border-radius: 6px;
+        }
+
+        .today-shell {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding-bottom: var(--bottomnav-clearance, 92px);
+            overflow: hidden;
+        }
+
+        /* ============ CRISIS BAR ============ */
+        .sk-crisis-bar {
+            position: relative;
+            z-index: 30;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 10px 18px;
+            background: rgba(15, 27, 61, 0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(245, 239, 226, 0.08);
+            font-size: 13px;
+            color: var(--sk-cream-dim);
+        }
+        .sk-crisis-bar__text { display: inline-flex; align-items: center; gap: 8px; }
+        .sk-crisis-bar__dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--sk-coral);
+            box-shadow: 0 0 12px rgba(240, 134, 121, 0.7);
+        }
+        .sk-crisis-bar__cta {
+            color: var(--sk-cream);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background: var(--sk-coral);
+            transition: background 200ms ease;
+        }
+        .sk-crisis-bar__cta:hover { background: #ec7264; }
+
+        /* ============ LANG TOGGLE ============ */
+        .sk-lang {
+            position: absolute;
+            top: 56px; right: 18px;
+            z-index: 20;
+            display: inline-flex;
+            background: rgba(43, 31, 74, 0.6);
+            border: 1px solid rgba(245, 239, 226, 0.12);
+            border-radius: 999px;
+            padding: 3px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        .sk-lang button {
+            background: transparent;
+            border: none;
+            color: var(--sk-cream-dim);
+            font-family: var(--sk-font-sans);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            padding: 6px 14px;
+            border-radius: 999px;
+            cursor: pointer;
+            transition: background 200ms ease, color 200ms ease;
+        }
+        .sk-lang button[aria-pressed="true"] {
+            background: var(--sk-saffron);
+            color: var(--sk-night);
+        }
+
+        /* ============ HERO ============ */
+        .sk-hero {
+            position: relative;
+            min-height: 64vh;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding: 110px 22px 64px;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        .sk-hero__video, .sk-hero__poster {
+            position: absolute;
+            inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+        .sk-hero__poster { z-index: -3; }
+        .sk-hero__veil {
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(ellipse at 50% 30%, var(--sk-tod-glow) 0%, rgba(15,27,61,0) 60%),
+                var(--sk-tod-veil);
+        }
+        .sk-hero__inner {
+            text-align: center;
+            max-width: 760px;
+            animation: skFadeUp 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+        }
+        .sk-hero__eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: var(--sk-track-eyebrow);
+            text-transform: uppercase;
+            color: var(--sk-saffron);
+            margin-bottom: 18px;
+        }
+        .sk-hero__date {
+            font-family: var(--sk-font-serif);
+            font-weight: 300;
+            font-variation-settings: "opsz" 96;
+            font-size: var(--sk-h1);
+            line-height: 1.04;
+            letter-spacing: -0.022em;
+            color: var(--sk-cream);
+            margin: 0 0 12px;
+        }
+        .sk-hero__date em { font-style: italic; color: var(--sk-saffron); }
+        .sk-hero__date-hi {
+            font-family: var(--sk-font-hindi);
+            font-size: clamp(20px, 2.4vw, 28px);
+            color: var(--sk-cream-dim);
+            margin: 0 0 22px;
+            line-height: 1.4;
+        }
+        .sk-hero__sub {
+            font-size: 17px;
+            color: var(--sk-cream-dim);
+            line-height: 1.6;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+        .sk-hero__festival {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 22px;
+            padding: 8px 16px;
+            border-radius: 999px;
+            background: rgba(232, 165, 82, 0.14);
+            border: 1px solid rgba(232, 165, 82, 0.35);
+            color: var(--sk-cream);
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 0.02em;
+        }
+        .sk-hero__festival[hidden] { display: none; }
+        .sk-hero__festival::before {
+            content: '';
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--sk-saffron);
+            box-shadow: 0 0 10px rgba(232, 165, 82, 0.7);
+        }
+        @keyframes skFadeUp {
+            from { opacity: 0; transform: translateY(24px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ============ RITUAL STREAM ============ */
+        .sk-stream {
+            position: relative;
+            max-width: 760px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 56px 22px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+        .sk-section-eyebrow {
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: var(--sk-track-eyebrow);
+            text-transform: uppercase;
+            color: var(--sk-saffron);
+            margin-bottom: 10px;
+        }
+        .sk-card {
+            position: relative;
+            background: rgba(43, 31, 74, 0.45);
+            border: 1px solid rgba(245, 239, 226, 0.08);
+            border-radius: 22px;
+            padding: 32px 30px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: transform 220ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                        border-color 220ms ease,
+                        box-shadow 220ms ease;
+        }
+        .sk-card:hover {
+            border-color: rgba(232, 165, 82, 0.28);
+            box-shadow: 0 18px 50px rgba(8, 12, 28, 0.32);
+        }
+
+        /* ============ MANTRA CARD ============ */
+        .sk-mantra__text {
+            font-family: var(--sk-font-serif);
+            font-weight: 300;
+            font-variation-settings: "opsz" 96;
+            font-size: clamp(24px, 3vw, 34px);
+            line-height: 1.32;
+            letter-spacing: -0.012em;
+            color: var(--sk-cream);
+            margin: 0 0 14px;
+        }
+        .sk-mantra__text-hi {
+            font-family: var(--sk-font-hindi);
+            font-size: clamp(20px, 2.4vw, 26px);
+            line-height: 1.5;
+            color: var(--sk-cream-dim);
+            margin: 0 0 18px;
+        }
+        .sk-mantra__author {
+            font-size: 13px;
+            color: var(--sk-cream-quiet);
+            letter-spacing: 0.02em;
+            font-style: italic;
+        }
+        .sk-mantra__author::before {
+            content: '— ';
+            color: var(--sk-saffron);
+            font-style: normal;
+            margin-right: 2px;
+        }
+
+        /* ============ FOCUS / REFLECTION CARD ============ */
+        .sk-focus__title {
+            font-family: var(--sk-font-serif);
+            font-weight: 300;
+            font-variation-settings: "opsz" 96;
+            font-size: var(--sk-h2);
+            line-height: 1.12;
+            margin: 0 0 18px;
+            color: var(--sk-cream);
+        }
+        .sk-focus__text {
+            font-size: 16px;
+            color: var(--sk-cream-dim);
+            line-height: 1.7;
+            margin: 0 0 16px;
+        }
+        .sk-focus__text-hi {
+            font-family: var(--sk-font-hindi);
+            font-size: 15px;
+            color: var(--sk-cream-quiet);
+            line-height: 1.7;
+            margin: 0 0 22px;
+        }
+
+        /* ============ CTA BUTTONS ============ */
+        .sk-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 22px;
+            border-radius: 999px;
+            background: var(--sk-saffron);
+            color: var(--sk-night);
+            font-family: var(--sk-font-sans);
+            font-weight: 600;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-decoration: none;
+            border: 1px solid transparent;
+            cursor: pointer;
+            transition: background 200ms ease, transform 200ms ease;
+        }
+        .sk-cta:hover { background: #f0b265; transform: translateY(-1px); }
+        .sk-cta--ghost {
+            background: transparent;
+            border-color: rgba(245, 239, 226, 0.22);
+            color: var(--sk-cream);
+        }
+        .sk-cta--ghost:hover { background: rgba(245, 239, 226, 0.06); }
+        .sk-cta__arrow { transition: transform 200ms ease; }
+        .sk-cta:hover .sk-cta__arrow { transform: translateX(3px); }
+
+        /* ============ RITUAL ROWS (Breath / Story) ============ */
+        .sk-row {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            gap: 18px;
+            align-items: center;
+        }
+        .sk-row__icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(232, 165, 82, 0.18) 0%, rgba(216, 122, 74, 0.10) 100%);
+            border: 1px solid rgba(232, 165, 82, 0.30);
+            display: grid;
+            place-items: center;
+            color: var(--sk-saffron);
+        }
+        .sk-row__title {
+            font-family: var(--sk-font-serif);
+            font-weight: 400;
+            font-variation-settings: "opsz" 96;
+            font-size: 22px;
+            color: var(--sk-cream);
+            margin: 0 0 4px;
+            line-height: 1.2;
+        }
+        .sk-row__sub {
+            font-size: 13px;
+            color: var(--sk-cream-dim);
+            letter-spacing: 0.01em;
+            margin: 0;
+        }
+        .sk-row__meta {
+            font-size: 11px;
+            color: var(--sk-cream-quiet);
+            text-transform: uppercase;
+            letter-spacing: var(--sk-track-eyebrow);
+            margin-top: 6px;
+        }
+        @media (max-width: 520px) {
+            .sk-row { grid-template-columns: 48px 1fr; }
+            .sk-row__cta-wrap { grid-column: 1 / -1; padding-left: 66px; }
+        }
+
+        /* ============ FESTIVAL PANEL ============ */
+        .sk-festival-card {
+            background:
+                radial-gradient(circle at 90% 0%, rgba(232, 197, 71, 0.18) 0%, transparent 55%),
+                rgba(43, 31, 74, 0.55);
+            border-color: rgba(232, 165, 82, 0.35);
+        }
+        .sk-festival-card__eyebrow { color: var(--sk-haldi); }
+        .sk-festival-card[hidden] { display: none; }
+
+        /* ============ PULSE TICKER (bottom of stream) ============ */
+        .sk-pulse-wrap {
+            display: flex;
+            justify-content: center;
+            padding: 8px 0 0;
+        }
+        .sukoon-pulse {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 18px;
+            background: rgba(15, 27, 61, 0.55);
+            border: 1px solid rgba(245, 239, 226, 0.08);
+            border-radius: 999px;
+            font-size: 13px;
+            color: var(--sk-cream-dim);
+        }
+        .sukoon-pulse__dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--sk-tulsi);
+            box-shadow: 0 0 10px rgba(111, 162, 134, 0.7);
+            animation: skPulseDot 2.6s ease-in-out infinite;
+        }
+        @keyframes skPulseDot {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50%      { transform: scale(1.35); opacity: 0.6; }
+        }
+        .sukoon-pulse__count {
+            font-family: var(--sk-font-serif);
+            color: var(--sk-cream);
+            font-variant-numeric: tabular-nums;
+            font-size: 17px;
+            font-weight: 400;
+        }
+        .sukoon-pulse__digits {
+            display: inline-flex;
+            overflow: hidden;
+            height: 1.2em;
+            line-height: 1.2em;
+        }
+        .sukoon-pulse__col {
+            display: inline-flex;
+            flex-direction: column;
+            overflow: hidden;
+            height: 1.2em;
+        }
+        .sukoon-pulse__col-inner {
+            display: inline-block;
+            transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1),
+                        opacity 500ms ease;
+        }
+        .sukoon-pulse__col-inner.is-incoming  { transform: translateY(100%); opacity: 0; }
+        .sukoon-pulse__col-inner.is-outgoing  { transform: translateY(-100%); opacity: 0; }
+        .sukoon-pulse__label { font-size: 13px; color: var(--sk-cream-quiet); }
+
+        /* ============ FLOATING SOS ============ */
+        .sk-fab-sos {
+            position: fixed;
+            right: 18px;
+            bottom: calc(var(--bottomnav-clearance, 92px) + 12px);
+            z-index: 45;
+            width: 56px; height: 56px;
+            border-radius: 50%;
+            background: var(--sk-coral);
+            color: #fff;
+            display: grid;
+            place-items: center;
+            box-shadow: 0 12px 32px rgba(240, 134, 121, 0.45), 0 0 0 6px rgba(240, 134, 121, 0.14);
+            text-decoration: none;
+            transition: transform 200ms ease, background 200ms ease;
+        }
+        .sk-fab-sos:hover { background: #ec7264; transform: translateY(-2px); }
+        .sk-fab-sos svg { width: 24px; height: 24px; }
+        .sk-fab-sos__sr {
+            position: absolute;
+            width: 1px; height: 1px;
+            padding: 0; margin: -1px;
+            overflow: hidden; clip: rect(0, 0, 0, 0);
+            white-space: nowrap; border: 0;
+        }
+
+        /* ============ BOTTOM NAV (5 tabs) ============ */
+        .sk-bottom-nav {
+            position: fixed;
+            inset: auto 0 0 0;
+            z-index: 50;
+            padding: 6px 8px calc(6px + env(safe-area-inset-bottom));
+            background: rgba(15, 27, 61, 0.85);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-top: 1px solid rgba(245, 239, 226, 0.08);
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 4px;
+        }
+        .sk-bottom-nav__item {
+            display: grid;
+            place-items: center;
+            gap: 4px;
+            padding: 8px 4px;
+            border-radius: 12px;
+            color: var(--sk-cream-dim);
+            text-decoration: none;
+            font: 600 10px/1 var(--sk-font-sans);
+            letter-spacing: 0.04em;
+            min-height: 58px;
+            transition: color 200ms ease, background 200ms ease;
+        }
+        .sk-bottom-nav__item:hover { color: var(--sk-cream); }
+        .sk-bottom-nav__item[aria-current="page"] {
+            color: var(--sk-saffron);
+            background: rgba(232, 165, 82, 0.08);
+        }
+        .sk-bottom-nav__icon { width: 22px; height: 22px; }
+        .sk-bottom-nav__label { font-size: 11px; }
+
+        /* ============ SKELETONS ============ */
+        .sk-skel {
+            display: inline-block;
+            background: linear-gradient(90deg,
+                rgba(245, 239, 226, 0.06) 0%,
+                rgba(245, 239, 226, 0.16) 50%,
+                rgba(245, 239, 226, 0.06) 100%);
+            background-size: 200% 100%;
+            animation: skShimmer 1.4s linear infinite;
+            border-radius: 6px;
+            color: transparent;
+        }
+        @keyframes skShimmer {
+            0%   { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        /* ============ LANGUAGE VISIBILITY ============ */
+        .page-today[data-lang="en"] [data-lang-only="hi"] { display: none; }
+        .page-today[data-lang="hi"] [data-lang-only="en"] { display: none; }
+
+        /* ============ RESPONSIVE ============ */
+        @media (max-width: 640px) {
+            .sk-card { padding: 26px 22px; }
+            .sk-hero { padding: 96px 18px 50px; }
+            .sk-lang { top: 50px; right: 14px; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+            .sk-hero__video { display: none; }
+        }
+    </style>
+</head>
+<body class="page-today" data-experience="today" data-lang="en" data-tod="auto">
+
+    <div class="today-shell">
+
+        <!-- ===== CRISIS BAR ===== -->
+        <div class="sk-crisis-bar" role="region" aria-label="Crisis support">
+            <span class="sk-crisis-bar__text">
+                <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
+                <span data-lang-en="In crisis right now? You are not alone." data-lang-hi="अभी संकट में हैं? आप अकेले नहीं हैं।">In crisis right now? You are not alone.</span>
+            </span>
+            <a href="/now.html" class="sk-crisis-bar__cta" data-lang-en="Get help" data-lang-hi="मदद लें">Get help</a>
+        </div>
+
+        <!-- ===== LANG TOGGLE ===== -->
+        <div class="sk-lang" role="group" aria-label="Language">
+            <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+            <button type="button" data-lang-set="hi" aria-pressed="false">हिं</button>
+        </div>
+
+        <!-- ===== HERO (time-of-day aware) ===== -->
+        <section class="sk-hero" aria-label="Today">
+            <video class="sk-hero__video" id="todayHeroVideo"
+                   autoplay muted loop playsinline
+                   poster="/og/home.jpg" aria-hidden="true">
+                <source id="todayHeroVideoSrc" src="/video/hero-day.mp4" type="video/mp4">
+            </video>
+            <img class="sk-hero__poster" src="/og/home.jpg" alt="" aria-hidden="true">
+            <div class="sk-hero__veil" aria-hidden="true"></div>
+
+            <div class="sk-hero__inner">
+                <div class="sk-hero__eyebrow" id="todayEyebrow"
+                     data-lang-en="Today" data-lang-hi="आज">Today</div>
+
+                <h1 class="sk-hero__date">
+                    <span data-lang-en="Today, " data-lang-hi="आज, ">Today, </span>
+                    <em id="todayDateEn"><span class="sk-skel" style="width:14ch">&nbsp;</span></em>
+                </h1>
+                <p class="sk-hero__date-hi" id="todayDateHi" lang="hi">
+                    <span class="sk-skel" style="width:12ch">&nbsp;</span>
+                </p>
+
+                <p class="sk-hero__sub" id="todayHeroSub"
+                   data-lang-en="One mantra. One breath. One story. Take what you need."
+                   data-lang-hi="एक मंत्र। एक साँस। एक कहानी। जो चाहिए वो लें।">
+                    One mantra. One breath. One story. Take what you need.
+                </p>
+
+                <a href="#" id="todayFestivalChip" class="sk-hero__festival" hidden>
+                    <span data-lang-en="Today is " data-lang-hi="आज है ">Today is </span>
+                    <strong id="todayFestivalName">&nbsp;</strong>
+                </a>
+            </div>
+        </section>
+
+        <!-- ===== RITUAL STREAM ===== -->
+        <section class="sk-stream">
+
+            <!-- MANTRA CARD -->
+            <article class="sk-card" id="cardMantra" aria-labelledby="mantraEyebrow">
+                <div class="sk-section-eyebrow" id="mantraEyebrow"
+                     data-lang-en="Today's mantra" data-lang-hi="आज का मंत्र">Today's mantra</div>
+                <p class="sk-mantra__text" id="mantraEn">
+                    <span class="sk-skel" style="width:90%; height:1.4em">&nbsp;</span>
+                </p>
+                <p class="sk-mantra__text-hi" id="mantraHi" lang="hi">
+                    <span class="sk-skel" style="width:80%; height:1.4em">&nbsp;</span>
+                </p>
+                <div class="sk-mantra__author" id="mantraAuthor">
+                    <span class="sk-skel" style="width:18ch">&nbsp;</span>
+                </div>
+            </article>
+
+            <!-- FESTIVAL CARD (only if festival in window) -->
+            <article class="sk-card sk-festival-card" id="cardFestival" hidden aria-labelledby="festivalEyebrow">
+                <div class="sk-section-eyebrow sk-festival-card__eyebrow" id="festivalEyebrow"
+                     data-lang-en="A festival is near" data-lang-hi="त्योहार पास है">A festival is near</div>
+                <h2 class="sk-focus__title" id="festivalTitle">&nbsp;</h2>
+                <p class="sk-focus__text" id="festivalLead">&nbsp;</p>
+                <a class="sk-cta" id="festivalCta" href="/sit.html">
+                    <span data-lang-en="Sit with this practice" data-lang-hi="इस अभ्यास में बैठें">Sit with this practice</span>
+                    <span class="sk-cta__arrow" aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <!-- FOCUS / REFLECTION CARD -->
+            <article class="sk-card" id="cardFocus" aria-labelledby="focusEyebrow">
+                <div class="sk-section-eyebrow" id="focusEyebrow"
+                     data-lang-en="Today's focus" data-lang-hi="आज का केंद्र">Today's focus</div>
+                <h2 class="sk-focus__title" id="focusTitle"
+                    data-lang-en="A small reflection." data-lang-hi="एक छोटा-सा चिंतन।">A small reflection.</h2>
+                <p class="sk-focus__text" id="focusEn">
+                    <span class="sk-skel" style="width:100%; height:1.4em; display:block; margin-bottom:6px">&nbsp;</span>
+                    <span class="sk-skel" style="width:85%; height:1.4em; display:block">&nbsp;</span>
+                </p>
+                <p class="sk-focus__text-hi" id="focusHi" lang="hi">
+                    <span class="sk-skel" style="width:90%; height:1.4em">&nbsp;</span>
+                </p>
+                <a class="sk-cta" href="/sit.html" id="focusCta">
+                    <span data-lang-en="Sit with this" data-lang-hi="इसमें बैठें">Sit with this</span>
+                    <span class="sk-cta__arrow" aria-hidden="true">→</span>
+                </a>
+            </article>
+
+            <!-- BREATH ROW -->
+            <article class="sk-card" id="cardBreath" aria-labelledby="breathEyebrow">
+                <div class="sk-section-eyebrow" id="breathEyebrow"
+                     data-lang-en="Today's breath" data-lang-hi="आज की साँस">Today's breath</div>
+                <div class="sk-row">
+                    <div class="sk-row__icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 3c4 3 4 7 0 9-4 2-4 6 0 9"/>
+                            <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="sk-row__title" id="breathName"
+                            data-lang-en="4-7-8 Calming" data-lang-hi="4-7-8 शांत साँस">4-7-8 Calming</h3>
+                        <p class="sk-row__sub" id="breathWhy"
+                           data-lang-en="A long exhale tells the body the threat is over."
+                           data-lang-hi="लंबी साँस छोड़ना शरीर को बताता है — खतरा टल गया।">
+                            A long exhale tells the body the threat is over.
+                        </p>
+                        <div class="sk-row__meta" id="breathMeta"
+                             data-lang-en="~4 minutes" data-lang-hi="~4 मिनट">~4 minutes</div>
+                    </div>
+                    <div class="sk-row__cta-wrap">
+                        <a class="sk-cta sk-cta--ghost" id="breathCta" href="/breathe.html">
+                            <span data-lang-en="Begin" data-lang-hi="शुरू करें">Begin</span>
+                            <span class="sk-cta__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- STORY ROW (tonight) -->
+            <article class="sk-card" id="cardStory" aria-labelledby="storyEyebrow">
+                <div class="sk-section-eyebrow" id="storyEyebrow"
+                     data-lang-en="Tonight's story" data-lang-hi="आज रात की कहानी">Tonight's story</div>
+                <div class="sk-row">
+                    <div class="sk-row__icon" aria-hidden="true">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="sk-row__title" id="storyName"
+                            data-lang-en="A quiet bedtime story" data-lang-hi="एक शांत बेडटाइम कहानी">A quiet bedtime story</h3>
+                        <p class="sk-row__sub" id="storyTeaser"
+                           data-lang-en="Something gentle to land the day with."
+                           data-lang-hi="दिन को धीरे से उतारने के लिए कुछ कोमल।">
+                            Something gentle to land the day with.
+                        </p>
+                        <div class="sk-row__meta" id="storyMeta"
+                             data-lang-en="12–18 minutes" data-lang-hi="12–18 मिनट">12–18 minutes</div>
+                    </div>
+                    <div class="sk-row__cta-wrap">
+                        <a class="sk-cta sk-cta--ghost" id="storyCta" href="/rest.html">
+                            <span data-lang-en="Open" data-lang-hi="खोलें">Open</span>
+                            <span class="sk-cta__arrow" aria-hidden="true">→</span>
+                        </a>
+                    </div>
+                </div>
+            </article>
+
+            <!-- LIVE PULSE -->
+            <div class="sk-pulse-wrap">
+                <div id="todayPulse" class="sukoon-pulse" aria-live="polite"></div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ===== FLOATING SOS ===== -->
+    <a class="sk-fab-sos" href="/now.html" aria-label="Crisis support — get help now">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/>
+        </svg>
+        <span class="sk-fab-sos__sr">Crisis support</span>
+    </a>
+
+    <!-- ===== BOTTOM NAV (5 tabs) ===== -->
+    <nav class="sk-bottom-nav" aria-label="Main navigation" role="navigation">
+        <a href="/today.html" class="sk-bottom-nav__item" aria-current="page">
+            <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+            </svg>
+            <span class="sk-bottom-nav__label" data-lang-en="Today" data-lang-hi="आज">Today</span>
+        </a>
+        <a href="/breathe.html" class="sk-bottom-nav__item">
+            <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M12 3c4 3 4 7 0 9-4 2-4 6 0 9"/>
+                <circle cx="12" cy="12" r="1.5" fill="currentColor"/>
+            </svg>
+            <span class="sk-bottom-nav__label" data-lang-en="Breathe" data-lang-hi="साँस">Breathe</span>
+        </a>
+        <a href="/sit.html" class="sk-bottom-nav__item">
+            <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="8" r="3"/>
+                <path d="M5 21c1-4 4-6 7-6s6 2 7 6"/>
+            </svg>
+            <span class="sk-bottom-nav__label" data-lang-en="Sit" data-lang-hi="बैठें">Sit</span>
+        </a>
+        <a href="/rest.html" class="sk-bottom-nav__item">
+            <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+            <span class="sk-bottom-nav__label" data-lang-en="Rest" data-lang-hi="आराम">Rest</span>
+        </a>
+        <a href="/be-with-me.html" class="sk-bottom-nav__item">
+            <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
+                <path d="M21 19a2 2 0 0 1-2 2h-1v-7h3zM3 19a2 2 0 0 0 2 2h1v-7H3z"/>
+            </svg>
+            <span class="sk-bottom-nav__label" data-lang-en="Listen" data-lang-hi="सुनें">Listen</span>
+        </a>
+    </nav>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // ============ TIME OF DAY ============
+        // Maps local hour → { tod, video, eyebrowEn, eyebrowHi }
+        // dawn 5–8, day 8–17, dusk 17–20, night 20–5
+        function getTOD(d) {
+            var h = d.getHours();
+            if (h >= 5 && h < 8)  return { tod: 'dawn',  video: '/video/hero-dusk.mp4',  eyebrowEn: 'A quiet dawn',  eyebrowHi: 'एक शांत भोर' };
+            if (h >= 8 && h < 17) return { tod: 'day',   video: '/video/hero-day.mp4',   eyebrowEn: 'Today',          eyebrowHi: 'आज' };
+            if (h >= 17 && h < 20)return { tod: 'dusk',  video: '/video/hero-dusk.mp4',  eyebrowEn: 'Easing into evening', eyebrowHi: 'शाम में उतरते हुए' };
+            return                      { tod: 'night', video: '/video/hero-night.mp4', eyebrowEn: 'A gentle night', eyebrowHi: 'एक कोमल रात' };
+        }
+
+        // ============ DATE FORMATTING ============
+        // Returns { en: "Friday, June 13", hi: "शुक्रवार, 13 जून" }
+        function formatDates(d) {
+            var en;
+            try {
+                en = new Intl.DateTimeFormat('en-IN', {
+                    weekday: 'long', month: 'long', day: 'numeric'
+                }).format(d);
+            } catch (_) {
+                en = d.toDateString();
+            }
+            var hi;
+            try {
+                hi = new Intl.DateTimeFormat('hi-IN', {
+                    weekday: 'long', day: 'numeric', month: 'long'
+                }).format(d);
+            } catch (_) {
+                hi = en;
+            }
+            return { en: en, hi: hi };
+        }
+
+        // ============ LANGUAGE TOGGLE ============
+        var body = document.body;
+        var langButtons = document.querySelectorAll('[data-lang-set]');
+        function applyLang(lang) {
+            body.setAttribute('data-lang', lang);
+            document.documentElement.setAttribute('lang', lang);
+            langButtons.forEach(function (btn) {
+                btn.setAttribute('aria-pressed', btn.getAttribute('data-lang-set') === lang ? 'true' : 'false');
+            });
+            // Swap text for all elements that carry both translations
+            document.querySelectorAll('[data-lang-en][data-lang-hi]').forEach(function (el) {
+                var t = el.getAttribute('data-lang-' + lang);
+                if (t != null) el.textContent = t;
+            });
+            try { localStorage.setItem('sk_lang', lang); } catch (_) {}
+        }
+        langButtons.forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                applyLang(btn.getAttribute('data-lang-set'));
+            });
+        });
+        var savedLang = null;
+        try { savedLang = localStorage.getItem('sk_lang'); } catch (_) {}
+        applyLang(savedLang === 'hi' ? 'hi' : 'en');
+
+        // ============ TOD INIT ============
+        var now = new Date();
+        var tod = getTOD(now);
+        body.setAttribute('data-tod', tod.tod);
+        var heroVideoSrc = document.getElementById('todayHeroVideoSrc');
+        var heroVideo = document.getElementById('todayHeroVideo');
+        if (heroVideoSrc) {
+            heroVideoSrc.setAttribute('src', tod.video);
+            if (heroVideo) { try { heroVideo.load(); heroVideo.play().catch(function(){}); } catch (_) {} }
+        }
+        var eyebrow = document.getElementById('todayEyebrow');
+        if (eyebrow) {
+            eyebrow.setAttribute('data-lang-en', tod.eyebrowEn);
+            eyebrow.setAttribute('data-lang-hi', tod.eyebrowHi);
+            eyebrow.textContent = body.getAttribute('data-lang') === 'hi' ? tod.eyebrowHi : tod.eyebrowEn;
+        }
+
+        // ============ DATE RENDER ============
+        var dates = formatDates(now);
+        var dateEnEl = document.getElementById('todayDateEn');
+        var dateHiEl = document.getElementById('todayDateHi');
+        if (dateEnEl) dateEnEl.textContent = dates.en + '.';
+        if (dateHiEl) dateHiEl.textContent = dates.hi;
+
+        // ============ DAY-OF-YEAR FALLBACK ============
+        // If /api/daily lacks reflection/focus payload, we'll pull from the
+        // bundled daily-q1..q4.json files using day-of-year as the index.
+        function dayOfYear(d) {
+            var start = Date.UTC(d.getUTCFullYear(), 0, 1);
+            var diff = Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()) - start;
+            return Math.floor(diff / 86400000) + 1; // 1..366
+        }
+        function quarterFile(doy) {
+            // Quarters by day-of-year, approximate cuts
+            if (doy <= 90)  return '/content/daily-q1.json';
+            if (doy <= 181) return '/content/daily-q2.json';
+            if (doy <= 273) return '/content/daily-q3.json';
+            return '/content/daily-q4.json';
+        }
+
+        async function fetchDailyFallback() {
+            var doy = dayOfYear(now);
+            try {
+                var resp = await fetch(quarterFile(doy), { credentials: 'same-origin' });
+                if (!resp.ok) return null;
+                var items = await resp.json();
+                if (!Array.isArray(items) || !items.length) return null;
+                // Find by day_of_year or fall back to modulo
+                var hit = items.find(function (x) { return x && x.day_of_year === doy; });
+                return hit || items[doy % items.length] || items[0];
+            } catch (_) { return null; }
+        }
+
+        // ============ DAILY PAYLOAD ============
+        async function loadDaily() {
+            var lang = body.getAttribute('data-lang') || 'en';
+            var iso = now.toISOString().slice(0, 10);
+
+            var payload = null;
+            try {
+                var r = await fetch('/api/daily?date=' + encodeURIComponent(iso) + '&lang=' + lang, {
+                    credentials: 'same-origin',
+                    headers: { 'Accept': 'application/json' }
+                });
+                if (r.ok) payload = await r.json();
+            } catch (_) {}
+
+            // Always pull the fallback too, for reflection/focus fields the
+            // server doesn't currently surface.
+            var fallback = await fetchDailyFallback();
+
+            renderDaily(payload, fallback);
+        }
+
+        function renderDaily(payload, fallback) {
+            payload = payload || {};
+            fallback = fallback || {};
+
+            // ---- MANTRA ----
+            // Prefer server mantra (which carries author + bilingual fields),
+            // fall back to bundled daily.
+            var mantra = payload.mantra || {};
+            var mantraEn = mantra.mantra_en || mantra.text_en || mantra.en
+                        || fallback.mantra_en || fallback.text_en || '';
+            var mantraHi = mantra.mantra_hi || mantra.text_hi || mantra.hi
+                        || fallback.mantra_hi || fallback.text_hi || '';
+            var author = mantra.author || mantra.attribution
+                      || fallback.author || '';
+
+            var mantraEnEl = document.getElementById('mantraEn');
+            var mantraHiEl = document.getElementById('mantraHi');
+            var mantraAuthorEl = document.getElementById('mantraAuthor');
+
+            if (mantraEn) {
+                mantraEnEl.textContent = mantraEn;
+                mantraEnEl.removeAttribute('aria-busy');
+            } else {
+                mantraEnEl.textContent = 'Today, simply begin where you are.';
+            }
+            if (mantraHi) {
+                mantraHiEl.textContent = mantraHi;
+            } else {
+                mantraHiEl.textContent = 'आज, बस वहीं से शुरुआत करें जहाँ आप हैं।';
+            }
+            if (author) {
+                mantraAuthorEl.textContent = author;
+            } else {
+                mantraAuthorEl.textContent = 'Sukoon';
+            }
+
+            // ---- FOCUS / REFLECTION ----
+            var reflectionEn = fallback.reflection_en || mantra.reflection_en || '';
+            var reflectionHi = fallback.reflection_hi || mantra.reflection_hi || '';
+            var focusTag = fallback.focus || mantra.focus || 'sit';
+
+            var focusEnEl = document.getElementById('focusEn');
+            var focusHiEl = document.getElementById('focusHi');
+            var focusTitleEl = document.getElementById('focusTitle');
+            var focusCtaEl = document.getElementById('focusCta');
+
+            if (reflectionEn) {
+                focusEnEl.textContent = reflectionEn;
+            } else {
+                focusEnEl.textContent = 'A small reflection to carry through the day — let it land, then let it go.';
+            }
+            if (reflectionHi) {
+                focusHiEl.textContent = reflectionHi;
+            } else {
+                focusHiEl.textContent = 'दिन भर साथ ले जाने के लिए एक छोटा-सा चिंतन।';
+            }
+
+            // Map focus → CTA destination and title
+            var focusMap = {
+                'sit':    { href: '/sit.html',     titleEn: 'Sit with this.',     titleHi: 'इसमें बैठें।' },
+                'breath': { href: '/breathe.html', titleEn: 'Breathe with this.', titleHi: 'इसके साथ साँस लें।' },
+                'rest':   { href: '/rest.html',    titleEn: 'Rest with this.',    titleHi: 'इसके साथ आराम करें।' },
+                'sound':  { href: '/be-with-me.html',  titleEn: 'Listen with this.',  titleHi: 'इसके साथ सुनें।' }
+            };
+            var fm = focusMap[focusTag] || focusMap.sit;
+            focusTitleEl.setAttribute('data-lang-en', fm.titleEn);
+            focusTitleEl.setAttribute('data-lang-hi', fm.titleHi);
+            focusTitleEl.textContent = body.getAttribute('data-lang') === 'hi' ? fm.titleHi : fm.titleEn;
+            focusCtaEl.setAttribute('href', fm.href);
+
+            // ---- FESTIVAL ----
+            renderFestival(payload.festival || null);
+
+            // ---- LIBRARY-DRIVEN BREATH + STORY ----
+            loadBreathSuggestion();
+            loadStorySuggestion();
+        }
+
+        // ============ FESTIVAL ============
+        function renderFestival(festival) {
+            var chip = document.getElementById('todayFestivalChip');
+            var chipName = document.getElementById('todayFestivalName');
+            var card = document.getElementById('cardFestival');
+            var title = document.getElementById('festivalTitle');
+            var lead = document.getElementById('festivalLead');
+            var cta = document.getElementById('festivalCta');
+
+            if (!festival) { chip.hidden = true; card.hidden = true; return; }
+
+            var lang = body.getAttribute('data-lang') || 'en';
+            var name = (lang === 'hi' && festival.festival_name_hi) ? festival.festival_name_hi
+                      : (festival.festival_name_en || festival.name || festival.festival || '');
+            var practiceTitle = (lang === 'hi' && festival.practice_title_hi) ? festival.practice_title_hi
+                              : (festival.practice_title_en || festival.title || '');
+            var script = (lang === 'hi' && festival.practice_script_hi) ? festival.practice_script_hi
+                        : (festival.practice_script_en || festival.script || '');
+
+            if (name) {
+                chipName.textContent = name;
+                chip.hidden = false;
+                chip.setAttribute('href', '#cardFestival');
+            }
+
+            title.textContent = practiceTitle || (lang === 'hi' ? 'एक छोटा अभ्यास' : 'A small practice');
+            // Show first 2 sentences as the lead
+            var first = script ? script.split(/\n+/).filter(Boolean).slice(0, 1).join(' ') : '';
+            lead.textContent = first || (lang === 'hi'
+                ? 'इस त्योहार के साथ एक शांत क्षण।'
+                : 'A quiet moment to meet this festival.');
+            cta.setAttribute('href', '/sit.html?festival=' + encodeURIComponent(festival.festival_id || festival.id || ''));
+            card.hidden = false;
+        }
+
+        // ============ BREATH SUGGESTION ============
+        async function loadBreathSuggestion() {
+            // Pull from /api/library?kind=breath, prefer something quick.
+            try {
+                var r = await fetch('/api/library', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ kind: 'breath', limit: 5 })
+                });
+                if (!r.ok) return;
+                var data = await r.json();
+                var items = Array.isArray(data) ? data : (data.items || []);
+                if (!items.length) return;
+                // Deterministic pick by day-of-year so it changes daily.
+                var pick = items[dayOfYear(now) % items.length];
+                applyBreath(pick);
+            } catch (_) {}
+        }
+        function applyBreath(p) {
+            if (!p) return;
+            var lang = body.getAttribute('data-lang') || 'en';
+            var nameEn = p.name_en || p.title_en || p.name || '4-7-8 Calming';
+            var nameHi = p.name_hi || p.title_hi || nameEn;
+            var why    = (lang === 'hi' && (p.why_hi || p.guidance_hi)) ? (p.why_hi || p.guidance_hi)
+                      : (p.why_en || p.guidance_en || 'A long exhale tells the body the threat is over.');
+            var rounds = p.rounds || 4;
+            var sumSec = Array.isArray(p.ratio) ? p.ratio.reduce(function(a,b){return a+b;}, 0) * rounds : 60 * rounds / 4;
+            var min = Math.max(1, Math.round(sumSec / 60));
+
+            var nameEl  = document.getElementById('breathName');
+            var whyEl   = document.getElementById('breathWhy');
+            var metaEl  = document.getElementById('breathMeta');
+            var ctaEl   = document.getElementById('breathCta');
+
+            nameEl.setAttribute('data-lang-en', nameEn);
+            nameEl.setAttribute('data-lang-hi', nameHi);
+            nameEl.textContent = lang === 'hi' ? nameHi : nameEn;
+
+            whyEl.textContent = why;
+            metaEl.textContent = lang === 'hi' ? ('~' + min + ' मिनट') : ('~' + min + ' minutes');
+            ctaEl.setAttribute('href', '/breathe.html?id=' + encodeURIComponent(p.id || ''));
+        }
+
+        // ============ STORY SUGGESTION ============
+        async function loadStorySuggestion() {
+            try {
+                var r = await fetch('/api/library', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ kind: 'stories', limit: 8 })
+                });
+                if (!r.ok) return;
+                var data = await r.json();
+                var items = Array.isArray(data) ? data : (data.items || []);
+                if (!items.length) return;
+                var pick = items[dayOfYear(now) % items.length];
+                applyStory(pick);
+            } catch (_) {}
+        }
+        function applyStory(s) {
+            if (!s) return;
+            var lang = body.getAttribute('data-lang') || 'en';
+            var titleEn = s.title_en || s.name_en || s.title || 'A quiet bedtime story';
+            var titleHi = s.title_hi || s.name_hi || titleEn;
+            var teaser  = (lang === 'hi' && (s.teaser_hi || s.summary_hi)) ? (s.teaser_hi || s.summary_hi)
+                        : (s.teaser_en || s.summary_en || s.intro_en || 'Something gentle to land the day with.');
+            var dur     = s.duration_min || s.duration || null;
+
+            var nameEl   = document.getElementById('storyName');
+            var teaserEl = document.getElementById('storyTeaser');
+            var metaEl   = document.getElementById('storyMeta');
+            var ctaEl    = document.getElementById('storyCta');
+
+            nameEl.setAttribute('data-lang-en', titleEn);
+            nameEl.setAttribute('data-lang-hi', titleHi);
+            nameEl.textContent = lang === 'hi' ? titleHi : titleEn;
+
+            teaserEl.textContent = teaser;
+
+            if (dur) {
+                metaEl.textContent = lang === 'hi' ? ('~' + dur + ' मिनट') : ('~' + dur + ' minutes');
+            }
+
+            ctaEl.setAttribute('href', '/rest.html?id=' + encodeURIComponent(s.id || ''));
+        }
+
+        // ============ PULSE TICKER ============
+        function mountPulse() {
+            if (typeof window.SukoonPulse !== 'function') {
+                // The script may still be loading; retry once.
+                setTimeout(mountPulse, 250);
+                return;
+            }
+            var p = new window.SukoonPulse({});
+            var el = document.getElementById('todayPulse');
+            if (el) p.mount(el);
+            // Localize label after first render
+            p.onUpdate(function () {
+                var lang = body.getAttribute('data-lang') || 'en';
+                var label = el && el.querySelector('.sukoon-pulse__label');
+                if (label) label.textContent = lang === 'hi'
+                    ? 'अभी सुकून पा रहे हैं'
+                    : 'finding sukoon right now';
+            });
+        }
+        mountPulse();
+
+        // ============ BOOT ============
+        loadDaily();
+
+        // Re-render localized strings whenever language flips after data loads.
+        document.querySelectorAll('[data-lang-set]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                // Re-apply texts for date and TOD eyebrow which were set
+                // dynamically and not via applyLang's static path.
+                var lang = body.getAttribute('data-lang');
+                eyebrow.textContent = lang === 'hi' ? tod.eyebrowHi : tod.eyebrowEn;
+            });
+        });
+    })();
+    </script>
+</body>
+</html>

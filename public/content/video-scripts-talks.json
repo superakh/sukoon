@@ -1,0 +1,986 @@
+[
+  {
+    "id": "chitta-vritti-nirodha-modern-translation",
+    "title_en": "What Patanjali Meant by Chitta-Vritti-Nirodha",
+    "title_hi": "पतंजलि का चित्त-वृत्ति-निरोध — आधुनिक भाषा में",
+    "target_duration_min": 9,
+    "type": "philosophical_talk",
+    "location": "Rishikesh ghats at blue-hour dawn — stone steps descending to the Ganga, pre-sunrise mist rising off the water, distant hills softening in the early grey light, one oil lamp on the step closest to camera, no other people in frame",
+    "location_alt": "Rooftop terrace in old Pune haveli at dawn — terrace surface is weathered stone, single clay diya burning, terrace edge visible, sky transitioning from deep blue to pale gold, no city noise cues needed in picture",
+    "time_of_day": "blue_hour_dawn",
+    "talent_direction": "No on-screen talent for the first 6 minutes — pure voice-over over B-roll. Final 90 seconds: a woman appears seated at the ghats facing the river, back three-quarters to camera, face never fully seen. She is simply present, still. Her presence is the embodiment of the practice, not a narrator.",
+    "wardrobe": "Seated figure (back-to-camera): plain off-white cotton sari draped simply, no border embroidery, hair in a loose low knot, no jewellery visible, no makeup cues needed since face is not shown. Colours must not read as ochre or saffron — off-white only. Bare feet visible on stone steps.",
+    "camera_setup": "Sony FX3 with Sigma 85mm f/1.4 Art lens for all B-roll macro work; Canon EF 24mm f/1.4L II for wide environmental establishes; lightweight carbon-fibre slider (60cm stroke) for slow-drift water shots; no gimbal — static or slider only. All on tripod or slider. No handheld.",
+    "lighting": "Capture practical: existing blue-hour ambient, single oil lamp practical source for foreground warmth. No additional artificial light in any outdoor frame. If location_alt rooftop is used: single bounce card (silver 5-in-1, silver side down, not reflective — matte side) to lift shadow slightly on steps. No LED panels, no flags, no diffusion frames outdoors.",
+    "audio_direction": "Voice-over recorded in post in a treated studio space, NOT on location. On-location audio: capture ambient Ganga soundscape, water movement, distant bird calls, silence between — these are used as the audio bed under VO. No music under VO delivery. Soft tanpura drone (Sa root note, A440-tuned) enters at 0:30 under VO at -18dB, sustains at that level throughout, fades to silence with final image. Final 90 seconds of B-roll woman on ghat: only ambient water and the tanpura — no VO.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Ganga at blue hour, full width of river visible, stone ghats in extreme foreground leading eye to water, mist sitting on surface, single lamp in very low left foreground, exposure held on water not sky",
+        "duration_sec": 8,
+        "notes": "Open card. No movement. Let the mist drift naturally. This is the film's first image — it should feel like walking into a dream."
+      },
+      {
+        "shot_number": 2,
+        "type": "ECU",
+        "description": "Oil lamp flame — extremely tight, shallow depth of field, flame fills 40% of frame, water bokeh behind, 85mm at f/1.4",
+        "duration_sec": 6,
+        "notes": "Hold perfectly still. Flame flicker is the only movement permitted. Capture 90 seconds of raw; editor selects best 6 seconds of stillness-with-micro-movement."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "Stone ghat steps wet with river spray, extreme bottom, water surface at edge of frame, water movement blurred to silk via 2-stop ND, stones sharp",
+        "duration_sec": 7,
+        "notes": "ND filter essential. 2-second exposure if still conditions allow. Conveys the idea of the mind — always in motion at the surface, the stone beneath unchanging."
+      },
+      {
+        "shot_number": 4,
+        "type": "WS",
+        "description": "River surface, shot from water level using camera placed directly on lowest step, surface stretches to horizon, mist in mid-distance, 24mm lens, sky 30% of frame",
+        "duration_sec": 9,
+        "notes": "This is the primary 'mind surface' metaphor image. Slow slider drift left-to-right 30cm over the 9 seconds."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Ripples in water in extreme close-up — a single pebble dropped by art department off-frame, concentric rings spreading, 85mm, very shallow depth, rings dissolving at edge of focus",
+        "duration_sec": 8,
+        "notes": "Shoot 10 takes minimum. Select the take where rings spread most evenly. Drop pebble off camera-left, never seen. This is the vritti — the ripple. Time drop to sync with VO line about thoughts arising."
+      },
+      {
+        "shot_number": 6,
+        "type": "MS",
+        "description": "River surface gradually becoming still after ripples — continuation of shot 5, panning back slightly to include wider water, rings diffuse and surface returns to undisturbed",
+        "duration_sec": 10,
+        "notes": "This is nirodha — the stilling. Do not cut before full stillness is achieved on screen. Hold on still water for 3 seconds minimum."
+      },
+      {
+        "shot_number": 7,
+        "type": "B-roll",
+        "description": "Leaves floating downstream — two dried leaves on Ganga current, shot from directly above (camera over water on monopod extended), leaves pass through frame left to right, 85mm straight down",
+        "duration_sec": 7,
+        "notes": "Thoughts drifting through awareness. Art department prepares 15 identical leaf pairs for multiple takes. Leaves must not sink. Natural light only."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Distant hills across river, mist in valley between hills and far bank, water foreground, complete stillness of environment — no boats, no people, pre-sunrise grey light",
+        "duration_sec": 8,
+        "notes": "This is the 'witness consciousness' image. The hills are unmoved. Sky slightly lighter than opening shot — time is passing."
+      },
+      {
+        "shot_number": 9,
+        "type": "ECU",
+        "description": "Closed eye of seated woman — extreme tight, lashes and brow visible, soft side-light from natural dawn, skin texture gentle, breathing visible in slight nostril movement",
+        "duration_sec": 6,
+        "notes": "Shot for the 'mind as seer' section of VO. 85mm. Hold absolutely still. Woman has been briefed to breathe very slowly."
+      },
+      {
+        "shot_number": 10,
+        "type": "MS",
+        "description": "Woman (back three-quarters to camera) seated on ghat steps, facing river, lamp beside her, river extending to mid-distance, hills beyond — introduce the figure for the first time at this shot",
+        "duration_sec": 12,
+        "notes": "She is already seated when cut arrives. We do not see her arrive. She is simply there, as if she has always been there. This is the transition into the final 90 seconds. No VO from this shot forward."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Same ghat from higher vantage — woman is a small figure on the steps, river enormous around her, sky beginning to pale gold at far horizon, first light arriving",
+        "duration_sec": 10,
+        "notes": "Scale. The individual is small; the stillness they inhabit is vast. Camera absolutely static. Let dawn light shift naturally during the take."
+      },
+      {
+        "shot_number": 12,
+        "type": "ECU",
+        "description": "Lamp flame in foreground, woman's silhouette soft-blurred at extreme distance in background — bokeh figure behind sharp flame",
+        "duration_sec": 8,
+        "notes": "The flame is present; the person has dissolved into the background. The teaching's final metaphor — awareness as flame, individual identity as bokeh."
+      },
+      {
+        "shot_number": 13,
+        "type": "WS",
+        "description": "Final shot: river surface at the moment the first direct sunlight touches it — the surface transforms from matte grey to luminous gold in real-time. Hold. Fade to black.",
+        "duration_sec": 14,
+        "notes": "Practical only. Cannot be faked. Requires precise timing with the location scout and AD. If conditions deny this shot, substitute: slow push into the lamp flame until flame fills frame and then slow dissolve to black."
+      }
+    ],
+    "script_text_en": [
+      "Yoga Sutras, Chapter One, Sutra Two.",
+      "Patanjali writes twelve words in Sanskrit. In twelve words, he defines the entire purpose of yoga.",
+      "Those twelve words have generated more commentary than almost any other philosophical statement in history.",
+      "The sutra is: Yogas chitta-vritti-nirodha.",
+      "Every serious translation is incomplete — not because translators failed, but because the original contains three words that each open into a world.",
+      "Chitta. Vritti. Nirodha.",
+      "Let's start with what the words do not mean.",
+      "They do not mean: stop thinking.",
+      "Patanjali was a physician — a grammarian, possibly a doctor. He was not asking anyone to lobotomize themselves. The tradition he was writing within understood that the mind thinks. That is what a mind does. No more askable of the mind to stop thinking than of the river to stop flowing.",
+      "So what did he mean?",
+      "Chitta. The first word. Usually translated as 'mind.' But chitta in yogic philosophy is not the thinking mind — not the part that solves problems and worries and makes lists. Chitta is the entire field of consciousness — the container in which all mental activity happens. Think of it as the lake, not the waves.",
+      "Vritti. The second word. Usually translated as 'fluctuations' or 'modifications.' From the root vrit: to turn, to whirl. A vritti is any movement in the field of consciousness. A thought. An emotion. A memory. A sensation. A desire. A fear. All of these are vrittis — movements in the lake.",
+      "What's important: Patanjali is not saying vrittis are bad. He is not saying thoughts are bad. A lake that never moved would be a dead lake.",
+      "Nirodha. The third word. Here is where translation has most often gone astray. Nirodha is commonly rendered as 'cessation' or 'suppression' — stop the fluctuations, suppress the thoughts, silence the mind.",
+      "But nirodha in the full context of Sanskrit linguistics means something more precise and more beautiful. Its root is ni-rudh — to hold, to contain, to channel. Not to destroy. Not to block. To contain and direct.",
+      "Nirodha is what a riverbank does to a river.",
+      "The bank does not stop the water. It gives the water direction. It gives the water power. Without the bank, the river is a flood — force without form. With the bank, it reaches the sea.",
+      "Yogas chitta-vritti-nirodha.",
+      "Yoga is the containing — the channelling — of the movements of consciousness.",
+      "Not the suppression of your thoughts. The capacity to hold your thoughts without being carried away by them.",
+      "This is the modern translation.",
+      "You sit, and a thought arises. Normal. Natural. The thought is a ripple in the lake.",
+      "Without yoga: you become the ripple. You are the thought. The worry becomes you. The memory becomes you. The desire becomes you.",
+      "With yoga — with practice — something different becomes possible. The ripple still arises. You watch it arise. You feel it move through the field. And you remain the lake — not the wave.",
+      "This is not detachment in the cold sense. This is not emptiness in the nihilistic sense. It is the most intimate possible relationship with your own experience — because you are no longer fused with it.",
+      "When you are the wave, the wave is all there is. When you are the lake, you can feel every wave completely — and remain whole.",
+      "Patanjali was not describing a state for monks in caves. He was describing a capacity that any mind can develop.",
+      "The ripples don't stop. They don't need to.",
+      "The practice is simply: remember the lake.",
+      "Come back to the lake.",
+      "This is the beginning of yoga."
+    ],
+    "script_text_hi": [
+      "योग सूत्र, अध्याय एक, सूत्र दो।",
+      "पतंजलि ने संस्कृत में बारह शब्द लिखे। बारह शब्दों में उन्होंने योग का संपूर्ण उद्देश्य परिभाषित किया।",
+      "इन बारह शब्दों पर इतिहास में किसी भी दार्शनिक कथन से अधिक टीकाएं लिखी गई हैं।",
+      "सूत्र है: योगश्चित्तवृत्तिनिरोधः।",
+      "हर गंभीर अनुवाद अधूरा है — अनुवादकों की विफलता के कारण नहीं, बल्कि इसलिए कि मूल में तीन शब्द हैं जिनमें से प्रत्येक एक संपूर्ण संसार खोलता है।",
+      "चित्त। वृत्ति। निरोध।",
+      "पहले समझते हैं ये शब्द क्या नहीं कहते।",
+      "ये नहीं कहते: सोचना बंद करो।",
+      "पतंजलि एक वैद्य थे — एक व्याकरणाचार्य, संभवतः चिकित्सक। वे किसी से खुद को बंद करने को नहीं कह रहे थे। वे जिस परंपरा में लिख रहे थे उसे पता था कि मन सोचता है। यही मन का स्वभाव है। मन से सोचना बंद करने को कहना वैसा ही है जैसे नदी से बहना बंद करने को कहना।",
+      "तो उनका क्या अभिप्राय था?",
+      "चित्त — पहला शब्द। आमतौर पर 'मन' अनुवादित होता है। लेकिन योग दर्शन में चित्त विचार करने वाला मन नहीं है — वह हिस्सा नहीं जो समस्याएं सुलझाता है, चिंता करता है, सूचियां बनाता है। चित्त समग्र चेतना का क्षेत्र है — वह पात्र जिसमें सारी मानसिक क्रियाएं होती हैं। इसे लहरें नहीं, झील मानें।",
+      "वृत्ति — दूसरा शब्द। आमतौर पर 'उतार-चढ़ाव' या 'परिवर्तन' अनुवादित होता है। मूल धातु वृत् से: घूमना, भंवर। वृत्ति चेतना के क्षेत्र में कोई भी गति है। एक विचार। एक भावना। एक स्मृति। एक संवेदना। एक इच्छा। एक भय। ये सभी वृत्तियां हैं — झील में हलचल।",
+      "महत्वपूर्ण बात: पतंजलि नहीं कह रहे कि वृत्तियां बुरी हैं। विचार बुरे नहीं हैं। जो झील कभी न हिले वह मृत झील होगी।",
+      "निरोध — तीसरा शब्द। यहीं पर अनुवाद सबसे अधिक भटका है। निरोध को आमतौर पर 'समाप्ति' या 'दमन' के रूप में प्रस्तुत किया जाता है — उतार-चढ़ाव रोको, विचारों को दबाओ, मन को शांत करो।",
+      "लेकिन संस्कृत भाषाशास्त्र के पूर्ण संदर्भ में निरोध का अर्थ अधिक सटीक और अधिक सुंदर है। इसकी मूल धातु है नि-रुध् — रोकना, धारण करना, मार्गदर्शित करना। नष्ट करना नहीं। अवरुद्ध करना नहीं। धारण करना और दिशा देना।",
+      "निरोध वही है जो नदी के किनारे नदी के साथ करते हैं।",
+      "किनारा पानी नहीं रोकता। वह पानी को दिशा देता है। शक्ति देता है। किनारे के बिना नदी बाढ़ है — बिना रूप के शक्ति। किनारे के साथ वह सागर तक पहुंचती है।",
+      "योगश्चित्तवृत्तिनिरोधः।",
+      "योग है चेतना की गतिविधियों का धारण — उन्हें दिशा देना।",
+      "अपने विचारों को दबाना नहीं। बल्कि अपने विचारों को उनमें बह जाए बिना देख सकने की क्षमता।",
+      "यही आधुनिक अनुवाद है।",
+      "आप बैठते हैं, एक विचार उठता है। सामान्य। स्वाभाविक। विचार झील में एक लहर है।",
+      "योग के बिना: आप लहर बन जाते हैं। आप विचार हैं। चिंता आप बन जाती है। स्मृति आप बन जाती है। इच्छा आप बन जाती है।",
+      "योग के साथ — अभ्यास के साथ — कुछ अलग संभव होता है। लहर फिर भी उठती है। आप उसे उठते देखते हैं। आप उसे क्षेत्र में गति करते महसूस करते हैं। और आप झील बने रहते हैं — लहर नहीं।",
+      "यह ठंडे अर्थ में विराग नहीं है। शून्यवादी अर्थ में रिक्तता नहीं है। यह अपने अनुभव के साथ सबसे घनिष्ठ संभव संबंध है — क्योंकि अब आप उससे विलीन नहीं हैं।",
+      "जब आप लहर हैं, लहर ही सब कुछ है। जब आप झील हैं, आप हर लहर को पूरी तरह महसूस कर सकते हैं — और संपूर्ण बने रह सकते हैं।",
+      "पतंजलि गुफाओं में बैठे संन्यासियों के लिए किसी अवस्था का वर्णन नहीं कर रहे थे। वे एक ऐसी क्षमता का वर्णन कर रहे थे जो कोई भी मन विकसित कर सकता है।",
+      "लहरें रुकती नहीं। रुकने की जरूरत भी नहीं।",
+      "अभ्यास बस यह है: झील को याद करो।",
+      "झील पर लौट आओ।",
+      "यही योग का आरंभ है।"
+    ],
+    "b_roll_list": [
+      "ECU: single water droplet striking still surface, rings expanding — shot from directly above, 90mm macro, 120fps slow motion, select best 3-second window at 24fps playback",
+      "WS: Ganga from bridge or elevated bank — full width, pre-dawn, absolute stillness, no boats, 30-second static hold",
+      "CU: ancient Sanskrit manuscript page — Yoga Sutras text if licensable, or facsimile prop — shot with raking light to show paper texture, text legible but not the focus, 85mm",
+      "ECU: flame of clay diya reflected in still water surface — double-flame image, 85mm, very low angle at water level",
+      "B-roll: reed grass on riverbank barely moving in pre-dawn air — low-angle looking up through stems, sky beyond, near-still",
+      "WS: bird (egret or heron if present) standing absolutely motionless in shallows — do not disturb; if bird moves, use; if it stays still, stay on it for 20 seconds",
+      "ECU: human hand resting palm-up on stone, relaxed, completely still — hand of woman talent, shot in available dawn light, skin texture visible",
+      "CU: mist over water mid-river — telephoto 200mm to compress distance, mist layers visible as distinct planes"
+    ],
+    "edit_notes": "Color grade: desaturate 15% globally, lift shadows slightly (not crushed blacks — dark but detail-preserving), cool the blue-hour footage 200K toward blue, warm the lamp/dawn-light footage 150K toward amber. No LUT that reads as 'filmic Instagram.' This is a museum-quality grade. Cut rhythm: each shot should breathe — minimum 6 seconds, most shots 8-12 seconds. VO pacing: natural speech rhythm, no artificial pauses for effect. Music: tanpura drone enters at 0:30, sustains -18dB, single swell to -12dB at the moment of first dawn light in final shot, then fades to room tone. No percussion. No melody. End on black with 3 seconds of room tone before title card.",
+    "end_card_copy": "Sukoon. Free. Forever. For everyone.\nsukoon.app"
+  },
+
+  {
+    "id": "science-of-breath-pranayama-works",
+    "title_en": "The Science of Breath — Why Pranayama Actually Works",
+    "title_hi": "श्वास का विज्ञान — प्राणायाम क्यों काम करता है",
+    "target_duration_min": 10,
+    "type": "philosophical_talk",
+    "location": "Open-air terrace in a Kerala-style home at mid-morning — terrace faces a dense grove of coconut palms, soft dappled light through palm fronds, Kerala red-oxide floor, white-washed low parapet wall, no urban elements visible, birds audible",
+    "location_alt": "Shaded stone corridor of a Mysore-era heritage structure (not a temple) — colonnade, natural stone floor, morning side-light entering diagonally, green courtyard glimpsed through arches",
+    "time_of_day": "mid_morning",
+    "talent_direction": "Voice-over throughout — no on-screen talent for first 7 minutes. At 7:00: a woman's hands appear in CU — she is seated cross-legged, only hands and lap visible, demonstrating pranayama hand positions (Nasagra mudra). Face never shown. Final 60 seconds: wide shot of the terrace empty — no person — just the space itself.",
+    "wardrobe": "Hands talent: plain white cotton kurta sleeves visible at wrist, no jewellery except very simple silver ring if desired. Hands should appear like anyone's hands — unmarked, unpainted nails or clear only, clean.",
+    "camera_setup": "Sony FX3 + Canon EF 100mm f/2.8L Macro for all scientific/close-up anatomy-metaphor shots; Sony 24mm f/1.4 GM for environmental wides; no gimbal — all static or slider. Slider shots: 80cm travel, motor-driven at constant 3mm/second.",
+    "lighting": "Natural light throughout. Terrace: diffuse mid-morning light, no direct sun in frame. If direct sun appears in location, use 4x4 white silk flag to diffuse (natural quality, not flat). No LED panels. Kerry Moosman / Peter Lindbergh discipline — use what's there.",
+    "audio_direction": "VO recorded in post — female voice, Indian accent, warm but not soft-spoken, confident academic register, not hushed or whispery — this is scientific clarity, not meditation guidance. On-location ambient: palm fronds, bird calls, occasional light breeze. These are the audio bed. No music under VO. At 7:00 when hands appear: light bansuri flute enters at -20dB, single sustained note, rises very gradually to -14dB by end. On final empty-terrace shot: bansuri fades, only ambient remains.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Kerala terrace at mid-morning — red-oxide floor filling foreground, palms beyond, sky 20% of frame, complete stillness except natural palm movement, no person in frame",
+        "duration_sec": 7,
+        "notes": "Opening card. The space before practice. Slider: barely perceptible 5cm drift over 7 seconds, almost static."
+      },
+      {
+        "shot_number": 2,
+        "type": "ECU",
+        "description": "Palm fronds filtering sunlight — extreme close-up, individual leaflets, sun through gaps creates micro-rays, 100mm macro, natural movement of breeze",
+        "duration_sec": 6,
+        "notes": "Visual metaphor for prana — light filtering through structure. Let the breeze move the fronds. Hold on the dappling light effect."
+      },
+      {
+        "shot_number": 3,
+        "type": "B-roll",
+        "description": "Candle flame or incense stick in gentle indoor breeze — smoke or flame movement visible, 100mm, ECU, indoor if shooting location_alt",
+        "duration_sec": 8,
+        "notes": "Visible breath metaphor. Smoke movement is the inhale and exhale made visible. Shoot 90 seconds, edit selects best 8."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Woman's ribcage visible through fabric of thin white cotton shirt — not a medical shot, she is sitting, camera side-on at ribcage height, fabric moves with deep breath inhalation and exhalation",
+        "duration_sec": 9,
+        "notes": "She breathes three full diaphragmatic cycles, slowly. 100mm at f/2.8, focus on fabric movement. Coordinated with VO line about diaphragm. No face visible."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Nostrils — side-profile CU, woman's nose only, one nostril in focus, breath condensation barely visible in cooler air if possible, 100mm macro",
+        "duration_sec": 7,
+        "notes": "For the alternate nostril section of VO. This is the most intimate shot in the film — handle with restraint. Clean, clinical but beautiful framing."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Slow-motion (120fps, played at 24fps) — water poured gently from height into a bowl of still water, ripples in slow motion, 100mm from above",
+        "duration_sec": 8,
+        "notes": "Carbon dioxide in blood = ripple in the water. This is a metaphor shot for the chemoreceptor explanation in VO."
+      },
+      {
+        "shot_number": 7,
+        "type": "WS",
+        "description": "Terrace with coconut palms in background, mid-morning light, empty — a long held breath, a pause before exhalation",
+        "duration_sec": 6,
+        "notes": "The kumbhaka image — the held moment. No movement. Let the viewer feel suspension."
+      },
+      {
+        "shot_number": 8,
+        "type": "B-roll",
+        "description": "Macro: water surface of a bowl with two drops of food colouring slowly diffusing — blue and amber — representing oxygenated vs deoxygenated blood, 100mm from directly above",
+        "duration_sec": 10,
+        "notes": "Art department: distilled water at room temperature, single drop each colour from eyedropper, placed 8cm apart. Colours should not mix within the shot duration — just diffuse. 120fps."
+      },
+      {
+        "shot_number": 9,
+        "type": "CU",
+        "description": "Woman's hands in Nasagra mudra — right hand, index and middle finger folded to palm, thumb and ring finger extended, hand positioned near nose but face outside frame, Kerala stone floor behind",
+        "duration_sec": 8,
+        "notes": "First appearance of talent at 7:00. Introduce hands slowly — enter from below frame. She is demonstrating right nostril closure."
+      },
+      {
+        "shot_number": 10,
+        "type": "CU",
+        "description": "Same hand, switching to block left nostril with ring finger — smooth transition, unhurried",
+        "duration_sec": 7,
+        "notes": "Synchronized with VO describing alternate-nostril switch. Keep camera absolutely still."
+      },
+      {
+        "shot_number": 11,
+        "type": "MS",
+        "description": "Hands in lap, palms resting upward, fingers gently curled, complete stillness, afternoon light across palms",
+        "duration_sec": 6,
+        "notes": "After practice. The hands have completed their work. This is the integration image."
+      },
+      {
+        "shot_number": 12,
+        "type": "WS",
+        "description": "Empty terrace — no person, palms beyond, end-of-practice stillness, single coconut palm frond drifting in breeze, floor warm in light",
+        "duration_sec": 12,
+        "notes": "Final shot. The practice is done. The space remains. Hold on this image for the full 12 seconds. Bansuri fades here. Only ambient on audio."
+      }
+    ],
+    "script_text_en": [
+      "For most of human history, the idea that breathing could change your mental state was considered either self-evident or mystical — depending on which tradition you asked.",
+      "Yogis in India described prana as the life force carried by the breath. Taoists described chi. Greek physicians observed that shallow breathing coincided with anxiety, and deep breathing with calm.",
+      "In the last thirty years, neuroscience has given us the mechanism. And it is exactly as sophisticated as the ancient practitioners claimed.",
+      "Here is the system.",
+      "Your brainstem contains clusters of neurons called chemoreceptors. These neurons monitor the chemistry of your blood — specifically, the levels of carbon dioxide and oxygen. When CO2 rises, these receptors send a signal: breathe. When CO2 drops, that urgency subsides.",
+      "Notice what this means. The urgency to breathe is not triggered by low oxygen — it is triggered by rising carbon dioxide. This is the first surprising fact.",
+      "The second is this: CO2 is not simply waste. CO2 is the primary chemical trigger for vasodilation — the relaxation of blood vessels. When CO2 is present in the right concentration, blood vessels open. Oxygen reaches the brain and the tissues more efficiently. When CO2 is too low — which happens during hyperventilation — blood vessels constrict. You paradoxically get less oxygen to the brain.",
+      "This is why breathing fast when anxious makes anxiety worse, not better.",
+      "Now enter the vagus nerve.",
+      "The vagus nerve is the longest nerve in the autonomic nervous system. It connects the brainstem to the heart, the lungs, the gut, and the face. It is the primary carrier of parasympathetic signals — what we call 'rest and digest,' the counterpart to 'fight or flight.'",
+      "The diaphragm — the large dome-shaped muscle beneath your lungs — is laced with vagal branches. When the diaphragm descends on a deep inhale and rises on a slow exhale, it directly stimulates the vagus nerve.",
+      "Slow exhale. This is the key phrase.",
+      "The exhalation phase of breathing activates the vagus nerve more than the inhalation phase. A deliberate slow exhale — longer than the inhale — triggers a measurable drop in heart rate. In real time. In seconds.",
+      "This is the science behind what Patanjali called pranayama. The conscious ratio of inhale to exhale is not ritual. It is pharmacology — using your own physiology as the medicine.",
+      "Now for the piece that modern science found hardest to accept: the nostril.",
+      "The nasal cavity is lined with erectile tissue — the same tissue type as in reproductive organs. The two nostrils cycle in dominance every ninety minutes to four hours, driven by nasal turbinate engorgement. When the left nostril is more open, research has associated greater right-hemisphere brain activity — the hemisphere of parasympathetic tone and spatial processing. When the right is more open: left-hemisphere dominance, sympathetic activation, linear processing.",
+      "Yogic tradition described this as ida and pingala — the cooling lunar channel and the activating solar channel. Modern imaging shows the underlying anatomy.",
+      "Nadi Shodhana — alternate nostril breathing — deliberately cycles through both hemispheres' dominant periods at a controlled rhythm. The research on its effects: reduced cortisol, increased heart rate variability, measurable shifts in EEG coherence between hemispheres.",
+      "These are not effects that require belief.",
+      "The body does not care what you call it. The system responds.",
+      "Pranayama works because you have a nervous system, and the nervous system has inputs. The breath is one of the most direct inputs available to conscious control.",
+      "Every time you slow your exhale, you are choosing your chemistry.",
+      "Every time you breathe deliberately, you are practicing the oldest form of biofeedback on earth.",
+      "Patanjali did not have fMRI machines. He had time, attention, and precision. He found the same system. He just used different language to describe it.",
+      "The breath connects what you decide to do to what your body automatically does.",
+      "That connection is the doorway.",
+      "Step through it slowly."
+    ],
+    "script_text_hi": [
+      "मानव इतिहास के अधिकांश भाग में, यह विचार कि श्वास आपकी मानसिक अवस्था बदल सकती है — या तो स्वयंसिद्ध माना जाता था या रहस्यमय — यह इस बात पर निर्भर था कि आप किस परंपरा से पूछते।",
+      "भारत के योगियों ने प्राण को श्वास द्वारा वाहित जीवन शक्ति के रूप में वर्णित किया। ताओवादियों ने ची का वर्णन किया। यूनानी वैद्यों ने देखा कि उथली श्वास चिंता के साथ और गहरी श्वास शांति के साथ मिलती है।",
+      "पिछले तीस वर्षों में, तंत्रिका विज्ञान ने हमें तंत्र दे दिया है। और यह ठीक उतना ही परिष्कृत है जितना प्राचीन साधकों ने दावा किया था।",
+      "यह तंत्र समझें।",
+      "आपके मस्तिष्क तंत्र में रसायन-ग्राही न्यूरॉन्स के समूह होते हैं। ये न्यूरॉन्स आपके रक्त की रसायन विज्ञान — विशेष रूप से कार्बन डाइऑक्साइड और ऑक्सीजन के स्तर — की निगरानी करते हैं। जब CO2 बढ़ती है, ये ग्राही संकेत भेजते हैं: श्वास लो। जब CO2 घटती है, वह तात्कालिकता कम होती है।",
+      "ध्यान दें इसका क्या अर्थ है। श्वास लेने की तात्कालिकता कम ऑक्सीजन से नहीं — बढ़ती CO2 से उत्पन्न होती है। यह पहला चौंकाने वाला तथ्य है।",
+      "दूसरा यह: CO2 केवल अपशिष्ट नहीं है। CO2 vasodilation का प्राथमिक रासायनिक उत्प्रेरक है — रक्त वाहिकाओं का शिथिल होना। जब CO2 सही सांद्रता में होती है, रक्त वाहिकाएं खुलती हैं। ऑक्सीजन मस्तिष्क और ऊतकों तक अधिक कुशलता से पहुंचती है। जब CO2 बहुत कम होती है — जो hyperventilation में होता है — रक्त वाहिकाएं सिकुड़ती हैं। आप विरोधाभासी रूप से मस्तिष्क को कम ऑक्सीजन मिलती है।",
+      "इसीलिए चिंतित होने पर तेज सांस लेना चिंता को बेहतर नहीं, बदतर बनाता है।",
+      "अब वेगस तंत्रिका पर आते हैं।",
+      "वेगस तंत्रिका स्वायत्त तंत्रिका तंत्र की सबसे लंबी तंत्रिका है। यह मस्तिष्क तंत्र को हृदय, फेफड़ों, आंत और चेहरे से जोड़ती है। यह parasympathetic संकेतों का प्राथमिक वाहक है — जिसे हम 'आराम और पाचन' कहते हैं, 'लड़ो या भागो' का विपरीत।",
+      "डायाफ्राम — आपके फेफड़ों के नीचे बड़ी गुंबद के आकार की मांसपेशी — vagal शाखाओं से लिपटी है। जब डायाफ्राम गहरी सांस पर नीचे उतरता है और धीमी साँस छोड़ने पर ऊपर उठता है, यह वेगस तंत्रिका को सीधे उत्तेजित करता है।",
+      "धीमा उच्छ्वास। यह मुख्य वाक्यांश है।",
+      "श्वास का उच्छ्वास चरण इनहेलेशन चरण की तुलना में वेगस तंत्रिका को अधिक सक्रिय करता है। एक जानबूझकर धीमा उच्छ्वास — इनहेलेशन से लंबा — हृदय गति में एक मापनीय गिरावट का कारण बनता है। वास्तविक समय में। सेकंडों में।",
+      "यही वह विज्ञान है जिसे पतंजलि ने प्राणायाम कहा। इनहेल और उच्छ्वास का सचेत अनुपात अनुष्ठान नहीं है। यह फार्माकोलॉजी है — अपनी खुद की शरीर क्रिया विज्ञान को दवा के रूप में उपयोग करना।",
+      "अब उस टुकड़े के लिए जिसे आधुनिक विज्ञान स्वीकार करने में सबसे कठिन लगा: नासिका।",
+      "नाक की गुहा erectile tissue से पंक्तिबद्ध है। दोनों नासिका हर नब्बे मिनट से चार घंटे में प्रभुत्व में चक्र करती हैं। जब बायां नासिका अधिक खुला होता है, शोध ने अधिक दाएं-गोलार्ध मस्तिष्क गतिविधि से संबंध दिखाया है। जब दायां अधिक खुला हो: बाएं-गोलार्ध प्रभुत्व, सहानुभूतिपूर्ण सक्रियण।",
+      "योग परंपरा ने इसे इड़ा और पिंगला के रूप में वर्णित किया — शीतल चंद्र चैनल और सक्रियकारी सौर चैनल। आधुनिक इमेजिंग अंतर्निहित शारीरिक रचना दिखाती है।",
+      "नाड़ी शोधन — अनुलोम-विलोम — जानबूझकर एक नियंत्रित लय में दोनों गोलार्धों के प्रभुत्व काल से गुजरता है।",
+      "ये प्रभाव हैं जिनके लिए विश्वास की आवश्यकता नहीं।",
+      "शरीर को परवाह नहीं कि आप इसे क्या कहते हैं। तंत्र प्रतिक्रिया देता है।",
+      "प्राणायाम काम करता है क्योंकि आपका तंत्रिका तंत्र है, और तंत्रिका तंत्र में इनपुट हैं। श्वास सचेत नियंत्रण के लिए उपलब्ध सबसे प्रत्यक्ष इनपुट में से एक है।",
+      "हर बार जब आप अपना उच्छ्वास धीमा करते हैं, आप अपनी रसायन विज्ञान चुन रहे होते हैं।",
+      "पतंजलि के पास fMRI मशीनें नहीं थीं। उनके पास समय, ध्यान और सटीकता थी।",
+      "श्वास उस चीज़ को जोड़ती है जो आप करने का निर्णय लेते हैं उससे जो आपका शरीर स्वतः करता है।",
+      "वह संबंध द्वार है।",
+      "धीरे से इससे गुजरें।"
+    ],
+    "b_roll_list": [
+      "ECU: diaphragm movement visualized — woman's abdomen, side profile, hand on belly, visible rise and fall with deep breath, 100mm, natural light",
+      "Macro: smoke from incense stick in still air — extremely slow diffusion upward, 120fps, played 24fps",
+      "CU: Kerala courtyard lotus pond surface — lily pads, water still then rippled by single drop of rain or lab dropper",
+      "WS: coconut palms in wind — full fronds in gentle breeze, sky visible through them, motion study",
+      "ECU: water diffusing in water — food colouring as described in shot list",
+      "B-roll: old Ayurvedic text open to a page with diagrams — prop styled, shot with raking light, 100mm",
+      "CU: hands in pranayama position (Chin mudra, palms resting on knees)",
+      "WS: Kerala terrace empty at end of morning — long shadows of palms, no human presence"
+    ],
+    "edit_notes": "Color grade: warm but not golden — Kerala greens must read as saturated but natural. Skin tones: accurate, not corrected toward any aesthetic. Grade: pull green channel in highlights slightly to avoid over-saturated tropical palette — restrained, not vivid. No film grain. Cut rhythm: longer than average — allow VO to breathe fully before cutting. Science sections can hold on a single image for up to 12 seconds while VO explains. Bansuri music: enter at 7:00, extremely slowly. End card over empty terrace image.",
+    "end_card_copy": "Sukoon. Free. Forever. For everyone.\nsukoon.app"
+  },
+
+  {
+    "id": "why-we-built-sukoon-manifesto",
+    "title_en": "Why We Built Sukoon",
+    "title_hi": "हमने सुकून क्यों बनाया",
+    "target_duration_min": 5,
+    "type": "philosophical_talk",
+    "location": "Multiple locations cut together — this is a manifesto montage, not a single-location essay. Locations: (1) Mumbai local train platform, early morning, commuters in motion, blurred; (2) Delhi rooftop at dusk, city lights beginning; (3) Varanasi alley, child playing, afternoon; (4) Bengaluru park bench at sunrise, office worker alone; (5) rural Rajasthan open field, woman walking; (6) empty yoga shala, Kerala, window light, no person",
+    "location_alt": "If location travel is not feasible: single location — Bengaluru or Mumbai rooftop at golden hour, the city as backdrop, empty chair or mat in foreground.",
+    "time_of_day": "golden_hour_morning",
+    "talent_direction": "No on-screen narrator. Zero talking-head content. This is a pure essay film — words only on screen as text overlays, or voice-over, or both. Suggested approach: text on black cards intercut with B-roll. The brand speaks. No individual person represents it. If a person must appear: hands only, or extreme wide silhouette, never identifiable.",
+    "wardrobe": "Not applicable — no talent. If silhouette appears: loose cotton clothes, anonymous.",
+    "camera_setup": "This script is designed to be shot opportunistically across locations. Sony FX3 handheld for street/urban footage — slight handheld movement acceptable and intentional for the urban chaos sections. Sony FX3 on tripod for all nature and empty-space frames. 35mm f/1.4 for street; 85mm f/1.4 for portraits and tight frames; 24mm for architecture and landscape establishes.",
+    "lighting": "Practical location light throughout. Urban night shots: available light, embrace grain if ISO must be pushed above 6400. Nature shots: golden hour only, no exceptions. The contrast between the chaotic artificial light of urban India and the clean natural light of the nature frames is intentional and essential.",
+    "audio_direction": "Two audio tracks: (1) real ambient sound from all locations — Mumbai platform sounds, street sounds, birdsong, silence. These are used as a collage audio bed. (2) VO: single voice, gender-neutral if possible, or female voice, not hushed — this VO has conviction, not warmth. It is a manifesto, not a lullaby. Music: original score or licensed track — quiet, spare, Indian classical influence but not traditional, not new-age, not Bollywood — something that feels like Nils Frahm meets Carnatic violin. Enters at 0:45, stays -16dB under VO, rises to -8dB over the final image, holds for 5 seconds, then fades.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "B-roll",
+        "description": "Black title card — white text on black: 'One billion people live in India.' Hold 3 seconds. No imagery yet.",
+        "duration_sec": 3,
+        "notes": "Pure text card. No background image. Clean white Sukoon typeface."
+      },
+      {
+        "shot_number": 2,
+        "type": "WS",
+        "description": "Mumbai local train platform, peak hour — sea of people in motion, camera static, people flow past, anonymized, blurred at edges, 24mm",
+        "duration_sec": 5,
+        "notes": "No individual is the subject. The collective is the subject."
+      },
+      {
+        "shot_number": 3,
+        "type": "B-roll",
+        "description": "Text card: 'Most of them have never meditated.'",
+        "duration_sec": 2,
+        "notes": "Hold exactly 2 seconds. Do not over-linger on text cards."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Office worker on Bengaluru park bench, early morning, alone — shot from distance with 85mm, he is anonymous in the frame, looking at his phone",
+        "duration_sec": 4,
+        "notes": "Do not stage this if a real person in this situation can be observed. Real is preferable. If staged: talent briefed to appear distracted, not at peace."
+      },
+      {
+        "shot_number": 5,
+        "type": "B-roll",
+        "description": "Text card: 'Not because they don't want to.'",
+        "duration_sec": 2,
+        "notes": null
+      },
+      {
+        "shot_number": 6,
+        "type": "WS",
+        "description": "Delhi rooftop at dusk, city panorama, warm light, one plastic chair sitting alone, city noise below — this is someone's small space of privacy at the end of a day",
+        "duration_sec": 6,
+        "notes": "The chair is the longing. The rooftop is the refuge already found every day, without a teacher or an app."
+      },
+      {
+        "shot_number": 7,
+        "type": "B-roll",
+        "description": "Text card: 'Because the tools that exist were not built for them.'",
+        "duration_sec": 3,
+        "notes": null
+      },
+      {
+        "shot_number": 8,
+        "type": "B-roll",
+        "description": "Quick montage — screen recordings or recreations of existing wellness apps: subscription paywall screens, 'Day 7 of 30' progress bars, Western-accented audio clips, American instructor stock-photo imagery",
+        "duration_sec": 4,
+        "notes": "This sequence must be handled carefully — do not reproduce copyrighted app screens. Either use clearly generic placeholder recreations, or cut this shot entirely and replace with text card. Legal review required."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS",
+        "description": "Empty yoga shala, Kerala — white walls, window light, cotton mat unrolled, no person, morning silence",
+        "duration_sec": 7,
+        "notes": "The space itself is the offering. The absence of a person is intentional — this space is yours, not a guru's."
+      },
+      {
+        "shot_number": 10,
+        "type": "CU",
+        "description": "Varanasi alley — child playing with a spinning top, gully narrow, late afternoon light, joyful unself-conscious movement",
+        "duration_sec": 5,
+        "notes": "The natural state. What we are trying to return to, not transcend."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Rajasthan open field — woman walking through field at golden hour, her back to camera, alone in the landscape, sky enormous, no other people",
+        "duration_sec": 8,
+        "notes": "Scale and solitude. India is vast. Most of its people have no wellness infrastructure at all."
+      },
+      {
+        "shot_number": 12,
+        "type": "B-roll",
+        "description": "Text card: 'Sukoon is free. Forever. For everyone.'",
+        "duration_sec": 4,
+        "notes": "Music rises here from -16 to -8dB."
+      },
+      {
+        "shot_number": 13,
+        "type": "B-roll",
+        "description": "Text card — Sukoon wordmark only, no other text. Hold 5 seconds. Fade to black.",
+        "duration_sec": 5,
+        "notes": "This is the closing card. Music sustains through the fade. Silence before end card text."
+      }
+    ],
+    "script_text_en": [
+      "One billion people live in India.",
+      "Most of them have never meditated. Not because they don't want to. Not because they lack the need.",
+      "Because the tools that exist were not built for them.",
+      "The meditation apps come from California. They are beautiful. They are well-funded. They cost twelve dollars a month — or they give you three free sessions before the wall.",
+      "The yoga content comes from studios. Expensive studios, in expensive cities, at expensive hours.",
+      "The traditional teachers — the real lineage holders — are often behind the gates of ashrams, or behind the screens of premium retreats, or teaching to rooms of people who already know the Sanskrit and already have the mat.",
+      "What doesn't exist: something beautiful, free, deep, and honest.",
+      "Something that treats a woman in Bhopal and a man in Bengaluru and a teenager in a village in Tamil Nadu with the same respect as it treats someone in Brooklyn.",
+      "Something that knows that yoga is not a fitness trend. That meditation is not a productivity hack.",
+      "That these are not things India exported and then somehow lost the rights to.",
+      "Sukoon is the word in Urdu and Hindi for a specific quality of peace. Not the peace of absence — not the peace of emptiness. The peace of presence. The peace of being settled in your own life.",
+      "We believe a billion people deserve access to that.",
+      "Not as a subscription. Not as a thirty-day program. Not as a self-improvement project.",
+      "As a resource. As a right.",
+      "Free. Forever. For everyone.",
+      "This is why we built it."
+    ],
+    "script_text_hi": [
+      "भारत में एक अरब लोग रहते हैं।",
+      "उनमें से अधिकांश ने कभी ध्यान नहीं किया। इसलिए नहीं कि वे नहीं चाहते। इसलिए नहीं कि उन्हें जरूरत नहीं।",
+      "इसलिए क्योंकि जो उपकरण मौजूद हैं वे उनके लिए नहीं बने।",
+      "ध्यान के ऐप कैलिफोर्निया से आते हैं। वे सुंदर हैं। अच्छी तरह वित्त पोषित। बारह डॉलर प्रति माह — या तीन मुफ्त सत्र और फिर दीवार।",
+      "योग सामग्री स्टूडियो से आती है। महंगे स्टूडियो, महंगे शहरों में, महंगे समय पर।",
+      "परंपरागत गुरु — असली वंश धारक — अक्सर आश्रमों के द्वारों के पीछे हैं, या प्रीमियम रिट्रीट की स्क्रीन के पीछे, या उन लोगों के कमरों में पढ़ा रहे हैं जो पहले से संस्कृत जानते हैं।",
+      "जो नहीं है: कुछ सुंदर, मुफ्त, गहरा और ईमानदार।",
+      "कुछ जो भोपाल की एक महिला को, बेंगलुरु के एक पुरुष को और तमिलनाडु के एक गांव में एक किशोर को उतना ही सम्मान दे जितना ब्रुकलिन में किसी को।",
+      "कुछ जो जानता हो कि योग फिटनेस ट्रेंड नहीं है। ध्यान उत्पादकता हैक नहीं है।",
+      "ये ऐसी चीजें नहीं हैं जो भारत ने निर्यात की और फिर किसी तरह अधिकार खो दिए।",
+      "सुकून उर्दू और हिंदी में एक विशेष गुण की शांति के लिए शब्द है। अनुपस्थिति की शांति नहीं। उपस्थिति की शांति। अपने जीवन में स्थिर होने की शांति।",
+      "हमारा मानना है कि एक अरब लोग इस तक पहुंच के हकदार हैं।",
+      "सदस्यता के रूप में नहीं। तीस दिन के कार्यक्रम के रूप में नहीं। आत्म-सुधार परियोजना के रूप में नहीं।",
+      "एक संसाधन के रूप में। एक अधिकार के रूप में।",
+      "मुफ्त। हमेशा के लिए। सभी के लिए।",
+      "इसीलिए हमने इसे बनाया।"
+    ],
+    "b_roll_list": [
+      "Mumbai local train platform — wide, morning rush, people as collective motion blur",
+      "Delhi Metro interior — commuters, some eyes closed, some on phones, some staring ahead, rack focus between individuals",
+      "Varanasi narrow gali — morning, light shaft through gap in buildings, person walking through it",
+      "Kerala village road — woman walking along edge of paddy field, golden light, no context required",
+      "Bangalore apartment window — view of the street below, city sounds, person's silhouette in foreground looking out",
+      "Empty primary school classroom — rows of desks, chalkboard, natural light through windows, no students",
+      "Small-town general store — owner sitting outside in afternoon light, quiet moment",
+      "River ghat empty at dawn — a single platform, a single diya, vast water"
+    ],
+    "edit_notes": "This film has a different rhythm from the others — it is faster in the urban sections (2-4 second cuts), slower in the nature sections (6-8 seconds). The text cards give the audience reading time. Do not rush them — read the card yourself at a normal pace and add 0.5 seconds. Music builds from the Rajasthan field shot onward. Color: urban footage can be slightly desaturated and cold; nature footage should be slightly warmer. The contrast between these two palettes is the film's visual argument. End card: wordmark only on black.",
+    "end_card_copy": "Sukoon. Free. Forever. For everyone.\nsukoon.app"
+  },
+
+  {
+    "id": "meditation-vs-mindfulness-difference",
+    "title_en": "The Difference Between Meditation and Mindfulness",
+    "title_hi": "ध्यान और माइंडफुलनेस में अंतर",
+    "target_duration_min": 8,
+    "type": "philosophical_talk",
+    "location": "Himachal Pradesh mountain meadow at golden hour — open alpine grassland, Himalayan peaks with residual snow visible in far distance, soft mist in valley below, wildflowers in meadow foreground, no structures visible, late afternoon directional light from camera-left creating long shadows across the grass",
+    "location_alt": "Coorg or Kodaikanal hillside — tea or coffee estate edge, morning mist in valley, eucalyptus or silver oak trees framing the view, open sky, no built structures in frame",
+    "time_of_day": "golden_hour_evening",
+    "talent_direction": "Voice-over throughout — no on-screen talent. At 5:30: a single woman appears seated in the meadow, very far from camera (WS), she is a small figure in the landscape. She faces the mountains, away from camera. At 7:00: she lies back in the grass — visible from above (drone or elevated tripod), arms relaxed at sides, eyes up at the sky. Face never identified.",
+    "wardrobe": "Meadow figure: loose dark forest-green linen trousers, cream cotton top, barefoot if ground permits — if cold, visible socks only, no shoes in frame. No yoga brand logos. Hair loose or loosely plaited. No jewellery.",
+    "camera_setup": "Sony FX3 + Sony 200-600mm for distant mountain establishing shots; Sony 85mm f/1.4 GM for meadow foreground B-roll and ECU work; Sony 24mm f/1.4 GM for wides. DJI Mavic 3 Pro drone for overhead shot of woman in grass at 7:00 — altitude 20-25m, directly overhead, woman centred, grass texture visible. All ground shots on tripod or slider.",
+    "lighting": "Golden hour primary directional light. Golden hour window is typically 45 minutes maximum — location scout must confirm timing and the shot list must be prioritized for the golden light shots first. No artificial light added. If cloud cover diffuses the golden hour: proceed, but the long-shadow sequences (shots 4 and 8) must be rescheduled.",
+    "audio_direction": "VO: female voice, thoughtful pace, not academic — this script is warmer and more personal than the Patanjali or breath scripts. The VO sounds like a conversation, not a lecture. On-location ambient: alpine wind, high-altitude silence, distant stream if present. These are the audio bed — do NOT add artificial wind sounds. Music: minimal. Single sustained note on sarangi or cello (single instrument only, no percussion) enters at 4:00 at -20dB, builds infinitesimally to -14dB by end. Drone over woman in grass: only ambient, no music, no VO.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Himalayan meadow at golden hour — full panorama, peaks in far background, mist in valley below, wildflower meadow foreground, long shadow of a tree or rock entering from camera-left, no human element",
+        "duration_sec": 10,
+        "notes": "This is the establishing image. Wide. Breathtaking without being cinematic spectacle. The landscape should look real — not like a travel poster."
+      },
+      {
+        "shot_number": 2,
+        "type": "ECU",
+        "description": "Individual wildflower in extreme close-up — pistil and stamen, pollen detail, 85mm at f/1.4, meadow grass bokeh behind, golden side-light",
+        "duration_sec": 7,
+        "notes": "The flower exists in complete present-moment awareness. It does not have a past or future. This is unconscious mindfulness — and the VO will make this point."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "Grass blades at ground level — horizontal camera at grass level, soft back-light through blades, individual blades in focus, meadow beyond soft bokeh, micro-movement in slight breeze",
+        "duration_sec": 8,
+        "notes": "Micro-world at the level of the ground. Slowness."
+      },
+      {
+        "shot_number": 4,
+        "type": "WS",
+        "description": "Long golden-hour shadows extending across meadow from trees or boulders at frame edge — shadows as objects in themselves, 24mm, camera low to ground",
+        "duration_sec": 6,
+        "notes": "Shadow as metaphor: mindfulness is like light — it illuminates what's already there."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Snowy Himalayan peak in extreme telephoto (200-600mm) — peak fills frame, snow texture visible, sky behind, absolute stillness of stone and ice",
+        "duration_sec": 8,
+        "notes": "The mountain is in permanent meditation. It is not doing mindfulness — it simply is. The difference this film is explaining."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Honey bee on a flower — 100mm macro, bee in complete focused attention on pollen, slow movement, oblivious to camera, authentic behavior",
+        "duration_sec": 7,
+        "notes": "Genuine, not staged. If a bee is present, wait. Do not use fake flower-bee stock footage — the realness of the creature's focus is the point."
+      },
+      {
+        "shot_number": 7,
+        "type": "WS",
+        "description": "Introduce small human figure — woman seated in meadow, very small in frame, mountains behind, she faces away, long shot with 85mm from 80+ meters, afternoon light on her back",
+        "duration_sec": 9,
+        "notes": "First appearance of the human. She is in the landscape — not dominating it. We have spent six shots in the meadow without any human; when she appears, she belongs here."
+      },
+      {
+        "shot_number": 8,
+        "type": "CU",
+        "description": "From behind and slightly to side: her hands resting in her lap, grass around her hands in frame, wind moving the grass while her hands are absolutely still",
+        "duration_sec": 7,
+        "notes": "Stillness inside movement. This is the image of formal meditation practice."
+      },
+      {
+        "shot_number": 9,
+        "type": "WS — drone",
+        "description": "Overhead drone at 20-25m: woman lying on her back in the grass, arms slightly open at sides, face up toward sky. Camera looks straight down. Grass texture fills frame. She is a shape in the grass.",
+        "duration_sec": 12,
+        "notes": "The final image of the film. Extreme overhead. She is part of the meadow. The meditation and the environment have become one. No VO in this shot. Only wind and ambient. Hold 12 full seconds."
+      }
+    ],
+    "script_text_en": [
+      "These two words are often used interchangeably. They shouldn't be.",
+      "Mindfulness and meditation are related — the way a daily walk and marathon training are related. One is informal, continuous, woven into ordinary life. The other is formal, contained, requiring a specific commitment of time and attention.",
+      "Both are valuable. They train different capacities. Confusing them leads people to believe they're doing one when they're doing the other, or to believe that one is a substitute for the other.",
+      "Let's separate them clearly.",
+      "Mindfulness is a quality of attention. Not a practice — a quality. It is the capacity to be present with whatever is actually happening, without the mind adding layers of commentary, judgment, or narrative.",
+      "You can be mindful while washing dishes. While walking. While having a difficult conversation. While eating. Mindfulness is available in any moment of ordinary life. It requires no equipment, no specific posture, no timer.",
+      "What it does require is noticing. The shift from autopilot — from doing something while the mind is somewhere else — to being present with what is actually occurring.",
+      "You're washing dishes. But your mind is rehearsing tomorrow's meeting. You notice this. You come back to the sensation of water and soap and ceramic. That moment of noticing and returning — that is a mindfulness moment.",
+      "Mindfulness practice — Jon Kabat-Zinn's MBSR framework, which brought these ideas into clinical Western medicine — is the deliberate cultivation of this quality across daily life.",
+      "Meditation is different.",
+      "Meditation is a formal practice. You stop what you're doing. You sit — or lie, or stand — in a specific posture, with a specific object of attention, for a defined period of time. The practice is not woven into activity — it is the deliberate withdrawal from activity.",
+      "The object might be the breath. A mantra. An image. The body scan. The space of awareness itself. But there is always an object, always a formal container, always a beginning and an end.",
+      "What formal meditation trains that informal mindfulness cannot: the capacity to hold the mind's attention on a single object for extended periods, without distraction. This is what Patanjali called dharana — sustained concentration — the prerequisite for the deeper states of dhyana and samadhi.",
+      "Think of it this way.",
+      "Mindfulness is like the light through a window. It illuminates everything in the room — it's a broad, open awareness. It's available all day if you practice it.",
+      "Meditation is like a magnifying glass held up to that light. It takes the same light and focuses it into a single intense point. That intensity, practiced repeatedly, trains a depth of attention that the broad light alone cannot develop.",
+      "You need both.",
+      "The meditator who never brings mindfulness into daily life lives in a small box — retreat and return, retreat and return, a practice that never integrates.",
+      "The mindfulness practitioner who never sits in formal meditation stays at the surface — always touching the experience, never going deep.",
+      "The traditions understood this. The Yoga Sutras describe both. Buddhism's Theravada path maps both. They are not two separate philosophies — they are two gears in the same vehicle.",
+      "First gear: mindfulness in daily life. Attention, returning, noticing.",
+      "Second gear: formal meditation. Depth, stillness, intensity of focus.",
+      "Drive in first gear all day.",
+      "Then, once a day — even for ten minutes — shift to second.",
+      "The vehicle will take you somewhere neither gear reaches alone."
+    ],
+    "script_text_hi": [
+      "इन दो शब्दों का अक्सर एक-दूसरे के स्थान पर प्रयोग होता है। ऐसा नहीं होना चाहिए।",
+      "माइंडफुलनेस और ध्यान संबंधित हैं — जैसे दैनिक सैर और मैराथन प्रशिक्षण संबंधित हैं। एक अनौपचारिक है, निरंतर, साधारण जीवन में बुनी हुई। दूसरा औपचारिक है, संयमित, समय और ध्यान की एक विशिष्ट प्रतिबद्धता की आवश्यकता है।",
+      "दोनों मूल्यवान हैं। वे अलग-अलग क्षमताओं को प्रशिक्षित करते हैं।",
+      "माइंडफुलनेस ध्यान की एक गुणवत्ता है। कोई अभ्यास नहीं — एक गुणवत्ता। यह वास्तव में जो हो रहा है उसके साथ उपस्थित रहने की क्षमता है, बिना मन के टिप्पणी, निर्णय या कथा की परतें जोड़े।",
+      "आप बर्तन धोते हुए सावधान हो सकते हैं। चलते हुए। कठिन बातचीत करते हुए। खाते हुए। माइंडफुलनेस साधारण जीवन के किसी भी पल में उपलब्ध है।",
+      "इसके लिए क्या चाहिए: ध्यान देना। ऑटोपायलट से — कुछ करते हुए जबकि मन कहीं और हो — वास्तव में जो हो रहा है उसके साथ उपस्थित होने की ओर बदलाव।",
+      "आप बर्तन धो रहे हैं। लेकिन आपका मन कल की बैठक का पूर्वाभ्यास कर रहा है। आप यह नोटिस करते हैं। आप पानी और साबुन और मिट्टी की अनुभूति पर वापस आते हैं। नोटिस करने और वापस आने का वह क्षण — वह एक माइंडफुलनेस क्षण है।",
+      "ध्यान अलग है।",
+      "ध्यान एक औपचारिक अभ्यास है। आप जो कर रहे हैं उसे रोक देते हैं। आप बैठते हैं — एक विशिष्ट मुद्रा में, ध्यान की एक विशिष्ट वस्तु के साथ, एक निश्चित अवधि के लिए। अभ्यास गतिविधि में नहीं बुना गया है — यह गतिविधि से जानबूझकर वापसी है।",
+      "वस्तु श्वास हो सकती है। एक मंत्र। एक छवि। शरीर की स्कैन। जागरूकता का स्थान स्वयं।",
+      "औपचारिक ध्यान जो प्रशिक्षित करता है जो अनौपचारिक माइंडफुलनेस नहीं कर सकती: एक ही वस्तु पर मन का ध्यान विस्तारित अवधि के लिए, बिना विचलन के, रखने की क्षमता।",
+      "इसे इस तरह सोचें।",
+      "माइंडफुलनेस खिड़की से आने वाली रोशनी की तरह है। यह कमरे में सब कुछ प्रकाशित करती है — यह एक व्यापक, खुली जागरूकता है।",
+      "ध्यान उस रोशनी पर रखे आवर्धक कांच की तरह है। यह उसी रोशनी को लेकर एक तीव्र बिंदु पर केंद्रित करता है। वह तीव्रता, बार-बार अभ्यास की जाए, ध्यान की गहराई को प्रशिक्षित करती है जो व्यापक रोशनी अकेले विकसित नहीं कर सकती।",
+      "आपको दोनों की जरूरत है।",
+      "जो ध्याता रोजमर्रा की जिंदगी में माइंडफुलनेस कभी नहीं लाता वह एक छोटे बक्से में रहता है।",
+      "जो माइंडफुलनेस साधक कभी औपचारिक ध्यान में नहीं बैठता वह सतह पर रहता है।",
+      "पहला गियर: दैनिक जीवन में माइंडफुलनेस।",
+      "दूसरा गियर: औपचारिक ध्यान।",
+      "पहले गियर में सारे दिन चलाएं।",
+      "फिर, दिन में एक बार — दस मिनट के लिए भी — दूसरे में शिफ्ट करें।",
+      "वाहन आपको वहां ले जाएगा जहां कोई भी गियर अकेले नहीं पहुंचता।"
+    ],
+    "b_roll_list": [
+      "Overhead drone: meadow from above, woman as small figure, grass texture dominant",
+      "ECU: bee on wildflower — genuine behavior only, 100mm macro",
+      "ECU: dew on grass blade in morning (add to shot day if possible) — macro",
+      "WS: Himalayan peaks at last light, mist rising from valley",
+      "CU: hands in lap, grass moving around them",
+      "B-roll: stream in meadow — slow exposure, water silk, stones sharp",
+      "ECU: single grass blade bending in wind, returning to upright",
+      "WS: view from elevated point looking down at entire meadow — human scale evident"
+    ],
+    "edit_notes": "Pacing: the slowest of all six films. This one breathes. Minimum shot length: 6 seconds. Most shots: 8-12 seconds. The watcher should feel themselves settling. Color grade: desaturate slightly — these mountains should not look like a screensaver. Pull the saturation on the greens and golds down by 20%; the sky should be slightly muted. The result should feel like a real mountain afternoon, not a tourism campaign. End: drone shot of woman in grass holds for the full 12 seconds with no VO and no music — just wind.",
+    "end_card_copy": "Sukoon. Free. Forever. For everyone.\nsukoon.app"
+  },
+
+  {
+    "id": "sleep-is-not-weakness-science-of-rest",
+    "title_en": "Sleep Is Not Weakness — The Science of Rest",
+    "title_hi": "नींद कमज़ोरी नहीं है — विश्राम का विज्ञान",
+    "target_duration_min": 9,
+    "type": "philosophical_talk",
+    "location": "Kerala traditional home — interior, late evening, candle-lit or oil-lamp lit, wooden rafters above, handwoven cotton floor mat, single window showing deep blue twilight outside, walls in traditional Kerala lime-yellow wash, no modern furniture visible",
+    "location_alt": "Rajasthan haveli interior — thick stone walls, arched doorway to courtyard showing stars, low clay lamp burning, traditional cotton dhurrie on floor, warm amber light, no modern elements",
+    "time_of_day": "candle_lit_evening",
+    "talent_direction": "Voice-over throughout. No on-screen talent. B-roll only. The one human element allowed: CU of a woman's hand extinguishing an oil lamp (pinching the flame) at the very end — this is the final image of the film. This is a practiced gesture, unhurried. Face never seen.",
+    "wardrobe": "Hand talent: sleeve of a plain dark navy cotton kurta visible at wrist only. No jewellery on the hand that extinguishes the flame.",
+    "camera_setup": "Sony FX3 + Sony 50mm f/1.2 GM as primary lens for interior warm-light shots; Sony 85mm f/1.4 GM for tighter CU work; all shots on tripod. NO gimbal or slider. This film is completely still — the stillness of the frame is the message. ISO will be high (6400-12800) for the candle-lit shots — do not fight the grain. Natural film-grain look is appropriate for this film's palette.",
+    "lighting": "Practical candle/oil-lamp light throughout. No LED fill. No bounced artificial light. If exposure requires it, use a second lamp placed just outside camera frame at the same colour temperature as practical lamps — this is augmentation, not fabrication. Test shots required to calibrate the practical-only look before principal photography.",
+    "audio_direction": "VO: the most intimate of all six films. Female voice, very low register, unhurried — this feels like being spoken to just before sleep. Not sleepy — present and warm. On-location ambient: silence of a thick-walled traditional house, occasional cricket, flame flicker (very subtle). No music under VO. At 6:00: very soft, nearly inaudible tanpura drone enters at -22dB — this is below most listeners' threshold of conscious music awareness. Rises to -18dB by 8:30. When the flame is extinguished: silence. Complete silence. Hold silence for 4 seconds. Then Sukoon wordmark with no audio.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Kerala interior — single oil lamp burning in foreground, window with deep blue twilight behind, room in warm amber half-light, no person, 50mm at f/1.2, exposure biased toward lamp warmth",
+        "duration_sec": 8,
+        "notes": "The world at rest. This image should communicate that it is evening — that the world is preparing to release its grip."
+      },
+      {
+        "shot_number": 2,
+        "type": "ECU",
+        "description": "Oil lamp flame — extremely close, wick detail, oil surface, tiny flame, 50mm at minimum focus distance, 5-sec minimum hold on completely stable frame",
+        "duration_sec": 7,
+        "notes": "This image recurs three times in the film. It is the film's visual anchor. Each time it appears, it is slightly different — slightly different moment in the flame's life."
+      },
+      {
+        "shot_number": 3,
+        "type": "B-roll",
+        "description": "Window — deep blue outside, lamp reflected in glass, stars visible if location permits, a leaf from a tree outside moving slightly in the night breeze behind the glass",
+        "duration_sec": 7,
+        "notes": "The boundary between interior safety and exterior night. Sleep is permission to cross this boundary consciously."
+      },
+      {
+        "shot_number": 4,
+        "type": "CU",
+        "description": "Handwoven cotton dhurrie / floor mat — texture in raking lamp light, individual threads visible, 50mm, warm shadows in the weave",
+        "duration_sec": 6,
+        "notes": "Tactile. The domestic. The ground we lie down on."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Lamp flame (second variation) — slightly wider than shot 2, fuel surface visible, very small flame movement",
+        "duration_sec": 6,
+        "notes": "Second appearance of the anchor image."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Wooden ceiling rafters from below — camera looking straight up, lamp below casting warm shadows upward into the timber beams, natural grain and age of wood visible",
+        "duration_sec": 7,
+        "notes": "The architecture of shelter. This building has held sleeping people for generations."
+      },
+      {
+        "shot_number": 7,
+        "type": "B-roll",
+        "description": "Courtyard glimpsed through arched doorway or window — stars if possible, or just deep blue-black sky, moonlight on stone floor beyond, no movement",
+        "duration_sec": 6,
+        "notes": "The sky at night. Ancient context. Before electricity, sleep was governed by this."
+      },
+      {
+        "shot_number": 8,
+        "type": "CU",
+        "description": "Simple clay water pot — earthen surface, lamp light warm on the clay, shadow on wall behind, no modern objects near it",
+        "duration_sec": 5,
+        "notes": "The elemental. The simple object that needs no upgrade or update. It simply is. Like sleep."
+      },
+      {
+        "shot_number": 9,
+        "type": "ECU",
+        "description": "Lamp flame (third variation) — widest of the three framings, most of the lamp in frame, room beyond soft, this time the flame is visibly smaller — the oil is lower",
+        "duration_sec": 7,
+        "notes": "The lamp is running low. The day is truly ending. Used for VO lines about the natural rhythm of sleep."
+      },
+      {
+        "shot_number": 10,
+        "type": "CU",
+        "description": "Woman's hand approaching flame — entering frame from above, sleeve visible, index finger and thumb approaching pinch position, not touching yet — the breath before extinguishing",
+        "duration_sec": 5,
+        "notes": "The intention before the act. Slow, deliberate. She is not flicking — she is completing."
+      },
+      {
+        "shot_number": 11,
+        "type": "ECU",
+        "description": "The extinguishing — pinch closes, flame goes out, thin thread of smoke rises from the wick into darkness, room plunges to near-black with only blue window remaining",
+        "duration_sec": 6,
+        "notes": "The final act of the day. The smoke is exquisite — capture it at 120fps to have option to use in slow motion. The silence that follows this image is the end of the film."
+      },
+      {
+        "shot_number": 12,
+        "type": "B-roll",
+        "description": "Complete darkness — only window blue remains as a soft rectangle, smoke barely visible, room in near-black. Hold. Fade to black.",
+        "duration_sec": 8,
+        "notes": "This is the last image before the end card. No VO. No music. Only the sound of room tone and then complete silence. This is what the film has been building toward."
+      }
+    ],
+    "script_text_en": [
+      "Somewhere in the last fifty years, we learned to be ashamed of sleep.",
+      "Not in every culture. Not in every generation. But in the culture that currently produces most of the world's productivity discourse — the startup ecosystem, the high-performance workplace, the hustle mythology — sleep became a concession. Something the weak need. Something the driven minimize.",
+      "I'll sleep when I'm dead is a sentence that has been said seriously, in admiration, about actual human beings.",
+      "Here is what the science says.",
+      "During sleep, your glymphatic system activates. This is a waste-clearance system in the brain — a recently discovered network of channels that clears metabolic byproducts, including amyloid-beta and tau proteins, which accumulate during waking activity and are strongly associated with Alzheimer's disease. The glymphatic system is almost entirely inactive during wakefulness. It requires sleep.",
+      "The brain cleans itself while you sleep.",
+      "This is not metaphor. This is the mechanism.",
+      "During deep sleep, human growth hormone is released — the hormone responsible for cellular repair across the body. Immune function is consolidated during sleep. Memory is encoded: the hippocampus replays the day's experiences and transfers them to long-term cortical storage. Without this process, learning does not stick.",
+      "Sleep deprivation — defined as less than seven hours for most adults — measurably increases inflammatory markers, reduces cognitive processing speed, impairs impulse control, degrades emotional regulation, and increases risk of metabolic disorder. These are not opinions. These are reproducible findings across decades of sleep science.",
+      "Matthew Walker's summary after writing the most comprehensive scientific book on sleep: there is no biological function that sleep does not enhance, and no disease that sufficient sleep does not protect against.",
+      "Now here is the cultural piece.",
+      "For most of human history, until artificial electric light, human sleep followed a bimodal pattern — not one eight-hour block, but two periods of sleep, separated by an hour or two of quiet wakefulness in the middle of the night. This middle waking period — sometimes called the watch — was used for prayer, for reflection, for quiet conversation. Many traditional Indian households maintained some version of this rhythm.",
+      "The artificial shortening of sleep into a single compressed block is an industrial-age imposition, not a human norm.",
+      "In yoga philosophy, sleep is not simply rest. It is one of the five states of mind described by Patanjali — along with waking, dreaming, deep sleep, and the transcendent state. The deep sleep state — sushupti — was considered the natural state of pure consciousness unexpressed, a daily return to the source.",
+      "This is not romanticization. It is a description of the same system that modern neuroscience is mapping from the other direction.",
+      "You are not designed to run continuously.",
+      "You are designed to alternate between full engagement and complete surrender.",
+      "The surrender is not weakness.",
+      "The surrender is the maintenance window.",
+      "Without it, the system runs damaged.",
+      "Tonight, when you put down the phone and close your eyes, you are not failing at productivity.",
+      "You are completing the cycle.",
+      "You are returning to the source.",
+      "Let the lamp go out."
+    ],
+    "script_text_hi": [
+      "कहीं न कहीं पिछले पचास वर्षों में, हमने नींद से शर्म करना सीख लिया।",
+      "हर संस्कृति में नहीं। हर पीढ़ी में नहीं। लेकिन उस संस्कृति में जो वर्तमान में दुनिया का अधिकांश उत्पादकता-विमर्श तैयार करती है — स्टार्टअप पारिस्थितिकी तंत्र, उच्च-प्रदर्शन कार्यक्षेत्र — नींद एक रियायत बन गई। कुछ ऐसा जिसकी कमजोरों को जरूरत है।",
+      "मृत्यु पर सोऊंगा — यह वाक्य वास्तविक मनुष्यों के बारे में, सराहना के साथ, गंभीरता से कहा गया है।",
+      "विज्ञान क्या कहता है यह देखें।",
+      "नींद के दौरान, आपका ग्लाइम्फेटिक सिस्टम सक्रिय हो जाता है। यह मस्तिष्क में एक अपशिष्ट-निपटान प्रणाली है — हाल ही में खोजा गया चैनलों का एक नेटवर्क जो जागने की गतिविधि के दौरान जमा होने वाले और अल्जाइमर रोग से दृढ़ता से जुड़े चयापचय उपोत्पादों को साफ करता है। ग्लाइम्फेटिक सिस्टम जागते समय लगभग पूरी तरह निष्क्रिय रहता है। इसके लिए नींद की जरूरत है।",
+      "मस्तिष्क नींद में खुद को साफ करता है।",
+      "यह रूपक नहीं है। यह तंत्र है।",
+      "गहरी नींद के दौरान, ह्यूमन ग्रोथ हार्मोन रिलीज होता है — पूरे शरीर में सेलुलर मरम्मत के लिए जिम्मेदार हार्मोन। नींद के दौरान प्रतिरक्षा कार्य मजबूत होता है। स्मृति एनकोड होती है: हिप्पोकैम्पस दिन के अनुभवों को दोहराता है और उन्हें दीर्घकालिक कॉर्टिकल स्टोरेज में स्थानांतरित करता है।",
+      "नींद की कमी — अधिकांश वयस्कों के लिए सात घंटे से कम — सूजन संबंधी मार्करों को मापनीय रूप से बढ़ाती है, संज्ञानात्मक प्रसंस्करण गति को कम करती है, आवेग नियंत्रण को बाधित करती है, भावनात्मक विनियमन को ख़राब करती है।",
+      "अब सांस्कृतिक पहलू।",
+      "अधिकांश मानव इतिहास के लिए, जब तक कृत्रिम विद्युत प्रकाश नहीं था, मानव नींद एक द्विआधारी पैटर्न का पालन करती थी — एक आठ घंटे के खंड में नहीं, बल्कि रात के बीच में एक या दो घंटे की शांत जागरूकता से अलग की गई दो नींद की अवधि में। इस मध्य जागने की अवधि का उपयोग प्रार्थना के लिए, प्रतिबिंब के लिए, शांत बातचीत के लिए किया जाता था।",
+      "योग दर्शन में, नींद केवल विश्राम नहीं है। यह पतंजलि द्वारा वर्णित मन की पांच अवस्थाओं में से एक है — जागरण, स्वप्न, गहरी नींद, और अतिक्रामी अवस्था के साथ। गहरी नींद की अवस्था — सुषुप्ति — को शुद्ध चेतना की प्राकृतिक अवस्था माना जाता था, स्रोत पर एक दैनिक वापसी।",
+      "आप निरंतर चलाने के लिए डिज़ाइन नहीं किए गए हैं।",
+      "आप पूर्ण संलग्नता और पूर्ण समर्पण के बीच बारी-बारी करने के लिए डिज़ाइन किए गए हैं।",
+      "समर्पण कमज़ोरी नहीं है।",
+      "समर्पण रखरखाव की खिड़की है।",
+      "इसके बिना, सिस्टम क्षतिग्रस्त होकर चलता है।",
+      "आज रात, जब आप फोन रखें और आंखें बंद करें, तो आप उत्पादकता में विफल नहीं हो रहे।",
+      "आप चक्र पूरा कर रहे हैं।",
+      "आप स्रोत पर वापस लौट रहे हैं।",
+      "दीपक बुझने दें।"
+    ],
+    "b_roll_list": [
+      "ECU: wick of oil lamp — before and after extinguishing",
+      "CU: smoke rising from extinguished wick in darkness, 120fps",
+      "WS: Kerala house exterior at night — dark walls, single lit window, stars above, no cars visible",
+      "ECU: handwoven textile texture in warm lamp light",
+      "CU: clay pot in raking light",
+      "B-roll: stars through window or open doorway — long exposure if possible, or simply frame stars visible",
+      "CU: wooden floorboard and sleeping mat, lamp light from the side, late evening mood",
+      "ECU: lamp flame in three distinct 'moods' — bright beginning, steady middle, low ending"
+    ],
+    "edit_notes": "This is the most interior, the most private, the most intimate of the six films. Edit pacing should be the slowest — even slower than the meadow film. The brain should begin to slow down while watching this. Color grade: warmest of all six, heavily biased toward amber-orange from the lamps, blues in the window kept deep and cool as contrast. Shadows can be quite dark — do not lift them. This is a film about darkness being safe. High ISO grain from the candlelight shots is acceptable and desirable — do not noise-reduce aggressively. The grain is texture, not failure. The extinguishing shot and smoke at 120fps is the visual centerpiece — treat it like a jewel in the edit. Complete silence after the flame goes out — hold this silence even if it feels long to the editor. It will not feel long to the viewer.",
+    "end_card_copy": "Sukoon. Free. Forever. For everyone.\nsukoon.app"
+  },
+
+  {
+    "id": "anxiety-is-not-a-flaw-its-information",
+    "title_en": "Anxiety Is Not a Flaw — It's Information",
+    "title_hi": "चिंता कोई दोष नहीं है — यह जानकारी है",
+    "target_duration_min": 9,
+    "type": "philosophical_talk",
+    "location": "Bengaluru urban park at golden hour — a large park tree's roots and base, dappled light through canopy above, urban skyline barely visible and completely soft-blurred at extreme background, grass foreground, a single empty wooden bench visible in mid-frame background, city sounds very distantly audible",
+    "location_alt": "Mumbai seafront promenade at golden hour — Marine Drive or Bandra Bandstand, waves and sea to one side, golden light, city behind but not prominent, bench or low sea wall",
+    "time_of_day": "golden_hour_evening",
+    "talent_direction": "Voice-over throughout — no on-screen talent. The one exception: at 6:30, a brief (4-second) shot of a woman's feet — bare or in simple flat sandals — on a park path, mid-stride, walking calmly. Not hurrying. Not frozen. Moving forward. Ankles and feet only — nothing above the knees visible.",
+    "wardrobe": "Feet/ankles talent: plain dark wash straight-fit trousers, simple neutral leather flat sandal (Kolhapuri-style or equivalent), no ankle jewellery. Clean, unadorned.",
+    "camera_setup": "Sony FX3 + Sony 85mm f/1.4 GM as primary lens; Sony 24mm f/1.4 GM for environmental wides; Sony 100mm macro for ECU insect/plant life. All on tripod. One slider move permitted: slow push toward the empty bench (4cm travel over 8 seconds). No drone. No handheld.",
+    "lighting": "Golden hour practical only. The warm directional light of late afternoon in Bengaluru is reliable and specific — it must be used, not approximated. Scout: direction of golden hour light in chosen park to ensure bench, tree, and grass are lit from the correct angle. A 5-in-1 reflector (gold side) may be used for one CU shot if light is dropping — this is the exception, not the rule.",
+    "audio_direction": "VO: the most direct and personal of all six films. Female voice. This voice has experienced anxiety — it speaks with recognition, not clinical distance. It is not soft. It does not coddle. It has warmth but also precision and a complete absence of sentimentality. On-location ambient: birdsong (urban park), distant traffic as a low hum, wind in trees. These are used naturally. No additional foley. Music: restrained but present — soft tanpura plus a single plucked string (sitar or guitar, unamplified, dry, no reverb) entering at 5:00 at -18dB. The plucked string plays three notes, slowly, occasionally — not a pattern, just presence. Rises to -14dB over the final 90 seconds.",
+    "shot_list": [
+      {
+        "shot_number": 1,
+        "type": "WS",
+        "description": "Park tree roots at golden hour — massive root system at base of old tree, roots emerging from ground, warm light along bark, grass around roots, no people, park depth behind",
+        "duration_sec": 8,
+        "notes": "The root system is grounded. Deeply. Immovably. This image is the answer the film will spend nine minutes arriving at — but the viewer doesn't know that yet."
+      },
+      {
+        "shot_number": 2,
+        "type": "ECU",
+        "description": "Single ant on tree bark — 100mm macro, extreme close, natural light on bark texture, ant moving purposefully",
+        "duration_sec": 6,
+        "notes": "The nervous system at its most essential: a creature entirely governed by threat-and-safety signals, doing exactly what it evolved to do. This is the origin of anxiety."
+      },
+      {
+        "shot_number": 3,
+        "type": "CU",
+        "description": "Tree roots at ground level — side view, root disappearing into earth, grass growing up around base of root, 85mm",
+        "duration_sec": 7,
+        "notes": "Roots finding the earth. The image of a nervous system that has found its ground."
+      },
+      {
+        "shot_number": 4,
+        "type": "WS",
+        "description": "Empty bench in mid-distance — park surrounding it, golden light slanting across the seat, 85mm at f/1.4, bench slightly back-lit",
+        "duration_sec": 7,
+        "notes": "The empty bench recurs in this film. It represents the pause — the moment of sitting with the anxiety rather than running from it."
+      },
+      {
+        "shot_number": 5,
+        "type": "ECU",
+        "description": "Grass blades with late-afternoon back-light — translucent, golden, each blade rimlit, 100mm macro, ground level looking up through them",
+        "duration_sec": 6,
+        "notes": "The world is still ordinary. Still beautiful. Anxiety has not destroyed it."
+      },
+      {
+        "shot_number": 6,
+        "type": "B-roll",
+        "description": "Shadows of leaves moving on the ground — tree canopy above moving in breeze, shadow patterns on grass below, camera overhead looking down, patterns shift and settle",
+        "duration_sec": 8,
+        "notes": "Anxiety as moving shadow: real, present, but not the object itself. The sun is still there."
+      },
+      {
+        "shot_number": 7,
+        "type": "CU",
+        "description": "Woman's feet mid-stride on park path — entering frame from camera-left, moving right, ankles and feet only, calm walking pace, 85mm at knee height, blurred path before and behind",
+        "duration_sec": 4,
+        "notes": "The sole on-screen human moment. She is not frozen. She is moving. This is the film's action — not dramatic, not triumphant, just ordinary forward motion."
+      },
+      {
+        "shot_number": 8,
+        "type": "WS",
+        "description": "Slow slider push toward empty bench — bench in mid-frame, golden light, bench getting gradually closer over 8 seconds as if we are walking toward it",
+        "duration_sec": 8,
+        "notes": "Moving toward the pause. Not running from it."
+      },
+      {
+        "shot_number": 9,
+        "type": "ECU",
+        "description": "Tree bark texture — extreme close, ridges and channels in bark, golden side-light making every surface detail dimensional, no particular focus of interest — just the texture of what has stood here for decades",
+        "duration_sec": 7,
+        "notes": "The tree has been here longer than your anxiety. It will be here after. This is not consolation — this is context."
+      },
+      {
+        "shot_number": 10,
+        "type": "WS",
+        "description": "Full tree from below — camera at base of tree looking up through canopy, golden light through leaves, sky visible in gaps, branches spreading outward",
+        "duration_sec": 9,
+        "notes": "The tree holds this frame. It is not anxious. It is also not unresponsive — its roots are constantly reading the soil, its leaves are constantly reading the light. It is responsive without being overwhelmed. This is the final image's argument."
+      },
+      {
+        "shot_number": 11,
+        "type": "WS",
+        "description": "Return to opening — roots at base of tree, golden light, identical framing to shot 1 but the light is now slightly warmer and lower — time has passed",
+        "duration_sec": 10,
+        "notes": "Circular structure. We return to the roots. The viewer has been changed by the nine minutes between this and shot 1. The roots have not moved. Music at its fullest here. Hold for all 10 seconds. Fade to black."
+      }
+    ],
+    "script_text_en": [
+      "Anxiety is not a character flaw.",
+      "This matters to say clearly because most of the cultural messaging around anxiety — even well-meaning messaging — treats it as a malfunction. A bug in the system. Something to be fixed, eliminated, overcome.",
+      "This framing is almost entirely backwards.",
+      "Anxiety is the product of a nervous system doing exactly what it evolved to do.",
+      "The amygdala — the almond-shaped structure in your limbic system — is your threat-detection circuit. It is extraordinarily good at its job. It runs faster than conscious thought. It compares everything in your environment to everything in your memory, scans for threat-relevant patterns, and fires before your cortex has had time to weigh in.",
+      "When you feel that cold flash of dread at 2 AM about the email you sent — that is the amygdala doing its job. When your heart rate rises before a presentation — that is the same system. When you lie awake cataloguing every possible way something could go wrong — that is a threat-detection system that has not received the signal that the immediate physical danger is resolved.",
+      "The system evolved for a world of immediate physical threats. In that world, it saved lives. A thousand times over.",
+      "The world it evolved for is not the world we currently inhabit.",
+      "The threats have not disappeared — they have transformed. Now they are social, reputational, financial, relational. They are chronic rather than acute. They do not resolve in minutes the way a predator does — they persist for weeks, months, years.",
+      "The nervous system is using a perfectly calibrated ancient tool on a problem it was not built for.",
+      "This is not failure. This is a mismatch.",
+      "Now, the information.",
+      "Anxiety is a signal. Not always a signal about the thing it appears to be about.",
+      "When you are anxious about the presentation, the underlying information might be: this matters to me. I want to do it well. I care about how I'm perceived by these people.",
+      "When you are anxious about a relationship, the underlying information might be: this person matters to me. I am afraid of losing them. There is something unspoken between us that needs to be said.",
+      "When you are anxious about nothing identifiable — that free-floating, sourceless dread — the information might be: I have been running at full capacity for too long. My nervous system is depleted. Something in my life needs to change.",
+      "The question anxiety is always asking — underneath all its noise — is: what do you care about? Where are your edges? What matters enough to you that its possible loss activates your oldest protection system?",
+      "This is information. This is not betrayal by your own body.",
+      "What do you do with it?",
+      "Not suppress it. Suppression is physiologically expensive and temporarily effective at best. The research on emotional suppression consistently shows that it increases physiological arousal even as it reduces observable behavior.",
+      "Not be ruled by it. The signal is data — not command.",
+      "Sit with it. Name what it's pointing to. Let the body complete its alarm cycle — breath, movement, or simply the physiological completion of feeling the fear fully for sixty seconds without fleeing from it.",
+      "The yogic practices that address anxiety most directly — pranayama, specific asanas, yoga nidra, mantra — are not suppression tools. They are completion tools. They help the nervous system finish the cycle it began.",
+      "Your anxiety is not a flaw in your character. It is a feature of your wiring.",
+      "It is trying to protect something you love.",
+      "It deserves to be heard.",
+      "And then — gently, without battle — it deserves to be released."
+    ],
+    "script_text_hi": [
+      "चिंता कोई चरित्र दोष नहीं है।",
+      "इसे स्पष्ट रूप से कहना जरूरी है क्योंकि चिंता के बारे में अधिकांश सांस्कृतिक संदेश — यहां तक कि अच्छे इरादे वाले संदेश भी — इसे एक खराबी के रूप में मानते हैं। सिस्टम में एक बग। कुछ ऐसा जिसे ठीक किया जाए, समाप्त किया जाए, पार किया जाए।",
+      "यह दृष्टिकोण लगभग पूरी तरह गलत है।",
+      "चिंता एक तंत्रिका तंत्र का उत्पाद है जो ठीक वही कर रहा है जिसके लिए वह विकसित हुआ था।",
+      "अमिग्डाला — आपके limbic system में बादाम के आकार की संरचना — आपका खतरा-पहचान सर्किट है। यह अपने काम में असाधारण रूप से अच्छा है। यह सचेत विचार से तेज चलता है। यह आपके परिवेश में सब कुछ आपकी सभी यादों से तुलना करता है, खतरे के प्रासंगिक पैटर्न के लिए स्कैन करता है, और फायर करता है इससे पहले कि आपके cortex के पास कुछ सोचने का समय हो।",
+      "जब आप उस ईमेल के बारे में जो आपने भेजा था, रात 2 बजे ठंडी दहशत महसूस करते हैं — वह अमिग्डाला अपना काम कर रहा है। जब किसी प्रस्तुति से पहले आपकी हृदय गति बढ़ती है — वह वही प्रणाली है।",
+      "यह प्रणाली तत्काल शारीरिक खतरों की दुनिया के लिए विकसित हुई। उस दुनिया में, इसने जानें बचाईं। हजार बार।",
+      "जिस दुनिया के लिए यह विकसित हुई वह वह दुनिया नहीं है जिसमें हम अभी रहते हैं।",
+      "खतरे गायब नहीं हुए हैं — वे रूपांतरित हो गए हैं। अब वे सामाजिक, प्रतिष्ठात्मक, वित्तीय, संबंधात्मक हैं। वे तीव्र के बजाय दीर्घकालिक हैं।",
+      "तंत्रिका तंत्र एक पूरी तरह से कैलिब्रेटेड प्राचीन उपकरण का उपयोग उस समस्या पर कर रहा है जिसके लिए इसे नहीं बनाया गया था।",
+      "यह विफलता नहीं है। यह एक बेमेल है।",
+      "अब, जानकारी।",
+      "चिंता एक संकेत है। जरूरी नहीं कि उस चीज के बारे में जिसके बारे में यह प्रतीत होता है।",
+      "जब आप प्रस्तुति के बारे में चिंतित होते हैं, तो अंतर्निहित जानकारी हो सकती है: यह मेरे लिए मायने रखता है। मैं इसे अच्छी तरह करना चाहता हूं।",
+      "जब आप किसी रिश्ते के बारे में चिंतित होते हैं: यह व्यक्ति मेरे लिए मायने रखता है। मुझे उन्हें खोने का डर है।",
+      "चिंता जो सवाल हमेशा पूछ रही है — अपने सारे शोर के नीचे — वह है: आप किसकी परवाह करते हैं?",
+      "यह जानकारी है। यह आपके अपने शरीर का विश्वासघात नहीं है।",
+      "इसके साथ क्या करें?",
+      "दबाएं नहीं। इससे शासित न हों।",
+      "इसके साथ बैठें। यह जो इंगित कर रहा है उसे नाम दें।",
+      "योग के अभ्यास जो चिंता को सबसे सीधे संबोधित करते हैं — प्राणायाम, विशिष्ट आसन, योग निद्रा, मंत्र — दमन के उपकरण नहीं हैं। वे पूर्णता के उपकरण हैं।",
+      "आपकी चिंता आपके चरित्र में कोई खामी नहीं है। यह आपके तारों की एक विशेषता है।",
+      "यह उस चीज की रक्षा करने की कोशिश कर रहा है जिससे आप प्यार करते हैं।",
+      "यह सुने जाने की हकदार है।",
+      "और फिर — धीरे से, बिना लड़ाई के — यह मुक्त होने की हकदार है।"
+    ],
+    "b_roll_list": [
+      "ECU: ant colony activity on a branch — close, detailed, purposeful movement, 100mm macro",
+      "CU: city seen through leaves in extreme telephoto compression — blurred, soft, almost abstract, city as context not subject",
+      "WS: park at dusk, bench empty, single person walking far away, golden light",
+      "ECU: bark texture raking light — the age and depth of something that has simply stood",
+      "Slow-motion: leaf falling in park (120fps, played 24fps) — single leaf, drifting, not falling hard",
+      "CU: park bench wood grain in warm light — scratches and marks from years of use",
+      "WS: canopy from below — looking up into the tree's full crown, light through leaves",
+      "ECU: single dewdrop on grass blade if early morning B-roll day is possible — not essential but beautiful"
+    ],
+    "edit_notes": "This film has the most complex emotional arc — it needs to move from intellectual explanation to something more personal and lived. The edit should mirror this: the first half (shots 1-5) can be slightly more clipped at 6-7 seconds per shot; the second half (shots 6-11) should breathe longer, 8-10 seconds per shot. The VO is the driver — do not cut against the VO rhythm. Color: warm golden-hour color, slightly more saturated than the other films — this is the most alive of the six. The city in the background of any shot must be so defocused as to be unidentifiable — we are in a pocket of urban nature. The final return to the roots image should feel like arriving home. End card after 3 seconds of black silence.",
+    "end_card_copy": "Sukoon. Free. Forever. For everyone.\nsukoon.app"
+  }
+]

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const { scan: scanCrisis, lastUserText, helplinesFor } = require('./crisis');
 
 /* ─── System prompt builder ─────────────────────────────────────────────
    We construct the prompt at request time so language and region cues land
@@ -35,7 +36,7 @@ const POISON_CONTROL = {
   global: 'US Poison Control 1-800-222-1222 • UK 111'
 };
 
-function buildSystemPrompt(lang) {
+function buildSystemPrompt(lang, opts = {}) {
   const region = REGION_BY_LANG[lang] || 'global';
   const helplines = HELPLINES[region] || HELPLINES.global;
   const poison = POISON_CONTROL[region] || POISON_CONTROL.global;
@@ -44,7 +45,22 @@ function buildSystemPrompt(lang) {
     ? 'Respond in English.'
     : `Respond in ${lang}. Use the language naturally and fluently — not Hinglish or code-mix unless the user used it. Adapt cultural references for the region: ${region}.`;
 
-  return `You are Sukoon — a wise, warm AI companion. You are NOT a therapist or doctor.
+  // Crisis-detection addendum: prepended when a server-side trigger fires.
+  // The detector is upstream (client AND /routes/crisis.js); when it fires
+  // we MUST include helplines in the reply and the caller MUST set route='now'.
+  const crisisAddendum = opts.crisisTier
+    ? `\n\n═══════════════════════════════════════════════════════════
+CRISIS ADDENDUM — TRIGGER DETECTED (TIER ${opts.crisisTier})
+═══════════════════════════════════════════════════════════
+The server has detected crisis-trigger language in this user's message.
+Follow the SAFETY OVERRIDE section above for Tier ${opts.crisisTier} precisely.
+You MUST include the helplines block verbatim in your response:
+${helplines}
+${opts.crisisTier === 3 ? `Also include poison control: ${poison}\n` : ''}Do not soften, do not paraphrase the numbers. Stay in Sukoon's voice.
+\n`
+    : '';
+
+  return `${crisisAddendum}You are Sukoon — a wise, warm AI companion. You are NOT a therapist or doctor.
 You are the friend people wish they had: someone who has lived honestly, read deeply,
 and cares enough to be direct.
 
@@ -279,7 +295,14 @@ router.post('/', async (req, res) => {
 
     const ALLOWED_LANGS = new Set(['en', 'hi', 'ur', 'ar', 'es', 'fr', 'pa', 'bn', 'ta', 'te', 'mr']);
     const safeLang = ALLOWED_LANGS.has(language) ? language : 'en';
-    const systemContent = buildSystemPrompt(safeLang);
+
+    // Crisis pre-flight: scan the most recent user turn server-side so the
+    // model is hard-primed and the caller knows to route to /now.
+    const lastText = lastUserText(userMessages);
+    const crisis = scanCrisis(lastText);
+    const systemContent = buildSystemPrompt(safeLang, {
+      crisisTier: crisis.hit ? (crisis.tier || 2) : null
+    });
 
     // First attempt, then a single retry on transient 5xx (network blip, model overloaded)
     let result = await callAnthropic(systemContent, userMessages);
@@ -291,6 +314,22 @@ router.post('/', async (req, res) => {
     if (result.ok) {
       const totalMs = Date.now() - requestStart;
       console.log(`[Chat] ✓ Anthropic (${result.ms}ms, total ${totalMs}ms)`);
+
+      // Constitution: if triggers fired, the response MUST include helplines
+      // and route MUST be 'now'. We attach helplines defensively in case the
+      // model abbreviated them.
+      if (crisis.hit) {
+        const helplines = helplinesFor(safeLang);
+        const text = result.text.includes(helplines.split('•')[0].trim())
+          ? result.text
+          : `${result.text}\n\n${helplines}`;
+        return res.json({
+          message: text,
+          route: 'now',
+          crisis: { tier: crisis.tier, nssi: crisis.nssi },
+          helplines
+        });
+      }
       return res.json({ message: result.text });
     }
 

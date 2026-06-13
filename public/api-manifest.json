@@ -1,0 +1,180 @@
+{
+  "name": "Sukoon API",
+  "version": "1.0.0",
+  "description": "Hybrid library + generative wellness sanctuary. Anonymous by architecture. Crisis-first.",
+  "contract": {
+    "anonymity": "No user database. No accounts. No payload logging.",
+    "rateLimit": "60 req/min/IP across all /api/* routes, in-memory.",
+    "anthropic": "x-api-key header, native Messages API, retry-once on 429/5xx.",
+    "crisis": "Trigger-word matcher runs on /api/chat and /api/route. When hit, route is forced to 'now' and helplines are included."
+  },
+  "endpoints": [
+    {
+      "method": "POST",
+      "path": "/api/chat",
+      "purpose": "Friend mode — conversational support via Claude Sonnet 4.6 with the safety override prompt.",
+      "request": {
+        "messages": "Array<{role:'user'|'assistant', content:string}> (max 30, content max 4000 chars)",
+        "language": "en|hi|ur|ar|es|fr|pa|bn|ta|te|mr (default 'en')"
+      },
+      "response": {
+        "message": "string — Claude's reply",
+        "route": "'now' (only when trigger words detected)",
+        "crisis": "{tier:1|2|3, nssi:boolean} (only when triggered)",
+        "helplines": "string (only when triggered)"
+      },
+      "errors": ["400 invalid messages", "500 missing key", "503 upstream failure"]
+    },
+    {
+      "method": "POST",
+      "path": "/api/route",
+      "purpose": "Classify free-text input into one of eight Sukoon routes and surface top 3 library matches.",
+      "request": {
+        "input": "string (max 1000 chars)",
+        "language": "BCP-47 code (optional)",
+        "mood": "hint label (optional)"
+      },
+      "response": {
+        "route": "arrive|be-with-me|breathe|sit|rest|sounds|today|now",
+        "mood": "string|null",
+        "tags": "string[]",
+        "reason": "string|null",
+        "matches": "string[] — top 3 library item ids",
+        "tier": "1|2|3 (only when route='now' via safety override)",
+        "helplines": "string (only on safety override)",
+        "source": "'classifier'|'fallback'|'safety-override'"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/library",
+      "purpose": "Filter the in-memory library, or look up items by id.",
+      "request": {
+        "kind": "meditations|sleep-stories|breath-patterns|soundscapes|mantras|festivals|crisis-tools",
+        "ids": "string[] — alternative to filtering; max 50",
+        "tags": "string[] (optional)",
+        "mood": "string (optional)",
+        "duration": "number — minutes, ±50% window (optional)",
+        "lang": "BCP-47 (optional)",
+        "limit": "number 1-50 (default 20)"
+      },
+      "response": {
+        "items": "object[]",
+        "mode": "'by-id'|'filter'",
+        "count": "number"
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/api/generate-meditation",
+      "purpose": "Generative fallback: live-write a meditation when nothing in the library matches.",
+      "request": {
+        "mood": "string (optional)",
+        "duration": "number minutes (optional)",
+        "language": "BCP-47 (optional)",
+        "theme": "string (optional)",
+        "tags": "string[] (optional)"
+      },
+      "response": {
+        "title": "string",
+        "duration_min": "number",
+        "language": "string",
+        "script": "string (contains [pause N] markers)",
+        "source": "'generated'|'generated-raw'"
+      },
+      "maxTokens": 2500
+    },
+    {
+      "method": "POST",
+      "path": "/api/generate-story",
+      "purpose": "Generative fallback: live-write a sleep story.",
+      "request": {
+        "mood": "string (optional)",
+        "duration": "number minutes (optional)",
+        "language": "BCP-47 (optional)",
+        "theme": "string (optional)",
+        "tags": "string[] (optional)"
+      },
+      "response": {
+        "title": "string",
+        "duration_min": "number",
+        "language": "string",
+        "story": "string",
+        "source": "'generated'|'generated-raw'"
+      },
+      "maxTokens": 2500
+    },
+    {
+      "method": "POST",
+      "path": "/api/generate-breath",
+      "purpose": "Generative fallback: design a breath pattern.",
+      "request": {
+        "mood": "string (optional)",
+        "language": "BCP-47 (optional)",
+        "theme": "string (optional)",
+        "tags": "string[] (optional)"
+      },
+      "response": {
+        "name": "string",
+        "pattern": "{inhale, hold_in, exhale, hold_out} — seconds, 2-8 each",
+        "cycles": "number 4-20",
+        "cue": "string",
+        "script": "string",
+        "source": "'generated'|'generated-raw'"
+      },
+      "maxTokens": 1500
+    },
+    {
+      "method": "GET",
+      "path": "/api/daily",
+      "purpose": "Today's mantra (date-hashed, stable per UTC day) and festival match if any.",
+      "response": {
+        "date": "YYYY-MM-DD (UTC)",
+        "mantra": "object|null",
+        "festival": "object|null"
+      },
+      "cache": "Cache-Control: public, max-age=3600"
+    },
+    {
+      "method": "GET",
+      "path": "/api/pulse",
+      "purpose": "Anonymous 'souls present now' counter. Deterministic walk seeded at process boot — no randomness, no identity.",
+      "response": {
+        "count": "integer",
+        "since": "process boot timestamp (ms)"
+      },
+      "cache": "Cache-Control: no-store"
+    },
+    {
+      "method": "POST",
+      "path": "/api/translate",
+      "purpose": "Existing translation endpoint (unchanged).",
+      "request": "see routes/translate.js"
+    },
+    {
+      "method": "GET",
+      "path": "/api/health",
+      "purpose": "Liveness + library snapshot (counts per content kind).",
+      "response": {
+        "status": "'ok'",
+        "name": "'Sukoon'",
+        "version": "string",
+        "library": "{meditations, sleepStories, breathPatterns, soundscapes, mantras, festivals, crisisTools, daily}"
+      }
+    }
+  ],
+  "library": {
+    "directory": "/public/content/",
+    "files": [
+      "meditations.json",
+      "sleep-stories.json",
+      "breath-patterns.json",
+      "soundscapes.json",
+      "mantras.json",
+      "festivals.json",
+      "crisis-tools.json",
+      "daily.json"
+    ],
+    "schema": "Each file may be a top-level array or {items:[...]}. Items SHOULD have a string id, optional tags[], moods[], languages[], duration."
+  }
+}

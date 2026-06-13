@@ -3,11 +3,23 @@ const express = require('express');
 const cors = require('cors');
 const compression = require('compression');
 const path = require('path');
+
 const chatRoute = require('./routes/chat');
 const translateRoute = require('./routes/translate');
+const routeRoute = require('./routes/route');
+const libraryApiRoute = require('./routes/library-api');
+const generateRoute = require('./routes/generate');
+const dailyRoute = require('./routes/daily');
+const pulseRoute = require('./routes/pulse');
+const rateLimit = require('./routes/rateLimit');
+const library = require('./routes/library');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
+
+// Honor X-Forwarded-For from a single trusted hop (Railway / Nginx).
+// Required so rateLimit.js can read the real client IP.
+app.set('trust proxy', 1);
 
 app.use(compression());
 app.use(cors());
@@ -29,13 +41,32 @@ app.use(express.static(path.join(__dirname, 'public'), {
   }
 }));
 
+// Load library JSON files into memory at boot. Partial library is allowed.
+library.loadAll();
+
+// 60 req/min/IP across all /api/* routes — anonymous, in-memory.
+app.use('/api', rateLimit);
+
 // API routes
 app.use('/api/chat', chatRoute);
 app.use('/api/translate', translateRoute);
+app.use('/api/route', routeRoute);
+app.use('/api/library', libraryApiRoute);
+app.use('/api/generate-meditation', (req, res, next) => { req.url = '/meditation'; next(); }, generateRoute);
+app.use('/api/generate-story',      (req, res, next) => { req.url = '/story';      next(); }, generateRoute);
+app.use('/api/generate-breath',     (req, res, next) => { req.url = '/breath';     next(); }, generateRoute);
+app.use('/api/daily', dailyRoute);
+app.use('/api/pulse', pulseRoute);
 
-// Health check
+// Health check — also surfaces library stats so deploys can confirm
+// the in-memory content loaded as expected.
 app.get('/api/health', (req, res) => {
-  res.json({ status: 'ok', name: 'Sukoon', version: '1.0.0' });
+  res.json({
+    status: 'ok',
+    name: 'Sukoon',
+    version: '1.0.0',
+    library: library.snapshot()
+  });
 });
 
 // 404 for unknown API routes (don't return HTML to API callers)

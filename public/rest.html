@@ -1,0 +1,2106 @@
+<!DOCTYPE html>
+<html lang="en" data-tod="night" data-no-breath>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Rest — Sukoon</title>
+  <meta name="description" content="Let the day be done. Sleep stories from India, nature, and far places — soundscapes, slow breath, and stillness for tired minds.">
+  <meta name="theme-color" content="#0F1B3D">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sukoon">
+  <meta property="og:url" content="https://sukoon.cloud/rest.html">
+  <meta property="og:title" content="Rest — Let the day be done · Sukoon">
+  <meta property="og:description" content="Sleep stories, soundscapes, slow breath. A place to fall into.">
+  <meta property="og:image" content="https://sukoon.cloud/og/sleep.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sukoon.cloud/og/sleep.jpg">
+
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/sukoon-revolution.css">
+
+  <script src="/js/sukoon-experience.js" defer></script>
+  <script src="/js/sukoon-pulse.js" defer></script>
+  <script src="/js/sukoon-safety.js" defer></script>
+  <script src="/js/sukoon-library.js" defer></script>
+
+  <style>
+    /* ============================================================
+       REST — deep-sleep sanctuary. Builds on revolution + alive.
+       Auto-dims within 4 seconds. Cinematic, slow, generous.
+       ============================================================ */
+    :root {
+      --rest-bg-top:    #080F25;
+      --rest-bg-mid:    #0F1B3D;
+      --rest-bg-bottom: #14193A;
+      --rest-vignette:  rgba(4, 7, 18, 0.55);
+      --rest-glass:     rgba(15, 27, 61, 0.45);
+      --rest-glass-2:   rgba(20, 25, 58, 0.62);
+      --rest-hair:      rgba(245, 239, 226, 0.12);
+      --rest-hair-2:    rgba(245, 239, 226, 0.22);
+    }
+
+    html, body { background: var(--rest-bg-top); color: var(--sk-cream); }
+    body.page-rest {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0 0 calc(96px + env(safe-area-inset-bottom, 0px));
+      overflow-x: hidden;
+      font-family: var(--sk-font-sans);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(43, 31, 74, 0.35) 0%, rgba(8, 15, 37, 0) 60%),
+        linear-gradient(180deg, var(--rest-bg-top) 0%, var(--rest-bg-mid) 45%, var(--rest-bg-bottom) 100%);
+      transition: filter 4s var(--sk-ease-calm, ease), background 4s var(--sk-ease-calm, ease);
+    }
+
+    /* AUTO-DIM — page slips into a deeper night after 4s */
+    body.page-rest.is-dimmed { filter: brightness(0.72) saturate(0.9); }
+    body.page-rest.is-dimmed::before { opacity: 1; }
+    body.page-rest::before {
+      content: "";
+      position: fixed; inset: 0;
+      background: radial-gradient(ellipse at 50% 60%, rgba(0,0,0,0) 0%, rgba(0,0,0,0.5) 100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 4s var(--sk-ease-calm, ease);
+      z-index: 1;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      body.page-rest, body.page-rest::before { transition: none; }
+    }
+
+    .rest-shell { position: relative; z-index: 2; }
+
+    /* ============================================================
+       CRISIS BAR (top of every page)
+       ============================================================ */
+    .sk-crisis-bar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex; align-items: center; gap: 14px;
+      padding: 10px clamp(16px, 4vw, 28px);
+      background: rgba(8, 15, 37, 0.78);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--rest-hair);
+      color: var(--sk-cream-dim);
+      font-size: 13px; line-height: 1.4;
+    }
+    .sk-crisis-bar__icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(240, 134, 121, 0.18);
+      color: #F08679;
+      display: grid; place-items: center;
+    }
+    .sk-crisis-bar__icon svg { width: 12px; height: 12px; }
+    .sk-crisis-bar__text { flex: 1; min-width: 0; }
+    .sk-crisis-bar__strong { color: var(--sk-cream); font-weight: 500; }
+    .sk-crisis-bar__cta {
+      color: #F08679;
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+    .sk-crisis-bar__cta:hover { text-decoration: underline; }
+    @media (max-width: 520px) {
+      .sk-crisis-bar { font-size: 12px; padding: 8px 14px; gap: 10px; }
+    }
+
+    /* Language pill */
+    .lang-toggle {
+      position: fixed;
+      top: 56px; right: 14px;
+      z-index: 41;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(8, 15, 37, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--sk-cream-dim);
+      border: 1px solid var(--rest-hair);
+      font: 500 12px/1 var(--sk-font-sans);
+      cursor: pointer;
+    }
+    .lang-toggle__opt { opacity: 0.45; padding: 2px 4px; border-radius: 6px; }
+    .lang-toggle__opt[aria-current="true"] { opacity: 1; color: var(--sk-cream); }
+    .lang-toggle__sep { color: var(--sk-cream-quiet); }
+
+    /* ============================================================
+       HERO
+       ============================================================ */
+    .rest-hero {
+      position: relative;
+      width: 100%;
+      min-height: 78vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+      background: #050816;
+    }
+    .rest-hero__media { position: absolute; inset: 0; z-index: 0; }
+    .rest-hero__media video {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    .rest-hero__overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(8,15,37,0.15) 0%, rgba(8,15,37,0.7) 70%),
+        linear-gradient(180deg, rgba(8,15,37,0.45) 0%, rgba(8,15,37,0.2) 30%, rgba(8,15,37,0.92) 100%);
+    }
+    .rest-hero__content {
+      position: relative; z-index: 2;
+      max-width: 640px;
+      padding: 0 24px;
+      text-align: center;
+      color: var(--sk-cream);
+    }
+    .rest-hero__eyebrow {
+      display: inline-block;
+      font: 600 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sk-cream-dim);
+      margin-bottom: 18px;
+      padding: 6px 14px;
+      border: 1px solid var(--rest-hair);
+      border-radius: 999px;
+      background: rgba(8, 15, 37, 0.4);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .rest-hero__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(42px, 6.4vw, 80px);
+      line-height: 1.04; letter-spacing: -0.022em;
+      margin: 0 0 18px;
+      text-shadow: 0 2px 24px rgba(0,0,0,0.55);
+    }
+    .rest-hero__sub {
+      font-size: 17px; line-height: 1.65;
+      color: var(--sk-cream-dim);
+      margin: 0 auto; max-width: 480px;
+    }
+    .rest-hero__time {
+      margin-top: 22px;
+      font: 500 11px/1 var(--sk-font-mono, monospace);
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sk-cream-quiet);
+    }
+    @media (max-width: 600px) {
+      .rest-hero { min-height: 72vh; }
+      .rest-hero__title { font-size: clamp(34px, 9vw, 56px); }
+      .rest-hero__sub { font-size: 15px; }
+    }
+
+    /* ============================================================
+       SECTION SHELL
+       ============================================================ */
+    .rest-section {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: clamp(56px, 8vw, 96px) clamp(20px, 5vw, 48px) 0;
+    }
+    .rest-section__eyebrow {
+      display: block;
+      font: 600 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sk-cream-quiet);
+      margin-bottom: 12px;
+    }
+    .rest-section__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1; letter-spacing: -0.018em;
+      margin: 0 0 12px;
+      color: var(--sk-cream);
+    }
+    .rest-section__sub {
+      font-size: 16px; line-height: 1.65;
+      color: var(--sk-cream-dim);
+      margin: 0 0 32px;
+      max-width: 580px;
+    }
+
+    /* ============================================================
+       TONIGHT'S STORY — featured cinematic card
+       ============================================================ */
+    .tonight-card {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--rest-glass-2);
+      border: 1px solid var(--rest-hair);
+      box-shadow: 0 24px 64px rgba(4, 7, 18, 0.55);
+      isolation: isolate;
+    }
+    .tonight-card__media {
+      position: relative;
+      min-height: 340px;
+      overflow: hidden;
+    }
+    .tonight-card__still {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(216, 122, 74, 0.22) 0%, rgba(15,27,61,0) 55%),
+        radial-gradient(ellipse at 70% 80%, rgba(43, 31, 74, 0.6) 0%, rgba(15,27,61,0) 60%),
+        linear-gradient(160deg, #0F1B3D 0%, #1A2547 50%, #2B1F4A 100%);
+      transform: scale(1.04);
+      animation: tonight-ken 24s var(--sk-ease-calm, ease) infinite alternate;
+    }
+    @keyframes tonight-ken {
+      0%   { transform: scale(1.04) translate(0, 0); }
+      100% { transform: scale(1.12) translate(-1.5%, -1%); }
+    }
+    .tonight-card__media::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(8,15,37,0) 35%, rgba(15,27,61,0.55) 100%),
+        linear-gradient(180deg, rgba(8,15,37,0.1) 0%, rgba(8,15,37,0.55) 100%);
+    }
+    .tonight-card__body {
+      position: relative;
+      padding: clamp(28px, 4vw, 48px);
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 14px;
+      color: var(--sk-cream);
+    }
+    .tonight-card__tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font: 600 10px/1 var(--sk-font-sans);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sk-saffron);
+    }
+    .tonight-card__tag::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--sk-saffron);
+      box-shadow: 0 0 12px var(--sk-saffron);
+    }
+    .tonight-card__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(26px, 3.4vw, 40px);
+      line-height: 1.1; letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .tonight-card__meta {
+      display: flex; align-items: center; gap: 14px;
+      color: var(--sk-cream-dim); font-size: 14px;
+    }
+    .tonight-card__meta .dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sk-cream-quiet);
+    }
+    .tonight-card__desc {
+      font-size: 15px; line-height: 1.65;
+      color: var(--sk-cream-dim);
+      margin: 0; max-width: 440px;
+    }
+    .tonight-card__play {
+      margin-top: 8px;
+      align-self: flex-start;
+      display: inline-flex; align-items: center; gap: 12px;
+      padding: 14px 26px 14px 22px;
+      border-radius: 999px;
+      background: var(--sk-cream);
+      color: var(--sk-ink);
+      border: none;
+      font: 500 15px/1 var(--sk-font-sans);
+      cursor: pointer;
+      transition: transform 240ms var(--sk-ease-calm, ease),
+                  box-shadow 240ms var(--sk-ease-calm, ease);
+    }
+    .tonight-card__play:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 32px rgba(232, 165, 82, 0.22);
+    }
+    .tonight-card__play svg { width: 16px; height: 16px; }
+    @media (max-width: 820px) {
+      .tonight-card { grid-template-columns: 1fr; }
+      .tonight-card__media { min-height: 220px; aspect-ratio: 16/10; }
+    }
+
+    /* ============================================================
+       FILTERS
+       ============================================================ */
+    .rest-filters {
+      display: flex; gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+    .rest-filter {
+      appearance: none;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(8, 15, 37, 0.55);
+      border: 1px solid var(--rest-hair);
+      color: var(--sk-cream-dim);
+      font: 500 13px/1 var(--sk-font-sans);
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      min-height: 38px;
+      transition: background 240ms var(--sk-ease-calm, ease),
+                  color 240ms var(--sk-ease-calm, ease),
+                  border-color 240ms var(--sk-ease-calm, ease);
+    }
+    .rest-filter:hover { color: var(--sk-cream); border-color: var(--rest-hair-2); }
+    .rest-filter[aria-pressed="true"] {
+      background: var(--sk-cream);
+      color: var(--sk-ink);
+      border-color: transparent;
+    }
+    .rest-filter__group-sep {
+      width: 1px; height: 22px;
+      background: var(--rest-hair);
+      align-self: center;
+      margin: 0 4px;
+    }
+
+    /* ============================================================
+       STORY LIBRARY GRID
+       ============================================================ */
+    .stories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: clamp(16px, 2.4vw, 24px);
+    }
+    .story-card {
+      position: relative;
+      display: flex; flex-direction: column;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--rest-glass-2);
+      border: 1px solid var(--rest-hair);
+      color: var(--sk-cream);
+      isolation: isolate;
+      min-height: 260px;
+      cursor: pointer;
+      text-align: left;
+      transition: transform 400ms var(--sk-ease-calm, ease),
+                  border-color 400ms var(--sk-ease-calm, ease),
+                  box-shadow 400ms var(--sk-ease-calm, ease);
+    }
+    .story-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--rest-hair-2);
+      box-shadow: 0 18px 40px rgba(4, 7, 18, 0.5);
+    }
+    .story-card__art {
+      position: absolute; inset: 0; z-index: 0; overflow: hidden;
+    }
+    .story-card__art::before {
+      content: ""; position: absolute; inset: 0;
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.03);
+      transition: transform 1200ms var(--sk-ease-calm, ease);
+    }
+    .story-card:hover .story-card__art::before { transform: scale(1.08); }
+    .story-card__art::after {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(8,15,37,0.05) 0%, rgba(8,15,37,0.55) 50%, rgba(8,15,37,0.94) 100%);
+    }
+    /* Per-category gradient stills */
+    .story-card[data-set="india"]      .story-card__art::before { background: radial-gradient(ellipse at 30% 70%, #2B1F4A 0%, #0F1B3D 50%, #050816 100%); }
+    .story-card[data-set="nature"]     .story-card__art::before { background: radial-gradient(ellipse at 70% 30%, #1A3A2E 0%, #0F1B3D 60%, #080F25 100%); }
+    .story-card[data-set="nostalgia"]  .story-card__art::before { background: radial-gradient(ellipse at 50% 30%, #6B3E5E 0%, #2B1F4A 55%, #0F1B3D 100%); }
+    .story-card[data-set="far-places"] .story-card__art::before { background: radial-gradient(ellipse at 80% 20%, #D87A4A 0%, #2B1F4A 35%, #0F1B3D 100%); }
+    .story-card__body {
+      position: relative; z-index: 2;
+      margin-top: auto;
+      padding: 22px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .story-card__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: 22px; line-height: 1.2; letter-spacing: -0.012em;
+      margin: 0;
+    }
+    .story-card__meta {
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--sk-cream-quiet);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .story-card__meta .dot {
+      width: 3px; height: 3px; border-radius: 50%;
+      background: var(--sk-cream-quiet);
+    }
+    .stories-empty {
+      grid-column: 1 / -1;
+      padding: 40px 24px;
+      text-align: center;
+      color: var(--sk-cream-quiet);
+      font-style: italic;
+    }
+
+    /* ============================================================
+       SOUND MIXER — slim waveform indicator per layer
+       ============================================================ */
+    .mixer-shell {
+      padding: clamp(20px, 3vw, 28px);
+      border-radius: 26px;
+      background: var(--rest-glass);
+      border: 1px solid var(--rest-hair);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .mixer-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .mixer-count {
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.04em;
+      color: var(--sk-cream-quiet);
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .mixer-count strong {
+      color: var(--sk-cream); font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+    .mixer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .mixer-pad {
+      position: relative;
+      display: flex; flex-direction: column;
+      align-items: flex-start; gap: 12px;
+      padding: 18px 16px;
+      border-radius: 18px;
+      background: rgba(8, 15, 37, 0.55);
+      border: 1px solid var(--rest-hair);
+      color: var(--sk-cream-dim);
+      cursor: pointer;
+      user-select: none;
+      text-align: left;
+      font: 500 14px/1.2 var(--sk-font-sans);
+      transition: transform 240ms var(--sk-ease-calm, ease),
+                  border-color 240ms var(--sk-ease-calm, ease),
+                  background 240ms var(--sk-ease-calm, ease),
+                  color 240ms var(--sk-ease-calm, ease);
+    }
+    .mixer-pad:hover { border-color: var(--rest-hair-2); color: var(--sk-cream); }
+    .mixer-pad__row {
+      display: flex; align-items: center; gap: 12px;
+      width: 100%;
+    }
+    .mixer-pad__icon {
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      background: rgba(245, 239, 226, 0.06);
+      color: var(--sk-cream-dim);
+      flex-shrink: 0;
+      transition: background 240ms var(--sk-ease-calm, ease),
+                  color 240ms var(--sk-ease-calm, ease);
+    }
+    .mixer-pad__icon svg { width: 18px; height: 18px; }
+    .mixer-pad__name { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+    .mixer-pad__label { display: block; }
+    .mixer-pad__hint {
+      font-size: 11px; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      color: var(--sk-cream-quiet);
+    }
+    .mixer-pad__wave {
+      width: 100%; height: 22px;
+      opacity: 0.32;
+      transition: opacity 280ms var(--sk-ease-calm, ease);
+    }
+    .mixer-pad__wave path {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+    }
+    .mixer-pad[aria-pressed="true"] {
+      background: rgba(232, 165, 82, 0.08);
+      border-color: rgba(232, 165, 82, 0.45);
+      color: var(--sk-cream);
+      box-shadow: 0 0 0 1px rgba(232,165,82,0.22), 0 10px 24px rgba(232,165,82,0.10);
+    }
+    .mixer-pad[aria-pressed="true"] .mixer-pad__icon {
+      background: rgba(232, 165, 82, 0.18);
+      color: var(--sk-saffron);
+    }
+    .mixer-pad[aria-pressed="true"] .mixer-pad__hint { color: var(--sk-saffron); }
+    .mixer-pad[aria-pressed="true"] .mixer-pad__wave {
+      opacity: 1;
+      color: var(--sk-saffron);
+    }
+    .mixer-pad[aria-pressed="true"] .mixer-pad__wave path {
+      animation: mixer-wave 3.2s var(--sk-ease-calm, ease) infinite;
+    }
+    @keyframes mixer-wave {
+      0%, 100% { transform: translateX(0); }
+      50%      { transform: translateX(-6px); }
+    }
+    .mixer-pad__level { width: 100%; }
+    .mixer-pad__level input[type=range] {
+      width: 100%;
+      accent-color: var(--sk-saffron);
+      cursor: pointer;
+    }
+    .mixer-pad[aria-pressed="false"] .mixer-pad__level { display: none; }
+
+    /* ============================================================
+       4-7-8 BREATH BALL
+       ============================================================ */
+    .breath-section { text-align: center; }
+    .breath-section .rest-section__eyebrow,
+    .breath-section .rest-section__title,
+    .breath-section .rest-section__sub {
+      margin-left: auto; margin-right: auto;
+      text-align: center;
+    }
+    .breath-stage {
+      position: relative;
+      margin: 28px auto 0;
+      width: min(320px, 78vw);
+      aspect-ratio: 1 / 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .breath-ball-478 {
+      position: relative;
+      width: 100%; height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 50%,
+        rgba(245, 239, 226, 0.95) 0%,
+        rgba(245, 239, 226, 0.35) 35%,
+        rgba(232, 165, 82, 0.12) 65%,
+        rgba(232, 165, 82, 0) 75%);
+      transform: scale(0.72);
+      transition: transform 200ms linear;
+      box-shadow: 0 0 60px rgba(232, 165, 82, 0.15);
+      filter: blur(0.5px);
+    }
+    .breath-ball-478::before {
+      content: "";
+      position: absolute; inset: -30px;
+      border-radius: 50%;
+      background: inherit;
+      opacity: 0.4; filter: blur(28px);
+      pointer-events: none;
+    }
+    .breath-ball-478__core {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 6px;
+      color: var(--sk-ink);
+      text-align: center;
+    }
+    .breath-ball-478__phase {
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      opacity: 0.78;
+    }
+    .breath-ball-478__count {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: 42px; line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .breath-caption {
+      margin-top: 22px;
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--sk-cream-quiet);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .breath-ball-478 { transform: scale(0.92); transition: none; }
+    }
+
+    /* ============================================================
+       GENERATIVE — "tell me what story tonight"
+       ============================================================ */
+    .gen-card {
+      padding: clamp(24px, 3.5vw, 36px);
+      border-radius: 26px;
+      background: linear-gradient(160deg,
+        rgba(43, 31, 74, 0.5) 0%,
+        rgba(15, 27, 61, 0.55) 60%,
+        rgba(8, 15, 37, 0.7) 100%);
+      border: 1px dashed rgba(232, 165, 82, 0.35);
+    }
+    .gen-card__row {
+      display: flex; gap: 12px;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+    .gen-card__input {
+      flex: 1 1 280px;
+      min-height: 52px;
+      padding: 14px 18px;
+      background: rgba(8, 15, 37, 0.55);
+      border: 1px solid var(--rest-hair);
+      border-radius: 16px;
+      color: var(--sk-cream);
+      font: 400 16px/1.45 var(--sk-font-serif);
+      resize: vertical;
+      max-height: 200px;
+      outline: none;
+      transition: border-color 200ms var(--sk-ease-calm, ease);
+    }
+    .gen-card__input:focus { border-color: rgba(232, 165, 82, 0.55); }
+    .gen-card__input::placeholder { color: var(--sk-cream-quiet); font-style: italic; }
+    .gen-card__btn {
+      appearance: none;
+      padding: 0 24px;
+      min-height: 52px;
+      border-radius: 16px;
+      background: var(--sk-saffron);
+      color: var(--sk-ink);
+      border: 0;
+      font: 600 14px/1 var(--sk-font-sans);
+      letter-spacing: 0.04em; text-transform: uppercase;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 10px;
+      transition: background 200ms var(--sk-ease-calm, ease),
+                  transform 200ms var(--sk-ease-calm, ease);
+    }
+    .gen-card__btn:hover:not(:disabled) { background: var(--sk-marigold); transform: translateY(-1px); }
+    .gen-card__btn:disabled { opacity: 0.7; cursor: progress; }
+    .gen-card__status {
+      margin-top: 14px;
+      min-height: 1.2em;
+      font-size: 13px;
+      color: var(--sk-cream-dim);
+    }
+    .gen-card__dadi {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid var(--rest-hair);
+      display: flex; gap: 12px; align-items: flex-start;
+      color: var(--sk-cream-dim);
+      font-size: 13.5px; line-height: 1.6;
+    }
+    .gen-card__dadi-glyph {
+      flex-shrink: 0;
+      width: 28px; height: 28px;
+      border-radius: 50%;
+      background: rgba(232, 197, 71, 0.15);
+      color: var(--sk-haldi);
+      display: grid; place-items: center;
+      font-size: 14px;
+    }
+    .gen-card__dadi em {
+      color: var(--sk-cream);
+      font-style: italic;
+      font-family: var(--sk-font-serif);
+      font-weight: 400;
+    }
+
+    /* ============================================================
+       UNIFIED PLAYER — paragraphs fade in slowly, tap-to-advance
+       ============================================================ */
+    .player-overlay {
+      position: fixed; inset: 0;
+      z-index: 80;
+      background: linear-gradient(180deg,
+        rgba(8,15,37,0.96) 0%,
+        rgba(15,27,61,0.98) 100%);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      display: flex; flex-direction: column;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 600ms var(--sk-ease-calm, ease);
+    }
+    .player-overlay[data-open="true"] {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .player-overlay__bgvideo {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: saturate(0.7) brightness(0.55);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .player-overlay__top {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px clamp(18px, 4vw, 32px);
+      gap: 14px;
+    }
+    .player-overlay__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(18px, 2.4vw, 24px);
+      letter-spacing: -0.01em;
+      color: var(--sk-cream);
+      margin: 0;
+      flex: 1; min-width: 0;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+    }
+    .player-overlay__close {
+      flex-shrink: 0;
+      appearance: none;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(245, 239, 226, 0.08);
+      color: var(--sk-cream);
+      border: 1px solid var(--rest-hair);
+      cursor: pointer;
+      display: grid; place-items: center;
+    }
+    .player-overlay__close:hover { background: rgba(245, 239, 226, 0.15); }
+    .player-overlay__close svg { width: 16px; height: 16px; }
+    .player-overlay__tts {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(245, 239, 226, 0.08);
+      border: 1px solid var(--rest-hair);
+      color: var(--sk-cream-dim);
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.04em;
+      cursor: pointer;
+    }
+    .player-overlay__tts[aria-pressed="true"] {
+      background: rgba(232, 165, 82, 0.15);
+      color: var(--sk-saffron);
+      border-color: rgba(232, 165, 82, 0.4);
+    }
+    .player-overlay__body {
+      position: relative; z-index: 2;
+      flex: 1;
+      overflow-y: auto;
+      padding: clamp(20px, 5vw, 48px) clamp(20px, 6vw, 64px) 120px;
+      display: flex; justify-content: center;
+    }
+    .player-overlay__paragraphs {
+      max-width: 640px;
+      width: 100%;
+    }
+    .player-overlay__paragraph {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(19px, 2vw, 24px);
+      line-height: 1.7;
+      letter-spacing: -0.005em;
+      color: var(--sk-cream);
+      margin: 0 0 28px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 1800ms var(--sk-ease-calm, ease),
+                  transform 1800ms var(--sk-ease-calm, ease);
+    }
+    .player-overlay__paragraph.is-visible {
+      opacity: 0.92;
+      transform: translateY(0);
+    }
+    .player-overlay__paragraph.is-current {
+      opacity: 1;
+      color: var(--sk-cream);
+      text-shadow: 0 1px 24px rgba(245, 239, 226, 0.08);
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .player-overlay__paragraph {
+        transition: opacity 200ms;
+        transform: none;
+      }
+    }
+    .player-overlay__hint {
+      position: fixed;
+      left: 50%; bottom: calc(env(safe-area-inset-bottom, 0) + 28px);
+      transform: translateX(-50%);
+      z-index: 4;
+      padding: 10px 18px;
+      background: rgba(8, 15, 37, 0.55);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--rest-hair);
+      border-radius: 999px;
+      color: var(--sk-cream-quiet);
+      font: 500 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.16em; text-transform: uppercase;
+      pointer-events: none;
+      transition: opacity 600ms var(--sk-ease-calm, ease);
+    }
+    .player-overlay__progress {
+      position: absolute;
+      left: 0; right: 0; top: 0;
+      height: 2px;
+      background: rgba(245, 239, 226, 0.06);
+      z-index: 3;
+    }
+    .player-overlay__progress-fill {
+      height: 100%;
+      background: var(--sk-saffron);
+      width: 0%;
+      transition: width 600ms var(--sk-ease-calm, ease);
+    }
+
+    /* ============================================================
+       BOTTOM NAV — 5 tabs (Today, Breathe, Sit, Rest, Listen)
+       + floating SOS button (the /now shortcut)
+       ============================================================ */
+    .sk-bottom-nav {
+      position: fixed;
+      inset: auto 0 0 0;
+      z-index: 50;
+      padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+      background: rgba(8, 15, 37, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-top: 1px solid var(--rest-hair);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+    .sk-bottom-nav__item {
+      display: grid; place-items: center; gap: 4px;
+      padding: 8px 4px;
+      border-radius: 12px;
+      color: var(--sk-cream-dim);
+      text-decoration: none;
+      font: 600 10px/1 var(--sk-font-sans);
+      letter-spacing: 0.04em;
+      min-height: 56px;
+      transition: color 200ms var(--sk-ease-calm, ease),
+                  background 200ms var(--sk-ease-calm, ease);
+    }
+    .sk-bottom-nav__item:hover { color: var(--sk-cream); }
+    .sk-bottom-nav__item[aria-current="page"] {
+      color: var(--sk-cream);
+      background: rgba(245, 239, 226, 0.06);
+    }
+    .sk-bottom-nav__item[aria-current="page"] .sk-bottom-nav__icon {
+      color: var(--sk-saffron);
+    }
+    .sk-bottom-nav__icon { width: 22px; height: 22px; }
+    .sk-bottom-nav__label { font-size: 10px; }
+
+    .sk-sos-float {
+      position: fixed;
+      right: 18px;
+      bottom: calc(96px + env(safe-area-inset-bottom));
+      z-index: 55;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      background: linear-gradient(140deg, #F08679 0%, #D85A4A 100%);
+      color: var(--sk-cream);
+      box-shadow: 0 12px 28px rgba(240, 134, 121, 0.4), 0 0 0 1px rgba(240, 134, 121, 0.35);
+      border: none;
+      display: grid; place-items: center;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform 200ms var(--sk-ease-calm, ease),
+                  box-shadow 200ms var(--sk-ease-calm, ease);
+    }
+    .sk-sos-float:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 16px 36px rgba(240, 134, 121, 0.5), 0 0 0 1px rgba(240, 134, 121, 0.55);
+    }
+    .sk-sos-float svg { width: 22px; height: 22px; }
+    .sk-sos-float__label {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(8, 15, 37, 0.85);
+      color: var(--sk-cream);
+      font: 600 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 200ms var(--sk-ease-calm, ease);
+    }
+    .sk-sos-float:hover .sk-sos-float__label { opacity: 1; }
+
+    /* ============================================================
+       REVEAL-UP fallback
+       ============================================================ */
+    .reveal-up {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 800ms var(--sk-ease-calm, ease),
+                  transform 800ms var(--sk-ease-calm, ease);
+    }
+    .reveal-up.is-visible,
+    .reveal-up.is-revealed { opacity: 1; transform: none; }
+
+    .rest-footer {
+      margin: clamp(40px, 6vw, 64px) auto 24px;
+      text-align: center;
+      color: var(--sk-cream-quiet);
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 0 24px;
+    }
+  </style>
+</head>
+<body class="page-rest" data-experience="rest" data-page="rest">
+
+  <!-- ===================== CRISIS BAR (top) ===================== -->
+  <aside class="sk-crisis-bar" aria-label="Crisis support">
+    <span class="sk-crisis-bar__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </span>
+    <span class="sk-crisis-bar__text">
+      <span class="sk-crisis-bar__strong" data-en="You are not alone." data-hi="आप अकेले नहीं हैं।">You are not alone.</span>
+      <span data-en=" If sleep won't come because something is wrong — talk to a real person."
+            data-hi=" अगर नींद नहीं आ रही क्योंकि कुछ भीतर भारी है — किसी से बात कीजिए।">
+        If sleep won't come because something is wrong — talk to a real person.
+      </span>
+    </span>
+    <a class="sk-crisis-bar__cta" href="/now.html"
+       data-en="Get help →" data-hi="मदद पाइए →">Get help →</a>
+  </aside>
+
+  <!-- ===================== LANG TOGGLE ===================== -->
+  <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Toggle language">
+    <span class="lang-toggle__opt" data-lang-opt="en" aria-current="true">A</span>
+    <span class="lang-toggle__sep">·</span>
+    <span class="lang-toggle__opt" data-lang-opt="hi" aria-current="false">अ</span>
+  </button>
+
+  <main class="rest-shell">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="rest-hero" aria-label="Tonight">
+      <div class="rest-hero__media">
+        <video autoplay loop muted playsinline poster="/og/sleep.jpg" aria-hidden="true">
+          <source src="/video/hero-sleep.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="rest-hero__overlay"></div>
+      <div class="rest-hero__content reveal-up">
+        <span class="rest-hero__eyebrow" data-en="Tonight" data-hi="आज रात">Tonight</span>
+        <h1 class="rest-hero__title" data-en="Let the day be done." data-hi="अब दिन को विदा कहिए।">
+          Let the day be done.
+        </h1>
+        <p class="rest-hero__sub"
+           data-en="A slow place to fall into. Stories from India, nature, far places — read aloud at the speed of sleep."
+           data-hi="गिरने के लिए एक धीमी जगह। भारत, प्रकृति, दूर देशों की कहानियाँ — नींद की रफ़्तार पर पढ़ी जाएँगी।">
+          A slow place to fall into. Stories from India, nature, far places — read aloud at the speed of sleep.
+        </p>
+        <div class="rest-hero__time" id="restClock" aria-live="off">—</div>
+      </div>
+    </section>
+
+    <!-- ===================== TONIGHT'S STORY ===================== -->
+    <section class="rest-section" aria-labelledby="tonight-heading">
+      <span class="rest-section__eyebrow reveal-up" data-en="Tonight's Story" data-hi="आज की कहानी">Tonight's Story</span>
+      <h2 class="rest-section__title reveal-up" id="tonight-heading"
+          data-en="Picked for this hour" data-hi="इस वक़्त के लिए चुनी हुई">
+        Picked for this hour
+      </h2>
+      <p class="rest-section__sub reveal-up"
+         data-en="Matched to the season, the hour, and how tired the country sounds tonight."
+         data-hi="मौसम, घड़ी और देश की रात की थकान के हिसाब से।">
+        Matched to the season, the hour, and how tired the country sounds tonight.
+      </p>
+
+      <article class="tonight-card reveal-up" id="tonightCard">
+        <div class="tonight-card__media" aria-hidden="true">
+          <div class="tonight-card__still"></div>
+        </div>
+        <div class="tonight-card__body">
+          <span class="tonight-card__tag" data-en="Tonight" data-hi="आज रात">Tonight</span>
+          <h3 class="tonight-card__title" id="tonightTitle"
+              data-en="The Night Train to the Mountains"
+              data-hi="पहाड़ों की ओर रात की रेलगाड़ी">
+            The Night Train to the Mountains
+          </h3>
+          <div class="tonight-card__meta">
+            <span id="tonightMeta">15 min listen</span>
+            <span class="dot" aria-hidden="true"></span>
+            <span data-en="Soft narration" data-hi="कोमल वाचन">Soft narration</span>
+          </div>
+          <p class="tonight-card__desc" id="tonightDesc"
+             data-en="The carriage sways. Pine forests slip past the window. Each breath of the engine pulls you further from the day."
+             data-hi="गाड़ी झूम रही है, खिड़की से देवदार के जंगल गुज़र रहे हैं — हर साँस आपको दिन से और दूर ले जाती है।">
+            The carriage sways. Pine forests slip past the window. Each breath of the engine pulls you further from the day.
+          </p>
+          <button class="tonight-card__play" type="button" id="tonightPlay">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+            <span data-en="Begin" data-hi="शुरू कीजिए">Begin</span>
+          </button>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===================== STORY LIBRARY ===================== -->
+    <section class="rest-section" aria-labelledby="library-heading">
+      <span class="rest-section__eyebrow reveal-up" data-en="Sleep Library" data-hi="नींद की लाइब्रेरी">Sleep Library</span>
+      <h2 class="rest-section__title reveal-up" id="library-heading"
+          data-en="Fifty stories. Pick a place to drift."
+          data-hi="पचास कहानियाँ। बहने के लिए कोई जगह चुनिए।">
+        Fifty stories. Pick a place to drift.
+      </h2>
+      <p class="rest-section__sub reveal-up"
+         data-en="From a Goa shack to an Iceland hot spring. Nani's kitchen to a misty pine forest. Tap one. The room dims, the words slow down."
+         data-hi="गोवा की शैक से लेकर आइसलैंड के गर्म झरने तक। नानी की रसोई से धुंध भरे चीड़ के जंगल तक।">
+        From a Goa shack to an Iceland hot spring. Nani's kitchen to a misty pine forest. Tap one. The room dims, the words slow down.
+      </p>
+
+      <div class="rest-filters reveal-up" role="toolbar" aria-label="Filter stories">
+        <button class="rest-filter" type="button" data-filter-set="all" aria-pressed="true"
+                data-en="All" data-hi="सब">All</button>
+        <button class="rest-filter" type="button" data-filter-set="india" aria-pressed="false"
+                data-en="India" data-hi="भारत">India</button>
+        <button class="rest-filter" type="button" data-filter-set="nature" aria-pressed="false"
+                data-en="Nature" data-hi="प्रकृति">Nature</button>
+        <button class="rest-filter" type="button" data-filter-set="nostalgia" aria-pressed="false"
+                data-en="Nostalgia" data-hi="नॉस्टैल्जिया">Nostalgia</button>
+        <button class="rest-filter" type="button" data-filter-set="far-places" aria-pressed="false"
+                data-en="Far Places" data-hi="दूर देश">Far Places</button>
+        <span class="rest-filter__group-sep" aria-hidden="true"></span>
+        <button class="rest-filter" type="button" data-filter-lang="all" aria-pressed="true"
+                data-en="Any language" data-hi="कोई भी ज़बान">Any language</button>
+        <button class="rest-filter" type="button" data-filter-lang="en" aria-pressed="false">English</button>
+        <button class="rest-filter" type="button" data-filter-lang="hi" aria-pressed="false">हिन्दी</button>
+      </div>
+
+      <div class="stories-grid reveal-up" id="storiesGrid" aria-live="polite">
+        <div class="stories-empty" id="storiesEmpty"
+             data-en="Loading tonight's library…"
+             data-hi="आज की लाइब्रेरी आ रही है…">
+          Loading tonight's library…
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SOUND MIXER ===================== -->
+    <section class="rest-section" aria-labelledby="mixer-heading">
+      <span class="rest-section__eyebrow reveal-up" data-en="Soundscape Mixer" data-hi="ध्वनि मिक्सर">Soundscape Mixer</span>
+      <h2 class="rest-section__title reveal-up" id="mixer-heading"
+          data-en="Layer the room" data-hi="कमरे को बुनिए">
+        Layer the room
+      </h2>
+      <p class="rest-section__sub reveal-up"
+         data-en="Tap to bring a sound in. Up to four at once. Slide to set its place in the room."
+         data-hi="ध्वनि लाने के लिए छुएँ। एक साथ चार तक। उसकी मात्रा के लिए स्लाइडर खींचिए।">
+        Tap to bring a sound in. Up to four at once. Slide to set its place in the room.
+      </p>
+
+      <div class="mixer-shell reveal-up">
+        <div class="mixer-head">
+          <div class="mixer-count" aria-live="polite">
+            <span data-en="Layers" data-hi="परतें">Layers</span>
+            <strong id="mixerCount">0</strong>
+            <span data-en="/ 4" data-hi="/ ४">/ 4</span>
+          </div>
+          <button class="rest-filter" type="button" id="mixerStopAll" style="font-size: 12px;"
+                  data-en="Silence the room" data-hi="कमरे को शांत कीजिए">
+            Silence the room
+          </button>
+        </div>
+
+        <div class="mixer-grid" id="mixerGrid">
+          <!-- Rain -->
+          <button class="mixer-pad" type="button"
+                  data-sound="rain" data-src="/audio/rain.mp3" aria-pressed="false" aria-label="Rain">
+            <div class="mixer-pad__row">
+              <span class="mixer-pad__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 13a5 5 0 10-9-3 4 4 0 00-1 7.87"/><path d="M8 19l-1 2"/><path d="M12 19l-1 2"/><path d="M16 19l-1 2"/></svg>
+              </span>
+              <span class="mixer-pad__name">
+                <span class="mixer-pad__label" data-en="Rain" data-hi="बारिश">Rain</span>
+                <span class="mixer-pad__hint" data-en="Steady patter" data-hi="लगातार बूँदें">Steady patter</span>
+              </span>
+            </div>
+            <svg class="mixer-pad__wave" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 11 Q 10 4, 20 11 T 40 11 T 60 11 T 80 11 T 100 11 T 120 11"></path>
+            </svg>
+            <span class="mixer-pad__level"><input type="range" min="0" max="100" value="60" aria-label="Rain volume"></span>
+          </button>
+
+          <!-- Ocean -->
+          <button class="mixer-pad" type="button"
+                  data-sound="ocean" data-src="/audio/ocean.mp3" aria-pressed="false" aria-label="Ocean">
+            <div class="mixer-pad__row">
+              <span class="mixer-pad__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 14c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/><path d="M2 19c2 0 2-2 4-2s2 2 4 2 2-2 4-2 2 2 4 2 2-2 4-2"/></svg>
+              </span>
+              <span class="mixer-pad__name">
+                <span class="mixer-pad__label" data-en="Ocean" data-hi="समुद्र">Ocean</span>
+                <span class="mixer-pad__hint" data-en="Slow tide" data-hi="मद्धम लहरें">Slow tide</span>
+              </span>
+            </div>
+            <svg class="mixer-pad__wave" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 11 Q 15 1, 30 11 T 60 11 T 90 11 T 120 11"></path>
+            </svg>
+            <span class="mixer-pad__level"><input type="range" min="0" max="100" value="55" aria-label="Ocean volume"></span>
+          </button>
+
+          <!-- Fire -->
+          <button class="mixer-pad" type="button"
+                  data-sound="fire" data-src="/audio/fire.mp3" aria-pressed="false" aria-label="Fire">
+            <div class="mixer-pad__row">
+              <span class="mixer-pad__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c1 3 4 4 4 8a4 4 0 11-8 0c0-2 1-3 2-4 0 0 1 1 2-4z"/></svg>
+              </span>
+              <span class="mixer-pad__name">
+                <span class="mixer-pad__label" data-en="Fire" data-hi="अलाव">Fire</span>
+                <span class="mixer-pad__hint" data-en="Soft crackle" data-hi="कोमल चटक">Soft crackle</span>
+              </span>
+            </div>
+            <svg class="mixer-pad__wave" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 11 Q 6 8, 12 11 T 24 11 T 36 11 T 48 11 T 60 11 T 72 11 T 84 11 T 96 11 T 108 11 T 120 11"></path>
+            </svg>
+            <span class="mixer-pad__level"><input type="range" min="0" max="100" value="45" aria-label="Fire volume"></span>
+          </button>
+
+          <!-- Wind -->
+          <button class="mixer-pad" type="button"
+                  data-sound="wind" data-src="/audio/wind.mp3" aria-pressed="false" aria-label="Wind">
+            <div class="mixer-pad__row">
+              <span class="mixer-pad__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h11a3 3 0 100-6"/><path d="M3 16h15a3 3 0 110 6"/><path d="M3 12h9"/></svg>
+              </span>
+              <span class="mixer-pad__name">
+                <span class="mixer-pad__label" data-en="Wind" data-hi="हवा">Wind</span>
+                <span class="mixer-pad__hint" data-en="Distant gusts" data-hi="दूर की झोंकें">Distant gusts</span>
+              </span>
+            </div>
+            <svg class="mixer-pad__wave" viewBox="0 0 120 22" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M0 11 Q 20 0, 40 11 T 80 11 T 120 11"></path>
+            </svg>
+            <span class="mixer-pad__level"><input type="range" min="0" max="100" value="50" aria-label="Wind volume"></span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== 4-7-8 BREATH ===================== -->
+    <section class="rest-section breath-section" aria-labelledby="breath-heading">
+      <span class="rest-section__eyebrow reveal-up" data-en="Wind-Down" data-hi="साँस की लय">Wind-Down</span>
+      <h2 class="rest-section__title reveal-up" id="breath-heading"
+          data-en="Breathe into sleep — 4 · 7 · 8"
+          data-hi="नींद की साँस — ४ · ७ · ८">
+        Breathe into sleep — 4 · 7 · 8
+      </h2>
+      <p class="rest-section__sub reveal-up"
+         data-en="In for four. Hold for seven. Out for eight. The body remembers how to fall."
+         data-hi="चार में अंदर, सात तक रोकिए, आठ में बाहर। शरीर सोना याद कर लेता है।">
+        In for four. Hold for seven. Out for eight. The body remembers how to fall.
+      </p>
+
+      <div class="breath-stage reveal-up" aria-live="polite">
+        <div class="breath-ball-478" id="breathBall478" aria-hidden="true"></div>
+        <div class="breath-ball-478__core">
+          <span class="breath-ball-478__phase" id="breathPhase" data-en="Breathe in" data-hi="साँस लीजिए">Breathe in</span>
+          <span class="breath-ball-478__count" id="breathCount">4</span>
+        </div>
+      </div>
+      <div class="breath-caption" data-en="4 · 7 · 8" data-hi="४ · ७ · ८">4 · 7 · 8</div>
+    </section>
+
+    <!-- ===================== GENERATIVE — tell me a story ===================== -->
+    <section class="rest-section" aria-labelledby="gen-heading">
+      <span class="rest-section__eyebrow reveal-up" data-en="Write me one" data-hi="मेरे लिए लिखिए">Write me one</span>
+      <h2 class="rest-section__title reveal-up" id="gen-heading"
+          data-en="Tell me what story tonight."
+          data-hi="आज रात कौन सी कहानी सुनाऊँ?">
+        Tell me what story tonight.
+      </h2>
+      <p class="rest-section__sub reveal-up"
+         data-en="If nothing in the library matches the night you are having, ask. A new one will be written for you."
+         data-hi="अगर लाइब्रेरी में आज की रात के लिए कुछ नहीं मिला, तो कहिए — आपके लिए एक नई कहानी लिखी जाएगी।">
+        If nothing in the library matches the night you are having, ask. A new one will be written for you.
+      </p>
+
+      <form class="gen-card reveal-up" id="genForm" autocomplete="off">
+        <div class="gen-card__row">
+          <textarea class="gen-card__input" id="genInput" rows="2"
+                    data-placeholder-en="a quiet kitchen, the sound of someone making chai, the rain outside…"
+                    data-placeholder-hi="एक शांत रसोई, चाय बनने की आवाज़, बाहर बारिश…"
+                    placeholder="a quiet kitchen, the sound of someone making chai, the rain outside…"></textarea>
+          <button class="gen-card__btn" type="submit" id="genBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="width:14px;height:14px;"><path d="M12 19V5"/><path d="M5 12l7-7 7 7"/></svg>
+            <span data-en="Write it" data-hi="लिखिए">Write it</span>
+          </button>
+        </div>
+        <div class="gen-card__status" id="genStatus" aria-live="polite"></div>
+        <div class="gen-card__dadi">
+          <span class="gen-card__dadi-glyph" aria-hidden="true">✦</span>
+          <span>
+            <em data-en="What dadi knew." data-hi="जो दादी जानती थीं।">What dadi knew.</em>
+            <span data-en=" A story isn't read to a child to be remembered — it's read so the child can stop holding on, and fall."
+                  data-hi=" बच्चे को कहानी इसलिए नहीं सुनाई जाती कि वो याद रहे — बल्कि इसलिए कि बच्चा छोड़ सके, और सो जाए।">
+              A story isn't read to a child to be remembered — it's read so the child can stop holding on, and fall.
+            </span>
+          </span>
+        </div>
+      </form>
+    </section>
+
+    <div class="rest-footer" data-en="Sleep gently" data-hi="आराम से सोइए">Sleep gently</div>
+
+  </main>
+
+  <!-- ===================== UNIFIED PLAYER OVERLAY ===================== -->
+  <div class="player-overlay" id="playerOverlay" role="dialog" aria-modal="true" aria-labelledby="playerTitle" data-open="false">
+    <video class="player-overlay__bgvideo" autoplay loop muted playsinline aria-hidden="true">
+      <source src="/video/hero-sleep.mp4" type="video/mp4">
+    </video>
+    <div class="player-overlay__progress" aria-hidden="true">
+      <div class="player-overlay__progress-fill" id="playerProgress"></div>
+    </div>
+    <div class="player-overlay__top">
+      <h2 class="player-overlay__title" id="playerTitle">—</h2>
+      <button class="player-overlay__tts" type="button" id="playerTTS" aria-pressed="false"
+              data-en="Read aloud" data-hi="सुनाइए">
+        Read aloud
+      </button>
+      <button class="player-overlay__close" type="button" id="playerClose" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="player-overlay__body" id="playerBody">
+      <div class="player-overlay__paragraphs" id="playerParagraphs"></div>
+    </div>
+    <div class="player-overlay__hint" id="playerHint"
+         data-en="tap anywhere to advance — slowly"
+         data-hi="आगे बढ़ने के लिए कहीं भी छुएँ — धीरे से">
+      tap anywhere to advance — slowly
+    </div>
+  </div>
+
+  <!-- ===================== FLOATING SOS ===================== -->
+  <a href="/now.html" class="sk-sos-float" aria-label="Crisis support — talk to a person now">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+    <span class="sk-sos-float__label" data-en="Talk to a person" data-hi="किसी से बात कीजिए">Talk to a person</span>
+  </a>
+
+  <!-- ===================== BOTTOM NAV (5 tabs) ===================== -->
+  <nav class="sk-bottom-nav" aria-label="Main navigation">
+    <a href="/today.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Today" data-hi="आज">Today</span>
+    </a>
+    <a href="/breathe.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18M12 7v10"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Breathe" data-hi="साँस">Breathe</span>
+    </a>
+    <a href="/sit.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/><path d="M9 21h6"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Sit" data-hi="बैठिए">Sit</span>
+    </a>
+    <a href="/rest.html" class="sk-bottom-nav__item" aria-current="page">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Rest" data-hi="आराम">Rest</span>
+    </a>
+    <a href="/today.html#broadcast" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-6a9 9 0 0118 0v6"/><path d="M21 19a2 2 0 01-2 2h-1v-7h3v5zM3 19a2 2 0 002 2h1v-7H3v5z"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Listen" data-hi="सुनिए">Listen</span>
+    </a>
+  </nav>
+
+  <!-- ===================== PAGE SCRIPT ===================== -->
+  <script>
+  (function () {
+    'use strict';
+
+    var doc = document;
+    var win = window;
+    var PRM = win.matchMedia && win.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    // ----------------------------------------------------------
+    // AUTO-DIM after 4 seconds (the calm trick)
+    // ----------------------------------------------------------
+    var dimTimer = null;
+    function scheduleDim() {
+      if (dimTimer) win.clearTimeout(dimTimer);
+      dimTimer = win.setTimeout(function () { doc.body.classList.add('is-dimmed'); }, 4000);
+    }
+    function wakeFromDim() { doc.body.classList.remove('is-dimmed'); scheduleDim(); }
+    if (!PRM) scheduleDim();
+    ['mousemove', 'touchstart', 'keydown', 'scroll'].forEach(function (ev) {
+      doc.addEventListener(ev, function () {
+        if (doc.body.classList.contains('is-dimmed')) wakeFromDim();
+      }, { passive: true });
+    });
+
+    // ----------------------------------------------------------
+    // LANGUAGE
+    // ----------------------------------------------------------
+    var STORAGE = {
+      get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : v; } catch (_) { return d; } },
+      set: function (k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
+    };
+    var LANG_KEY = 'sukoon-lang';
+
+    function applyLangCore(lang) {
+      doc.documentElement.setAttribute('lang', lang);
+      doc.documentElement.setAttribute('data-lang', lang);
+      var nodes = doc.querySelectorAll('[data-en], [data-hi]');
+      nodes.forEach(function (node) {
+        var t = node.getAttribute('data-' + lang);
+        if (t == null) return;
+        node.textContent = t;
+      });
+      doc.querySelectorAll('[data-placeholder-en]').forEach(function (node) {
+        var t = node.getAttribute('data-placeholder-' + lang);
+        if (t) node.setAttribute('placeholder', t);
+      });
+      var toggle = doc.getElementById('lang-toggle');
+      if (toggle) {
+        toggle.querySelectorAll('[data-lang-opt]').forEach(function (opt) {
+          opt.setAttribute('aria-current', opt.getAttribute('data-lang-opt') === lang ? 'true' : 'false');
+        });
+      }
+    }
+
+    var initialLang = STORAGE.get(LANG_KEY, doc.documentElement.lang || 'en');
+    if (initialLang !== 'en' && initialLang !== 'hi') initialLang = 'en';
+    applyLangCore(initialLang);
+
+    function getLang() { return doc.documentElement.getAttribute('data-lang') || 'en'; }
+
+    // Re-render hooks (set up below after renderStories/applyTonightCard exist).
+    function applyLang(lang) {
+      applyLangCore(lang);
+      try { renderStories(); } catch (_) {}
+      try { var t = pickTonight(); if (t) applyTonightCard(t); } catch (_) {}
+    }
+
+    var langEl = doc.getElementById('lang-toggle');
+    if (langEl) {
+      langEl.addEventListener('click', function (e) {
+        var opt = e.target.closest('[data-lang-opt]');
+        var current = STORAGE.get(LANG_KEY, 'en');
+        var next = opt ? opt.getAttribute('data-lang-opt') : (current === 'en' ? 'hi' : 'en');
+        if (next !== 'en' && next !== 'hi') return;
+        STORAGE.set(LANG_KEY, next);
+        applyLang(next);
+      });
+    }
+
+    // ----------------------------------------------------------
+    // CLOCK in hero (the night knows what hour it is)
+    // ----------------------------------------------------------
+    (function clockInit() {
+      var el = doc.getElementById('restClock');
+      if (!el) return;
+      function tick() {
+        var d = new Date();
+        var h = d.getHours(), m = d.getMinutes();
+        var hh = String(h).padStart(2, '0');
+        var mm = String(m).padStart(2, '0');
+        var phase;
+        if (h >= 21 || h < 4) phase = getLang() === 'hi' ? 'गहरी रात' : 'deep night';
+        else if (h >= 18) phase = getLang() === 'hi' ? 'शाम' : 'evening';
+        else if (h >= 4 && h < 7) phase = getLang() === 'hi' ? 'पूर्व-भोर' : 'pre-dawn';
+        else phase = getLang() === 'hi' ? 'दिन' : 'day';
+        el.textContent = hh + ' : ' + mm + '  ·  ' + phase;
+      }
+      tick(); setInterval(tick, 30000);
+    })();
+
+    // ----------------------------------------------------------
+    // REVEAL-UP fallback
+    // ----------------------------------------------------------
+    win.setTimeout(function () {
+      var els = doc.querySelectorAll('.reveal-up:not(.is-visible):not(.is-revealed)');
+      if (!els.length) return;
+      if (!('IntersectionObserver' in win) || PRM) {
+        els.forEach(function (el) { el.classList.add('is-visible'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      els.forEach(function (el) { io.observe(el); });
+    }, 200);
+
+    // ----------------------------------------------------------
+    // STORY LIBRARY — load 5 shards (50 stories total) and render
+    // ----------------------------------------------------------
+    var STORY_SOURCES = [
+      { set: 'india',      file: '/content/stories-india-en.json' },
+      { set: 'india',      file: '/content/stories-india-hi.json' },
+      { set: 'nature',     file: '/content/stories-nature-en.json' },
+      { set: 'nostalgia',  file: '/content/stories-nostalgia.json' },
+      { set: 'far-places', file: '/content/stories-far-places.json' }
+    ];
+    var stories = [];
+    var storiesById = {};
+    var activeFilter = { set: 'all', lang: 'all' };
+
+    function normalizeStory(raw, set) {
+      var s = {
+        id: raw.id || ('s-' + Math.random().toString(36).slice(2, 8)),
+        set: set,
+        title_en: raw.title_en || raw.title || raw.title_hi || 'Untitled',
+        title_hi: raw.title_hi || raw.title_en || raw.title || '',
+        lang: raw.language || raw.lang || 'en',
+        duration_min: raw.duration_min || 15,
+        mood_tags: raw.mood_tags || [],
+        setting: raw.setting || raw.region || raw.theme || '',
+        ambient_video: raw.ambient_video || 'hero-sleep.mp4',
+        paragraphs: []
+      };
+      var blob = raw.paragraphs || raw.body || raw.body_en || raw.script_en || raw.script || raw.text || '';
+      if (Array.isArray(blob)) {
+        s.paragraphs = blob.map(function (p) { return String(p).trim(); }).filter(Boolean);
+      } else if (typeof blob === 'string' && blob) {
+        s.paragraphs = blob.split(/\n\n+/).map(function (p) { return p.trim(); }).filter(Boolean);
+      }
+      var hiBlob = raw.body_hi || raw.script_hi || null;
+      if (hiBlob && !s.paragraphs.length && typeof hiBlob === 'string') {
+        s.paragraphs = hiBlob.split(/\n\n+/).map(function (p) { return p.trim(); }).filter(Boolean);
+        s.lang = 'hi';
+      }
+      return s;
+    }
+
+    function loadStories() {
+      var promises = STORY_SOURCES.map(function (src) {
+        return fetch(src.file, { credentials: 'same-origin' })
+          .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+          .then(function (data) {
+            var arr = Array.isArray(data) ? data : (data.items || data.stories || []);
+            return arr.map(function (raw) { return normalizeStory(raw, src.set); });
+          })
+          .catch(function () { return []; });
+      });
+      return Promise.all(promises).then(function (groups) {
+        stories = [];
+        groups.forEach(function (g) { stories = stories.concat(g); });
+        stories.forEach(function (s) { storiesById[s.id] = s; });
+        return stories;
+      });
+    }
+
+    function filterStories() {
+      return stories.filter(function (s) {
+        if (activeFilter.set !== 'all' && s.set !== activeFilter.set) return false;
+        if (activeFilter.lang !== 'all' && s.lang !== activeFilter.lang) return false;
+        return true;
+      });
+    }
+
+    function setLabel(setKey) {
+      var map = {
+        india:        { en: 'India',      hi: 'भारत' },
+        nature:       { en: 'Nature',     hi: 'प्रकृति' },
+        nostalgia:    { en: 'Nostalgia',  hi: 'नॉस्टैल्जिया' },
+        'far-places': { en: 'Far Places', hi: 'दूर देश' }
+      };
+      var v = map[setKey] || { en: setKey, hi: setKey };
+      return v[getLang()] || v.en;
+    }
+
+    function makeMeta(s, lang) {
+      // Build the .story-card__meta children safely without innerHTML.
+      var meta = doc.createElement('div');
+      meta.className = 'story-card__meta';
+      var minLabel = lang === 'hi' ? ' मिनट' : ' min';
+      var duration = doc.createElement('span');
+      duration.textContent = (s.duration_min || 15) + minLabel;
+      meta.appendChild(duration);
+      var dot1 = doc.createElement('span'); dot1.className = 'dot'; meta.appendChild(dot1);
+      var setSpan = doc.createElement('span');
+      setSpan.textContent = setLabel(s.set);
+      meta.appendChild(setSpan);
+      if (s.lang === 'hi') {
+        var dot2 = doc.createElement('span'); dot2.className = 'dot'; meta.appendChild(dot2);
+        var hi = doc.createElement('span');
+        hi.textContent = 'हिन्दी';
+        meta.appendChild(hi);
+      }
+      return meta;
+    }
+
+    function renderStories() {
+      var grid = doc.getElementById('storiesGrid');
+      if (!grid) return;
+      var items = filterStories();
+      // Clear children safely
+      while (grid.firstChild) grid.removeChild(grid.firstChild);
+      if (!items.length) {
+        var empty = doc.createElement('div');
+        empty.className = 'stories-empty';
+        empty.textContent = getLang() === 'hi'
+          ? 'इन फ़िल्टरों के लिए कोई कहानी नहीं मिली।'
+          : 'No stories match these filters.';
+        grid.appendChild(empty);
+        return;
+      }
+      var lang = getLang();
+      items.forEach(function (s) {
+        var card = doc.createElement('button');
+        card.type = 'button';
+        card.className = 'story-card';
+        card.setAttribute('data-set', s.set);
+        card.setAttribute('data-id', s.id);
+
+        var art = doc.createElement('div');
+        art.className = 'story-card__art';
+        card.appendChild(art);
+
+        var body = doc.createElement('div');
+        body.className = 'story-card__body';
+
+        var title = doc.createElement('h3');
+        title.className = 'story-card__title';
+        title.textContent = (lang === 'hi' && s.title_hi) ? s.title_hi : s.title_en;
+        body.appendChild(title);
+
+        body.appendChild(makeMeta(s, lang));
+
+        card.appendChild(body);
+        card.addEventListener('click', function () { openPlayer(s.id); });
+        grid.appendChild(card);
+      });
+    }
+
+    function pickTonight() {
+      if (!stories.length) return null;
+      var hour = new Date().getHours();
+      var month = new Date().getMonth();
+      var monsoon = (month >= 5 && month <= 8);
+      var pool = stories.slice();
+
+      var lang = getLang();
+      var langMatched = pool.filter(function (s) { return s.lang === lang; });
+      if (langMatched.length >= 3) pool = langMatched;
+
+      var biasSet = null;
+      if (hour >= 22 || hour < 5) biasSet = 'india';
+      else if (hour >= 19) biasSet = monsoon ? 'nature' : 'nostalgia';
+      else biasSet = 'far-places';
+
+      var biased = pool.filter(function (s) { return s.set === biasSet; });
+      if (biased.length) pool = biased;
+
+      var d = new Date();
+      var seed = d.getFullYear() * 1000 + (d.getMonth() * 31) + d.getDate();
+      return pool[seed % pool.length];
+    }
+
+    function applyTonightCard(s) {
+      if (!s) return;
+      var lang = getLang();
+      var titleEl = doc.getElementById('tonightTitle');
+      var descEl  = doc.getElementById('tonightDesc');
+      var metaEl  = doc.getElementById('tonightMeta');
+      var card    = doc.getElementById('tonightCard');
+      if (titleEl) {
+        var t = (lang === 'hi' && s.title_hi) ? s.title_hi : s.title_en;
+        titleEl.textContent = t;
+        titleEl.setAttribute('data-en', s.title_en);
+        if (s.title_hi) titleEl.setAttribute('data-hi', s.title_hi);
+      }
+      if (descEl && s.paragraphs && s.paragraphs.length) {
+        var first = s.paragraphs[0].split(/(?<=[.!?])\s+/).slice(0, 2).join(' ');
+        if (first.length > 260) first = first.slice(0, 240).replace(/\s+\S*$/, '') + '…';
+        descEl.textContent = first;
+      }
+      if (metaEl) {
+        var minLabel = lang === 'hi' ? ' मिनट सुनिए' : ' min listen';
+        metaEl.textContent = (s.duration_min || 15) + minLabel;
+      }
+      if (card) {
+        card.setAttribute('data-id', s.id);
+        var still = card.querySelector('.tonight-card__still');
+        if (still && s.set) {
+          var grad = {
+            india:        'radial-gradient(ellipse at 30% 30%, rgba(216,122,74,0.25) 0%, rgba(15,27,61,0) 55%), radial-gradient(ellipse at 70% 80%, rgba(43,31,74,0.6) 0%, rgba(15,27,61,0) 60%), linear-gradient(160deg, #0F1B3D 0%, #1A2547 50%, #2B1F4A 100%)',
+            nature:       'radial-gradient(ellipse at 30% 30%, rgba(111,162,134,0.25) 0%, rgba(15,27,61,0) 55%), linear-gradient(160deg, #0F1B3D 0%, #1A3A2E 60%, #14193A 100%)',
+            nostalgia:    'radial-gradient(ellipse at 30% 30%, rgba(232,165,82,0.20) 0%, rgba(15,27,61,0) 55%), linear-gradient(160deg, #2B1F4A 0%, #6B3E5E 50%, #0F1B3D 100%)',
+            'far-places': 'radial-gradient(ellipse at 70% 30%, rgba(216,122,74,0.30) 0%, rgba(15,27,61,0) 55%), linear-gradient(160deg, #0F1B3D 0%, #2B1F4A 50%, #14193A 100%)'
+          };
+          if (grad[s.set]) still.style.background = grad[s.set];
+        }
+      }
+      var btn = doc.getElementById('tonightPlay');
+      if (btn) btn.onclick = function () { openPlayer(s.id); };
+    }
+
+    // ----------------------------------------------------------
+    // FILTER BUTTONS
+    // ----------------------------------------------------------
+    doc.querySelectorAll('.rest-filter[data-filter-set]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeFilter.set = btn.getAttribute('data-filter-set');
+        doc.querySelectorAll('.rest-filter[data-filter-set]').forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        renderStories();
+      });
+    });
+    doc.querySelectorAll('.rest-filter[data-filter-lang]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeFilter.lang = btn.getAttribute('data-filter-lang');
+        doc.querySelectorAll('.rest-filter[data-filter-lang]').forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        renderStories();
+      });
+    });
+
+    // ----------------------------------------------------------
+    // UNIFIED PLAYER — paragraphs fade in slowly, tap-to-advance, slow TTS
+    // ----------------------------------------------------------
+    var player = {
+      overlay:  doc.getElementById('playerOverlay'),
+      title:    doc.getElementById('playerTitle'),
+      body:     doc.getElementById('playerBody'),
+      paras:    doc.getElementById('playerParagraphs'),
+      progress: doc.getElementById('playerProgress'),
+      ttsBtn:   doc.getElementById('playerTTS'),
+      closeBtn: doc.getElementById('playerClose'),
+      hint:     doc.getElementById('playerHint'),
+      paragraphs: [],
+      index: 0,
+      ttsOn: false,
+      utter: null,
+      hintTimer: null,
+      lastTap: 0,
+      autoAdvanceTimer: null,
+      _origScroll: 0
+    };
+
+    function buildParagraphs(arr) {
+      while (player.paras.firstChild) player.paras.removeChild(player.paras.firstChild);
+      arr.forEach(function (text, i) {
+        var p = doc.createElement('p');
+        p.className = 'player-overlay__paragraph';
+        p.setAttribute('data-i', String(i));
+        p.textContent = text;
+        player.paras.appendChild(p);
+      });
+      player.paragraphs = player.paras.querySelectorAll('.player-overlay__paragraph');
+    }
+
+    function showParagraph(i) {
+      if (i < 0 || i >= player.paragraphs.length) {
+        if (i >= player.paragraphs.length) closePlayer();
+        return;
+      }
+      player.index = i;
+      Array.prototype.forEach.call(player.paragraphs, function (p, idx) {
+        if (idx <= i) p.classList.add('is-visible');
+        p.classList.toggle('is-current', idx === i);
+      });
+      var el = player.paragraphs[i];
+      if (el && el.scrollIntoView) {
+        el.scrollIntoView({ behavior: PRM ? 'auto' : 'smooth', block: 'center' });
+      }
+      if (player.progress) {
+        var pct = ((i + 1) / Math.max(1, player.paragraphs.length)) * 100;
+        player.progress.style.width = pct.toFixed(1) + '%';
+      }
+      if (player.ttsOn) speakParagraph(i);
+      else if (player.autoAdvanceTimer) win.clearTimeout(player.autoAdvanceTimer);
+    }
+
+    function speakParagraph(i) {
+      if (!('speechSynthesis' in win)) return;
+      try { win.speechSynthesis.cancel(); } catch (_) {}
+      var el = player.paragraphs[i];
+      if (!el) return;
+      var u = new win.SpeechSynthesisUtterance(el.textContent);
+      var lang = getLang();
+      u.lang = lang === 'hi' ? 'hi-IN' : 'en-IN';
+      u.rate = 0.78;    // slow narration pace
+      u.pitch = 0.92;
+      u.volume = 0.95;
+      try {
+        var voices = win.speechSynthesis.getVoices() || [];
+        var pref = voices.find(function (v) { return v.lang && v.lang.indexOf(u.lang) === 0; });
+        if (pref) u.voice = pref;
+      } catch (_) {}
+      u.onend = function () {
+        if (player.autoAdvanceTimer) win.clearTimeout(player.autoAdvanceTimer);
+        player.autoAdvanceTimer = win.setTimeout(function () {
+          if (player.ttsOn && player.overlay.getAttribute('data-open') === 'true') {
+            showParagraph(player.index + 1);
+          }
+        }, 1100);
+      };
+      player.utter = u;
+      try { win.speechSynthesis.speak(u); } catch (_) {}
+    }
+
+    function openPlayer(storyId) {
+      var s = storiesById[storyId];
+      if (!s) return;
+      var lang = getLang();
+      var title = (lang === 'hi' && s.title_hi) ? s.title_hi : s.title_en;
+      player.title.textContent = title || '—';
+
+      var paras = (s.paragraphs && s.paragraphs.length)
+        ? s.paragraphs
+        : [ lang === 'hi'
+            ? 'इस कहानी का पाठ अभी तैयार हो रहा है। थोड़ा रुकिए।'
+            : 'This story is being prepared. Hold for a breath.' ];
+      buildParagraphs(paras);
+      player.index = 0;
+
+      player._origScroll = win.scrollY || 0;
+      player.overlay.setAttribute('data-open', 'true');
+      doc.documentElement.style.overflow = 'hidden';
+
+      if (player.hintTimer) win.clearTimeout(player.hintTimer);
+      if (player.hint) {
+        player.hint.style.opacity = '1';
+        player.hintTimer = win.setTimeout(function () {
+          if (player.hint) player.hint.style.opacity = '0';
+        }, 6000);
+      }
+
+      win.setTimeout(function () { showParagraph(0); }, 420);
+    }
+
+    function closePlayer() {
+      player.overlay.setAttribute('data-open', 'false');
+      doc.documentElement.style.overflow = '';
+      try { win.speechSynthesis && win.speechSynthesis.cancel(); } catch (_) {}
+      if (player.autoAdvanceTimer) win.clearTimeout(player.autoAdvanceTimer);
+      player.ttsOn = false;
+      if (player.ttsBtn) player.ttsBtn.setAttribute('aria-pressed', 'false');
+      try { win.scrollTo(0, player._origScroll || 0); } catch (_) {}
+    }
+
+    if (player.closeBtn) player.closeBtn.addEventListener('click', closePlayer);
+    if (player.ttsBtn) {
+      player.ttsBtn.addEventListener('click', function () {
+        player.ttsOn = !player.ttsOn;
+        player.ttsBtn.setAttribute('aria-pressed', player.ttsOn ? 'true' : 'false');
+        if (player.ttsOn) speakParagraph(player.index);
+        else { try { win.speechSynthesis && win.speechSynthesis.cancel(); } catch (_) {} }
+      });
+    }
+    if (player.overlay) {
+      player.overlay.addEventListener('click', function (e) {
+        if (player.overlay.getAttribute('data-open') !== 'true') return;
+        if (e.target.closest('button, a, input, textarea')) return;
+        var now = Date.now();
+        if (now - player.lastTap < 300) return;
+        player.lastTap = now;
+        showParagraph(player.index + 1);
+      });
+      doc.addEventListener('keydown', function (e) {
+        if (player.overlay.getAttribute('data-open') !== 'true') return;
+        if (e.key === 'Escape') closePlayer();
+        else if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'Enter') {
+          e.preventDefault();
+          showParagraph(player.index + 1);
+        } else if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          showParagraph(Math.max(0, player.index - 1));
+        }
+      });
+    }
+
+    // ----------------------------------------------------------
+    // SOUNDSCAPE MIXER — Web Audio API, up to 4 layers
+    // ----------------------------------------------------------
+    var MAX_LAYERS = 4;
+    var Mixer = (function () {
+      var AC = win.AudioContext || win.webkitAudioContext;
+      var ctx = null;
+      var layers = {};
+      var active = new Set();
+      var countEl = doc.getElementById('mixerCount');
+      var bufferCache = {};
+
+      function ensureCtx() {
+        if (!AC) return null;
+        if (!ctx) { try { ctx = new AC(); } catch (_) { ctx = null; } }
+        if (ctx && ctx.state === 'suspended') { try { ctx.resume(); } catch (_) {} }
+        return ctx;
+      }
+
+      function refreshCount() {
+        if (countEl) countEl.textContent = String(active.size);
+        doc.querySelectorAll('.mixer-pad').forEach(function (pad) {
+          var on = pad.getAttribute('aria-pressed') === 'true';
+          if (!on && active.size >= MAX_LAYERS) pad.setAttribute('aria-disabled', 'true');
+          else pad.removeAttribute('aria-disabled');
+        });
+      }
+
+      function loadBuffer(src) {
+        if (bufferCache[src]) return Promise.resolve(bufferCache[src]);
+        return new Promise(function (resolve, reject) {
+          if (!src) { reject(new Error('no source')); return; }
+          fetch(src).then(function (r) {
+            if (!r.ok) throw new Error('http ' + r.status);
+            return r.arrayBuffer();
+          }).then(function (buf) {
+            var c = ensureCtx();
+            if (!c) { reject(new Error('no audio ctx')); return; }
+            c.decodeAudioData(buf.slice(0), function (decoded) {
+              bufferCache[src] = decoded;
+              resolve(decoded);
+            }, reject);
+          }).catch(reject);
+        });
+      }
+
+      function start(id, src, level) {
+        var c = ensureCtx();
+        if (!c) return Promise.reject(new Error('no audio'));
+        if (active.size >= MAX_LAYERS) return Promise.reject(new Error('cap'));
+        return loadBuffer(src).then(function (buffer) {
+          var source = c.createBufferSource();
+          source.buffer = buffer;
+          source.loop = true;
+          var gain = c.createGain();
+          gain.gain.value = 0;
+          source.connect(gain).connect(c.destination);
+          source.start();
+          var target = Math.max(0, Math.min(1, level));
+          gain.gain.linearRampToValueAtTime(target, c.currentTime + 1.4);
+          layers[id] = { source: source, gain: gain, level: target };
+          active.add(id);
+          refreshCount();
+        });
+      }
+
+      function stop(id) {
+        var L = layers[id];
+        if (!L) { active.delete(id); refreshCount(); return; }
+        var c = ensureCtx();
+        if (!c) return;
+        try {
+          if (L.gain) {
+            L.gain.gain.cancelScheduledValues(c.currentTime);
+            L.gain.gain.linearRampToValueAtTime(0, c.currentTime + 0.9);
+          }
+          win.setTimeout(function () { try { L.source && L.source.stop(); } catch (_) {} }, 1000);
+        } catch (_) {}
+        delete layers[id];
+        active.delete(id);
+        refreshCount();
+      }
+
+      function setLevel(id, level) {
+        var L = layers[id];
+        if (!L || !L.gain) return;
+        var c = ensureCtx();
+        if (!c) return;
+        var target = Math.max(0, Math.min(1, level));
+        L.gain.gain.cancelScheduledValues(c.currentTime);
+        L.gain.gain.linearRampToValueAtTime(target, c.currentTime + 0.25);
+        L.level = target;
+      }
+
+      function stopAll() {
+        Array.from(active).forEach(function (id) { stop(id); });
+        doc.querySelectorAll('.mixer-pad[aria-pressed="true"]').forEach(function (pad) {
+          pad.setAttribute('aria-pressed', 'false');
+        });
+      }
+
+      return {
+        toggle: function (id, src, level) {
+          if (active.has(id)) { stop(id); return Promise.resolve(false); }
+          if (!src) {
+            // 404-graceful: visual on even if audio missing.
+            if (active.size >= MAX_LAYERS) return Promise.resolve(false);
+            active.add(id);
+            layers[id] = { source: null, gain: null, level: level };
+            refreshCount();
+            return Promise.resolve(true);
+          }
+          return start(id, src, level).then(function () { return true; })
+            .catch(function () {
+              if (active.size >= MAX_LAYERS) return false;
+              active.add(id);
+              layers[id] = { source: null, gain: null, level: level };
+              refreshCount();
+              return true;
+            });
+        },
+        setLevel: setLevel,
+        stopAll: stopAll,
+        isActive: function (id) { return active.has(id); }
+      };
+    })();
+
+    doc.querySelectorAll('.mixer-pad').forEach(function (pad) {
+      var id    = pad.getAttribute('data-sound');
+      var src   = pad.getAttribute('data-src') || '';
+      var range = pad.querySelector('input[type=range]');
+
+      pad.addEventListener('click', function (e) {
+        if (e.target.closest('input')) return;
+        if (pad.getAttribute('aria-disabled') === 'true' && pad.getAttribute('aria-pressed') !== 'true') return;
+        var level = range ? (parseInt(range.value, 10) / 100) : 0.5;
+        Mixer.toggle(id, src, level).then(function (isOn) {
+          pad.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+        });
+      });
+
+      if (range) {
+        range.addEventListener('input', function () {
+          Mixer.setLevel(id, parseInt(range.value, 10) / 100);
+        });
+        ['click', 'mousedown', 'touchstart'].forEach(function (ev) {
+          range.addEventListener(ev, function (e) { e.stopPropagation(); }, { passive: true });
+        });
+      }
+    });
+    var stopAllBtn = doc.getElementById('mixerStopAll');
+    if (stopAllBtn) stopAllBtn.addEventListener('click', function () { Mixer.stopAll(); });
+
+    // ----------------------------------------------------------
+    // 4-7-8 BREATH BALL
+    // ----------------------------------------------------------
+    (function () {
+      var ball  = doc.getElementById('breathBall478');
+      var phase = doc.getElementById('breathPhase');
+      var count = doc.getElementById('breathCount');
+      if (!ball || !phase || !count) return;
+
+      var PHASES = [
+        { name: 'in',   secs: 4, en: 'Breathe in',  hi: 'साँस लीजिए',   from: 0.72, to: 1.05 },
+        { name: 'hold', secs: 7, en: 'Hold',         hi: 'रोकिए',         from: 1.05, to: 1.05 },
+        { name: 'out',  secs: 8, en: 'Breathe out', hi: 'साँस छोड़िए',  from: 1.05, to: 0.72 }
+      ];
+
+      if (PRM) {
+        ball.style.transform = 'scale(0.92)';
+        phase.textContent = getLang() === 'hi' ? 'धीमी साँस' : 'Slow breath';
+        count.textContent = '·';
+        return;
+      }
+
+      var startTs = performance.now();
+      var totalMs = PHASES.reduce(function (s, p) { return s + p.secs * 1000; }, 0);
+
+      function tick(t) {
+        var elapsed = (t - startTs) % totalMs;
+        var acc = 0, current = PHASES[0], localT = 0;
+        for (var i = 0; i < PHASES.length; i++) {
+          var dur = PHASES[i].secs * 1000;
+          if (elapsed < acc + dur) { current = PHASES[i]; localT = (elapsed - acc) / dur; break; }
+          acc += dur;
+        }
+        var scale = current.from + (current.to - current.from) * localT;
+        ball.style.transform = 'scale(' + scale.toFixed(3) + ')';
+        var lang = getLang();
+        phase.textContent = current[lang] || current.en;
+        phase.setAttribute('data-en', current.en);
+        phase.setAttribute('data-hi', current.hi);
+        var remaining = Math.max(1, Math.ceil(current.secs - localT * current.secs));
+        count.textContent = String(remaining);
+        win.requestAnimationFrame(tick);
+      }
+      win.requestAnimationFrame(tick);
+    })();
+
+    // ----------------------------------------------------------
+    // GENERATIVE — "tell me what story tonight" → POST /api/generate-story
+    // ----------------------------------------------------------
+    var genForm   = doc.getElementById('genForm');
+    var genInput  = doc.getElementById('genInput');
+    var genBtn    = doc.getElementById('genBtn');
+    var genStatus = doc.getElementById('genStatus');
+
+    function setGenStatus(text, isError) {
+      if (!genStatus) return;
+      genStatus.textContent = text || '';
+      genStatus.style.color = isError ? '#F08679' : '';
+    }
+
+    if (genForm) {
+      genForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        if (!genInput) return;
+        var prompt = (genInput.value || '').trim();
+        if (!prompt) {
+          setGenStatus(getLang() === 'hi'
+            ? 'पहले बताइए — आज रात क्या सुनना है।'
+            : 'Tell me a place, a feeling, a memory first.', true);
+          return;
+        }
+        var lang = getLang();
+        genBtn.disabled = true;
+        setGenStatus(lang === 'hi'
+          ? 'आपके लिए एक कहानी बुनी जा रही है… (लगभग एक मिनट)'
+          : 'Writing one for you… (this takes about a minute)');
+
+        fetch('/api/generate-story', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            theme: prompt,
+            mood: 'sleep',
+            duration: 12,
+            language: lang === 'hi' ? 'hi' : 'en',
+            tags: ['sleep', 'rest', 'tonight']
+          })
+        })
+          .then(function (r) { if (!r.ok) throw new Error('http ' + r.status); return r.json(); })
+          .then(function (data) {
+            if (!data || !data.story) throw new Error('no story');
+            var newStory = {
+              id: 'gen-' + Date.now(),
+              set: 'india',
+              title_en: data.title || 'A story for tonight',
+              title_hi: data.title || 'आज रात की कहानी',
+              lang: (data.language || lang).slice(0, 2),
+              duration_min: data.duration_min || 12,
+              paragraphs: String(data.story).split(/\n\n+/).map(function (p) { return p.trim(); }).filter(Boolean),
+              mood_tags: ['sleep', 'fresh']
+            };
+            stories.unshift(newStory);
+            storiesById[newStory.id] = newStory;
+            setGenStatus(lang === 'hi'
+              ? 'तैयार है। आँखें बंद कर लीजिए — कहानी शुरू हो रही है।'
+              : 'It is ready. Close your eyes — the story begins.');
+            openPlayer(newStory.id);
+          })
+          .catch(function () {
+            setGenStatus(lang === 'hi'
+              ? 'अभी कहानी नहीं बन पाई। थोड़ी देर में दोबारा कोशिश कीजिए — या लाइब्रेरी से कोई चुनिए।'
+              : "Couldn't write one just now. Try again in a moment — or pick one from the library.", true);
+          })
+          .then(function () { genBtn.disabled = false; });
+      });
+    }
+
+    // ----------------------------------------------------------
+    // BOOT — load library, then render
+    // ----------------------------------------------------------
+    loadStories().then(function () {
+      renderStories();
+      var t = pickTonight();
+      if (t) applyTonightCard(t);
+    });
+
+  })();
+  </script>
+
+</body>
+</html>

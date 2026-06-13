@@ -1,0 +1,388 @@
+[
+  {
+    "id": "med-anxiety-morning-en",
+    "title_en": "Before the Day Begins",
+    "mood_tags": ["anxiety", "morning-dread", "anticipatory-worry", "overwhelm"],
+    "duration_min": 5,
+    "script_en": [
+      "You woke up and something in your chest was already tight. Before the first notification, before the first responsibility, the anxiety was there — like it had been waiting for you. That is familiar territory. Let's not fight it right now.",
+      "Sit up or stay lying down, whichever feels more stable. Place one hand on your chest and feel the warmth of your own palm against your sternum. That warmth is real. It is here. You are here.",
+      "Take a breath in through your nose — not a performance, just a breath. Let it fill your lower belly first, then your chest. Hold it very briefly, a half-second pause, and then let it go through your mouth like a slow, quiet sigh. That is the full cycle. Do it again.",
+      "The mind will want to rehearse the day. Let it try. When a thought appears — the meeting, the unanswered message, the thing you said three days ago — acknowledge it like you would a dog that trots up to you: yes, hello, I see you, and gently return your attention to the weight of your hand on your chest.",
+      "What is true right now? The bed beneath you. The light changing through the window. Your body doing its job without being asked — breathing, circulating, holding you together. Right now, in this exact moment, you are not in the meeting. You are not yet in the conversation. You are here, in the gap before the day claims you.",
+      "Spend a moment imagining the day as a series of small rooms, not one long corridor. You only have to be in one room at a time. The morning room is where you are. It is quiet. It is yours.",
+      "Take one more long breath, let it out completely — push the last bit of air out so your belly draws in — and when you breathe in again, let it feel like a small beginning rather than a bracing for impact.",
+      "When you are ready, start the day. Not because the anxiety is gone, but because you have checked in with yourself first. That matters more than it sounds."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "Arriving" },
+      { "t_seconds": 60, "label": "Hand on chest" },
+      { "t_seconds": 120, "label": "Breath cycle" },
+      { "t_seconds": 200, "label": "Watching thoughts" },
+      { "t_seconds": 260, "label": "What is true now" },
+      { "t_seconds": 310, "label": "One room at a time" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-work-meeting-en",
+    "title_en": "Before You Walk In",
+    "mood_tags": ["anxiety", "work-anxiety", "pre-meeting", "performance-pressure", "dread"],
+    "duration_min": 3,
+    "script_en": [
+      "You have a few minutes before it starts. Maybe you are in a bathroom stall, maybe a stairwell, maybe just sitting at your desk with your calendar staring back at you. Wherever you are, this is yours.",
+      "Feel your feet flat on the floor. Press them down — not a stomp, just a slow, deliberate press, like you are leaving a footprint. Feel the floor push back. That is solid ground. That is a fact.",
+      "Now roll your shoulders back once, deliberately. Then let them drop. Notice how much you were holding there. You do not have to carry it into the room.",
+      "Here is the truth about this meeting: you have information they do not. You have your own read of the situation. You have shown up prepared enough. Prepared enough is sufficient. Perfect preparation is a story your nervous system tells you when it is trying to protect you.",
+      "Take a breath in for four counts — one, two, three, four. Hold for two. Out for six. That extended exhale signals your nervous system that the threat is manageable. Do it twice.",
+      "You are allowed to pause before you answer in that room. A three-second pause feels like forever to you and like nothing to everyone else. Use pauses freely.",
+      "One more breath. Shoulders back, feet on the floor, and go in as yourself — not as the version of you that has to have every answer, but as the version that shows up and does their part."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "Wherever you are" },
+      { "t_seconds": 40, "label": "Feet on ground" },
+      { "t_seconds": 80, "label": "Shoulder drop" },
+      { "t_seconds": 120, "label": "The truth about this" },
+      { "t_seconds": 160, "label": "4-2-6 breath" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-health-result-en",
+    "title_en": "Waiting for the Answer",
+    "mood_tags": ["anxiety", "health-anxiety", "uncertainty", "waiting", "fear"],
+    "duration_min": 10,
+    "script_en": [
+      "There is a particular kind of anxiety that comes when something is out of your hands entirely — when you have done all you can do and now you wait. A test result, a scan, a call from a doctor. The mind, which likes to solve things, finds this unbearable. It circles and circles, trying to think its way to an answer it cannot reach.",
+      "Let's be honest about what is happening: your nervous system has been on high alert, maybe for days. It is tired. The anxiety is real, but it is not information about the outcome — it is just the body's alarm system, which fires whenever there is uncertainty, regardless of what the answer will actually be.",
+      "Sit comfortably. Let your hands rest in your lap, palms facing up — an open posture, a receiving posture, not a bracing one.",
+      "Breathe in slowly. As you breathe out, say to yourself quietly — internally, not out loud — I do not know yet. That is okay. I do not need to know right now to be here right now. Say it once. Then breathe again.",
+      "Now bring your attention to something that is simply, straightforwardly true in this moment. The texture of the fabric under your hands. The temperature of the room. The sound that is furthest away from you right now — a fan, traffic, birds, someone's television. Let your awareness travel out to that sound and rest there briefly.",
+      "Come back. You are still here. The result has not changed because you are anxious, and it will not change because you are calm. But you can be in this waiting with a little less suffering.",
+      "Think of one person who has been through uncertainty like this and is still standing. They did not know the answer either, for a while. They waited in this same particular limbo. They came through it. You are built of the same material.",
+      "It is okay to be scared. Scared and present, both at once — that is not weakness. That is being human inside a situation that is genuinely hard. You do not have to perform acceptance. You do not have to believe it will all be fine. You just have to be here, waiting, breath by breath.",
+      "Stay here as long as you need. When you are ready to return to the room, carry this with you: your body is doing everything right. Your mind is trying to help in the only way it knows. And the answer, when it comes, will be met by a version of you who has been resting rather than fighting all this time."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "What is happening" },
+      { "t_seconds": 90, "label": "Open hands" },
+      { "t_seconds": 150, "label": "I do not know yet" },
+      { "t_seconds": 230, "label": "Ground in what is true" },
+      { "t_seconds": 330, "label": "The waiting itself" },
+      { "t_seconds": 430, "label": "Scared and present" },
+      { "t_seconds": 530, "label": "Returning" }
+    ],
+    "ambient_video": "hero-meditate.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-decision-paralysis-en",
+    "title_en": "When Every Option Feels Wrong",
+    "mood_tags": ["anxiety", "decision-paralysis", "overthinking", "stuck", "choice-overload"],
+    "duration_min": 8,
+    "script_en": [
+      "You have been going around the same loop for a while now. Option A, option B, back to A, maybe C, the catastrophic version of all three, and then back to the beginning. The more you think, the less clear it gets. That is not a sign that you are bad at decisions. That is what the brain does when it is anxious — it treats every choice as a survival question.",
+      "The first thing to do is to stop adding new information to the loop. Close the browser tabs, put the phone face down, and let the list-making rest for a moment.",
+      "Sit still. Take three slow breaths, not a practice or a technique, just three actual breaths where you pay attention to the air moving in and out. Three. That is all.",
+      "Now: what does your body say about this decision? Not your head — your chest, your stomach, your shoulders. When you imagine option A, do you feel a slight easing or a slight tightening? Not relief or dread necessarily, just — which direction does the body lean? You do not have to act on it yet. Just notice.",
+      "Here is a reframe that sometimes helps: there is rarely one right answer. There is the answer you chose and then what you do with it. Most decisions are recoverable. Most paths have more than one fork. The anxiety is telling you that choosing wrong will be catastrophic and irreversible — but your actual track record of navigating outcomes is better than that.",
+      "What do you already know, deep in yourself, that you have been talking yourself out of? Sometimes decision paralysis is not confusion — it is knowing something and not wanting to know it yet. You do not have to act on that knowing right now. Just let it be present.",
+      "Take a breath. The decision will still be there in an hour. You are allowed to be uncertain. Being uncertain is not the same as being wrong. Make peace with not knowing for the length of this breath, and then one more."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "The loop" },
+      { "t_seconds": 70, "label": "Stop adding input" },
+      { "t_seconds": 120, "label": "Three breaths" },
+      { "t_seconds": 170, "label": "Body sense" },
+      { "t_seconds": 260, "label": "The reframe" },
+      { "t_seconds": 360, "label": "What you already know" },
+      { "t_seconds": 430, "label": "Permission to not know" }
+    ],
+    "ambient_video": "hero-meditate.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-social-en",
+    "title_en": "After the Group",
+    "mood_tags": ["anxiety", "social-anxiety", "post-social-exhaustion", "replay", "self-doubt"],
+    "duration_min": 5,
+    "script_en": [
+      "You are back on your own now. Maybe the gathering ended an hour ago or maybe you just walked through the door, but the mind is already replaying — that thing you said, the silence after your joke, whether you talked too much or too little, whether they thought you were strange. The social post-mortem is running.",
+      "This happens to a lot of people who are more inward than outward by nature, and it happens more on hard days. The replaying is not evidence that you did anything wrong. It is the threat-detection system reviewing footage for danger. It tends to find what it is looking for.",
+      "Come back to your body. You are home. Shoes off if they are not already. If you can, wash your hands with warm water and notice the temperature — that is a small, grounding thing that works for reasons no one fully understands but that people reliably find helps.",
+      "Breathe in and let your exhale be twice as long as your inhale. In for three, out for six. Do this four times. It is not magic, it is physiology — the long exhale activates the calming branch of your nervous system.",
+      "Now let's try something. For each moment you are cringing about, see if you can name one moment where something went well — where you were kind, where you were genuinely present, where someone laughed easily. Not to balance some imaginary ledger, but because the post-mortem is doing an incomplete accounting. You were there too, and some of it was fine.",
+      "You showed up. That takes something. Let that be enough for tonight."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "The replay" },
+      { "t_seconds": 60, "label": "Threat detection" },
+      { "t_seconds": 110, "label": "Come home to body" },
+      { "t_seconds": 170, "label": "3-6 breath" },
+      { "t_seconds": 240, "label": "The other accounting" },
+      { "t_seconds": 290, "label": "You showed up" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-future-en",
+    "title_en": "The Worry About What Has Not Happened Yet",
+    "mood_tags": ["anxiety", "future-anxiety", "catastrophizing", "worry", "uncertainty"],
+    "duration_min": 10,
+    "script_en": [
+      "The mind has gone somewhere ahead of you. It is standing in a future that does not exist yet, examining worst-case outcomes with great thoroughness. It has probably been doing this for a while. It believes it is helping — if it can just anticipate everything that could go wrong, maybe it can protect you from it. But you know by now that this is not how it works. The worry does not prevent the thing. It only takes up the present.",
+      "Bring your attention back to the room you are in. Not forcefully — the mind will just run again. Just gently, the way you would call a child back from the edge of a busy road. Come here. Stay with me for a moment.",
+      "Notice five things in the room that are simply existing without any threat: a lamp, a book spine, the ceiling, dust in the light, a glass. Let your gaze rest on each one for a breath. They are fine. They are here. You are among them.",
+      "Now: what is the earliest point in time where something from this worry applies? Is it a meeting next week, a conversation that has not happened, a medical appointment three months away? The worry is acting like it is happening now. But it is not. Right now, in this room, the worst case has not happened. Right now, things are a particular way, and it is survivable.",
+      "Take a full, slow breath in and let the exhale be a sound — a quiet, involuntary hhh through the mouth. Like setting something down.",
+      "The future is genuinely uncertain. You cannot think your way into certainty. What you can do is notice that you have navigated uncertainty before. There have been times you did not know how something would turn out, and it turned out — somehow, one way or another. You are standing here because you have gotten through every bad thing that has happened to you so far. That is an extraordinary record.",
+      "Rest in the present. Not because the future is fine — you do not know that — but because the present is the only place you can actually be. The worrying future-self cannot breathe. Only you, right here, can breathe.",
+      "Take a few more breaths. Let the future stay in the future, where it belongs, and come home to now."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "The mind gone ahead" },
+      { "t_seconds": 80, "label": "Come back" },
+      { "t_seconds": 150, "label": "Five things here" },
+      { "t_seconds": 230, "label": "When does it start" },
+      { "t_seconds": 320, "label": "Setting it down" },
+      { "t_seconds": 380, "label": "Your track record" },
+      { "t_seconds": 490, "label": "Only here" }
+    ],
+    "ambient_video": "hero-meditate.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-panic-onset-en",
+    "title_en": "Right Now, In This Moment",
+    "mood_tags": ["anxiety", "panic", "panic-onset", "heart-racing", "acute-distress"],
+    "duration_min": 5,
+    "script_en": [
+      "Something is rising. Your heart is faster. There may be a tightness in your chest or a strange feeling in your hands. Hear this clearly: you are safe. What you are feeling is your body's alarm system firing — it is real, it is uncomfortable, and it will pass. It has passed every time before this. It will pass now.",
+      "Plant your feet on the floor. Press them down firmly. Feel the solidity under you. The floor is not moving. You are not falling.",
+      "Breathe out first. Not in — out. Push the air out of your lungs completely. Then let the breath come back in on its own. It will. Your body knows how to breathe. You do not have to make it happen.",
+      "Out first. Then let in. Out. Let in. Keep this going.",
+      "Name something in the room that is a specific color. Not just 'blue' — find something that is specifically blue: the back of a book, a piece of clothing, a mug. Say it to yourself. Then find something orange, or green, or yellow. This is not a trick. It is pulling your attention into the sensory present, which is a different circuit than the alarm circuit.",
+      "Your heart rate will come down. It may take two minutes or it may take five. That is normal. You are not having a heart attack. The body can produce every symptom of one without any cardiac event — panic is a specialist in mimicry. Stay with the breath. Stay on the floor.",
+      "When the wave begins to ease, do not move too quickly. Let the body settle for a moment. You have been through something real, even if nothing external happened. Be gentle with yourself. Drink water if you have it. Sit for another minute. You are okay."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "You are safe" },
+      { "t_seconds": 50, "label": "Feet on floor" },
+      { "t_seconds": 90, "label": "Out first" },
+      { "t_seconds": 160, "label": "Color grounding" },
+      { "t_seconds": 240, "label": "The wave passes" },
+      { "t_seconds": 290, "label": "After" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-health-worry-en",
+    "title_en": "The Body You Are Afraid Of",
+    "mood_tags": ["anxiety", "health-anxiety", "body-worry", "hypochondria-adjacent", "somatic"],
+    "duration_min": 8,
+    "script_en": [
+      "You have been paying close attention to your body — maybe too close. A sensation becomes a symptom, a symptom becomes a search, and a search becomes an hour of terrible possibilities. Health anxiety is one of the most exhausting forms because the subject matter is something you literally cannot escape. You live in this body. You cannot put it down.",
+      "Start here: the mind that is monitoring your body for threats is not a doctor. It is a threat-detection system running on incomplete information and a search engine. It is not qualified to diagnose. The symptoms it is fixating on are real as sensations — but the meanings it attaches to them are often stories, not facts.",
+      "Take a breath. Let it be slow. Notice the breath as a sign of aliveness — not as a measurement or a test, just as breath. You are breathing. That is working.",
+      "Now scan your body very slowly — not looking for problems, but noticing what is okay. Probably most of your body is having an uneventful Tuesday. Your feet are fine. Your hands are fine. A lot of you is simply going about its business without drama.",
+      "The sensation that is worrying you: has it been there before? If so, you have survived it before. If it is new — new things get checked by doctors, not by worried searching. The rule is: if it needs attention, get it checked once by a professional. One appointment, not twenty search results.",
+      "Anxiety creates physical sensations. This is not psychosomatic in a dismissive sense — it is physiological. Anxiety tightens muscles, changes heart rate, creates tingling, changes breathing patterns. The sensations are real. They are also often, in the case of chronic health anxiety, anxiety masquerading as symptoms.",
+      "Come back to the breath. Come back to what is working in this body. Let the worry sit without acting on it for the next few minutes. It does not need to be fed more information right now. Just breathe."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "Too close attention" },
+      { "t_seconds": 80, "label": "Not a doctor" },
+      { "t_seconds": 160, "label": "Breath as aliveness" },
+      { "t_seconds": 220, "label": "What is okay" },
+      { "t_seconds": 310, "label": "The rule for new symptoms" },
+      { "t_seconds": 390, "label": "Anxiety and sensation" },
+      { "t_seconds": 460, "label": "Returning" }
+    ],
+    "ambient_video": "hero-meditate.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-new-place-en",
+    "title_en": "Finding Your Footing Here",
+    "mood_tags": ["anxiety", "new-place-anxiety", "relocation", "unfamiliar", "displacement", "adjustment"],
+    "duration_min": 8,
+    "script_en": [
+      "Everything around you is unfamiliar — the sounds of the building, the quality of light, the routes to things you need. You are doing the constant low-level work of orientation: navigating new streets, learning new faces, figuring out where things are. It is exhausting in a way that is hard to explain to people who are not in it.",
+      "Sit down somewhere you can be still for a few minutes. It does not have to be comfortable — new places often do not have comfortable yet. Just still.",
+      "Start with what is the same everywhere. Gravity is the same. The floor holds you the same way it held you in your last place. The breath moves the same way. Inside your chest, everything is working the same. You brought that with you.",
+      "Now look around this new space and find three things you can claim as yours — a mug, a photo, a book, a piece of clothing. Acknowledge them: those are mine. They came with me. Even in an unfamiliar room, you have objects that are yours. That is not nothing. That is a thread back to yourself.",
+      "Think of a place where you felt settled — it does not have to be grand, just a place that was yours. Hold that feeling in your body for a moment. The feeling of knowing where things are. The feeling of routine. That feeling is not gone — it is a capacity in you, and it will rebuild here. It always does. It just takes time.",
+      "Being new somewhere is genuinely hard. The anxiety of navigating unfamiliar territory is not weakness — it is biology. Your threat system is calibrated to notice what is unknown. Everything here is unknown. Of course it is running.",
+      "Take a long, slow breath. You do not need to love this place yet. You do not need to feel at home yet. You just need to be here one day, and then another. The familiarity comes gradually, and one day you will walk into a shop or take a turn without thinking, and it will have become yours without you noticing. That will happen."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "The work of orienting" },
+      { "t_seconds": 70, "label": "What came with you" },
+      { "t_seconds": 150, "label": "Claim three things" },
+      { "t_seconds": 240, "label": "A place that was yours" },
+      { "t_seconds": 330, "label": "Novelty and threat" },
+      { "t_seconds": 420, "label": "One day at a time" }
+    ],
+    "ambient_video": "hero-meditate.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-phone-call-en",
+    "title_en": "Before You Dial",
+    "mood_tags": ["anxiety", "phone-dread", "communication-anxiety", "avoidance", "phone-call"],
+    "duration_min": 3,
+    "script_en": [
+      "The call has been sitting on your to-do list. You know you need to make it. Maybe it is a difficult conversation, maybe it is just talking to a stranger, maybe it is calling a government office and navigating hold music and indifferent operators. Whatever it is, your brain has made it bigger than it probably is.",
+      "Before you dial: three breaths. In through the nose, out through the mouth. Let your shoulders drop with each exhale.",
+      "Think about what you actually need from this call — just one sentence. What is the one thing you need by the time the call ends? Keep it simple. You do not need to figure out the whole conversation. You need one outcome.",
+      "Remind yourself: phone calls end. No matter how it goes, in fifteen minutes you will not be on this call anymore. It is finite.",
+      "Pick up the phone. Press dial before your mind can run the avoidance loop again. The first three seconds of a call are the hardest. After that, you are in it and you will find your way.",
+      "And if it goes imperfectly — if you stumble over your words or get put on hold or do not get what you needed — that is fine. You made the call. That is the part you were avoiding. You will have done it."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "The thing on the list" },
+      { "t_seconds": 40, "label": "Three breaths" },
+      { "t_seconds": 80, "label": "One outcome" },
+      { "t_seconds": 130, "label": "Calls end" },
+      { "t_seconds": 165, "label": "Press dial" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-difficult-conversation-en",
+    "title_en": "You Know What You Need to Say",
+    "mood_tags": ["anxiety", "difficult-conversation", "conflict-anxiety", "communication-dread", "confrontation"],
+    "duration_min": 5,
+    "script_en": [
+      "There is something that needs to be said, and the saying of it has been sitting heavy. Maybe it is a boundary, or a hurt, or a need you have been minimizing. The anxiety is telling you a story about how it will go — maybe they will be angry, maybe you will be dismissed, maybe it will break something. The anxiety tends to imagine the worst reception.",
+      "Sit for a moment. Breathe slowly. Let your jaw soften — you have probably been clenching it.",
+      "What is actually true about this conversation? Not the worst-case version — the honest version. What do you need to say, and why? Underneath the anxiety is usually something real: a need that is not being met, a dynamic that is not working, a feeling that deserves to be named.",
+      "You do not need the other person to respond perfectly. You cannot control that. What you can control is how clearly and calmly you express what is true for you. That is your part. Their response is their part.",
+      "Take a breath in. As you let it out, imagine setting down the need for a particular outcome. You can care about this conversation and still not need it to go exactly one way. Those two things can coexist.",
+      "You are allowed to take your time in the conversation. You are allowed to say 'I need to think about that' rather than responding in the moment. You are allowed to feel scared and still say what needs to be said. Scared and clear is a perfectly valid way to show up.",
+      "One breath. Then go."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "What needs to be said" },
+      { "t_seconds": 60, "label": "The honest version" },
+      { "t_seconds": 140, "label": "Your part and theirs" },
+      { "t_seconds": 210, "label": "Setting down the outcome" },
+      { "t_seconds": 280, "label": "Scared and clear" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-interview-en",
+    "title_en": "You Have Done the Preparation",
+    "mood_tags": ["anxiety", "interview-anxiety", "performance-anxiety", "job-interview", "evaluation"],
+    "duration_min": 5,
+    "script_en": [
+      "You have prepared. Maybe not perfectly, maybe not as much as you wished, but you have prepared. The anxiety is trying to tell you that preparation equals certainty of outcome, and since there is no certainty, you must not be prepared enough. That is not how interviews work. That is not how anything works.",
+      "Sit with your feet flat on the floor. Straighten your back slightly — not rigid, just upright. There is research that suggests posture affects how we feel about ourselves in moments like this. Let your body model confidence even while the mind is in doubt.",
+      "Take a breath in for four, hold for four, out for four. This is box breathing. Do it three times. It will not eliminate the anxiety, but it will give you a slightly lower baseline to walk in with.",
+      "Think of one thing you know well — a piece of your experience or expertise that is genuinely yours. Something you have actually done or thought through or navigated. Hold that for a moment. That is real. They cannot take that from you by asking a question badly.",
+      "Interviews are also an assessment in the other direction — you are figuring out whether this is a place you want to be. That reframe is not always easy to hold onto, but it is accurate. You have a point of view too.",
+      "When you walk in, you do not need to perform a person who is not anxious. You need to be competent enough and yourself enough that the right fit can be recognized. If it is not the right fit, that is information — not failure.",
+      "Last breath. You are ready enough. Go do your part."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "You prepared" },
+      { "t_seconds": 60, "label": "Upright posture" },
+      { "t_seconds": 110, "label": "Box breathing" },
+      { "t_seconds": 180, "label": "What you know" },
+      { "t_seconds": 240, "label": "Two-way assessment" },
+      { "t_seconds": 290, "label": "Ready enough" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-public-speaking-en",
+    "title_en": "The Room Is With You",
+    "mood_tags": ["anxiety", "public-speaking", "performance-anxiety", "stage-fright", "presentation"],
+    "duration_min": 5,
+    "script_en": [
+      "You are about to speak in front of people, or you just agreed to, and the system is running the full alarm. The racing heart, the dry mouth, the certainty that you will forget everything the moment you open your mouth. This is so common it is almost universal — some very polished speakers have this running every single time. You are not uniquely afflicted.",
+      "Stand or sit up straight. Put your weight evenly on both feet or both sitting bones. Find a stable center. Ground yourself physically before you try to calm yourself mentally.",
+      "Breathe in through your nose for a count of four. Hold for a count of two. Out through your mouth for a count of six. The long exhale again — it is the most reliable thing. Do it twice.",
+      "Here is a thing that is true about most audiences: they want you to do well. They are not sitting there waiting for you to fail. Most people in rooms listening to speakers are a little tired, a little distracted, and genuinely hoping to get something useful. They are on your side by default.",
+      "You do not need to be perfect. You need to be clear about your main point and present enough to notice if the room needs something from you. That is it. The rest is detail.",
+      "If you lose your place, pause. A three-second pause to find your footing feels like an eternity to you and like barely a beat to the audience. Use pauses freely. Pauses signal confidence, not uncertainty.",
+      "Last breath. Look at one person in the room when you start — someone who looks receptive. Speak to them for the first few sentences. Then you will have found your voice, and you can move on."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "Not alone in this" },
+      { "t_seconds": 60, "label": "Ground physically" },
+      { "t_seconds": 100, "label": "4-2-6 breath" },
+      { "t_seconds": 160, "label": "The audience is for you" },
+      { "t_seconds": 240, "label": "Clear and present" },
+      { "t_seconds": 290, "label": "Using the pause" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-driving-en",
+    "title_en": "Before You Start the Engine",
+    "mood_tags": ["anxiety", "driving-anxiety", "travel-anxiety", "control-anxiety", "highway-fear"],
+    "duration_min": 5,
+    "script_en": [
+      "Driving anxiety is one of those things that builds on itself — the fear of the fear becomes its own problem. You have been avoiding it, or dreading it, or making it through on adrenaline. This meditation is not going to cure driving anxiety in five minutes. It is going to give you a way to start.",
+      "Before you get in the car, sit in a quiet place for a moment. Not to calm yourself into numbness, but to regulate yourself enough to function. There is a difference.",
+      "Take a slow breath in. Let it out completely. Again. Notice that the anxiety is here but you are also here. Both of those things can be true simultaneously. You do not have to feel confident to drive — you have to feel functional. Those are different bars.",
+      "Think about the specific route. Break it into segments. The first segment, the straightforward part, the challenging part, the end. You do not have to hold the whole journey in your mind. You just have to do the next segment.",
+      "Driving involves making hundreds of small correct decisions without thinking — your brain knows how to do this. The part that is afraid is not the part that actually drives. That part is trained. Trust it.",
+      "If you feel anxiety rising while driving: feel your hands on the wheel, press your back into the seat, and say to yourself, internally — I have this. I know how to do this. One section at a time.",
+      "When you arrive, take a moment to notice that you did it. Do not skip past it. You drove there. That matters."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "The building fear" },
+      { "t_seconds": 60, "label": "Functional, not fearless" },
+      { "t_seconds": 130, "label": "Segment by segment" },
+      { "t_seconds": 210, "label": "The trained part" },
+      { "t_seconds": 270, "label": "Anchor in the car" },
+      { "t_seconds": 310, "label": "Notice the arrival" }
+    ],
+    "ambient_video": "hero-breathe.mp4",
+    "language": "en"
+  },
+  {
+    "id": "med-anxiety-baseline-en",
+    "title_en": "Just Anxious Today",
+    "mood_tags": ["anxiety", "general-anxiety", "background-worry", "baseline-reset", "restlessness"],
+    "duration_min": 15,
+    "script_en": [
+      "There is not always a reason. Sometimes you just wake up anxious, or the afternoon turns anxious without warning, and when people ask what is wrong, the honest answer is: I do not know. Nothing specific. Just this. That is a valid kind of anxiety, and it deserves its own kind of attention.",
+      "Find a comfortable position. Lying down if you can, or sitting in a way that feels supported. Let your body be held by whatever surface you are on — you do not have to do anything with your muscles right now.",
+      "Start with a long exhale. Empty yourself out. Then let the breath come back in naturally, without controlling the size of it. Just let your body breathe. Watch it do that for a moment — the slight rise and fall, the rhythm that has been running your whole life without you having to manage it.",
+      "Bring your attention to your hands. Let them soften. If they have been curled or gripped, let them open slightly, as if you have just set something down. Notice the sensation in your palms — warmth, or a slight tingling, or simply the feeling of your own skin.",
+      "Let your jaw release. If you have been clenching, let the back teeth part very slightly. Let your tongue rest on the floor of your mouth instead of pressed to the roof. Let your eyes soften behind closed lids — not squeezed shut, just resting.",
+      "Now move your attention down through your body slowly: the back of your head resting. Your shoulder blades letting the surface hold their weight. Your lower back, which probably holds a lot. Your hips and the weight in them. Your legs becoming heavy. Your feet, your heels, the length of your body from head to toe.",
+      "You are here. You are in one piece. The anxiety is a weather system passing through — it does not define the ground it is moving across. You are the ground. The weather is temporary.",
+      "Breathe in slowly for five counts. Hold for two. Out for seven. Do this four times. Between each breath, notice one thing about how your body feels different — slightly heavier, slightly softer, slightly more here.",
+      "Let your mind wander, but gently. If it goes somewhere anxious, bring it back to the breath without judgment. It is not bad at this. It is just trained to move. You are training it, slowly, to also stay.",
+      "When thoughts come — and they will — imagine them as boats on a river. You are sitting on the bank. You can see the boats, you can watch them pass, but you do not have to get on any of them right now. They move on their own. The river keeps moving.",
+      "You are allowed to rest here. You are allowed to let the anxiety exist without feeding it more thoughts or trying to solve it. It does not need to be solved right now. It needs to run its course, and rest helps it do that faster than vigilance.",
+      "Stay here for as long as feels right. When you are ready to return — when you open your eyes or shift your position — do it slowly. Take the stillness with you for a few minutes if you can. You have given yourself something real."
+    ],
+    "chapters": [
+      { "t_seconds": 0, "label": "No reason needed" },
+      { "t_seconds": 70, "label": "Body scan begins" },
+      { "t_seconds": 200, "label": "Hands and jaw" },
+      { "t_seconds": 320, "label": "Full body release" },
+      { "t_seconds": 450, "label": "The weather and the ground" },
+      { "t_seconds": 540, "label": "5-2-7 breath" },
+      { "t_seconds": 660, "label": "Boats on the river" },
+      { "t_seconds": 780, "label": "Permission to rest" },
+      { "t_seconds": 860, "label": "Returning slowly" }
+    ],
+    "ambient_video": "hero-meditate.mp4",
+    "language": "en"
+  }
+]

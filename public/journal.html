@@ -1,785 +1,1637 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-tod="auto">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Journal - Sukoon</title>
-    <meta name="description" content="Private mood journal. Track your feelings, write freely, export your data. Everything stays on your device.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sukoon">
-    <meta property="og:url" content="https://sukoon.cloud/journal.html">
-    <meta property="og:title" content="Free Private Mood Journal — Encrypted on Your Device · Sukoon">
-    <meta property="og:description" content="Private mood journal. Track your feelings, write freely, export your data. Everything stays on your device.">
-    <meta property="og:image" content="https://sukoon.cloud/og/journal.jpg">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="669">
-    <meta property="og:image:alt" content="Open leather journal with fountain pen and tea by a sunlit window">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Free Private Mood Journal — Encrypted on Your Device · Sukoon">
-    <meta name="twitter:description" content="Private mood journal. Track your feelings, write freely, export your data. Everything stays on your device.">
-    <meta name="twitter:image" content="https://sukoon.cloud/og/journal.jpg">
-    <meta name="theme-color" content="#2D6A4F">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/css/shell.css">
-    <style>
-        .fade-in {
-            opacity: 0;
-            animation: fadeIn 0.3s ease forwards;
-        }
-        .fade-in-d1 { animation-delay: 0.05s; }
-        .fade-in-d2 { animation-delay: 0.10s; }
-        .fade-in-d3 { animation-delay: 0.15s; }
-        .fade-in-d4 { animation-delay: 0.20s; }
-        .fade-in-d5 { animation-delay: 0.25s; }
-        .fade-in-d6 { animation-delay: 0.30s; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Journal — Sukoon</title>
+  <meta name="description" content="A private journal that lives only on your device. Sukoon never sees a word. Write freely, in English or हिन्दी.">
+  <meta name="theme-color" content="#0F1B3D">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/sukoon-revolution.css">
+  <script src="/js/sukoon-experience.js" defer></script>
+  <script src="/js/sukoon-pulse.js" defer></script>
+  <script src="/js/sukoon-safety.js" defer></script>
+  <script src="/js/sukoon-library.js" defer></script>
 
-        /* ===================== MAIN ===================== */
-        main {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: calc(52px + 28px) 20px 40px;
-        }
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://sukoon.cloud/journal.html">
+  <meta property="og:title" content="Journal — A page only you will read · Sukoon">
+  <meta property="og:description" content="Encrypted on your device. Nothing leaves. Write freely.">
+  <meta property="og:image" content="https://sukoon.cloud/og/journal.jpg">
 
-        /* ===================== CARDS ===================== */
-        .card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-            padding: 28px 24px;
-            margin-bottom: 16px;
-        }
+  <style>
+    /* =========================================================
+       JOURNAL — page-scoped surfaces and chrome.
+       Builds on sukoon-revolution.css tokens.
+       ========================================================= */
+    .page-journal {
+      background: var(--sk-night, #0F1B3D);
+      color: var(--sk-cream, #F5EFE2);
+      font-family: var(--sk-font-sans, 'Inter Tight', system-ui, sans-serif);
+      min-height: 100vh;
+    }
+    .journal-shell {
+      position: relative;
+      min-height: 100vh;
+      padding-bottom: var(--bottomnav-clearance, 88px);
+      overflow: hidden;
+    }
 
-        /* ===================== PAGE HEADER ===================== */
-        .page-header { text-align: center; margin-bottom: 28px; }
-        .page-header h1 {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: clamp(1.6rem, 4.5vw, 2rem);
-            color: #1D1D1F;
-            margin-bottom: 6px;
-            letter-spacing: -0.02em;
-        }
-        .page-header .subtitle {
-            font-size: 0.9rem; color: #86868B; max-width: 380px; margin: 0 auto;
-        }
-        .page-header .subtitle-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.8rem; color: var(--color-text-tert); margin-top: 4px;
-        }
+    /* ---------- CRISIS BAR ---------- */
+    .sk-crisis-bar {
+      position: relative;
+      z-index: 30;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 18px;
+      background: rgba(15, 27, 61, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245, 239, 226, 0.08);
+      font-size: 13px;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.72));
+    }
+    .sk-crisis-bar__text { display: inline-flex; align-items: center; gap: 8px; }
+    .sk-crisis-bar__dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--sk-coral, #F08679);
+      box-shadow: 0 0 12px rgba(240, 134, 121, 0.7);
+    }
+    .sk-crisis-bar__cta {
+      color: var(--sk-cream, #F5EFE2);
+      text-decoration: none; font-weight: 600;
+      padding: 6px 14px; border-radius: 999px;
+      background: var(--sk-coral, #F08679);
+      transition: background 200ms ease;
+    }
+    .sk-crisis-bar__cta:hover { background: #ec7264; }
 
-        /* ===================== MOOD SELECTOR ===================== */
-        .mood-label {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 1.1rem; color: #1D1D1F;
-            text-align: center; margin-bottom: 4px;
-        }
-        .mood-label-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: var(--color-text-tert);
-            text-align: center; margin-bottom: 20px;
-        }
-        .mood-row {
-            display: flex; justify-content: center; gap: 12px;
-            flex-wrap: wrap;
-        }
-        .mood-btn {
-            display: flex; flex-direction: column; align-items: center; gap: 7px;
-            cursor: pointer; transition: opacity 0.3s ease;
-            padding: 8px; border-radius: 12px; border: none; background: none;
-            font-family: -apple-system, 'Inter', sans-serif;
-        }
-        .mood-btn:hover { opacity: 0.8; }
-        .mood-btn.selected { opacity: 1; }
-        .mood-circle {
-            width: 52px; height: 52px; border-radius: 50%;
-            border: 2px solid rgba(0, 0, 0, 0.06);
-            display: flex; align-items: center; justify-content: center;
-            background: #FFFFFF;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-        }
-        .mood-circle svg { width: 26px; height: 26px; }
-        .mood-text {
-            font-size: 0.65rem; font-weight: 600; color: var(--color-text-tert);
-            text-transform: uppercase; letter-spacing: 0.5px;
-            transition: color 0.3s ease;
-        }
-        /* Selected = green ring */
-        .mood-btn.selected .mood-circle {
-            border-color: #2D6A4F;
-            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
-        }
-        .mood-btn.selected .mood-text { color: #2D6A4F; }
+    /* ---------- LANG TOGGLE ---------- */
+    .sk-lang {
+      position: absolute;
+      top: 56px; right: 18px;
+      z-index: 20;
+      display: inline-flex;
+      background: rgba(43, 31, 74, 0.6);
+      border: 1px solid rgba(245, 239, 226, 0.12);
+      border-radius: 999px;
+      padding: 3px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .sk-lang button {
+      background: transparent; border: none;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.72));
+      padding: 6px 14px; border-radius: 999px;
+      font: 600 12px/1 var(--sk-font-sans, system-ui);
+      letter-spacing: 0.04em; cursor: pointer;
+      transition: background 200ms ease, color 200ms ease;
+    }
+    .sk-lang button[aria-pressed="true"] {
+      background: rgba(245, 239, 226, 0.16);
+      color: var(--sk-cream, #F5EFE2);
+    }
 
-        /* ===================== JOURNAL TEXTAREA ===================== */
-        .journal-section label {
-            font-size: 0.75rem; font-weight: 600; color: #86868B;
-            text-transform: uppercase; letter-spacing: 0.04em;
-            display: block; margin-bottom: 10px;
-        }
-        .journal-textarea {
-            width: 100%;
-            min-height: 160px;
-            padding: 16px 18px;
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 10px;
-            font-family: -apple-system, 'Inter', sans-serif;
-            font-size: 0.92rem;
-            color: #1D1D1F;
-            background: #FAFAF7;
-            resize: vertical;
-            outline: none;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
-            line-height: 1.7;
-        }
-        .journal-textarea::placeholder { color: var(--color-text-tert); }
-        .journal-textarea:focus {
-            border-color: #2D6A4F;
-            box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
-            background: #FFFFFF;
-        }
-        .char-count {
-            text-align: right;
-            font-size: 0.72rem; color: var(--color-text-tert);
-            margin-top: 8px;
-        }
+    /* ---------- HERO ---------- */
+    .jhero {
+      position: relative;
+      min-height: 58vh;
+      padding: 96px 24px 56px;
+      display: flex; align-items: flex-end;
+      isolation: isolate;
+    }
+    .jhero__video {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+    .jhero__veil {
+      position: absolute; inset: 0; z-index: -1;
+      background: linear-gradient(180deg,
+        rgba(15, 27, 61, 0.30) 0%,
+        rgba(15, 27, 61, 0.55) 55%,
+        rgba(15, 27, 61, 0.95) 100%);
+    }
+    .jhero__inner {
+      max-width: 720px; margin: 0 auto; width: 100%;
+      animation: skRiseSoft 800ms cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .jhero__eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.45));
+      margin-bottom: 14px;
+    }
+    .jhero__title {
+      font-family: var(--sk-font-serif, 'Fraunces', Georgia, serif);
+      font-weight: 300;
+      font-size: clamp(40px, 6vw, 76px);
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--sk-cream, #F5EFE2);
+      margin: 0 0 14px;
+    }
+    .jhero__title em {
+      font-style: italic; color: var(--sk-saffron, #E8A552);
+    }
+    .jhero__sub {
+      font-size: clamp(16px, 1.6vw, 19px);
+      line-height: 1.5;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.72));
+      max-width: 540px;
+      margin: 0 0 6px;
+    }
+    .jhero__sub-hi {
+      font-family: var(--sk-font-hindi, 'Tiro Devanagari Hindi', serif);
+      font-size: clamp(15px, 1.5vw, 17px);
+      line-height: 1.6;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.55));
+      max-width: 540px;
+      margin: 0;
+    }
 
-        /* ===================== BUTTONS ===================== */
-        .action-row {
-            display: flex; gap: 10px; justify-content: center;
-            margin-bottom: 36px;
-        }
-        .btn {
-            padding: 11px 24px;
-            border-radius: 8px;
-            font-family: -apple-system, 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: opacity 0.3s ease;
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-        }
-        .btn svg { width: 16px; height: 16px; }
-        .btn-primary {
-            background: #2D6A4F;
-            color: #fff;
-        }
-        .btn-primary:hover { opacity: 0.85; }
-        .btn-primary:disabled {
-            background: var(--color-text-tert);
-            color: rgba(255, 255, 255, 0.6);
-            cursor: not-allowed;
-        }
-        .btn-ghost {
-            background: #F5F5F0;
-            color: #86868B;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-        }
-        .btn-ghost:hover {
-            background: #EEEEE8;
-            color: #1D1D1F;
-        }
+    /* ---------- MAIN GRID ---------- */
+    .jstudio {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+      display: grid;
+      gap: 28px;
+    }
 
-        /* ===================== CHART ===================== */
-        .history-section { margin-bottom: 28px; }
-        .section-title {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 1.2rem; color: #1D1D1F;
-            margin-bottom: 4px;
-            letter-spacing: -0.01em;
-        }
-        .section-subtitle {
-            font-size: 0.82rem; color: #86868B;
-            margin-bottom: 16px;
-        }
-        .section-subtitle-hi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.76rem; color: var(--color-text-tert);
-        }
-        .chart-header {
-            display: flex; justify-content: space-between; align-items: center;
-            margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
-        }
-        .chart-header h3 { font-size: 0.78rem; font-weight: 600; color: #86868B; text-transform: uppercase; letter-spacing: 0.03em; }
-        .chart-legend { display: flex; gap: 10px; flex-wrap: wrap; }
-        .legend-item {
-            display: flex; align-items: center; gap: 4px;
-            font-size: 0.65rem; color: var(--color-text-tert);
-        }
-        .legend-dot { width: 7px; height: 7px; border-radius: 2px; }
-        .chart-container {
-            display: flex; align-items: flex-end; gap: 3px;
-            height: 110px;
-            padding-bottom: 22px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-            position: relative;
-        }
-        .chart-bar {
-            flex: 1;
-            border-radius: 3px 3px 0 0;
-            min-height: 4px;
-            transition: opacity 0.3s ease;
-            cursor: pointer;
-        }
-        .chart-bar:hover { opacity: 0.75; }
-        /* Sage green bars with varying intensity */
-        .chart-bar[data-mood="1"] { background: #F4978E; }
-        .chart-bar[data-mood="2"] { background: #F8C76D; }
-        .chart-bar[data-mood="3"] { background: #B7E4C7; }
-        .chart-bar[data-mood="4"] { background: #52B788; }
-        .chart-bar[data-mood="5"] { background: #2D6A4F; }
-        .chart-bar[data-mood="0"] { background: rgba(0, 0, 0, 0.03); }
-        .chart-date-row { display: flex; gap: 3px; padding-top: 6px; }
-        .chart-date {
-            flex: 1; text-align: center;
-            font-size: 0.55rem; color: var(--color-text-tert);
-        }
-        .chart-date.today { color: #2D6A4F; font-weight: 700; }
-        .chart-empty {
-            text-align: center; padding: 36px 20px;
-            color: var(--color-text-tert); font-size: 0.85rem;
-        }
-        .chart-empty svg { width: 40px; height: 40px; color: var(--color-text-tert); margin-bottom: 10px; display: block; margin-inline: auto; }
+    /* ---------- PRIVACY PROMISE ---------- */
+    .jpromise {
+      display: grid;
+      grid-template-columns: 36px 1fr;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(111, 162, 134, 0.10);
+      border: 1px solid rgba(111, 162, 134, 0.28);
+      color: var(--sk-cream, #F5EFE2);
+    }
+    .jpromise__icon {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: rgba(111, 162, 134, 0.22);
+      display: grid; place-items: center;
+      color: var(--sk-tulsi, #6FA286);
+    }
+    .jpromise__text {
+      font-size: 14px; line-height: 1.55;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.84));
+    }
+    .jpromise__text strong { color: var(--sk-cream, #F5EFE2); font-weight: 600; }
+    .jpromise__text .hi {
+      display: block; margin-top: 4px;
+      font-family: var(--sk-font-hindi, 'Tiro Devanagari Hindi', serif);
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.55));
+    }
 
-        /* ===================== ENTRIES ===================== */
-        .entries-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-            overflow: hidden;
-        }
-        .entries-header {
-            padding: 16px 20px 0;
-            font-size: 0.78rem; font-weight: 600; color: #86868B;
-            text-transform: uppercase; letter-spacing: 0.03em;
-        }
-        .entry-item {
-            padding: 16px 20px;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-            transition: background 0.3s ease;
-            position: relative;
-        }
-        .entry-item:last-child { border-bottom: none; }
-        .entry-item:hover { background: rgba(45, 106, 79, 0.02); }
-        /* Left mood color border */
-        .entry-item::before {
-            content: '';
-            position: absolute; left: 0; top: 8px; bottom: 8px;
-            width: 3px; border-radius: 0 2px 2px 0;
-        }
-        .entry-item[data-mood="1"]::before { background: #F4978E; }
-        .entry-item[data-mood="2"]::before { background: #F8C76D; }
-        .entry-item[data-mood="3"]::before { background: #B7E4C7; }
-        .entry-item[data-mood="4"]::before { background: #52B788; }
-        .entry-item[data-mood="5"]::before { background: #2D6A4F; }
-        .entry-meta {
-            display: flex; align-items: center; gap: 10px;
-            margin-bottom: 5px;
-        }
-        .entry-mood-face { width: 22px; height: 22px; flex-shrink: 0; }
-        .entry-mood-badge {
-            font-size: 0.65rem; font-weight: 600;
-            padding: 2px 9px; border-radius: 50px;
-            text-transform: uppercase; letter-spacing: 0.3px;
-        }
-        .entry-mood-badge[data-mood="1"] { background: rgba(244, 151, 142, 0.15); color: #C0392B; }
-        .entry-mood-badge[data-mood="2"] { background: rgba(248, 199, 109, 0.2); color: #B8860B; }
-        .entry-mood-badge[data-mood="3"] { background: rgba(183, 228, 199, 0.3); color: #52B788; }
-        .entry-mood-badge[data-mood="4"] { background: rgba(82, 183, 136, 0.15); color: #2D6A4F; }
-        .entry-mood-badge[data-mood="5"] { background: rgba(45, 106, 79, 0.12); color: #1B4332; }
-        .entry-date { font-size: 0.72rem; color: var(--color-text-tert); }
-        .entry-text {
-            font-size: 0.84rem; color: #86868B; line-height: 1.6;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            padding-left: 32px;
-        }
-        .entries-empty {
-            padding: 36px 20px; text-align: center;
-            color: var(--color-text-tert); font-size: 0.84rem;
-        }
-        .entry-delete {
-            background: none; border: none; cursor: pointer;
-            color: var(--color-text-tert); padding: 4px; border-radius: 6px;
-            transition: all 0.3s ease; margin-left: auto; display: flex;
-        }
-        .entry-delete:hover { color: #DC2626; background: rgba(220, 38, 38, 0.06); }
-        .entry-delete svg { width: 14px; height: 14px; }
+    /* ---------- WRITING SURFACE ---------- */
+    .jpaper {
+      position: relative;
+      display: grid; gap: 14px;
+      padding: 26px 26px 22px;
+      border-radius: 22px;
+      background: #FAF6EE;
+      color: #1A1530;
+      box-shadow: 0 18px 50px rgba(8, 12, 28, 0.45),
+                  0 2px 6px rgba(8, 12, 28, 0.18);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    .jpaper__head {
+      display: flex; align-items: baseline;
+      justify-content: space-between; gap: 12px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(26, 21, 48, 0.08);
+    }
+    .jpaper__date {
+      font-family: var(--sk-font-mono, ui-monospace, monospace);
+      font-size: 13px;
+      color: rgba(26, 21, 48, 0.55);
+      letter-spacing: 0.02em;
+    }
+    .jpaper__badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 10px; border-radius: 999px;
+      background: rgba(111, 162, 134, 0.18);
+      color: #2f6a4d;
+      font: 600 11px/1 var(--sk-font-sans, system-ui);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .jpaper__badge::before {
+      content: ""; width: 6px; height: 6px;
+      border-radius: 50%; background: #2f6a4d;
+    }
+    .jpaper__textarea {
+      width: 100%; min-height: 280px;
+      resize: vertical;
+      background: transparent;
+      border: 0; outline: none;
+      color: #1A1530;
+      font-family: var(--sk-font-serif, 'Fraunces', Georgia, serif);
+      font-size: clamp(17px, 1.5vw, 19px);
+      line-height: 1.7;
+      letter-spacing: 0.005em;
+    }
+    .jpaper__textarea::placeholder {
+      color: rgba(26, 21, 48, 0.32);
+      font-style: italic;
+    }
+    .jpaper__textarea:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
+    .jpaper__foot {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 12px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(26, 21, 48, 0.06);
+      font-size: 13px;
+      color: rgba(26, 21, 48, 0.55);
+    }
+    .jpaper__count {
+      font-family: var(--sk-font-mono, ui-monospace, monospace);
+      font-variant-numeric: tabular-nums;
+    }
+    .jpaper__status {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--sk-font-mono, ui-monospace, monospace);
+      font-size: 12px;
+      color: rgba(26, 21, 48, 0.45);
+    }
+    .jpaper__status[data-state="saved"] { color: #2f6a4d; }
+    .jpaper__status[data-state="saving"] { color: rgba(26, 21, 48, 0.45); }
+    .jpaper__status[data-state="locked"] { color: #b35353; }
+    .jpaper__pulse {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: currentColor;
+      opacity: 0.6;
+    }
+    .jpaper__status[data-state="saving"] .jpaper__pulse {
+      animation: jpulse 1.2s ease-in-out infinite;
+    }
+    @keyframes jpulse {
+      0%, 100% { opacity: 0.3; transform: scale(0.85); }
+      50%      { opacity: 1.0; transform: scale(1.10); }
+    }
 
-        /* ===================== TOAST ===================== */
-        .toast {
-            position: fixed; bottom: 80px; left: 50%;
-            transform: translateX(-50%) translateY(20px);
-            background: #FFFFFF; color: #1D1D1F;
-            padding: 12px 24px;
-            border-radius: 10px;
-            font-size: 0.84rem; font-weight: 500;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            z-index: 9999;
-            opacity: 0;
-            transition: all 0.3s ease;
-            display: flex; align-items: center; gap: 8px;
-            pointer-events: none;
-        }
-        .toast.show {
-            transform: translateX(-50%) translateY(0);
-            opacity: 1;
-        }
-        .toast svg { width: 18px; height: 18px; color: #2D6A4F; flex-shrink: 0; }
+    /* ---------- ACTION ROW ---------- */
+    .jactions {
+      display: flex; flex-wrap: wrap;
+      gap: 10px; justify-content: flex-end;
+    }
+    .jbtn {
+      appearance: none; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 18px;
+      border-radius: 12px;
+      font: 600 14px/1 var(--sk-font-sans, system-ui);
+      letter-spacing: 0.01em;
+      border: 1px solid transparent;
+      transition: background 200ms ease, transform 180ms ease, border-color 200ms ease;
+    }
+    .jbtn--ghost {
+      background: rgba(245, 239, 226, 0.06);
+      color: var(--sk-cream, #F5EFE2);
+      border-color: rgba(245, 239, 226, 0.18);
+    }
+    .jbtn--ghost:hover { background: rgba(245, 239, 226, 0.12); transform: translateY(-1px); }
+    .jbtn--lock {
+      background: rgba(43, 31, 74, 0.45);
+      color: var(--sk-cream, #F5EFE2);
+      border-color: rgba(232, 197, 71, 0.35);
+    }
+    .jbtn--lock[data-locked="true"] {
+      background: rgba(232, 197, 71, 0.12);
+      color: var(--sk-haldi, #E8C547);
+      border-color: rgba(232, 197, 71, 0.55);
+    }
+    .jbtn--lock:hover { transform: translateY(-1px); border-color: rgba(232, 197, 71, 0.7); }
+    .jbtn svg { width: 16px; height: 16px; stroke-width: 2; }
 
-        /* ===================== RESPONSIVE ===================== */
-        @media (max-width: 600px) {
-            main { padding-left: 16px; padding-right: 16px; }
-            .card { padding: 22px 18px; }
-            .mood-row { gap: 6px; }
-            .mood-circle { width: 46px; height: 46px; }
-            .mood-circle svg { width: 22px; height: 22px; }
-            .action-row { flex-direction: column; }
-            .btn { width: 100%; justify-content: center; }
-        }
-    </style>
+    /* ---------- STATS STRIP ---------- */
+    .jstats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .jstats__cell {
+      padding: 18px 18px 16px;
+      border-radius: 16px;
+      background: var(--sk-surface-1, rgba(245, 239, 226, 0.06));
+      border: 1px solid var(--sk-stroke-1, rgba(245, 239, 226, 0.12));
+      backdrop-filter: saturate(140%) blur(18px);
+      -webkit-backdrop-filter: saturate(140%) blur(18px);
+    }
+    .jstats__label {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.45));
+      margin-bottom: 8px;
+    }
+    .jstats__value {
+      font-family: var(--sk-font-serif, 'Fraunces', Georgia, serif);
+      font-weight: 300;
+      font-size: clamp(26px, 3vw, 32px);
+      color: var(--sk-cream, #F5EFE2);
+      line-height: 1.1;
+    }
+    .jstats__value sup {
+      font-size: 13px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.55));
+      margin-left: 4px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---------- CARD (chart + entries) ---------- */
+    .jcard {
+      padding: 22px;
+      border-radius: 18px;
+      background: var(--sk-surface-1, rgba(245, 239, 226, 0.06));
+      border: 1px solid var(--sk-stroke-1, rgba(245, 239, 226, 0.12));
+      backdrop-filter: saturate(140%) blur(18px);
+      -webkit-backdrop-filter: saturate(140%) blur(18px);
+    }
+    .jcard__head {
+      display: flex; align-items: baseline;
+      justify-content: space-between; gap: 12px;
+      margin-bottom: 16px;
+    }
+    .jcard__title {
+      font-family: var(--sk-font-serif, 'Fraunces', Georgia, serif);
+      font-weight: 400;
+      font-size: clamp(20px, 2vw, 24px);
+      color: var(--sk-cream, #F5EFE2);
+      margin: 0;
+    }
+    .jcard__title-hi {
+      display: block;
+      font-family: var(--sk-font-hindi, 'Tiro Devanagari Hindi', serif);
+      font-size: 14px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.55));
+      margin-top: 4px;
+    }
+    .jcard__meta {
+      font-family: var(--sk-font-mono, ui-monospace, monospace);
+      font-size: 12px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.45));
+    }
+    .jmood-chart {
+      display: flex; align-items: flex-end;
+      gap: 6px;
+      height: 120px;
+      padding-top: 8px;
+    }
+    .jmood-bar {
+      flex: 1;
+      min-width: 6px;
+      border-radius: 4px 4px 2px 2px;
+      background: rgba(245, 239, 226, 0.12);
+      position: relative;
+      transition: background 280ms ease, transform 280ms ease;
+    }
+    .jmood-bar:hover { transform: translateY(-2px); }
+    .jmood-bar[data-mood="1"] { background: linear-gradient(180deg, rgba(192, 57, 43, 0.85), rgba(192, 57, 43, 0.55)); }
+    .jmood-bar[data-mood="2"] { background: linear-gradient(180deg, rgba(216, 122, 74, 0.85), rgba(216, 122, 74, 0.55)); }
+    .jmood-bar[data-mood="3"] { background: linear-gradient(180deg, rgba(232, 197, 71, 0.85), rgba(232, 197, 71, 0.55)); }
+    .jmood-bar[data-mood="4"] { background: linear-gradient(180deg, rgba(111, 162, 134, 0.85), rgba(111, 162, 134, 0.55)); }
+    .jmood-bar[data-mood="5"] { background: linear-gradient(180deg, rgba(232, 165, 82, 0.95), rgba(232, 165, 82, 0.65)); }
+    .jmood-bar__tip {
+      position: absolute;
+      bottom: 100%; left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      padding: 4px 8px;
+      border-radius: 6px;
+      background: var(--sk-night, #0F1B3D);
+      color: var(--sk-cream, #F5EFE2);
+      font: 600 11px/1 var(--sk-font-mono, monospace);
+      white-space: nowrap;
+      opacity: 0; pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+    .jmood-bar:hover .jmood-bar__tip { opacity: 1; }
+    .jmood-legend {
+      display: flex; flex-wrap: wrap; gap: 12px;
+      margin-top: 14px;
+      font-size: 11px; letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.55));
+    }
+    .jmood-legend span {
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .jmood-legend i {
+      width: 8px; height: 8px; border-radius: 2px;
+      display: inline-block;
+    }
+    .jmood-chart__empty {
+      width: 100%; text-align: center;
+      padding: 28px 12px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.45));
+      font-style: italic;
+      font-family: var(--sk-font-serif, Georgia, serif);
+    }
+
+    /* ---------- PAST ENTRIES ---------- */
+    .jpast { display: grid; gap: 10px; }
+    .jpast__empty {
+      padding: 28px 18px; text-align: center;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.5));
+      font-style: italic;
+      font-family: var(--sk-font-serif, Georgia, serif);
+    }
+    .jentry {
+      display: grid;
+      gap: 4px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: var(--sk-surface-1, rgba(245, 239, 226, 0.06));
+      border: 1px solid var(--sk-stroke-1, rgba(245, 239, 226, 0.10));
+      color: var(--sk-cream, #F5EFE2);
+      cursor: pointer;
+      user-select: none;
+      transition: background 200ms ease, border-color 200ms ease, transform 200ms ease;
+      position: relative;
+    }
+    .jentry:hover {
+      background: var(--sk-surface-2, rgba(245, 239, 226, 0.10));
+      border-color: rgba(232, 165, 82, 0.35);
+    }
+    .jentry[data-expanded="true"] {
+      background: rgba(43, 31, 74, 0.55);
+      border-color: rgba(232, 165, 82, 0.45);
+    }
+    .jentry__head {
+      display: flex; align-items: center;
+      justify-content: space-between; gap: 10px;
+    }
+    .jentry__date {
+      font-family: var(--sk-font-mono, monospace);
+      font-size: 12px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.6));
+      letter-spacing: 0.04em;
+    }
+    .jentry__words {
+      font-family: var(--sk-font-mono, monospace);
+      font-size: 11px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.4));
+    }
+    .jentry__preview {
+      font-family: var(--sk-font-serif, Georgia, serif);
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.85));
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .jentry[data-expanded="true"] .jentry__preview {
+      white-space: pre-wrap;
+      color: var(--sk-cream, #F5EFE2);
+      padding-top: 4px;
+    }
+    .jentry[data-pressing="true"] {
+      transform: scale(0.985);
+      background: rgba(192, 57, 43, 0.18);
+      border-color: rgba(240, 134, 121, 0.55);
+    }
+    .jentry__hint {
+      font-size: 11px;
+      color: var(--sk-cream-quiet, rgba(245, 239, 226, 0.4));
+      margin-top: 4px;
+      font-style: italic;
+      display: none;
+    }
+    .jentry[data-expanded="true"] .jentry__hint { display: block; }
+
+    /* ---------- FLOATING SOS ---------- */
+    .jsos-fab {
+      position: fixed;
+      right: 18px;
+      bottom: calc(var(--bottomnav-h, 64px) + 18px + env(safe-area-inset-bottom, 0px));
+      z-index: 60;
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--sk-coral, #F08679);
+      color: #fff;
+      display: grid; place-items: center;
+      box-shadow: 0 12px 30px rgba(240, 134, 121, 0.45),
+                  0 2px 6px rgba(8, 12, 28, 0.4);
+      text-decoration: none;
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 200ms ease;
+    }
+    .jsos-fab:hover { transform: scale(1.06); }
+    .jsos-fab svg { width: 24px; height: 24px; stroke-width: 2; }
+
+    /* ---------- BOTTOM NAV ---------- */
+    .sk-bottom-nav {
+      position: fixed;
+      inset: auto 0 0 0;
+      z-index: 50;
+      padding: 6px 8px calc(6px + env(safe-area-inset-bottom, 0px));
+      background: rgba(15, 27, 61, 0.82);
+      backdrop-filter: saturate(140%) blur(18px);
+      -webkit-backdrop-filter: saturate(140%) blur(18px);
+      border-top: 1px solid rgba(245, 239, 226, 0.10);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 4px;
+    }
+    .sk-bottom-nav__item {
+      display: grid; place-items: center; gap: 4px;
+      padding: 8px 4px;
+      border-radius: 12px;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.72));
+      text-decoration: none;
+      font: 600 11px/1 var(--sk-font-sans, system-ui);
+      min-height: 56px;
+      transition: color 180ms ease, background 180ms ease;
+    }
+    .sk-bottom-nav__item:hover { color: var(--sk-cream, #F5EFE2); }
+    .sk-bottom-nav__item[aria-current="page"] {
+      color: var(--sk-cream, #F5EFE2);
+      background: rgba(245, 239, 226, 0.08);
+    }
+    .sk-bottom-nav__item[aria-current="page"] .sk-bottom-nav__icon {
+      color: var(--sk-saffron, #E8A552);
+      transform: scale(1.06);
+    }
+    .sk-bottom-nav__icon {
+      font-size: 20px;
+      transition: transform 180ms ease;
+    }
+    .sk-bottom-nav__icon svg { width: 22px; height: 22px; stroke-width: 1.7; }
+    .sk-bottom-nav__label {
+      font-size: 10px;
+      letter-spacing: 0.04em;
+    }
+
+    /* ---------- MODAL (passphrase) ---------- */
+    .jmodal {
+      position: fixed; inset: 0; z-index: 100;
+      display: none;
+      align-items: center; justify-content: center;
+      padding: 20px;
+      background: rgba(8, 12, 28, 0.78);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+    .jmodal[data-open="true"] { display: flex; }
+    .jmodal__panel {
+      width: 100%; max-width: 440px;
+      background: linear-gradient(180deg, #1A2547 0%, #0F1B3D 100%);
+      border: 1px solid rgba(245, 239, 226, 0.14);
+      border-radius: 22px;
+      padding: 26px 24px 22px;
+      color: var(--sk-cream, #F5EFE2);
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55);
+      animation: skRiseSoft 360ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .jmodal__title {
+      font-family: var(--sk-font-serif, Georgia, serif);
+      font-weight: 400;
+      font-size: 24px;
+      margin: 0 0 8px;
+    }
+    .jmodal__sub {
+      font-size: 14px; line-height: 1.5;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.72));
+      margin: 0 0 18px;
+    }
+    .jmodal__sub-warn {
+      display: block;
+      color: var(--sk-haldi, #E8C547);
+      font-weight: 600;
+      margin-top: 6px;
+    }
+    .jmodal__input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: rgba(245, 239, 226, 0.06);
+      border: 1px solid rgba(245, 239, 226, 0.20);
+      color: var(--sk-cream, #F5EFE2);
+      font: 500 16px/1.3 var(--sk-font-mono, monospace);
+      outline: none;
+      transition: border-color 200ms ease;
+    }
+    .jmodal__input:focus { border-color: var(--sk-saffron, #E8A552); }
+    .jmodal__err {
+      min-height: 18px;
+      font-size: 13px;
+      color: var(--sk-coral, #F08679);
+      margin-top: 8px;
+    }
+    .jmodal__row {
+      display: flex; gap: 10px; justify-content: flex-end;
+      margin-top: 18px;
+    }
+    .jmodal__btn {
+      appearance: none; cursor: pointer;
+      padding: 11px 18px; border-radius: 10px;
+      font: 600 14px/1 var(--sk-font-sans, system-ui);
+      border: 1px solid transparent;
+      transition: background 180ms ease;
+    }
+    .jmodal__btn--primary {
+      background: var(--sk-saffron, #E8A552);
+      color: #1A1530;
+    }
+    .jmodal__btn--primary:hover { background: #efb368; }
+    .jmodal__btn--ghost {
+      background: transparent;
+      color: var(--sk-cream-dim, rgba(245, 239, 226, 0.72));
+      border-color: rgba(245, 239, 226, 0.20);
+    }
+    .jmodal__btn--ghost:hover { background: rgba(245, 239, 226, 0.06); }
+
+    /* ---------- TOAST ---------- */
+    .jtoast {
+      position: fixed;
+      left: 50%; bottom: calc(var(--bottomnav-h, 64px) + 26px + env(safe-area-inset-bottom, 0px));
+      transform: translateX(-50%) translateY(20px);
+      z-index: 70;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(15, 27, 61, 0.92);
+      border: 1px solid rgba(245, 239, 226, 0.18);
+      color: var(--sk-cream, #F5EFE2);
+      font: 500 13px/1 var(--sk-font-sans, system-ui);
+      letter-spacing: 0.02em;
+      opacity: 0; pointer-events: none;
+      transition: opacity 260ms ease, transform 260ms ease;
+    }
+    .jtoast[data-show="true"] {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* ---------- KEYFRAMES ---------- */
+    @keyframes skRiseSoft {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (min-width: 600px) {
+      .jhero { padding: 120px 32px 72px; min-height: 56vh; }
+      .jstudio { padding: 36px 32px 56px; gap: 32px; }
+      .jpaper { padding: 32px 32px 26px; }
+    }
+    @media (min-width: 768px) {
+      .sk-bottom-nav {
+        position: sticky; top: 0; inset-inline: 0; inset-block-end: auto;
+        padding: 10px 16px;
+        border-top: 0;
+        border-bottom: 1px solid rgba(245, 239, 226, 0.10);
+        grid-template-columns: auto repeat(5, max-content) 1fr;
+        align-items: center; gap: 8px;
+      }
+      .sk-bottom-nav__item { grid-template-columns: auto auto; grid-auto-flow: column; padding: 10px 14px; min-height: 44px; }
+      .sk-bottom-nav__label { font-size: 13px; }
+      .journal-shell { padding-bottom: 0; }
+      .jsos-fab { bottom: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .jhero__inner, .jmodal__panel { animation: none; }
+      .jentry, .jbtn, .jsos-fab { transition: none; }
+    }
+  </style>
 </head>
-<body>
+<body class="page-journal" data-experience="journal" data-lang="en">
 
-    <header class="top-header">
-        <a href="/" class="brand"><span class="brand-leaf">&#9752;</span> Sukoon</a>
-    </header>
+  <div class="journal-shell">
 
-    <!-- DESKTOP SIDEBAR -->
-    <aside class="desktop-sidebar">
-        <div class="sidebar-brand">Sukoon</div>
-        <a href="/">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/></svg>
-            <span>Home</span>
-        </a>
-        <a href="/explore.html">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9.5l-5 2 2 5 5-2z"/></svg>
-            <span>Explore</span>
-        </a>
-        <a href="/breathe.html">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M12 22c-4-3-8-6-8-10a4 4 0 018 0 4 4 0 018 0c0 4-4 7-8 10z"/></svg>
-            <span>Breathe</span>
-        </a>
-        <a href="/friend.html">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
-            <span>AI Friend</span>
-        </a>
-        <a href="/you.html">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
-            <span>You</span>
-        </a>
-    </aside>
-
-    <main>
-        <section class="page-hero">
-            <picture class="page-hero-bg">
-                <img src="/og/journal.jpg" alt="Open journal with pen" loading="eager" fetchpriority="high">
-            </picture>
-            <div class="page-hero-content">
-                <h1 class="page-hero-title">Journal</h1>
-                <p class="page-hero-sub">Your thoughts, encrypted on this device.</p>
-            </div>
-        </section>
-        <!-- PRIVACY NOTICE -->
-        <div class="privacy-notice fade-in fade-in-d1">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
-            <p>
-                <span data-i18n="journal.gdpr">Your journal is stored only on this device. Nothing is sent to any server.</span>
-                <span class="hi">&#2310;&#2346;&#2325;&#2368; &#2337;&#2366;&#2351;&#2352;&#2368; &#2325;&#2375;&#2357;&#2354; &#2311;&#2360; &#2337;&#2367;&#2357;&#2366;&#2311;&#2360; &#2346;&#2352; &#2360;&#2381;&#2335;&#2379;&#2352; &#2361;&#2379;&#2340;&#2368; &#2361;&#2376;&#2404; &#2325;&#2369;&#2331; &#2349;&#2368; &#2325;&#2367;&#2360;&#2368; &#2360;&#2352;&#2381;&#2357;&#2352; &#2346;&#2352; &#2344;&#2361;&#2368;&#2306; &#2349;&#2375;&#2332;&#2366; &#2332;&#2366;&#2340;&#2366;&#2404;</span>
-            </p>
-        </div>
-
-        <!-- HEADER -->
-        <div class="page-header fade-in fade-in-d2">
-            <h2 data-i18n="journal.title">How are you feeling?</h2>
-            <p class="subtitle" data-i18n="journal.subtitle">Track your mood, write your thoughts. Your private space.</p>
-            <p class="subtitle-hi" lang="hi">&#2310;&#2346; &#2325;&#2376;&#2360;&#2366; &#2350;&#2361;&#2360;&#2370;&#2360; &#2325;&#2352; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306;?</p>
-        </div>
-
-        <!-- MOOD SELECTOR -->
-        <div class="card fade-in fade-in-d3">
-            <div class="mood-label" data-i18n="journal.how_feeling">Choose your mood</div>
-            <div class="mood-label-hi" lang="hi">&#2309;&#2346;&#2344;&#2366; &#2350;&#2370;&#2337; &#2330;&#2369;&#2344;&#2375;&#2306;</div>
-            <div class="mood-row" id="moodRow">
-                <button class="mood-btn" data-mood="1" type="button" aria-label="Awful">
-                    <div class="mood-circle">
-                        <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="#C0392B" stroke-width="1.5" fill="none"/>
-                            <circle cx="11" cy="13" r="1.5" fill="#C0392B"/>
-                            <circle cx="21" cy="13" r="1.5" fill="#C0392B"/>
-                            <path d="M10 23c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                            <line x1="8" y1="10" x2="13" y2="11.5" stroke="#C0392B" stroke-width="1.2" stroke-linecap="round"/>
-                            <line x1="24" y1="10" x2="19" y2="11.5" stroke="#C0392B" stroke-width="1.2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <span class="mood-text" data-i18n="journal.mood_awful">Awful</span>
-                </button>
-                <button class="mood-btn" data-mood="2" type="button" aria-label="Bad">
-                    <div class="mood-circle">
-                        <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="#C68B59" stroke-width="1.5" fill="none"/>
-                            <circle cx="11" cy="14" r="1.5" fill="#C68B59"/>
-                            <circle cx="21" cy="14" r="1.5" fill="#C68B59"/>
-                            <path d="M11 22c1.2-2 3-3 5-3s3.8 1 5 3" stroke="#C68B59" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                        </svg>
-                    </div>
-                    <span class="mood-text" data-i18n="journal.mood_bad">Bad</span>
-                </button>
-                <button class="mood-btn" data-mood="3" type="button" aria-label="Okay">
-                    <div class="mood-circle">
-                        <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="#86868B" stroke-width="1.5" fill="none"/>
-                            <circle cx="11" cy="14" r="1.5" fill="#86868B"/>
-                            <circle cx="21" cy="14" r="1.5" fill="#86868B"/>
-                            <line x1="10" y1="21" x2="22" y2="21" stroke="#86868B" stroke-width="1.5" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <span class="mood-text" data-i18n="journal.mood_okay">Okay</span>
-                </button>
-                <button class="mood-btn" data-mood="4" type="button" aria-label="Good">
-                    <div class="mood-circle">
-                        <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="#52B788" stroke-width="1.5" fill="none"/>
-                            <circle cx="11" cy="14" r="1.5" fill="#52B788"/>
-                            <circle cx="21" cy="14" r="1.5" fill="#52B788"/>
-                            <path d="M10 19c1.5 2.5 3.5 3.5 6 3.5s4.5-1 6-3.5" stroke="#52B788" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                        </svg>
-                    </div>
-                    <span class="mood-text" data-i18n="journal.mood_good">Good</span>
-                </button>
-                <button class="mood-btn" data-mood="5" type="button" aria-label="Great">
-                    <div class="mood-circle">
-                        <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
-                            <circle cx="11" cy="13" r="1.5" fill="#2D6A4F"/>
-                            <circle cx="21" cy="13" r="1.5" fill="#2D6A4F"/>
-                            <path d="M9 18c1.5 3.5 4 5 7 5s5.5-1.5 7-5" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round" fill="none"/>
-                            <path d="M9 18h14" stroke="#2D6A4F" stroke-width="1.2" stroke-linecap="round"/>
-                        </svg>
-                    </div>
-                    <span class="mood-text" data-i18n="journal.mood_great">Great</span>
-                </button>
-            </div>
-        </div>
-
-        <!-- JOURNAL TEXTAREA -->
-        <div class="card journal-section fade-in fade-in-d4">
-            <label for="journalText" data-i18n="journal.your_thoughts">Your thoughts / &#2310;&#2346;&#2325;&#2375; &#2357;&#2367;&#2330;&#2366;&#2352;</label>
-            <textarea class="journal-textarea" id="journalText" placeholder="Write whatever is on your mind... No one will see this but you.&#10;&#10;&#2332;&#2379; &#2350;&#2344; &#2350;&#2375;&#2306; &#2310;&#2319; &#2357;&#2379; &#2354;&#2367;&#2326;&#2375;&#2306;... &#2351;&#2375; &#2360;&#2367;&#2352;&#2381;&#2347;&#2364; &#2310;&#2346;&#2325;&#2375; &#2354;&#2367;&#2319; &#2361;&#2376;&#2404;"></textarea>
-            <div class="char-count"><span id="charCount">0</span> characters</div>
-        </div>
-
-        <!-- ACTIONS -->
-        <div class="action-row fade-in fade-in-d5">
-            <button class="btn btn-primary" id="saveBtn" disabled>
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-                <span data-i18n="journal.save">Save Entry</span>
-            </button>
-            <button class="btn btn-ghost" id="exportBtn">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-                <span data-i18n="journal.export">Export JSON</span>
-            </button>
-        </div>
-
-        <!-- MOOD CHART -->
-        <div class="history-section fade-in fade-in-d6">
-            <h2 class="section-title" data-i18n="journal.history">Mood History</h2>
-            <p class="section-subtitle">
-                <span data-i18n="journal.history_sub">Your 30-day emotional journey</span>
-                <br><span class="section-subtitle-hi" lang="hi">&#2310;&#2346;&#2325;&#2368; 30 &#2342;&#2367;&#2344;&#2379;&#2306; &#2325;&#2368; &#2349;&#2366;&#2357;&#2344;&#2366;&#2340;&#2381;&#2350;&#2325; &#2351;&#2366;&#2340;&#2381;&#2352;&#2366;</span>
-            </p>
-            <div class="card" style="padding:20px 18px 14px;">
-                <div class="chart-header">
-                    <h3 data-i18n="journal.last_30">Last 30 Days</h3>
-                    <div class="chart-legend">
-                        <div class="legend-item"><div class="legend-dot" style="background:#F4978E"></div>Awful</div>
-                        <div class="legend-item"><div class="legend-dot" style="background:#F8C76D"></div>Bad</div>
-                        <div class="legend-item"><div class="legend-dot" style="background:#B7E4C7"></div>Okay</div>
-                        <div class="legend-item"><div class="legend-dot" style="background:#52B788"></div>Good</div>
-                        <div class="legend-item"><div class="legend-dot" style="background:#2D6A4F"></div>Great</div>
-                    </div>
-                </div>
-                <div class="chart-container" id="moodChart"></div>
-                <div class="chart-date-row" id="chartDates"></div>
-            </div>
-        </div>
-
-        <!-- RECENT ENTRIES -->
-        <div class="history-section fade-in fade-in-d6">
-            <h2 class="section-title" data-i18n="journal.recent">Recent Entries</h2>
-            <p class="section-subtitle">
-                <span data-i18n="journal.recent_sub">Your last 5 journal entries</span>
-                <br><span class="section-subtitle-hi" lang="hi">&#2310;&#2346;&#2325;&#2368; &#2346;&#2367;&#2331;&#2354;&#2368; 5 &#2332;&#2352;&#2381;&#2344;&#2354; &#2346;&#2381;&#2352;&#2357;&#2367;&#2359;&#2381;&#2335;&#2367;&#2351;&#2366;&#2305;</span>
-            </p>
-            <div class="entries-card" id="entriesList">
-                <div class="empty-state" id="journalEmptyState">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zM16.862 4.487L19.5 7.125"/>
-                    </svg>
-                    <h3>Your journal is waiting</h3>
-                    <p>Write whatever is on your mind. No rules, no judgment. Just you and your thoughts.</p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <nav class="bottom-nav" aria-label="Main navigation" role="navigation">
-        <a href="/" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
-            <span>Home</span>
-        </a>
-        <a href="/explore.html" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
-            <span>Explore</span>
-        </a>
-        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            <span>SOS</span>
-        </a>
-        <a href="/breathe.html" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
-            <span>Breathe</span>
-        </a>
-        <a href="/friend.html" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-            <span>AI Friend</span>
-        </a>
-        <a href="/you.html" class="nav-item active" aria-current="page">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-            <span>You</span>
-        </a>
-    </nav>
-
-    <!-- TOAST -->
-    <div class="toast" id="toast">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-        <span id="toastMsg">Entry saved</span>
+    <!-- ===== CRISIS BAR ===== -->
+    <div class="sk-crisis-bar" role="region" aria-label="Crisis support">
+      <span class="sk-crisis-bar__text">
+        <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
+        <span data-lang-en="In crisis right now? You are not alone." data-lang-hi="अभी संकट में हैं? आप अकेले नहीं हैं।">In crisis right now? You are not alone.</span>
+      </span>
+      <a href="/now.html" class="sk-crisis-bar__cta" data-lang-en="Get help" data-lang-hi="मदद लें">Get help</a>
     </div>
 
-    <script src="/js/sukoon-engine.js"></script>
-    <script>
-    (function() {
-        'use strict';
+    <!-- ===== LANG TOGGLE ===== -->
+    <div class="sk-lang" role="group" aria-label="Language">
+      <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-lang-set="hi" aria-pressed="false">हिं</button>
+    </div>
 
-        var DB_NAME = 'SukoonJournal';
-        var DB_VERSION = 1;
-        var STORE_NAME = 'entries';
-        var db = null;
-        var selectedMood = 0;
-        var moodLabels = { 1: 'Awful', 2: 'Bad', 3: 'Okay', 4: 'Good', 5: 'Great' };
+    <!-- ===== HERO ===== -->
+    <section class="jhero" aria-label="Your private journal">
+      <video class="jhero__video" autoplay muted loop playsinline preload="metadata"
+             poster="/og/journal.jpg" aria-hidden="true">
+        <source src="/video/hero-friend.mp4" type="video/mp4">
+      </video>
+      <div class="jhero__veil" aria-hidden="true"></div>
+      <div class="jhero__inner">
+        <div class="jhero__eyebrow" data-lang-en="Just for you" data-lang-hi="सिर्फ़ आपके लिए">Just for you</div>
+        <h1 class="jhero__title">
+          <span data-lang-en="No one else " data-lang-hi="कोई और ">No one else </span><em data-lang-en="sees this." data-lang-hi="नहीं देखेगा।">sees this.</em>
+        </h1>
+        <p class="jhero__sub"
+           data-lang-en="A page that lives only on this device. Write a sentence, write a flood. Sukoon has no idea what you put here."
+           data-lang-hi="एक पन्ना जो सिर्फ़ इसी डिवाइस पर रहता है। एक वाक्य लिखें, या मन की पूरी बात। सुकून को इसका कुछ पता नहीं चलेगा।">
+          A page that lives only on this device. Write a sentence, write a flood. Sukoon has no idea what you put here.
+        </p>
+        <p class="jhero__sub-hi" lang="hi"
+           data-lang-en="यह पन्ना सिर्फ़ आपका है। आप जो लिखेंगे वो यहीं रहेगा।"
+           data-lang-hi="यह पन्ना सिर्फ़ आपका है। आप जो लिखेंगे वो यहीं रहेगा।">
+          यह पन्ना सिर्फ़ आपका है। आप जो लिखेंगे वो यहीं रहेगा।
+        </p>
+      </div>
+    </section>
 
-        // SVG face snippets for entry list
-        var moodFaceSVGs = {
-            1: '<svg viewBox="0 0 32 32" fill="none" width="22" height="22"><circle cx="16" cy="16" r="14" stroke="#C0392B" stroke-width="1.5"/><circle cx="11" cy="13" r="1.5" fill="#C0392B"/><circle cx="21" cy="13" r="1.5" fill="#C0392B"/><path d="M10 23c1.5-3 4-4.5 6-4.5s4.5 1.5 6 4.5" stroke="#C0392B" stroke-width="1.5" stroke-linecap="round"/></svg>',
-            2: '<svg viewBox="0 0 32 32" fill="none" width="22" height="22"><circle cx="16" cy="16" r="14" stroke="#C68B59" stroke-width="1.5"/><circle cx="11" cy="14" r="1.5" fill="#C68B59"/><circle cx="21" cy="14" r="1.5" fill="#C68B59"/><path d="M11 22c1.2-2 3-3 5-3s3.8 1 5 3" stroke="#C68B59" stroke-width="1.5" stroke-linecap="round"/></svg>',
-            3: '<svg viewBox="0 0 32 32" fill="none" width="22" height="22"><circle cx="16" cy="16" r="14" stroke="#86868B" stroke-width="1.5"/><circle cx="11" cy="14" r="1.5" fill="#86868B"/><circle cx="21" cy="14" r="1.5" fill="#86868B"/><line x1="10" y1="21" x2="22" y2="21" stroke="#86868B" stroke-width="1.5" stroke-linecap="round"/></svg>',
-            4: '<svg viewBox="0 0 32 32" fill="none" width="22" height="22"><circle cx="16" cy="16" r="14" stroke="#52B788" stroke-width="1.5"/><circle cx="11" cy="14" r="1.5" fill="#52B788"/><circle cx="21" cy="14" r="1.5" fill="#52B788"/><path d="M10 19c1.5 2.5 3.5 3.5 6 3.5s4.5-1 6-3.5" stroke="#52B788" stroke-width="1.5" stroke-linecap="round"/></svg>',
-            5: '<svg viewBox="0 0 32 32" fill="none" width="22" height="22"><circle cx="16" cy="16" r="14" stroke="#2D6A4F" stroke-width="1.5"/><circle cx="11" cy="13" r="1.5" fill="#2D6A4F"/><circle cx="21" cy="13" r="1.5" fill="#2D6A4F"/><path d="M9 18c1.5 3.5 4 5 7 5s5.5-1.5 7-5" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/><path d="M9 18h14" stroke="#2D6A4F" stroke-width="1.2" stroke-linecap="round"/></svg>'
+    <!-- ===== STUDIO ===== -->
+    <section class="jstudio">
+
+      <!-- PRIVACY PROMISE -->
+      <div class="jpromise" role="note" aria-label="Privacy promise">
+        <div class="jpromise__icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/>
+            <path d="M7 11V7a5 5 0 0110 0v4"/>
+          </svg>
+        </div>
+        <div class="jpromise__text">
+          <strong data-lang-en="These words never leave your device." data-lang-hi="ये शब्द कभी इस डिवाइस से बाहर नहीं जाते।">These words never leave your device.</strong>
+          <span data-lang-en=" Sukoon has no server, no account, no idea what you wrote." data-lang-hi=" सुकून के पास कोई सर्वर नहीं, कोई खाता नहीं — आपने क्या लिखा, इसका कुछ पता नहीं।"> Sukoon has no server, no account, no idea what you wrote.</span>
+          <span class="hi" lang="hi" data-lang-en="आपकी निजता पूरी तरह सुरक्षित है।" data-lang-hi="आपकी निजता पूरी तरह सुरक्षित है।">आपकी निजता पूरी तरह सुरक्षित है।</span>
+        </div>
+      </div>
+
+      <!-- WRITING SURFACE -->
+      <div class="jpaper">
+        <div class="jpaper__head">
+          <div class="jpaper__date" id="jpaperDate">—</div>
+          <div class="jpaper__badge" data-lang-en="On this device only" data-lang-hi="सिर्फ़ इसी डिवाइस पर">On this device only</div>
+        </div>
+
+        <textarea
+          id="jpaperText"
+          class="jpaper__textarea"
+          spellcheck="true"
+          autocomplete="off"
+          aria-label="Write your thoughts"
+          placeholder="What is going on inside today? Write a word, a sentence, a full flood. Whatever is here. No one is reading. — आज मन के अंदर क्या चल रहा है? जो भी हो, यहाँ लिखो। कोई नहीं पढ़ रहा।"></textarea>
+
+        <div class="jpaper__foot">
+          <span class="jpaper__count">
+            <span id="jpaperWords">0</span>
+            <span data-lang-en=" words" data-lang-hi=" शब्द"> words</span>
+          </span>
+          <span class="jpaper__status" id="jpaperStatus" data-state="idle">
+            <span class="jpaper__pulse" aria-hidden="true"></span>
+            <span id="jpaperStatusText" data-lang-en="Autosaving" data-lang-hi="स्वतः सहेजना">Autosaving</span>
+          </span>
+        </div>
+      </div>
+
+      <!-- ACTIONS -->
+      <div class="jactions">
+        <button type="button" class="jbtn jbtn--lock" id="jbtnLock" data-locked="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4" y="11" width="16" height="10" rx="2"/>
+            <path d="M8 11V7a4 4 0 018 0v4"/>
+          </svg>
+          <span id="jbtnLockLabel" data-lang-en="Lock my journal" data-lang-hi="जर्नल लॉक करें">Lock my journal</span>
+        </button>
+        <button type="button" class="jbtn jbtn--ghost" id="jbtnExport">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 3v12"/><path d="M7 10l5 5 5-5"/><path d="M5 21h14"/>
+          </svg>
+          <span data-lang-en="Export .txt" data-lang-hi="निर्यात .txt">Export .txt</span>
+        </button>
+      </div>
+
+      <!-- STATS STRIP -->
+      <div class="jstats" aria-label="Your writing rhythm">
+        <div class="jstats__cell">
+          <div class="jstats__label" data-lang-en="Written today" data-lang-hi="आज लिखा">Written today</div>
+          <div class="jstats__value">
+            <span id="statToday">0</span><sup data-lang-en="words" data-lang-hi="शब्द">words</sup>
+          </div>
+        </div>
+        <div class="jstats__cell">
+          <div class="jstats__label" data-lang-en="This week" data-lang-hi="इस सप्ताह">This week</div>
+          <div class="jstats__value">
+            <span id="statWeek">0</span><sup data-lang-en="words" data-lang-hi="शब्द">words</sup>
+          </div>
+        </div>
+      </div>
+
+      <!-- MOOD CHART -->
+      <div class="jcard">
+        <div class="jcard__head">
+          <div>
+            <h2 class="jcard__title" data-lang-en="Mood this week" data-lang-hi="इस सप्ताह का मूड">Mood this week</h2>
+            <span class="jcard__title-hi" lang="hi" data-lang-en="आपकी पिछले 7 दिनों की लय" data-lang-hi="आपकी पिछले 7 दिनों की लय">आपकी पिछले 7 दिनों की लय</span>
+          </div>
+          <div class="jcard__meta" id="moodMeta">—</div>
+        </div>
+        <div class="jmood-chart" id="moodChart" role="img" aria-label="7-day mood chart"></div>
+        <div class="jmood-legend">
+          <span><i style="background:#C0392B"></i><span data-lang-en="Awful" data-lang-hi="बहुत बुरा">Awful</span></span>
+          <span><i style="background:#D87A4A"></i><span data-lang-en="Bad" data-lang-hi="उदास">Bad</span></span>
+          <span><i style="background:#E8C547"></i><span data-lang-en="Okay" data-lang-hi="ठीक">Okay</span></span>
+          <span><i style="background:#6FA286"></i><span data-lang-en="Good" data-lang-hi="अच्छा">Good</span></span>
+          <span><i style="background:#E8A552"></i><span data-lang-en="Great" data-lang-hi="बहुत अच्छा">Great</span></span>
+        </div>
+      </div>
+
+      <!-- PAST ENTRIES -->
+      <div class="jcard">
+        <div class="jcard__head">
+          <div>
+            <h2 class="jcard__title" data-lang-en="What you have written" data-lang-hi="आपने जो लिखा">What you have written</h2>
+            <span class="jcard__title-hi" lang="hi" data-lang-en="टैप करके खोलें · दबाकर रखें मिटाने के लिए" data-lang-hi="टैप करके खोलें · दबाकर रखें मिटाने के लिए">टैप करके खोलें · दबाकर रखें मिटाने के लिए</span>
+          </div>
+          <div class="jcard__meta">
+            <span id="entryCount">0</span>
+            <span data-lang-en=" entries" data-lang-hi=" प्रविष्टियाँ"> entries</span>
+          </div>
+        </div>
+        <div class="jpast" id="jpastList">
+          <div class="jpast__empty" data-lang-en="Nothing yet. Begin when you are ready." data-lang-hi="अभी कुछ नहीं। जब तैयार हों, शुरू करें।">
+            Nothing yet. Begin when you are ready.
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+
+  <!-- ===== FLOATING SOS ===== -->
+  <a href="/now.html" class="jsos-fab" aria-label="Crisis support (SOS)">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M12 2L4.5 5.5v6c0 4.5 3 8.5 7.5 10.5 4.5-2 7.5-6 7.5-10.5v-6L12 2z"/>
+      <path d="M12 8v4"/><circle cx="12" cy="16" r="0.6" fill="currentColor"/>
+    </svg>
+  </a>
+
+  <!-- ===== BOTTOM NAV ===== -->
+  <nav class="sk-bottom-nav" aria-label="Main navigation" role="navigation">
+    <a href="/daily.html" class="sk-bottom-nav__item">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.2 4.2l1.4 1.4"/><path d="M18.4 18.4l1.4 1.4"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.2 19.8l1.4-1.4"/><path d="M18.4 5.6l1.4-1.4"/></svg>
+      </span>
+      <span class="sk-bottom-nav__label" data-lang-en="Today" data-lang-hi="आज">Today</span>
+    </a>
+    <a href="/breathe.html" class="sk-bottom-nav__item">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12c4 0 4-5 9-5s5 5 9 5"/><path d="M3 18c4 0 4-3 9-3s5 3 9 3"/></svg>
+      </span>
+      <span class="sk-bottom-nav__label" data-lang-en="Breathe" data-lang-hi="साँस">Breathe</span>
+    </a>
+    <a href="/sit.html" class="sk-bottom-nav__item">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3"/><path d="M5 21c0-3 3-6 7-6s7 3 7 6"/><path d="M3 14c2-1 4-1 5 0"/><path d="M16 14c1-1 3-1 5 0"/></svg>
+      </span>
+      <span class="sk-bottom-nav__label" data-lang-en="Sit" data-lang-hi="ध्यान">Sit</span>
+    </a>
+    <a href="/rest.html" class="sk-bottom-nav__item">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.5A9 9 0 0111.5 3 7 7 0 1021 12.5z"/></svg>
+      </span>
+      <span class="sk-bottom-nav__label" data-lang-en="Rest" data-lang-hi="विश्राम">Rest</span>
+    </a>
+    <a href="/be-with-me.html" class="sk-bottom-nav__item">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14v-4a2 2 0 012-2h3l5-4v16l-5-4H6a2 2 0 01-2-2z"/><path d="M17 8a5 5 0 010 8"/></svg>
+      </span>
+      <span class="sk-bottom-nav__label" data-lang-en="Listen" data-lang-hi="सुनें">Listen</span>
+    </a>
+  </nav>
+
+  <!-- ===== PASSPHRASE MODAL ===== -->
+  <div class="jmodal" id="jmodal" role="dialog" aria-modal="true" aria-labelledby="jmodalTitle">
+    <div class="jmodal__panel">
+      <h2 class="jmodal__title" id="jmodalTitle">Lock with a passphrase</h2>
+      <p class="jmodal__sub" id="jmodalSubMain"></p>
+      <p class="jmodal__sub-warn" id="jmodalSubWarn"></p>
+      <input type="password" class="jmodal__input" id="jmodalInput"
+             placeholder="—" autocomplete="new-password"
+             aria-label="Passphrase">
+      <div class="jmodal__err" id="jmodalErr" role="alert"></div>
+      <div class="jmodal__row">
+        <button type="button" class="jmodal__btn jmodal__btn--ghost" id="jmodalCancel"
+                data-lang-en="Cancel" data-lang-hi="रद्द करें">Cancel</button>
+        <button type="button" class="jmodal__btn jmodal__btn--primary" id="jmodalConfirm"
+                data-lang-en="Confirm" data-lang-hi="पुष्टि करें">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TOAST ===== -->
+  <div class="jtoast" id="jtoast" role="status" aria-live="polite"></div>
+
+  <!-- =================================================================
+       JOURNAL LOGIC — local-only, no network, textContent only
+       ================================================================= -->
+  <script>
+  (function () {
+    'use strict';
+
+    // ---------- Storage keys (privacy: local only) ----------
+    var K_ENTRIES   = 'sukoon_journal_entries_v2';
+    var K_DRAFT     = 'sukoon_journal_draft_v2';
+    var K_MOODS     = 'sukoon_mood_history';
+    var K_LOCK_META = 'sukoon_journal_lock';   // { enabled, salt, check } — NEVER the passphrase
+    var K_LANG      = 'sukoon-lang';
+
+    // ---------- DOM refs ----------
+    var $date      = document.getElementById('jpaperDate');
+    var $text      = document.getElementById('jpaperText');
+    var $words     = document.getElementById('jpaperWords');
+    var $status    = document.getElementById('jpaperStatus');
+    var $statusT   = document.getElementById('jpaperStatusText');
+    var $btnLock   = document.getElementById('jbtnLock');
+    var $btnLockL  = document.getElementById('jbtnLockLabel');
+    var $btnExp    = document.getElementById('jbtnExport');
+    var $statT     = document.getElementById('statToday');
+    var $statW     = document.getElementById('statWeek');
+    var $chart     = document.getElementById('moodChart');
+    var $meta      = document.getElementById('moodMeta');
+    var $past      = document.getElementById('jpastList');
+    var $count     = document.getElementById('entryCount');
+    var $modal     = document.getElementById('jmodal');
+    var $mTitle    = document.getElementById('jmodalTitle');
+    var $mSubMain  = document.getElementById('jmodalSubMain');
+    var $mSubWarn  = document.getElementById('jmodalSubWarn');
+    var $mInput    = document.getElementById('jmodalInput');
+    var $mErr      = document.getElementById('jmodalErr');
+    var $mOk       = document.getElementById('jmodalConfirm');
+    var $mCancel   = document.getElementById('jmodalCancel');
+    var $toast     = document.getElementById('jtoast');
+
+    // ---------- State ----------
+    var session = {
+      passphrase: null,        // in-memory only; never persisted
+      lockMeta:   null,        // { enabled, salt, check }
+      entries:    [],          // [{ id, ts, text }] — encrypted on disk if lock enabled
+      saveTimer:  null,
+      lang:       'en'
+    };
+
+    // ---------- Tiny safe DOM builder (textContent only) ----------
+    function $el(tag, attrs, kids) {
+      var n = document.createElement(tag);
+      if (attrs) {
+        for (var k in attrs) {
+          if (!Object.prototype.hasOwnProperty.call(attrs, k)) continue;
+          var v = attrs[k];
+          if (k === 'class') n.className = v;
+          else if (k === 'text') n.textContent = v;
+          else if (k === 'style' && typeof v === 'object') Object.assign(n.style, v);
+          else if (k.indexOf('data-') === 0 || k.indexOf('aria-') === 0) n.setAttribute(k, v);
+          else if (k in n) n[k] = v;
+          else n.setAttribute(k, v);
+        }
+      }
+      if (kids) (Array.isArray(kids) ? kids : [kids]).forEach(function (c) {
+        if (c == null) return;
+        n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+      });
+      return n;
+    }
+    // Replace all children with new ones — safer than innerHTML.
+    function $clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+
+    // ---------- Lang ----------
+    function getLang() {
+      try { return localStorage.getItem(K_LANG) || document.documentElement.lang || 'en'; }
+      catch (_) { return 'en'; }
+    }
+    session.lang = getLang();
+    document.body.setAttribute('data-lang', session.lang);
+
+    function applyLang(lang) {
+      session.lang = lang;
+      try { localStorage.setItem(K_LANG, lang); } catch (_) {}
+      document.documentElement.setAttribute('lang', lang);
+      document.body.setAttribute('data-lang', lang);
+
+      // textContent-only swap: our data-lang-en/hi strings are plain text.
+      document.querySelectorAll('[data-lang-en], [data-lang-hi]').forEach(function (n) {
+        var v = n.getAttribute('data-lang-' + lang);
+        if (v == null) return;
+        n.textContent = v;
+      });
+      document.querySelectorAll('[data-lang-set]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-lang-set') === lang ? 'true' : 'false');
+      });
+      renderDate();
+      renderPast();
+      renderStats();
+      renderChart();
+      // Refresh modal copy if it is currently open.
+      if ($modal.getAttribute('data-open') === 'true') paintModal(modalMode);
+    }
+    document.querySelectorAll('[data-lang-set]').forEach(function (b) {
+      b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang-set')); });
+    });
+
+    // ---------- Toast ----------
+    var toastTimer = null;
+    function toast(msgEn, msgHi) {
+      var m = (session.lang === 'hi' && msgHi) ? msgHi : msgEn;
+      $toast.textContent = m;
+      $toast.setAttribute('data-show', 'true');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { $toast.setAttribute('data-show', 'false'); }, 2400);
+    }
+
+    // ---------- Date label ----------
+    function renderDate() {
+      var now = new Date();
+      var opts = { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' };
+      var loc = session.lang === 'hi' ? 'hi-IN' : 'en-IN';
+      try { $date.textContent = now.toLocaleDateString(loc, opts); }
+      catch (_) { $date.textContent = now.toDateString(); }
+    }
+
+    // ---------- Storage helpers ----------
+    function lsGet(k) { try { return localStorage.getItem(k); } catch (_) { return null; } }
+    function lsSet(k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
+    function lsDel(k) { try { localStorage.removeItem(k); } catch (_) {} }
+
+    // ---------- XOR + passphrase encryption ----------
+    // Privacy by design: lightweight XOR with a per-blob salt prefix.
+    // The goal is "someone holding this device cannot read it without the
+    // passphrase". Stronger crypto (WebCrypto + PBKDF2) belongs in v2.
+    function strToBytes(s) { return new TextEncoder().encode(s); }
+    function bytesToStr(b) { return new TextDecoder().decode(b); }
+    function b64(bytes) {
+      var s = ''; for (var i = 0; i < bytes.length; i++) s += String.fromCharCode(bytes[i]);
+      return btoa(s);
+    }
+    function unb64(str) {
+      var s = atob(str); var b = new Uint8Array(s.length);
+      for (var i = 0; i < s.length; i++) b[i] = s.charCodeAt(i);
+      return b;
+    }
+    function xorWithPass(bytes, pass) {
+      var pb = strToBytes(pass);
+      var out = new Uint8Array(bytes.length);
+      for (var i = 0; i < bytes.length; i++) out[i] = bytes[i] ^ pb[i % pb.length];
+      return out;
+    }
+    function encrypt(text, pass) {
+      var raw = strToBytes(text);
+      var salt = new Uint8Array(8);
+      if (window.crypto && window.crypto.getRandomValues) {
+        window.crypto.getRandomValues(salt);
+      } else {
+        for (var i = 0; i < 8; i++) salt[i] = Math.floor(Math.random() * 256);
+      }
+      var joined = new Uint8Array(salt.length + raw.length);
+      joined.set(salt, 0); joined.set(raw, salt.length);
+      return 'XOR1:' + b64(xorWithPass(joined, pass));
+    }
+    function decrypt(blob, pass) {
+      if (typeof blob !== 'string' || blob.indexOf('XOR1:') !== 0) return blob;
+      try {
+        var bytes = unb64(blob.slice(5));
+        var clear = xorWithPass(bytes, pass);
+        return bytesToStr(clear.subarray(8));
+      } catch (_) { return null; }
+    }
+    function checkPass(pass, meta) {
+      if (!meta || !meta.check) return false;
+      var dec = decrypt(meta.check, pass);
+      return dec === 'sukoon-ok';
+    }
+
+    // ---------- Entries ----------
+    function loadEntries() {
+      var raw = lsGet(K_ENTRIES);
+      if (!raw) return [];
+      try {
+        var arr = JSON.parse(raw);
+        if (!Array.isArray(arr)) return [];
+        if (session.lockMeta && session.lockMeta.enabled && session.passphrase) {
+          arr = arr.map(function (e) {
+            var dec = decrypt(e.text, session.passphrase);
+            return { id: e.id, ts: e.ts, text: dec == null ? '' : dec };
+          });
+        }
+        return arr;
+      } catch (_) { return []; }
+    }
+    function saveEntries(arr) {
+      var out = arr.map(function (e) {
+        var txt = e.text;
+        if (session.lockMeta && session.lockMeta.enabled && session.passphrase) {
+          txt = encrypt(txt, session.passphrase);
+        }
+        return { id: e.id, ts: e.ts, text: txt };
+      });
+      lsSet(K_ENTRIES, JSON.stringify(out));
+    }
+
+    function loadLockMeta() {
+      var raw = lsGet(K_LOCK_META);
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch (_) { return null; }
+    }
+    function saveLockMeta(meta) {
+      if (!meta) lsDel(K_LOCK_META);
+      else lsSet(K_LOCK_META, JSON.stringify(meta));
+    }
+
+    // ---------- Draft autosave ----------
+    function loadDraft() {
+      var raw = lsGet(K_DRAFT);
+      if (!raw) return '';
+      if (session.lockMeta && session.lockMeta.enabled) {
+        if (!session.passphrase) return '';
+        var dec = decrypt(raw, session.passphrase);
+        return dec == null ? '' : dec;
+      }
+      return raw;
+    }
+    function saveDraft(txt) {
+      var v = txt;
+      if (session.lockMeta && session.lockMeta.enabled && session.passphrase) {
+        v = encrypt(txt, session.passphrase);
+      }
+      lsSet(K_DRAFT, v);
+    }
+
+    function setStatus(state, en, hi) {
+      $status.setAttribute('data-state', state);
+      var lang = session.lang;
+      $statusT.textContent = (lang === 'hi' && hi) ? hi : en;
+    }
+
+    function debouncedAutosave() {
+      clearTimeout(session.saveTimer);
+      setStatus('saving', 'Saving…', 'सहेज रहे हैं…');
+      session.saveTimer = setTimeout(function () {
+        try {
+          saveDraft($text.value);
+          setStatus('saved', 'Saved', 'सहेजा');
+        } catch (e) {
+          setStatus('idle', 'Not saved', 'नहीं सहेजा');
+        }
+      }, 5000);
+    }
+
+    function wordCount(s) {
+      if (!s) return 0;
+      var m = s.trim().match(/\S+/g);
+      return m ? m.length : 0;
+    }
+    function updateWordCount() {
+      $words.textContent = wordCount($text.value).toString();
+    }
+
+    // ---------- Commit current draft as an entry ----------
+    function commitDraftIfNeeded() {
+      var txt = ($text.value || '').trim();
+      if (!txt) return;
+      var today = new Date(); var ymd = ymdKey(today);
+      var existing = session.entries.find(function (e) { return ymdKey(new Date(e.ts)) === ymd; });
+      if (existing) {
+        existing.text = $text.value;
+        existing.ts = Date.now();
+      } else {
+        session.entries.unshift({
+          id: 'j-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+          ts: Date.now(),
+          text: $text.value
+        });
+      }
+      saveEntries(session.entries);
+      renderPast();
+      renderStats();
+    }
+
+    function ymdKey(d) {
+      return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
+    // ---------- Stats ----------
+    function renderStats() {
+      var now = new Date();
+      var todayKey = ymdKey(now);
+      var weekAgo = new Date(now); weekAgo.setDate(now.getDate() - 7);
+      var todayWords = 0, weekWords = 0;
+      var draftWords = wordCount($text.value);
+      var sawToday = false;
+      session.entries.forEach(function (e) {
+        var d = new Date(e.ts);
+        var wc = wordCount(e.text);
+        if (ymdKey(d) === todayKey) {
+          sawToday = true;
+          todayWords += wc;
+        }
+        if (d >= weekAgo) weekWords += wc;
+      });
+      if (!sawToday) { todayWords = draftWords; weekWords += draftWords; }
+
+      $statT.textContent = todayWords.toString();
+      $statW.textContent = weekWords.toString();
+    }
+
+    // ---------- Mood chart (7-day from sukoon_mood_history) ----------
+    function loadMoodHistory() {
+      var raw = lsGet(K_MOODS);
+      if (!raw) return [];
+      try {
+        var arr = JSON.parse(raw);
+        if (!Array.isArray(arr)) return [];
+        return arr.map(function (m) {
+          if (typeof m === 'number') return { ts: Date.now(), mood: m };
+          if (m && typeof m.mood === 'number') return { ts: m.ts || Date.now(), mood: m.mood };
+          return null;
+        }).filter(Boolean);
+      } catch (_) { return []; }
+    }
+    var MOOD_LABEL_EN = { 1: 'Awful', 2: 'Bad', 3: 'Okay', 4: 'Good', 5: 'Great' };
+    var MOOD_LABEL_HI = { 1: 'बहुत बुरा', 2: 'उदास', 3: 'ठीक', 4: 'अच्छा', 5: 'बहुत अच्छा' };
+    function dayLabel(d) {
+      var enD = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      var hiD = ['रवि', 'सोम', 'मंगल', 'बुध', 'गुरु', 'शुक्र', 'शनि'];
+      return session.lang === 'hi' ? hiD[d.getDay()] : enD[d.getDay()];
+    }
+
+    function renderChart() {
+      var hist = loadMoodHistory();
+      $clear($chart);
+      var now = new Date();
+      var buckets = [];
+      for (var i = 6; i >= 0; i--) {
+        var d = new Date(now); d.setDate(now.getDate() - i);
+        buckets.push({ date: d, key: ymdKey(d), mood: null });
+      }
+      hist.forEach(function (m) {
+        var k = ymdKey(new Date(m.ts));
+        var b = buckets.find(function (x) { return x.key === k; });
+        if (b) b.mood = m.mood;
+      });
+      var hasAny = buckets.some(function (b) { return b.mood != null; });
+
+      if (!hasAny) {
+        var empty = $el('div', {
+          class: 'jmood-chart__empty',
+          text: session.lang === 'hi'
+            ? 'मूड का इतिहास अभी खाली है। होम पेज पर अपना मूड चुनें — यहाँ दिखेगा।'
+            : 'No mood history yet. Pick a mood on the home page and it will appear here.'
+        });
+        $chart.appendChild(empty);
+        $meta.textContent = '—';
+        return;
+      }
+
+      buckets.forEach(function (b) {
+        var pct = b.mood ? (b.mood / 5) * 100 : 14;
+        var bar = $el('div', { class: 'jmood-bar', style: { height: pct + '%' } });
+        if (b.mood) bar.setAttribute('data-mood', String(b.mood));
+        var lab = b.mood ? (session.lang === 'hi' ? MOOD_LABEL_HI[b.mood] : MOOD_LABEL_EN[b.mood]) : '—';
+        var tip = $el('span', { class: 'jmood-bar__tip', text: dayLabel(b.date) + ' · ' + lab });
+        bar.appendChild(tip);
+        $chart.appendChild(bar);
+      });
+
+      var moods = buckets.filter(function (b) { return b.mood != null; }).map(function (b) { return b.mood; });
+      var avg = moods.reduce(function (a, c) { return a + c; }, 0) / moods.length;
+      $meta.textContent = (session.lang === 'hi' ? 'औसत ' : 'avg ') + avg.toFixed(1) + ' / 5';
+    }
+
+    // ---------- Past entries ----------
+    function fmtDate(d) {
+      var opts = { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' };
+      var loc = session.lang === 'hi' ? 'hi-IN' : 'en-IN';
+      try { return d.toLocaleString(loc, opts); }
+      catch (_) { return d.toDateString(); }
+    }
+    function firstLine(s) {
+      if (!s) return '';
+      var t = s.trim().split(/\n/)[0];
+      return t.length > 160 ? t.slice(0, 157) + '…' : t;
+    }
+
+    function renderPast() {
+      $clear($past);
+      $count.textContent = session.entries.length.toString();
+      if (!session.entries.length) {
+        var em = $el('div', {
+          class: 'jpast__empty',
+          text: session.lang === 'hi'
+            ? 'अभी कुछ नहीं। जब तैयार हों, शुरू करें।'
+            : 'Nothing yet. Begin when you are ready.'
+        });
+        $past.appendChild(em);
+        return;
+      }
+      var sorted = session.entries.slice().sort(function (a, b) { return b.ts - a.ts; });
+      sorted.forEach(function (e) {
+        var date = $el('span', { class: 'jentry__date', text: fmtDate(new Date(e.ts)) });
+        var words = $el('span', {
+          class: 'jentry__words',
+          text: wordCount(e.text) + (session.lang === 'hi' ? ' शब्द' : ' words')
+        });
+        var head = $el('div', { class: 'jentry__head' }, [date, words]);
+        // textContent — never innerHTML — for user content.
+        var preview = $el('div', { class: 'jentry__preview', text: firstLine(e.text) });
+        var hint = $el('div', {
+          class: 'jentry__hint',
+          text: session.lang === 'hi'
+            ? 'दबाकर रखें (1 सेकंड) — मिटाने के लिए'
+            : 'Hold (1s) to delete'
+        });
+        var node = $el('div', {
+          class: 'jentry',
+          'data-id': e.id,
+          'data-expanded': 'false',
+          role: 'button',
+          tabindex: '0'
+        }, [head, preview, hint]);
+
+        wireEntryNode(node, e);
+        $past.appendChild(node);
+      });
+    }
+
+    function wireEntryNode(node, entry) {
+      var pressTimer = null;
+      var didLong = false;
+
+      function startPress() {
+        didLong = false;
+        node.setAttribute('data-pressing', 'true');
+        pressTimer = setTimeout(function () {
+          didLong = true;
+          node.removeAttribute('data-pressing');
+          confirmDelete(entry);
+        }, 1000);
+      }
+      function endPress(e) {
+        clearTimeout(pressTimer);
+        node.removeAttribute('data-pressing');
+        if (didLong) { if (e) e.preventDefault(); return; }
+        var was = node.getAttribute('data-expanded') === 'true';
+        $past.querySelectorAll('.jentry').forEach(function (n) {
+          n.setAttribute('data-expanded', 'false');
+          var p = n.querySelector('.jentry__preview');
+          var id = n.getAttribute('data-id');
+          var rec = session.entries.find(function (x) { return x.id === id; });
+          if (p && rec) p.textContent = firstLine(rec.text);
+        });
+        node.setAttribute('data-expanded', was ? 'false' : 'true');
+        if (!was) {
+          var p = node.querySelector('.jentry__preview');
+          if (p) p.textContent = entry.text;
+        }
+      }
+
+      node.addEventListener('mousedown', startPress);
+      node.addEventListener('touchstart', function () { startPress(); }, { passive: true });
+      node.addEventListener('mouseup', endPress);
+      node.addEventListener('mouseleave', function () {
+        clearTimeout(pressTimer);
+        node.removeAttribute('data-pressing');
+      });
+      node.addEventListener('touchend', endPress);
+      node.addEventListener('touchcancel', function () {
+        clearTimeout(pressTimer);
+        node.removeAttribute('data-pressing');
+      });
+      node.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); endPress(); }
+        if (e.key === 'Delete' || e.key === 'Backspace') { e.preventDefault(); confirmDelete(entry); }
+      });
+    }
+
+    function confirmDelete(entry) {
+      var ok = window.confirm(
+        session.lang === 'hi'
+          ? 'इस प्रविष्टि को हमेशा के लिए मिटा दें?'
+          : 'Delete this entry permanently?'
+      );
+      if (!ok) return;
+      session.entries = session.entries.filter(function (e) { return e.id !== entry.id; });
+      saveEntries(session.entries);
+      renderPast();
+      renderStats();
+      toast('Deleted', 'मिटा दिया');
+    }
+
+    // ---------- Export ----------
+    function exportTxt() {
+      commitDraftIfNeeded();
+      var lines = [];
+      lines.push('Sukoon Journal — Private Export');
+      lines.push('Exported ' + new Date().toString());
+      lines.push('-----------------------------------------');
+      var sorted = session.entries.slice().sort(function (a, b) { return a.ts - b.ts; });
+      sorted.forEach(function (e) {
+        lines.push('');
+        lines.push('## ' + new Date(e.ts).toString());
+        lines.push('');
+        lines.push(e.text);
+        lines.push('');
+        lines.push('—');
+      });
+      var blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+      var url = URL.createObjectURL(blob);
+      var a = $el('a', { href: url, download: 'sukoon-journal-' + ymdKey(new Date()) + '.txt' });
+      document.body.appendChild(a); a.click();
+      setTimeout(function () { document.body.removeChild(a); URL.revokeObjectURL(url); }, 200);
+      toast('Exported', 'निर्यात हुआ');
+    }
+
+    // ---------- Lock modal ----------
+    var modalMode = 'set'; // 'set' | 'unlock' | 'remove'
+
+    function paintModal(mode) {
+      if (mode === 'set') {
+        $mTitle.textContent = session.lang === 'hi' ? 'पासफ़्रेज़ से लॉक करें' : 'Lock with a passphrase';
+        $mSubMain.textContent = session.lang === 'hi'
+          ? 'आपकी जर्नल पहले से ही निजी है। पासफ़्रेज़ इसे इस डिवाइस पर भी अनपढ़ बना देगा।'
+          : 'Your journal is already private. A passphrase scrambles it on disk so even someone with this device cannot read it.';
+        $mSubWarn.textContent = session.lang === 'hi'
+          ? 'अगर आप पासफ़्रेज़ भूले, तो प्रविष्टियाँ हमेशा के लिए चली जाएँगी — यही हमारी निजता का वादा है।'
+          : 'If you forget the passphrase, the entries are permanently lost — by design. We cannot recover them.';
+        $mInput.setAttribute('placeholder', session.lang === 'hi' ? 'नया पासफ़्रेज़' : 'New passphrase');
+      } else if (mode === 'unlock') {
+        $mTitle.textContent = session.lang === 'hi' ? 'जर्नल खोलें' : 'Unlock journal';
+        $mSubMain.textContent = session.lang === 'hi'
+          ? 'अपनी जर्नल पढ़ने के लिए पासफ़्रेज़ डालें।'
+          : 'Enter your passphrase to read your journal.';
+        $mSubWarn.textContent = '';
+        $mInput.setAttribute('placeholder', session.lang === 'hi' ? 'पासफ़्रेज़' : 'Passphrase');
+      } else if (mode === 'remove') {
+        $mTitle.textContent = session.lang === 'hi' ? 'लॉक हटाएँ' : 'Remove lock';
+        $mSubMain.textContent = session.lang === 'hi'
+          ? 'पुष्टि के लिए मौजूदा पासफ़्रेज़ डालें। प्रविष्टियाँ बिना लॉक के सहेज ली जाएँगी।'
+          : 'Enter the current passphrase to confirm. Your entries will be saved without a lock.';
+        $mSubWarn.textContent = '';
+        $mInput.setAttribute('placeholder', session.lang === 'hi' ? 'मौजूदा पासफ़्रेज़' : 'Current passphrase');
+      }
+    }
+
+    function openModal(mode) {
+      modalMode = mode;
+      $mInput.value = '';
+      $mErr.textContent = '';
+      paintModal(mode);
+      $modal.setAttribute('data-open', 'true');
+      setTimeout(function () { $mInput.focus(); }, 60);
+    }
+    function closeModal() {
+      $modal.setAttribute('data-open', 'false');
+      $mInput.value = '';
+    }
+    function modalSubmit() {
+      var v = $mInput.value;
+      if (!v || v.length < 4) {
+        $mErr.textContent = session.lang === 'hi'
+          ? 'कम-से-कम 4 अक्षर चाहिए।'
+          : 'Use at least 4 characters.';
+        return;
+      }
+      if (modalMode === 'set') {
+        var newMeta = {
+          enabled: true,
+          createdAt: Date.now(),
+          check: encrypt('sukoon-ok', v)
         };
-
-        // -- IndexedDB --
-        function openDB(cb) {
-            var req = indexedDB.open(DB_NAME, DB_VERSION);
-            req.onupgradeneeded = function(e) {
-                var s = e.target.result.createObjectStore(STORE_NAME, { keyPath: 'id', autoIncrement: true });
-                s.createIndex('date', 'date', { unique: false });
-                s.createIndex('mood', 'mood', { unique: false });
-            };
-            req.onsuccess = function(e) { db = e.target.result; if (cb) cb(); };
-            req.onerror = function() { console.error('IndexedDB error'); };
+        var currentEntries = session.entries.slice();
+        session.lockMeta = newMeta;
+        session.passphrase = v;
+        saveLockMeta(newMeta);
+        saveEntries(currentEntries);
+        saveDraft($text.value);
+        $btnLock.setAttribute('data-locked', 'true');
+        $btnLockL.textContent = session.lang === 'hi' ? 'लॉक हटाएँ' : 'Remove lock';
+        closeModal();
+        toast('Locked', 'लॉक हुआ');
+      } else if (modalMode === 'unlock') {
+        var meta = session.lockMeta;
+        if (!checkPass(v, meta)) {
+          $mErr.textContent = session.lang === 'hi' ? 'पासफ़्रेज़ ग़लत है।' : 'Wrong passphrase.';
+          return;
         }
-
-        function addEntry(entry, cb) {
-            var tx = db.transaction(STORE_NAME, 'readwrite');
-            tx.objectStore(STORE_NAME).add(entry);
-            tx.oncomplete = function() { if (cb) cb(); };
+        session.passphrase = v;
+        session.entries = loadEntries();
+        $text.value = loadDraft();
+        $text.disabled = false;
+        updateWordCount();
+        renderPast();
+        renderStats();
+        renderChart();
+        setStatus('saved', 'Unlocked', 'खुला');
+        closeModal();
+        toast('Unlocked', 'खुल गया');
+      } else if (modalMode === 'remove') {
+        if (!checkPass(v, session.lockMeta)) {
+          $mErr.textContent = session.lang === 'hi' ? 'पासफ़्रेज़ ग़लत है।' : 'Wrong passphrase.';
+          return;
         }
+        session.passphrase = v;
+        var clearEntries = loadEntries();
+        var clearDraft   = loadDraft();
+        session.lockMeta = null;
+        session.passphrase = null;
+        saveLockMeta(null);
+        session.entries = clearEntries;
+        saveEntries(clearEntries);
+        $text.value = clearDraft;
+        saveDraft(clearDraft);
+        $btnLock.setAttribute('data-locked', 'false');
+        $btnLockL.textContent = session.lang === 'hi' ? 'जर्नल लॉक करें' : 'Lock my journal';
+        closeModal();
+        toast('Lock removed', 'लॉक हट गया');
+      }
+    }
+    $mOk.addEventListener('click', modalSubmit);
+    $mCancel.addEventListener('click', closeModal);
+    $mInput.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') { e.preventDefault(); modalSubmit(); }
+      if (e.key === 'Escape') { e.preventDefault(); closeModal(); }
+    });
 
-        function getAllEntries(cb) {
-            var tx = db.transaction(STORE_NAME, 'readonly');
-            var req = tx.objectStore(STORE_NAME).getAll();
-            req.onsuccess = function() { cb(req.result || []); };
-        }
+    $btnLock.addEventListener('click', function () {
+      if (!session.lockMeta || !session.lockMeta.enabled) {
+        openModal('set');
+      } else if (!session.passphrase) {
+        openModal('unlock');
+      } else {
+        openModal('remove');
+      }
+    });
+    $btnExp.addEventListener('click', exportTxt);
 
-        function deleteEntry(id, cb) {
-            var tx = db.transaction(STORE_NAME, 'readwrite');
-            tx.objectStore(STORE_NAME).delete(id);
-            tx.oncomplete = function() { if (cb) cb(); };
-        }
+    // ---------- Textarea wiring ----------
+    $text.addEventListener('input', function () {
+      updateWordCount();
+      renderStats();
+      debouncedAutosave();
+    });
+    window.addEventListener('beforeunload', function () {
+      clearTimeout(session.saveTimer);
+      try { saveDraft($text.value); commitDraftIfNeeded(); } catch (_) {}
+    });
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') {
+        clearTimeout(session.saveTimer);
+        try { saveDraft($text.value); commitDraftIfNeeded(); } catch (_) {}
+      }
+    });
 
-        // -- Mood Buttons --
-        var moodBtns = document.querySelectorAll('.mood-btn');
-        moodBtns.forEach(function(btn) {
-            btn.addEventListener('click', function() {
-                moodBtns.forEach(function(b) { b.classList.remove('selected'); });
-                btn.classList.add('selected');
-                selectedMood = parseInt(btn.getAttribute('data-mood'));
-                updateSaveBtn();
-            });
-        });
+    // ---------- INIT ----------
+    function init() {
+      session.lockMeta = loadLockMeta();
+      applyLang(session.lang);
+      renderDate();
 
-        // -- Textarea --
-        var textarea = document.getElementById('journalText');
-        var charEl = document.getElementById('charCount');
-        textarea.addEventListener('input', function() {
-            charEl.textContent = textarea.value.length;
-            updateSaveBtn();
-        });
+      if (session.lockMeta && session.lockMeta.enabled) {
+        $btnLock.setAttribute('data-locked', 'true');
+        $btnLockL.textContent = session.lang === 'hi' ? 'लॉक हटाएँ' : 'Remove lock';
+        $text.value = '';
+        $text.disabled = true;
+        $text.setAttribute('placeholder',
+          session.lang === 'hi'
+            ? 'जर्नल लॉक है। ऊपर "लॉक हटाएँ" दबाएँ या पासफ़्रेज़ डालें।'
+            : 'Journal is locked. Tap "Remove lock" above and enter your passphrase.');
+        setStatus('locked', 'Locked', 'लॉक');
+        openModal('unlock');
+        session.entries = [];
+        renderPast(); renderStats(); renderChart();
+      } else {
+        session.entries = loadEntries();
+        $text.value = loadDraft();
+        $text.disabled = false;
+        updateWordCount();
+        setStatus('idle', 'Autosaves every 5 seconds', 'हर 5 सेकंड में सहेजता है');
+        renderPast(); renderStats(); renderChart();
+      }
+    }
 
-        function updateSaveBtn() {
-            document.getElementById('saveBtn').disabled = (selectedMood === 0 && textarea.value.trim() === '');
-        }
+    init();
+  })();
+  </script>
 
-        // -- Save --
-        document.getElementById('saveBtn').addEventListener('click', function() {
-            if (selectedMood === 0 && textarea.value.trim() === '') return;
-            var now = new Date();
-            addEntry({
-                mood: selectedMood || 3,
-                text: textarea.value.trim(),
-                date: now.toISOString().split('T')[0],
-                time: now.toISOString(),
-                timestamp: now.getTime()
-            }, function() {
-                showToast('Entry saved successfully');
-                if(window.sukoon) sukoon.track('journal', 5, 'Journal Entry');
-                textarea.value = '';
-                charEl.textContent = '0';
-                selectedMood = 0;
-                moodBtns.forEach(function(b) { b.classList.remove('selected'); });
-                updateSaveBtn();
-                refreshUI();
-            });
-        });
-
-        // -- Export --
-        document.getElementById('exportBtn').addEventListener('click', function() {
-            getAllEntries(function(entries) {
-                if (!entries.length) { showToast('No entries to export'); return; }
-                var data = JSON.stringify({
-                    app: 'Sukoon Journal',
-                    exported: new Date().toISOString(),
-                    entries: entries.map(function(e) {
-                        return { date: e.date, time: e.time, mood: moodLabels[e.mood] || 'Unknown', moodScore: e.mood, text: e.text };
-                    })
-                }, null, 2);
-                var blob = new Blob([data], { type: 'application/json' });
-                var url = URL.createObjectURL(blob);
-                var a = document.createElement('a');
-                a.href = url;
-                a.download = 'sukoon-journal-' + new Date().toISOString().split('T')[0] + '.json';
-                a.click();
-                URL.revokeObjectURL(url);
-                showToast('Journal exported as JSON');
-            });
-        });
-
-        // -- Toast --
-        function showToast(msg) {
-            var t = document.getElementById('toast');
-            document.getElementById('toastMsg').textContent = msg;
-            t.classList.add('show');
-            setTimeout(function() { t.classList.remove('show'); }, 2800);
-        }
-
-        // -- Chart --
-        function renderChart(entries) {
-            var container = document.getElementById('moodChart');
-            var datesRow = document.getElementById('chartDates');
-            var today = new Date();
-            var days = [];
-            for (var i = 29; i >= 0; i--) {
-                var d = new Date(today);
-                d.setDate(d.getDate() - i);
-                days.push(d.toISOString().split('T')[0]);
-            }
-            var moodMap = {};
-            entries.forEach(function(e) { if (e.mood && e.date) moodMap[e.date] = e.mood; });
-            var hasData = false;
-            var bars = '', dates = '';
-            days.forEach(function(ds, idx) {
-                var m = moodMap[ds] || 0;
-                if (m > 0) hasData = true;
-                var h = m > 0 ? (m / 5) * 100 : 6;
-                bars += '<div class="chart-bar" data-mood="' + m + '" style="height:' + h + '%" title="' + ds + ': ' + (moodLabels[m] || 'No data') + '"></div>';
-                var dt = new Date(ds + 'T12:00:00');
-                var isToday = ds === today.toISOString().split('T')[0];
-                if (idx % 5 === 0 || isToday) {
-                    dates += '<div class="chart-date' + (isToday ? ' today' : '') + '" style="flex:1">' + dt.getDate() + '/' + (dt.getMonth()+1) + '</div>';
-                } else {
-                    dates += '<div class="chart-date" style="flex:1"></div>';
-                }
-            });
-            if (!hasData) {
-                container.innerHTML = '<div class="chart-empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="9"/></svg>Start tracking your mood to see your 30-day journey here.</div>';
-                datesRow.innerHTML = '';
-            } else {
-                container.innerHTML = bars;
-                datesRow.innerHTML = dates;
-            }
-        }
-
-        // -- Entries List --
-        function renderEntries(entries) {
-            var el = document.getElementById('entriesList');
-            var sorted = entries.slice().sort(function(a,b) { return (b.timestamp||0) - (a.timestamp||0); });
-            var last5 = sorted.slice(0, 5);
-            if (!last5.length) {
-                el.innerHTML = '<div class="empty-state">' +
-                    '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">' +
-                        '<path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zM16.862 4.487L19.5 7.125"/>' +
-                    '</svg>' +
-                    '<h3>Your journal is waiting</h3>' +
-                    '<p>Write whatever is on your mind. No rules, no judgment. Just you and your thoughts.</p>' +
-                '</div>';
-                return;
-            }
-            var html = '<div class="entries-header">Last ' + last5.length + ' Entries</div>';
-            last5.forEach(function(entry) {
-                var dt = new Date(entry.time || entry.date);
-                var ds = dt.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', year:'numeric' });
-                var ts = dt.toLocaleTimeString('en-US', { hour:'2-digit', minute:'2-digit' });
-                var face = moodFaceSVGs[entry.mood] || moodFaceSVGs[3];
-                var moodVal = entry.mood || 3;
-                html += '<div class="entry-item" data-mood="' + moodVal + '"><div class="entry-meta">';
-                html += '<span class="entry-mood-face">' + face + '</span>';
-                html += '<span class="entry-mood-badge" data-mood="' + moodVal + '">' + (moodLabels[entry.mood]||'Okay') + '</span>';
-                html += '<span class="entry-date">' + ds + ' at ' + ts + '</span>';
-                html += '<button class="entry-delete" data-id="' + entry.id + '" title="Delete entry" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>';
-                html += '</div>';
-                if (entry.text) html += '<div class="entry-text">' + esc(entry.text) + '</div>';
-                html += '</div>';
-            });
-            el.innerHTML = html;
-            el.querySelectorAll('.entry-delete').forEach(function(btn) {
-                btn.addEventListener('click', function() {
-                    var id = parseInt(btn.getAttribute('data-id'));
-                    if (id) deleteEntry(id, function() { showToast('Entry deleted'); refreshUI(); });
-                });
-            });
-        }
-
-        function esc(s) { var d = document.createElement('div'); d.appendChild(document.createTextNode(s)); return d.innerHTML; }
-
-        function refreshUI() {
-            getAllEntries(function(entries) { renderChart(entries); renderEntries(entries); });
-        }
-
-        openDB(function() { refreshUI(); });
-    })();
-    </script>
-    <script src="/js/i18n.js"></script>
-    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-    <script src="/js/shell.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(function () {});
+    }
+  </script>
 </body>
 </html>

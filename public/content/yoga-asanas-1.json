@@ -1,0 +1,1048 @@
+[
+  {
+    "id": "tadasana",
+    "sanskrit": "Tadasana",
+    "devanagari": "ताडासन",
+    "name_en": "Mountain Pose",
+    "name_hi": "पर्वत मुद्रा",
+    "category": "standing",
+    "difficulty": 1,
+    "duration_seconds": 30,
+    "alignment_steps": [
+      "Stand with feet together, big toes touching and heels slightly apart; distribute weight evenly across all four corners of both feet.",
+      "Engage the quadriceps by lifting the kneecaps gently; do not lock the knees hyperextended.",
+      "Draw the lower abdomen in and up, lengthening the lumbar spine without exaggerating the natural lordotic curve.",
+      "Roll the shoulder blades back and down, broadening the collarbones and allowing the sternum to lift.",
+      "Let the arms hang alongside the body with palms facing forward, fingers active and lightly spread.",
+      "Lengthen the back of the neck by drawing the chin slightly in and back so the crown of the head floats directly above the heels.",
+      "Breathe steadily; with each inhale, sense a vertical lengthening from the soles upward through the crown."
+    ],
+    "alignment_steps_hi": [
+      "पैरों को एक साथ रखें, अंगूठे मिले हुए और एड़ियां थोड़ी अलग; दोनों पैरों के चारों कोनों पर समान रूप से वजन डालें।",
+      "घुटने की टोपियों को धीरे से उठाकर जांघ की मांसपेशियों को सक्रिय करें; घुटनों को पीछे की ओर न मोड़ें।",
+      "पेट के निचले हिस्से को अंदर और ऊपर खींचें, कमर की रीढ़ को लंबा करें।",
+      "कंधे के ब्लेड को पीछे और नीचे घुमाएं, सीने को चौड़ा करते हुए उरोस्थि को ऊपर उठाएं।",
+      "बाहें शरीर के बगल में लटकने दें, हथेलियां आगे की ओर, उंगलियां हल्की सक्रिय।",
+      "गर्दन के पीछे को लंबा करें, ठुड्डी को थोड़ा अंदर और पीछे करें, सिर का मुकुट सीधे एड़ियों के ऊपर हो।",
+      "समान रूप से सांस लें; प्रत्येक श्वास पर तलवों से मुकुट तक एक ऊर्ध्वाधर विस्तार महसूस करें।"
+    ],
+    "benefits": [
+      "Improves postural alignment by strengthening the spinal erectors and deep stabilizing muscles of the spine.",
+      "Activates intrinsic foot musculature, improving arch support and reducing risk of plantar fasciitis.",
+      "Develops proprioception and body-awareness as a foundation for all standing postures.",
+      "Calms the nervous system through steady diaphragmatic breathing in a stable, grounded position.",
+      "Strengthens the quadriceps, glutes, and core when muscular engagement cues are actively applied."
+    ],
+    "benefits_hi": [
+      "रीढ़ की सीधी मांसपेशियों को मजबूत करके आसन संरेखण में सुधार करता है।",
+      "पैर की भीतरी मांसपेशियों को सक्रिय करता है, मेहराब को सहारा देता है।",
+      "सभी खड़े आसनों की नींव के रूप में स्वयं-जागरूकता विकसित करता है।",
+      "स्थिर डायाफ्रामिक श्वास से तंत्रिका तंत्र को शांत करता है।",
+      "जांघ, नितंब और कोर की मांसपेशियों को मजबूत करता है।"
+    ],
+    "safety": [
+      "Those with low blood pressure should transition in and out of this pose slowly to avoid dizziness.",
+      "Avoid forceful locking of the knees, which can strain the posterior knee ligaments.",
+      "Individuals with flat feet may benefit from a slight separation of the heels for stability."
+    ],
+    "safety_hi": [
+      "निम्न रक्तचाप वाले व्यक्ति चक्कर से बचने के लिए इस आसन में धीरे-धीरे आएं और जाएं।",
+      "घुटनों को जबरदस्ती बंद न करें, इससे पीछे के स्नायुबंधन पर दबाव पड़ सकता है।",
+      "सपाट पैरों वाले लोग स्थिरता के लिए एड़ियों को थोड़ा अलग रख सकते हैं।"
+    ],
+    "counter_pose_id": null,
+    "modifications": [
+      "Practice near a wall with fingertips lightly touching the surface for balance feedback.",
+      "Stand with feet hip-width apart if balancing with feet together feels unstable.",
+      "Place a folded blanket under the heels if the calves are very tight and the heels lift."
+    ],
+    "modifications_hi": [
+      "संतुलन के लिए दीवार के पास खड़े होकर उंगलियों से हल्के से छूएं।",
+      "यदि पैर एक साथ रखना अस्थिर लगे, तो पैरों को कूल्हे की चौड़ाई पर रखें।",
+      "यदि पिंडली बहुत तंग हो तो एड़ियों के नीचे मुड़ा हुआ कंबल रखें।"
+    ],
+    "progression_to": "vrksasana",
+    "props_optional": ["wall"],
+    "video_url": "/video/asanas/tadasana.mp4",
+    "image_url": "/og/asanas/tadasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "vrksasana",
+    "sanskrit": "Vrikshasana",
+    "devanagari": "वृक्षासन",
+    "name_en": "Tree Pose",
+    "name_hi": "पेड़ की मुद्रा",
+    "category": "balance",
+    "difficulty": 2,
+    "duration_seconds": 30,
+    "alignment_steps": [
+      "Begin in Tadasana; shift weight onto the left foot, pressing all four corners firmly into the floor.",
+      "Bend the right knee and place the sole of the right foot against the inner left thigh, above the knee, with toes pointing downward.",
+      "Press the right foot and inner thigh isometrically against each other to create a stable dual-action lock.",
+      "Square the hips forward so both hip points face the front of the mat; avoid letting the right hip jut outward.",
+      "Bring the palms together at the heart in Anjali Mudra, or extend the arms overhead with palms facing each other.",
+      "Find a drishti — a steady, unmoving focal point at eye level — to anchor the balance.",
+      "Lengthen through the standing leg's inner arch, the inner knee, and up through the crown; breathe evenly for five to eight breaths."
+    ],
+    "alignment_steps_hi": [
+      "ताडासन से शुरू करें; बाएं पैर पर वजन डालें और चारों कोनों को मजबूती से जमीन पर दबाएं।",
+      "दाहिने घुटने को मोड़ें और दाहिने पैर के तलवे को बाईं जांघ की आंतरिक सतह पर घुटने के ऊपर रखें।",
+      "दाहिने पैर और जांघ की आंतरिक सतह के बीच समान दबाव बनाकर स्थिर संतुलन बनाएं।",
+      "कूल्हों को आगे की ओर रखें; दाहिने कूल्हे को बाहर न जाने दें।",
+      "हथेलियों को हृदय के पास जोड़ें या बाहों को सिर के ऊपर उठाएं।",
+      "दृष्टि को आंखों के स्तर पर एक स्थिर बिंदु पर टिकाएं।",
+      "खड़े पैर के भीतरी आर्च से मुकुट तक लंबाई बनाए रखें; पांच से आठ श्वास तक रुकें।"
+    ],
+    "benefits": [
+      "Strengthens the ankle dorsiflexors, peroneals, and intrinsic foot muscles of the standing leg.",
+      "Develops single-leg proprioception and neuromuscular coordination, reducing fall risk.",
+      "Stretches the hip adductors and internal rotators of the raised leg.",
+      "Builds concentration through focused drishti practice.",
+      "Strengthens the gluteus medius of the standing leg, promoting pelvic stability."
+    ],
+    "benefits_hi": [
+      "खड़े पैर की एड़ी और पैर की आंतरिक मांसपेशियों को मजबूत करता है।",
+      "एकल पैर पर संतुलन और तंत्रिका-पेशी समन्वय विकसित करता है।",
+      "उठे हुए पैर के कूल्हे के जोड़कों और आंतरिक घुमाव करने वाली मांसपेशियों को खींचता है।",
+      "ध्यान केंद्रित करने की क्षमता बनाता है।",
+      "खड़े पैर के ग्लूटस मेडियस को मजबूत करता है।"
+    ],
+    "safety": [
+      "Do not place the foot directly against the knee joint, which can laterally stress the knee ligaments.",
+      "Those with recent ankle sprains should practice with fingertips touching a wall.",
+      "Individuals with vertigo or inner-ear disturbances should approach one-legged balances cautiously."
+    ],
+    "safety_hi": [
+      "पैर को घुटने के जोड़ पर सीधे न रखें; इससे घुटने के स्नायुबंधन पर दबाव पड़ सकता है।",
+      "हाल ही में मोच आई एड़ी वाले लोग दीवार का सहारा लेकर अभ्यास करें।",
+      "चक्कर आने की समस्या वाले लोग एक पैर पर संतुलन के आसनों में सावधानी बरतें।"
+    ],
+    "counter_pose_id": "tadasana",
+    "modifications": [
+      "Place the right foot against the inner calf below the knee, or with toes touching the floor as a kickstand.",
+      "Rest the fingertips lightly on a wall throughout the pose.",
+      "Hold the shin of the raised leg with one hand while the other arm extends for balance."
+    ],
+    "modifications_hi": [
+      "दाहिने पैर को बाईं पिंडली पर घुटने के नीचे रखें, या पंजे को जमीन पर टिकाएं।",
+      "पूरे आसन के दौरान एक हाथ की उंगलियां दीवार पर हल्के से टिकाएं।",
+      "एक हाथ से उठे हुए पैर की पिंडली पकड़ें जबकि दूसरा हाथ संतुलन के लिए फैलाएं।"
+    ],
+    "progression_to": "natarajasana",
+    "props_optional": ["wall"],
+    "video_url": "/video/asanas/vrksasana.mp4",
+    "image_url": "/og/asanas/vrksasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "trikonasana",
+    "sanskrit": "Trikonasana",
+    "devanagari": "त्रिकोणासन",
+    "name_en": "Triangle Pose",
+    "name_hi": "त्रिकोण मुद्रा",
+    "category": "standing",
+    "difficulty": 2,
+    "duration_seconds": 45,
+    "alignment_steps": [
+      "Step the feet 3.5 to 4 feet apart; turn the right foot out 90 degrees and the left foot in about 15 degrees, aligning the right heel with the left inner arch.",
+      "Extend the arms out to the sides at shoulder height, palms facing down, shoulder blades drawing toward each other.",
+      "On an inhale, reach strongly through the right hand, shifting the hips to the left as the torso extends laterally over the right leg.",
+      "Lower the right hand to the shin, a block placed outside the right foot, or to the floor, keeping the right arm in line with the torso.",
+      "Stack the left arm directly above the right, palm facing away from the body, creating a vertical line of energy.",
+      "Rotate the left hip open toward the sky, stacking the top hip over the bottom hip; draw the lower ribs away from the top hip.",
+      "Turn the head to gaze up at the left thumb if the neck is comfortable, or keep the gaze neutral to protect the cervical spine.",
+      "Energize both legs equally; press into the outer edge of the back foot and the inner edge of the front foot."
+    ],
+    "alignment_steps_hi": [
+      "पैरों को 3.5 से 4 फीट दूर रखें; दाहिने पैर को 90 डिग्री और बाएं पैर को 15 डिग्री अंदर घुमाएं।",
+      "बाहों को कंधे की ऊंचाई पर फैलाएं, हथेलियां नीचे, कंधे के ब्लेड एक-दूसरे की ओर खिंचे हुए।",
+      "श्वास लेते हुए दाहिने हाथ से जोर से खींचें, कूल्हों को बाईं ओर खिसकाते हुए धड़ को बगल में फैलाएं।",
+      "दाहिने हाथ को पिंडली, ब्लॉक या जमीन पर रखें, हाथ को धड़ की सीध में रखें।",
+      "बाएं हाथ को सीधे ऊपर उठाएं, हथेली शरीर से दूर।",
+      "बाएं कूल्हे को आकाश की ओर घुमाएं, ऊपरी कूल्हे को निचले के ऊपर रखें।",
+      "यदि गर्दन आरामदायक हो तो बाएं अंगूठे की ओर देखें, अन्यथा दृष्टि सामने रखें।",
+      "दोनों पैरों में समान ऊर्जा रखें; पिछले पैर के बाहरी किनारे और अगले पैर के भीतरी किनारे को दबाएं।"
+    ],
+    "benefits": [
+      "Lengthens and strengthens the lateral chain — obliques, quadratus lumborum, and IT band — on the lengthening side.",
+      "Stretches the hamstrings, adductors, and hip flexors simultaneously.",
+      "Strengthens the knee stabilizers and ankle musculature of the front leg under lateral load.",
+      "Mobilizes the thoracic spine in rotation when the upper arm reaches skyward.",
+      "Stimulates abdominal organs through lateral compression and improves digestive motility."
+    ],
+    "benefits_hi": [
+      "बगल की जंजीर — ऑब्लिक, क्वाड्रेटस लम्बोरम और IT बैंड को खींचता और मजबूत करता है।",
+      "हैमस्ट्रिंग, एडक्टर और हिप फ्लेक्सर को एक साथ खींचता है।",
+      "सामने के पैर के घुटने के स्थिरकारक और एड़ी की मांसपेशियों को मजबूत करता है।",
+      "ऊपरी बांह को ऊपर खींचने पर थोरैसिक रीढ़ की गतिशीलता बढ़ाता है।",
+      "बगल के संपीड़न से पेट के अंगों को उत्तेजित करता है और पाचन में सुधार करता है।"
+    ],
+    "safety": [
+      "Avoid if you have a recent hamstring tear; bend the front knee slightly to reduce tension.",
+      "Those with cervical disc issues should keep the gaze neutral rather than rotating the neck.",
+      "If you have low back instability, shorten the stance and use a block under the lower hand."
+    ],
+    "safety_hi": [
+      "हाल ही में हैमस्ट्रिंग चोट हो तो इससे बचें; सामने के घुटने को थोड़ा मोड़ें।",
+      "सर्वाइकल डिस्क की समस्या वाले लोग गर्दन को घुमाने के बजाय दृष्टि सामने रखें।",
+      "कमर की अस्थिरता हो तो पैरों के बीच की दूरी कम करें और नीचे के हाथ के लिए ब्लॉक का उपयोग करें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Use a yoga block on any height outside the front foot to bring the floor closer.",
+      "Rest the back of the lower hand against the front shin rather than reaching for the floor.",
+      "Practice with the back against a wall to learn the hip-stacking action without balance concern."
+    ],
+    "modifications_hi": [
+      "सामने के पैर के बाहर किसी भी ऊंचाई पर ब्लॉक रखें।",
+      "जमीन तक पहुंचने के बजाय निचले हाथ के पीछे को सामने की पिंडली पर रखें।",
+      "कूल्हे के संरेखण को सीखने के लिए पीठ को दीवार से लगाकर अभ्यास करें।"
+    ],
+    "progression_to": "ardha-chandrasana",
+    "props_optional": ["block", "wall"],
+    "video_url": "/video/asanas/trikonasana.mp4",
+    "image_url": "/og/asanas/trikonasana.jpg",
+    "lineage": "iyengar"
+  },
+  {
+    "id": "virabhadrasana-i",
+    "sanskrit": "Virabhadrasana I",
+    "devanagari": "वीरभद्रासन १",
+    "name_en": "Warrior I",
+    "name_hi": "वीर मुद्रा १",
+    "category": "standing",
+    "difficulty": 2,
+    "duration_seconds": 30,
+    "alignment_steps": [
+      "From Tadasana, step the left foot back 3.5 to 4 feet; angle the left foot out to approximately 45 degrees.",
+      "Align the right heel with the left heel, or for wider hip width, stagger the feet slightly.",
+      "Bend the right knee to 90 degrees, tracking directly over the second toe; do not allow the knee to collapse inward.",
+      "Press firmly through the outer edge of the back foot, activating the back leg and preventing the back heel from lifting.",
+      "Square the hip points as evenly as possible toward the front of the mat by drawing the right hip back and the left hip forward.",
+      "On an inhale, sweep the arms overhead with palms facing each other or, for more shoulder room, parallel.",
+      "Draw the shoulder blades down the back to prevent the shoulders from creeping toward the ears; lengthen the sides of the torso.",
+      "Maintain a soft gaze upward toward the thumbs or straight ahead if the neck is sensitive."
+    ],
+    "alignment_steps_hi": [
+      "ताडासन से बाएं पैर को 3.5 से 4 फीट पीछे ले जाएं; बाएं पैर को लगभग 45 डिग्री बाहर घुमाएं।",
+      "दाहिनी एड़ी को बाईं एड़ी के साथ संरेखित करें।",
+      "दाहिने घुटने को 90 डिग्री मोड़ें, सीधे दूसरे पैर के अंगूठे के ऊपर; घुटने को अंदर न गिरने दें।",
+      "पिछले पैर के बाहरी किनारे से दृढ़ता से दबाएं, पिछले पैर को सक्रिय रखें।",
+      "दाहिने कूल्हे को पीछे और बाएं कूल्हे को आगे खींचकर कूल्हों को आगे की ओर यथासंभव समान रखें।",
+      "श्वास लेते हुए बाहों को ऊपर उठाएं, हथेलियां एक-दूसरे की ओर।",
+      "कंधे के ब्लेड को पीठ पर नीचे खींचें; धड़ के किनारों को लंबा करें।",
+      "अंगूठों की ओर ऊपर देखें या यदि गर्दन संवेदनशील हो तो सामने देखें।"
+    ],
+    "benefits": [
+      "Strengthens the quadriceps, glutes, and hip extensors of the front leg under load.",
+      "Stretches the hip flexors (psoas, rectus femoris) of the back leg — a vital counter to prolonged sitting.",
+      "Builds thoracic extension and shoulder girdle strength through the overhead arm position.",
+      "Develops lower-body endurance and cultivates mental fortitude through sustained discomfort.",
+      "Activates the thoracolumbar fascia and stabilizes the lumbar spine under extension load."
+    ],
+    "benefits_hi": [
+      "सामने के पैर की जांघ, नितंब और हिप एक्सटेंसर को मजबूत करता है।",
+      "पिछले पैर के हिप फ्लेक्सर (सोअस, रेक्टस फेमोरिस) को खींचता है — लंबे समय तक बैठने का प्रतिकार।",
+      "ओवरहेड हाथ की स्थिति से थोरैसिक एक्सटेंशन और कंधे की ताकत बनाता है।",
+      "निचले शरीर की सहनशक्ति और मानसिक दृढ़ता विकसित करता है।",
+      "थोरैकोलम्बर फेशिया को सक्रिय करता है और काठ की रीढ़ को स्थिर करता है।"
+    ],
+    "safety": [
+      "Those with knee injuries should not bend the front knee beyond 90 degrees and should monitor for knee pain.",
+      "Avoid if you have a recent shoulder impingement; keep arms at shoulder height or use cactus-arm variation.",
+      "High blood pressure patients should keep hands on hips rather than raised overhead for extended holds."
+    ],
+    "safety_hi": [
+      "घुटने की चोट वाले लोग सामने के घुटने को 90 डिग्री से अधिक न मोड़ें।",
+      "हाल ही में कंधे की समस्या हो तो बाहों को कंधे की ऊंचाई पर रखें।",
+      "उच्च रक्तचाप वाले लोग लंबे समय तक रुकते समय हाथों को कूल्हों पर रखें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Shorten the stance and allow the back heel to float if full hip squaring creates discomfort in the sacroiliac joint.",
+      "Place hands on hips to focus on lower-body alignment before adding the arm challenge.",
+      "Use a chair seat under the front thigh for support in longer holds."
+    ],
+    "modifications_hi": [
+      "यदि पूरी तरह कूल्हे को चौकोर करने से सेक्रोइलियक जोड़ में असुविधा हो तो रुख छोटा करें।",
+      "बाहों को जोड़ने से पहले हाथों को कूल्हों पर रखकर निचले शरीर के संरेखण पर ध्यान दें।",
+      "लंबे समय तक रुकने के लिए सामने की जांघ के नीचे कुर्सी की सीट का उपयोग करें।"
+    ],
+    "progression_to": "virabhadrasana-iii",
+    "props_optional": ["block", "chair"],
+    "video_url": "/video/asanas/virabhadrasana-i.mp4",
+    "image_url": "/og/asanas/virabhadrasana-i.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "virabhadrasana-ii",
+    "sanskrit": "Virabhadrasana II",
+    "devanagari": "वीरभद्रासन २",
+    "name_en": "Warrior II",
+    "name_hi": "वीर मुद्रा २",
+    "category": "standing",
+    "difficulty": 2,
+    "duration_seconds": 45,
+    "alignment_steps": [
+      "Step the feet wide, 4 to 4.5 feet apart; turn the right foot out 90 degrees and the left foot slightly inward about 10 to 15 degrees.",
+      "Align the right heel to intersect with the inner arch of the left foot.",
+      "Bend the right knee to 90 degrees, stacking it directly over the right ankle and tracking toward the second toe.",
+      "Open the arms wide in opposite directions at shoulder height, palms facing down, reaching actively through both fingertips.",
+      "Keep the torso directly over the pelvis — do not lean toward the front hand; maintain a neutral, vertical spine.",
+      "Rotate the torso open to the side; the chest, hips, and front knee all face the same lateral direction.",
+      "Press the outer edge of the back foot into the floor, activating the back leg to create a stable anchor.",
+      "Gaze over the right fingertips with a steady, lion's gaze — drishti to the horizon."
+    ],
+    "alignment_steps_hi": [
+      "पैरों को 4 से 4.5 फीट चौड़ा रखें; दाहिने पैर को 90 डिग्री और बाएं पैर को 10-15 डिग्री अंदर घुमाएं।",
+      "दाहिनी एड़ी को बाएं पैर के भीतरी आर्च के साथ संरेखित करें।",
+      "दाहिने घुटने को 90 डिग्री मोड़ें, दाहिनी टखने के ऊपर, दूसरे पैर के अंगूठे की ओर।",
+      "बाहों को कंधे की ऊंचाई पर विपरीत दिशाओं में फैलाएं, हथेलियां नीचे।",
+      "धड़ को श्रोणि के ऊपर सीधे रखें — सामने के हाथ की ओर न झुकें।",
+      "धड़ को बगल की ओर खोलें; सीना, कूल्हे और सामने का घुटना एक ही दिशा में।",
+      "पिछले पैर के बाहरी किनारे को जमीन में दबाएं।",
+      "दाहिनी उंगलियों के ऊपर स्थिर दृष्टि रखें।"
+    ],
+    "benefits": [
+      "Develops isometric strength in the quadriceps, glutes, and hip abductors through sustained static work.",
+      "Stretches the inner groin (adductors) and the thoracic rotators simultaneously.",
+      "Builds shoulder girdle endurance through the sustained extended-arm position.",
+      "Trains lateral stability of the ankle and knee of the front leg.",
+      "Cultivates mental focus and warrior-like steadiness — the psychological content of this asana is primary in traditional teaching."
+    ],
+    "benefits_hi": [
+      "जांघ, नितंब और हिप एब्डक्टर में आइसोमेट्रिक ताकत विकसित करता है।",
+      "आंतरिक कमर (एडक्टर) और थोरैसिक रोटेटर को एक साथ खींचता है।",
+      "लंबे समय तक फैले हुए हाथ की स्थिति से कंधे की सहनशक्ति बनाता है।",
+      "सामने के पैर की एड़ी और घुटने की पार्श्व स्थिरता प्रशिक्षित करता है।",
+      "मानसिक एकाग्रता और योद्धा जैसी दृढ़ता विकसित करता है।"
+    ],
+    "safety": [
+      "Knee pain is common when the knee tracks inward; actively press it toward the pinky-toe side of the foot.",
+      "Avoid deep knee flexion with a history of meniscus tears; keep the bend shallower.",
+      "Those with shoulder injuries should let the arms rest at hip height rather than extended."
+    ],
+    "safety_hi": [
+      "घुटने को अंदर की ओर गिरने से घुटने में दर्द होता है; इसे छोटी उंगली की दिशा में दबाएं।",
+      "मेनिस्कस चोट के इतिहास के साथ गहरे घुटने के मोड़ से बचें।",
+      "कंधे की चोट वाले लोग बाहों को कूल्हे की ऊंचाई पर आराम दें।"
+    ],
+    "counter_pose_id": "prasarita-padottanasana",
+    "modifications": [
+      "Place a block under the front thigh at a height that allows the knee to maintain alignment.",
+      "Rest the back hand on the back hip to ease shoulder fatigue while maintaining the lunge.",
+      "Perform a chair-assisted version with the chair seat under the front thigh."
+    ],
+    "modifications_hi": [
+      "सामने की जांघ के नीचे ब्लॉक रखें।",
+      "पिछले हाथ को पीछे के कूल्हे पर रखकर कंधे की थकान कम करें।",
+      "सामने की जांघ के नीचे कुर्सी से सहायता लेकर करें।"
+    ],
+    "progression_to": "parsvakonasana",
+    "props_optional": ["block", "chair"],
+    "video_url": "/video/asanas/virabhadrasana-ii.mp4",
+    "image_url": "/og/asanas/virabhadrasana-ii.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "virabhadrasana-iii",
+    "sanskrit": "Virabhadrasana III",
+    "devanagari": "वीरभद्रासन ३",
+    "name_en": "Warrior III",
+    "name_hi": "वीर मुद्रा ३",
+    "category": "balance",
+    "difficulty": 3,
+    "duration_seconds": 20,
+    "alignment_steps": [
+      "Begin in Warrior I with the right foot forward; shift weight onto the right foot as you begin to transition.",
+      "On an exhale, hinge forward from the hip crease, not the lower back, as the back leg lifts off the floor.",
+      "Extend the left leg back until it is parallel to the floor, flexing the left foot so the toes point straight down.",
+      "Reach both arms forward alongside the ears, palms facing each other, creating one straight line from hands to heel.",
+      "Square the hips toward the floor: the lifted hip tends to open upward; draw it back down to match the standing-leg hip.",
+      "Micro-bend the standing knee to protect it; engage the quadriceps and glute of the standing leg.",
+      "Keep the gaze on a single point on the floor approximately 18 inches ahead of the standing foot.",
+      "Engage the core by drawing the lower ribs together; do not let the lumbar spine overarch."
+    ],
+    "alignment_steps_hi": [
+      "दाहिने पैर के साथ वीरभद्रासन I से शुरू करें; दाहिने पैर पर वजन डालें।",
+      "श्वास छोड़ते हुए कूल्हे के क्रीज से आगे झुकें जैसे पिछला पैर जमीन से उठता है।",
+      "बाएं पैर को तब तक पीछे बढ़ाएं जब तक वह जमीन के समानांतर न हो जाए, पैर मुड़ा हुआ।",
+      "दोनों बाहों को कानों के पास आगे बढ़ाएं, हाथों से एड़ी तक एक सीधी रेखा बनाएं।",
+      "कूल्हों को जमीन की ओर चौकोर रखें; उठे हुए कूल्हे को नीचे खींचें।",
+      "खड़े घुटने को थोड़ा मोड़ें; खड़े पैर की जांघ और नितंब सक्रिय रखें।",
+      "खड़े पैर के लगभग 18 इंच आगे जमीन पर एक बिंदु पर दृष्टि रखें।",
+      "कोर को सक्रिय करें; काठ की रीढ़ को अधिक झुकने न दें।"
+    ],
+    "benefits": [
+      "Develops advanced single-leg balance by challenging the proprioceptive system under hip-hinge load.",
+      "Strengthens the posterior chain: hamstrings, gluteus maximus, erector spinae, and multifidus.",
+      "Builds hip-hinge mechanics essential for deadlifts, picking up objects safely, and athletic movement.",
+      "Strengthens the shoulder girdle and serratus anterior through the sustained forward arm reach.",
+      "Cultivates full-body coordinative integration — simultaneous extension and grounding."
+    ],
+    "benefits_hi": [
+      "हिप-हिंज लोड के तहत प्रोप्रियोसेप्टिव सिस्टम को चुनौती देकर उन्नत एकल-पैर संतुलन विकसित करता है।",
+      "पश्च श्रृंखला को मजबूत करता है: हैमस्ट्रिंग, ग्लूटस मैक्सिमस, इरेक्टर स्पाइने।",
+      "हिप-हिंज यांत्रिकी बनाता है जो सुरक्षित रूप से वस्तुओं को उठाने के लिए आवश्यक है।",
+      "आगे की ओर फैले हाथों से कंधे की कमर और सेराटस एंटीरियर को मजबूत करता है।",
+      "पूर्ण शरीर समन्वय — एक साथ विस्तार और आधारभूतता विकसित करता है।"
+    ],
+    "safety": [
+      "Those with hamstring tendinopathy should maintain a micro-bend in the standing knee and avoid full horizontal hip hinge.",
+      "Avoid if you have acute lower back pain; the forward lean under load can aggravate disc issues.",
+      "Balance conditions or inner-ear problems require wall support for safety in this pose."
+    ],
+    "safety_hi": [
+      "हैमस्ट्रिंग टेंडिनोपैथी वाले लोग खड़े घुटने को थोड़ा मोड़े रखें।",
+      "तीव्र कमर दर्द हो तो इससे बचें; आगे का झुकाव डिस्क की समस्या बढ़ा सकता है।",
+      "संतुलन की समस्या या आंतरिक कान की समस्या होने पर दीवार का सहारा लें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Rest the fingertips on a wall or chair back to reduce balance demand while building strength.",
+      "Keep the lifted leg lower than parallel and gradually work toward full horizontal extension.",
+      "Use a strap looped around the back foot held in both hands to support the extended leg."
+    ],
+    "modifications_hi": [
+      "दीवार या कुर्सी की पीठ पर उंगलियां रखकर संतुलन की मांग कम करें।",
+      "उठे हुए पैर को समानांतर से नीचे रखें और धीरे-धीरे पूरी क्षैतिज स्थिति की ओर काम करें।",
+      "पिछले पैर के चारों ओर पट्टा लगाकर दोनों हाथों से पकड़कर सहारा लें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["wall", "chair", "strap"],
+    "video_url": "/video/asanas/virabhadrasana-iii.mp4",
+    "image_url": "/og/asanas/virabhadrasana-iii.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "utkatasana",
+    "sanskrit": "Utkatasana",
+    "devanagari": "उत्कटासन",
+    "name_en": "Chair Pose",
+    "name_hi": "कुर्सी मुद्रा",
+    "category": "standing",
+    "difficulty": 2,
+    "duration_seconds": 30,
+    "alignment_steps": [
+      "Begin in Tadasana with feet together or hip-width apart.",
+      "Bend both knees simultaneously, lowering the hips as if sitting back onto an invisible chair; aim for thighs parallel to the floor if available.",
+      "Keep the knees tracking over the second toes; do not allow them to collapse inward.",
+      "Shift the weight back into the heels so the toes are lightly liftable — this prevents the knees from projecting too far forward.",
+      "On an inhale, sweep the arms alongside the ears with biceps parallel and palms facing each other; lower ribs draw in to prevent flaring.",
+      "Lengthen the tailbone toward the floor to prevent excessive lumbar arching; maintain a neutral lower back.",
+      "Draw the shoulder blades down to prevent the trapezius from shrugging; create space between the ears and the shoulders.",
+      "Hold for five to ten breaths, maintaining equal load on both legs."
+    ],
+    "alignment_steps_hi": [
+      "ताडासन में शुरू करें, पैर एक साथ या कूल्हे की चौड़ाई पर।",
+      "दोनों घुटनों को एक साथ मोड़ें, कूल्हों को नीचे करें जैसे अदृश्य कुर्सी पर बैठ रहे हों।",
+      "घुटनों को दूसरे पैर के अंगूठे के ऊपर रखें; उन्हें अंदर न गिरने दें।",
+      "वजन को एड़ियों पर पीछे डालें ताकि पंजे हल्के से उठ सकें।",
+      "श्वास लेते हुए बाहों को कानों के पास ऊपर उठाएं; निचली पसलियों को अंदर खींचें।",
+      "अत्यधिक कमर के झुकाव को रोकने के लिए पूंछ की हड्डी को नीचे की ओर लंबा करें।",
+      "कंधे के ब्लेड को नीचे खींचें; कान और कंधों के बीच जगह बनाएं।",
+      "पांच से दस श्वास तक रुकें, दोनों पैरों पर समान भार रखें।"
+    ],
+    "benefits": [
+      "Strengthens the quadriceps, gluteus maximus, and hip extensors under sustained eccentric and isometric load.",
+      "Activates and strengthens the ankle dorsiflexors when weight is maintained over the heels.",
+      "Builds thoracic extension endurance and strengthens the serratus anterior through overhead arm positioning.",
+      "Increases metabolic demand, raising heart rate and stimulating cardiovascular function.",
+      "Engages the core — transversus abdominis and obliques — to stabilize the lumbar spine in a loaded squat position."
+    ],
+    "benefits_hi": [
+      "जांघ, ग्लूटस मैक्सिमस और हिप एक्सटेंसर को सतत भार में मजबूत करता है।",
+      "एड़ियों पर वजन रखने पर एड़ी की मांसपेशियों को सक्रिय करता है।",
+      "ओवरहेड हाथ की स्थिति से थोरैसिक एक्सटेंशन और सेराटस एंटीरियर बनाता है।",
+      "चयापचय की मांग बढ़ाता है, हृदय गति बढ़ाता है।",
+      "कोर को संलग्न करता है — ट्रांसवर्सस एब्डोमिनिस और ऑब्लिक।"
+    ],
+    "safety": [
+      "Those with knee osteoarthritis should keep the bend shallow (above 60 degrees) to avoid joint compression.",
+      "Avoid deep squat positions if you have a recent patellar or quadriceps tendon injury.",
+      "High blood pressure: keep arms at shoulder height or hands on heart rather than overhead."
+    ],
+    "safety_hi": [
+      "घुटने के ऑस्टियोआर्थराइटिस वाले लोग मोड़ को उथला रखें।",
+      "हाल ही में पटेलर या क्वाड्रिसेप्स टेंडन की चोट हो तो गहरे स्क्वाट से बचें।",
+      "उच्च रक्तचाप: बाहों को कंधे की ऊंचाई पर या हाथों को हृदय पर रखें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Perform near a wall so the back rests lightly against it, supporting the lower back and reducing balance load.",
+      "Keep the bend in the knees mild (20-30 degrees) for a gentler variation.",
+      "Rest the hands on the thighs, elbows bent, for a lower-shoulder alternative."
+    ],
+    "modifications_hi": [
+      "दीवार के पास करें ताकि पीठ हल्के से उस पर टिकी रहे।",
+      "घुटनों को हल्के से मोड़ें (20-30 डिग्री) एक सौम्य भिन्नता के लिए।",
+      "कम कंधे के विकल्प के लिए हाथों को जांघों पर रखें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["wall", "chair"],
+    "video_url": "/video/asanas/utkatasana.mp4",
+    "image_url": "/og/asanas/utkatasana.jpg",
+    "lineage": "ashtanga"
+  },
+  {
+    "id": "parsvakonasana",
+    "sanskrit": "Parsvakonasana",
+    "devanagari": "पार्श्वकोणासन",
+    "name_en": "Extended Side Angle Pose",
+    "name_hi": "पार्श्व कोण मुद्रा",
+    "category": "standing",
+    "difficulty": 2,
+    "duration_seconds": 40,
+    "alignment_steps": [
+      "From Warrior II with the right leg forward, lower the right forearm to the right thigh or bring the right hand to a block placed outside the right foot.",
+      "Extend the left arm up and then arc it over the ear, creating a continuous diagonal line from the outer left foot to the left fingertips.",
+      "Press the right forearm into the right thigh to open the chest upward; do not dump weight into the arm — the legs should still support you.",
+      "Stack the left shoulder directly over the right shoulder by rotating the chest toward the sky.",
+      "Keep the right knee bent at 90 degrees, tracking over the second toe, without letting the knee drift forward of the ankle.",
+      "Actively press the outer edge of the left foot into the floor and straighten the left leg, creating resistance.",
+      "Lengthen the left side body from the hip to the fingertips — feel the intercostals between the ribs expand.",
+      "Maintain the gaze upward toward the top hand or straight ahead, depending on neck comfort."
+    ],
+    "alignment_steps_hi": [
+      "दाहिने पैर के साथ वीरभद्रासन II से दाहिनी भुजा को दाहिनी जांघ पर या बाहर ब्लॉक पर रखें।",
+      "बाईं बांह को ऊपर और फिर कान के ऊपर आर्क करें, बाईं उंगलियों तक एक विकर्ण रेखा बनाएं।",
+      "छाती को ऊपर खोलने के लिए दाहिनी भुजा को जांघ में दबाएं; हाथ पर वजन न डालें।",
+      "बाएं कंधे को दाहिने के ऊपर रखें; छाती को आकाश की ओर घुमाएं।",
+      "दाहिने घुटने को 90 डिग्री पर रखें, दूसरे पैर के अंगूठे के ऊपर।",
+      "बाएं पैर के बाहरी किनारे को जमीन में दबाएं और पैर को सीधा रखें।",
+      "कूल्हे से उंगलियों तक बाईं ओर को लंबा करें — पसलियों के बीच फैलाव महसूस करें।",
+      "ऊपरी हाथ की ओर या सामने देखें।"
+    ],
+    "benefits": [
+      "Stretches the lateral thoracic wall, intercostals, and obliques through the long diagonal line.",
+      "Strengthens the quadriceps, hip abductors, and glutes of the bent-knee leg under deep load.",
+      "Stretches the adductors and iliopsoas of the back leg.",
+      "Improves thoracic rotation by stacking the shoulders and opening the chest.",
+      "Stimulates peristalsis and digestive organ function through lateral compression and release."
+    ],
+    "benefits_hi": [
+      "पार्श्व थोरैसिक दीवार, इंटरकोस्टल और ऑब्लिक को खींचता है।",
+      "मुड़े हुए पैर की जांघ, हिप एब्डक्टर और ग्लूट्स को मजबूत करता है।",
+      "पिछले पैर के एडक्टर और इलियोसोअस को खींचता है।",
+      "थोरैसिक रोटेशन में सुधार करता है।",
+      "पार्श्व संपीड़न से पाचन क्रिया को उत्तेजित करता है।"
+    ],
+    "safety": [
+      "Avoid deep side bends with a herniated lumbar disc, especially when combined with rotation.",
+      "Those with knee injuries should place the forearm on the thigh rather than reaching for the floor.",
+      "Neck discomfort is common when rotating the head; gaze straight ahead rather than upward."
+    ],
+    "safety_hi": [
+      "हर्नियेटेड काठ की डिस्क के साथ गहरे साइड बेंड से बचें।",
+      "घुटने की चोट वाले लोग भुजा को जमीन की बजाय जांघ पर रखें।",
+      "गर्दन की परेशानी होने पर सिर को घुमाने के बजाय सामने देखें।"
+    ],
+    "counter_pose_id": "prasarita-padottanasana",
+    "modifications": [
+      "Rest the forearm on the front thigh instead of reaching to a block or floor — keep the chest open.",
+      "Use a block on its highest setting outside the front foot to bring the floor closer.",
+      "Keep the top arm on the hip if the shoulder or neck is compromised."
+    ],
+    "modifications_hi": [
+      "ब्लॉक या जमीन तक पहुंचने के बजाय भुजा को सामने की जांघ पर रखें।",
+      "सामने के पैर के बाहर ब्लॉक को उसकी सबसे ऊंची सेटिंग पर रखें।",
+      "यदि कंधा या गर्दन असहज हो तो ऊपरी हाथ को कूल्हे पर रखें।"
+    ],
+    "progression_to": "ardha-chandrasana",
+    "props_optional": ["block"],
+    "video_url": "/video/asanas/parsvakonasana.mp4",
+    "image_url": "/og/asanas/parsvakonasana.jpg",
+    "lineage": "iyengar"
+  },
+  {
+    "id": "ardha-chandrasana",
+    "sanskrit": "Ardha Chandrasana",
+    "devanagari": "अर्ध चन्द्रासन",
+    "name_en": "Half Moon Pose",
+    "name_hi": "अर्ध चंद्र मुद्रा",
+    "category": "balance",
+    "difficulty": 3,
+    "duration_seconds": 20,
+    "alignment_steps": [
+      "Begin in Triangle Pose or Extended Side Angle; place a block on its highest setting approximately 12 inches ahead of the right foot.",
+      "Shift weight onto the right foot; bend the right knee and bring the right hand to the block directly below the right shoulder.",
+      "As the right leg straightens, lift the left leg parallel to the floor or higher, flexing the left foot strongly.",
+      "Stack the left hip directly above the right hip by externally rotating it open; do not allow the pelvis to tilt toward the floor.",
+      "Once stable, extend the left arm directly toward the sky, stacking both shoulders in a vertical line.",
+      "Rotate the chest toward the sky and gaze upward toward the top hand, or keep the gaze forward for a less intense cervical rotation.",
+      "Engage the standing leg completely: press through the standing foot, activate the quadriceps, and isometrically draw the foot toward the hand on the block.",
+      "Breathe expansively — the lateral body is wide open; allow the breath to fill this space."
+    ],
+    "alignment_steps_hi": [
+      "त्रिकोणासन या पार्श्वकोणासन से शुरू करें; दाहिने पैर के लगभग 12 इंच आगे ब्लॉक रखें।",
+      "दाहिने पैर पर वजन डालें; दाहिने घुटने को मोड़ें और दाहिने हाथ को ब्लॉक पर लाएं।",
+      "जैसे दाहिना पैर सीधा होता है, बाएं पैर को जमीन के समानांतर या ऊंचाई पर उठाएं।",
+      "बाएं कूल्हे को दाहिने के ऊपर रखकर बाहर की ओर घुमाएं।",
+      "स्थिर होने पर बाईं बांह को आकाश की ओर फैलाएं।",
+      "छाती को आकाश की ओर घुमाएं और ऊपरी हाथ की ओर देखें।",
+      "खड़े पैर को पूरी तरह सक्रिय करें: पैर दबाएं, जांघ सक्रिय रखें।",
+      "विस्तृत रूप से सांस लें — पार्श्व शरीर पूरी तरह खुला है।"
+    ],
+    "benefits": [
+      "Builds advanced single-leg balance under open-hip rotation, requiring complex proprioceptive integration.",
+      "Strengthens the hip abductors, quadriceps, and IT band of the standing leg under challenging lateral load.",
+      "Stretches the thoracic side body, obliques, and intercostals through the lateral opening.",
+      "Develops coordination between hip mobility and spinal rotation.",
+      "Builds confidence and fearlessness in unstable positions — psychological content is integral to traditional teaching."
+    ],
+    "benefits_hi": [
+      "ओपन-हिप रोटेशन के तहत उन्नत एकल-पैर संतुलन बनाता है।",
+      "खड़े पैर के हिप एब्डक्टर, जांघ और IT बैंड को मजबूत करता है।",
+      "पार्श्व उद्घाटन से थोरैसिक साइड बॉडी, ऑब्लिक और इंटरकोस्टल को खींचता है।",
+      "हिप गतिशीलता और रीढ़ की घुमाव के बीच समन्वय विकसित करता है।",
+      "अस्थिर स्थितियों में आत्मविश्वास और निर्भयता बनाता है।"
+    ],
+    "safety": [
+      "This pose requires significant balance capacity; always practice with a wall behind you when learning.",
+      "Avoid if you have a recent ankle sprain or knee ligament injury in the standing leg.",
+      "Those with sacroiliac joint issues should be cautious about the extreme hip opening."
+    ],
+    "safety_hi": [
+      "इस आसन के लिए महत्वपूर्ण संतुलन क्षमता आवश्यक है; सीखते समय हमेशा दीवार के सामने अभ्यास करें।",
+      "हाल ही में एड़ी की मोच या घुटने के स्नायुबंधन की चोट हो तो बचें।",
+      "सेक्रोइलियक जोड़ की समस्या वाले लोग अत्यधिक हिप ओपनिंग में सावधान रहें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Practice with the back against a wall to eliminate balance uncertainty and focus on alignment.",
+      "Use a block under the standing hand at the highest height.",
+      "Keep the lifted leg lower than parallel until the hip and core strength develops sufficiently."
+    ],
+    "modifications_hi": [
+      "संतुलन की चिंता दूर करने के लिए पीठ को दीवार से लगाकर अभ्यास करें।",
+      "खड़े हाथ के नीचे ब्लॉक सबसे ऊंची ऊंचाई पर रखें।",
+      "जब तक हिप और कोर की ताकत पर्याप्त न हो, उठे हुए पैर को समानांतर से नीचे रखें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["block", "wall"],
+    "video_url": "/video/asanas/ardha-chandrasana.mp4",
+    "image_url": "/og/asanas/ardha-chandrasana.jpg",
+    "lineage": "iyengar"
+  },
+  {
+    "id": "garudasana",
+    "sanskrit": "Garudasana",
+    "devanagari": "गरुडासन",
+    "name_en": "Eagle Pose",
+    "name_hi": "गरुड़ मुद्रा",
+    "category": "balance",
+    "difficulty": 3,
+    "duration_seconds": 30,
+    "alignment_steps": [
+      "Begin in Tadasana; bend both knees slightly, then lift the right leg and cross the right thigh over the left thigh.",
+      "If available, hook the right foot behind the left lower calf; if not, let the right toes rest lightly to the outer left calf.",
+      "Keep the standing knee bent — deepening the squat increases the challenge but must not compromise ankle or knee integrity.",
+      "Extend both arms forward at shoulder height; cross the left arm over the right at the elbows.",
+      "Bend both elbows and wrap the forearms until the palms come together — or bring the backs of the hands together if full wrap is unavailable.",
+      "Lift the elbows to shoulder height and draw them slightly away from the face to create space in the upper back.",
+      "Square the hips and shoulders toward the front of the mat; resist the tendency to spiral the torso in the direction of the crossing.",
+      "Find a single drishti point; hold for five to eight breaths before unwrapping and repeating on the other side."
+    ],
+    "alignment_steps_hi": [
+      "ताडासन से शुरू करें; दोनों घुटनों को थोड़ा मोड़ें, फिर दाहिनी जांघ को बाईं जांघ के ऊपर क्रॉस करें।",
+      "यदि संभव हो तो दाहिने पैर को बाईं निचली पिंडली के पीछे हुक करें।",
+      "खड़े घुटने को मोड़े रखें — स्क्वाट गहरा करने से चुनौती बढ़ती है।",
+      "दोनों बाहों को कंधे की ऊंचाई पर आगे बढ़ाएं; बाईं बांह को दाईं के ऊपर कोहनियों पर क्रॉस करें।",
+      "दोनों कोहनियों को मोड़ें और अग्रभागों को लपेटें जब तक हथेलियां एक साथ न आ जाएं।",
+      "कोहनियों को कंधे की ऊंचाई पर उठाएं और ऊपरी पीठ में जगह बनाने के लिए थोड़ा चेहरे से दूर खींचें।",
+      "कूल्हों और कंधों को आगे की ओर चौकोर रखें।",
+      "एक दृष्टि बिंदु खोजें; पांच से आठ श्वास तक रुकें।"
+    ],
+    "benefits": [
+      "Stretches the posterior shoulder capsule, rhomboids, and trapezius — particularly beneficial for desk workers with upper-back tension.",
+      "Strengthens the standing ankle, calf, and knee stabilizers under a challenging crossed-leg load.",
+      "Stretches the IT band, hip external rotators, and piriformis of the crossed leg.",
+      "Builds single-leg balance capacity and concentration through the complex wrap configuration.",
+      "Stimulates the kidney meridian in traditional yogic anatomy; improves circulation to the lower extremities."
+    ],
+    "benefits_hi": [
+      "पोस्टीरियर शोल्डर कैप्सूल, रोम्बॉइड और ट्रेपेज़ियस को खींचता है — डेस्क वर्कर के लिए विशेष लाभ।",
+      "खड़े एड़ी, पिंडली और घुटने के स्थिरकारक को मजबूत करता है।",
+      "क्रॉस किए गए पैर के IT बैंड, हिप एक्सटर्नल रोटेटर और पिरिफॉर्मिस को खींचता है।",
+      "एकल-पैर संतुलन क्षमता और एकाग्रता बनाता है।",
+      "पारंपरिक योग शरीर रचना में किडनी मेरिडियन को उत्तेजित करता है।"
+    ],
+    "safety": [
+      "Those with knee injuries should not force the ankle wrap; use the toes-to-floor modification.",
+      "Shoulder injuries (rotator cuff tears, AC joint issues) may prevent the full arm wrap; use a strap between the hands.",
+      "Avoid if you have a wrist injury that makes forearm rotation painful."
+    ],
+    "safety_hi": [
+      "घुटने की चोट वाले लोग एड़ी लपेटने पर जोर न दें; पंजों को जमीन पर रखने वाले संशोधन का उपयोग करें।",
+      "कंधे की चोट पूर्ण हाथ लपेट को रोक सकती है; हाथों के बीच पट्टा उपयोग करें।",
+      "कलाई की चोट हो जिसमें अग्रभाग घुमाने में दर्द हो तो बचें।"
+    ],
+    "counter_pose_id": "vrksasana",
+    "modifications": [
+      "Rest the toes of the crossed leg lightly on the floor as a kickstand — easier on the standing knee.",
+      "Cross only the arms without crossing the legs (standing on two feet) to isolate the upper-body stretch.",
+      "Use a strap between the palms if the hands cannot come together in the arm wrap."
+    ],
+    "modifications_hi": [
+      "क्रॉस किए गए पैर के पंजों को जमीन पर हल्के से रखें — खड़े घुटने पर आसान।",
+      "केवल बाहों को क्रॉस करें बिना पैरों को क्रॉस किए।",
+      "यदि हाथ हाथ लपेट में नहीं आ सकते तो हथेलियों के बीच पट्टा उपयोग करें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["strap"],
+    "video_url": "/video/asanas/garudasana.mp4",
+    "image_url": "/og/asanas/garudasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "natarajasana",
+    "sanskrit": "Natarajasana",
+    "devanagari": "नटराजासन",
+    "name_en": "Dancer's Pose",
+    "name_hi": "नटराज मुद्रा",
+    "category": "balance",
+    "difficulty": 4,
+    "duration_seconds": 20,
+    "alignment_steps": [
+      "Begin in Tadasana; shift weight onto the left foot and bend the right knee, bringing the right heel toward the right buttock.",
+      "Reach back with the right hand and grasp the inner arch of the right foot, wrapping the thumb toward the toes and index finger toward the heel.",
+      "Press the right foot firmly back and up into the hand, creating resistance — do not simply pull the foot with the arm; initiate the lift from the right hip extensor.",
+      "Simultaneously extend the left arm forward and upward, bicep beside the ear, as the chest lifts into a gentle backbend.",
+      "Hinge slightly forward from the hip — the torso angles about 45 degrees from vertical — keeping the spine long and the lower ribs drawing in.",
+      "Keep both hips squared forward; resist the tendency of the right hip to externally rotate and open to the side.",
+      "Find a single steady drishti on the left fingertips or a fixed point on the wall.",
+      "Breathe through the stretch in the right hip flexor, quadriceps, and shoulder; hold for five to eight breaths."
+    ],
+    "alignment_steps_hi": [
+      "ताडासन से बाएं पैर पर वजन डालें और दाहिने घुटने को मोड़ें, एड़ी को नितंब की ओर लाएं।",
+      "दाहिने हाथ से पीछे पहुंचकर दाहिने पैर के भीतरी आर्च को पकड़ें।",
+      "दाहिने पैर को हाथ में दृढ़ता से पीछे और ऊपर दबाएं — केवल हाथ से न खींचें।",
+      "एक साथ बाईं बांह को आगे और ऊपर फैलाएं, बाइसेप कान के पास।",
+      "कूल्हे से थोड़ा आगे झुकें — धड़ लगभग 45 डिग्री झुका हो।",
+      "दोनों कूल्हों को आगे की ओर चौकोर रखें।",
+      "बाईं उंगलियों पर या दीवार पर एक स्थिर दृष्टि बिंदु खोजें।",
+      "दाहिने हिप फ्लेक्सर, जांघ और कंधे में खिंचाव के साथ सांस लें।"
+    ],
+    "benefits": [
+      "Stretches the hip flexors (psoas, rectus femoris) and quadriceps of the raised leg intensely.",
+      "Builds thoracic extension and shoulder flexibility through the supported backbend.",
+      "Develops advanced single-leg balance and proprioception under a dynamic, multi-plane challenge.",
+      "Strengthens the standing leg's gluteus medius, quadriceps, and ankle stabilizers.",
+      "Cultivates focus, grace, and the internal experience of Shiva as Nataraja — the cosmic dancer — a primary philosophical reference in Indian tradition."
+    ],
+    "benefits_hi": [
+      "उठे हुए पैर के हिप फ्लेक्सर और जांघ को तीव्रता से खींचता है।",
+      "सहायित बैकबेंड से थोरैसिक एक्सटेंशन और कंधे की लचीलापन बनाता है।",
+      "उन्नत एकल-पैर संतुलन और प्रोप्रियोसेप्शन विकसित करता है।",
+      "खड़े पैर के ग्लूटस मेडियस, जांघ और एड़ी को मजबूत करता है।",
+      "एकाग्रता, कृपा और शिव-नटराज का आंतरिक अनुभव विकसित करता है।"
+    ],
+    "safety": [
+      "Avoid in the presence of a recent lumbar spine injury; the simultaneous backbend and hip flexor stretch load the lumbar erectors.",
+      "Those with sacroiliac instability should keep the backbend mild and avoid deep hip external rotation.",
+      "Shoulder injuries that limit internal rotation of the shoulder (rotator cuff issues) make the grip difficult; use a strap."
+    ],
+    "safety_hi": [
+      "हाल ही में काठ की रीढ़ की चोट हो तो बचें।",
+      "सेक्रोइलियक अस्थिरता वाले लोग बैकबेंड को हल्का रखें।",
+      "कंधे की चोट जो आंतरिक घुमाव सीमित करे — पट्टा उपयोग करें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Use a yoga strap looped around the raised foot so you can hold the strap with both hands without requiring deep shoulder rotation.",
+      "Practice near a wall with the free hand resting on it; focus on the stretch before attempting the free balance.",
+      "Keep the torso more vertical (less forward lean) to reduce the intensity of the backbend component."
+    ],
+    "modifications_hi": [
+      "उठे हुए पैर के चारों ओर पट्टा लगाएं ताकि आप दोनों हाथों से पट्टा पकड़ सकें।",
+      "दीवार के पास अभ्यास करें, मुक्त हाथ दीवार पर; मुक्त संतुलन से पहले खिंचाव पर ध्यान दें।",
+      "बैकबेंड की तीव्रता कम करने के लिए धड़ को अधिक सीधा रखें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["strap", "wall"],
+    "video_url": "/video/asanas/natarajasana.mp4",
+    "image_url": "/og/asanas/natarajasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "uttanasana",
+    "sanskrit": "Uttanasana",
+    "devanagari": "उत्तानासन",
+    "name_en": "Standing Forward Fold",
+    "name_hi": "खड़े होकर आगे झुकना",
+    "category": "forward-fold",
+    "difficulty": 1,
+    "duration_seconds": 45,
+    "alignment_steps": [
+      "Begin in Tadasana; place hands on hips and inhale to lengthen the spine.",
+      "On an exhale, hinge from the hip crease — not the waist — maintaining a long spine as long as possible in the descent.",
+      "Let the torso fold over the legs; release the hands toward the floor, to blocks, or to opposite elbows for a ragdoll version.",
+      "Micro-bend the knees to protect the hamstring attachment at the sit bones, especially if hamstrings are tight.",
+      "Allow the crown of the head to hang toward the floor; release the neck completely and let gravity do the work.",
+      "On each inhale, create a slight lengthening through the front body; on each exhale, release a little deeper.",
+      "Press the feet evenly into the floor and gently engage the quadriceps — this reciprocal inhibition helps the hamstrings release.",
+      "To come up, bend the knees, place hands on hips, and rise with a flat back to protect the lumbar discs."
+    ],
+    "alignment_steps_hi": [
+      "ताडासन से हाथों को कूल्हों पर रखें और श्वास लेते हुए रीढ़ को लंबा करें।",
+      "श्वास छोड़ते हुए कूल्हे के क्रीज से झुकें — कमर से नहीं — रीढ़ को जितना संभव हो लंबा रखें।",
+      "धड़ को पैरों पर मोड़ने दें; हाथों को जमीन, ब्लॉक की ओर छोड़ें।",
+      "हैमस्ट्रिंग के जोड़ की रक्षा के लिए घुटनों को थोड़ा मोड़ें।",
+      "सिर के मुकुट को जमीन की ओर लटकने दें; गर्दन को पूरी तरह छोड़ें।",
+      "प्रत्येक श्वास पर सामने के शरीर में हल्का विस्तार बनाएं; प्रत्येक श्वास निकास पर थोड़ा गहरा जाएं।",
+      "पैरों को जमीन में दबाएं और जांघ को हल्के से सक्रिय करें।",
+      "उठने के लिए घुटनों को मोड़ें, हाथों को कूल्हों पर रखें और सपाट पीठ से उठें।"
+    ],
+    "benefits": [
+      "Lengthens the hamstrings, calves, and spinal erectors through a gravity-assisted passive stretch.",
+      "Decompresses the lumbar intervertebral discs by allowing the spine to hang freely.",
+      "Stimulates the parasympathetic nervous system through the inversion of the head below the heart, reducing cortisol and anxiety.",
+      "Stretches the sacroiliac joint and piriformis muscle, relieving tension from prolonged sitting.",
+      "Increases blood flow to the brain and can relieve mild headaches."
+    ],
+    "benefits_hi": [
+      "गुरुत्वाकर्षण सहायता से हैमस्ट्रिंग, पिंडली और रीढ़ की मांसपेशियों को खींचता है।",
+      "रीढ़ को स्वतंत्र रूप से लटकने देकर काठ की इंटरवर्टेब्रल डिस्क को विसंपीड़ित करता है।",
+      "हृदय से नीचे सिर के व्युत्क्रम से पैरासिम्पेथेटिक तंत्रिका तंत्र को उत्तेजित करता है।",
+      "सेक्रोइलियक जोड़ और पिरिफॉर्मिस मांसपेशी को खींचता है।",
+      "मस्तिष्क में रक्त प्रवाह बढ़ाता है।"
+    ],
+    "safety": [
+      "Those with herniated lumbar discs should bend the knees significantly and avoid a full flat-back fold — hinge only to a comfortable range.",
+      "Glaucoma or retinal detachment: avoid holding inversions for extended periods.",
+      "Osteoporosis: avoid rounding the lumbar spine aggressively; keep a neutral back and bend the knees substantially."
+    ],
+    "safety_hi": [
+      "हर्नियेटेड काठ की डिस्क वाले लोग घुटनों को काफी मोड़ें और पूर्ण फ्लैट-बैक फोल्ड से बचें।",
+      "ग्लूकोमा या रेटिनल डिटैचमेंट: इनवर्शन को लंबे समय तक न रोकें।",
+      "ऑस्टियोपोरोसिस: काठ की रीढ़ को आक्रामक रूप से न मोड़ें; घुटनों को पर्याप्त मोड़ें।"
+    ],
+    "counter_pose_id": "tadasana",
+    "modifications": [
+      "Bend the knees generously to remove tension from the hamstrings and lower back while still benefiting from the inversion.",
+      "Place blocks on any height directly below the shoulders to bring the floor closer.",
+      "Ragdoll variation: hold opposite elbows overhead and sway gently side to side to release spinal tension."
+    ],
+    "modifications_hi": [
+      "हैमस्ट्रिंग और कमर से तनाव हटाने के लिए घुटनों को पर्याप्त मोड़ें।",
+      "कंधों के नीचे किसी भी ऊंचाई पर ब्लॉक रखें।",
+      "रैगडॉल भिन्नता: विपरीत कोहनियों को ऊपर पकड़ें और हल्के से दोनों तरफ हिलाएं।"
+    ],
+    "progression_to": "padangusthasana",
+    "props_optional": ["block"],
+    "video_url": "/video/asanas/uttanasana.mp4",
+    "image_url": "/og/asanas/uttanasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "padangusthasana",
+    "sanskrit": "Padangusthasana",
+    "devanagari": "पादांगुष्ठासन",
+    "name_en": "Big Toe Pose",
+    "name_hi": "अंगूठा पकड़ आगे झुकना",
+    "category": "forward-fold",
+    "difficulty": 2,
+    "duration_seconds": 45,
+    "alignment_steps": [
+      "Stand in Tadasana with feet hip-width apart, toes pointing forward.",
+      "On an exhale, fold forward from the hips, keeping the legs straight or with a micro-bend in the knees.",
+      "Hook the first two fingers and thumb of each hand around the respective big toes — this is Yogi Mudra grip.",
+      "On an inhale, straighten the arms, lift the chest, and lengthen the front body toward a flat back — this is Ardha Uttanasana.",
+      "On the next exhale, engage the toe grip firmly and use the arms as traction to fold deeper; draw the elbows wide to the sides.",
+      "Press the feet into the floor and engage the quadriceps to facilitate the hamstring release through reciprocal inhibition.",
+      "Let the head hang fully or encourage the forehead toward the shins — do not strain the neck.",
+      "Hold for five to ten breaths, using the grip to intensify the fold with each exhale."
+    ],
+    "alignment_steps_hi": [
+      "कूल्हे की चौड़ाई पर पैरों के साथ ताडासन में खड़े हों, पंजे आगे।",
+      "श्वास छोड़ते हुए कूल्हों से आगे झुकें, पैरों को सीधा या थोड़ा मोड़कर।",
+      "प्रत्येक हाथ की पहली दो उंगलियों और अंगूठे को संबंधित बड़े पैर के अंगूठे के चारों ओर हुक करें।",
+      "श्वास लेते हुए बाहों को सीधा करें, छाती उठाएं और आगे के शरीर को लंबा करें।",
+      "अगले श्वास निकास पर पैर की पकड़ को मजबूत करें और बाहों को कर्षण के रूप में उपयोग करके गहरा झुकें।",
+      "पैरों को जमीन में दबाएं और जांघ को सक्रिय करें।",
+      "सिर को पूरी तरह लटकने दें या माथे को पिंडलियों की ओर प्रोत्साहित करें।",
+      "पांच से दस श्वास तक रुकें।"
+    ],
+    "benefits": [
+      "Intensifies the hamstring stretch beyond Uttanasana by using the arm traction to deepen the fold progressively.",
+      "Strengthens the forearm flexors and grip — the yogic equivalent of grip strength training.",
+      "Stimulates the liver and kidneys through compression of the abdominal organs against the thighs.",
+      "Calms the nervous system and relieves mild anxiety through the inversion and sustained forward fold.",
+      "Lengthens the spinal erectors and decompresses the posterior aspect of the intervertebral discs."
+    ],
+    "benefits_hi": [
+      "हाथ के कर्षण का उपयोग करके उत्तानासन से परे हैमस्ट्रिंग खिंचाव को तेज करता है।",
+      "अग्रभाग के फ्लेक्सर और पकड़ को मजबूत करता है।",
+      "जांघों के खिलाफ पेट के अंगों के संपीड़न से जिगर और गुर्दे को उत्तेजित करता है।",
+      "व्युत्क्रम और आगे के झुकाव से तंत्रिका तंत्र को शांत करता है।",
+      "रीढ़ की मांसपेशियों को लंबा करता है और डिस्क के पीछे को विसंपीड़ित करता है।"
+    ],
+    "safety": [
+      "Those with hamstring insertional tendinopathy (pain at the sit bones) should bend the knees and avoid maximum stretch.",
+      "Avoid aggressive pulling with the arms if the hamstrings are very tight — work slowly over weeks.",
+      "Avoid in herniated lumbar discs; the deep fold with traction can increase intradiscal pressure."
+    ],
+    "safety_hi": [
+      "हैमस्ट्रिंग इन्सर्शनल टेंडिनोपैथी वाले लोग घुटनों को मोड़ें और अधिकतम खिंचाव से बचें।",
+      "हैमस्ट्रिंग बहुत तंग होने पर बाहों से आक्रामक खींचाई से बचें।",
+      "हर्नियेटेड काठ की डिस्क में बचें।"
+    ],
+    "counter_pose_id": "tadasana",
+    "modifications": [
+      "Bend the knees generously; the grip can still be engaged even with bent knees.",
+      "Use a strap looped around the balls of both feet if the hands cannot reach the toes.",
+      "Perform a seated version (Paschimottanasana) if standing balance is compromised."
+    ],
+    "modifications_hi": [
+      "घुटनों को पर्याप्त मोड़ें; मुड़े हुए घुटनों के साथ भी पकड़ बनाई जा सकती है।",
+      "यदि हाथ पंजों तक नहीं पहुंच सकते तो दोनों पैरों की गोलाइयों के चारों ओर पट्टा लगाएं।",
+      "यदि खड़े होकर संतुलन बाधित हो तो बैठकर संस्करण करें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["strap"],
+    "video_url": "/video/asanas/padangusthasana.mp4",
+    "image_url": "/og/asanas/padangusthasana.jpg",
+    "lineage": "ashtanga"
+  },
+  {
+    "id": "prasarita-padottanasana",
+    "sanskrit": "Prasarita Padottanasana",
+    "devanagari": "प्रसारित पादोत्तानासन",
+    "name_en": "Wide-Legged Standing Forward Fold",
+    "name_hi": "चौड़े पैरों से आगे झुकना",
+    "category": "forward-fold",
+    "difficulty": 1,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Step the feet wide, approximately 4 to 4.5 feet apart, with feet parallel and toes pointing forward.",
+      "Place hands on hips; inhale and lengthen the spine upward, creating as much space between the vertebrae as possible.",
+      "On an exhale, hinge forward from the hip crease with a flat back, maintaining the length as you descend.",
+      "Place the hands on the floor directly below the shoulders, or walk them back until the crown of the head comes toward the floor.",
+      "In the full expression, the crown of the head rests on the floor with hands beside the feet — a natural inversion.",
+      "Actively press the outer edges of both feet into the floor and engage the inner thighs, drawing them gently upward.",
+      "With each inhale, draw the chest forward and upward to create slight spinal lengthening; with each exhale, soften deeper into the fold.",
+      "To come out, place hands on hips, micro-bend the knees, and rise on an inhale with a flat back."
+    ],
+    "alignment_steps_hi": [
+      "पैरों को लगभग 4 से 4.5 फीट चौड़ा करें, पैर समानांतर।",
+      "हाथों को कूल्हों पर रखें; श्वास लेते हुए रीढ़ को ऊपर लंबा करें।",
+      "श्वास छोड़ते हुए कूल्हे के क्रीज से सपाट पीठ के साथ आगे झुकें।",
+      "हाथों को कंधों के नीचे जमीन पर रखें, या पीछे चलाएं जब तक सिर का मुकुट जमीन की ओर न आए।",
+      "पूर्ण अभिव्यक्ति में सिर का मुकुट जमीन पर हाथों के बीच टिका होता है।",
+      "दोनों पैरों के बाहरी किनारों को जमीन में दबाएं और आंतरिक जांघों को सक्रिय करें।",
+      "प्रत्येक श्वास पर छाती को आगे और ऊपर खींचें; प्रत्येक श्वास निकास पर गहरा जाएं।",
+      "बाहर आने के लिए हाथों को कूल्हों पर रखें और सपाट पीठ से उठें।"
+    ],
+    "benefits": [
+      "Lengthens the adductors (inner thighs), hamstrings, and spinal erectors simultaneously — a uniquely efficient stretch.",
+      "Provides a mild inversion that calms the nervous system and redirects blood flow to the brain.",
+      "Decompresses the lumbar spine through gravity-assisted traction in the wide-legged position.",
+      "Stretches the IT band and tensor fasciae latae through the combination of abduction and forward fold.",
+      "Accessible as a resting inversion for students who are not ready for Headstand or Shoulderstand."
+    ],
+    "benefits_hi": [
+      "एडक्टर (आंतरिक जांघ), हैमस्ट्रिंग और रीढ़ की मांसपेशियों को एक साथ खींचता है।",
+      "हल्का व्युत्क्रम तंत्रिका तंत्र को शांत करता है और मस्तिष्क में रक्त प्रवाह को पुनर्निर्देशित करता है।",
+      "चौड़े पैरों की स्थिति में गुरुत्वाकर्षण से काठ की रीढ़ को विसंपीड़ित करता है।",
+      "अपहरण और आगे के झुकाव के संयोजन से IT बैंड को खींचता है।",
+      "शीर्षासन या सर्वांगासन के लिए तैयार नहीं छात्रों के लिए आरामदायक व्युत्क्रम।"
+    ],
+    "safety": [
+      "Avoid if you have a recent groin or inner thigh (adductor) strain; the wide stance directly loads these tissues.",
+      "Those with herniated lumbar discs should keep a flat back and avoid deep rounding of the lumbar spine.",
+      "Glaucoma or high blood pressure: keep the head above the heart by placing it on blocks rather than the floor."
+    ],
+    "safety_hi": [
+      "हाल ही में कमर या आंतरिक जांघ की मोच हो तो बचें।",
+      "हर्नियेटेड काठ की डिस्क वाले लोग सपाट पीठ रखें और काठ को गहरा न मोड़ें।",
+      "ग्लूकोमा या उच्च रक्तचाप: सिर को ब्लॉक पर रखें, जमीन पर नहीं।"
+    ],
+    "counter_pose_id": "tadasana",
+    "modifications": [
+      "Place blocks on their highest setting under the hands or head to reduce the range of the fold.",
+      "Keep hands on hips and fold only halfway for a less intense version.",
+      "Perform with the back against a wall (feet parallel to the wall, walking out) for lumbar support."
+    ],
+    "modifications_hi": [
+      "हाथों या सिर के नीचे सबसे ऊंचे ब्लॉक रखें।",
+      "हाथों को कूल्हों पर रखें और केवल आधे रास्ते झुकें।",
+      "पीठ को दीवार से लगाकर करें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["block"],
+    "video_url": "/video/asanas/prasarita-padottanasana.mp4",
+    "image_url": "/og/asanas/prasarita-padottanasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "adho-mukha-svanasana",
+    "sanskrit": "Adho Mukha Svanasana",
+    "devanagari": "अधोमुखश्वानासन",
+    "name_en": "Downward-Facing Dog",
+    "name_hi": "अधोमुख श्वान मुद्रा",
+    "category": "inversion",
+    "difficulty": 1,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Begin in Table Top (Bharmanasana) with wrists directly below shoulders and knees directly below hips.",
+      "Spread the fingers wide, pressing firmly through the mounds of all ten fingers — especially the index-finger mounds — to prevent wrist collapse.",
+      "Tuck the toes under; on an exhale, press the hands and feet into the floor and lift the hips and knees off the ground simultaneously.",
+      "Straighten the legs as much as available while maintaining a long spine — it is more important to have a flat back than straight legs; bend the knees if necessary.",
+      "Press the heels toward the floor without forcing; the degree of heel contact depends entirely on the length of the individual's calves and hamstrings.",
+      "Externally rotate the upper arms so the inner elbows face each other; this broadens the upper back and reduces compression in the shoulder joint.",
+      "Draw the lower ribs in to prevent the lumbar spine from over-arching; lengthen the tailbone toward the sky.",
+      "Relax the neck completely; the head hangs between the upper arms with the ears aligned with the biceps."
+    ],
+    "alignment_steps_hi": [
+      "टेबल टॉप में शुरू करें, कलाइयां कंधों के नीचे और घुटने कूल्हों के नीचे।",
+      "उंगलियों को चौड़ा फैलाएं, सभी दस उंगलियों के मूलों के माध्यम से मजबूती से दबाएं।",
+      "पंजे मोड़ें; श्वास छोड़ते हुए हाथों और पैरों को जमीन में दबाएं और कूल्हों और घुटनों को एक साथ उठाएं।",
+      "पैरों को जितना संभव हो सीधा करें; सपाट पीठ सीधे पैरों से अधिक महत्वपूर्ण है।",
+      "एड़ियों को जमीन की ओर दबाएं बिना जबरदस्ती किए।",
+      "ऊपरी बाहों को बाहर की ओर घुमाएं ताकि भीतरी कोहनियां एक-दूसरे की ओर हों।",
+      "काठ को अधिक झुकने से रोकने के लिए निचली पसलियों को अंदर खींचें।",
+      "गर्दन को पूरी तरह आराम दें; सिर ऊपरी बाहों के बीच लटका हो।"
+    ],
+    "benefits": [
+      "Lengthens the posterior chain holistically: calves, hamstrings, glutes, and the entire length of the spinal erectors.",
+      "Builds shoulder stability by strengthening the rotator cuff, serratus anterior, and lower trapezius under axial load.",
+      "Functions as a mild inversion, improving venous return from the lower extremities and calming the nervous system.",
+      "Stretches the plantar fascia and intrinsic foot muscles through the strong toe-tuck position.",
+      "Builds wrist, forearm, and hand strength — important preparation for arm balances and inversions."
+    ],
+    "benefits_hi": [
+      "पिंडली, हैमस्ट्रिंग, नितंब और पूरी रीढ़ की मांसपेशियों को समग्र रूप से खींचता है।",
+      "अक्षीय भार के तहत रोटेटर कफ, सेराटस एंटीरियर और लोअर ट्रेपेज़ियस को मजबूत करता है।",
+      "हल्के व्युत्क्रम के रूप में कार्य करता है, शिरापरक वापसी में सुधार करता है।",
+      "मजबूत पंजे-मुड़ी स्थिति से प्लांटर फेशिया और पैर की मांसपेशियों को खींचता है।",
+      "कलाई, अग्रभाग और हाथ की ताकत बनाता है।"
+    ],
+    "safety": [
+      "Those with carpal tunnel syndrome should rotate the hands outward (fingers pointing to the sides) or practice on fists to reduce wrist extension pressure.",
+      "Avoid extended holds with a recent shoulder labrum tear or rotator cuff injury; consult a physiotherapist.",
+      "Those with very tight hamstrings should bend the knees generously to prevent the lumbar spine from rounding."
+    ],
+    "safety_hi": [
+      "कार्पल टनल सिंड्रोम वाले लोग हाथों को बाहर की ओर घुमाएं या मुट्ठियों पर अभ्यास करें।",
+      "हाल ही में कंधे के लेब्रम या रोटेटर कफ की चोट हो तो फिजियोथेरेपिस्ट से परामर्श लें।",
+      "बहुत तंग हैमस्ट्रिंग वाले लोग काठ को मुड़ने से रोकने के लिए घुटनों को पर्याप्त मोड़ें।"
+    ],
+    "counter_pose_id": "uttanasana",
+    "modifications": [
+      "Bend the knees generously — the pose is often called 'Puppy Dog' when the knees are bent — to access a flat back without hamstring restriction.",
+      "Place a folded blanket under the heels or practice with heels against a wall to reduce the calf stretch.",
+      "Use a chair or wall to practice a horizontal version with hands on the surface, hips over heels, creating the same spinal line with less wrist load."
+    ],
+    "modifications_hi": [
+      "घुटनों को पर्याप्त मोड़ें — हैमस्ट्रिंग प्रतिबंध के बिना सपाट पीठ पाने के लिए।",
+      "एड़ियों के नीचे मुड़ा हुआ कंबल रखें या एड़ियों को दीवार से लगाकर अभ्यास करें।",
+      "कुर्सी या दीवार पर हाथ रखकर क्षैतिज संस्करण करें।"
+    ],
+    "progression_to": "virabhadrasana-iii",
+    "props_optional": ["block", "wall", "chair", "blanket"],
+    "video_url": "/video/asanas/adho-mukha-svanasana.mp4",
+    "image_url": "/og/asanas/adho-mukha-svanasana.jpg",
+    "lineage": "ashtanga"
+  }
+]

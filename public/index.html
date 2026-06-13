@@ -1,308 +1,734 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-tod="auto">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Sukoon — Find your peace. Free, forever.</title>
-    <meta name="description" content="Sukoon: free meditation, sleep stories, breathing, and an AI friend who listens. No signup. No tracking.">
+    <title>Sukoon — A sanctuary for the heavy moments.</title>
+    <meta name="description" content="No signup. No tracking. Tell Sukoon what's heavy — it will quietly take you to the right place.">
     <meta name="theme-color" content="#0F1B3D">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap" rel="stylesheet">
+
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Sukoon">
     <meta property="og:url" content="https://sukoon.cloud/">
-    <meta property="og:title" content="Sukoon — Find your peace. Free, forever.">
-    <meta property="og:description" content="Free meditation, sleep stories, breathing, and an AI friend who listens. No signup. No tracking.">
-    <meta property="og:image" content="https://sukoon.cloud/og/og-home.jpg">
+    <meta property="og:title" content="Sukoon — A sanctuary for the heavy moments.">
+    <meta property="og:description" content="Tell Sukoon what's heavy. It will quietly take you where your heart needs to go.">
+    <meta property="og:image" content="https://sukoon.cloud/og/home.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="A cinematic dusk over an Indian lake — Sukoon">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Sukoon — Find your peace. Free, forever.">
-    <meta name="twitter:description" content="Free meditation, sleep stories, breathing, and an AI friend who listens. No signup. No tracking.">
-    <meta name="twitter:image" content="https://sukoon.cloud/og/og-home.jpg">
-    <link rel="stylesheet" href="/css/shell.css">
-    <script src="/js/sukoon-experience.js" defer></script>
-</head>
-<body class="page-home" data-experience="home">
 
-    <!-- ==================== CRISIS BAR ==================== -->
-    <a class="crisis-bar" href="/sos.html" aria-label="Crisis support — visit sukoon.cloud/sos">
-        <span class="crisis-bar__dot" aria-hidden="true"></span>
-        <span class="crisis-bar__text">If you're in crisis, <strong>sukoon.cloud/sos</strong> is here.</span>
-        <span class="crisis-bar__arrow" aria-hidden="true">&rarr;</span>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+    <link rel="stylesheet" href="/css/shell.css">
+    <link rel="stylesheet" href="/css/sukoon-revolution.css">
+    <script src="/js/sukoon-experience.js" defer></script>
+    <script src="/js/sukoon-pulse.js" defer></script>
+    <script src="/js/sukoon-safety.js" defer></script>
+    <script src="/js/sukoon-library.js" defer></script>
+    <script src="/js/sukoon-router.js" defer></script>
+
+    <style>
+    /* ─── ENTRY DIALOGUE — minimal, cinematic, mobile-first ─────────────── */
+    :root {
+        --ink: #F5E9D3;
+        --ink-soft: rgba(245, 233, 211, 0.72);
+        --ink-faint: rgba(245, 233, 211, 0.42);
+        --glow: rgba(245, 233, 211, 0.14);
+        --glow-strong: rgba(245, 233, 211, 0.28);
+        --crisis: #C9B4FF;
+        --safe-top: env(safe-area-inset-top, 0px);
+        --safe-bottom: env(safe-area-inset-bottom, 0px);
+    }
+    html, body { margin: 0; padding: 0; background: #050810; color: var(--ink); font-family: 'Fraunces', Georgia, serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+    body.page-entry { min-height: 100vh; min-height: 100dvh; overflow: hidden; }
+
+    /* ── Cinematic backdrop ── */
+    .sk-stage {
+        position: fixed; inset: 0; z-index: 0;
+        overflow: hidden; background: #050810;
+    }
+    .sk-stage__video {
+        position: absolute; inset: 0; width: 100%; height: 100%;
+        object-fit: cover; opacity: 0;
+        transition: opacity 1.6s ease;
+    }
+    .sk-stage__video.is-active { opacity: 1; }
+    .sk-stage__veil {
+        position: absolute; inset: 0;
+        background:
+            radial-gradient(ellipse at 50% 30%, transparent 0%, rgba(5,8,16,0.35) 55%, rgba(5,8,16,0.82) 100%),
+            linear-gradient(to bottom, rgba(5,8,16,0.55) 0%, rgba(5,8,16,0.15) 35%, rgba(5,8,16,0.78) 100%);
+        pointer-events: none;
+    }
+    html[data-tod="dusk"] .sk-stage__veil { background:
+        radial-gradient(ellipse at 50% 25%, rgba(214,148,90,0.10) 0%, rgba(5,8,16,0.45) 55%, rgba(5,8,16,0.85) 100%),
+        linear-gradient(to bottom, rgba(20,12,30,0.55) 0%, rgba(5,8,16,0.20) 40%, rgba(5,8,16,0.82) 100%);
+    }
+    html[data-tod="night"] .sk-stage__veil { background:
+        radial-gradient(ellipse at 50% 25%, rgba(80,98,180,0.10) 0%, rgba(5,8,16,0.55) 55%, rgba(5,8,16,0.88) 100%),
+        linear-gradient(to bottom, rgba(5,8,16,0.70) 0%, rgba(5,8,16,0.30) 40%, rgba(5,8,16,0.88) 100%);
+    }
+
+    /* ── Crisis bar (persistent, top) ── */
+    .sk-crisis-bar {
+        position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+        padding: calc(var(--safe-top) + 9px) 16px 9px;
+        background: rgba(15, 12, 30, 0.55);
+        backdrop-filter: blur(14px) saturate(1.2);
+        -webkit-backdrop-filter: blur(14px) saturate(1.2);
+        border-bottom: 1px solid rgba(201, 180, 255, 0.18);
+        text-align: center;
+        font: 500 12.5px/1.35 'Inter Tight', system-ui, sans-serif;
+        letter-spacing: 0.01em;
+        color: var(--crisis);
+        text-decoration: none;
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        transition: background 0.3s ease;
+    }
+    .sk-crisis-bar:hover { background: rgba(25, 20, 50, 0.72); }
+    .sk-crisis-bar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crisis); box-shadow: 0 0 10px rgba(201,180,255,0.7); animation: skPulseDot 2.4s ease-in-out infinite; }
+    .sk-crisis-bar__text strong { font-weight: 600; }
+    .sk-crisis-bar__arrow { opacity: 0.7; margin-left: 2px; }
+    @keyframes skPulseDot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
+
+    /* ── Lang toggle, top-right ── */
+    .sk-lang {
+        position: fixed; top: calc(var(--safe-top) + 44px); right: 14px; z-index: 40;
+        background: rgba(15,12,30,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(245,233,211,0.14);
+        border-radius: 999px; padding: 6px 14px;
+        font: 500 11.5px/1 'Inter Tight', system-ui, sans-serif; color: var(--ink-soft);
+        letter-spacing: 0.04em; text-transform: uppercase;
+        cursor: pointer; appearance: none; -webkit-appearance: none;
+    }
+    .sk-lang:focus { outline: none; border-color: rgba(245,233,211,0.36); }
+
+    /* ── Brand mark, top-left ── */
+    .sk-brand {
+        position: fixed; top: calc(var(--safe-top) + 44px); left: 18px; z-index: 40;
+        font: 400 19px/1 'Fraunces', Georgia, serif;
+        color: var(--ink); letter-spacing: 0.10em; text-decoration: none;
+        text-transform: lowercase; opacity: 0.92;
+    }
+    .sk-brand::before { content: '✦'; margin-right: 8px; opacity: 0.7; }
+
+    /* ── Entry dialogue centerpiece ── */
+    .sk-entry {
+        position: relative; z-index: 10;
+        min-height: 100vh; min-height: 100dvh;
+        display: flex; flex-direction: column;
+        align-items: center; justify-content: center;
+        padding: calc(var(--safe-top) + 88px) 22px calc(var(--safe-bottom) + 112px);
+        text-align: center;
+    }
+    .sk-entry__inner { width: 100%; max-width: 620px; }
+
+    .sk-prompt {
+        font: 300 clamp(26px, 5.2vw, 40px)/1.28 'Fraunces', Georgia, serif;
+        color: var(--ink); letter-spacing: -0.005em;
+        margin: 0 0 10px;
+        opacity: 0; transform: translateY(14px);
+        animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 0.2s forwards;
+    }
+    .sk-prompt__bullet { display: inline-block; margin: 0 8px; color: var(--ink-faint); font-size: 0.78em; vertical-align: middle; }
+    .sk-prompt__hi {
+        display: block; margin-top: 8px;
+        font: 400 clamp(17px, 3.4vw, 22px)/1.4 'Tiro Devanagari Hindi', 'Hind', serif;
+        color: var(--ink-soft); letter-spacing: 0.005em;
+    }
+    @keyframes skFadeUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* ── Input field ── */
+    .sk-entry__form {
+        position: relative; margin: 32px auto 0; width: 100%;
+        opacity: 0; transform: translateY(14px);
+        animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 0.6s forwards;
+    }
+    .sk-input-wrap {
+        position: relative;
+        background: rgba(20, 18, 40, 0.42);
+        backdrop-filter: blur(20px) saturate(1.4); -webkit-backdrop-filter: blur(20px) saturate(1.4);
+        border: 1px solid rgba(245, 233, 211, 0.18);
+        border-radius: 22px;
+        padding: 4px 4px 4px 22px;
+        display: flex; align-items: center; gap: 10px;
+        box-shadow:
+            0 0 0 1px rgba(245,233,211,0.04),
+            0 20px 60px rgba(0,0,0,0.45),
+            inset 0 1px 0 rgba(245,233,211,0.06);
+        transition: border-color 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+        animation: skSoftGlow 5.5s ease-in-out infinite;
+    }
+    .sk-input-wrap:focus-within {
+        border-color: rgba(245,233,211,0.42);
+        background: rgba(28, 24, 52, 0.55);
+        box-shadow:
+            0 0 0 1px rgba(245,233,211,0.1),
+            0 0 48px rgba(245,233,211,0.10),
+            0 24px 72px rgba(0,0,0,0.55);
+        animation: none;
+    }
+    @keyframes skSoftGlow {
+        0%, 100% { box-shadow: 0 0 0 1px rgba(245,233,211,0.04), 0 20px 60px rgba(0,0,0,0.45), 0 0 0 0 rgba(245,233,211,0); }
+        50%      { box-shadow: 0 0 0 1px rgba(245,233,211,0.08), 0 20px 60px rgba(0,0,0,0.45), 0 0 36px rgba(245,233,211,0.06); }
+    }
+
+    .sk-input {
+        flex: 1; min-width: 0;
+        background: transparent; border: 0; outline: none;
+        font: 400 17.5px/1.45 'Fraunces', Georgia, serif;
+        color: var(--ink); padding: 18px 0;
+        caret-color: var(--ink);
+    }
+    .sk-input::placeholder { color: var(--ink-faint); font-style: italic; font-weight: 300; }
+
+    .sk-iconbtn {
+        flex: 0 0 auto;
+        width: 46px; height: 46px;
+        background: rgba(245,233,211,0.06);
+        border: 1px solid rgba(245,233,211,0.14);
+        border-radius: 50%;
+        display: inline-flex; align-items: center; justify-content: center;
+        color: var(--ink-soft); cursor: pointer;
+        transition: all 0.25s ease;
+    }
+    .sk-iconbtn:hover { background: rgba(245,233,211,0.12); color: var(--ink); border-color: rgba(245,233,211,0.28); }
+    .sk-iconbtn:focus-visible { outline: 2px solid rgba(245,233,211,0.4); outline-offset: 2px; }
+    .sk-iconbtn svg { width: 18px; height: 18px; }
+    .sk-iconbtn--send { background: rgba(245,233,211,0.92); color: #0F1B3D; border-color: rgba(245,233,211,1); }
+    .sk-iconbtn--send:hover { background: #fff; color: #0F1B3D; }
+    .sk-iconbtn--send:disabled { opacity: 0.45; cursor: default; }
+    .sk-iconbtn--mic.is-listening {
+        background: rgba(201,180,255,0.22); border-color: rgba(201,180,255,0.5); color: var(--crisis);
+        animation: skMicPulse 1.4s ease-in-out infinite;
+    }
+    @keyframes skMicPulse {
+        0%,100% { box-shadow: 0 0 0 0 rgba(201,180,255,0.45); }
+        50%     { box-shadow: 0 0 0 10px rgba(201,180,255,0); }
+    }
+
+    /* ── Quick chips ── */
+    .sk-chips {
+        margin: 22px auto 0;
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+        opacity: 0; transform: translateY(10px);
+        animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 1.0s forwards;
+    }
+    .sk-chip {
+        background: rgba(245,233,211,0.05);
+        border: 1px solid rgba(245,233,211,0.16);
+        border-radius: 999px;
+        padding: 9px 16px;
+        font: 400 13.5px/1 'Inter Tight', system-ui, sans-serif;
+        color: var(--ink-soft); cursor: pointer;
+        letter-spacing: 0.01em;
+        transition: all 0.2s ease;
+    }
+    .sk-chip:hover { background: rgba(245,233,211,0.12); color: var(--ink); border-color: rgba(245,233,211,0.32); transform: translateY(-1px); }
+    .sk-chip:active { transform: translateY(0); }
+
+    .sk-hint {
+        margin: 18px 0 0;
+        font: 400 12.5px/1.4 'Inter Tight', system-ui, sans-serif;
+        color: var(--ink-faint); letter-spacing: 0.02em;
+    }
+
+    /* ── Listening / routing state ── */
+    .sk-listening {
+        position: fixed; inset: 0; z-index: 90;
+        display: none; align-items: center; justify-content: center;
+        background: rgba(5,8,16,0.78); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+        opacity: 0; transition: opacity 0.5s ease;
+    }
+    .sk-listening.is-open { display: flex; opacity: 1; }
+    .sk-listening__inner { text-align: center; }
+    .sk-breath-orb {
+        width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 28px;
+        background: radial-gradient(circle, rgba(245,233,211,0.32) 0%, rgba(245,233,211,0.08) 55%, transparent 75%);
+        animation: skBreath 4.6s ease-in-out infinite;
+    }
+    @keyframes skBreath {
+        0%,100% { transform: scale(0.85); opacity: 0.55; }
+        50%     { transform: scale(1.15); opacity: 1; }
+    }
+    .sk-listening__text {
+        font: 300 19px/1.4 'Fraunces', Georgia, serif;
+        color: var(--ink); letter-spacing: 0.01em;
+    }
+    .sk-listening__hi {
+        display: block; margin-top: 4px;
+        font: 400 15px/1.4 'Tiro Devanagari Hindi', serif;
+        color: var(--ink-soft);
+    }
+
+    /* ── Pulse ticker (bottom, above nav) ── */
+    .sk-pulse {
+        position: fixed; left: 0; right: 0;
+        bottom: calc(72px + var(--safe-bottom) + 8px);
+        z-index: 20;
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        font: 400 12px/1 'Inter Tight', system-ui, sans-serif;
+        color: var(--ink-faint); letter-spacing: 0.04em;
+        text-transform: lowercase;
+        pointer-events: none;
+        opacity: 0; animation: skFadeUp 2s ease 1.4s forwards;
+    }
+    .sk-pulse__dot {
+        width: 6px; height: 6px; border-radius: 50%; background: var(--ink-soft);
+        box-shadow: 0 0 12px rgba(245,233,211,0.45);
+        animation: skPulseDot 3.2s ease-in-out infinite;
+    }
+    .sk-pulse__count { color: var(--ink-soft); font-weight: 500; }
+
+    /* ── Bottom nav (5 tabs + floating SOS) ── */
+    .sk-bottom-nav {
+        position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
+        padding: 8px 4px calc(var(--safe-bottom) + 8px);
+        background: rgba(8, 10, 22, 0.78);
+        backdrop-filter: blur(22px) saturate(1.4); -webkit-backdrop-filter: blur(22px) saturate(1.4);
+        border-top: 1px solid rgba(245,233,211,0.10);
+        display: grid; grid-template-columns: repeat(5, 1fr);
+    }
+    .sk-bottom-nav__item {
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+        padding: 8px 4px;
+        text-decoration: none;
+        color: var(--ink-faint);
+        font: 500 10.5px/1 'Inter Tight', system-ui, sans-serif;
+        letter-spacing: 0.04em;
+        transition: color 0.25s ease;
+    }
+    .sk-bottom-nav__item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.6; }
+    .sk-bottom-nav__item:hover, .sk-bottom-nav__item.is-active { color: var(--ink); }
+    .sk-bottom-nav__item.is-active::after {
+        content: ''; position: absolute; transform: translateY(28px);
+        width: 4px; height: 4px; border-radius: 50%; background: var(--ink);
+    }
+
+    .sk-sos-float {
+        position: fixed; right: 18px; bottom: calc(86px + var(--safe-bottom));
+        z-index: 35;
+        width: 54px; height: 54px; border-radius: 50%;
+        background: linear-gradient(135deg, #C9B4FF 0%, #8A6FE6 100%);
+        color: #1A0F3D;
+        display: inline-flex; align-items: center; justify-content: center;
+        text-decoration: none;
+        box-shadow: 0 12px 32px rgba(138,111,230,0.45), 0 0 0 0 rgba(201,180,255,0.7);
+        animation: skSosPulse 2.6s ease-in-out infinite;
+        transition: transform 0.2s ease;
+    }
+    .sk-sos-float:hover { transform: scale(1.06); }
+    .sk-sos-float svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+    @keyframes skSosPulse {
+        0%,100% { box-shadow: 0 12px 32px rgba(138,111,230,0.45), 0 0 0 0 rgba(201,180,255,0.55); }
+        50%     { box-shadow: 0 12px 32px rgba(138,111,230,0.45), 0 0 0 14px rgba(201,180,255,0); }
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+    }
+
+    /* ── Tight phones ── */
+    @media (max-height: 640px) {
+        .sk-entry { padding-top: calc(var(--safe-top) + 72px); }
+        .sk-prompt { font-size: 22px; }
+        .sk-entry__form { margin-top: 22px; }
+        .sk-chips { margin-top: 16px; }
+    }
+    </style>
+</head>
+<body class="page-entry" data-experience="entry">
+
+    <!-- ════════════════════════════════════════════════════════════════
+         CRISIS BAR  (persistent on every page)
+         ════════════════════════════════════════════════════════════════ -->
+    <a class="sk-crisis-bar" href="/now.html" aria-label="Crisis support — go to Sukoon Now">
+        <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
+        <span class="sk-crisis-bar__text">If this hour is heavy, <strong>sukoon.cloud/now</strong> is one tap away.</span>
+        <span class="sk-crisis-bar__arrow" aria-hidden="true">→</span>
     </a>
 
-    <!-- ==================== TOP HEADER ==================== -->
-    <header class="top-header top-header--transparent">
-        <a href="/" class="brand brand--cream">Sukoon</a>
-        <select class="lang-select lang-select--cream" id="langSelect" aria-label="Select language">
-            <option value="en">EN / HI</option>
-            <option value="hi">HI / EN</option>
-            <option value="en-only">English</option>
-            <option value="hi-only">Hindi</option>
-        </select>
-    </header>
+    <!-- Brand mark + language toggle -->
+    <a href="/" class="sk-brand" aria-label="Sukoon">sukoon</a>
+    <select class="sk-lang" id="skLang" aria-label="Language">
+        <option value="en">EN · HI</option>
+        <option value="hi">HI · EN</option>
+        <option value="en-only">English</option>
+        <option value="hi-only">हिंदी</option>
+    </select>
 
-    <main>
+    <!-- ════════════════════════════════════════════════════════════════
+         CINEMATIC BACKDROP (time-of-day aware)
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="sk-stage" aria-hidden="true">
+        <video class="sk-stage__video" id="skVidDay"   src="/video/hero-day.mp4"   muted playsinline loop preload="metadata"></video>
+        <video class="sk-stage__video" id="skVidDusk"  src="/video/hero-dusk.mp4"  muted playsinline loop preload="metadata"></video>
+        <video class="sk-stage__video" id="skVidNight" src="/video/hero-night.mp4" muted playsinline loop preload="metadata"></video>
+        <video class="sk-stage__video" id="skVidHome"  src="/video/hero-home.mp4"  muted playsinline loop preload="metadata"></video>
+        <div class="sk-stage__veil"></div>
+    </div>
 
-        <!-- ==================== HERO ==================== -->
-        <section class="hero-video">
-            <video class="hero-video__media" autoplay loop muted playsinline poster="/og/og-home.jpg">
-                <source src="/video/hero-home.mp4" type="video/mp4">
-            </video>
-            <div class="hero-video__overlay"></div>
-            <div class="hero-content reveal-up">
-                <div class="hero-eyebrow">Welcome to sukoon</div>
-                <h1>Find your sukoon.</h1>
-                <p>Free meditation, sleep stories, breathing, and an AI friend who listens. No signup. No tracking.</p>
-                <p class="hero-hindi" lang="hi">सुकून यानी मन की शांति।</p>
-                <div class="hero-cta">
-                    <a class="btn btn--primary btn--lg" href="/friend.html" data-feature="friend">Start with a conversation</a>
-                    <a class="btn btn--ghost btn--lg" href="/meditate.html" data-feature="meditate">Or breathe with us</a>
+    <!-- ════════════════════════════════════════════════════════════════
+         ENTRY DIALOGUE
+         ════════════════════════════════════════════════════════════════ -->
+    <main class="sk-entry">
+        <div class="sk-entry__inner">
+
+            <h1 class="sk-prompt" id="skPrompt">
+                <span id="skPromptEn">Welcome. <span class="sk-prompt__bullet">✦</span> What's heavy right now?</span>
+                <span class="sk-prompt__hi" lang="hi" id="skPromptHi">आइए · अभी मन पर क्या भारी है?</span>
+            </h1>
+
+            <form class="sk-entry__form" id="skForm" autocomplete="off" novalidate>
+                <div class="sk-input-wrap">
+                    <input
+                        class="sk-input"
+                        id="skInput"
+                        type="text"
+                        name="phrase"
+                        inputmode="text"
+                        autocapitalize="sentences"
+                        spellcheck="false"
+                        placeholder="Say anything. A word is enough."
+                        aria-label="Tell Sukoon what's heavy"
+                    >
+                    <button type="button" class="sk-iconbtn sk-iconbtn--mic" id="skMic" aria-label="Speak instead of typing" title="Tap to speak">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="3" width="6" height="11" rx="3"/>
+                            <path d="M5 11a7 7 0 0 0 14 0"/>
+                            <line x1="12" y1="18" x2="12" y2="22"/>
+                            <line x1="9" y1="22" x2="15" y2="22"/>
+                        </svg>
+                    </button>
+                    <button type="submit" class="sk-iconbtn sk-iconbtn--send" id="skSend" aria-label="Listen to me" title="Listen">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/>
+                            <polyline points="13 6 19 12 13 18"/>
+                        </svg>
+                    </button>
                 </div>
+            </form>
+
+            <div class="sk-chips" role="group" aria-label="Quick feelings">
+                <button type="button" class="sk-chip" data-chip="Just anxious">Just anxious</button>
+                <button type="button" class="sk-chip" data-chip="Can't sleep">Can't sleep</button>
+                <button type="button" class="sk-chip" data-chip="Sad">Sad</button>
             </div>
-            <div class="souls-counter" id="souls-counter" data-auto data-counter="souls">
-                <span class="souls-counter__dot"></span>
-                <span data-count>187</span> souls finding sukoon right now
-            </div>
-        </section>
 
-        <!-- ==================== MOOD PICKER ==================== -->
-        <section class="home-band home-band--dusk">
-            <div class="home-container">
-                <div class="home-section-head home-section-head--center">
-                    <p class="section-eyebrow">A gentle check-in</p>
-                    <h2 class="home-section-title">How are you feeling?</h2>
-                    <p class="home-section-sub" lang="hi">आप कैसा महसूस कर रहे हैं?</p>
-                </div>
-                <div class="mood-picker" role="group" aria-label="Mood check-in">
-                    <a class="mood-pill" data-mood="anxious" href="/breathe.html?p=478">
-                        <span class="mood-pill__glyph" aria-hidden="true">◐</span>
-                        <span class="mood-pill__label">Anxious</span>
-                    </a>
-                    <a class="mood-pill" data-mood="sad" href="/friend.html">
-                        <span class="mood-pill__glyph" aria-hidden="true">○</span>
-                        <span class="mood-pill__label">Sad</span>
-                    </a>
-                    <a class="mood-pill" data-mood="wired" href="/sleep.html">
-                        <span class="mood-pill__glyph" aria-hidden="true">✦</span>
-                        <span class="mood-pill__label">Wired</span>
-                    </a>
-                    <a class="mood-pill" data-mood="lonely" href="/friend.html">
-                        <span class="mood-pill__glyph" aria-hidden="true">◍</span>
-                        <span class="mood-pill__label">Lonely</span>
-                    </a>
-                    <a class="mood-pill" data-mood="curious" href="/meditate.html">
-                        <span class="mood-pill__glyph" aria-hidden="true">✺</span>
-                        <span class="mood-pill__label">Just curious</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== TODAY'S SUKOON ==================== -->
-        <section class="home-band home-band--night">
-            <div class="home-container">
-                <div class="home-section-head">
-                    <p class="section-eyebrow">Today's sukoon</p>
-                    <h2 class="home-section-title">A practice picked for this moment</h2>
-                </div>
-                <a href="/breathe.html" class="scene-card scene-card--feature" data-feature="breathe">
-                    <div class="scene-card__media">
-                        <img src="/og/og-home.jpg" alt="A still lake at dawn" loading="lazy">
-                        <div class="scene-card__media-overlay"></div>
-                    </div>
-                    <div class="scene-card__body">
-                        <p class="scene-card__eyebrow">Five minutes · Breathing</p>
-                        <h3 class="scene-card__title">The 4-7-8 breath, before the day finds you.</h3>
-                        <p class="scene-card__desc">A slow, ancient pattern to settle the nervous system. No app to download, no goal to reach &mdash; just one breath, then the next. Begin whenever you're ready.</p>
-                        <span class="scene-card__cta">Begin breathing &rarr;</span>
-                    </div>
-                </a>
-            </div>
-        </section>
-
-        <!-- ==================== FOUR PILLARS ==================== -->
-        <section class="home-band home-band--twilight">
-            <div class="home-container">
-                <div class="home-section-head home-section-head--center">
-                    <p class="section-eyebrow">Four ways in</p>
-                    <h2 class="home-section-title">Wherever you are, there is a door.</h2>
-                </div>
-                <div class="pillar-grid">
-                    <a href="/sleep.html" class="scene-card scene-card--pillar" data-feature="sleep">
-                        <div class="scene-card__media">
-                            <img src="/og/og-sleep.jpg" alt="A quiet night sky" loading="lazy">
-                            <div class="scene-card__media-overlay"></div>
-                        </div>
-                        <div class="scene-card__body">
-                            <p class="scene-card__eyebrow">Sleep</p>
-                            <h3 class="scene-card__title">Sleep stories</h3>
-                            <p class="scene-card__desc">Slow tales for restless nights, told the old way.</p>
-                        </div>
-                    </a>
-                    <a href="/meditate.html" class="scene-card scene-card--pillar" data-feature="meditate">
-                        <div class="scene-card__media">
-                            <img src="/og/og-meditate.jpg" alt="A still figure under a tree" loading="lazy" onerror="this.src='/og/og-home.jpg'">
-                            <div class="scene-card__media-overlay"></div>
-                        </div>
-                        <div class="scene-card__body">
-                            <p class="scene-card__eyebrow">Meditate</p>
-                            <h3 class="scene-card__title">Meditation</h3>
-                            <p class="scene-card__desc">Guided stillness from a few minutes to an hour.</p>
-                        </div>
-                    </a>
-                    <a href="/breathe.html" class="scene-card scene-card--pillar" data-feature="breathe">
-                        <div class="scene-card__media">
-                            <img src="/og/og-breathe.jpg" alt="Mist rising from water" loading="lazy" onerror="this.src='/og/og-home.jpg'">
-                            <div class="scene-card__media-overlay"></div>
-                        </div>
-                        <div class="scene-card__body">
-                            <p class="scene-card__eyebrow">Breathe</p>
-                            <h3 class="scene-card__title">Breathing</h3>
-                            <p class="scene-card__desc">Four patterns to find your way back to calm.</p>
-                        </div>
-                    </a>
-                    <a href="/friend.html" class="scene-card scene-card--pillar" data-feature="friend">
-                        <div class="scene-card__media">
-                            <img src="/og/og-friend.jpg" alt="A warm window in the dusk" loading="lazy" onerror="this.src='/og/og-home.jpg'">
-                            <div class="scene-card__media-overlay"></div>
-                        </div>
-                        <div class="scene-card__body">
-                            <p class="scene-card__eyebrow">Friend</p>
-                            <h3 class="scene-card__title">An AI friend</h3>
-                            <p class="scene-card__desc">A listener for the late hours. No judgement, no record.</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ==================== AMBIENT AUDIO ==================== -->
-        <div class="ambient-audio" data-audio="/audio/ambient-home.mp3" data-label="Pre-dawn lake"></div>
-
-        <!-- ==================== FOOTER ==================== -->
-        <footer class="home-footer">
-            <div class="home-container">
-                <p class="home-footer__line">Free forever &middot; Made in India &middot; No signup &middot; No tracking</p>
-                <div class="home-footer__helplines">
-                    <p class="home-footer__helpline-title">If you need to speak to someone now:</p>
-                    <ul class="home-footer__helpline-list">
-                        <li><span class="home-footer__helpline-name">iCall</span> <a href="tel:+919152987821">+91 9152987821</a> &middot; Mon–Sat, 8am–10pm</li>
-                        <li><span class="home-footer__helpline-name">Vandrevala Foundation</span> <a href="tel:+919999666555">+91 9999 666 555</a> &middot; 24×7</li>
-                        <li><span class="home-footer__helpline-name">AASRA</span> <a href="tel:+919820466726">+91 9820466726</a> &middot; 24×7</li>
-                    </ul>
-                </div>
-                <p class="home-footer__legal">
-                    <a href="/about.html">About</a>
-                    <span aria-hidden="true">·</span>
-                    <a href="/privacy.html">Privacy</a>
-                    <span aria-hidden="true">·</span>
-                    <a href="/sos.html">SOS</a>
-                </p>
-            </div>
-        </footer>
-
+            <p class="sk-hint" id="skHint">No signup. No account. Sukoon doesn't remember.</p>
+        </div>
     </main>
 
-    <!-- ==================== BOTTOM NAV ==================== -->
-    <nav class="bottom-nav" id="bottomNav" aria-label="Main navigation" role="navigation">
-        <div class="sidebar-brand" style="display:none;">Sukoon</div>
-        <a href="/" class="nav-item active" aria-current="page">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                <polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-            <span>Home</span>
+    <!-- ════════════════════════════════════════════════════════════════
+         LIVE PULSE TICKER
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="sk-pulse" id="skPulse" role="status" aria-live="polite">
+        <span class="sk-pulse__dot" aria-hidden="true"></span>
+        <span><span class="sk-pulse__count" id="skPulseCount">—</span> &nbsp;hearts finding sukoon right now</span>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         LISTENING / ROUTING OVERLAY
+         ════════════════════════════════════════════════════════════════ -->
+    <div class="sk-listening" id="skListening" aria-hidden="true">
+        <div class="sk-listening__inner">
+            <div class="sk-breath-orb" aria-hidden="true"></div>
+            <p class="sk-listening__text" id="skListeningText">
+                Sukoon is listening…
+                <span class="sk-listening__hi" lang="hi">सुकून सुन रहा है…</span>
+            </p>
+        </div>
+    </div>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         FLOATING SOS BUTTON
+         ════════════════════════════════════════════════════════════════ -->
+    <a class="sk-sos-float" href="/now.html" aria-label="Crisis support — tap for help">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
+        </svg>
+    </a>
+
+    <!-- ════════════════════════════════════════════════════════════════
+         BOTTOM NAV — 5 tabs (Today, Breathe, Sit, Rest, Listen)
+         ════════════════════════════════════════════════════════════════ -->
+    <nav class="sk-bottom-nav" aria-label="Sanctuary">
+        <a href="/" class="sk-bottom-nav__item is-active" aria-current="page">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
+            <span>Today</span>
         </a>
-        <a href="/explore.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
-            </svg>
-            <span>Explore</span>
-        </a>
-        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-            <span>SOS</span>
-        </a>
-        <a href="/breathe.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M17.7 7.7A7.1 7.1 0 0 0 6.3 7.7c-1.2 1.6-1.2 4.4 0 6l5.7 6.3 5.7-6.3c1.2-1.6 1.2-4.4 0-6z"/>
-                <path d="M12 20V10"/>
-            </svg>
+        <a href="/breathe.html" class="sk-bottom-nav__item">
+            <svg viewBox="0 0 24 24"><path d="M12 4c2.5 2.5 2.5 5.5 0 8s-2.5 5.5 0 8"/><path d="M12 4c-2.5 2.5-2.5 5.5 0 8s2.5 5.5 0 8"/></svg>
             <span>Breathe</span>
         </a>
-        <a href="/friend.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-            <span>AI Friend</span>
+        <a href="/sit.html" class="sk-bottom-nav__item">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6"/><path d="M8 15l-2 4M16 15l2 4"/></svg>
+            <span>Sit</span>
         </a>
-        <a href="/you.html" class="nav-item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                <circle cx="12" cy="7" r="4"/>
-            </svg>
-            <span>You</span>
+        <a href="/rest.html" class="sk-bottom-nav__item">
+            <svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <span>Rest</span>
+        </a>
+        <a href="/be-with-me.html" class="sk-bottom-nav__item">
+            <svg viewBox="0 0 24 24"><path d="M11 5L6 9H2v6h4l5 4z"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+            <span>Listen</span>
         </a>
     </nav>
 
-    <!-- ==================== JAVASCRIPT ==================== -->
-    <script src="/js/sukoon-engine.js"></script>
+    <!-- ════════════════════════════════════════════════════════════════
+         ENTRY DIALOGUE LOGIC
+         ════════════════════════════════════════════════════════════════ -->
     <script>
-    (function() {
+    (function () {
         'use strict';
 
-        // Track feature visits on mood pills, hero CTAs, pillars
-        document.querySelectorAll('[data-feature]').forEach(function(el) {
-            el.addEventListener('click', function() {
-                try { localStorage.setItem('sukoon_last_feature', this.getAttribute('data-feature')); } catch(e) {}
-            });
-        });
-
-        // Mood pill: remember last mood, then route (link does the navigation)
-        document.querySelectorAll('.mood-pill').forEach(function(pill) {
-            pill.addEventListener('click', function() {
-                var mood = this.getAttribute('data-mood');
-                var todayKey = new Date().toISOString().split('T')[0];
-                try {
-                    localStorage.setItem('sukoon_mood_today', mood);
-                    localStorage.setItem('sukoon_mood_today_date', todayKey);
-                } catch(e) {}
-                try { if (window.sukoon && typeof window.sukoon.mood === 'function') window.sukoon.mood(mood); } catch(e) {}
-            });
-        });
-
-        // Bottom nav active state
-        var currentPath = window.location.pathname;
-        document.querySelectorAll('.nav-item').forEach(function(item) {
-            item.classList.remove('active');
-            var href = item.getAttribute('href');
-            if (href === currentPath || (currentPath === '/' && href === '/') || (currentPath === '/index.html' && href === '/')) {
-                item.classList.add('active');
-            }
-        });
-
-        // Desktop sidebar brand toggle
-        function handleResize() {
-            var sidebarBrand = document.querySelector('.sidebar-brand');
-            if (!sidebarBrand) return;
-            sidebarBrand.style.display = window.innerWidth > 960 ? 'flex' : 'none';
+        // ─── Time-of-day backdrop ──────────────────────────────────────
+        function pickTod() {
+            var h = new Date().getHours();
+            if (h >= 5 && h < 17) return 'day';
+            if (h >= 17 && h < 20) return 'dusk';
+            return 'night';
         }
-        handleResize();
-        window.addEventListener('resize', handleResize);
+        var tod = pickTod();
+        document.documentElement.setAttribute('data-tod', tod);
 
-        // Souls counter handled by sukoon-experience.js auto-mount (#souls-counter + data-auto)
+        var vidDay   = document.getElementById('skVidDay');
+        var vidDusk  = document.getElementById('skVidDusk');
+        var vidNight = document.getElementById('skVidNight');
+        var vidHome  = document.getElementById('skVidHome');
+        var byTod = { day: vidDay, dusk: vidDusk, night: vidNight };
+        var chosen = byTod[tod] || vidHome;
+
+        function activate(v) {
+            if (!v) return;
+            v.classList.add('is-active');
+            var play = v.play();
+            if (play && typeof play.catch === 'function') play.catch(function () { /* autoplay denied; static frame is fine */ });
+        }
+        // Try the time-matched video; if its source fails, fall back to /video/hero-home.mp4
+        chosen.addEventListener('loadeddata', function () { activate(chosen); }, { once: true });
+        chosen.addEventListener('error', function () { activate(vidHome); }, { once: true });
+        // Kick metadata load
+        try { chosen.load(); } catch (_) {}
+        // Safety: if neither fires within 1.4s, just activate something
+        setTimeout(function () {
+            if (!chosen.classList.contains('is-active') && !vidHome.classList.contains('is-active')) {
+                activate(vidHome);
+            }
+        }, 1400);
+
+        // ─── Pulse ticker  (graceful fallback) ─────────────────────────
+        var pulseEl = document.getElementById('skPulseCount');
+        function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+        function fetchPulse() {
+            fetch('/api/pulse', { headers: { 'accept': 'application/json' }, cache: 'no-store' })
+                .then(function (r) { return r.ok ? r.json() : null; })
+                .then(function (j) {
+                    if (!j) return;
+                    var n = (j.count != null ? j.count : (j.pulse != null ? j.pulse : j.souls));
+                    if (typeof n === 'number' && isFinite(n)) pulseEl.textContent = fmt(n);
+                })
+                .catch(function () { /* offline / dev — show a soft default */ });
+        }
+        // Soft default while fetching
+        pulseEl.textContent = fmt(170 + Math.floor(Math.random() * 40));
+        fetchPulse();
+        setInterval(fetchPulse, 18000);
+
+        // ─── Language toggle (persisted to localStorage) ───────────────
+        var langSel = document.getElementById('skLang');
+        var promptHi = document.getElementById('skPromptHi');
+        var promptEn = document.getElementById('skPromptEn');
+        try {
+            var savedLang = localStorage.getItem('sukoon_lang') || 'en';
+            langSel.value = savedLang;
+        } catch (_) {}
+        function applyLang() {
+            var v = langSel.value;
+            if (v === 'en-only') { promptHi.style.display = 'none'; promptEn.style.display = ''; document.documentElement.lang = 'en'; }
+            else if (v === 'hi-only') { promptHi.style.display = ''; promptEn.style.display = 'none'; document.documentElement.lang = 'hi'; }
+            else { promptHi.style.display = ''; promptEn.style.display = ''; document.documentElement.lang = (v === 'hi' ? 'hi' : 'en'); }
+            try { localStorage.setItem('sukoon_lang', v); } catch (_) {}
+        }
+        applyLang();
+        langSel.addEventListener('change', applyLang);
+
+        // ─── Entry form + router ───────────────────────────────────────
+        var form     = document.getElementById('skForm');
+        var input    = document.getElementById('skInput');
+        var micBtn   = document.getElementById('skMic');
+        var sendBtn  = document.getElementById('skSend');
+        var listenEl = document.getElementById('skListening');
+        var listenText = document.getElementById('skListeningText');
+
+        // Desktop autofocus only (avoid surprising the mobile keyboard)
+        if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
+            setTimeout(function () { try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); } }, 900);
+        }
+
+        // Quick chips → prefill input (do NOT auto-submit; user re-affirms)
+        document.querySelectorAll('.sk-chip').forEach(function (chip) {
+            chip.addEventListener('click', function () {
+                input.value = chip.getAttribute('data-chip') || chip.textContent.trim();
+                input.focus();
+            });
+        });
+
+        // ─── Routing destinations (used when /api/route is unavailable) ─
+        var SAFE_FALLBACKS = {
+            anxious:  '/breathe.html?p=478',
+            anxiety:  '/breathe.html?p=478',
+            panic:    '/breathe.html?p=478',
+            sleep:    '/rest.html',
+            sleepless:'/rest.html',
+            tired:    '/rest.html',
+            insomnia: '/rest.html',
+            sad:      '/be-with-me.html',
+            lonely:   '/be-with-me.html',
+            heavy:    '/be-with-me.html',
+            angry:    '/breathe.html?p=478',
+            calm:     '/sit.html',
+            quiet:    '/sit.html',
+            focus:    '/sit.html',
+            stress:   '/breathe.html?p=478',
+            grief:    '/be-with-me.html'
+        };
+        function localGuess(phrase) {
+            var s = (phrase || '').toLowerCase();
+            // simple keyword spotter as last-resort fallback
+            var keys = Object.keys(SAFE_FALLBACKS);
+            for (var i = 0; i < keys.length; i++) {
+                if (s.indexOf(keys[i]) !== -1) return SAFE_FALLBACKS[keys[i]];
+            }
+            // default: a conversation with Friend
+            return '/be-with-me.html';
+        }
+
+        function showListening(open) {
+            listenEl.classList.toggle('is-open', !!open);
+            listenEl.setAttribute('aria-hidden', open ? 'false' : 'true');
+        }
+
+        function setListeningCopy(en, hi) {
+            listenText.innerHTML = en + '<span class="sk-listening__hi" lang="hi">' + hi + '</span>';
+        }
+
+        function navigateTo(href, phrase) {
+            var url = href;
+            if (phrase) {
+                // pass phrase via hash so back/forward + server stays clean
+                var hash = '#q=' + encodeURIComponent(phrase);
+                url = href.indexOf('#') === -1 ? (href + hash) : (href + '&' + hash.slice(1));
+            }
+            // brief breath, then go
+            setTimeout(function () { window.location.href = url; }, 700);
+        }
+
+        // Wire router if available; otherwise local fallback
+        var router = null;
+        function ensureRouter() {
+            if (router) return router;
+            if (window.SukoonRouter) {
+                try {
+                    router = new window.SukoonRouter({
+                        lang: (document.documentElement.lang || 'en'),
+                        onCrisis: function () {
+                            setListeningCopy('I hear you. Help is one tap away.', 'मैं सुन रहा हूँ। मदद यहीं है।');
+                            showListening(true);
+                            navigateTo('/now.html');
+                        },
+                        onRoute: function (result) {
+                            var dest = (result && (result.href || result.url || result.path)) || null;
+                            if (!dest && result && result.experience) {
+                                var map = { meditation: '/sit.html', story: '/rest.html', breath: '/breathe.html', friend: '/be-with-me.html', crisis: '/now.html' };
+                                dest = map[result.experience] || null;
+                            }
+                            if (!dest) dest = localGuess(input.value);
+                            navigateTo(dest, input.value);
+                        }
+                    });
+                } catch (e) { router = null; }
+            }
+            return router;
+        }
+
+        // ─── Submit ──────────────────────────────────────────────────
+        form.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            var phrase = (input.value || '').trim();
+            if (!phrase) { input.focus(); return; }
+
+            // Track for resume / continuity (not for tracking — local only)
+            try { sessionStorage.setItem('sukoon_entry_phrase', phrase); } catch (_) {}
+
+            // Show breath while routing
+            setListeningCopy('Sukoon is listening…', 'सुकून सुन रहा है…');
+            showListening(true);
+
+            var r = ensureRouter();
+            if (r && typeof r.route === 'function') {
+                try { r.route(phrase); return; } catch (_) {}
+            }
+            // Local guess if router missing
+            setTimeout(function () { navigateTo(localGuess(phrase), phrase); }, 600);
+        });
+
+        // ─── Mic (Web Speech API) ────────────────────────────────────
+        var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+        var recognizer = null;
+        var listening = false;
+        if (!SpeechRec) {
+            micBtn.title = 'Voice input not supported in this browser';
+            micBtn.style.opacity = '0.45';
+        }
+        micBtn.addEventListener('click', function () {
+            if (!SpeechRec) return;
+            if (listening) { try { recognizer.stop(); } catch (_) {} return; }
+            try {
+                recognizer = new SpeechRec();
+                var lang = (document.documentElement.lang === 'hi') ? 'hi-IN' : 'en-IN';
+                recognizer.lang = lang;
+                recognizer.interimResults = true;
+                recognizer.maxAlternatives = 1;
+                recognizer.continuous = false;
+
+                recognizer.onstart = function () {
+                    listening = true;
+                    micBtn.classList.add('is-listening');
+                    micBtn.setAttribute('aria-label', 'Stop listening');
+                };
+                recognizer.onresult = function (e) {
+                    var txt = '';
+                    for (var i = 0; i < e.results.length; i++) txt += e.results[i][0].transcript;
+                    input.value = txt;
+                };
+                recognizer.onerror = function () { /* graceful */ };
+                recognizer.onend = function () {
+                    listening = false;
+                    micBtn.classList.remove('is-listening');
+                    micBtn.setAttribute('aria-label', 'Speak instead of typing');
+                    var v = (input.value || '').trim();
+                    if (v.length > 1) {
+                        // small pause for the user to read what was heard, then submit
+                        setTimeout(function () { form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true })); }, 350);
+                    }
+                };
+                recognizer.start();
+            } catch (_) { listening = false; micBtn.classList.remove('is-listening'); }
+        });
+
+        // Enter submits, Esc clears
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') { input.value = ''; }
+        });
 
     })();
     </script>
 
-    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-    <script src="/js/shell.js"></script>
+    <script>if('serviceWorker' in navigator) navigator.serviceWorker.register('/sw.js').catch(function(){});</script>
 </body>
 </html>

@@ -1,0 +1,1052 @@
+[
+  {
+    "id": "savasana",
+    "sanskrit": "Savasana",
+    "devanagari": "शवासन",
+    "name_en": "Corpse Pose",
+    "name_hi": "शव मुद्रा",
+    "category": "restorative",
+    "difficulty": 1,
+    "duration_seconds": 300,
+    "alignment_steps": [
+      "Lie flat on your back, letting your feet fall open naturally about hip-width apart.",
+      "Release your arms slightly away from the body, palms facing upward, fingers softly curled.",
+      "Slide your shoulder blades gently down and apart, broadening across the chest.",
+      "Lengthen the back of your neck by drawing the chin very slightly toward the chest.",
+      "Close your eyes and let your entire body surrender its weight into the floor.",
+      "Relax the muscles of your face — jaw unclenched, tongue off the roof of the mouth.",
+      "Allow your breath to return to its natural rhythm without effort or control.",
+      "Remain still for at least five minutes; ten is ideal after a full practice."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल सीधे लेट जाएं, पैरों को कूल्हों की चौड़ाई के बराबर फैलाकर स्वाभाविक रूप से खुला छोड़ें।",
+      "दोनों बाहें शरीर से थोड़ी दूर रखें, हथेलियां ऊपर की ओर, उंगलियां हल्की मुड़ी हुईं।",
+      "कंधे के ब्लेड को हल्के से नीचे और अलग करें, सीने को चौड़ा होने दें।",
+      "ठोड़ी को थोड़ा छाती की ओर खींचकर गर्दन के पीछे की लंबाई बढ़ाएं।",
+      "आंखें बंद करें और पूरे शरीर का भार ज़मीन पर छोड़ दें।",
+      "चेहरे की मांसपेशियों को ढीला छोड़ें — जबड़ा खुला, जीभ तालू से अलग।",
+      "बिना किसी प्रयास के सांस को अपनी स्वाभाविक लय में लौटने दें।",
+      "कम से कम पांच मिनट, पूरे अभ्यास के बाद दस मिनट तक स्थिर रहें।"
+    ],
+    "benefits": [
+      "Activates the parasympathetic nervous system, lowering cortisol and heart rate.",
+      "Allows the neuromuscular system to consolidate proprioceptive learning from the preceding practice.",
+      "Reduces systolic blood pressure through progressive muscular relaxation.",
+      "Improves sleep quality when practiced regularly before bedtime.",
+      "Facilitates integration of asana practice by allowing the body time to adapt."
+    ],
+    "benefits_hi": [
+      "परानुकंपी तंत्रिका तंत्र को सक्रिय करता है, कोर्टिसोल और हृदय गति कम होती है।",
+      "पूर्व अभ्यास से प्राप्त प्रोप्रियोसेप्टिव अधिगम को एकीकृत करने में मदद करता है।",
+      "प्रगतिशील मांसपेशी विश्राम के माध्यम से रक्तचाप कम करता है।",
+      "नियमित अभ्यास से नींद की गुणवत्ता में सुधार होता है।",
+      "शरीर को आसन अभ्यास के अनुकूलन का समय देकर एकीकरण को सुगम बनाता है।"
+    ],
+    "safety": [
+      "During pregnancy (second trimester onward), lie on the left side instead of the back.",
+      "If lying flat causes lower back discomfort, place a bolster or rolled blanket under the knees.",
+      "Avoid in cold environments without a blanket — body temperature drops rapidly in stillness."
+    ],
+    "safety_hi": [
+      "गर्भावस्था के दूसरे तिमाही के बाद पीठ के बल न लेटें — बायीं करवट लेटें।",
+      "पीठ के निचले हिस्से में तकलीफ हो तो घुटनों के नीचे बोल्स्टर या मुड़ा कंबल रखें।",
+      "ठंडे वातावरण में कंबल के बिना न करें — स्थिरता में शरीर का तापमान तेज़ी से गिरता है।"
+    ],
+    "counter_pose_id": null,
+    "modifications": [
+      "Place a folded blanket under the head for those with neck tension or kyphosis.",
+      "Use an eye pillow to deepen sensory withdrawal (pratyahara) and reduce light distraction.",
+      "For those who cannot lie flat, recline in a supported chair with feet on the floor."
+    ],
+    "modifications_hi": [
+      "गर्दन में तनाव या कुब्जता (kyphosis) वालों के लिए सिर के नीचे मुड़ा कंबल रखें।",
+      "आंखों पर तकिया रखकर इंद्रिय प्रत्याहार को गहरा करें।",
+      "जो पूरी तरह लेट न सकें, वे पैर ज़मीन पर रखकर कुर्सी पर टेक लगाकर बैठ सकते हैं।"
+    ],
+    "progression_to": null,
+    "props_optional": ["blanket", "eye-pillow", "bolster"],
+    "video_url": "/video/asanas/savasana.mp4",
+    "image_url": "/og/asanas/savasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "ananda-balasana",
+    "sanskrit": "Ananda Balasana",
+    "devanagari": "आनंद बालासन",
+    "name_en": "Happy Baby Pose",
+    "name_hi": "प्रसन्न शिशु मुद्रा",
+    "category": "restorative",
+    "difficulty": 1,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Lie on your back and exhale to draw both knees into the chest.",
+      "Separate your knees wider than your torso and bring them toward your armpits.",
+      "Flex your feet, pressing the soles upward, and reach up to hold the outer edges of each foot.",
+      "Stack your ankles directly above your knees so your shins are perpendicular to the floor.",
+      "Gently pull down on your feet while pressing your feet into your hands to create gentle resistance.",
+      "Keep your lower back and sacrum pressing evenly into the floor — avoid lifting the tailbone.",
+      "Let your head rest heavy and your neck stay long; do not strain to lift the chin.",
+      "Rock gently side to side to massage the sacrum if it feels appropriate."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें और सांस छोड़ते हुए दोनों घुटनों को छाती की ओर खींचें।",
+      "घुटनों को धड़ से चौड़ा करें और बगलों की ओर लाएं।",
+      "पैरों को मोड़ें, तलवों को ऊपर की ओर रखें, और बाहरी किनारों को पकड़ें।",
+      "टखनों को घुटनों के ठीक ऊपर रखें ताकि पिंडलियां ज़मीन से लंबवत हों।",
+      "पैरों को नीचे खींचें और पैर हाथों में दबाएं — हल्का प्रतिरोध बनाएं।",
+      "पीठ का निचला हिस्सा और त्रिकास्थि ज़मीन पर समान रूप से टिके रहें।",
+      "सिर भारी छोड़ें, गर्दन लंबी रखें, ठोड़ी उठाने की कोशिश न करें।",
+      "उचित लगे तो त्रिकास्थि की मालिश के लिए धीरे-धीरे दाएं-बाएं झूलें।"
+    ],
+    "benefits": [
+      "Provides gentle traction and decompression of the sacroiliac joint.",
+      "Stretches the inner groin (adductors) and hip flexors simultaneously.",
+      "Releases tension in the erector spinae and quadratus lumborum muscles.",
+      "Stimulates abdominal organs through gentle compression, aiding digestion.",
+      "Calms the nervous system — commonly used as a transition into savasana."
+    ],
+    "benefits_hi": [
+      "त्रिकास्थि-इलियक संधि को हल्की ट्रैक्शन और विसंपीड़न प्रदान करता है।",
+      "आंतरिक जांघ (adductors) और हिप फ्लेक्सर्स का एक साथ खिंचाव होता है।",
+      "पीठ की इरेक्टर स्पाइनी और क्वाड्रेटस लंबोरम मांसपेशियों में तनाव मुक्त होता है।",
+      "उदर अंगों को हल्के दबाव से उत्तेजित करता है, पाचन सहायक।",
+      "तंत्रिका तंत्र को शांत करता है — अक्सर शवासन में जाने से पहले उपयोग किया जाता है।"
+    ],
+    "safety": [
+      "Avoid during pregnancy — the wide-knee position compresses the abdomen.",
+      "If you cannot reach your feet without straining, hold the back of the thighs instead.",
+      "Those with knee injuries should grip behind the knees rather than above the feet."
+    ],
+    "safety_hi": [
+      "गर्भावस्था में न करें — चौड़े घुटने की स्थिति पेट को दबाती है।",
+      "बिना खिंचाव के पैर न पकड़ पाएं तो जांघों के पीछे पकड़ें।",
+      "घुटने की चोट वालों को घुटनों के पीछे पकड़ना चाहिए।"
+    ],
+    "counter_pose_id": "savasana",
+    "modifications": [
+      "Hold the backs of the thighs instead of the feet for tighter hips or hamstrings.",
+      "Use a strap looped around each foot to bridge the gap if arms are short.",
+      "Explore one leg at a time (Supta Padangusthasana variation) if pelvic stability is limited."
+    ],
+    "modifications_hi": [
+      "कूल्हे या हैमस्ट्रिंग तंग हों तो पैरों की बजाय जांघों के पीछे पकड़ें।",
+      "बांहें छोटी हों तो प्रत्येक पैर के चारों ओर पट्टा लपेटें।",
+      "श्रोणि स्थिरता सीमित हो तो एक-एक पैर से करें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["strap"],
+    "video_url": "/video/asanas/ananda-balasana.mp4",
+    "image_url": "/og/asanas/ananda-balasana.jpg",
+    "lineage": "restorative"
+  },
+  {
+    "id": "supta-baddha-konasana",
+    "sanskrit": "Supta Baddha Konasana",
+    "devanagari": "सुप्त बद्धकोणासन",
+    "name_en": "Reclined Bound Angle Pose",
+    "name_hi": "लेटी हुई तितली मुद्रा",
+    "category": "restorative",
+    "difficulty": 1,
+    "duration_seconds": 180,
+    "alignment_steps": [
+      "Sit with your knees bent, bring the soles of your feet together, and let the knees drop out to the sides.",
+      "Place a bolster or two folded blankets behind you, lengthwise along the spine.",
+      "Lower your back onto the bolster, letting your spine elongate along its length.",
+      "Rest your arms out to the sides at a 45-degree angle, palms facing up.",
+      "If the inner groin feels intense, place yoga blocks or folded blankets under each thigh.",
+      "Let the chest open naturally — avoid forcing the shoulders down or back.",
+      "Close your eyes, breathe into the belly, and allow gravity to do the work of releasing.",
+      "Stay three to ten minutes, using an eye pillow and blanket for full restorative effect."
+    ],
+    "alignment_steps_hi": [
+      "घुटने मोड़कर बैठें, पैरों के तलवे जोड़ें और घुटनों को बाहर गिरने दें।",
+      "पीछे की ओर बोल्स्टर या दो मुड़े कंबल रीढ़ के साथ लंबाई में रखें।",
+      "पीठ को बोल्स्टर पर टिकाएं, रीढ़ को उसकी लंबाई के साथ फैलने दें।",
+      "बाहें 45 डिग्री के कोण पर बाहर की ओर, हथेलियां ऊपर।",
+      "भीतरी जांघ में तीव्रता हो तो प्रत्येक जांघ के नीचे ब्लॉक या कंबल रखें।",
+      "सीने को स्वाभाविक रूप से खुलने दें — कंधों को जबरदस्ती न दबाएं।",
+      "आंखें बंद करें, पेट में सांस लें, और गुरुत्वाकर्षण को काम करने दें।",
+      "तीन से दस मिनट रहें; पूर्ण विश्राम के लिए आंखों पर तकिया और कंबल उपयोग करें।"
+    ],
+    "benefits": [
+      "Opens the hip adductors and inner groin through passive, gravity-assisted release.",
+      "Stimulates the ovarian and prostate zones through gentle compression of the lower abdomen.",
+      "Reduces anxiety and fatigue by activating the parasympathetic nervous system.",
+      "Expands chest and intercostal muscles, improving respiratory capacity.",
+      "Traditionally used in Iyengar therapy for menstrual irregularity and mild hypertension."
+    ],
+    "benefits_hi": [
+      "कूल्हे के एडक्टर्स और भीतरी जांघ को गुरुत्वाकर्षण-सहायित निष्क्रिय खिंचाव मिलता है।",
+      "निचले उदर के हल्के दबाव से डिम्बग्रंथि और प्रोस्टेट क्षेत्र उत्तेजित होते हैं।",
+      "परानुकंपी तंत्रिका तंत्र को सक्रिय करके चिंता और थकान कम होती है।",
+      "सीने और इंटरकोस्टल मांसपेशियों का विस्तार होता है, श्वसन क्षमता बढ़ती है।",
+      "आयंगर चिकित्सा में मासिक धर्म अनियमितता और हल्के उच्च रक्तचाप के लिए प्रयुक्त।"
+    ],
+    "safety": [
+      "Avoid lying flat if you have a groin injury — use elevated props under both thighs.",
+      "During pregnancy, elevate the upper body on a bolster incline of at least 30 degrees.",
+      "Those with sacroiliac dysfunction should keep a folded blanket between feet and pelvis."
+    ],
+    "safety_hi": [
+      "जांघ की चोट हो तो सपाट न लेटें — दोनों जांघों के नीचे ऊंचे प्रॉप्स रखें।",
+      "गर्भावस्था में ऊपरी शरीर को कम से कम 30 डिग्री के बोल्स्टर कोण पर रखें।",
+      "त्रिकास्थि-इलियक शिथिलता वालों के पैरों और श्रोणि के बीच मुड़ा कंबल रखें।"
+    ],
+    "counter_pose_id": "savasana",
+    "modifications": [
+      "Place a block or folded blanket under each thigh to eliminate groin strain.",
+      "Place a rolled blanket under the head if the neck is uncomfortable.",
+      "For a more stimulating version, skip the bolster and lie flat on the mat."
+    ],
+    "modifications_hi": [
+      "जांघ के नीचे ब्लॉक या मुड़ा कंबल रखें ताकि जांघ पर दबाव न पड़े।",
+      "गर्दन असहज हो तो सिर के नीचे मुड़ा कंबल रखें।",
+      "अधिक सक्रिय संस्करण के लिए बोल्स्टर छोड़ें और सीधे चटाई पर लेटें।"
+    ],
+    "progression_to": "baddha-konasana",
+    "props_optional": ["bolster", "blanket", "block", "eye-pillow"],
+    "video_url": "/video/asanas/supta-baddha-konasana.mp4",
+    "image_url": "/og/asanas/supta-baddha-konasana.jpg",
+    "lineage": "iyengar"
+  },
+  {
+    "id": "supta-padangusthasana",
+    "sanskrit": "Supta Padangusthasana",
+    "devanagari": "सुप्त पादांगुष्ठासन",
+    "name_en": "Reclined Hand-to-Big-Toe Pose",
+    "name_hi": "लेटकर अंगूठा पकड़ने की मुद्रा",
+    "category": "supine",
+    "difficulty": 2,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Lie on your back with both legs extended and the lower back gently pressing into the floor.",
+      "Bend your right knee into the chest, then loop a strap around the ball of the right foot.",
+      "Straighten the right leg toward the ceiling as much as your hamstrings allow without forcing.",
+      "Keep the left leg active — press through the left heel and draw the left thigh toward the floor.",
+      "Hold the strap with both hands, arms straight, shoulders resting on the mat.",
+      "On each exhale, gently draw the raised leg slightly closer without rounding the back.",
+      "After one minute, open the right leg out to the right side, keeping the left hip grounded.",
+      "Return to center and switch sides, spending equal time on each leg."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें, दोनों पैर फैलाएं, पीठ का निचला हिस्सा हल्के से ज़मीन पर दबाएं।",
+      "दाएं घुटने को छाती की ओर मोड़ें, फिर पैर की गेंद के चारों ओर पट्टा लपेटें।",
+      "दाएं पैर को छत की ओर सीधा करें — हैमस्ट्रिंग की सीमा तक, जबरदस्ती नहीं।",
+      "बाएं पैर को सक्रिय रखें — बाईं एड़ी से धक्का दें, बाईं जांघ ज़मीन की ओर।",
+      "दोनों हाथों से पट्टा पकड़ें, बाहें सीधी, कंधे चटाई पर टिके।",
+      "हर सांस छोड़ते समय उठे हुए पैर को हल्के से पास लाएं — पीठ गोल न हो।",
+      "एक मिनट बाद दाएं पैर को दाईं ओर खोलें, बाएं कूल्हे को ज़मीन पर रखें।",
+      "केंद्र में वापस आएं और पक्ष बदलें।"
+    ],
+    "benefits": [
+      "Provides a focused, safe stretch of the hamstrings and calf (gastrocnemius and soleus).",
+      "Strengthens the quadriceps of the raised leg through active knee extension.",
+      "The side variation stretches the hip abductors, IT band, and tensor fasciae latae.",
+      "Improves hip joint range of motion, beneficial for runners and cyclists.",
+      "Reduces lower back tightness by releasing the hamstring-pelvis attachment."
+    ],
+    "benefits_hi": [
+      "हैमस्ट्रिंग और पिंडली (गैस्ट्रोकनेमियस और सोलियस) का सुरक्षित, केंद्रित खिंचाव।",
+      "उठे हुए पैर की क्वाड्रिसेप्स सक्रिय घुटने के विस्तार से मजबूत होती है।",
+      "पार्श्व विविधता में कूल्हे के एब्डक्टर्स, IT बैंड और TFL का खिंचाव होता है।",
+      "कूल्हे के जोड़ की गति सीमा बढ़ती है — धावकों और साइकिल चालकों के लिए उपयोगी।",
+      "हैमस्ट्रिंग-श्रोणि जुड़ाव को छोड़कर पीठ के निचले हिस्से की जकड़न कम होती है।"
+    ],
+    "safety": [
+      "Do not force the leg to straighten — a bent knee with full length in the spine is more beneficial.",
+      "Avoid if you have an acute hamstring tear; limit range and use a strap.",
+      "Those with sciatica should keep the bottom leg slightly bent to avoid nerve aggravation."
+    ],
+    "safety_hi": [
+      "पैर को सीधा करने के लिए जोर न लगाएं — झुकी पीठ से बेहतर है घुटना मुड़ा पर रीढ़ सीधी।",
+      "तीव्र हैमस्ट्रिंग टियर हो तो न करें; पट्टे का उपयोग करें और गति सीमित रखें।",
+      "कटिस्नायुशूल वालों को नर्व जलन से बचने के लिए निचला पैर थोड़ा मुड़ा रखना चाहिए।"
+    ],
+    "counter_pose_id": "apanasana",
+    "modifications": [
+      "Use a strap around the foot to remove the need for hamstring flexibility.",
+      "Keep the extended bottom leg bent with the foot flat if the lower back arches.",
+      "For tight hips, do the pose with the bent-leg variation instead of full extension."
+    ],
+    "modifications_hi": [
+      "पैर के चारों ओर पट्टा उपयोग करें ताकि हैमस्ट्रिंग लचीलेपन की जरूरत न रहे।",
+      "पीठ उठे तो नीचे के पैर को घुटने से मोड़ें और पैर सपाट रखें।",
+      "कूल्हे तंग हों तो पूर्ण विस्तार की बजाय घुटना मुड़ा संस्करण करें।"
+    ],
+    "progression_to": "uttanasana",
+    "props_optional": ["strap", "blanket"],
+    "video_url": "/video/asanas/supta-padangusthasana.mp4",
+    "image_url": "/og/asanas/supta-padangusthasana.jpg",
+    "lineage": "iyengar"
+  },
+  {
+    "id": "jathara-parivartanasana",
+    "sanskrit": "Jathara Parivartanasana",
+    "devanagari": "जठर परिवर्तनासन",
+    "name_en": "Supine Spinal Twist",
+    "name_hi": "पेट घुमाने की मुद्रा",
+    "category": "twist",
+    "difficulty": 1,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Lie on your back, draw both knees into the chest, and extend your arms out in a T-shape.",
+      "Exhale and slowly lower both knees to the right, stacking them if possible.",
+      "Keep both shoulders actively pressing into the floor — do not let the left shoulder float.",
+      "Turn your head to the left to create an opposing spiral from head to tail.",
+      "Breathe into the left ribs, sensing the ribcage expand and rotate with each inhale.",
+      "To deepen the twist, draw the right knee slightly higher toward the right armpit.",
+      "Stay for one to two minutes before slowly bringing both knees back to center.",
+      "Hug knees to chest, then switch sides and hold equally."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें, दोनों घुटने छाती की ओर खींचें, बाहें T आकार में फैलाएं।",
+      "सांस छोड़ते हुए धीरे-धीरे दोनों घुटनों को दाईं ओर नीचे लाएं।",
+      "दोनों कंधे सक्रिय रूप से ज़मीन पर दबाए रखें — बायां कंधा न उठे।",
+      "सिर बाईं ओर मोड़ें — सिर से पूंछ तक विपरीत सर्पिल बनाएं।",
+      "बाईं पसलियों में सांस लें, प्रत्येक श्वास के साथ पसली का विस्तार और घुमाव महसूस करें।",
+      "खिंचाव गहरा करने के लिए दाएं घुटने को दाईं बगल की ओर थोड़ा ऊपर खींचें।",
+      "एक से दो मिनट रहें, फिर धीरे-धीरे घुटने केंद्र में वापस लाएं।",
+      "घुटने छाती से लगाएं, फिर पक्ष बदलें।"
+    ],
+    "benefits": [
+      "Rotates the intervertebral joints and gently stretches the paraspinal muscles.",
+      "Stimulates peristalsis and abdominal organ massage, improving digestion.",
+      "Releases the piriformis and gluteus medius — common sites of lower back tension.",
+      "Expands the intercostal muscles and improves thoracic rotation.",
+      "Calming effect on the nervous system when held passively for over one minute."
+    ],
+    "benefits_hi": [
+      "इंटरवर्टेब्रल जोड़ों को घुमाता है और पैरास्पाइनल मांसपेशियों को हल्का खिंचाव देता है।",
+      "क्रमाकुंचन और उदर अंग मालिश को उत्तेजित करता है, पाचन सुधारता है।",
+      "पिरिफॉर्मिस और ग्लूटियस मेडियस को छोड़ता है — पीठ के निचले तनाव के सामान्य स्थान।",
+      "इंटरकोस्टल मांसपेशियों का विस्तार होता है, वक्षीय घुमाव बढ़ता है।",
+      "एक मिनट से अधिक निष्क्रिय रहने पर तंत्रिका तंत्र पर शांत प्रभाव।"
+    ],
+    "safety": [
+      "If you have a herniated lumbar disc, keep the knees higher and range of motion small.",
+      "Avoid forcing the knees to the floor — let gravity do the work over time.",
+      "After hip replacement surgery, consult a physician before deep twisting poses."
+    ],
+    "safety_hi": [
+      "काठ का हर्नियेटेड डिस्क हो तो घुटने ऊंचे रखें और गति सीमा छोटी रखें।",
+      "घुटनों को ज़मीन पर दबाने की कोशिश न करें — गुरुत्वाकर्षण धीरे-धीरे काम करे।",
+      "हिप रिप्लेसमेंट के बाद गहरे मरोड़ से पहले चिकित्सक से परामर्श लें।"
+    ],
+    "counter_pose_id": "apanasana",
+    "modifications": [
+      "Place a folded blanket between the knees to reduce the rotational range for sensitive lower backs.",
+      "For a gentler variation, keep the top knee bent and rest it on a block.",
+      "Straighten both legs in the twist (full Jathara Parivartanasana) for an advanced version."
+    ],
+    "modifications_hi": [
+      "संवेदनशील पीठ के लिए घुटनों के बीच मुड़ा कंबल रखें।",
+      "हल्के संस्करण के लिए ऊपरी घुटना मुड़ा रखें और ब्लॉक पर टिकाएं।",
+      "उन्नत संस्करण में दोनों पैर मरोड़ में सीधे करें।"
+    ],
+    "progression_to": "parivrtta-trikonasana",
+    "props_optional": ["blanket", "block"],
+    "video_url": "/video/asanas/jathara-parivartanasana.mp4",
+    "image_url": "/og/asanas/jathara-parivartanasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "matsyasana",
+    "sanskrit": "Matsyasana",
+    "devanagari": "मत्स्यासन",
+    "name_en": "Fish Pose",
+    "name_hi": "मछली मुद्रा",
+    "category": "backbend",
+    "difficulty": 2,
+    "duration_seconds": 30,
+    "alignment_steps": [
+      "Lie on your back with legs extended and arms alongside the body, palms pressing into the floor.",
+      "Press your forearms and elbows firmly into the mat and lift your chest toward the ceiling.",
+      "Arch your upper back and draw the shoulder blades firmly together beneath the spine.",
+      "Tilt your head back slowly and either rest the crown on the floor or keep the neck long.",
+      "Keep your legs active — pressing through both heels, thighs engaged and touching the floor.",
+      "Breathe deeply into the chest and throat, expanding the intercostal space.",
+      "Do not bear full head weight on the crown — most weight should be on the elbows.",
+      "Hold for 30-60 seconds; release by pressing into the elbows, lifting the head, then lowering the back."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें, पैर फैलाएं, बाहें शरीर के पास, हथेलियां ज़मीन पर दबाएं।",
+      "अग्रबाहु और कोहनी चटाई पर मजबूती से दबाएं और सीने को छत की ओर उठाएं।",
+      "ऊपरी पीठ को झुकाएं, कंधे के ब्लेड रीढ़ के नीचे मजबूती से पास लाएं।",
+      "सिर को धीरे-धीरे पीछे झुकाएं — मुकुट ज़मीन पर टिकाएं या गर्दन लंबी रखें।",
+      "पैर सक्रिय रखें — दोनों एड़ियों से धक्का दें, जांघें लगी हुईं।",
+      "सीने और गले में गहरी सांस लें, इंटरकोस्टल स्थान फैलाएं।",
+      "पूरा सिर का भार मुकुट पर न डालें — अधिकतर भार कोहनियों पर हो।",
+      "30-60 सेकंड रहें; कोहनियां दबाकर, सिर उठाकर, फिर पीठ नीचे करें।"
+    ],
+    "benefits": [
+      "Counter-pose to Sarvangasana — reverses cervical flexion by extending the cervical spine.",
+      "Expands the chest and stretches the intercostal muscles and anterior scalenes.",
+      "Stimulates the thyroid and parathyroid glands through the cervical extension.",
+      "Strengthens the rhomboids, mid-trapezius, and erector spinae of the thoracic region.",
+      "Traditionally considered beneficial for respiratory conditions including mild asthma."
+    ],
+    "benefits_hi": [
+      "सर्वांगासन की प्रतिमुद्रा — ग्रीवा विस्तार द्वारा ग्रीवा लचीलेपन को उलटता है।",
+      "सीने का विस्तार होता है, इंटरकोस्टल मांसपेशियां और पूर्वकाल स्केलीन खिंचते हैं।",
+      "ग्रीवा विस्तार के माध्यम से थायरॉइड और पैराथायरॉइड ग्रंथियां उत्तेजित होती हैं।",
+      "रोम्बॉयड्स, मध्य ट्रेपेज़ियस और वक्षीय इरेक्टर स्पाइनी मजबूत होती हैं।",
+      "हल्के दमे सहित श्वसन स्थितियों के लिए परंपरागत रूप से लाभकारी माना जाता है।"
+    ],
+    "safety": [
+      "Do not practice if you have a neck injury, cervical spondylosis, or recent whiplash.",
+      "Those with lower back pain should keep legs bent with feet flat as a modification.",
+      "Avoid if you have high blood pressure or are prone to headaches — the inverted neck position elevates intracranial pressure."
+    ],
+    "safety_hi": [
+      "गर्दन की चोट, ग्रीवा स्पॉन्डिलोसिस या व्हिप्लैश में न करें।",
+      "पीठ दर्द हो तो घुटने मोड़ें और पैर सपाट रखें।",
+      "उच्च रक्तचाप या सिरदर्द की प्रवृत्ति हो तो न करें — उल्टी गर्दन की स्थिति इंट्राक्रेनियल दबाव बढ़ाती है।"
+    ],
+    "counter_pose_id": "balasana",
+    "modifications": [
+      "Place a thickly folded blanket under the upper back instead of arching onto the crown.",
+      "Keep knees bent and feet flat on the floor to protect the lower back.",
+      "For a restorative version, place a block under the thoracic spine and relax completely."
+    ],
+    "modifications_hi": [
+      "मुकुट पर झुकने की बजाय ऊपरी पीठ के नीचे मोटा मुड़ा कंबल रखें।",
+      "पीठ की सुरक्षा के लिए घुटने मोड़ें और पैर सपाट रखें।",
+      "विश्राम संस्करण में वक्षीय रीढ़ के नीचे ब्लॉक रखें और पूरी तरह ढीले हो जाएं।"
+    ],
+    "progression_to": "uttana-padasana",
+    "props_optional": ["blanket", "block"],
+    "video_url": "/video/asanas/matsyasana.mp4",
+    "image_url": "/og/asanas/matsyasana.jpg",
+    "lineage": "sivananda"
+  },
+  {
+    "id": "balasana",
+    "sanskrit": "Balasana",
+    "devanagari": "बालासन",
+    "name_en": "Child's Pose",
+    "name_hi": "बच्चे की मुद्रा",
+    "category": "restorative",
+    "difficulty": 1,
+    "duration_seconds": 90,
+    "alignment_steps": [
+      "Kneel on the mat with your big toes touching and knees hip-width apart or wider.",
+      "Exhale and fold your torso forward between your thighs, bringing the forehead toward the floor.",
+      "Extend your arms forward, palms flat, fingers spread — or rest arms alongside the body for release.",
+      "Let the chest drop between the thighs and the hips sink toward the heels.",
+      "Actively lengthen the spine from tailbone to crown, creating traction in the lower back.",
+      "Breathe into the back body — feel the back ribs expand and spread with each inhale.",
+      "Soften the shoulder blades down and away from the ears.",
+      "Rest here for one to five minutes as a resting pose, or return to it between challenging postures."
+    ],
+    "alignment_steps_hi": [
+      "चटाई पर घुटनों के बल बैठें, बड़े पैर की उंगलियां छुएं, घुटने कूल्हे की चौड़ाई पर।",
+      "सांस छोड़ते हुए धड़ को जांघों के बीच आगे मोड़ें, माथा ज़मीन की ओर।",
+      "बाहें आगे फैलाएं, हथेलियां सपाट — या पूर्ण विश्राम के लिए शरीर के पास रखें।",
+      "सीने को जांघों के बीच गिरने दें, कूल्हों को एड़ियों की ओर।",
+      "टेलबोन से मुकुट तक रीढ़ को सक्रिय रूप से लंबा करें।",
+      "पीठ के शरीर में सांस लें — प्रत्येक श्वास के साथ पीछे की पसलियां फैलें।",
+      "कंधे के ब्लेड नीचे और कानों से दूर।",
+      "एक से पांच मिनट आराम करें, या चुनौतीपूर्ण मुद्राओं के बीच विश्राम के रूप में।"
+    ],
+    "benefits": [
+      "Gently decompresses the lumbar vertebrae through passive forward flexion.",
+      "Stretches the thoracolumbar fascia and the gluteus maximus.",
+      "Activates the parasympathetic nervous system — especially effective when forehead contacts the floor.",
+      "Increases proprioceptive awareness of the back body and diaphragmatic breathing.",
+      "Gentle traction of the hip flexors and quadriceps in the narrow-knee variation."
+    ],
+    "benefits_hi": [
+      "निष्क्रिय आगे झुकाव से काठ कशेरुकाओं का हल्का विसंपीड़न होता है।",
+      "थोरेकोलंबर फेशिया और ग्लूटियस मेक्सिमस का खिंचाव होता है।",
+      "परानुकंपी तंत्रिका तंत्र सक्रिय होता है — विशेष रूप से जब माथा ज़मीन से लगता है।",
+      "पीठ के शरीर और डायाफ्रामिक श्वास की प्रोप्रियोसेप्टिव जागरूकता बढ़ती है।",
+      "संकीर्ण घुटने संस्करण में हिप फ्लेक्सर्स और क्वाड्रिसेप्स की हल्की ट्रैक्शन।"
+    ],
+    "safety": [
+      "Avoid if you have a knee injury — sit on a folded blanket between calves and thighs.",
+      "Those in the third trimester should widen knees to the mat edges to accommodate the belly.",
+      "If the hips cannot reach the heels, place a folded blanket between buttocks and heels."
+    ],
+    "safety_hi": [
+      "घुटने की चोट हो तो न करें — पिंडलियों और जांघों के बीच मुड़ा कंबल रखकर बैठें।",
+      "तीसरी तिमाही में पेट के लिए जगह बनाने हेतु घुटने चटाई के किनारों तक चौड़े करें।",
+      "कूल्हे एड़ियों तक न पहुंचें तो नितंब और एड़ियों के बीच मुड़ा कंबल रखें।"
+    ],
+    "counter_pose_id": "savasana",
+    "modifications": [
+      "Widen the knees to hip-width or beyond to reduce compression of the abdomen.",
+      "Rest the forehead on a block or stacked fists to relieve neck tension.",
+      "Arms alongside the body (reverse child's pose) for shoulder impingement relief."
+    ],
+    "modifications_hi": [
+      "पेट के दबाव को कम करने के लिए घुटने कूल्हे की चौड़ाई या उससे चौड़े करें।",
+      "गर्दन का तनाव दूर करने के लिए माथे को ब्लॉक या मुट्ठियों पर रखें।",
+      "कंधे की समस्या में बाहें शरीर के पास रखें (रिवर्स चाइल्ड पोज़)।"
+    ],
+    "progression_to": "prasarita-padottanasana",
+    "props_optional": ["blanket", "block", "bolster"],
+    "video_url": "/video/asanas/balasana.mp4",
+    "image_url": "/og/asanas/balasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "viparita-karani",
+    "sanskrit": "Viparita Karani",
+    "devanagari": "विपरीत करणी",
+    "name_en": "Legs-Up-the-Wall Pose",
+    "name_hi": "दीवार पर पैर टिकाने की मुद्रा",
+    "category": "restorative",
+    "difficulty": 1,
+    "duration_seconds": 300,
+    "alignment_steps": [
+      "Sit sideways with one hip touching the wall, then swing your legs up the wall as you lower your back.",
+      "Scoot your sitting bones as close to the wall as comfortable — tighter hamstrings need more distance.",
+      "Place a folded blanket or bolster under the sacrum and lower back for support and gentle inversion.",
+      "Let your arms rest comfortably out to the sides with palms facing up.",
+      "Close your eyes and allow the legs to feel heavy, passively supported by the wall.",
+      "Breathe naturally and let the torso soften with each exhale.",
+      "Stay five to fifteen minutes; longer for therapeutic applications such as anxiety or edema.",
+      "To exit, bend the knees to the chest, roll to the side, and pause before sitting up."
+    ],
+    "alignment_steps_hi": [
+      "एक तरफ बैठें, एक कूल्हा दीवार से लगाएं, फिर पीठ नीचे करते हुए पैर दीवार पर उठाएं।",
+      "बैठने की हड्डियां यथासंभव दीवार के पास ले जाएं — तंग हैमस्ट्रिंग को अधिक दूरी चाहिए।",
+      "त्रिकास्थि और पीठ के निचले हिस्से के नीचे मुड़ा कंबल या बोल्स्टर रखें।",
+      "बाहें आराम से बाहर की ओर, हथेलियां ऊपर।",
+      "आंखें बंद करें, पैरों को भारी महसूस होने दें, दीवार का सहारा लें।",
+      "स्वाभाविक सांस लें, प्रत्येक सांस छोड़ने पर धड़ ढीला होने दें।",
+      "पांच से पंद्रह मिनट; चिंता या सूजन जैसे चिकित्सीय उपयोग के लिए अधिक।",
+      "बाहर निकलने के लिए घुटने छाती पर मोड़ें, करवट लें, फिर बैठें।"
+    ],
+    "benefits": [
+      "Reverses venous and lymphatic pooling in the lower extremities, reducing edema and fatigue.",
+      "Lowers heart rate and blood pressure through mild passive inversion.",
+      "Relieves tension in the hamstrings and calf muscles without active effort.",
+      "Calms the nervous system — among the most effective restorative poses for anxiety.",
+      "Reduces lower back fatigue by decompressing the lumbar discs through traction."
+    ],
+    "benefits_hi": [
+      "निचले अंगों में शिरापरक और लसीका जमाव को उलटता है, सूजन और थकान कम होती है।",
+      "हल्के निष्क्रिय उलटाव से हृदय गति और रक्तचाप कम होता है।",
+      "बिना सक्रिय प्रयास के हैमस्ट्रिंग और पिंडली की मांसपेशियों में तनाव कम होता है।",
+      "तंत्रिका तंत्र को शांत करता है — चिंता के लिए सबसे प्रभावी विश्राम मुद्राओं में से एक।",
+      "ट्रैक्शन द्वारा काठ डिस्क का विसंपीड़न करके पीठ के निचले हिस्से की थकान कम होती है।"
+    ],
+    "safety": [
+      "Avoid during menstruation if you prefer not to invert — many traditions recommend avoiding inversions at this time.",
+      "Do not practice if you have glaucoma or other conditions that elevate intraocular pressure.",
+      "Those with serious cervical spine issues should use minimal or no sacral support to avoid deepening the inversion."
+    ],
+    "safety_hi": [
+      "मासिक धर्म के दौरान यदि उलटाव पसंद न हो तो न करें — कई परंपराएं इस समय उलटाव से बचने की सलाह देती हैं।",
+      "ग्लूकोमा या अंतःनेत्र दबाव बढ़ाने वाली स्थितियों में न करें।",
+      "गंभीर ग्रीवा रीढ़ की समस्याओं में उलटाव गहरा न करने के लिए त्रिकास्थि सहारा कम या नहीं।"
+    ],
+    "counter_pose_id": "savasana",
+    "modifications": [
+      "Move away from the wall (45 degrees) for tighter hamstrings to allow the legs to relax.",
+      "Place a sandbag on the soles of the feet for a grounding, calming effect.",
+      "Use a folded blanket under the sacrum to increase the inversion angle for better venous drainage."
+    ],
+    "modifications_hi": [
+      "हैमस्ट्रिंग तंग हों तो दीवार से दूर (45 डिग्री पर) बैठें ताकि पैर ढीले हों।",
+      "तलवों पर रेत की थैली रखें — ज़मीन से जोड़ने वाला, शांत प्रभाव।",
+      "बेहतर शिरापरक जल निकासी के लिए त्रिकास्थि के नीचे मुड़ा कंबल रखें।"
+    ],
+    "progression_to": "salamba-sarvangasana",
+    "props_optional": ["bolster", "blanket", "eye-pillow", "sandbag"],
+    "video_url": "/video/asanas/viparita-karani.mp4",
+    "image_url": "/og/asanas/viparita-karani.jpg",
+    "lineage": "restorative"
+  },
+  {
+    "id": "apanasana",
+    "sanskrit": "Apanasana",
+    "devanagari": "अपानासन",
+    "name_en": "Knees-to-Chest Pose",
+    "name_hi": "घुटने छाती से लगाने की मुद्रा",
+    "category": "supine",
+    "difficulty": 1,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Lie on your back and draw both knees gently into the chest.",
+      "Wrap your hands around your shins — one hand on each shin just below the knee.",
+      "On each inhale, allow the knees to drift slightly away from the chest.",
+      "On each exhale, gently draw the knees closer, massaging the lower back into the floor.",
+      "Keep the back of the skull on the mat — do not strain to lift the head forward.",
+      "Let the shoulders stay relaxed and broad, not creeping toward the ears.",
+      "Rock gently side to side to further massage the sacrum and lower back muscles.",
+      "Synchronize movement with breath: away on inhale, in on exhale, for 8-12 rounds."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें और दोनों घुटनों को धीरे से छाती की ओर खींचें।",
+      "हाथ पिंडलियों पर लपेटें — प्रत्येक हाथ घुटने के नीचे पिंडली पर।",
+      "प्रत्येक श्वास पर घुटनों को छाती से थोड़ा दूर जाने दें।",
+      "प्रत्येक सांस छोड़ने पर घुटनों को हल्के से पास लाएं, पीठ के निचले हिस्से की ज़मीन पर मालिश।",
+      "खोपड़ी की पीठ चटाई पर रखें — सिर आगे उठाने की कोशिश न करें।",
+      "कंधे ढीले और चौड़े रखें, कानों की ओर न उठाएं।",
+      "त्रिकास्थि और पीठ की मांसपेशियों की मालिश के लिए धीरे दाएं-बाएं झूलें।",
+      "8-12 बार श्वास के साथ समन्वित करें: श्वास पर दूर, सांस छोड़ने पर पास।"
+    ],
+    "benefits": [
+      "Gently stretches the erector spinae and quadratus lumborum muscles of the lower back.",
+      "Stimulates the apana vayu (downward-moving energy) — traditionally used for digestive and eliminative health.",
+      "Massages the sacral and lumbar regions of the spine against the mat.",
+      "Releases hip flexor tension accumulated from prolonged sitting.",
+      "Calming and grounding — effective as the first pose of a restorative or therapeutic sequence."
+    ],
+    "benefits_hi": [
+      "पीठ के निचले हिस्से की इरेक्टर स्पाइनी और क्वाड्रेटस लंबोरम मांसपेशियों का हल्का खिंचाव।",
+      "अपान वायु को उत्तेजित करता है — परंपरागत रूप से पाचन और उत्सर्जन स्वास्थ्य के लिए।",
+      "त्रिकास्थि और काठ क्षेत्र की चटाई के विरुद्ध मालिश होती है।",
+      "लंबे समय तक बैठने से जमा हिप फ्लेक्सर तनाव को मुक्त करता है।",
+      "शांत और स्थिर — विश्राम या चिकित्सीय क्रम की पहली मुद्रा के रूप में प्रभावी।"
+    ],
+    "safety": [
+      "Apply gentle pressure only — never force the knees into the chest aggressively.",
+      "Those with knee pain should hold the backs of the thighs rather than the shins.",
+      "Avoid deep compression if you have a hiatal hernia or recent abdominal surgery."
+    ],
+    "safety_hi": [
+      "हल्का दबाव ही लगाएं — घुटनों को छाती में जबरदस्ती न दबाएं।",
+      "घुटने में दर्द हो तो पिंडलियों की बजाय जांघों के पीछे पकड़ें।",
+      "हाइटल हर्निया या हाल की पेट की सर्जरी में गहरा दबाव न लगाएं।"
+    ],
+    "counter_pose_id": "savasana",
+    "modifications": [
+      "Hold the backs of the thighs instead of the shins for knee sensitivity.",
+      "Do one leg at a time (Ekajanu Apanasana) to reduce lumbar compression.",
+      "Add ankle circles or flex-point movements to the extended leg for additional circulation."
+    ],
+    "modifications_hi": [
+      "घुटने की संवेदनशीलता के लिए पिंडलियों की बजाय जांघों के पीछे पकड़ें।",
+      "काठ दबाव कम करने के लिए एक-एक पैर से करें।",
+      "अतिरिक्त परिसंचरण के लिए फैले पैर में टखने के गोले या फ्लेक्स-पॉइंट मूवमेंट जोड़ें।"
+    ],
+    "progression_to": "ananda-balasana",
+    "props_optional": [],
+    "video_url": "/video/asanas/apanasana.mp4",
+    "image_url": "/og/asanas/apanasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "supta-virasana",
+    "sanskrit": "Supta Virasana",
+    "devanagari": "सुप्त वीरासन",
+    "name_en": "Reclining Hero Pose",
+    "name_hi": "लेटा हुआ वीर आसन",
+    "category": "supine",
+    "difficulty": 3,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Begin in Virasana (Hero Pose) — knees together, shins outside the hips, sitting between the feet.",
+      "Place your hands behind you and slowly lean back onto your forearms, then elbows.",
+      "If flexibility allows, lower the back fully to the floor, arms extended overhead or resting alongside.",
+      "Keep both knees on the floor and together — if they lift, the pose is too deep for today.",
+      "Tuck the tailbone slightly toward the knees to avoid compressing the lumbar spine.",
+      "Breathe deeply into the abdomen and allow the hip flexors to release with each exhale.",
+      "Keep the quadriceps active but not gripping — a dynamic tension that protects the knee.",
+      "To exit, press into your palms, come onto the elbows, then slowly sit up."
+    ],
+    "alignment_steps_hi": [
+      "वीरासन से शुरू करें — घुटने एक साथ, पिंडलियां कूल्हों के बाहर, पैरों के बीच बैठें।",
+      "हाथ पीछे रखें, धीरे-धीरे अग्रबाहुओं पर झुकें, फिर कोहनियों पर।",
+      "लचीलेपन की अनुमति हो तो पीठ पूरी तरह ज़मीन पर, बाहें ऊपर या बगल में।",
+      "दोनों घुटने ज़मीन पर और एक साथ रखें — उठें तो आज के लिए बहुत गहरा है।",
+      "काठ रीढ़ को दबाव से बचाने के लिए टेलबोन को घुटनों की ओर हल्का मोड़ें।",
+      "पेट में गहरी सांस लें, प्रत्येक सांस छोड़ने पर हिप फ्लेक्सर्स को छोड़ने दें।",
+      "क्वाड्रिसेप्स सक्रिय पर जकड़ी न हों — गतिशील तनाव जो घुटने की रक्षा करे।",
+      "बाहर आने के लिए हथेलियों पर दबाएं, कोहनियों पर आएं, फिर धीरे बैठें।"
+    ],
+    "benefits": [
+      "Provides one of the deepest available stretches of the quadriceps and hip flexors (iliopsoas, rectus femoris).",
+      "Stretches the anterior ankle and the tibialis anterior, beneficial for athletes.",
+      "Improves ankle dorsiflexion range of motion over time.",
+      "Traditionally recommended in Iyengar yoga for digestive complaints and flat feet.",
+      "Opens the thoracic spine and chest when fully reclined."
+    ],
+    "benefits_hi": [
+      "क्वाड्रिसेप्स और हिप फ्लेक्सर्स (इलियोप्सोस, रेक्टस फेमोरिस) का सबसे गहरा उपलब्ध खिंचाव।",
+      "टखने के सामने और टिबियलिस एंटीरियर का खिंचाव — एथलीटों के लिए उपयोगी।",
+      "समय के साथ टखने के डोर्सिफ्लेक्शन की गति सीमा सुधरती है।",
+      "आयंगर योग में पाचन समस्याओं और चपटे पैरों के लिए परंपरागत रूप से अनुशंसित।",
+      "पूरी तरह लेटने पर वक्षीय रीढ़ और सीना खुलता है।"
+    ],
+    "safety": [
+      "Never force this pose — knee ligament injury is a real risk if the knees lift or twist.",
+      "Avoid with any acute knee pathology, meniscus issues, or post-surgical knees.",
+      "Those with ankle injury should place a rolled blanket under the ankles for padding."
+    ],
+    "safety_hi": [
+      "इस मुद्रा में जोर न लगाएं — घुटने उठें या मुड़ें तो घुटने के स्नायु को चोट लग सकती है।",
+      "तीव्र घुटने की बीमारी, मेनिस्कस समस्या या सर्जरी के बाद न करें।",
+      "टखने की चोट हो तो टखनों के नीचे मुड़ा कंबल रखें।"
+    ],
+    "counter_pose_id": "dandasana",
+    "modifications": [
+      "Stay upright in Virasana without reclining until sufficient quad flexibility exists.",
+      "Recline onto a bolster placed lengthwise behind the spine instead of going to the floor.",
+      "Place a folded blanket between the calves and thighs to reduce knee flexion angle."
+    ],
+    "modifications_hi": [
+      "पर्याप्त क्वाड लचीलापन आने तक बिना लेटे वीरासन में सीधे बैठें।",
+      "ज़मीन पर जाने की बजाय रीढ़ के पीछे लंबाई में रखे बोल्स्टर पर लेटें।",
+      "घुटने के लचीलेपन के कोण को कम करने के लिए पिंडलियों और जांघों के बीच कंबल रखें।"
+    ],
+    "progression_to": null,
+    "props_optional": ["bolster", "blanket", "block"],
+    "video_url": "/video/asanas/supta-virasana.mp4",
+    "image_url": "/og/asanas/supta-virasana.jpg",
+    "lineage": "iyengar"
+  },
+  {
+    "id": "pavanamuktasana",
+    "sanskrit": "Pavanamuktasana",
+    "devanagari": "पवनमुक्तासन",
+    "name_en": "Wind-Relieving Pose",
+    "name_hi": "वायु मुक्त करने की मुद्रा",
+    "category": "supine",
+    "difficulty": 1,
+    "duration_seconds": 45,
+    "alignment_steps": [
+      "Lie on your back and draw one or both knees firmly into the chest.",
+      "Interlace the fingers just below the kneecap, or hold opposite elbows over the shin.",
+      "On an exhale, lift your head and shoulders and draw the chin toward the knee.",
+      "Press the back of the sacrum and lumbar spine actively into the floor.",
+      "Hold both legs simultaneously (double variation) or work one leg at a time.",
+      "Breathe into the abdomen and feel the compression activate the ascending colon on the right and descending on the left.",
+      "Hold for 30-60 seconds; release on an inhale and lower the head slowly.",
+      "Follow with the other leg if working single-leg, then the double variation to complete the sequence."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें और एक या दोनों घुटनों को मजबूती से छाती की ओर खींचें।",
+      "घुटने की टोपी के ठीक नीचे उंगलियां जोड़ें, या पिंडली पर विपरीत कोहनियां पकड़ें।",
+      "सांस छोड़ते हुए सिर और कंधे उठाएं, ठोड़ी घुटने की ओर।",
+      "त्रिकास्थि और काठ रीढ़ की पीठ को सक्रिय रूप से ज़मीन पर दबाएं।",
+      "दोनों पैर एक साथ (दोहरा संस्करण) या एक-एक करके।",
+      "पेट में सांस लें, दाईं ओर आरोही बृहदान्त्र और बाईं ओर अवरोही बृहदान्त्र पर दबाव महसूस करें।",
+      "30-60 सेकंड रहें; श्वास लेते हुए छोड़ें और सिर धीरे नीचे करें।",
+      "एकल पैर से काम करें तो दूसरा पैर भी करें, फिर क्रम पूरा करने के लिए दोहरा संस्करण।"
+    ],
+    "benefits": [
+      "Compresses the ascending and descending colon to stimulate peristalsis and relieve gas.",
+      "Massages the abdominal organs including the liver, pancreas, and kidneys.",
+      "Strengthens the hip flexors and rectus abdominis in the lifted-head variation.",
+      "Relieves lower back tension by pressing the lumbar into the mat.",
+      "Part of the Pawanmuktasana series (Bihar School) — foundational therapeutic set for joint mobility."
+    ],
+    "benefits_hi": [
+      "आरोही और अवरोही बृहदान्त्र को दबाकर क्रमाकुंचन को उत्तेजित करता है और गैस मुक्त करता है।",
+      "यकृत, अग्न्याशय और गुर्दे सहित उदर अंगों की मालिश होती है।",
+      "सिर उठाए संस्करण में हिप फ्लेक्सर्स और रेक्टस एब्डोमिनिस मजबूत होते हैं।",
+      "काठ को चटाई पर दबाकर पीठ के निचले हिस्से का तनाव कम होता है।",
+      "पवनमुक्तासन श्रृंखला (बिहार स्कूल) का हिस्सा — जोड़ों की गतिशीलता के लिए आधारभूत चिकित्सीय सेट।"
+    ],
+    "safety": [
+      "Avoid after abdominal surgery, hernia repair, or if you are in the second or third trimester.",
+      "Those with neck issues should skip the head-lift and keep the head on the floor.",
+      "Apply gentle pressure only — this is a therapeutic pose, not a strength exercise."
+    ],
+    "safety_hi": [
+      "पेट की सर्जरी, हर्निया की मरम्मत के बाद या दूसरी-तीसरी तिमाही में न करें।",
+      "गर्दन की समस्या हो तो सिर न उठाएं और ज़मीन पर रखें।",
+      "केवल हल्का दबाव लगाएं — यह चिकित्सीय मुद्रा है, शक्ति व्यायाम नहीं।"
+    ],
+    "counter_pose_id": "savasana",
+    "modifications": [
+      "Keep the head down throughout for cervical spine sensitivity.",
+      "Hold behind the thighs rather than the shin to reduce knee flexion.",
+      "Rock the knees in small circles instead of static hold to massage the sacrum gently."
+    ],
+    "modifications_hi": [
+      "ग्रीवा रीढ़ की संवेदनशीलता के लिए सिर हमेशा नीचे रखें।",
+      "घुटने के लचीलेपन को कम करने के लिए पिंडली की बजाय जांघों के पीछे पकड़ें।",
+      "त्रिकास्थि की हल्की मालिश के लिए स्थिर रहने की बजाय घुटनों को छोटे गोले में घुमाएं।"
+    ],
+    "progression_to": "ananda-balasana",
+    "props_optional": [],
+    "video_url": "/video/asanas/pavanamuktasana.mp4",
+    "image_url": "/og/asanas/pavanamuktasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "salamba-sarvangasana",
+    "sanskrit": "Salamba Sarvangasana",
+    "devanagari": "सालंब सर्वांगासन",
+    "name_en": "Supported Shoulder Stand",
+    "name_hi": "सालंब सर्वांगासन",
+    "category": "inversion",
+    "difficulty": 3,
+    "duration_seconds": 120,
+    "alignment_steps": [
+      "Stack three to five folded blankets, aligning the edges neatly; lie so your shoulders rest on the blankets and head is on the floor.",
+      "Press the arms down and swing the legs overhead, bending at the hips into Halasana briefly.",
+      "Bend the elbows and walk the hands up the back, placing them on the mid-back for support.",
+      "Raise both legs toward the ceiling, pressing through the heels and lengthening from hip to heel.",
+      "Draw the elbows toward each other and walk the hands further up the back, toward the shoulder blades.",
+      "The body should form a straight line from shoulders to feet — hips over shoulders, not behind.",
+      "Soften the throat and keep the neck free — do not turn the head in the pose.",
+      "Hold for one to five minutes, then lower into Halasana, then roll down vertebra by vertebra."
+    ],
+    "alignment_steps_hi": [
+      "तीन से पांच मुड़े कंबल एक साथ रखें; कंधे कंबलों पर, सिर ज़मीन पर।",
+      "बाहें नीचे दबाएं और पैर सिर के ऊपर घुमाएं, हलासन में जाएं।",
+      "कोहनियां मोड़ें और हाथ पीठ पर रखें, मध्य-पीठ पर सहारे के लिए।",
+      "दोनों पैर छत की ओर उठाएं, एड़ियों से धक्का दें, कूल्हे से एड़ी तक लंबाई।",
+      "कोहनियां पास लाएं और हाथ कंधे के ब्लेड की ओर ऊपर ले जाएं।",
+      "शरीर कंधे से पैर तक सीधी रेखा में — कूल्हे कंधों के ऊपर, पीछे नहीं।",
+      "गले को ढीला रखें, गर्दन मुक्त — मुद्रा में सिर न घुमाएं।",
+      "एक से पांच मिनट रहें, फिर हलासन में जाएं, फिर एक-एक कशेरुका से नीचे आएं।"
+    ],
+    "benefits": [
+      "Reverses gravitational load on the venous system, improving cardiac venous return.",
+      "Compresses the thyroid gland with the chin-lock (jalandhara bandha), traditionally linked to metabolic regulation.",
+      "Strengthens the deep cervical flexors, rhomboids, and triceps.",
+      "Stimulates the parasympathetic nervous system through baroreceptor activation in the carotid sinus.",
+      "Relieves varicose veins and lower limb edema through passive drainage."
+    ],
+    "benefits_hi": [
+      "शिरापरक तंत्र पर गुरुत्वाकर्षण भार को उलटता है, हृदय के शिरापरक प्रवाह में सुधार।",
+      "ठोड़ी के ताले (जालंधर बंध) से थायरॉइड ग्रंथि दब जाती है — परंपरागत रूप से चयापचय नियमन से जुड़ी।",
+      "गहरे ग्रीवा फ्लेक्सर्स, रोम्बॉयड्स और ट्राइसेप्स मजबूत होते हैं।",
+      "कैरोटिड साइनस में बैरोरेसेप्टर सक्रियण से परानुकंपी तंत्रिका तंत्र उत्तेजित होता है।",
+      "निष्क्रिय जल निकासी से वैरिकाज़ नसों और निचले अंग की सूजन से राहत।"
+    ],
+    "safety": [
+      "Never practice without blanket support — bare-floor shoulder stand compresses the cervical vertebrae.",
+      "Contraindicated in cervical disc herniation, glaucoma, detached retina, and high blood pressure.",
+      "Avoid during menstruation (traditional Iyengar and Ashtanga guidance) and pregnancy beyond the first trimester."
+    ],
+    "safety_hi": [
+      "कंबल समर्थन के बिना कभी न करें — नंगे फर्श पर ग्रीवा कशेरुकाओं पर दबाव पड़ता है।",
+      "ग्रीवा डिस्क हर्नियेशन, ग्लूकोमा, रेटिना अलगाव और उच्च रक्तचाप में वर्जित।",
+      "मासिक धर्म (पारंपरिक आयंगर और अष्टांग मार्गदर्शन) और पहली तिमाही के बाद गर्भावस्था में न करें।"
+    ],
+    "counter_pose_id": "matsyasana",
+    "modifications": [
+      "Use Viparita Karani (legs-up-the-wall) as a safe, effective alternative for those unable to invert.",
+      "Practice Halasana (Plow) with feet resting on a chair rather than full inversion.",
+      "Add more blanket height to reduce cervical compression and make weight distribution more comfortable."
+    ],
+    "modifications_hi": [
+      "जो उलटाव न कर सकें उनके लिए विपरीत करणी एक सुरक्षित, प्रभावी विकल्प है।",
+      "पूर्ण उलटाव की बजाय पैर कुर्सी पर टिकाकर हलासन करें।",
+      "ग्रीवा दबाव कम करने और भार वितरण आरामदेह बनाने के लिए कंबल की ऊंचाई बढ़ाएं।"
+    ],
+    "progression_to": "niralamba-sarvangasana",
+    "props_optional": ["blanket"],
+    "video_url": "/video/asanas/salamba-sarvangasana.mp4",
+    "image_url": "/og/asanas/salamba-sarvangasana.jpg",
+    "lineage": "sivananda"
+  },
+  {
+    "id": "supta-matsyendrasana",
+    "sanskrit": "Supta Matsyendrasana",
+    "devanagari": "सुप्त मत्स्येन्द्रासन",
+    "name_en": "Reclined Spinal Twist",
+    "name_hi": "लेटकर मेरुदंड मरोड़ मुद्रा",
+    "category": "twist",
+    "difficulty": 1,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Lie on your back and draw your right knee into the chest, extending the left leg long.",
+      "Place your left hand on the outer right knee and exhale as you guide the knee across the body to the left.",
+      "Extend the right arm out to the right at shoulder height, palm down, anchoring the shoulder.",
+      "Turn your head to the right, creating an opposing spiral from right hand to left knee.",
+      "Keep the right shoulder actively pressing into the floor — this is the primary alignment cue.",
+      "If the right knee does not reach the floor, place a block under it to avoid suspension.",
+      "Stay for one to two minutes, breathing into the right side body.",
+      "Bring the knee back to center on an inhale, hug both knees, then switch sides."
+    ],
+    "alignment_steps_hi": [
+      "पीठ के बल लेटें, दाएं घुटने को छाती की ओर खींचें, बायां पैर लंबा फैलाएं।",
+      "बायां हाथ दाएं घुटने के बाहर रखें, सांस छोड़ते हुए घुटने को बाईं ओर ले जाएं।",
+      "दाईं बाह कंधे की ऊंचाई पर दाईं ओर फैलाएं, हथेली नीचे, कंधे को टिकाएं।",
+      "सिर दाईं ओर मोड़ें — दाएं हाथ से बाएं घुटने तक विपरीत सर्पिल बनाएं।",
+      "दायां कंधा सक्रिय रूप से ज़मीन पर दबाए रखें — यह प्राथमिक संरेखण संकेत है।",
+      "दायां घुटना ज़मीन तक न पहुंचे तो लटकने से बचाने के लिए ब्लॉक रखें।",
+      "एक से दो मिनट रहें, दाईं ओर के शरीर में सांस लें।",
+      "श्वास लेते हुए घुटने केंद्र में लाएं, दोनों घुटने गले लगाएं, फिर पक्ष बदलें।"
+    ],
+    "benefits": [
+      "Rotates each segment of the thoracic and lumbar spine through its accessible range.",
+      "Stretches the posterior capsule of the hip joint and the piriformis muscle.",
+      "Stimulates liver and spleen compression on respective sides, aiding metabolic function.",
+      "Relieves sacroiliac joint dysfunction through asymmetric rotation.",
+      "Deeply relaxing when held for two or more minutes — effective as a pre-savasana pose."
+    ],
+    "benefits_hi": [
+      "वक्षीय और काठ रीढ़ के प्रत्येक खंड को उसकी सुलभ सीमा में घुमाता है।",
+      "कूल्हे के जोड़ की पश्च कैप्सूल और पिरिफॉर्मिस मांसपेशी का खिंचाव।",
+      "संबंधित पक्षों पर यकृत और प्लीहा संपीड़न उत्तेजित करता है, चयापचय में सहायक।",
+      "असममित घुमाव से त्रिकास्थि-इलियक जोड़ की शिथिलता से राहत।",
+      "दो या अधिक मिनट रहने पर गहरी विश्रांति — शवासन से पहले की मुद्रा के रूप में प्रभावी।"
+    ],
+    "safety": [
+      "If you have a herniated lumbar disc, keep the knees higher (less range) and avoid forcing.",
+      "Do not twist aggressively — this is a passive release, not a torque exercise.",
+      "Shoulder impingement sufferers may keep the arm at a lower angle rather than shoulder height."
+    ],
+    "safety_hi": [
+      "काठ हर्नियेटेड डिस्क हो तो घुटने ऊंचे रखें और जोर न लगाएं।",
+      "जबरदस्ती से न मोड़ें — यह निष्क्रिय छुटकारा है, टॉर्क व्यायाम नहीं।",
+      "कंधे की समस्या वाले बाह को कंधे की ऊंचाई की बजाय नीचे के कोण पर रख सकते हैं।"
+    ],
+    "counter_pose_id": "apanasana",
+    "modifications": [
+      "Place a block under the twisted knee to prevent the shoulder from lifting.",
+      "Extend the bottom leg straight only if the lower back is comfortable — otherwise keep it bent.",
+      "For a deeper hip stretch, cross the twisted knee over a straight bottom leg."
+    ],
+    "modifications_hi": [
+      "मुड़े घुटने के नीचे ब्लॉक रखें ताकि कंधा न उठे।",
+      "नीचे का पैर तभी सीधा करें जब पीठ का निचला हिस्सा आरामदेह हो — अन्यथा मोड़े रखें।",
+      "गहरे कूल्हे खिंचाव के लिए मुड़े घुटने को सीधे निचले पैर के ऊपर से पार करें।"
+    ],
+    "progression_to": "ardha-matsyendrasana",
+    "props_optional": ["block", "blanket"],
+    "video_url": "/video/asanas/supta-matsyendrasana.mp4",
+    "image_url": "/og/asanas/supta-matsyendrasana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "yoga-nidra-asana",
+    "sanskrit": "Yoga Nidra Sthiti",
+    "devanagari": "योग निद्रा स्थिति",
+    "name_en": "Yoga Nidra Pose (Guided Supine Relaxation)",
+    "name_hi": "योग निद्रा मुद्रा",
+    "category": "restorative",
+    "difficulty": 1,
+    "duration_seconds": 600,
+    "alignment_steps": [
+      "Lie on your back in Savasana — feet hip-width, arms 15-20 cm from the body, palms up.",
+      "Place a bolster under the knees to remove all effort from the lower back and psoas.",
+      "Cover yourself with a light blanket to prevent the body temperature drop of deep stillness.",
+      "Use an eye pillow or fold a soft cloth over the eyes to eliminate visual stimulation.",
+      "Allow the body to settle into its position for 2-3 minutes before the guided practice begins.",
+      "Breathe naturally and without control — simply witness the breath without shaping it.",
+      "As the guidance begins, rotate awareness through the body in the traditional Nyasa sequence.",
+      "The body remains motionless throughout — all movement is purely of awareness, not the physical form."
+    ],
+    "alignment_steps_hi": [
+      "शवासन में पीठ के बल लेटें — पैर कूल्हे की चौड़ाई पर, बाहें 15-20 सेमी दूर, हथेलियां ऊपर।",
+      "घुटनों के नीचे बोल्स्टर रखें ताकि पीठ के निचले हिस्से और सोअस पर कोई प्रयास न हो।",
+      "गहरी स्थिरता में शरीर का तापमान गिरने से रोकने के लिए हल्का कंबल ओढ़ें।",
+      "दृश्य उत्तेजना समाप्त करने के लिए आंखों पर तकिया या मुलायम कपड़ा रखें।",
+      "निर्देशित अभ्यास शुरू होने से पहले 2-3 मिनट शरीर को स्थिर होने दें।",
+      "स्वाभाविक सांस लें, बिना नियंत्रण के — केवल सांस का साक्षी बनें।",
+      "मार्गदर्शन शुरू होने पर पारंपरिक न्यास अनुक्रम में शरीर के माध्यम से जागरूकता घुमाएं।",
+      "पूरे समय शरीर स्थिर रहे — सारी गतिविधि केवल जागरूकता की है, शारीरिक रूप की नहीं।"
+    ],
+    "benefits": [
+      "Induces the hypnagogic state (between waking and sleep) where deep psychological restructuring occurs.",
+      "Reduces cortisol and activates delta and theta brainwave states associated with deep rest.",
+      "A 45-minute Yoga Nidra session is documented to produce rest equivalent to 2-3 hours of sleep.",
+      "Systematic body scanning (rotation of consciousness) trains interoceptive awareness.",
+      "Used therapeutically for PTSD, insomnia, chronic pain, and anxiety in clinical settings."
+    ],
+    "benefits_hi": [
+      "जाग्रत और नींद के बीच की अवस्था (hypnagogic) उत्पन्न करता है जहां गहरा मनोवैज्ञानिक पुनर्गठन होता है।",
+      "कोर्टिसोल कम होता है और गहरी विश्रांति से जुड़े डेल्टा और थेटा मस्तिष्क तरंग अवस्थाएं सक्रिय होती हैं।",
+      "45 मिनट का योग निद्रा सत्र 2-3 घंटे की नींद के समतुल्य विश्राम प्रदान करता है।",
+      "व्यवस्थित शरीर स्कैनिंग (चेतना का परिभ्रमण) इंटेरोसेप्टिव जागरूकता को प्रशिक्षित करती है।",
+      "PTSD, अनिद्रा, पुराने दर्द और चिंता के लिए नैदानिक सेटिंग में चिकित्सीय रूप से उपयोग।"
+    ],
+    "safety": [
+      "Those with active psychosis or dissociative disorders should practice only under clinical supervision.",
+      "Epilepsy requires medical clearance before practicing body-scan techniques.",
+      "If falling asleep completely, the practice remains beneficial — do not treat this as failure."
+    ],
+    "safety_hi": [
+      "सक्रिय मनोविकृति या विघटनकारी विकार वाले केवल नैदानिक निगरानी में अभ्यास करें।",
+      "मिर्गी के लिए शरीर-स्कैन तकनीक से पहले चिकित्सीय अनुमति आवश्यक है।",
+      "पूरी तरह सो जाएं तो भी अभ्यास लाभकारी है — इसे विफलता न मानें।"
+    ],
+    "counter_pose_id": null,
+    "modifications": [
+      "For those who cannot lie flat, recline at an angle on a bolster or in a reclining chair.",
+      "A shorter 10-15 minute version (body rotation + sankalpa only) suits beginners or busy days.",
+      "Use recorded guidance initially; experienced practitioners can eventually practice in silence."
+    ],
+    "modifications_hi": [
+      "जो सपाट न लेट सकें, वे बोल्स्टर पर या रिक्लाइनिंग कुर्सी में झुककर बैठ सकते हैं।",
+      "शुरुआती या व्यस्त दिनों के लिए 10-15 मिनट का छोटा संस्करण (शरीर घुमाव + संकल्प)।",
+      "शुरू में रिकॉर्डेड मार्गदर्शन उपयोग करें; अनुभवी अभ्यासी अंततः मौन में अभ्यास कर सकते हैं।"
+    ],
+    "progression_to": null,
+    "props_optional": ["bolster", "blanket", "eye-pillow"],
+    "video_url": "/video/asanas/yoga-nidra-asana.mp4",
+    "image_url": "/og/asanas/yoga-nidra-asana.jpg",
+    "lineage": "hatha"
+  },
+  {
+    "id": "malasana",
+    "sanskrit": "Malasana",
+    "devanagari": "मालासन",
+    "name_en": "Garland Pose (Yogic Squat)",
+    "name_hi": "माला मुद्रा",
+    "category": "seated",
+    "difficulty": 2,
+    "duration_seconds": 60,
+    "alignment_steps": [
+      "Stand with feet slightly wider than hip-width, toes turned out at 45-60 degrees.",
+      "Exhale and lower into a deep squat, bringing the hips as low as possible toward the floor.",
+      "Bring the palms together at heart center in anjali mudra and press the elbows firmly into the inner knees.",
+      "Use the elbows pressing outward to gently nudge the knees wider, increasing the hip opening.",
+      "Lift the chest and lengthen the spine — avoid rounding the upper back forward.",
+      "Keep the heels on the floor if possible; if they lift, place a rolled blanket under them.",
+      "Draw the navel gently in and up to support the lower back in this deep hip flexion.",
+      "Hold for 30-90 seconds, breathing into the pelvic floor and inner groin."
+    ],
+    "alignment_steps_hi": [
+      "कूल्हे की चौड़ाई से थोड़ा चौड़ा खड़े हों, पैर 45-60 डिग्री बाहर।",
+      "सांस छोड़ते हुए गहरी बैठक में जाएं, कूल्हों को यथासंभव नीचे।",
+      "हृदय केंद्र पर हथेलियां जोड़ें (अंजलि मुद्रा) और कोहनियां भीतरी घुटनों पर दबाएं।",
+      "कोहनियां बाहर दबाकर घुटनों को धीरे से चौड़ा करें, कूल्हे का खुलाव बढ़ाएं।",
+      "सीना उठाएं और रीढ़ लंबी करें — ऊपरी पीठ को आगे न झुकाएं।",
+      "एड़ियां ज़मीन पर रखें; उठें तो नीचे मुड़ा कंबल रखें।",
+      "नाभि को हल्के से अंदर और ऊपर खींचें — गहरे कूल्हे के लचीलेपन में पीठ का सहारा।",
+      "30-90 सेकंड रहें, श्रोणि तल और भीतरी जांघ में सांस लें।"
+    ],
+    "benefits": [
+      "Deeply opens the hip joints into external rotation and flexion simultaneously.",
+      "Stretches the inner groin, hip flexors, and ankle complex in an integrated manner.",
+      "Strengthens the pelvic floor and perineal muscles through active engagement in the squatted position.",
+      "Improves ankle dorsiflexion, a mobility deficit common in populations that sit in chairs.",
+      "Stimulates the apana vayu and digestive organs through pelvic compression — traditionally used for constipation."
+    ],
+    "benefits_hi": [
+      "कूल्हे के जोड़ों में बाहरी घुमाव और लचीलेपन का एकीकृत गहरा खुलाव।",
+      "भीतरी जांघ, हिप फ्लेक्सर्स और टखने के कॉम्प्लेक्स का एकीकृत खिंचाव।",
+      "बैठक की स्थिति में सक्रिय जुड़ाव से श्रोणि तल और पेरिनियल मांसपेशियां मजबूत।",
+      "टखने का डोर्सिफ्लेक्शन सुधरता है — कुर्सी पर बैठने वाली आबादी में सामान्य गतिशीलता की कमी।",
+      "श्रोणि संपीड़न से अपान वायु और पाचन अंग उत्तेजित — परंपरागत रूप से कब्ज के लिए।"
+    ],
+    "safety": [
+      "Avoid with acute knee injuries — the deep knee flexion places significant load on the posterior capsule.",
+      "Those with ankle instability should use a rolled blanket under the heels until mobility improves.",
+      "Avoid in the third trimester of pregnancy without guidance — the pelvic floor compression is significant."
+    ],
+    "safety_hi": [
+      "तीव्र घुटने की चोट में न करें — गहरा घुटने का लचीलापन पश्च कैप्सूल पर महत्वपूर्ण भार डालता है।",
+      "टखने की अस्थिरता हो तो गतिशीलता सुधरने तक एड़ियों के नीचे मुड़ा कंबल रखें।",
+      "गर्भावस्था की तीसरी तिमाही में बिना मार्गदर्शन के न करें — श्रोणि तल संपीड़न महत्वपूर्ण है।"
+    ],
+    "counter_pose_id": "dandasana",
+    "modifications": [
+      "Place a rolled blanket or yoga wedge under the heels to accommodate limited ankle dorsiflexion.",
+      "Sit on a block at the lowest height to reduce depth of squat while maintaining alignment.",
+      "Hold a door frame or wall for balance while you work toward independent balance."
+    ],
+    "modifications_hi": [
+      "सीमित टखने के डोर्सिफ्लेक्शन के लिए एड़ियों के नीचे मुड़ा कंबल या योग वेज रखें।",
+      "सबसे कम ऊंचाई पर ब्लॉक पर बैठें — संरेखण बनाए रखते हुए बैठक की गहराई कम करें।",
+      "स्वतंत्र संतुलन की ओर बढ़ते समय संतुलन के लिए दरवाजे का फ्रेम या दीवार पकड़ें।"
+    ],
+    "progression_to": "padmasana",
+    "props_optional": ["block", "blanket"],
+    "video_url": "/video/asanas/malasana.mp4",
+    "image_url": "/og/asanas/malasana.jpg",
+    "lineage": "hatha"
+  }
+]

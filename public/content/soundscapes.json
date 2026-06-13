@@ -1,0 +1,137 @@
+[
+  {
+    "id": "sound-001",
+    "name_en": "Rain on Leaves",
+    "name_hi": "पत्तों पर बारिश",
+    "mp3_url": "/audio/rain-on-leaves.mp3",
+    "category": "nature",
+    "loop_seconds": 60,
+    "ideal_pair": ["sound-007", "sound-008", "sound-011"]
+  },
+  {
+    "id": "sound-002",
+    "name_en": "Monsoon Rain on Metal Roof",
+    "name_hi": "लोहे की छत पर मानसून की बारिश",
+    "mp3_url": "/audio/monsoon-rain-metal-roof.mp3",
+    "category": "nature",
+    "loop_seconds": 90,
+    "ideal_pair": ["sound-011", "sound-012", "sound-001"]
+  },
+  {
+    "id": "sound-003",
+    "name_en": "Ocean Waves (Slow)",
+    "name_hi": "धीमी समुद्री लहरें",
+    "mp3_url": "/audio/ocean-waves-slow.mp3",
+    "category": "nature",
+    "loop_seconds": 120,
+    "ideal_pair": ["sound-011", "sound-012", "sound-007"]
+  },
+  {
+    "id": "sound-004",
+    "name_en": "Forest Birds at Dawn",
+    "name_hi": "भोर में जंगल के पक्षी",
+    "mp3_url": "/audio/forest-birds-dawn.mp3",
+    "category": "nature",
+    "loop_seconds": 75,
+    "ideal_pair": ["sound-001", "sound-008", "sound-007"]
+  },
+  {
+    "id": "sound-005",
+    "name_en": "Cricket Chirps at Night",
+    "name_hi": "रात में झींगुरों की आवाज़",
+    "mp3_url": "/audio/cricket-chirps-night.mp3",
+    "category": "nature",
+    "loop_seconds": 60,
+    "ideal_pair": ["sound-011", "sound-012", "sound-001"]
+  },
+  {
+    "id": "sound-006",
+    "name_en": "Fireplace Crackle",
+    "name_hi": "चिमनी की चटचट",
+    "mp3_url": "/audio/fireplace-crackle.mp3",
+    "category": "indoor",
+    "loop_seconds": 90,
+    "ideal_pair": ["sound-011", "sound-015", "sound-010"]
+  },
+  {
+    "id": "sound-007",
+    "name_en": "Soft Wind Through Pines",
+    "name_hi": "चीड़ के पेड़ों से गुज़रती मंद हवा",
+    "mp3_url": "/audio/wind-through-pines.mp3",
+    "category": "nature",
+    "loop_seconds": 80,
+    "ideal_pair": ["sound-004", "sound-001", "sound-003"]
+  },
+  {
+    "id": "sound-008",
+    "name_en": "River Stream",
+    "name_hi": "नदी की कलकल",
+    "mp3_url": "/audio/river-stream.mp3",
+    "category": "nature",
+    "loop_seconds": 70,
+    "ideal_pair": ["sound-004", "sound-007", "sound-001"]
+  },
+  {
+    "id": "sound-009",
+    "name_en": "Tibetan Singing Bowls",
+    "name_hi": "तिब्बती घंटियाँ (लंबा अनुनाद)",
+    "mp3_url": "/audio/tibetan-singing-bowls.mp3",
+    "category": "abstract",
+    "loop_seconds": 45,
+    "ideal_pair": ["sound-010", "sound-011", "sound-015"]
+  },
+  {
+    "id": "sound-010",
+    "name_en": "Indian Tanpura Drone",
+    "name_hi": "भारतीय तानपुरे का स्वर",
+    "mp3_url": "/audio/indian-tanpura-drone.mp3",
+    "category": "abstract",
+    "loop_seconds": 60,
+    "ideal_pair": ["sound-009", "sound-011", "sound-015"]
+  },
+  {
+    "id": "sound-011",
+    "name_en": "Brown Noise",
+    "name_hi": "ब्राउन नॉइज़",
+    "mp3_url": "/audio/brown-noise.mp3",
+    "category": "abstract",
+    "loop_seconds": 30,
+    "ideal_pair": ["sound-001", "sound-002", "sound-003"]
+  },
+  {
+    "id": "sound-012",
+    "name_en": "Pink Noise",
+    "name_hi": "पिंक नॉइज़",
+    "mp3_url": "/audio/pink-noise.mp3",
+    "category": "abstract",
+    "loop_seconds": 30,
+    "ideal_pair": ["sound-003", "sound-008", "sound-011"]
+  },
+  {
+    "id": "sound-013",
+    "name_en": "White Noise",
+    "name_hi": "वाइट नॉइज़",
+    "mp3_url": "/audio/white-noise.mp3",
+    "category": "abstract",
+    "loop_seconds": 30,
+    "ideal_pair": ["sound-012", "sound-011", "sound-002"]
+  },
+  {
+    "id": "sound-014",
+    "name_en": "Temple Wind Chimes",
+    "name_hi": "मंदिर की वायु घंटियाँ",
+    "mp3_url": "/audio/temple-wind-chimes.mp3",
+    "category": "indoor",
+    "loop_seconds": 50,
+    "ideal_pair": ["sound-009", "sound-010", "sound-007"]
+  },
+  {
+    "id": "sound-015",
+    "name_en": "Library Quiet",
+    "name_hi": "पुस्तकालय की शांति",
+    "mp3_url": "/audio/library-quiet.mp3",
+    "category": "indoor",
+    "loop_seconds": 60,
+    "ideal_pair": ["sound-012", "sound-011", "sound-006"]
+  }
+]

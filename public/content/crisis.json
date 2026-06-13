@@ -1,0 +1,304 @@
+[
+  {
+    "id": "crisis-001",
+    "title_en": "5-4-3-2-1 Grounding",
+    "title_hi": "5-4-3-2-1 ज़मीन पर लौटना",
+    "trigger_moods": ["panic", "dissociation", "overwhelm", "anxiety-spike"],
+    "steps_en": [
+      "Look around slowly. Name 5 things you can see right now.",
+      "Reach out and touch something near you. Name 4 things you can physically touch.",
+      "Go still. Name 3 sounds you can hear in this moment.",
+      "Breathe in gently. Name 2 things you can smell.",
+      "Notice your mouth. Name 1 thing you can taste."
+    ],
+    "steps_hi": [
+      "धीरे-धीरे चारों तरफ देखें। 5 चीज़ें बताएं जो अभी दिख रही हैं।",
+      "पास की कोई चीज़ छुएं। 4 चीज़ें बताएं जिन्हें आप महसूस कर सकते हैं।",
+      "शांत हो जाएं। 3 आवाज़ें बताएं जो अभी सुनाई दे रही हैं।",
+      "धीरे से सांस लें। 2 चीज़ें बताएं जो महक रही हैं।",
+      "अपने मुंह पर ध्यान दें। 1 चीज़ बताएं जो आप स्वाद महसूस कर सकते हैं।"
+    ],
+    "duration_sec": 90,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-002",
+    "title_en": "Box Breathing (4-4-4-4)",
+    "title_hi": "बॉक्स श्वास (4-4-4-4)",
+    "trigger_moods": ["panic", "anxiety-spike", "racing-heart", "pre-event-nerves"],
+    "steps_en": [
+      "Sit or lie down. Let your shoulders drop.",
+      "Breathe in slowly through your nose for 4 counts.",
+      "Hold your breath gently for 4 counts.",
+      "Breathe out slowly through your mouth for 4 counts.",
+      "Hold empty for 4 counts. Then begin again.",
+      "Repeat this 4 times — or as long as feels right."
+    ],
+    "steps_hi": [
+      "बैठ जाएं या लेट जाएं। कंधे ढीले छोड़ दें।",
+      "नाक से धीरे-धीरे 4 गिनती में सांस लें।",
+      "4 गिनती तक सांस को हल्के से रोकें।",
+      "मुंह से 4 गिनती में धीरे-धीरे सांस छोड़ें।",
+      "4 गिनती तक खाली रहें, फिर दोबारा शुरू करें।",
+      "यह 4 बार दोहराएं — या जितना सही लगे।"
+    ],
+    "duration_sec": 120,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-003",
+    "title_en": "Cold Water on Wrists",
+    "title_hi": "कलाइयों पर ठंडा पानी",
+    "trigger_moods": ["dissociation", "overwhelm", "emotional-flooding", "anger-spike"],
+    "steps_en": [
+      "Go to a tap. Turn on cold water.",
+      "Hold both wrists under the cool running water for 30 seconds.",
+      "Feel the temperature on your skin. Just that, nothing else.",
+      "If you can, splash a little water on the back of your neck.",
+      "Dry your hands slowly. Notice how your body feels now."
+    ],
+    "steps_hi": [
+      "नल के पास जाएं। ठंडा पानी चलाएं।",
+      "दोनों कलाइयों को 30 सेकंड तक ठंडे बहते पानी के नीचे रखें।",
+      "अपनी त्वचा पर तापमान महसूस करें। बस यही, कुछ और नहीं।",
+      "अगर हो सके तो गर्दन के पीछे थोड़ा पानी छिड़कें।",
+      "धीरे-धीरे हाथ पोंछें। ध्यान दें कि अब शरीर कैसा महसूस कर रहा है।"
+    ],
+    "duration_sec": 60,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-004",
+    "title_en": "Name 3 Safe People or Places",
+    "title_hi": "3 सुरक्षित लोग या जगहें याद करें",
+    "trigger_moods": ["panic", "loneliness", "dissociation", "fear"],
+    "steps_en": [
+      "Close your eyes if that feels okay, or just look softly ahead.",
+      "Think of one person who has ever made you feel safe. Picture their face.",
+      "Think of one place where you have felt calm — real or remembered.",
+      "Think of one more person or place. Anyone, anywhere.",
+      "Let those three just be with you for a moment. You are not alone."
+    ],
+    "steps_hi": [
+      "आंखें बंद करें अगर ठीक लगे, या बस आगे हल्की नज़र रखें।",
+      "किसी एक इंसान के बारे में सोचें जिसके साथ आप सुरक्षित महसूस करते हैं। उनका चेहरा देखें।",
+      "किसी एक जगह के बारे में सोचें जहां आपको शांति मिली हो — असली या याद में।",
+      "एक और इंसान या जगह सोचें। कोई भी, कहीं भी।",
+      "उन तीनों को बस एक पल के लिए महसूस करें। आप अकेले नहीं हैं।"
+    ],
+    "duration_sec": 90,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-005",
+    "title_en": "The STOP Tool",
+    "title_hi": "STOP टूल",
+    "trigger_moods": ["overwhelm", "impulse", "anger-spike", "panic", "reactive-spiral"],
+    "steps_en": [
+      "S — Stop. Physically pause. Don't do the next thing yet.",
+      "T — Take a breath. One slow breath in, one slow breath out.",
+      "O — Observe. What are you feeling in your body right now? Name it.",
+      "P — Proceed. Choose your next step from this calmer place.",
+      "You just broke the automatic loop. That took courage."
+    ],
+    "steps_hi": [
+      "S — रुकें। शारीरिक रूप से रुकें। अभी अगला काम मत करें।",
+      "T — एक सांस लें। एक धीमी सांस अंदर, एक धीमी सांस बाहर।",
+      "O — देखें। अभी आपके शरीर में क्या महसूस हो रहा है? उसे नाम दें।",
+      "P — आगे बढ़ें। इस शांत जगह से अपना अगला कदम चुनें।",
+      "आपने अभी-अभी वह ऑटोमेटिक चक्र तोड़ा। यह हिम्मत का काम था।"
+    ],
+    "duration_sec": 60,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-006",
+    "title_en": "Self-Hug with Words",
+    "title_hi": "खुद को गले लगाएं और कुछ कहें",
+    "trigger_moods": ["grief", "loneliness", "shame", "self-criticism", "heartbreak"],
+    "steps_en": [
+      "Cross your arms over your chest. Hold yourself gently.",
+      "Apply a little pressure — enough to feel held.",
+      "Say softly, aloud if you can: 'This is hard, and I'm here.'",
+      "Stay in the hold for 30 seconds. Breathe slowly.",
+      "You can say anything else you need to hear right now. Say it to yourself."
+    ],
+    "steps_hi": [
+      "अपनी बाहें छाती पर क्रॉस करें। खुद को हल्के से पकड़ें।",
+      "थोड़ा दबाव डालें — जितना गले लगे हुए जैसा लगे।",
+      "धीरे से, ज़ोर से कहें: 'यह मुश्किल है, और मैं यहाँ हूं।'",
+      "30 सेकंड इसी तरह रहें। धीरे-धीरे सांस लें।",
+      "जो भी सुनना चाहते हैं — अभी खुद से कहें।"
+    ],
+    "duration_sec": 60,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-007",
+    "title_en": "Look at One Object for 60 Seconds",
+    "title_hi": "60 सेकंड तक एक चीज़ को देखते रहें",
+    "trigger_moods": ["dissociation", "racing-thoughts", "panic", "emotional-flooding"],
+    "steps_en": [
+      "Pick any object within view — a cup, a wall, a light switch.",
+      "Look at it without looking away.",
+      "Notice its color, its shape, the way light falls on it.",
+      "If your mind wanders, gently bring it back to the object.",
+      "Stay with it for 60 seconds. Just looking. Nothing else required."
+    ],
+    "steps_hi": [
+      "कोई भी एक चीज़ चुनें जो दिख रही हो — एक कप, एक दीवार, एक स्विच।",
+      "बिना नज़र हटाए उसे देखते रहें।",
+      "उसका रंग, आकार, उस पर पड़ती रोशनी नोटिस करें।",
+      "अगर मन भटके तो धीरे से वापस उस चीज़ पर लाएं।",
+      "60 सेकंड उसके साथ रहें। बस देखते रहें। कुछ और ज़रूरी नहीं।"
+    ],
+    "duration_sec": 75,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-008",
+    "title_en": "Pour Water and Drink It Slowly",
+    "title_hi": "पानी डालें और धीरे-धीरे पिएं",
+    "trigger_moods": ["overwhelm", "panic", "emotional-flooding", "grief"],
+    "steps_en": [
+      "Go to where you keep water. Notice the sound of pouring.",
+      "Hold the glass in both hands. Feel its weight and temperature.",
+      "Take a small sip. Feel it in your mouth before swallowing.",
+      "Take another sip. Slower this time.",
+      "Finish the glass like this — noticing each sip. That's the whole practice."
+    ],
+    "steps_hi": [
+      "जहां पानी रखा हो वहां जाएं। डालने की आवाज़ सुनें।",
+      "गिलास को दोनों हाथों से पकड़ें। उसका वज़न और तापमान महसूस करें।",
+      "एक छोटा घूंट लें। निगलने से पहले मुंह में महसूस करें।",
+      "एक और घूंट। इस बार और धीरे।",
+      "पूरा गिलास ऐसे ही खत्म करें — हर घूंट पर ध्यान देते हुए।"
+    ],
+    "duration_sec": 90,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-009",
+    "title_en": "Touch 5 Different Textures",
+    "title_hi": "5 अलग-अलग बनावटें छुएं",
+    "trigger_moods": ["dissociation", "panic", "numbness", "overwhelm"],
+    "steps_en": [
+      "Reach out and touch something rough — a wall, fabric, a surface.",
+      "Now touch something smooth — glass, skin, a flat table.",
+      "Find something soft — a pillow, a piece of clothing.",
+      "Find something hard — a floor, a book, a chair leg.",
+      "One more texture of your choice. Stay with each for a few seconds."
+    ],
+    "steps_hi": [
+      "किसी खुरदरी चीज़ को छुएं — एक दीवार, कपड़ा, कोई सतह।",
+      "अब कुछ चिकना छुएं — शीशा, त्वचा, एक सपाट मेज़।",
+      "कुछ मुलायम ढूंढें — एक तकिया, कपड़े का कोई टुकड़ा।",
+      "कुछ कठोर ढूंढें — फर्श, किताब, कुर्सी का पाया।",
+      "अपनी पसंद की एक और बनावट। हर एक के साथ कुछ सेकंड रुकें।"
+    ],
+    "duration_sec": 60,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-010",
+    "title_en": "Step Outside or Open a Window",
+    "title_hi": "बाहर जाएं या खिड़की खोलें",
+    "trigger_moods": ["claustrophobia", "overwhelm", "panic", "dissociation", "stuck"],
+    "steps_en": [
+      "If you can, step outside. Even one minute on a balcony or doorstep counts.",
+      "If you can't go out, open a window.",
+      "Let the air touch your face. Cool or warm, it doesn't matter.",
+      "Look at something far away — the sky, a tree, a building across the street.",
+      "Take three deep breaths of outside air. The world is still there."
+    ],
+    "steps_hi": [
+      "अगर हो सके, बाहर जाएं। बालकनी या दरवाज़े पर एक मिनट भी काफी है।",
+      "अगर बाहर नहीं जा सकते, कोई खिड़की खोलें।",
+      "हवा को अपने चेहरे को छूने दें। ठंडी हो या गर्म, फर्क नहीं पड़ता।",
+      "किसी दूर की चीज़ को देखें — आसमान, एक पेड़, सामने की इमारत।",
+      "बाहरी हवा में तीन गहरी सांसें लें। दुनिया अभी भी है।"
+    ],
+    "duration_sec": 120,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-011",
+    "title_en": "Call One Person",
+    "title_hi": "एक इंसान को फ़ोन करें",
+    "trigger_moods": ["loneliness", "crisis", "despair", "panic", "overwhelm"],
+    "steps_en": [
+      "Think of one person who has ever been glad you called. Anyone.",
+      "You don't need to explain everything. You can just say 'I needed to hear your voice.'",
+      "If nobody comes to mind, use a helpline — they are real people, and they want to answer.",
+      "iCall (India): 9152987821 | Vandrevala Foundation: 1860-2662-345 (24/7) | Fortis Stress Helpline: 8376804102",
+      "International: Crisis Text Line — text HOME to 741741 | Samaritans (UK): 116 123"
+    ],
+    "steps_hi": [
+      "किसी एक इंसान के बारे में सोचें जो आपका फ़ोन आने से खुश होता हो। कोई भी।",
+      "सब कुछ बताना ज़रूरी नहीं। बस इतना कह सकते हैं: 'बस आपकी आवाज़ सुनना था।'",
+      "अगर कोई नहीं सूझ रहा, हेल्पलाइन पर कॉल करें — वहां असली लोग हैं जो जवाब देना चाहते हैं।",
+      "iCall (भारत): 9152987821 | Vandrevala Foundation: 1860-2662-345 (24 घंटे) | Fortis: 8376804102",
+      "International: Crisis Text Line — HOME लिखकर 741741 पर भेजें | Samaritans (UK): 116 123"
+    ],
+    "duration_sec": 30,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  },
+  {
+    "id": "crisis-012",
+    "title_en": "The 'This Will Pass' Mantra",
+    "title_hi": "यह भी गुज़र जाएगा — मंत्र",
+    "trigger_moods": ["despair", "grief", "overwhelm", "hopelessness", "panic"],
+    "steps_en": [
+      "Place one hand on your heart. Feel it beating.",
+      "Say slowly, as many times as you need: 'This feeling is real. And it will pass.'",
+      "Breathe in for 4 counts. Breathe out for 6 counts.",
+      "Say it again: 'I have survived hard moments before. I am still here.'",
+      "Stay with the hand on your heart. You are not the feeling — you are the one feeling it."
+    ],
+    "steps_hi": [
+      "एक हाथ अपने दिल पर रखें। उसकी धड़कन महसूस करें।",
+      "धीरे-धीरे, जितनी बार ज़रूरत हो, कहें: 'यह भावना असली है। और यह गुज़र जाएगी।'",
+      "4 गिनती में सांस लें। 6 गिनती में सांस छोड़ें।",
+      "फिर कहें: 'मैंने पहले भी मुश्किल पल पार किए हैं। मैं अभी भी हूं।'",
+      "दिल पर हाथ रखे रहें। आप भावना नहीं हैं — आप वो हैं जो उसे महसूस कर रहे हैं।"
+    ],
+    "duration_sec": 120,
+    "low_stim": true,
+    "audio_cue": false,
+    "voice_register": "low-stim-calm",
+    "safety_level": "crisis"
+  }
+]

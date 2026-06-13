@@ -1,1260 +1,1752 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-tod="auto">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Breathe with us — Sukoon</title>
-    <meta name="description" content="Reset in 60 seconds. An interactive breath studio with 4-7-8, box, deep and coherent patterns. Free, guided, science-backed.">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Sukoon">
-    <meta property="og:url" content="https://sukoon.cloud/breathe.html">
-    <meta property="og:title" content="Breathe with us — Sukoon">
-    <meta property="og:description" content="Reset in 60 seconds. An interactive breath studio.">
-    <meta property="og:image" content="https://sukoon.cloud/og/breathe.jpg">
-    <meta name="theme-color" content="#0F1B3D">
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Breathe — Sukoon</title>
+  <meta name="description" content="Reset in 60 seconds. 25 ancient and modern breath practices with phase-precise guidance — plus a fresh one designed just for this moment.">
+  <meta name="theme-color" content="#0F1B3D">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
-    <link rel="stylesheet" href="/css/shell.css">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sukoon">
+  <meta property="og:url" content="https://sukoon.cloud/breathe.html">
+  <meta property="og:title" content="Breathe — Sukoon">
+  <meta property="og:description" content="A breath studio. 25 patterns from pranayama and modern science. Free, anonymous, ad-free.">
+  <meta property="og:image" content="https://sukoon.cloud/og/breathe.jpg">
 
-    <style>
-        /* ========== SUKOON DESIGN TOKENS (page-scoped) ========== */
-        .page-breathe {
-            --sk-night:        #0F1B3D;
-            --sk-twilight:     #1A2547;
-            --sk-aubergine:    #2B1F4A;
-            --sk-dusk:         #6B3E5E;
-            --sk-saffron:      #E8A552;
-            --sk-marigold:     #D87A4A;
-            --sk-haldi:        #E8C547;
-            --sk-tulsi:        #6FA286;
-            --sk-rose:         #C77D7D;
-            --sk-coral:        #F08679;
-            --sk-cream:        #F5EFE2;
-            --sk-cream-dim:    rgba(245, 239, 226, 0.72);
-            --sk-cream-quiet:  rgba(245, 239, 226, 0.45);
-            --sk-mist:         #7FA8A2;
-            --sk-shadow:       rgba(8, 12, 28, 0.55);
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/sukoon-revolution.css">
 
-            --sk-font-serif:   'Fraunces', 'Tiro Devanagari Hindi', Georgia, serif;
-            --sk-font-sans:    'Inter Tight', 'Hind', system-ui, sans-serif;
-            --sk-font-hindi:   'Tiro Devanagari Hindi', 'Hind', serif;
+  <script src="/js/sukoon-experience.js" defer></script>
+  <script src="/js/sukoon-pulse.js" defer></script>
+  <script src="/js/sukoon-safety.js" defer></script>
+  <script src="/js/sukoon-library.js" defer></script>
+  <script src="/js/sukoon-tts.js" defer></script>
 
-            --sk-h1:           clamp(40px, 6vw, 76px);
-            --sk-h2:           clamp(32px, 4vw, 52px);
-            --sk-h3:           clamp(22px, 2.4vw, 28px);
-            --sk-track-eyebrow: 0.16em;
+  <style>
+    /* ============================================================
+       PAGE-SPECIFIC TOKENS + LAYOUT
+       ============================================================ */
+    .page-breathe {
+      background: var(--sk-night, #0F1B3D);
+      color: var(--sk-cream, #F5EFE2);
+      font-family: var(--sk-font-sans, 'Inter Tight', system-ui, sans-serif);
+      min-height: 100vh;
+    }
+    .page-breathe main { display: block; }
 
-            background: var(--sk-night);
-            color: var(--sk-cream);
-            font-family: var(--sk-font-sans);
-            min-height: 100vh;
-        }
+    /* ============================================================
+       CRISIS BAR — top of every page
+       ============================================================ */
+    .br-crisis-bar {
+      position: relative;
+      z-index: 40;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 9px 18px;
+      background: rgba(15, 27, 61, 0.92);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(245, 239, 226, 0.08);
+      font-size: 13px;
+      color: rgba(245, 239, 226, 0.72);
+    }
+    .br-crisis-bar__text { display: inline-flex; align-items: center; gap: 8px; }
+    .br-crisis-bar__dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      background: #F08679;
+      box-shadow: 0 0 12px rgba(240, 134, 121, 0.6);
+      animation: brDot 1.6s ease-in-out infinite;
+    }
+    @keyframes brDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%      { opacity: 0.55; transform: scale(0.85); }
+    }
+    .br-crisis-bar__cta {
+      color: #F5EFE2;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 999px;
+      background: #F08679;
+    }
+    .br-crisis-bar__cta:hover { background: #ec7264; }
 
-        /* ========== SCAFFOLDING ========== */
-        .page-breathe .breathe-shell {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            padding-bottom: var(--bottomnav-clearance, 84px);
-            overflow: hidden;
-        }
+    /* ============================================================
+       LANGUAGE TOGGLE — floats over hero
+       ============================================================ */
+    .br-lang {
+      position: absolute;
+      top: 60px;
+      right: 16px;
+      z-index: 25;
+      display: inline-flex;
+      background: rgba(43, 31, 74, 0.55);
+      border: 1px solid rgba(245, 239, 226, 0.14);
+      border-radius: 999px;
+      padding: 3px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .br-lang button {
+      appearance: none;
+      background: transparent;
+      border: 0;
+      color: rgba(245, 239, 226, 0.7);
+      padding: 7px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      font: 600 12px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      min-height: 32px;
+      transition: background 200ms ease, color 200ms ease;
+    }
+    .br-lang button[aria-pressed="true"] {
+      background: #F5EFE2;
+      color: #1B1633;
+    }
 
-        /* ========== CRISIS BAR ========== */
-        .sk-crisis-bar {
-            position: relative;
-            z-index: 30;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            padding: 10px 18px;
-            background: rgba(15, 27, 61, 0.92);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(245, 239, 226, 0.08);
-            font-size: 13px;
-            color: var(--sk-cream-dim);
-        }
-        .sk-crisis-bar__text {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .sk-crisis-bar__dot {
-            width: 7px; height: 7px;
-            border-radius: 50%;
-            background: var(--sk-coral);
-            box-shadow: 0 0 12px rgba(240, 134, 121, 0.7);
-        }
-        .sk-crisis-bar__cta {
-            color: var(--sk-cream);
-            text-decoration: none;
-            font-weight: 600;
-            padding: 6px 14px;
-            border-radius: 999px;
-            background: var(--sk-coral);
-            transition: background 200ms ease;
-        }
-        .sk-crisis-bar__cta:hover { background: #ec7264; }
+    /* ============================================================
+       HERO — looping video + central message
+       ============================================================ */
+    .br-hero {
+      position: relative;
+      min-height: 78vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px 22px 56px;
+      overflow: hidden;
+    }
+    .br-hero__video, .br-hero__overlay {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .br-hero__video { z-index: 0; }
+    .br-hero__overlay {
+      z-index: 1;
+      background: linear-gradient(180deg,
+                  rgba(15, 27, 61, 0.10) 0%,
+                  rgba(15, 27, 61, 0.55) 55%,
+                  rgba(15, 27, 61, 0.92) 100%);
+    }
+    .br-hero__inner {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+    }
+    .br-hero__eyebrow {
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+      font: 600 11px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 226, 0.7);
+      margin: 0 0 18px;
+    }
+    .br-hero__eyebrow::before {
+      content: "";
+      width: 28px; height: 1px;
+      background: rgba(245, 239, 226, 0.5);
+    }
+    .br-hero__title {
+      font-family: 'Fraunces', 'Tiro Devanagari Hindi', Georgia, serif;
+      font-weight: 300;
+      font-size: clamp(42px, 7vw, 88px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      margin: 0 0 18px;
+      color: #F5EFE2;
+    }
+    .br-hero__title em {
+      font-style: italic;
+      font-weight: 400;
+      color: #E8A552;
+    }
+    .br-hero__lede {
+      font-size: clamp(17px, 1.6vw, 22px);
+      line-height: 1.4;
+      color: rgba(245, 239, 226, 0.86);
+      margin: 0 0 14px;
+      max-width: 560px;
+    }
+    .br-hero__hindi {
+      font-family: 'Tiro Devanagari Hindi', 'Hind', serif;
+      color: rgba(245, 239, 226, 0.78);
+      font-size: clamp(18px, 1.6vw, 22px);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .br-hero__pulse {
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: rgba(245, 239, 226, 0.06);
+      border: 1px solid rgba(245, 239, 226, 0.14);
+      color: rgba(245, 239, 226, 0.8);
+      font: 500 13px/1 'Inter Tight', system-ui, sans-serif;
+    }
+    .br-hero__pulse-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #6FA286;
+      box-shadow: 0 0 0 0 rgba(111, 162, 134, 0.55);
+      animation: brHeartbeat 1.4s cubic-bezier(0.6, 0, 0.4, 1) infinite;
+    }
+    @keyframes brHeartbeat {
+      0%   { transform: scale(1);   box-shadow: 0 0 0 0    rgba(111,162,134,0.55); }
+      50%  { transform: scale(1.2); box-shadow: 0 0 0 10px rgba(111,162,134,0); }
+      100% { transform: scale(1);   box-shadow: 0 0 0 0    rgba(111,162,134,0); }
+    }
 
-        /* ========== LANG TOGGLE ========== */
-        .sk-lang {
-            position: absolute;
-            top: 56px; right: 18px;
-            z-index: 20;
-            display: inline-flex;
-            background: rgba(43, 31, 74, 0.6);
-            border: 1px solid rgba(245, 239, 226, 0.12);
-            border-radius: 999px;
-            padding: 3px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-        .sk-lang button {
-            background: transparent;
-            border: none;
-            color: var(--sk-cream-dim);
-            font-family: var(--sk-font-sans);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            padding: 6px 14px;
-            border-radius: 999px;
-            cursor: pointer;
-            transition: background 200ms ease, color 200ms ease;
-        }
-        .sk-lang button[aria-pressed="true"] {
-            background: var(--sk-saffron);
-            color: var(--sk-night);
-        }
+    /* ============================================================
+       ROUTED RECOMMENDATIONS — when arriving with ?p= or #
+       ============================================================ */
+    .br-routed {
+      position: relative;
+      z-index: 2;
+      background: linear-gradient(180deg,
+                  rgba(15, 27, 61, 0.96),
+                  rgba(15, 27, 61, 1));
+      padding: 28px 22px 36px;
+      border-top: 1px solid rgba(245, 239, 226, 0.06);
+    }
+    .br-routed[hidden] { display: none; }
+    .br-routed__container { max-width: 1080px; margin: 0 auto; }
+    .br-routed__eyebrow {
+      font: 600 11px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #E8A552;
+      margin: 0 0 8px;
+    }
+    .br-routed__title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.25;
+      margin: 0 0 6px;
+      color: #F5EFE2;
+    }
+    .br-routed__reason {
+      color: rgba(245, 239, 226, 0.7);
+      font-size: 14px;
+      margin: 0 0 20px;
+      max-width: 600px;
+    }
 
-        /* ========== HERO ========== */
-        .sk-hero {
-            position: relative;
-            min-height: 62vh;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-            padding: 96px 20px 60px;
-            overflow: hidden;
-            isolation: isolate;
-        }
-        .sk-hero__video,
-        .sk-hero__poster {
-            position: absolute;
-            inset: 0;
-            width: 100%; height: 100%;
-            object-fit: cover;
-            z-index: -2;
-        }
-        .sk-hero__veil {
-            position: absolute;
-            inset: 0;
-            z-index: -1;
-            background:
-                radial-gradient(ellipse at 50% 30%, rgba(232, 165, 82, 0.18) 0%, rgba(15,27,61,0) 60%),
-                linear-gradient(180deg, rgba(15,27,61,0.35) 0%, rgba(15,27,61,0.72) 70%, rgba(15,27,61,0.95) 100%);
-        }
-        .sk-hero__inner {
-            text-align: center;
-            max-width: 720px;
-            animation: skFadeUp 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) both;
-        }
-        .sk-hero__eyebrow {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: var(--sk-track-eyebrow);
-            text-transform: uppercase;
-            color: var(--sk-saffron);
-            margin-bottom: 18px;
-        }
-        .sk-hero__title {
-            font-family: var(--sk-font-serif);
-            font-weight: 300;
-            font-variation-settings: "opsz" 96;
-            font-size: var(--sk-h1);
-            line-height: 1.05;
-            letter-spacing: -0.022em;
-            color: var(--sk-cream);
-            margin: 0 0 20px;
-        }
-        .sk-hero__title em {
-            font-style: italic;
-            color: var(--sk-saffron);
-        }
-        .sk-hero__sub {
-            font-size: 17px;
-            color: var(--sk-cream-dim);
-            line-height: 1.6;
-            max-width: 520px;
-            margin: 0 auto;
-        }
-        @keyframes skFadeUp {
-            from { opacity: 0; transform: translateY(24px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+    /* ============================================================
+       BEFORE-MOOD SLIDER (and mirror in player for after)
+       ============================================================ */
+    .br-mood {
+      position: relative;
+      z-index: 2;
+      max-width: 720px;
+      margin: 32px auto 0;
+      padding: 22px 22px 24px;
+      border-radius: 22px;
+      background: rgba(245, 239, 226, 0.04);
+      border: 1px solid rgba(245, 239, 226, 0.10);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+    }
+    .br-mood__eyebrow {
+      font: 600 11px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 226, 0.6);
+      margin: 0 0 12px;
+    }
+    .br-mood__label {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(18px, 2vw, 22px);
+      color: #F5EFE2;
+      margin: 0 0 16px;
+    }
+    .br-mood__label-hi {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', 'Hind', serif;
+      font-size: 16px;
+      color: rgba(245, 239, 226, 0.62);
+      margin-top: 4px;
+    }
+    .br-mood__slider {
+      appearance: none;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(90deg, #6B3E5E, #E8A552, #6FA286);
+      border-radius: 999px;
+      outline: none;
+      margin: 6px 0 10px;
+    }
+    .br-mood__slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #F5EFE2;
+      border: 2px solid #E8A552;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .br-mood__slider::-moz-range-thumb {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: #F5EFE2;
+      border: 2px solid #E8A552;
+      cursor: pointer;
+    }
+    .br-mood__scale {
+      display: flex;
+      justify-content: space-between;
+      font: 500 11px/1 'Inter Tight', system-ui, sans-serif;
+      color: rgba(245, 239, 226, 0.5);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .br-mood__value {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: #E8A552;
+      margin-top: 8px;
+    }
 
-        /* ========== AMBIENT AUDIO ========== */
-        .sk-ambient {
-            position: fixed;
-            top: 110px; right: 18px;
-            z-index: 25;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px 14px;
-            background: rgba(43, 31, 74, 0.65);
-            border: 1px solid rgba(245, 239, 226, 0.12);
-            border-radius: 999px;
-            color: var(--sk-cream-dim);
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            transition: background 200ms ease, color 200ms ease;
-        }
-        .sk-ambient:hover { color: var(--sk-cream); }
-        .sk-ambient__icon {
-            display: inline-flex;
-            width: 16px; height: 16px;
-        }
-        .sk-ambient[aria-pressed="true"] {
-            background: var(--sk-saffron);
-            color: var(--sk-night);
-            border-color: var(--sk-saffron);
-        }
-        .sk-ambient__wave {
-            display: inline-flex;
-            gap: 2px;
-            align-items: end;
-            height: 14px;
-        }
-        .sk-ambient__wave span {
-            width: 2px;
-            background: currentColor;
-            border-radius: 1px;
-            animation: skWave 1.2s ease-in-out infinite;
-        }
-        .sk-ambient__wave span:nth-child(1) { height: 30%; animation-delay: 0s; }
-        .sk-ambient__wave span:nth-child(2) { height: 70%; animation-delay: 0.15s; }
-        .sk-ambient__wave span:nth-child(3) { height: 100%; animation-delay: 0.3s; }
-        .sk-ambient__wave span:nth-child(4) { height: 50%; animation-delay: 0.45s; }
-        @keyframes skWave {
-            0%, 100% { transform: scaleY(0.4); }
-            50%      { transform: scaleY(1); }
-        }
-        .sk-ambient:not([aria-pressed="true"]) .sk-ambient__wave span {
-            animation-play-state: paused;
-            transform: scaleY(0.4);
-        }
+    /* ============================================================
+       LIBRARY SECTION
+       ============================================================ */
+    .br-library {
+      background: var(--sk-night, #0F1B3D);
+      padding: 56px 22px 80px;
+    }
+    .br-library__container { max-width: 1180px; margin: 0 auto; }
+    .br-library__head {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 16px;
+      margin-bottom: 26px;
+    }
+    .br-library__head h2 {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(28px, 3.6vw, 44px);
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: #F5EFE2;
+    }
+    .br-library__head p {
+      color: rgba(245, 239, 226, 0.65);
+      font-size: 14px;
+      margin: 6px 0 0;
+      max-width: 520px;
+    }
 
-        /* ========== STUDIO ========== */
-        .sk-studio {
-            position: relative;
-            max-width: 980px;
-            width: 100%;
-            margin: 0 auto;
-            padding: 56px 24px 80px;
-        }
-        .sk-section-eyebrow {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: var(--sk-track-eyebrow);
-            text-transform: uppercase;
-            color: var(--sk-saffron);
-            text-align: center;
-            margin-bottom: 14px;
-        }
-        .sk-section-title {
-            font-family: var(--sk-font-serif);
-            font-weight: 300;
-            font-variation-settings: "opsz" 96;
-            font-size: var(--sk-h2);
-            line-height: 1.08;
-            letter-spacing: -0.022em;
-            text-align: center;
-            color: var(--sk-cream);
-            margin: 0 0 12px;
-        }
-        .sk-section-sub {
-            text-align: center;
-            color: var(--sk-cream-dim);
-            font-size: 15px;
-            line-height: 1.6;
-            max-width: 540px;
-            margin: 0 auto 40px;
-        }
+    /* Filter pills */
+    .br-filters {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 4px 0 18px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      margin: 0 -2px 28px;
+    }
+    .br-filters::-webkit-scrollbar { display: none; }
+    .br-filter {
+      appearance: none;
+      flex: 0 0 auto;
+      scroll-snap-align: start;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: rgba(245, 239, 226, 0.05);
+      border: 1px solid rgba(245, 239, 226, 0.12);
+      color: rgba(245, 239, 226, 0.75);
+      font: 500 13px/1 'Inter Tight', system-ui, sans-serif;
+      min-height: 38px;
+      cursor: pointer;
+      transition: background 200ms ease, color 200ms ease, border-color 200ms ease;
+    }
+    .br-filter:hover { color: #F5EFE2; border-color: rgba(245, 239, 226, 0.25); }
+    .br-filter[aria-pressed="true"] {
+      background: #F5EFE2;
+      color: #1B1633;
+      border-color: transparent;
+    }
 
-        /* ========== MOOD CHECK (BEFORE/AFTER) ========== */
-        .sk-mood {
-            background: rgba(43, 31, 74, 0.55);
-            border: 1px solid rgba(245, 239, 226, 0.08);
-            border-radius: 20px;
-            padding: 26px 28px;
-            margin: 0 auto 40px;
-            max-width: 620px;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-        }
-        .sk-mood__label {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 13px;
-            color: var(--sk-cream-dim);
-            margin-bottom: 16px;
-            letter-spacing: 0.02em;
-        }
-        .sk-mood__label strong {
-            color: var(--sk-cream);
-            font-weight: 600;
-        }
-        .sk-mood__value {
-            font-family: var(--sk-font-serif);
-            font-weight: 400;
-            font-size: 28px;
-            color: var(--sk-saffron);
-            font-variant-numeric: tabular-nums;
-            min-width: 1.5em;
-            text-align: right;
-        }
-        .sk-mood__slider {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 100%;
-            height: 4px;
-            background: rgba(245, 239, 226, 0.12);
-            border-radius: 2px;
-            outline: none;
-        }
-        .sk-mood__slider::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 22px; height: 22px;
-            border-radius: 50%;
-            background: var(--sk-saffron);
-            border: 3px solid var(--sk-night);
-            box-shadow: 0 4px 12px rgba(232, 165, 82, 0.4);
-            cursor: pointer;
-            transition: transform 200ms ease;
-        }
-        .sk-mood__slider::-webkit-slider-thumb:hover { transform: scale(1.15); }
-        .sk-mood__slider::-moz-range-thumb {
-            width: 22px; height: 22px;
-            border-radius: 50%;
-            background: var(--sk-saffron);
-            border: 3px solid var(--sk-night);
-            cursor: pointer;
-        }
-        .sk-mood__scale {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 10px;
-            font-size: 11px;
-            color: var(--sk-cream-quiet);
-            letter-spacing: 0.05em;
-        }
+    /* Card grid */
+    .br-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+    @media (min-width: 600px) { .br-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; } }
+    @media (min-width: 960px) { .br-grid { grid-template-columns: repeat(3, 1fr); gap: 18px; } }
+    @media (min-width: 1280px) { .br-grid { grid-template-columns: repeat(4, 1fr); } }
 
-        /* ========== BREATH BALL ========== */
-        .sk-breath-stage {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 30px 0 24px;
-            margin-bottom: 48px;
-        }
-        .breath-ball {
-            position: relative;
-            width: 320px; height: 320px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 36px;
-        }
-        .breath-ball__ring {
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            border: 1px solid rgba(232, 165, 82, 0.25);
-            background: radial-gradient(circle at 50% 50%,
-                rgba(232, 165, 82, 0.08) 0%,
-                rgba(216, 122, 74, 0.04) 40%,
-                rgba(15, 27, 61, 0) 70%);
-            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1),
-                        opacity 4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: scale(0.85);
-            opacity: 0.5;
-        }
-        .breath-ball__core {
-            position: relative;
-            width: 180px; height: 180px;
-            border-radius: 50%;
-            background:
-                radial-gradient(circle at 32% 28%, rgba(245, 239, 226, 0.35) 0%, rgba(245, 239, 226, 0) 45%),
-                radial-gradient(circle at 50% 50%, var(--sk-saffron) 0%, var(--sk-marigold) 55%, var(--sk-dusk) 100%);
-            box-shadow:
-                inset 0 -10px 30px rgba(43, 31, 74, 0.45),
-                0 20px 60px rgba(232, 165, 82, 0.22),
-                0 0 90px rgba(232, 165, 82, 0.18);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            transition: transform 4s cubic-bezier(0.4, 0, 0.2, 1),
-                        box-shadow 4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .breath-ball.is-expanded .breath-ball__core {
-            transform: scale(1.42);
-            box-shadow:
-                inset 0 -10px 30px rgba(43, 31, 74, 0.3),
-                0 30px 80px rgba(232, 165, 82, 0.35),
-                0 0 140px rgba(232, 165, 82, 0.32);
-        }
-        .breath-ball.is-expanded .breath-ball__ring {
-            transform: scale(1.18);
-            opacity: 0.85;
-        }
-        .breath-ball.is-hold .breath-ball__core {
-            box-shadow:
-                inset 0 -10px 30px rgba(43, 31, 74, 0.4),
-                0 25px 70px rgba(111, 162, 134, 0.25),
-                0 0 120px rgba(111, 162, 134, 0.22);
-        }
-        .breath-ball__count {
-            font-family: var(--sk-font-serif);
-            font-weight: 300;
-            font-variation-settings: "opsz" 96;
-            font-size: 64px;
-            color: var(--sk-cream);
-            line-height: 1;
-            text-shadow: 0 2px 16px rgba(15, 27, 61, 0.55);
-            font-variant-numeric: tabular-nums;
-        }
-        .breath-ball__phase {
-            margin-top: 6px;
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: var(--sk-track-eyebrow);
-            text-transform: uppercase;
-            color: rgba(245, 239, 226, 0.85);
-        }
+    .br-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px 18px 18px;
+      border-radius: 22px;
+      background: rgba(245, 239, 226, 0.04);
+      border: 1px solid rgba(245, 239, 226, 0.10);
+      color: #F5EFE2;
+      text-align: left;
+      cursor: pointer;
+      overflow: hidden;
+      transition: background 280ms cubic-bezier(0.16, 1, 0.3, 1),
+                  border-color 280ms ease,
+                  transform 280ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .br-card:hover, .br-card:focus-visible {
+      background: rgba(245, 239, 226, 0.08);
+      border-color: rgba(245, 239, 226, 0.24);
+      transform: translateY(-2px);
+      outline: none;
+    }
+    .br-card__top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .br-card__meta {
+      font: 500 11px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(245, 239, 226, 0.55);
+    }
+    .br-card__ring {
+      flex: 0 0 auto;
+      width: 36px; height: 36px;
+      position: relative;
+    }
+    .br-card__ring svg {
+      width: 100%; height: 100%;
+      transform: rotate(-90deg);
+    }
+    .br-card__ring circle {
+      fill: none;
+      stroke-width: 2;
+    }
+    .br-card__ring .ring-track { stroke: rgba(245, 239, 226, 0.12); }
+    .br-card__ring .ring-pulse {
+      stroke: #E8A552;
+      stroke-linecap: round;
+      stroke-dasharray: 100;
+      stroke-dashoffset: 100;
+      animation: brRingMini var(--dur, 8s) ease-in-out infinite;
+    }
+    @keyframes brRingMini {
+      0%   { stroke-dashoffset: 100; }
+      45%  { stroke-dashoffset: 0;   }
+      55%  { stroke-dashoffset: 0;   }
+      100% { stroke-dashoffset: 100; }
+    }
+    .br-card__title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 1.2;
+      margin: 0;
+    }
+    .br-card__title-hi {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', 'Hind', serif;
+      font-size: 14px;
+      color: rgba(245, 239, 226, 0.6);
+      margin-top: 4px;
+    }
+    .br-card__ratio {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 13px;
+      color: #E8A552;
+      letter-spacing: 0.06em;
+    }
+    .br-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+    .br-card__tag {
+      font: 500 10px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(245, 239, 226, 0.06);
+      color: rgba(245, 239, 226, 0.62);
+    }
+    .br-card__play {
+      margin-top: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      padding: 9px 14px 9px 16px;
+      border-radius: 999px;
+      background: #E8A552;
+      color: #1B1633;
+      font: 600 12px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: background 180ms ease, transform 180ms ease;
+    }
+    .br-card:hover .br-card__play { background: #ECB369; transform: translateX(2px); }
 
-        .sk-breath-caption {
-            font-family: var(--sk-font-serif);
-            font-weight: 400;
-            font-style: italic;
-            font-size: 19px;
-            color: var(--sk-cream);
-            text-align: center;
-            margin: 0 0 10px;
-        }
-        .sk-breath-caption-hi {
-            font-family: var(--sk-font-hindi);
-            font-size: 15px;
-            color: var(--sk-cream-dim);
-            text-align: center;
-            line-height: 1.78;
-            margin: 0 0 18px;
-            display: none;
-        }
-        .page-breathe[data-lang="hi"] .sk-breath-caption-hi { display: block; }
-        .page-breathe[data-lang="hi"] .sk-breath-caption { display: none; }
-        .sk-breath-counter {
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: 0.06em;
-            color: var(--sk-saffron);
-            text-transform: uppercase;
-            margin-bottom: 24px;
-            font-variant-numeric: tabular-nums;
-        }
+    /* Generated card variant */
+    .br-card--generated {
+      border-style: dashed;
+      border-color: rgba(232, 165, 82, 0.45);
+      background: linear-gradient(160deg,
+                  rgba(232, 165, 82, 0.08),
+                  rgba(45, 31, 74, 0.18));
+    }
+    .br-card--generated .br-card__meta { color: #E8A552; }
 
-        .sk-breath-controls {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .sk-btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 14px 32px;
-            border-radius: 999px;
-            font-family: var(--sk-font-sans);
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-            cursor: pointer;
-            border: 1px solid transparent;
-            transition: transform 180ms ease, background 200ms ease, color 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
-        }
-        .sk-btn--primary {
-            background: var(--sk-saffron);
-            color: var(--sk-night);
-            box-shadow: 0 10px 30px rgba(232, 165, 82, 0.32);
-        }
-        .sk-btn--primary:hover { background: #efb466; transform: translateY(-1px); }
-        .sk-btn--ghost {
-            background: transparent;
-            color: var(--sk-cream);
-            border-color: rgba(245, 239, 226, 0.25);
-        }
-        .sk-btn--ghost:hover {
-            border-color: var(--sk-cream);
-        }
+    /* Generative CTA */
+    .br-gen-cta {
+      margin: 32px auto 0;
+      max-width: 720px;
+      padding: 24px 22px;
+      border-radius: 22px;
+      border: 1px dashed rgba(232, 165, 82, 0.4);
+      background: linear-gradient(160deg,
+                  rgba(232, 165, 82, 0.06),
+                  rgba(43, 31, 74, 0.2));
+      text-align: center;
+    }
+    .br-gen-cta h3 {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(20px, 2.4vw, 26px);
+      margin: 0 0 6px;
+      color: #F5EFE2;
+    }
+    .br-gen-cta p {
+      color: rgba(245, 239, 226, 0.7);
+      font-size: 14px;
+      margin: 0 0 16px;
+    }
+    .br-gen-btn {
+      appearance: none;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: #E8A552;
+      color: #1B1633;
+      border: 0;
+      font: 600 13px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 200ms ease, transform 200ms ease;
+    }
+    .br-gen-btn:hover { background: #ECB369; transform: translateY(-1px); }
+    .br-gen-btn[disabled] { opacity: 0.55; cursor: wait; }
+    .br-gen-btn .br-gen-btn__spin {
+      display: inline-block;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      border: 2px solid rgba(27, 22, 51, 0.3);
+      border-top-color: #1B1633;
+      animation: brSpin 0.8s linear infinite;
+      margin-right: 8px;
+      vertical-align: -2px;
+    }
+    @keyframes brSpin { to { transform: rotate(360deg); } }
 
-        /* ========== PATTERN PICKER ========== */
-        .sk-patterns {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 14px;
-            margin-bottom: 48px;
-        }
-        .sk-pattern-card {
-            position: relative;
-            text-align: left;
-            background: rgba(43, 31, 74, 0.55);
-            border: 1px solid rgba(245, 239, 226, 0.08);
-            border-radius: 18px;
-            padding: 22px 22px 20px;
-            cursor: pointer;
-            color: var(--sk-cream);
-            font-family: var(--sk-font-sans);
-            transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, box-shadow 220ms ease;
-        }
-        .sk-pattern-card:hover {
-            transform: translateY(-3px);
-            border-color: rgba(232, 165, 82, 0.4);
-            background: rgba(43, 31, 74, 0.75);
-        }
-        .sk-pattern-card.is-active {
-            border-color: var(--sk-saffron);
-            background: linear-gradient(150deg, rgba(232, 165, 82, 0.18) 0%, rgba(43, 31, 74, 0.65) 100%);
-            box-shadow: 0 14px 40px rgba(232, 165, 82, 0.18);
-        }
-        .sk-pattern-card__pip {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 10px;
-            font-weight: 600;
-            letter-spacing: var(--sk-track-eyebrow);
-            text-transform: uppercase;
-            color: var(--sk-saffron);
-            margin-bottom: 10px;
-        }
-        .sk-pattern-card__pip::before {
-            content: "";
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: var(--sk-saffron);
-            display: inline-block;
-        }
-        .sk-pattern-card__title {
-            font-family: var(--sk-font-serif);
-            font-weight: 400;
-            font-size: 22px;
-            line-height: 1.15;
-            color: var(--sk-cream);
-            margin: 0 0 6px;
-            letter-spacing: -0.01em;
-        }
-        .sk-pattern-card__rhythm {
-            font-size: 13px;
-            color: var(--sk-cream-dim);
-            margin-bottom: 12px;
-            font-variant-numeric: tabular-nums;
-            letter-spacing: 0.04em;
-        }
-        .sk-pattern-card__why {
-            font-size: 13px;
-            line-height: 1.55;
-            color: var(--sk-cream-dim);
-            border-top: 1px solid rgba(245, 239, 226, 0.08);
-            padding-top: 12px;
-        }
-        .sk-pattern-card__why strong {
-            color: var(--sk-tulsi);
-            font-weight: 600;
-        }
+    /* ============================================================
+       SCIENCE & TRADITION EXPANDABLE
+       ============================================================ */
+    .br-science {
+      max-width: 760px;
+      margin: 64px auto 24px;
+      padding: 24px 22px;
+      border-radius: 22px;
+      background: rgba(245, 239, 226, 0.03);
+      border: 1px solid rgba(245, 239, 226, 0.08);
+    }
+    .br-science summary {
+      cursor: pointer;
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(18px, 2vw, 22px);
+      color: #F5EFE2;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .br-science summary::-webkit-details-marker { display: none; }
+    .br-science summary::after {
+      content: "+";
+      font-size: 22px;
+      color: #E8A552;
+      transition: transform 240ms ease;
+    }
+    .br-science[open] summary::after { transform: rotate(45deg); }
+    .br-science__body {
+      margin-top: 18px;
+      color: rgba(245, 239, 226, 0.76);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .br-science__body p { margin: 0 0 12px; }
+    .br-science__body p:last-child { margin: 0; }
+    .br-science__hindi {
+      font-family: 'Tiro Devanagari Hindi', 'Hind', serif;
+      font-style: italic;
+      color: rgba(245, 239, 226, 0.55);
+      font-size: 14px;
+      margin-top: 12px;
+    }
 
-        /* ========== AFTER PANEL ========== */
-        .sk-after {
-            opacity: 0.55;
-            transition: opacity 400ms ease;
-        }
-        .page-breathe.is-completed .sk-after {
-            opacity: 1;
-        }
-        .sk-after__locked {
-            font-size: 12px;
-            color: var(--sk-cream-quiet);
-            letter-spacing: 0.04em;
-            display: block;
-            margin-top: 6px;
-        }
-        .page-breathe.is-completed .sk-after__locked { display: none; }
+    /* ============================================================
+       UNIFIED PLAYER OVERLAY — full-screen breath ring + guidance
+       ============================================================ */
+    .br-player {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: radial-gradient(circle at 50% 30%, #2B1F4A 0%, #0F1B3D 60%, #06091B 100%);
+      animation: brPlayerIn 480ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .br-player[data-open="true"] { display: flex; }
+    @keyframes brPlayerIn {
+      from { opacity: 0; transform: scale(1.04); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+    .br-player__bg-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.35;
+      filter: saturate(0.7);
+    }
+    .br-player__bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 30%,
+                  rgba(43, 31, 74, 0.55) 0%,
+                  rgba(15, 27, 61, 0.92) 75%);
+    }
+    .br-player__shell {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 520px;
+      padding: 28px 22px calc(28px + env(safe-area-inset-bottom));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+    }
+    .br-player__close {
+      position: absolute;
+      top: max(16px, env(safe-area-inset-top));
+      right: 16px;
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: rgba(245, 239, 226, 0.08);
+      border: 1px solid rgba(245, 239, 226, 0.16);
+      color: #F5EFE2;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      z-index: 2;
+    }
+    .br-player__title {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: clamp(24px, 3vw, 32px);
+      color: #F5EFE2;
+      text-align: center;
+      margin: 4px 0 0;
+    }
+    .br-player__title-hi {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', 'Hind', serif;
+      font-size: 16px;
+      color: rgba(245, 239, 226, 0.6);
+      margin-top: 4px;
+    }
+    .br-player__ratio {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      color: #E8A552;
+      letter-spacing: 0.12em;
+    }
 
-        /* ========== HISTORY BAR ========== */
-        .sk-history {
-            margin: 32px auto 0;
-            max-width: 620px;
-            padding: 18px 22px;
-            background: rgba(15, 27, 61, 0.55);
-            border: 1px solid rgba(245, 239, 226, 0.06);
-            border-radius: 14px;
-            display: none;
-        }
-        .sk-history.is-visible { display: block; }
-        .sk-history__title {
-            font-size: 11px;
-            font-weight: 600;
-            letter-spacing: var(--sk-track-eyebrow);
-            text-transform: uppercase;
-            color: var(--sk-tulsi);
-            margin-bottom: 8px;
-        }
-        .sk-history__row {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            gap: 12px;
-            font-size: 13px;
-            color: var(--sk-cream-dim);
-        }
-        .sk-history__row strong {
-            color: var(--sk-cream);
-            font-family: var(--sk-font-serif);
-            font-weight: 400;
-            font-size: 22px;
-        }
+    /* Phase-precise breath ring */
+    .br-ring {
+      position: relative;
+      width: min(78vw, 320px);
+      height: min(78vw, 320px);
+      display: grid;
+      place-items: center;
+      margin: 4px 0;
+    }
+    .br-ring svg {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      transform: rotate(-90deg);
+    }
+    .br-ring__track {
+      fill: none;
+      stroke: rgba(245, 239, 226, 0.10);
+      stroke-width: 2;
+    }
+    .br-ring__progress {
+      fill: none;
+      stroke: #E8A552;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-dasharray: 880;
+      stroke-dashoffset: 880;
+      transition: stroke-dashoffset 100ms linear;
+      filter: drop-shadow(0 0 12px rgba(232, 165, 82, 0.45));
+    }
+    .br-ring__core {
+      position: relative;
+      z-index: 1;
+      width: 64%; height: 64%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 50% 40%,
+                  rgba(232, 165, 82, 0.28),
+                  rgba(43, 31, 74, 0.0) 70%);
+      transition: transform 600ms cubic-bezier(0.5, 0.05, 0.5, 0.95);
+    }
+    .br-ring[data-phase="inhale"] .br-ring__core { transform: scale(1.18); }
+    .br-ring[data-phase="hold_in"] .br-ring__core { transform: scale(1.18); }
+    .br-ring[data-phase="exhale"] .br-ring__core { transform: scale(0.78); }
+    .br-ring[data-phase="hold_out"] .br-ring__core { transform: scale(0.78); }
 
-        /* ========== BREATHING DOTS (decorative) ========== */
-        .sk-dust {
-            position: absolute;
-            inset: 0;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 0;
-        }
-        .sk-dust span {
-            position: absolute;
-            width: 3px; height: 3px;
-            border-radius: 50%;
-            background: rgba(232, 165, 82, 0.4);
-            box-shadow: 0 0 8px rgba(232, 165, 82, 0.5);
-            animation: skDust 18s linear infinite;
-        }
-        @keyframes skDust {
-            0%   { transform: translate(0, 100vh) scale(0.6); opacity: 0; }
-            10%  { opacity: 0.6; }
-            90%  { opacity: 0.6; }
-            100% { transform: translate(20px, -10vh) scale(1.1); opacity: 0; }
-        }
+    .br-ring__phase {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      text-align: center;
+      color: #F5EFE2;
+    }
+    .br-ring__phase-label {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(22px, 3vw, 32px);
+      letter-spacing: 0.02em;
+      margin: 0;
+    }
+    .br-ring__phase-count {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 36px;
+      color: #E8A552;
+      letter-spacing: 0.04em;
+      margin-top: 6px;
+      font-variant-numeric: tabular-nums;
+    }
+    .br-ring__round {
+      position: absolute;
+      bottom: -32px;
+      left: 50%;
+      transform: translateX(-50%);
+      font: 500 11px/1 'Inter Tight', system-ui, sans-serif;
+      color: rgba(245, 239, 226, 0.55);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
 
-        /* ========== RESPONSIVE ========== */
-        @media (max-width: 640px) {
-            .sk-studio { padding: 40px 18px 70px; }
-            .breath-ball { width: 260px; height: 260px; }
-            .breath-ball__core { width: 140px; height: 140px; }
-            .breath-ball__count { font-size: 52px; }
-            .sk-patterns { grid-template-columns: 1fr; }
-            .sk-ambient { top: auto; bottom: calc(var(--bottomnav-clearance, 84px) + 12px); right: 14px; }
-        }
-        @media (prefers-reduced-motion: reduce) {
-            .breath-ball__core, .breath-ball__ring { transition-duration: 0.3s !important; }
-            .sk-dust span { display: none; }
-            .sk-ambient__wave span { animation: none; }
-        }
-    </style>
+    .br-player__guidance {
+      width: 100%;
+      max-height: 18vh;
+      overflow-y: auto;
+      padding: 14px 18px;
+      border-radius: 16px;
+      background: rgba(245, 239, 226, 0.04);
+      border: 1px solid rgba(245, 239, 226, 0.10);
+      color: rgba(245, 239, 226, 0.82);
+      font-size: 14px;
+      line-height: 1.6;
+      text-align: center;
+    }
+    .br-player__controls {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      justify-content: center;
+      margin-top: 8px;
+    }
+    .br-player__btn {
+      appearance: none;
+      background: rgba(245, 239, 226, 0.08);
+      color: #F5EFE2;
+      border: 1px solid rgba(245, 239, 226, 0.18);
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      font-size: 18px;
+      transition: background 180ms ease;
+    }
+    .br-player__btn:hover { background: rgba(245, 239, 226, 0.16); }
+    .br-player__btn--primary {
+      width: 68px; height: 68px;
+      background: #E8A552;
+      color: #1B1633;
+      border: 0;
+      font-size: 22px;
+      box-shadow: 0 8px 28px rgba(232, 165, 82, 0.35);
+    }
+    .br-player__btn--primary:hover { background: #ECB369; }
+
+    /* After-mood card inside player */
+    .br-player__after {
+      width: 100%;
+      margin-top: 8px;
+      padding: 18px 18px 20px;
+      border-radius: 18px;
+      background: rgba(245, 239, 226, 0.05);
+      border: 1px solid rgba(245, 239, 226, 0.12);
+      text-align: center;
+      display: none;
+    }
+    .br-player__after[data-show="true"] { display: block; animation: brRiseSoft 540ms cubic-bezier(0.16, 1, 0.3, 1); }
+    @keyframes brRiseSoft {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .br-player__after h4 {
+      font-family: 'Fraunces', serif;
+      font-weight: 400;
+      font-size: 18px;
+      color: #F5EFE2;
+      margin: 0 0 4px;
+    }
+    .br-player__after-hi {
+      font-family: 'Tiro Devanagari Hindi', 'Hind', serif;
+      font-size: 13px;
+      color: rgba(245, 239, 226, 0.6);
+      margin: 0 0 14px;
+    }
+    .br-player__after-slider { margin: 0 0 6px; }
+    .br-player__after-done {
+      margin-top: 14px;
+      padding: 9px 18px;
+      border-radius: 999px;
+      background: rgba(245, 239, 226, 0.10);
+      color: #F5EFE2;
+      border: 1px solid rgba(245, 239, 226, 0.18);
+      font: 500 12px/1 'Inter Tight', system-ui, sans-serif;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    /* ============================================================
+       SR-ONLY utility
+       ============================================================ */
+    .br-sr {
+      position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0;
+    }
+
+    /* ============================================================
+       Reduced motion
+       ============================================================ */
+    @media (prefers-reduced-motion: reduce) {
+      .br-card, .br-card__play, .br-gen-btn, .br-card__ring .ring-pulse,
+      .br-hero__pulse-dot, .br-ring__core, .br-crisis-bar__dot,
+      .br-ring__progress, .br-player {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="page-breathe" data-experience="breathe" data-lang="en">
+<body class="page-breathe" data-experience="breathe">
 
-    <div class="breathe-shell">
+  <!-- ==================== CRISIS BAR ==================== -->
+  <a class="br-crisis-bar" href="/now.html" aria-label="Crisis support — visit sukoon.cloud/now">
+    <span class="br-crisis-bar__text">
+      <span class="br-crisis-bar__dot" aria-hidden="true"></span>
+      <span>If you're in crisis, <strong>sukoon.cloud/now</strong> is here. 24×7.</span>
+    </span>
+    <span class="br-crisis-bar__cta">Open now</span>
+  </a>
 
-        <!-- ===== CRISIS BAR ===== -->
-        <div class="sk-crisis-bar" role="region" aria-label="Crisis support">
-            <span class="sk-crisis-bar__text">
-                <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
-                <span data-lang-en="In crisis right now? You are not alone." data-lang-hi="अभी संकट में हैं? आप अकेले नहीं हैं।">In crisis right now? You are not alone.</span>
-            </span>
-            <a href="/sos.html" class="sk-crisis-bar__cta" data-lang-en="Get help" data-lang-hi="मदद लें">Get help</a>
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="br-hero" aria-label="Breathe with us">
+      <video class="br-hero__video" autoplay loop muted playsinline poster="/og/breathe.jpg" aria-hidden="true">
+        <source src="/video/hero-breathe.mp4" type="video/mp4">
+      </video>
+      <div class="br-hero__overlay" aria-hidden="true"></div>
+
+      <div class="br-lang" role="group" aria-label="Language">
+        <button type="button" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" data-lang="hi" aria-pressed="false">हिं</button>
+      </div>
+
+      <div class="br-hero__inner">
+        <p class="br-hero__eyebrow">Breathe</p>
+        <h1 class="br-hero__title">Breathe <em>with us.</em></h1>
+        <p class="br-hero__lede">Reset in 60 seconds. Twenty-five practices from pranayama, Sufi breathwork, and modern neuroscience — and one designed live, for the moment you're in.</p>
+        <p class="br-hero__hindi" lang="hi">साँस लीजिए, हमारे साथ। साठ सेकंड में लौट आइए।</p>
+
+        <div class="br-hero__pulse" aria-live="polite">
+          <span class="br-hero__pulse-dot" aria-hidden="true"></span>
+          <span><span data-pulse-count>184</span> souls breathing now</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== ROUTED RECOMMENDATIONS ==================== -->
+    <!-- Populated when arriving from / with hash situation or ?p= -->
+    <section class="br-routed" id="brRouted" hidden aria-live="polite">
+      <div class="br-routed__container">
+        <p class="br-routed__eyebrow">Picked for what you said</p>
+        <h2 class="br-routed__title" id="brRoutedTitle">Three breaths that fit this moment</h2>
+        <p class="br-routed__reason" id="brRoutedReason"></p>
+        <div class="br-grid" id="brRoutedGrid"></div>
+      </div>
+    </section>
+
+    <!-- ==================== BEFORE MOOD ==================== -->
+    <section class="br-mood" aria-label="How you arrive">
+      <p class="br-mood__eyebrow">Before we begin</p>
+      <p class="br-mood__label">How are you feeling, right now?
+        <span class="br-mood__label-hi" lang="hi">अभी कैसा महसूस हो रहा है?</span>
+      </p>
+      <input class="br-mood__slider" type="range" min="1" max="10" value="5" id="brMoodBefore"
+             aria-label="Mood before, 1 to 10">
+      <div class="br-mood__scale">
+        <span>Struggling</span>
+        <span>Even</span>
+        <span>Light</span>
+      </div>
+      <p class="br-mood__value"><span id="brMoodBeforeVal">5</span> / 10</p>
+    </section>
+
+    <!-- ==================== LIBRARY ==================== -->
+    <section class="br-library" id="brLibrary" aria-label="Breath practices library">
+      <div class="br-library__container">
+        <header class="br-library__head">
+          <div>
+            <h2>Twenty-five paths to one breath.</h2>
+            <p>From the ancient (Nadi Shodhana, Bhramari, Ujjayi, Sheetali) to the modern (4-7-8, box breathing, coherent breathing). Each one is timed precisely. Each one is your tool.</p>
+          </div>
+        </header>
+
+        <div class="br-filters" role="group" aria-label="Filter breath practices">
+          <button type="button" class="br-filter" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="br-filter" data-filter="calm" aria-pressed="false">Calm</button>
+          <button type="button" class="br-filter" data-filter="focus" aria-pressed="false">Focus</button>
+          <button type="button" class="br-filter" data-filter="energize" aria-pressed="false">Energize</button>
+          <button type="button" class="br-filter" data-filter="sleep" aria-pressed="false">Sleep</button>
+          <button type="button" class="br-filter" data-filter="pranayama" aria-pressed="false">Pranayama</button>
+          <button type="button" class="br-filter" data-filter="quick" aria-pressed="false">Quick (under 5 min)</button>
         </div>
 
-        <!-- ===== LANG TOGGLE ===== -->
-        <div class="sk-lang" role="group" aria-label="Language">
-            <button type="button" data-lang-set="en" aria-pressed="true">EN</button>
-            <button type="button" data-lang-set="hi" aria-pressed="false">हिं</button>
+        <div class="br-grid" id="brGrid" role="list" aria-busy="true">
+          <!-- Cards injected by JS -->
         </div>
 
-        <!-- ===== AMBIENT AUDIO ===== -->
-        <button type="button" id="skAmbient" class="sk-ambient" aria-pressed="false" aria-label="Ambient sound">
-            <span class="sk-ambient__wave" aria-hidden="true">
-                <span></span><span></span><span></span><span></span>
-            </span>
-            <span data-lang-en="Ambient" data-lang-hi="संगीत">Ambient</span>
-        </button>
-        <audio id="skAmbientAudio" src="/audio/ambient-breathe.mp3" loop preload="none"></audio>
+        <!-- Generative CTA -->
+        <div class="br-gen-cta">
+          <h3>Don't see what you need?</h3>
+          <p>We'll write one for you in about ten seconds — phase-by-phase, for exactly the feeling you described.</p>
+          <button type="button" class="br-gen-btn" id="brGenBtn">Design a breath for me</button>
+        </div>
 
-        <!-- ===== HERO ===== -->
-        <section class="sk-hero" aria-label="Breathe with us">
-            <video class="sk-hero__video" autoplay muted loop playsinline poster="/og/breathe.jpg" aria-hidden="true">
-                <source src="/video/curtain-light.mp4" type="video/mp4">
-                <source src="/video/curtain-light.webm" type="video/webm">
-            </video>
-            <img class="sk-hero__poster" src="/og/breathe.jpg" alt="" aria-hidden="true" style="display:none">
-            <div class="sk-hero__veil" aria-hidden="true"></div>
-            <div class="sk-dust" aria-hidden="true">
-                <span style="left:8%; animation-delay:0s"></span>
-                <span style="left:22%; animation-delay:3s"></span>
-                <span style="left:37%; animation-delay:6s"></span>
-                <span style="left:55%; animation-delay:9s"></span>
-                <span style="left:71%; animation-delay:12s"></span>
-                <span style="left:86%; animation-delay:15s"></span>
-                <span style="left:94%; animation-delay:2s"></span>
-            </div>
-            <div class="sk-hero__inner">
-                <div class="sk-hero__eyebrow" data-lang-en="Reset in 60 seconds" data-lang-hi="60 सेकंड में शांति">Reset in 60 seconds</div>
-                <h1 class="sk-hero__title">
-                    <span data-lang-en="Breathe " data-lang-hi="हमारे साथ ">Breathe </span><em data-lang-en="with us." data-lang-hi="साँस लें।">with us.</em>
-                </h1>
-                <p class="sk-hero__sub" data-lang-en="A pause for your nervous system. Pick a rhythm. Let the ball lead. Notice what changes."
-                                       data-lang-hi="आपके तंत्रिका तंत्र के लिए एक विराम। एक लय चुनें। गोले को मार्ग दिखाने दें। बदलाव देखें।">
-                    A pause for your nervous system. Pick a rhythm. Let the ball lead. Notice what changes.
-                </p>
-            </div>
-        </section>
+        <!-- Science + tradition -->
+        <details class="br-science">
+          <summary>The science of breath &mdash; and why it works</summary>
+          <div class="br-science__body">
+            <p><strong>Pranayama</strong> &mdash; the formal study of breath &mdash; is older than 2,500 years. It was codified by Patanjali in the Yoga Sutras as the fourth limb of yoga, but its practice is older still: woven through the Upanishads, the Tantric traditions, the Buddha's <em>anapanasati</em>, the Sufi <em>dhikr</em>, and the meditative breathing of Tibetan and Jain monastics.</p>
+            <p><strong>What modern science adds</strong> is the <em>why</em>. Extended exhalation activates the parasympathetic nervous system through the vagus nerve, slowing heart rate within seconds. Equal-phase breathing at roughly six cycles per minute maximises heart rate variability &mdash; the most reliable marker of autonomic resilience. Humming (Bhramari) increases nasal nitric oxide by fifteen-fold, improving oxygen delivery. Alternate-nostril breathing measurably modulates hemispheric brain activity. The double-inhale "physiological sigh" reduces acute anxiety faster than any other technique Stanford has tested.</p>
+            <p>The ancient practitioners had the experience. We now have the instrumentation. Both are saying the same thing: <em>the breath is the bridge between the body you have and the mind you are.</em> Cross it slowly, on purpose, and your nervous system listens.</p>
+            <p class="br-science__hindi" lang="hi">प्राणायाम केवल तकनीक नहीं — यह शरीर और मन के बीच का पुल है। धीरे-धीरे, जानबूझकर पार करें।</p>
+          </div>
+        </details>
+      </div>
+    </section>
 
-        <!-- ===== STUDIO ===== -->
-        <section class="sk-studio">
+  </main>
 
-            <!-- BEFORE -->
-            <div class="sk-mood" id="moodBefore">
-                <label class="sk-mood__label" for="moodBeforeSlider">
-                    <span>
-                        <strong data-lang-en="Feel where you started" data-lang-hi="शुरू कहाँ से हुए">Feel where you started</strong>
-                        <span style="display:block; font-size:12px; color:var(--sk-cream-quiet); margin-top:4px"
-                              data-lang-en="1 = tense, 10 = calm"
-                              data-lang-hi="1 = तनाव, 10 = शांत">1 = tense, 10 = calm</span>
-                    </span>
-                    <span class="sk-mood__value" id="moodBeforeValue">5</span>
-                </label>
-                <input type="range" min="1" max="10" value="5" class="sk-mood__slider" id="moodBeforeSlider">
-                <div class="sk-mood__scale">
-                    <span data-lang-en="Tense" data-lang-hi="तनाव">Tense</span>
-                    <span data-lang-en="Calm" data-lang-hi="शांत">Calm</span>
-                </div>
-            </div>
+  <!-- ==================== UNIFIED PLAYER ==================== -->
+  <div class="br-player" id="brPlayer" role="dialog" aria-modal="true" aria-labelledby="brPlayerTitle" data-open="false">
+    <video class="br-player__bg-video" autoplay loop muted playsinline aria-hidden="true">
+      <source src="/video/hero-breathe.mp4" type="video/mp4">
+    </video>
+    <div class="br-player__bg-overlay" aria-hidden="true"></div>
 
-            <!-- BREATH BALL -->
-            <div class="sk-section-eyebrow" data-lang-en="The Studio" data-lang-hi="स्टूडियो">The Studio</div>
-            <h2 class="sk-section-title" data-lang-en="One ball. One breath."
-                                          data-lang-hi="एक गोला। एक साँस।">One ball. One breath.</h2>
-            <p class="sk-section-sub" data-lang-en="Watch it expand on the inhale, hold steady, and contract on the exhale. Match its rhythm with your body."
-                                      data-lang-hi="साँस लेते समय इसे फैलते देखें, स्थिर रोकें, और छोड़ते समय सिकोड़ें। अपने शरीर से इसकी लय मिलाएँ।">
-                Watch it expand on the inhale, hold steady, and contract on the exhale. Match its rhythm with your body.
-            </p>
+    <button type="button" class="br-player__close" id="brPlayerClose" aria-label="Close player">&times;</button>
 
-            <div class="sk-breath-stage">
-                <div class="breath-ball" data-pattern="478" id="main-breath" role="status" aria-live="polite">
-                    <div class="breath-ball__ring" aria-hidden="true"></div>
-                    <div class="breath-ball__core">
-                        <div class="breath-ball__count" id="ballCount">4</div>
-                        <div class="breath-ball__phase" id="ballPhase" data-lang-en="Ready" data-lang-hi="तैयार">Ready</div>
-                    </div>
-                </div>
+    <div class="br-player__shell">
+      <h2 class="br-player__title" id="brPlayerTitle">
+        4-7-8 Breath
+        <span class="br-player__title-hi" id="brPlayerTitleHi" lang="hi">4-7-8 साँस</span>
+      </h2>
+      <p class="br-player__ratio" id="brPlayerRatio">4 — 7 — 8</p>
 
-                <p class="sk-breath-caption" id="ballCaption">Breathe in for 4 &rarr; Hold for 7 &rarr; Out for 8</p>
-                <p class="sk-breath-caption-hi" id="ballCaptionHi" lang="hi">4 तक श्वास लें &rarr; 7 रोकें &rarr; 8 तक छोड़ें</p>
+      <div class="br-ring" id="brRing" data-phase="rest">
+        <svg viewBox="0 0 320 320" aria-hidden="true">
+          <circle class="br-ring__track" cx="160" cy="160" r="140"></circle>
+          <circle class="br-ring__progress" id="brRingProgress" cx="160" cy="160" r="140"
+                  style="stroke-dasharray: 879.6; stroke-dashoffset: 879.6;"></circle>
+        </svg>
+        <div class="br-ring__core" aria-hidden="true"></div>
+        <div class="br-ring__phase">
+          <p class="br-ring__phase-label" id="brRingPhase">Ready</p>
+          <p class="br-ring__phase-count" id="brRingCount">&middot;</p>
+        </div>
+        <p class="br-ring__round" id="brRingRound">Round 0 of 4</p>
+      </div>
 
-                <div class="sk-breath-counter" id="ballCounter" data-lang-en="Round 0 of 4" data-lang-hi="चक्र 0 / 4">Round 0 of 4</div>
+      <p class="br-player__guidance" id="brPlayerGuidance" aria-live="polite">
+        Take a comfortable position. When you press play, the ring will guide you — follow its size and the count.
+      </p>
 
-                <div class="sk-breath-controls">
-                    <button type="button" class="sk-btn sk-btn--primary" id="btnBegin"
-                            data-lang-en="Begin" data-lang-hi="शुरू करें">Begin</button>
-                    <button type="button" class="sk-btn sk-btn--ghost" id="btnStop" style="display:none"
-                            data-lang-en="End session" data-lang-hi="समाप्त करें">End session</button>
-                </div>
-            </div>
+      <div class="br-player__controls">
+        <button type="button" class="br-player__btn" id="brPlayerStop" aria-label="Stop and exit">&#10074;&#10074;</button>
+        <button type="button" class="br-player__btn br-player__btn--primary" id="brPlayerPlay" aria-label="Start breathing">&#9654;</button>
+        <button type="button" class="br-player__btn" id="brPlayerVoice" aria-label="Toggle voice guidance" aria-pressed="true">&#128264;</button>
+      </div>
 
-            <!-- PATTERN PICKER -->
-            <div class="sk-section-eyebrow" data-lang-en="Choose a pattern" data-lang-hi="एक लय चुनें">Choose a pattern</div>
-            <div class="sk-patterns" role="radiogroup" aria-label="Breathing pattern">
-
-                <button type="button" class="sk-pattern-card is-active" data-pattern="478"
-                        role="radio" aria-checked="true">
-                    <span class="sk-pattern-card__pip" data-lang-en="Calm anxiety" data-lang-hi="चिंता शांत करें">Calm anxiety</span>
-                    <h3 class="sk-pattern-card__title">4&middot;7&middot;8</h3>
-                    <div class="sk-pattern-card__rhythm" data-lang-en="In 4 &middot; Hold 7 &middot; Out 8"
-                                                         data-lang-hi="लें 4 &middot; रोकें 7 &middot; छोड़ें 8">In 4 &middot; Hold 7 &middot; Out 8</div>
-                    <p class="sk-pattern-card__why" data-lang-en="A long exhale tells your <strong>vagus nerve</strong> the threat is over. Anxiety drops in under a minute."
-                                                    data-lang-hi="लंबी साँस छोड़ने से <strong>वेगस नर्व</strong> को संकेत मिलता है कि खतरा टल गया है।">
-                        A long exhale tells your <strong>vagus nerve</strong> the threat is over. Anxiety drops in under a minute.
-                    </p>
-                </button>
-
-                <button type="button" class="sk-pattern-card" data-pattern="box"
-                        role="radio" aria-checked="false">
-                    <span class="sk-pattern-card__pip" data-lang-en="Steady focus" data-lang-hi="स्थिर ध्यान">Steady focus</span>
-                    <h3 class="sk-pattern-card__title" data-lang-en="Box" data-lang-hi="बॉक्स">Box</h3>
-                    <div class="sk-pattern-card__rhythm" data-lang-en="4 &middot; 4 &middot; 4 &middot; 4"
-                                                         data-lang-hi="4 &middot; 4 &middot; 4 &middot; 4">4 &middot; 4 &middot; 4 &middot; 4</div>
-                    <p class="sk-pattern-card__why" data-lang-en="Used by Navy SEALs and surgeons. Equal phases <strong>balance</strong> your nervous system before high-stakes work."
-                                                    data-lang-hi="नेवी सील्स और सर्जनों द्वारा प्रयोग। समान चरण तंत्रिका तंत्र को <strong>संतुलित</strong> करते हैं।">
-                        Used by Navy SEALs and surgeons. Equal phases <strong>balance</strong> your nervous system before high-stakes work.
-                    </p>
-                </button>
-
-                <button type="button" class="sk-pattern-card" data-pattern="deep"
-                        role="radio" aria-checked="false">
-                    <span class="sk-pattern-card__pip" data-lang-en="Before tough moments" data-lang-hi="कठिन क्षण से पहले">Before tough moments</span>
-                    <h3 class="sk-pattern-card__title" data-lang-en="Deep 3" data-lang-hi="गहरी 3">Deep 3</h3>
-                    <div class="sk-pattern-card__rhythm" data-lang-en="In 5 &middot; Hold 2 &middot; Out 7"
-                                                         data-lang-hi="लें 5 &middot; रोकें 2 &middot; छोड़ें 7">In 5 &middot; Hold 2 &middot; Out 7</div>
-                    <p class="sk-pattern-card__why" data-lang-en="Three slow rounds before a hard conversation. <strong>Heart rate drops</strong> within 30 seconds."
-                                                    data-lang-hi="कठिन बातचीत से पहले तीन धीमे चक्र। <strong>हृदय गति</strong> 30 सेकंड में कम होती है।">
-                        Three slow rounds before a hard conversation. <strong>Heart rate drops</strong> within 30 seconds.
-                    </p>
-                </button>
-
-                <button type="button" class="sk-pattern-card" data-pattern="coherent"
-                        role="radio" aria-checked="false">
-                    <span class="sk-pattern-card__pip" data-lang-en="Heart rhythm" data-lang-hi="हृदय की लय">Heart rhythm</span>
-                    <h3 class="sk-pattern-card__title" data-lang-en="Coherent" data-lang-hi="समतल">Coherent</h3>
-                    <div class="sk-pattern-card__rhythm" data-lang-en="In 5 &middot; Out 5"
-                                                         data-lang-hi="लें 5 &middot; छोड़ें 5">In 5 &middot; Out 5</div>
-                    <p class="sk-pattern-card__why" data-lang-en="Six breaths per minute syncs your heart and breath. <strong>HRV</strong> climbs, mood lifts."
-                                                    data-lang-hi="प्रति मिनट छह साँसें हृदय और श्वास को जोड़ती हैं। <strong>HRV</strong> बढ़ता है।">
-                        Six breaths per minute syncs your heart and breath. <strong>HRV</strong> climbs, mood lifts.
-                    </p>
-                </button>
-
-            </div>
-
-            <!-- AFTER -->
-            <div class="sk-mood sk-after" id="moodAfter">
-                <label class="sk-mood__label" for="moodAfterSlider">
-                    <span>
-                        <strong data-lang-en="Feel where you are now" data-lang-hi="अब आप कहाँ हैं">Feel where you are now</strong>
-                        <span class="sk-after__locked"
-                              data-lang-en="Unlocks after your first round"
-                              data-lang-hi="पहले चक्र के बाद खुलता है">Unlocks after your first round</span>
-                    </span>
-                    <span class="sk-mood__value" id="moodAfterValue">5</span>
-                </label>
-                <input type="range" min="1" max="10" value="5" class="sk-mood__slider" id="moodAfterSlider" disabled>
-                <div class="sk-mood__scale">
-                    <span data-lang-en="Tense" data-lang-hi="तनाव">Tense</span>
-                    <span data-lang-en="Calm" data-lang-hi="शांत">Calm</span>
-                </div>
-            </div>
-
-            <!-- HISTORY -->
-            <div class="sk-history" id="skHistory" aria-live="polite">
-                <div class="sk-history__title" data-lang-en="Your last session" data-lang-hi="आपका पिछला सत्र">Your last session</div>
-                <div class="sk-history__row">
-                    <span data-lang-en="Shift" data-lang-hi="परिवर्तन">Shift</span>
-                    <strong id="histShift">+0</strong>
-                </div>
-                <div class="sk-history__row">
-                    <span data-lang-en="Total sessions" data-lang-hi="कुल सत्र">Total sessions</span>
-                    <strong id="histTotal">0</strong>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- ===== BOTTOM NAV ===== -->
-        <nav class="bottom-nav" aria-label="Main navigation" role="navigation">
-            <a href="/" class="nav-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
-                <span>Home</span>
-            </a>
-            <a href="/explore.html" class="nav-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
-                <span>Explore</span>
-            </a>
-            <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                <span>SOS</span>
-            </a>
-            <a href="/breathe.html" class="nav-item active" aria-current="page">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
-                <span>Breathe</span>
-            </a>
-            <a href="/friend.html" class="nav-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
-                <span>AI Friend</span>
-            </a>
-            <a href="/you.html" class="nav-item">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                <span>You</span>
-            </a>
-        </nav>
+      <!-- After-mood -->
+      <div class="br-player__after" id="brPlayerAfter" data-show="false">
+        <h4>How is it now?</h4>
+        <p class="br-player__after-hi" lang="hi">अब कैसा है?</p>
+        <input class="br-mood__slider br-player__after-slider" type="range" min="1" max="10" value="5" id="brMoodAfter"
+               aria-label="Mood after, 1 to 10">
+        <div class="br-mood__scale">
+          <span>Struggling</span><span>Even</span><span>Light</span>
+        </div>
+        <p class="br-mood__value"><span id="brMoodAfterVal">5</span> / 10</p>
+        <button type="button" class="br-player__after-done" id="brMoodDone">Done</button>
+      </div>
     </div>
+  </div>
 
-    <script src="/js/sukoon-experience.js" defer></script>
-    <script src="/js/sukoon-engine.js"></script>
-    <script>
-    (function() {
-        'use strict';
+  <!-- ==================== BOTTOM NAV ==================== -->
+  <nav class="sk-bottom-nav" aria-label="Sukoon primary">
+    <a class="sk-bottom-nav__item" href="/today.html">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">&#9728;</span>
+      <span class="sk-bottom-nav__label">Today</span>
+    </a>
+    <a class="sk-bottom-nav__item" href="/breathe.html" aria-current="page">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">&#10063;</span>
+      <span class="sk-bottom-nav__label">Breathe</span>
+    </a>
+    <a class="sk-bottom-nav__item" href="/sit.html">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">&#9737;</span>
+      <span class="sk-bottom-nav__label">Sit</span>
+    </a>
+    <a class="sk-bottom-nav__item" href="/rest.html">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">&#9790;</span>
+      <span class="sk-bottom-nav__label">Rest</span>
+    </a>
+    <a class="sk-bottom-nav__item" href="/be-with-me.html">
+      <span class="sk-bottom-nav__icon" aria-hidden="true">&#9826;</span>
+      <span class="sk-bottom-nav__label">Listen</span>
+    </a>
+  </nav>
 
-        // ============ PATTERNS ============
-        var PATTERNS = {
-            '478': {
-                name: '4-7-8',
-                phases: [
-                    { name: 'Inhale',  nameHi: 'श्वास लें',  duration: 4, expand: true,  hold: false },
-                    { name: 'Hold',    nameHi: 'रोकें',     duration: 7, expand: true,  hold: true  },
-                    { name: 'Exhale',  nameHi: 'छोड़ें',    duration: 8, expand: false, hold: false }
-                ],
-                caption:   'Breathe in for 4 → Hold for 7 → Out for 8',
-                captionHi: '4 तक श्वास लें → 7 रोकें → 8 तक छोड़ें'
-            },
-            'box': {
-                name: 'Box',
-                phases: [
-                    { name: 'Inhale', nameHi: 'श्वास लें', duration: 4, expand: true,  hold: false },
-                    { name: 'Hold',   nameHi: 'रोकें',    duration: 4, expand: true,  hold: true  },
-                    { name: 'Exhale', nameHi: 'छोड़ें',   duration: 4, expand: false, hold: false },
-                    { name: 'Hold',   nameHi: 'रोकें',    duration: 4, expand: false, hold: true  }
-                ],
-                caption:   'In 4 → Hold 4 → Out 4 → Hold 4',
-                captionHi: 'लें 4 → रोकें 4 → छोड़ें 4 → रोकें 4'
-            },
-            'deep': {
-                name: 'Deep 3',
-                phases: [
-                    { name: 'Inhale', nameHi: 'श्वास लें', duration: 5, expand: true,  hold: false },
-                    { name: 'Hold',   nameHi: 'रोकें',    duration: 2, expand: true,  hold: true  },
-                    { name: 'Exhale', nameHi: 'छोड़ें',   duration: 7, expand: false, hold: false }
-                ],
-                caption:   'In 5 → Hold 2 → Out 7',
-                captionHi: 'लें 5 → रोकें 2 → छोड़ें 7'
-            },
-            'coherent': {
-                name: 'Coherent',
-                phases: [
-                    { name: 'Inhale', nameHi: 'श्वास लें', duration: 5, expand: true,  hold: false },
-                    { name: 'Exhale', nameHi: 'छोड़ें',   duration: 5, expand: false, hold: false }
-                ],
-                caption:   'In 5 → Out 5 (heart rhythm)',
-                captionHi: 'लें 5 → छोड़ें 5 (हृदय की लय)'
-            }
-        };
+  <!-- ==================== PAGE SCRIPT ==================== -->
+  <script>
+  (function () {
+    'use strict';
 
-        var TARGET_ROUNDS = 4;
+    // ============== STATE ==============
+    var STATE = {
+      lang: (localStorage.getItem('sk-lang') || 'en'),
+      patterns: [],          // library breath patterns
+      filtered: [],          // currently visible
+      activeFilter: 'all',
+      situation: null,       // from URL hash/query
+      current: null,         // active pattern in player
+      playerTimer: null,
+      playerRound: 0,
+      playerPhaseIdx: 0,
+      playerPhaseRemaining: 0,
+      voiceOn: true,
+      genSession: []         // generated patterns kept in sessionStorage
+    };
 
-        // ============ STATE ============
-        var state = {
-            patternKey:  '478',
-            phaseIndex:  0,
-            round:       0,
-            running:     false,
-            phaseTimer:  null,
-            countdownTimer: null,
-            countdownLeft: 0,
-            moodBefore:  5,
-            moodAfter:   5,
-            startedAt:   null
-        };
+    // Phase definitions per pattern.ratio + pattern.pattern
+    // Returns array of {name, seconds, label_en, label_hi}
+    function phasesForPattern(p) {
+      var pattern = p.pattern || '';
+      var ratio = String(p.ratio || '').toLowerCase();
 
-        // ============ DOM ============
-        var $ = function(id) { return document.getElementById(id); };
-        var ball       = $('main-breath');
-        var ballCount  = $('ballCount');
-        var ballPhase  = $('ballPhase');
-        var caption    = $('ballCaption');
-        var captionHi  = $('ballCaptionHi');
-        var counter    = $('ballCounter');
-        var btnBegin   = $('btnBegin');
-        var btnStop    = $('btnStop');
-        var moodBeforeSlider = $('moodBeforeSlider');
-        var moodAfterSlider  = $('moodAfterSlider');
-        var moodBeforeValue  = $('moodBeforeValue');
-        var moodAfterValue   = $('moodAfterValue');
-        var history    = $('skHistory');
-        var histShift  = $('histShift');
-        var histTotal  = $('histTotal');
-        var page       = document.body;
+      // Generated patterns carry an explicit object
+      if (p._phases) return p._phases;
 
-        // ============ LANG ============
-        function applyLang(lang) {
-            page.setAttribute('data-lang', lang);
-            document.querySelectorAll('[data-lang-en]').forEach(function(el) {
-                var text = el.getAttribute('data-lang-' + lang);
-                if (text != null) {
-                    // Preserve <strong> in pattern cards
-                    if (/[<>]/.test(text)) {
-                        el.innerHTML = text;
-                    } else {
-                        el.textContent = text;
-                    }
-                }
-            });
-            document.querySelectorAll('[data-lang-set]').forEach(function(b) {
-                b.setAttribute('aria-pressed', b.getAttribute('data-lang-set') === lang ? 'true' : 'false');
-            });
-            updateCaption();
-            updateCounter();
-        }
-        document.querySelectorAll('[data-lang-set]').forEach(function(b) {
-            b.addEventListener('click', function() { applyLang(b.getAttribute('data-lang-set')); });
+      // Known named patterns
+      var L = function (en, hi) { return { en: en, hi: hi }; };
+      var IN = L('Breathe in', 'अंदर');
+      var HOLD = L('Hold', 'रोकें');
+      var OUT = L('Breathe out', 'बाहर');
+      var HOLDB = L('Pause', 'विराम');
+      var HUM = L('Hum out', 'गुनगुनाएं');
+      var SIPI = L('Top-up sniff', 'और सांस');
+
+      if (pattern === '478' || ratio === '4-7-8') {
+        return [
+          { name: 'inhale',  seconds: 4, label: IN },
+          { name: 'hold_in', seconds: 7, label: HOLD },
+          { name: 'exhale',  seconds: 8, label: OUT }
+        ];
+      }
+      if (pattern === 'box' || ratio === '4-4-4-4') {
+        return [
+          { name: 'inhale',   seconds: 4, label: IN },
+          { name: 'hold_in',  seconds: 4, label: HOLD },
+          { name: 'exhale',   seconds: 4, label: OUT },
+          { name: 'hold_out', seconds: 4, label: HOLDB }
+        ];
+      }
+      if (pattern === 'deep' || pattern === 'physiological-sigh' || ratio.indexOf('double-exhale') !== -1) {
+        return [
+          { name: 'inhale',  seconds: 3, label: IN },
+          { name: 'inhale',  seconds: 1, label: SIPI },
+          { name: 'exhale',  seconds: 6, label: OUT }
+        ];
+      }
+      if (pattern === 'coherent' || ratio === '5-5') {
+        return [
+          { name: 'inhale', seconds: 5, label: IN },
+          { name: 'exhale', seconds: 5, label: OUT }
+        ];
+      }
+      if (pattern === 'nadi_shodhana' || pattern === 'nadi-shodhana') {
+        return [
+          { name: 'inhale',  seconds: 4, label: L('In · left', 'बाएं · अंदर') },
+          { name: 'hold_in', seconds: 4, label: HOLD },
+          { name: 'exhale',  seconds: 4, label: L('Out · right', 'दाएं · बाहर') },
+          { name: 'inhale',  seconds: 4, label: L('In · right', 'दाएं · अंदर') },
+          { name: 'hold_in', seconds: 4, label: HOLD },
+          { name: 'exhale',  seconds: 4, label: L('Out · left', 'बाएं · बाहर') }
+        ];
+      }
+      if (pattern === 'bhramari') {
+        return [
+          { name: 'inhale', seconds: 4, label: IN },
+          { name: 'exhale', seconds: 8, label: HUM }
+        ];
+      }
+      if (pattern === 'ujjayi') {
+        return [
+          { name: 'inhale', seconds: 5, label: L('Ocean in', 'सागर · अंदर') },
+          { name: 'exhale', seconds: 5, label: L('Ocean out', 'सागर · बाहर') }
+        ];
+      }
+      if (pattern === 'sheetali' || pattern === 'sitali') {
+        return [
+          { name: 'inhale', seconds: 4, label: L('Cool in (mouth)', 'मुंह · ठंडी सांस') },
+          { name: 'exhale', seconds: 6, label: L('Out · nose', 'नाक · बाहर') }
+        ];
+      }
+      if (pattern === 'kapalabhati' || pattern === 'kapalbhati') {
+        return [
+          { name: 'exhale', seconds: 1, label: L('Sharp out', 'तेज़ बाहर') },
+          { name: 'inhale', seconds: 1, label: L('Passive in', 'अंदर') }
+        ];
+      }
+
+      // Parse ratio like "4-4-4" / "4-4-4-4"
+      var nums = ratio.split('-').map(function (n) { return parseInt(n, 10); }).filter(function (n) { return !isNaN(n); });
+      if (nums.length === 2) {
+        return [
+          { name: 'inhale', seconds: nums[0], label: IN },
+          { name: 'exhale', seconds: nums[1], label: OUT }
+        ];
+      }
+      if (nums.length === 3) {
+        return [
+          { name: 'inhale',  seconds: nums[0], label: IN },
+          { name: 'hold_in', seconds: nums[1], label: HOLD },
+          { name: 'exhale',  seconds: nums[2], label: OUT }
+        ];
+      }
+      if (nums.length === 4) {
+        return [
+          { name: 'inhale',   seconds: nums[0], label: IN },
+          { name: 'hold_in',  seconds: nums[1], label: HOLD },
+          { name: 'exhale',   seconds: nums[2], label: OUT },
+          { name: 'hold_out', seconds: nums[3], label: HOLDB }
+        ];
+      }
+
+      // Fallback: 4-4
+      return [
+        { name: 'inhale', seconds: 4, label: IN },
+        { name: 'exhale', seconds: 6, label: OUT }
+      ];
+    }
+
+    function cycleSeconds(phases) {
+      return phases.reduce(function (s, p) { return s + p.seconds; }, 0);
+    }
+
+    function durationMinutes(p) {
+      var phases = phasesForPattern(p);
+      var rounds = p.rounds || 5;
+      return Math.max(1, Math.round((cycleSeconds(phases) * rounds) / 60));
+    }
+
+    function tagBucket(p) {
+      var tags = (p.purpose_tags || p.tags || []).map(function (t) { return String(t).toLowerCase(); });
+      var has = function (k) { return tags.indexOf(k) !== -1; };
+      var buckets = [];
+      if (has('calm') || has('anxiety') || has('anger') || has('grief') || has('acute-stress') || has('emotional-balance')) buckets.push('calm');
+      if (has('focus') || has('clarity') || has('grounding') || has('presence')) buckets.push('focus');
+      if (has('energize') || has('energy') || has('wake')) buckets.push('energize');
+      if (has('sleep') || has('insomnia') || has('rest')) buckets.push('sleep');
+      // Pranayama patterns (known yoga names)
+      var prana = ['nadi_shodhana','nadi-shodhana','bhramari','ujjayi','sheetali','sitali','kapalabhati','kapalbhati','anuloma','viloma','surya','chandra'];
+      if (prana.indexOf((p.pattern || '').toLowerCase()) !== -1) buckets.push('pranayama');
+      if (durationMinutes(p) < 5) buckets.push('quick');
+      return buckets;
+    }
+
+    function tagsForCard(p) {
+      var t = (p.purpose_tags || p.tags || []).slice(0, 3);
+      // Capitalize
+      return t.map(function (s) {
+        s = String(s).replace(/[-_]/g, ' ');
+        return s.charAt(0).toUpperCase() + s.slice(1);
+      });
+    }
+
+    // ============== RENDER ==============
+    function $(sel) { return document.querySelector(sel); }
+    function $$(sel) { return Array.prototype.slice.call(document.querySelectorAll(sel)); }
+
+    function cardEl(p, opts) {
+      opts = opts || {};
+      var phases = phasesForPattern(p);
+      var dur = durationMinutes(p);
+      var lang = STATE.lang;
+      var title = p['name_' + lang] || p.name_en || p.name || 'Breath';
+      var titleAlt = (lang === 'en' ? p.name_hi : p.name_en) || '';
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'br-card' + (opts.generated ? ' br-card--generated' : '');
+      card.setAttribute('role', 'listitem');
+      card.setAttribute('data-id', p.id || ('gen-' + Date.now()));
+
+      var ringDur = cycleSeconds(phases);
+      var tags = tagsForCard(p);
+      var ratioText = (p.ratio || phases.map(function (x) { return x.seconds; }).join('-'));
+
+      card.innerHTML =
+        '<div class="br-card__top">' +
+          '<span class="br-card__meta">' + (opts.generated ? 'Made just now' : (ratioText + ' · ' + dur + ' min')) + '</span>' +
+          '<span class="br-card__ring" aria-hidden="true">' +
+            '<svg viewBox="0 0 36 36">' +
+              '<circle class="ring-track" cx="18" cy="18" r="16"></circle>' +
+              '<circle class="ring-pulse" cx="18" cy="18" r="16" style="--dur:' + ringDur + 's;stroke-dasharray:100;"></circle>' +
+            '</svg>' +
+          '</span>' +
+        '</div>' +
+        '<h3 class="br-card__title">' + escapeHtml(title) +
+          (titleAlt ? '<span class="br-card__title-hi" lang="' + (lang === 'en' ? 'hi' : 'en') + '">' + escapeHtml(titleAlt) + '</span>' : '') +
+        '</h3>' +
+        '<p class="br-card__ratio">' + escapeHtml(ratioText) + ' &middot; ' + (p.rounds || 5) + ' rounds</p>' +
+        (tags.length ? '<div class="br-card__tags">' + tags.map(function (t) {
+          return '<span class="br-card__tag">' + escapeHtml(t) + '</span>';
+        }).join('') + '</div>' : '') +
+        '<span class="br-card__play">Begin &rarr;</span>';
+
+      card.addEventListener('click', function () { openPlayer(p); });
+      return card;
+    }
+
+    function escapeHtml(s) {
+      return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+      });
+    }
+
+    function renderGrid() {
+      var grid = $('#brGrid');
+      grid.innerHTML = '';
+      var list = STATE.filtered;
+      if (!list.length) {
+        grid.innerHTML = '<p style="grid-column:1/-1;color:rgba(245,239,226,0.6);font-size:14px;">Nothing matches that filter yet. Try a different one — or design one below.</p>';
+        grid.setAttribute('aria-busy', 'false');
+        return;
+      }
+      var frag = document.createDocumentFragment();
+      // Generated session items go first if any
+      STATE.genSession.forEach(function (g) { frag.appendChild(cardEl(g, { generated: true })); });
+      list.forEach(function (p) { frag.appendChild(cardEl(p)); });
+      grid.appendChild(frag);
+      grid.setAttribute('aria-busy', 'false');
+    }
+
+    function applyFilter(name) {
+      STATE.activeFilter = name;
+      $$('.br-filter').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.dataset.filter === name));
+      });
+      if (name === 'all') {
+        STATE.filtered = STATE.patterns.slice();
+      } else {
+        STATE.filtered = STATE.patterns.filter(function (p) {
+          return tagBucket(p).indexOf(name) !== -1;
         });
+      }
+      renderGrid();
+    }
 
-        // ============ AMBIENT AUDIO ============
-        var ambBtn = $('skAmbient');
-        var ambAudio = $('skAmbientAudio');
-        ambBtn.addEventListener('click', function() {
-            var on = ambBtn.getAttribute('aria-pressed') === 'true';
-            if (on) {
-                ambAudio.pause();
-                ambBtn.setAttribute('aria-pressed', 'false');
-            } else {
-                ambAudio.volume = 0.4;
-                var p = ambAudio.play();
-                if (p && p.catch) p.catch(function() {});
-                ambBtn.setAttribute('aria-pressed', 'true');
-            }
+    // ============== ROUTED RECOMMENDATIONS (from hash / ?p=) ==============
+    function parseSituation() {
+      var hash = (window.location.hash || '').replace(/^#/, '').trim();
+      var url = new URL(window.location.href);
+      var p = url.searchParams.get('p') || '';
+      var s = url.searchParams.get('situation') || hash || '';
+      if (p && !s) {
+        // p is a pattern hint: 478, box, deep, coherent etc.
+        return { pattern: p, text: '' };
+      }
+      if (s) return { text: decodeURIComponent(s), pattern: p };
+      return null;
+    }
+
+    function showRoutedFromPattern(patternKey) {
+      var hits = STATE.patterns.filter(function (p) {
+        return (p.pattern || '').toLowerCase() === patternKey.toLowerCase();
+      });
+      if (!hits.length) return;
+      var section = $('#brRouted');
+      var grid = $('#brRoutedGrid');
+      grid.innerHTML = '';
+      $('#brRoutedReason').textContent = 'You arrived asking for this pattern. Begin whenever you\'re ready.';
+      hits.slice(0, 3).forEach(function (p) { grid.appendChild(cardEl(p)); });
+      section.hidden = false;
+    }
+
+    function fetchRoute(situation) {
+      var section = $('#brRouted');
+      $('#brRoutedReason').textContent = 'Listening to what you said…';
+      section.hidden = false;
+      fetch('/api/route', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input: situation.text, language: STATE.lang })
+      }).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          // Safety override -> redirect
+          if (data && data.route === 'now') {
+            window.location.href = '/now.html';
+            return;
+          }
+          var ids = (data && data.matches) || [];
+          if (!ids.length) {
+            // Fall back: top tagged-calm
+            section.hidden = true;
+            return;
+          }
+          var hits = STATE.patterns.filter(function (p) { return ids.indexOf(p.id) !== -1; }).slice(0, 3);
+          if (!hits.length) {
+            // Library doesn't have ids matching — fall back to tag-based match
+            section.hidden = true;
+            return;
+          }
+          var grid = $('#brRoutedGrid');
+          grid.innerHTML = '';
+          $('#brRoutedReason').textContent = data.reason || ('We heard: “' + situation.text + '”. These three feel right.');
+          hits.forEach(function (p) { grid.appendChild(cardEl(p)); });
+        })
+        .catch(function () {
+          // Quietly hide on failure
+          $('#brRouted').hidden = true;
         });
+    }
 
-        // ============ PATTERN PICKER ============
-        document.querySelectorAll('.sk-pattern-card').forEach(function(card) {
-            card.addEventListener('click', function() {
-                if (state.running) return;
-                document.querySelectorAll('.sk-pattern-card').forEach(function(c) {
-                    c.classList.remove('is-active');
-                    c.setAttribute('aria-checked', 'false');
-                });
-                card.classList.add('is-active');
-                card.setAttribute('aria-checked', 'true');
-                state.patternKey = card.getAttribute('data-pattern');
-                ball.setAttribute('data-pattern', state.patternKey);
-                state.phaseIndex = 0;
-                state.round = 0;
-                ball.classList.remove('is-expanded', 'is-hold');
-                updateCaption();
-                updateCounter();
-                resetBallVisual();
-            });
+    // ============== GENERATIVE BREATH ==============
+    function generateBreath() {
+      var btn = $('#brGenBtn');
+      btn.disabled = true;
+      btn.innerHTML = '<span class="br-gen-btn__spin" aria-hidden="true"></span>Designing your breath…';
+      var mood = situationText();
+      fetch('/api/generate-breath', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          mood: mood,
+          language: STATE.lang,
+          theme: STATE.activeFilter !== 'all' ? STATE.activeFilter : undefined
+        })
+      }).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (data) {
+          var phases = [];
+          var p = data.pattern || {};
+          if (p.inhale) phases.push({ name: 'inhale', seconds: p.inhale, label: { en: 'Breathe in', hi: 'अंदर' } });
+          if (p.hold_in) phases.push({ name: 'hold_in', seconds: p.hold_in, label: { en: 'Hold', hi: 'रोकें' } });
+          if (p.exhale) phases.push({ name: 'exhale', seconds: p.exhale, label: { en: 'Breathe out', hi: 'बाहर' } });
+          if (p.hold_out) phases.push({ name: 'hold_out', seconds: p.hold_out, label: { en: 'Pause', hi: 'विराम' } });
+          var ratio = [p.inhale, p.hold_in, p.exhale, p.hold_out].filter(function (n) { return n; }).join('-');
+          var item = {
+            id: 'gen-' + Date.now(),
+            name_en: data.name || 'Designed for now',
+            name_hi: data.name || 'अभी के लिए बनाई गई',
+            pattern: 'custom',
+            ratio: ratio,
+            rounds: data.cycles || 5,
+            purpose_tags: ['custom'],
+            guidance_en: data.script || data.cue || 'Follow the ring.',
+            guidance_hi: data.script || data.cue || 'अंगूठी के साथ चलें।',
+            _phases: phases,
+            __generated: true
+          };
+          STATE.genSession.unshift(item);
+          try {
+            sessionStorage.setItem('br-generated', JSON.stringify(STATE.genSession.slice(0, 6)));
+          } catch (_) {}
+          renderGrid();
+          // Auto-scroll to top of grid and open the new one
+          var grid = $('#brGrid');
+          if (grid && grid.scrollIntoView) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          setTimeout(function () { openPlayer(item); }, 380);
+        })
+        .catch(function () {
+          alert('We couldn\'t design one just now. Try a library breath instead — they\'re all here.');
+        })
+        .finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Design a breath for me';
         });
+    }
 
-        // ============ MOOD SLIDERS ============
-        moodBeforeSlider.addEventListener('input', function() {
-            state.moodBefore = parseInt(moodBeforeSlider.value, 10);
-            moodBeforeValue.textContent = state.moodBefore;
+    function situationText() {
+      if (STATE.situation && STATE.situation.text) return STATE.situation.text;
+      var moodVal = parseInt($('#brMoodBefore').value, 10);
+      if (moodVal <= 3) return 'struggling, need to settle';
+      if (moodVal <= 5) return 'a bit heavy, need to soften';
+      if (moodVal <= 7) return 'okay but want more space';
+      return 'light, want to deepen';
+    }
+
+    // ============== PLAYER ==============
+    function openPlayer(pattern) {
+      STATE.current = pattern;
+      STATE.playerRound = 0;
+      STATE.playerPhaseIdx = 0;
+      STATE.playerPhaseRemaining = 0;
+
+      var lang = STATE.lang;
+      var title = pattern['name_' + lang] || pattern.name_en || pattern.name || 'Breath';
+      var titleAlt = (lang === 'en' ? pattern.name_hi : pattern.name_en) || '';
+      $('#brPlayerTitle').firstChild.textContent = title + ' ';
+      var hi = $('#brPlayerTitleHi');
+      hi.textContent = titleAlt || '';
+      hi.style.display = titleAlt ? 'block' : 'none';
+
+      var phases = phasesForPattern(pattern);
+      var ratioText = pattern.ratio || phases.map(function (x) { return x.seconds; }).join(' — ');
+      $('#brPlayerRatio').textContent = ratioText;
+      $('#brPlayerGuidance').textContent = pattern['guidance_' + lang] || pattern.guidance_en || pattern.guidance || 'When you press play, follow the ring. Breathe with us.';
+
+      $('#brRingPhase').textContent = lang === 'hi' ? 'तैयार' : 'Ready';
+      $('#brRingCount').textContent = '·';
+      $('#brRing').setAttribute('data-phase', 'rest');
+      $('#brRingRound').textContent = (lang === 'hi' ? 'राउंड 0 / ' : 'Round 0 of ') + (pattern.rounds || 5);
+
+      $('#brPlayer').setAttribute('data-open', 'true');
+      $('#brPlayerAfter').setAttribute('data-show', 'false');
+      $('#brPlayerPlay').innerHTML = '&#9654;';
+
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePlayer() {
+      stopBreathing();
+      $('#brPlayer').setAttribute('data-open', 'false');
+      $('#brPlayerAfter').setAttribute('data-show', 'false');
+      document.body.style.overflow = '';
+    }
+
+    function startBreathing() {
+      var pattern = STATE.current;
+      if (!pattern) return;
+      var phases = phasesForPattern(pattern);
+      var rounds = pattern.rounds || 5;
+      if (STATE.playerTimer) return; // already running
+
+      $('#brPlayerPlay').innerHTML = '&#10074;&#10074;';
+      var startedAt = Date.now();
+      var phaseStart = Date.now();
+      STATE.playerPhaseIdx = 0;
+      STATE.playerRound = 1;
+      STATE.playerPhaseRemaining = phases[0].seconds;
+
+      announce(phases[0]);
+      renderPhaseTick(phases[STATE.playerPhaseIdx], STATE.playerPhaseRemaining, phases[STATE.playerPhaseIdx].seconds);
+      updateRound();
+
+      STATE.playerTimer = setInterval(function () {
+        var ph = phases[STATE.playerPhaseIdx];
+        var phElapsed = (Date.now() - phaseStart) / 1000;
+        var remaining = Math.max(0, ph.seconds - phElapsed);
+        renderPhaseTick(ph, remaining, ph.seconds);
+
+        if (phElapsed >= ph.seconds) {
+          // advance
+          STATE.playerPhaseIdx++;
+          if (STATE.playerPhaseIdx >= phases.length) {
+            STATE.playerPhaseIdx = 0;
+            STATE.playerRound++;
+            if (STATE.playerRound > rounds) {
+              completeBreathing();
+              return;
+            }
+            updateRound();
+          }
+          phaseStart = Date.now();
+          var next = phases[STATE.playerPhaseIdx];
+          announce(next);
+          renderPhaseTick(next, next.seconds, next.seconds);
+        }
+      }, 100);
+    }
+
+    function stopBreathing() {
+      if (STATE.playerTimer) { clearInterval(STATE.playerTimer); STATE.playerTimer = null; }
+      $('#brPlayerPlay').innerHTML = '&#9654;';
+      $('#brRing').setAttribute('data-phase', 'rest');
+      try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (_) {}
+    }
+
+    function completeBreathing() {
+      stopBreathing();
+      $('#brRingPhase').textContent = STATE.lang === 'hi' ? 'पूर्ण' : 'Complete';
+      $('#brRingCount').textContent = '·';
+      $('#brRing').setAttribute('data-phase', 'rest');
+      $('#brPlayerAfter').setAttribute('data-show', 'true');
+    }
+
+    function renderPhaseTick(phase, remaining, total) {
+      var ring = $('#brRing');
+      ring.setAttribute('data-phase', phase.name);
+      var label = phase.label && phase.label[STATE.lang] ? phase.label[STATE.lang] : (phase.label && phase.label.en) || 'Breathe';
+      $('#brRingPhase').textContent = label;
+      $('#brRingCount').textContent = Math.ceil(remaining);
+
+      // Progress ring: fill during inhale/hold_in, drain during exhale/hold_out
+      var C = 879.6; // 2*PI*140
+      var prog;
+      if (phase.name === 'inhale') {
+        prog = (total - remaining) / total;        // 0 -> 1
+      } else if (phase.name === 'hold_in') {
+        prog = 1;
+      } else if (phase.name === 'exhale') {
+        prog = remaining / total;                  // 1 -> 0
+      } else { // hold_out / rest
+        prog = 0;
+      }
+      $('#brRingProgress').style.strokeDashoffset = String(C - C * prog);
+    }
+
+    function updateRound() {
+      var total = (STATE.current && STATE.current.rounds) || 5;
+      $('#brRingRound').textContent = (STATE.lang === 'hi' ? 'राउंड ' : 'Round ') + STATE.playerRound + (STATE.lang === 'hi' ? ' / ' : ' of ') + total;
+    }
+
+    function announce(phase) {
+      if (!STATE.voiceOn) return;
+      var label = phase.label && phase.label[STATE.lang] ? phase.label[STATE.lang] : (phase.label && phase.label.en) || '';
+      if (!label) return;
+      try {
+        if (!window.speechSynthesis) return;
+        var u = new SpeechSynthesisUtterance(label);
+        u.rate = 0.95;
+        u.pitch = 0.95;
+        u.volume = 0.9;
+        u.lang = STATE.lang === 'hi' ? 'hi-IN' : 'en-IN';
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(u);
+      } catch (_) {}
+    }
+
+    // ============== MOOD ==============
+    function wireMoodSliders() {
+      var before = $('#brMoodBefore');
+      var beforeVal = $('#brMoodBeforeVal');
+      var after = $('#brMoodAfter');
+      var afterVal = $('#brMoodAfterVal');
+
+      try { before.value = localStorage.getItem('br-mood-before') || '5'; } catch (_) {}
+      beforeVal.textContent = before.value;
+
+      before.addEventListener('input', function () {
+        beforeVal.textContent = before.value;
+        try { localStorage.setItem('br-mood-before', before.value); } catch (_) {}
+      });
+      after.addEventListener('input', function () {
+        afterVal.textContent = after.value;
+      });
+
+      $('#brMoodDone').addEventListener('click', function () {
+        var pre = parseInt(before.value, 10);
+        var post = parseInt(after.value, 10);
+        try {
+          var hist = JSON.parse(localStorage.getItem('br-mood-history') || '[]');
+          hist.push({
+            id: STATE.current && STATE.current.id,
+            pre: pre, post: post,
+            at: Date.now()
+          });
+          localStorage.setItem('br-mood-history', JSON.stringify(hist.slice(-30)));
+        } catch (_) {}
+        closePlayer();
+      });
+    }
+
+    // ============== LANGUAGE ==============
+    function wireLang() {
+      $$('.br-lang button').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var lang = b.dataset.lang;
+          STATE.lang = lang;
+          try { localStorage.setItem('sk-lang', lang); } catch (_) {}
+          document.documentElement.setAttribute('lang', lang);
+          $$('.br-lang button').forEach(function (x) {
+            x.setAttribute('aria-pressed', String(x.dataset.lang === lang));
+          });
+          renderGrid();
         });
-        moodAfterSlider.addEventListener('input', function() {
-            state.moodAfter = parseInt(moodAfterSlider.value, 10);
-            moodAfterValue.textContent = state.moodAfter;
-            saveSessionDebounced();
-        });
+      });
+      // Sync initial
+      $$('.br-lang button').forEach(function (x) {
+        x.setAttribute('aria-pressed', String(x.dataset.lang === STATE.lang));
+      });
+      document.documentElement.setAttribute('lang', STATE.lang);
+    }
 
-        // ============ CAPTION / COUNTER ============
-        function updateCaption() {
-            var p = PATTERNS[state.patternKey];
-            caption.textContent = p.caption;
-            captionHi.textContent = p.captionHi;
+    // ============== PULSE ==============
+    function fetchPulse() {
+      fetch('/api/pulse').then(function (r) { return r.ok ? r.json() : null; })
+        .then(function (d) {
+          if (d && typeof d.count === 'number') {
+            var el = document.querySelector('[data-pulse-count]');
+            if (el) el.textContent = String(d.count);
+          }
+        }).catch(function () {});
+    }
+
+    // ============== LIBRARY LOAD ==============
+    function loadLibrary() {
+      // Try /api/library first, then static JSON fallback
+      var fromApi = fetch('/api/library', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ kind: 'breath-patterns', limit: 50 })
+      }).then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+        .then(function (d) { return (d && d.items) || []; });
+
+      var fromStatic = fetch('/content/breath.json').then(function (r) {
+        return r.ok ? r.json() : Promise.reject(r.status);
+      }).then(function (d) { return Array.isArray(d) ? d : (d.items || []); });
+
+      return fromApi.catch(function () { return fromStatic; });
+    }
+
+    // ============== INIT ==============
+    function init() {
+      wireLang();
+      wireMoodSliders();
+
+      $$('.br-filter').forEach(function (b) {
+        b.addEventListener('click', function () { applyFilter(b.dataset.filter); });
+      });
+
+      $('#brPlayerPlay').addEventListener('click', function () {
+        if (STATE.playerTimer) stopBreathing();
+        else startBreathing();
+      });
+      $('#brPlayerStop').addEventListener('click', closePlayer);
+      $('#brPlayerClose').addEventListener('click', closePlayer);
+      $('#brPlayerVoice').addEventListener('click', function () {
+        STATE.voiceOn = !STATE.voiceOn;
+        $('#brPlayerVoice').setAttribute('aria-pressed', String(STATE.voiceOn));
+        $('#brPlayerVoice').textContent = STATE.voiceOn ? '🔈' : '🔇';
+        if (!STATE.voiceOn) { try { window.speechSynthesis && window.speechSynthesis.cancel(); } catch (_) {} }
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && $('#brPlayer').getAttribute('data-open') === 'true') closePlayer();
+      });
+
+      $('#brGenBtn').addEventListener('click', generateBreath);
+
+      // Restore generated session
+      try {
+        var saved = JSON.parse(sessionStorage.getItem('br-generated') || '[]');
+        if (Array.isArray(saved)) STATE.genSession = saved;
+      } catch (_) {}
+
+      // Parse situation
+      STATE.situation = parseSituation();
+
+      loadLibrary().then(function (items) {
+        STATE.patterns = items || [];
+        STATE.filtered = STATE.patterns.slice();
+        renderGrid();
+
+        // Apply hash-routed recommendations
+        if (STATE.situation) {
+          if (STATE.situation.pattern) {
+            showRoutedFromPattern(STATE.situation.pattern);
+          } else if (STATE.situation.text) {
+            fetchRoute(STATE.situation);
+          }
         }
-        function updateCounter() {
-            var lang = page.getAttribute('data-lang') === 'hi' ? 'hi' : 'en';
-            var roundShown = state.running ? Math.min(state.round + 1, TARGET_ROUNDS) : state.round;
-            if (lang === 'hi') {
-                counter.textContent = 'चक्र ' + roundShown + ' / ' + TARGET_ROUNDS;
-            } else {
-                counter.textContent = 'Round ' + roundShown + ' of ' + TARGET_ROUNDS;
-            }
-        }
+      }).catch(function () {
+        $('#brGrid').innerHTML = '<p style="grid-column:1/-1;color:rgba(245,239,226,0.6);font-size:14px;">Couldn\'t load the library right now. Try refreshing — or design a fresh one below.</p>';
+      });
 
-        function resetBallVisual() {
-            var p = PATTERNS[state.patternKey].phases[0];
-            ballCount.textContent = p.duration;
-            ballPhase.textContent = page.getAttribute('data-lang') === 'hi' ? 'तैयार' : 'Ready';
-        }
+      fetchPulse();
+      setInterval(fetchPulse, 60000);
+    }
 
-        // ============ COUNTDOWN ============
-        function startCountdown(seconds) {
-            clearInterval(state.countdownTimer);
-            state.countdownLeft = seconds;
-            ballCount.textContent = seconds;
-            state.countdownTimer = setInterval(function() {
-                state.countdownLeft--;
-                if (state.countdownLeft <= 0) {
-                    clearInterval(state.countdownTimer);
-                    state.countdownTimer = null;
-                    return;
-                }
-                ballCount.textContent = state.countdownLeft;
-            }, 1000);
-        }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+  </script>
 
-        // ============ PHASE RUNNER ============
-        function runPhase() {
-            if (!state.running) return;
-            var pattern = PATTERNS[state.patternKey];
-            var phase = pattern.phases[state.phaseIndex];
-
-            ball.style.setProperty('--phase-duration', phase.duration + 's');
-            // Set transition duration to match phase
-            var core = ball.querySelector('.breath-ball__core');
-            var ring = ball.querySelector('.breath-ball__ring');
-            if (core) core.style.transitionDuration = phase.duration + 's';
-            if (ring) ring.style.transitionDuration = phase.duration + 's';
-
-            // Apply expand/hold classes
-            if (phase.expand) {
-                ball.classList.add('is-expanded');
-            } else {
-                ball.classList.remove('is-expanded');
-            }
-            ball.classList.toggle('is-hold', !!phase.hold);
-
-            ballPhase.textContent = page.getAttribute('data-lang') === 'hi' ? phase.nameHi : phase.name;
-            startCountdown(phase.duration);
-
-            state.phaseTimer = setTimeout(function() {
-                state.phaseIndex++;
-                if (state.phaseIndex >= pattern.phases.length) {
-                    state.phaseIndex = 0;
-                    state.round++;
-                    updateCounter();
-
-                    if (state.round >= TARGET_ROUNDS) {
-                        completeSession();
-                        return;
-                    }
-                }
-                runPhase();
-            }, phase.duration * 1000);
-        }
-
-        // ============ BEGIN ============
-        function beginSession() {
-            if (state.running) return;
-            state.running = true;
-            state.phaseIndex = 0;
-            state.round = 0;
-            state.startedAt = Date.now();
-
-            btnBegin.style.display = 'none';
-            btnStop.style.display = 'inline-flex';
-
-            updateCounter();
-            runPhase();
-        }
-
-        // ============ STOP ============
-        function stopSession(completed) {
-            state.running = false;
-            clearTimeout(state.phaseTimer);
-            clearInterval(state.countdownTimer);
-            state.phaseTimer = null;
-            state.countdownTimer = null;
-
-            ball.classList.remove('is-expanded', 'is-hold');
-            btnBegin.style.display = 'inline-flex';
-            btnStop.style.display = 'none';
-
-            resetBallVisual();
-
-            if (completed) {
-                unlockAfter();
-            }
-        }
-
-        // ============ COMPLETE ============
-        function completeSession() {
-            stopSession(true);
-            page.classList.add('is-completed');
-            updateCounter();
-
-            // Track in engine if available
-            try {
-                if (window.sukoon && typeof window.sukoon.track === 'function') {
-                    var minutes = Math.max(1, Math.round((Date.now() - state.startedAt) / 60000));
-                    window.sukoon.track('breathing', minutes, PATTERNS[state.patternKey].name);
-                }
-            } catch (e) {}
-
-            // Scroll to after panel
-            var after = document.getElementById('moodAfter');
-            if (after && after.scrollIntoView) {
-                setTimeout(function() {
-                    after.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                }, 400);
-            }
-        }
-
-        // ============ UNLOCK AFTER ============
-        function unlockAfter() {
-            moodAfterSlider.disabled = false;
-            moodAfterSlider.value = state.moodBefore;
-            state.moodAfter = state.moodBefore;
-            moodAfterValue.textContent = state.moodAfter;
-        }
-
-        // ============ STORAGE ============
-        var saveTimer = null;
-        function saveSessionDebounced() {
-            clearTimeout(saveTimer);
-            saveTimer = setTimeout(saveSession, 600);
-        }
-        function saveSession() {
-            try {
-                var key = 'sukoon_breath_sessions';
-                var raw = localStorage.getItem(key);
-                var arr = raw ? JSON.parse(raw) : [];
-                arr.push({
-                    ts: Date.now(),
-                    pattern: state.patternKey,
-                    rounds: TARGET_ROUNDS,
-                    before: state.moodBefore,
-                    after: state.moodAfter,
-                    shift: state.moodAfter - state.moodBefore
-                });
-                // Keep last 50
-                if (arr.length > 50) arr = arr.slice(-50);
-                localStorage.setItem(key, JSON.stringify(arr));
-                renderHistory(arr);
-            } catch (e) {}
-        }
-        function renderHistory(arr) {
-            if (!arr || !arr.length) return;
-            var last = arr[arr.length - 1];
-            history.classList.add('is-visible');
-            histShift.textContent = (last.shift >= 0 ? '+' : '') + last.shift;
-            histTotal.textContent = arr.length;
-        }
-        function loadHistory() {
-            try {
-                var raw = localStorage.getItem('sukoon_breath_sessions');
-                if (raw) renderHistory(JSON.parse(raw));
-            } catch (e) {}
-        }
-
-        // ============ EVENTS ============
-        btnBegin.addEventListener('click', beginSession);
-        btnStop.addEventListener('click', function() { stopSession(false); });
-
-        // ============ INIT ============
-        resetBallVisual();
-        updateCaption();
-        updateCounter();
-        loadHistory();
-    })();
-    </script>
-
-    <script src="/js/i18n.js"></script>
-    <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
-    <script src="/js/shell.js"></script>
 </body>
 </html>
