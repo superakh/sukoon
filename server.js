@@ -13,6 +13,8 @@ const dailyRoute = require('./routes/daily');
 const pulseRoute = require('./routes/pulse');
 const rateLimit = require('./routes/rateLimit');
 const library = require('./routes/library');
+const yogaRoute = require('./routes/yoga');
+const coursesRoute = require('./routes/courses');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -57,6 +59,8 @@ app.use('/api/generate-story',      (req, res, next) => { req.url = '/story';   
 app.use('/api/generate-breath',     (req, res, next) => { req.url = '/breath';     next(); }, generateRoute);
 app.use('/api/daily', dailyRoute);
 app.use('/api/pulse', pulseRoute);
+app.use('/api/yoga', yogaRoute);
+app.use('/api/courses', coursesRoute);
 
 // Health check — also surfaces library stats so deploys can confirm
 // the in-memory content loaded as expected.

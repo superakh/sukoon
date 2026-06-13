@@ -21,6 +21,7 @@ const CONTENT_PATTERNS = [
   { pattern: /^festivals\.json$/, key: 'festivals' },
   { pattern: /^crisis\.json$|^crisis-tools\.json$/, key: 'crisisTools' },
   { pattern: /^yoga-asanas-[1-9]\.json$|^yoga-asanas\.json$/, key: 'yogaAsanas' },
+  { pattern: /^yoga-sequences\.json$/, key: 'yogaSequences' },
   { pattern: /^courses-.*\.json$|^courses\.json$/, key: 'courses' },
 ];
 
@@ -33,6 +34,7 @@ const store = {
   festivals: [],
   crisisTools: [],
   yogaAsanas: [],
+  yogaSequences: [],
   courses: [],
   // Flat id index: id → { kind, item }
   byId: new Map()
@@ -228,8 +230,17 @@ function snapshot() {
     festivals: store.festivals.length,
     crisisTools: store.crisisTools.length,
     yogaAsanas: store.yogaAsanas.length,
+    yogaSequences: store.yogaSequences.length,
     courses: store.courses.length
   };
+}
+
+// Direct (non-aliased) accessor used by the yoga + courses routes,
+// which need keys that aren't in KIND_ALIASES (e.g. 'yogaAsanas').
+function getRaw(key) {
+  return Object.prototype.hasOwnProperty.call(store, key) && Array.isArray(store[key])
+    ? store[key]
+    : [];
 }
 
 module.exports = {
@@ -239,6 +250,7 @@ module.exports = {
   filterLibrary,
   getById,
   getCollection,
+  getRaw,
   resolveKind,
   snapshot
 };

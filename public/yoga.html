@@ -1,0 +1,1762 @@
+<!DOCTYPE html>
+<html lang="en" data-tod="day" data-no-breath>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Yoga — Sukoon</title>
+  <meta name="description" content="60 asanas. 12 courses. All free, forever. Yoga rooted in India, refined by Iyengar, Krishnamacharya, Sivananda — adapted here for every body.">
+  <meta name="theme-color" content="#1A2113">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500&family=Tiro+Devanagari+Hindi&family=Inter+Tight:wght@400;500;600&family=Hind:wght@400;500&display=swap">
+
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Sukoon">
+  <meta property="og:url" content="https://sukoon.cloud/yoga.html">
+  <meta property="og:title" content="Yoga for every body — Sukoon">
+  <meta property="og:description" content="60 asanas. 12 courses. All free, forever.">
+  <meta property="og:image" content="https://sukoon.cloud/og/og-meditate.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://sukoon.cloud/og/og-meditate.jpg">
+
+  <link rel="stylesheet" href="/css/shell.css">
+  <link rel="stylesheet" href="/css/sukoon-revolution.css">
+
+  <script src="/js/sukoon-experience.js" defer></script>
+  <script src="/js/sukoon-pulse.js" defer></script>
+  <script src="/js/sukoon-safety.js" defer></script>
+  <script src="/js/sukoon-library.js" defer></script>
+
+  <style>
+    /* ============================================================
+       YOGA — library page. Daylight palette: moss, sand, ochre, cream.
+       Restrained, India-rooted. Cucinelli meets Raw Mango.
+       ============================================================ */
+    :root {
+      --yg-bg-top:     #1A2113;
+      --yg-bg-mid:     #232C18;
+      --yg-bg-bottom:  #2D341F;
+      --yg-glass:      rgba(35, 44, 24, 0.55);
+      --yg-glass-2:    rgba(45, 52, 31, 0.68);
+      --yg-hair:       rgba(245, 239, 226, 0.10);
+      --yg-hair-2:     rgba(245, 239, 226, 0.22);
+      --yg-moss:       #5A6B3A;
+      --yg-moss-soft:  #8FA068;
+      --yg-ochre:      #C8924A;
+      --yg-ochre-soft: rgba(200, 146, 74, 0.18);
+      --yg-sand:       #D8C7A2;
+      --yg-leaf:       #A8B98C;
+    }
+
+    html, body { background: var(--yg-bg-top); color: var(--sk-cream); }
+    body.page-yoga {
+      min-height: 100vh;
+      margin: 0;
+      padding: 0 0 calc(96px + env(safe-area-inset-bottom, 0px));
+      overflow-x: hidden;
+      font-family: var(--sk-font-sans);
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(168, 185, 140, 0.10) 0%, rgba(26, 33, 19, 0) 60%),
+        linear-gradient(180deg, var(--yg-bg-top) 0%, var(--yg-bg-mid) 50%, var(--yg-bg-bottom) 100%);
+    }
+
+    .yoga-shell { position: relative; z-index: 2; }
+
+    /* ============================================================
+       CRISIS BAR (top)
+       ============================================================ */
+    .sk-crisis-bar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex; align-items: center; gap: 14px;
+      padding: 10px clamp(16px, 4vw, 28px);
+      background: rgba(26, 33, 19, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--yg-hair);
+      color: var(--sk-cream-dim);
+      font-size: 13px; line-height: 1.4;
+    }
+    .sk-crisis-bar__icon {
+      flex-shrink: 0;
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: rgba(240, 134, 121, 0.18);
+      color: #F08679;
+      display: grid; place-items: center;
+    }
+    .sk-crisis-bar__icon svg { width: 12px; height: 12px; }
+    .sk-crisis-bar__text { flex: 1; min-width: 0; }
+    .sk-crisis-bar__strong { color: var(--sk-cream); font-weight: 500; }
+    .sk-crisis-bar__cta {
+      color: #F08679; text-decoration: none; font-weight: 500;
+      letter-spacing: 0.02em; white-space: nowrap;
+    }
+    .sk-crisis-bar__cta:hover { text-decoration: underline; }
+    @media (max-width: 520px) {
+      .sk-crisis-bar { font-size: 12px; padding: 8px 14px; gap: 10px; }
+    }
+
+    /* Language pill */
+    .lang-toggle {
+      position: fixed;
+      top: 56px; right: 14px;
+      z-index: 41;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(26, 33, 19, 0.6);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: var(--sk-cream-dim);
+      border: 1px solid var(--yg-hair);
+      font: 500 12px/1 var(--sk-font-sans);
+      cursor: pointer;
+    }
+    .lang-toggle__opt { opacity: 0.45; padding: 2px 4px; border-radius: 6px; }
+    .lang-toggle__opt[aria-current="true"] { opacity: 1; color: var(--sk-cream); }
+    .lang-toggle__sep { color: var(--sk-cream-quiet); }
+
+    /* ============================================================
+       HERO — cinematic video
+       ============================================================ */
+    .yoga-hero {
+      position: relative;
+      width: 100%;
+      min-height: 78vh;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden;
+      isolation: isolate;
+      background: #0E1408;
+    }
+    .yoga-hero__media { position: absolute; inset: 0; z-index: 0; }
+    .yoga-hero__media video {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+      filter: saturate(0.92) brightness(0.86);
+    }
+    .yoga-hero__overlay {
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        radial-gradient(ellipse at 50% 35%, rgba(14,20,8,0.10) 0%, rgba(14,20,8,0.65) 70%),
+        linear-gradient(180deg, rgba(14,20,8,0.35) 0%, rgba(14,20,8,0.15) 30%, rgba(26,33,19,0.95) 100%);
+    }
+    .yoga-hero__content {
+      position: relative; z-index: 2;
+      max-width: 720px;
+      padding: 0 24px;
+      text-align: center;
+      color: var(--sk-cream);
+    }
+    .yoga-hero__eyebrow {
+      display: inline-block;
+      font: 600 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sk-cream-dim);
+      margin-bottom: 18px;
+      padding: 6px 14px;
+      border: 1px solid var(--yg-hair-2);
+      border-radius: 999px;
+      background: rgba(14, 20, 8, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .yoga-hero__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(44px, 6.6vw, 84px);
+      line-height: 1.02; letter-spacing: -0.022em;
+      margin: 0 0 14px;
+      text-shadow: 0 2px 28px rgba(0,0,0,0.55);
+    }
+    .yoga-hero__title-hi {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', var(--sk-font-serif);
+      font-weight: 400;
+      font-size: clamp(22px, 2.8vw, 32px);
+      line-height: 1.3;
+      color: var(--sk-cream-dim);
+      margin-top: 4px;
+      letter-spacing: 0;
+    }
+    .yoga-hero__sub {
+      font-size: 17px; line-height: 1.65;
+      color: var(--sk-cream-dim);
+      margin: 22px auto 0; max-width: 520px;
+    }
+    .yoga-hero__rule {
+      width: 40px; height: 1px;
+      background: var(--yg-ochre);
+      margin: 28px auto 0;
+      opacity: 0.7;
+    }
+    .yoga-hero__lineage {
+      margin-top: 22px;
+      font: 400 13px/1.6 var(--sk-font-sans);
+      color: var(--sk-cream-quiet);
+      max-width: 560px;
+      margin-left: auto; margin-right: auto;
+      font-style: italic;
+    }
+    @media (max-width: 600px) {
+      .yoga-hero { min-height: 70vh; }
+      .yoga-hero__title { font-size: clamp(34px, 9vw, 56px); }
+      .yoga-hero__sub { font-size: 15px; }
+    }
+
+    /* ============================================================
+       SECTION SHELL
+       ============================================================ */
+    .yoga-section {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: clamp(48px, 7vw, 84px) clamp(20px, 5vw, 48px) 0;
+    }
+    .yoga-section__eyebrow {
+      display: block;
+      font: 600 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--yg-ochre);
+      margin-bottom: 12px;
+    }
+    .yoga-section__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(28px, 4vw, 44px);
+      line-height: 1.1; letter-spacing: -0.018em;
+      margin: 0 0 10px;
+      color: var(--sk-cream);
+    }
+    .yoga-section__title-hi {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', var(--sk-font-serif);
+      font-weight: 400;
+      font-size: clamp(15px, 1.4vw, 18px);
+      color: var(--sk-cream-quiet);
+      margin-bottom: 12px;
+      letter-spacing: 0;
+    }
+    .yoga-section__sub {
+      font-size: 16px; line-height: 1.65;
+      color: var(--sk-cream-dim);
+      margin: 0 0 32px;
+      max-width: 620px;
+    }
+
+    /* ============================================================
+       TODAY'S FLOW — featured cinematic card
+       ============================================================ */
+    .today-flow {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      border-radius: 26px;
+      overflow: hidden;
+      background: var(--yg-glass-2);
+      border: 1px solid var(--yg-hair-2);
+      box-shadow: 0 24px 64px rgba(8, 12, 4, 0.5);
+      isolation: isolate;
+    }
+    .today-flow__media {
+      position: relative;
+      min-height: 360px;
+      overflow: hidden;
+    }
+    .today-flow__still {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(200, 146, 74, 0.22) 0%, rgba(35,44,24,0) 55%),
+        radial-gradient(ellipse at 70% 75%, rgba(90, 107, 58, 0.55) 0%, rgba(35,44,24,0) 60%),
+        linear-gradient(160deg, #232C18 0%, #364425 55%, #2D341F 100%);
+      transform: scale(1.04);
+      animation: today-ken 24s var(--sk-ease-calm, ease) infinite alternate;
+    }
+    @keyframes today-ken {
+      0%   { transform: scale(1.04) translate(0, 0); }
+      100% { transform: scale(1.12) translate(-1.5%, -1%); }
+    }
+    .today-flow__media::after {
+      content: "";
+      position: absolute; inset: 0;
+      background:
+        linear-gradient(90deg, rgba(35,44,24,0) 35%, rgba(35,44,24,0.55) 100%),
+        linear-gradient(180deg, rgba(35,44,24,0.1) 0%, rgba(35,44,24,0.55) 100%);
+    }
+    .today-flow__body {
+      position: relative;
+      padding: clamp(28px, 4vw, 48px);
+      display: flex; flex-direction: column;
+      justify-content: center; gap: 14px;
+      color: var(--sk-cream);
+    }
+    .today-flow__tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      font: 600 10px/1 var(--sk-font-sans);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--yg-ochre);
+    }
+    .today-flow__tag::before {
+      content: ""; width: 6px; height: 6px; border-radius: 50%;
+      background: var(--yg-ochre);
+      box-shadow: 0 0 12px var(--yg-ochre);
+    }
+    .today-flow__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(28px, 3.6vw, 40px);
+      line-height: 1.08; letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .today-flow__title-hi {
+      display: block;
+      font-family: 'Tiro Devanagari Hindi', var(--sk-font-serif);
+      font-size: clamp(16px, 1.6vw, 20px);
+      color: var(--sk-cream-dim);
+      margin-top: 6px; font-weight: 400; letter-spacing: 0;
+    }
+    .today-flow__meta {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      font: 500 12px/1 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+      letter-spacing: 0.04em;
+    }
+    .today-flow__meta span { display: inline-flex; align-items: center; gap: 6px; }
+    .today-flow__meta span::before {
+      content: ""; width: 4px; height: 4px; border-radius: 50%;
+      background: var(--sk-cream-quiet);
+    }
+    .today-flow__meta span:first-child::before { display: none; }
+    .today-flow__desc { font-size: 15px; line-height: 1.65; color: var(--sk-cream-dim); margin: 0; }
+    .today-flow__sequence {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      margin-top: 4px;
+      padding: 0;
+    }
+    .today-flow__sequence li {
+      list-style: none;
+      font: 500 11px/1 var(--sk-font-sans);
+      padding: 6px 10px;
+      border: 1px solid var(--yg-hair);
+      border-radius: 999px;
+      color: var(--sk-cream-quiet);
+      background: rgba(245, 239, 226, 0.03);
+    }
+    .today-flow__cta {
+      align-self: flex-start;
+      margin-top: 10px;
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 22px;
+      background: var(--sk-cream);
+      color: #1A2113;
+      border: none;
+      border-radius: 999px;
+      font: 600 14px/1 var(--sk-font-sans);
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 220ms var(--sk-ease-calm, ease);
+    }
+    .today-flow__cta:hover { transform: translateY(-1px); }
+    @media (max-width: 760px) {
+      .today-flow { grid-template-columns: 1fr; }
+      .today-flow__media { min-height: 220px; }
+    }
+
+    /* ============================================================
+       FILTER BAR
+       ============================================================ */
+    .yg-filters {
+      display: flex; flex-direction: column; gap: 14px;
+      margin-bottom: 26px;
+    }
+    .yg-filters__row {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      align-items: center;
+    }
+    .yg-filters__label {
+      font: 600 10px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--sk-cream-quiet);
+      margin-right: 6px;
+    }
+    .yg-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: transparent;
+      border: 1px solid var(--yg-hair-2);
+      color: var(--sk-cream-dim);
+      font: 500 13px/1 var(--sk-font-sans);
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+    .yg-pill:hover { color: var(--sk-cream); border-color: var(--sk-cream-quiet); }
+    .yg-pill[aria-pressed="true"] {
+      background: var(--sk-cream);
+      color: #1A2113;
+      border-color: var(--sk-cream);
+    }
+
+    /* ============================================================
+       LIBRARY GRID
+       ============================================================ */
+    .yg-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 18px;
+    }
+    .yg-card {
+      position: relative;
+      display: flex; flex-direction: column;
+      background: var(--yg-glass);
+      border: 1px solid var(--yg-hair);
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      text-align: left;
+      padding: 0;
+      transition: transform 220ms var(--sk-ease-calm, ease),
+                  border-color 220ms ease,
+                  box-shadow 220ms ease;
+    }
+    .yg-card:hover {
+      transform: translateY(-3px);
+      border-color: var(--yg-hair-2);
+      box-shadow: 0 18px 40px rgba(8,12,4,0.45);
+    }
+    .yg-card__media {
+      position: relative;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 30% 25%, rgba(200, 146, 74, 0.20) 0%, rgba(35,44,24,0) 55%),
+        linear-gradient(150deg, #2D341F 0%, #3D4926 60%, #232C18 100%);
+    }
+    .yg-card__img {
+      position: absolute; inset: 0;
+      background-size: cover; background-position: center;
+      transition: transform 600ms var(--sk-ease-calm, ease);
+    }
+    .yg-card:hover .yg-card__img { transform: scale(1.04); }
+    .yg-card__cat {
+      position: absolute;
+      top: 12px; left: 12px;
+      font: 600 9px/1 var(--sk-font-sans);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(14, 20, 8, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--sk-cream);
+      border: 1px solid var(--yg-hair-2);
+    }
+    .yg-card__diff {
+      position: absolute;
+      top: 12px; right: 12px;
+      display: flex; gap: 3px;
+      padding: 5px 8px;
+      border-radius: 999px;
+      background: rgba(14, 20, 8, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid var(--yg-hair-2);
+    }
+    .yg-card__diff i {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--sk-cream-quiet);
+      display: inline-block;
+    }
+    .yg-card__diff i.on { background: var(--yg-ochre); }
+    .yg-card__body {
+      padding: 16px 18px 18px;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .yg-card__deva {
+      font-family: 'Tiro Devanagari Hindi', var(--sk-font-serif);
+      font-size: 18px; line-height: 1.2;
+      color: var(--sk-cream);
+      letter-spacing: 0;
+    }
+    .yg-card__sanskrit {
+      font-family: var(--sk-font-serif);
+      font-weight: 400;
+      font-size: 13px;
+      color: var(--sk-cream-quiet);
+      font-style: italic;
+      letter-spacing: 0.01em;
+    }
+    .yg-card__name {
+      font: 500 15px/1.3 var(--sk-font-sans);
+      color: var(--sk-cream);
+      letter-spacing: -0.005em;
+      margin: 2px 0 0;
+    }
+    .yg-card__benefit {
+      font: 400 12px/1.45 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+      margin-top: 4px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .yg-grid__empty {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 56px 20px;
+      color: var(--sk-cream-quiet);
+      font-style: italic;
+      font: 400 15px/1.5 var(--sk-font-serif);
+    }
+
+    /* ============================================================
+       DETAIL OVERLAY
+       ============================================================ */
+    .yg-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 60;
+      display: none;
+      align-items: stretch;
+      background: rgba(8, 12, 4, 0.78);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      animation: yg-overlay-in 260ms var(--sk-ease-calm, ease);
+    }
+    .yg-overlay.is-open { display: flex; }
+    @keyframes yg-overlay-in { from { opacity: 0; } to { opacity: 1; } }
+    .yg-overlay__sheet {
+      width: 100%;
+      max-width: 880px;
+      margin: auto;
+      max-height: 92vh;
+      overflow-y: auto;
+      background: linear-gradient(180deg, #232C18 0%, #2D341F 100%);
+      border: 1px solid var(--yg-hair-2);
+      border-radius: 24px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.55);
+      animation: yg-sheet-rise 320ms var(--sk-ease-calm, ease);
+    }
+    @keyframes yg-sheet-rise { from { transform: translateY(24px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    .yg-overlay__media {
+      position: relative;
+      aspect-ratio: 16 / 9;
+      background:
+        radial-gradient(ellipse at 30% 30%, rgba(200, 146, 74, 0.22) 0%, rgba(35,44,24,0) 55%),
+        linear-gradient(150deg, #2D341F 0%, #4A5A2D 55%, #232C18 100%);
+      border-radius: 24px 24px 0 0;
+      display: grid; place-items: center;
+      color: var(--sk-cream-quiet);
+      font: 500 12px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+    }
+    .yg-overlay__close {
+      position: absolute; top: 14px; right: 14px;
+      width: 38px; height: 38px;
+      border-radius: 50%;
+      background: rgba(14, 20, 8, 0.7);
+      border: 1px solid var(--yg-hair-2);
+      color: var(--sk-cream);
+      cursor: pointer;
+      display: grid; place-items: center;
+      transition: background 180ms ease;
+    }
+    .yg-overlay__close:hover { background: rgba(14, 20, 8, 0.9); }
+    .yg-overlay__close svg { width: 16px; height: 16px; }
+    .yg-overlay__inner { padding: clamp(22px, 4vw, 36px); }
+    .yg-overlay__deva {
+      font-family: 'Tiro Devanagari Hindi', var(--sk-font-serif);
+      font-size: clamp(26px, 3.4vw, 34px);
+      color: var(--sk-cream);
+      margin: 0; letter-spacing: 0; line-height: 1.2;
+    }
+    .yg-overlay__sanskrit {
+      font-family: var(--sk-font-serif);
+      font-style: italic;
+      font-size: 14px;
+      color: var(--sk-cream-quiet);
+      margin: 4px 0 0;
+    }
+    .yg-overlay__name {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: clamp(22px, 2.6vw, 30px);
+      line-height: 1.15; letter-spacing: -0.018em;
+      color: var(--sk-cream);
+      margin: 6px 0 0;
+    }
+    .yg-overlay__chips {
+      display: flex; flex-wrap: wrap; gap: 8px;
+      margin: 16px 0 22px;
+    }
+    .yg-chip {
+      font: 500 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.06em;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--yg-hair-2);
+      color: var(--sk-cream-dim);
+      background: rgba(245, 239, 226, 0.04);
+    }
+    .yg-chip--accent {
+      color: var(--yg-ochre);
+      border-color: var(--yg-ochre-soft);
+      background: rgba(200, 146, 74, 0.08);
+    }
+    .yg-overlay__h {
+      font: 600 11px/1 var(--sk-font-sans);
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--yg-ochre);
+      margin: 22px 0 10px;
+    }
+    .yg-steps {
+      list-style: none;
+      padding: 0; margin: 0;
+      counter-reset: step;
+    }
+    .yg-steps li {
+      position: relative;
+      padding: 10px 0 10px 38px;
+      font: 400 15px/1.55 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+      border-bottom: 1px solid var(--yg-hair);
+      counter-increment: step;
+    }
+    .yg-steps li:last-child { border-bottom: none; }
+    .yg-steps li::before {
+      content: counter(step);
+      position: absolute;
+      left: 0; top: 12px;
+      width: 26px; height: 26px;
+      border-radius: 50%;
+      background: rgba(200, 146, 74, 0.12);
+      border: 1px solid rgba(200, 146, 74, 0.32);
+      color: var(--yg-ochre);
+      font: 600 11px/26px var(--sk-font-sans);
+      text-align: center;
+      letter-spacing: 0;
+    }
+    .yg-list { list-style: none; padding: 0; margin: 0; }
+    .yg-list li {
+      position: relative;
+      padding: 8px 0 8px 18px;
+      font: 400 14px/1.55 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+    }
+    .yg-list li::before {
+      content: "";
+      position: absolute; left: 0; top: 17px;
+      width: 6px; height: 1px;
+      background: var(--yg-ochre);
+    }
+    .yg-overlay__safety {
+      margin-top: 10px;
+      padding: 14px 16px;
+      background: rgba(240, 134, 121, 0.07);
+      border: 1px solid rgba(240, 134, 121, 0.22);
+      border-radius: 12px;
+      font: 400 13px/1.55 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+    }
+    .yg-overlay__counter {
+      margin-top: 22px;
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(245, 239, 226, 0.06);
+      border: 1px solid var(--yg-hair-2);
+      color: var(--sk-cream);
+      font: 500 13px/1 var(--sk-font-sans);
+      cursor: pointer;
+    }
+    .yg-overlay__counter:hover { background: rgba(245, 239, 226, 0.10); }
+
+    /* lang toggle inside overlay */
+    .yg-langswap {
+      display: inline-flex; gap: 0;
+      border: 1px solid var(--yg-hair-2);
+      border-radius: 999px;
+      padding: 2px;
+      margin-left: auto;
+    }
+    .yg-langswap button {
+      background: transparent;
+      border: none;
+      color: var(--sk-cream-quiet);
+      font: 500 11px/1 var(--sk-font-sans);
+      padding: 6px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+    .yg-langswap button[aria-pressed="true"] {
+      background: var(--sk-cream);
+      color: #1A2113;
+    }
+    .yg-overlay__row {
+      display: flex; align-items: center;
+      margin: 22px 0 0;
+    }
+
+    /* ============================================================
+       BUILD A FLOW
+       ============================================================ */
+    .yg-builder {
+      background: var(--yg-glass);
+      border: 1px solid var(--yg-hair);
+      border-radius: 22px;
+      padding: clamp(22px, 4vw, 38px);
+    }
+    .yg-builder__intro {
+      font: 400 15px/1.6 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+      margin: 0 0 20px;
+      max-width: 580px;
+    }
+    .yg-builder__pool {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 10px;
+      max-height: 380px;
+      overflow-y: auto;
+      padding: 4px;
+      margin: 0 -4px;
+    }
+    .yg-builder__pool::-webkit-scrollbar { width: 6px; }
+    .yg-builder__pool::-webkit-scrollbar-thumb { background: var(--yg-hair-2); border-radius: 3px; }
+    .yg-pool-item {
+      position: relative;
+      padding: 12px 12px 14px;
+      background: rgba(245, 239, 226, 0.03);
+      border: 1px solid var(--yg-hair);
+      border-radius: 12px;
+      text-align: left;
+      cursor: pointer;
+      transition: background 180ms ease, border-color 180ms ease;
+    }
+    .yg-pool-item:hover { background: rgba(245, 239, 226, 0.06); }
+    .yg-pool-item[aria-pressed="true"] {
+      background: rgba(200, 146, 74, 0.12);
+      border-color: rgba(200, 146, 74, 0.45);
+    }
+    .yg-pool-item__deva {
+      font-family: 'Tiro Devanagari Hindi', var(--sk-font-serif);
+      font-size: 14px; color: var(--sk-cream);
+      letter-spacing: 0;
+    }
+    .yg-pool-item__name {
+      font: 500 12px/1.3 var(--sk-font-sans);
+      color: var(--sk-cream-quiet);
+      margin-top: 3px;
+    }
+    .yg-pool-item__check {
+      position: absolute;
+      top: 8px; right: 8px;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      border: 1px solid var(--yg-hair-2);
+      display: grid; place-items: center;
+      color: var(--yg-ochre);
+      opacity: 0;
+    }
+    .yg-pool-item[aria-pressed="true"] .yg-pool-item__check {
+      opacity: 1;
+      background: var(--yg-ochre);
+      border-color: var(--yg-ochre);
+      color: #1A2113;
+    }
+    .yg-pool-item__check svg { width: 10px; height: 10px; }
+    .yg-builder__bar {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 14px;
+      margin-top: 22px;
+      padding-top: 22px;
+      border-top: 1px solid var(--yg-hair);
+    }
+    .yg-builder__count {
+      font: 500 13px/1 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+    }
+    .yg-builder__count strong { color: var(--sk-cream); font-weight: 600; }
+    .yg-builder__cta {
+      margin-left: auto;
+      padding: 12px 22px;
+      background: var(--sk-cream);
+      color: #1A2113;
+      border: none;
+      border-radius: 999px;
+      font: 600 13px/1 var(--sk-font-sans);
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      transition: transform 220ms var(--sk-ease-calm, ease), opacity 220ms;
+    }
+    .yg-builder__cta:disabled { opacity: 0.35; cursor: not-allowed; }
+    .yg-builder__cta:not(:disabled):hover { transform: translateY(-1px); }
+    .yg-builder__ghost {
+      padding: 12px 18px;
+      background: transparent;
+      color: var(--sk-cream-dim);
+      border: 1px solid var(--yg-hair-2);
+      border-radius: 999px;
+      font: 500 13px/1 var(--sk-font-sans);
+      cursor: pointer;
+    }
+    .yg-builder__out {
+      margin-top: 22px;
+      padding: 20px 22px;
+      background: rgba(14, 20, 8, 0.5);
+      border: 1px solid var(--yg-hair);
+      border-radius: 16px;
+      display: none;
+    }
+    .yg-builder__out.is-shown { display: block; }
+    .yg-builder__out h4 {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: 22px;
+      margin: 0 0 6px;
+      color: var(--sk-cream);
+    }
+    .yg-builder__out__meta {
+      font: 500 12px/1 var(--sk-font-sans);
+      color: var(--yg-ochre);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+    }
+    .yg-builder__steps {
+      list-style: none; padding: 0; margin: 0;
+      counter-reset: bstep;
+    }
+    .yg-builder__steps li {
+      counter-increment: bstep;
+      display: grid;
+      grid-template-columns: 30px 1fr auto;
+      gap: 14px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px dashed var(--yg-hair);
+    }
+    .yg-builder__steps li:last-child { border-bottom: none; }
+    .yg-builder__steps li::before {
+      content: counter(bstep, decimal-leading-zero);
+      font: 600 11px/1 var(--sk-font-mono, monospace);
+      color: var(--yg-ochre);
+      letter-spacing: 0.08em;
+    }
+    .yg-builder__steps__name {
+      font: 500 15px/1.3 var(--sk-font-sans);
+      color: var(--sk-cream);
+    }
+    .yg-builder__steps__name small {
+      display: block;
+      font: 400 12px/1 var(--sk-font-serif);
+      color: var(--sk-cream-quiet);
+      font-style: italic;
+      margin-top: 4px;
+    }
+    .yg-builder__steps__time {
+      font: 500 12px/1 var(--sk-font-mono, monospace);
+      color: var(--sk-cream-quiet);
+      letter-spacing: 0.04em;
+    }
+
+    /* ============================================================
+       SEQUENCES STRIP
+       ============================================================ */
+    .yg-seq-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 14px;
+    }
+    .yg-seq-card {
+      position: relative;
+      padding: 22px 22px 22px;
+      background: var(--yg-glass);
+      border: 1px solid var(--yg-hair);
+      border-radius: 16px;
+      cursor: pointer;
+      overflow: hidden;
+      text-align: left;
+      transition: transform 220ms var(--sk-ease-calm, ease), border-color 220ms;
+    }
+    .yg-seq-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--yg-hair-2);
+    }
+    .yg-seq-card__theme {
+      font: 600 10px/1 var(--sk-font-sans);
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--yg-ochre);
+      margin-bottom: 10px;
+    }
+    .yg-seq-card__title {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 1.15; letter-spacing: -0.012em;
+      color: var(--sk-cream);
+      margin: 0 0 6px;
+    }
+    .yg-seq-card__sub {
+      font: 400 13px/1.5 var(--sk-font-sans);
+      color: var(--sk-cream-dim);
+      margin: 0 0 14px;
+    }
+    .yg-seq-card__meta {
+      display: flex; gap: 14px;
+      font: 500 11px/1 var(--sk-font-sans);
+      color: var(--sk-cream-quiet);
+      letter-spacing: 0.04em;
+    }
+    .yg-seq-card__meta span { display: inline-flex; align-items: center; gap: 5px; }
+
+    /* ============================================================
+       FOOTER NOTE
+       ============================================================ */
+    .yg-footnote {
+      max-width: 700px;
+      margin: clamp(56px, 8vw, 96px) auto 0;
+      padding: 0 clamp(20px, 5vw, 48px);
+      text-align: center;
+    }
+    .yg-footnote p {
+      font-family: var(--sk-font-serif);
+      font-weight: 300;
+      font-style: italic;
+      font-size: clamp(15px, 1.5vw, 18px);
+      line-height: 1.65;
+      color: var(--sk-cream-dim);
+      margin: 0;
+    }
+    .yg-footnote__rule {
+      width: 40px; height: 1px;
+      background: var(--yg-ochre);
+      margin: 0 auto 22px;
+      opacity: 0.55;
+    }
+
+    /* ============================================================
+       BOTTOM NAV
+       ============================================================ */
+    .sk-bottom-nav {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 50;
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 2px;
+      padding: 8px 6px calc(8px + env(safe-area-inset-bottom, 0px));
+      background: rgba(26, 33, 19, 0.86);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      border-top: 1px solid var(--yg-hair);
+    }
+    .sk-bottom-nav__item {
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+      padding: 8px 4px;
+      text-decoration: none;
+      color: var(--sk-cream-quiet);
+      font: 500 10px/1 var(--sk-font-sans);
+      letter-spacing: 0.04em;
+      transition: color 180ms ease;
+    }
+    .sk-bottom-nav__item:hover { color: var(--sk-cream); }
+    .sk-bottom-nav__item[aria-current="page"] { color: var(--yg-ochre); }
+    .sk-bottom-nav__item[aria-current="page"] .sk-bottom-nav__icon { stroke: var(--yg-ochre); }
+    .sk-bottom-nav__icon { width: 22px; height: 22px; }
+    .sk-bottom-nav__label { font-size: 10px; }
+
+    /* ============================================================
+       HI MODE — toggled via [data-lang="hi"] on root
+       ============================================================ */
+    html[data-lang="hi"] .yg-overlay__name { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+    }
+  </style>
+</head>
+<body class="page-yoga" data-experience="yoga" data-page="yoga">
+
+  <!-- ===================== CRISIS BAR (top) ===================== -->
+  <aside class="sk-crisis-bar" aria-label="Crisis support">
+    <span class="sk-crisis-bar__icon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg>
+    </span>
+    <span class="sk-crisis-bar__text">
+      <span class="sk-crisis-bar__strong" data-en="You are not alone." data-hi="आप अकेले नहीं हैं।">You are not alone.</span>
+      <span data-en=" If the body holds something the mind cannot — please reach out to a real person."
+            data-hi=" अगर शरीर कुछ ऐसा थामे है जो मन नहीं कह पाता — किसी से बात कीजिए।">
+        If the body holds something the mind cannot — please reach out to a real person.
+      </span>
+    </span>
+    <a class="sk-crisis-bar__cta" href="/now.html"
+       data-en="Get help →" data-hi="मदद पाइए →">Get help →</a>
+  </aside>
+
+  <!-- ===================== LANG TOGGLE ===================== -->
+  <button id="lang-toggle" class="lang-toggle" type="button" aria-label="Toggle language">
+    <span class="lang-toggle__opt" data-lang-opt="en" aria-current="true">A</span>
+    <span class="lang-toggle__sep">·</span>
+    <span class="lang-toggle__opt" data-lang-opt="hi" aria-current="false">अ</span>
+  </button>
+
+  <main class="yoga-shell">
+
+    <!-- ===================== HERO ===================== -->
+    <section class="yoga-hero" aria-label="Yoga for every body">
+      <div class="yoga-hero__media">
+        <video autoplay muted loop playsinline preload="auto" poster="/og/og-meditate.jpg">
+          <source src="/video/hero-meditate.mp4" type="video/mp4">
+          <source src="/video/hero-day.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="yoga-hero__overlay"></div>
+      <div class="yoga-hero__content">
+        <span class="yoga-hero__eyebrow" data-en="The eight limbs · ashtanga" data-hi="अष्ट अंग">The eight limbs · ashtanga</span>
+        <h1 class="yoga-hero__title">
+          <span data-en="Yoga for every body." data-hi="हर देह के लिए योग।">Yoga for every body.</span>
+          <span class="yoga-hero__title-hi">हर देह के लिए योग।</span>
+        </h1>
+        <p class="yoga-hero__sub" data-en="60 asanas. 12 courses. All free, forever."
+                                  data-hi="60 आसन। 12 पाठ्यक्रम। हमेशा के लिए, मुफ़्त।">
+          60 asanas. 12 courses. All free, forever.
+        </p>
+        <div class="yoga-hero__rule" aria-hidden="true"></div>
+        <p class="yoga-hero__lineage"
+           data-en="These postures come from the Hatha tradition, refined by Iyengar, Krishnamacharya, Sivananda, and many others — adapted here for every body."
+           data-hi="ये आसन हठ परंपरा से आए हैं — आयंगर, कृष्णमाचार्य, शिवानंद और कई गुरुओं के द्वारा परिष्कृत। यहाँ हर देह के लिए ढाले गए।">
+          These postures come from the Hatha tradition, refined by Iyengar, Krishnamacharya, Sivananda, and many others — adapted here for every body.
+        </p>
+      </div>
+    </section>
+
+    <!-- ===================== TODAY'S FLOW ===================== -->
+    <section class="yoga-section" aria-labelledby="today-flow-title">
+      <span class="yoga-section__eyebrow" data-en="Today's flow" data-hi="आज का प्रवाह">Today's flow</span>
+      <article class="today-flow" id="today-flow">
+        <div class="today-flow__media">
+          <div class="today-flow__still"></div>
+        </div>
+        <div class="today-flow__body">
+          <span class="today-flow__tag" data-en="10 minutes · beginner" data-hi="10 मिनट · प्रारंभिक">10 minutes · beginner</span>
+          <h3 id="today-flow-title" class="today-flow__title">
+            <span id="today-flow-name-en">A gentle waking</span>
+            <span class="today-flow__title-hi" id="today-flow-name-hi">कोमल जागृति</span>
+          </h3>
+          <div class="today-flow__meta">
+            <span data-en="10 min" data-hi="10 मिनट">10 min</span>
+            <span data-en="7 asanas" data-hi="7 आसन">7 asanas</span>
+            <span data-en="Level 1" data-hi="स्तर 1">Level 1</span>
+            <span data-en="Anywhere" data-hi="कहीं भी">Anywhere</span>
+          </div>
+          <p class="today-flow__desc"
+             data-en="A short, soft sequence to thread breath through the body before the day begins. No props. Bare feet on any floor."
+             data-hi="साँस को शरीर में पिरोने का छोटा, कोमल क्रम — दिन शुरू होने से पहले। कोई उपकरण नहीं। नंगे पैर, किसी भी फ़र्श पर।">
+            A short, soft sequence to thread breath through the body before the day begins. No props. Bare feet on any floor.
+          </p>
+          <ul class="today-flow__sequence" id="today-flow-list" aria-label="Asanas in this flow"></ul>
+          <button class="today-flow__cta" type="button" id="today-flow-start"
+                  data-en="Begin →" data-hi="शुरू करें →">Begin →</button>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===================== LIBRARY ===================== -->
+    <section class="yoga-section" aria-labelledby="library-title">
+      <span class="yoga-section__eyebrow" data-en="The library" data-hi="पुस्तकालय">The library</span>
+      <h2 id="library-title" class="yoga-section__title">
+        <span data-en="Sixty postures, taught with care."
+              data-hi="साठ आसन, स्नेह से सिखाए गए।">Sixty postures, taught with care.</span>
+        <span class="yoga-section__title-hi">आसनों का संग्रह</span>
+      </h2>
+      <p class="yoga-section__sub"
+         data-en="Every asana with Sanskrit, Devanagari, English. Alignment, benefits, safety, modifications. Tap any card to open the full guidance."
+         data-hi="हर आसन के साथ संस्कृत, देवनागरी, अंग्रेज़ी। संरेखण, लाभ, सुरक्षा, बदलाव। पूरी निर्देशिका खोलने के लिए कार्ड पर टैप करें।">
+        Every asana with Sanskrit, Devanagari, English. Alignment, benefits, safety, modifications. Tap any card to open the full guidance.
+      </p>
+
+      <!-- Filter bar -->
+      <div class="yg-filters" role="region" aria-label="Filter the library">
+        <div class="yg-filters__row" data-filter-group="category" role="group" aria-label="Category">
+          <span class="yg-filters__label" data-en="Category" data-hi="श्रेणी">Category</span>
+          <button class="yg-pill" type="button" data-filter-value="all" aria-pressed="true"
+                  data-en="All" data-hi="सभी">All</button>
+          <button class="yg-pill" type="button" data-filter-value="standing"
+                  data-en="Standing" data-hi="खड़े">Standing</button>
+          <button class="yg-pill" type="button" data-filter-value="seated"
+                  data-en="Seated" data-hi="बैठे">Seated</button>
+          <button class="yg-pill" type="button" data-filter-value="backbend"
+                  data-en="Backbend" data-hi="पीठ झुकाव">Backbend</button>
+          <button class="yg-pill" type="button" data-filter-value="forward-fold"
+                  data-en="Forward fold" data-hi="आगे झुकाव">Forward fold</button>
+          <button class="yg-pill" type="button" data-filter-value="twist"
+                  data-en="Twist" data-hi="मोड़">Twist</button>
+          <button class="yg-pill" type="button" data-filter-value="inversion"
+                  data-en="Inversion" data-hi="उल्टा">Inversion</button>
+          <button class="yg-pill" type="button" data-filter-value="balance"
+                  data-en="Balance" data-hi="संतुलन">Balance</button>
+          <button class="yg-pill" type="button" data-filter-value="restorative"
+                  data-en="Restorative" data-hi="पुनर्स्थापना">Restorative</button>
+          <button class="yg-pill" type="button" data-filter-value="prone"
+                  data-en="Prone" data-hi="उल्टा लेटा">Prone</button>
+          <button class="yg-pill" type="button" data-filter-value="supine"
+                  data-en="Supine" data-hi="चित्त लेटा">Supine</button>
+        </div>
+        <div class="yg-filters__row" data-filter-group="difficulty" role="group" aria-label="Level">
+          <span class="yg-filters__label" data-en="Level" data-hi="स्तर">Level</span>
+          <button class="yg-pill" type="button" data-filter-value="all" aria-pressed="true"
+                  data-en="Any" data-hi="कोई भी">Any</button>
+          <button class="yg-pill" type="button" data-filter-value="1">1</button>
+          <button class="yg-pill" type="button" data-filter-value="2">2</button>
+          <button class="yg-pill" type="button" data-filter-value="3">3</button>
+          <button class="yg-pill" type="button" data-filter-value="4">4</button>
+          <button class="yg-pill" type="button" data-filter-value="5">5</button>
+        </div>
+        <div class="yg-filters__row" data-filter-group="duration" role="group" aria-label="Hold">
+          <span class="yg-filters__label" data-en="Hold" data-hi="अवधि">Hold</span>
+          <button class="yg-pill" type="button" data-filter-value="all" aria-pressed="true"
+                  data-en="Any" data-hi="कोई भी">Any</button>
+          <button class="yg-pill" type="button" data-filter-value="short"
+                  data-en="≤ 30s" data-hi="≤ 30 सेकंड">≤ 30s</button>
+          <button class="yg-pill" type="button" data-filter-value="medium"
+                  data-en="30–60s" data-hi="30–60 सेकंड">30–60s</button>
+          <button class="yg-pill" type="button" data-filter-value="long"
+                  data-en="60s+" data-hi="60 सेकंड+">60s+</button>
+        </div>
+      </div>
+
+      <!-- Library grid -->
+      <div class="yg-grid" id="library-grid" role="list" aria-live="polite">
+        <div class="yg-grid__empty" data-en="Loading the library…" data-hi="पुस्तकालय खुल रहा है…">Loading the library…</div>
+      </div>
+    </section>
+
+    <!-- ===================== BUILD A FLOW ===================== -->
+    <section class="yoga-section" aria-labelledby="builder-title">
+      <span class="yoga-section__eyebrow" data-en="Build a flow" data-hi="अपना क्रम बनाइए">Build a flow</span>
+      <h2 id="builder-title" class="yoga-section__title">
+        <span data-en="Choose five to eight. We'll stitch them together."
+              data-hi="पाँच से आठ चुनिए। हम जोड़ देंगे।">Choose five to eight. We'll stitch them together.</span>
+        <span class="yoga-section__title-hi">अपना क्रम बनाइए</span>
+      </h2>
+      <p class="yoga-section__sub"
+         data-en="Pick the asanas you want to move through. Sukoon arranges them, sets the hold times, and adds rest in between."
+         data-hi="जिन आसनों से गुज़रना है — चुनिए। सुकून उन्हें क्रम में रखेगा, अवधि तय करेगा, और बीच में विश्राम जोड़ेगा।">
+        Pick the asanas you want to move through. Sukoon arranges them, sets the hold times, and adds rest in between.
+      </p>
+
+      <div class="yg-builder">
+        <p class="yg-builder__intro"
+           data-en="The pool below shows every asana. Tap to add it. Tap again to remove. Build a sequence of 5–8 and press Stitch it."
+           data-hi="नीचे सभी आसन हैं। जोड़ने के लिए टैप कीजिए, हटाने के लिए दोबारा। 5–8 आसन चुनिए, फिर ‘जोड़ दीजिए’ दबाइए।">
+          The pool below shows every asana. Tap to add it. Tap again to remove. Build a sequence of 5–8 and press Stitch it.
+        </p>
+        <div class="yg-builder__pool" id="builder-pool" role="listbox" aria-label="Available asanas"></div>
+        <div class="yg-builder__bar">
+          <span class="yg-builder__count" id="builder-count">
+            <strong>0</strong>
+            <span data-en="of 8 selected" data-hi="में से 8 चुने गए">of 8 selected</span>
+          </span>
+          <button type="button" class="yg-builder__ghost" id="builder-clear"
+                  data-en="Clear" data-hi="साफ़ करें">Clear</button>
+          <button type="button" class="yg-builder__cta" id="builder-stitch" disabled
+                  data-en="Stitch it →" data-hi="जोड़ दीजिए →">Stitch it →</button>
+        </div>
+        <div class="yg-builder__out" id="builder-out" role="region" aria-live="polite" aria-label="Your sequence"></div>
+      </div>
+    </section>
+
+    <!-- ===================== SEQUENCES STRIP ===================== -->
+    <section class="yoga-section" aria-labelledby="seq-title">
+      <span class="yoga-section__eyebrow" data-en="Pre-built sequences" data-hi="तैयार क्रम">Pre-built sequences</span>
+      <h2 id="seq-title" class="yoga-section__title">
+        <span data-en="Twenty flows for twenty kinds of day."
+              data-hi="बीस दिनों के लिए, बीस क्रम।">Twenty flows for twenty kinds of day.</span>
+        <span class="yoga-section__title-hi">क्रम-संग्रह</span>
+      </h2>
+      <p class="yoga-section__sub"
+         data-en="From the classic Sivananda Rishikesh 12 to a 10-minute Desk Reset. Surya Namaskar A &amp; B. Anxiety, sleep, hips, hamstrings, twists."
+         data-hi="शास्त्रीय शिवानंद ऋषिकेश 12 से लेकर 10 मिनट के ‘डेस्क रीसेट’ तक। सूर्य नमस्कार अ और ब। चिंता, नींद, कूल्हे, मांसपेशियाँ, मोड़।">
+          From the classic Sivananda Rishikesh 12 to a 10-minute Desk Reset. Surya Namaskar A &amp; B. Anxiety, sleep, hips, hamstrings, twists.
+      </p>
+      <div class="yg-seq-strip" id="seq-strip" role="list"></div>
+    </section>
+
+    <!-- ===================== FOOTNOTE ===================== -->
+    <div class="yg-footnote">
+      <div class="yg-footnote__rule" aria-hidden="true"></div>
+      <p data-en="Free forever. No account. No email. Your progress lives on this device — a six-letter code restores it on any other."
+         data-hi="हमेशा के लिए मुफ़्त। कोई खाता नहीं। कोई ईमेल नहीं। आपकी प्रगति इसी उपकरण में रहती है — छह अक्षरों का कोड किसी भी और उपकरण पर वापस लाता है।">
+        Free forever. No account. No email. Your progress lives on this device — a six-letter code restores it on any other.
+      </p>
+    </div>
+
+  </main>
+
+  <!-- ===================== DETAIL OVERLAY ===================== -->
+  <div class="yg-overlay" id="asana-overlay" role="dialog" aria-modal="true" aria-labelledby="overlay-deva" aria-hidden="true">
+    <div class="yg-overlay__sheet">
+      <div class="yg-overlay__media" id="overlay-media">
+        <span data-en="Video coming · until then, follow the steps" data-hi="वीडियो जल्द · तब तक, चरणों का अनुसरण करें">Video coming · until then, follow the steps</span>
+        <button class="yg-overlay__close" type="button" id="overlay-close" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+        </button>
+      </div>
+      <div class="yg-overlay__inner">
+        <h2 id="overlay-deva" class="yg-overlay__deva"></h2>
+        <p class="yg-overlay__sanskrit" id="overlay-sanskrit"></p>
+        <p class="yg-overlay__name" id="overlay-name"></p>
+        <div class="yg-overlay__chips" id="overlay-chips"></div>
+
+        <div class="yg-overlay__row">
+          <h3 class="yg-overlay__h" style="margin: 0;" data-en="Alignment" data-hi="संरेखण">Alignment</h3>
+          <div class="yg-langswap" role="group" aria-label="Alignment language">
+            <button type="button" data-step-lang="en" aria-pressed="true">A</button>
+            <button type="button" data-step-lang="hi" aria-pressed="false">अ</button>
+          </div>
+        </div>
+        <ol class="yg-steps" id="overlay-steps"></ol>
+
+        <h3 class="yg-overlay__h" data-en="Benefits" data-hi="लाभ">Benefits</h3>
+        <ul class="yg-list" id="overlay-benefits"></ul>
+
+        <h3 class="yg-overlay__h" data-en="Modifications" data-hi="बदलाव">Modifications</h3>
+        <ul class="yg-list" id="overlay-modifications"></ul>
+
+        <h3 class="yg-overlay__h" data-en="Safety" data-hi="सावधानी">Safety</h3>
+        <div class="yg-overlay__safety" id="overlay-safety"></div>
+
+        <button class="yg-overlay__counter" type="button" id="overlay-counter">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg>
+          <span data-en="Counter-pose" data-hi="प्रति-आसन">Counter-pose</span>
+          <strong id="overlay-counter-name" style="margin-left: 6px; color: var(--yg-ochre);"></strong>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating crisis link -->
+  <a href="/now.html" class="sk-sos-float" aria-label="Crisis support — talk to a person now">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+    <span class="sk-sos-float__label" data-en="Talk to a person" data-hi="किसी से बात कीजिए">Talk to a person</span>
+  </a>
+
+  <!-- ===================== BOTTOM NAV (5 tabs) ===================== -->
+  <nav class="sk-bottom-nav" aria-label="Main navigation">
+    <a href="/today.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Today" data-hi="आज">Today</span>
+    </a>
+    <a href="/breathe.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 3a9 9 0 010 18M12 7v10"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Breathe" data-hi="साँस">Breathe</span>
+    </a>
+    <a href="/yoga.html" class="sk-bottom-nav__item" aria-current="page">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="5" r="2"/><path d="M12 7v5"/><path d="M5 12h14"/><path d="M12 12l-4 9M12 12l4 9"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Yoga" data-hi="योग">Yoga</span>
+    </a>
+    <a href="/sit.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="6" r="3"/><path d="M5 21c0-4 3-7 7-7s7 3 7 7"/><path d="M9 21h6"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Sit" data-hi="बैठिए">Sit</span>
+    </a>
+    <a href="/rest.html" class="sk-bottom-nav__item">
+      <svg class="sk-bottom-nav__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+      <span class="sk-bottom-nav__label" data-en="Rest" data-hi="आराम">Rest</span>
+    </a>
+  </nav>
+
+  <!-- ===================== PAGE SCRIPT ===================== -->
+  <script>
+  // All DOM construction uses createElement + textContent only.
+  // No string-based HTML interpolation: zero XSS surface even though
+  // all content here is bundled trusted JSON.
+  (function () {
+    'use strict';
+
+    var doc = document;
+
+    // ----------------------------------------------------------
+    // LANGUAGE
+    // ----------------------------------------------------------
+    var STORAGE = {
+      get: function (k, d) { try { var v = localStorage.getItem(k); return v == null ? d : v; } catch (_) { return d; } },
+      set: function (k, v) { try { localStorage.setItem(k, v); } catch (_) {} }
+    };
+    var lang = STORAGE.get('sk_lang', 'en');
+
+    function applyLang(l) {
+      lang = (l === 'hi') ? 'hi' : 'en';
+      doc.documentElement.setAttribute('data-lang', lang);
+      doc.documentElement.setAttribute('lang', lang);
+      doc.querySelectorAll('[data-en][data-hi]').forEach(function (el) {
+        if (el.querySelector && el.querySelector('[data-en][data-hi]')) return;
+        var v = (lang === 'hi') ? el.getAttribute('data-hi') : el.getAttribute('data-en');
+        if (v != null) el.textContent = v;
+      });
+      doc.querySelectorAll('.lang-toggle__opt').forEach(function (el) {
+        el.setAttribute('aria-current', (el.getAttribute('data-lang-opt') === lang) ? 'true' : 'false');
+      });
+      STORAGE.set('sk_lang', lang);
+    }
+    applyLang(lang);
+    var langBtn = doc.getElementById('lang-toggle');
+    if (langBtn) {
+      langBtn.addEventListener('click', function () {
+        applyLang(lang === 'en' ? 'hi' : 'en');
+        refreshDynamic();
+      });
+    }
+
+    // ----------------------------------------------------------
+    // STATE
+    // ----------------------------------------------------------
+    var asanas = [];
+    var asanaById = {};
+    var filters = { category: 'all', difficulty: 'all', duration: 'all' };
+    var selectedIds = [];
+    var currentOverlayId = null;
+    var stepLang = lang;
+
+    var SEQUENCES = [
+      { id:'morning-wake', theme:'morning', title_en:'Morning wake', title_hi:'प्रातः जागरण', desc_en:'A gentle thread of breath through the body to begin.', desc_hi:'देह में साँस का कोमल सूत्र।', min:10, level:1, count:7 },
+      { id:'evening-wind', theme:'evening', title_en:'Evening wind-down', title_hi:'संध्या विश्राम', desc_en:'Long, slow folds to release the day from the hips and shoulders.', desc_hi:'कूल्हे और कंधों से दिन उतारने वाले लंबे, धीमे मोड़।', min:15, level:1, count:8 },
+      { id:'desk-reset', theme:'reset', title_en:'Desk reset', title_hi:'डेस्क रीसेट', desc_en:'Ten minutes to undo a screen-shaped spine.', desc_hi:'स्क्रीन से थकी रीढ़ को दस मिनट में सहलाना।', min:10, level:1, count:6 },
+      { id:'hip-opening', theme:'mobility', title_en:'Hip opening', title_hi:'कूल्हे का खुलना', desc_en:"Patient surrender into the body's deepest pockets.", desc_hi:'देह की गहरी जेबों में धैर्यपूर्ण समर्पण।', min:20, level:2, count:9 },
+      { id:'heart-opening', theme:'mobility', title_en:'Heart opening', title_hi:'हृदय खोलना', desc_en:'Soft backbends. Space across the collarbones.', desc_hi:'कोमल पीठ-झुकाव। हँसुलियों के बीच विस्तार।', min:18, level:2, count:8 },
+      { id:'sleep-prep', theme:'night', title_en:'Sleep prep', title_hi:'निद्रा तैयारी', desc_en:'Floor postures and one long savasana.', desc_hi:'फ़र्श के आसन और एक लंबा शवासन।', min:15, level:1, count:6 },
+      { id:'anxiety-calm', theme:'calm', title_en:'Anxiety calm', title_hi:'चिंता को शांत करना', desc_en:'Grounding postures with long exhales.', desc_hi:'लंबे श्वास-निकास के साथ स्थिर आसन।', min:12, level:1, count:7 },
+      { id:'energy-builder', theme:'energy', title_en:'Energy builder', title_hi:'ऊर्जा निर्माण', desc_en:'Heat-building standing flow.', desc_hi:'ताप जगाने वाला खड़ा प्रवाह।', min:18, level:3, count:10 },
+      { id:'strength-foundation', theme:'strength', title_en:'Strength foundation', title_hi:'शक्ति की नींव', desc_en:'Long holds in warriors, planks, and chair.', desc_hi:'योद्धा, प्लैंक और कुर्सी में लंबी अवधि।', min:22, level:3, count:9 },
+      { id:'backbend-progression', theme:'mobility', title_en:'Backbend progression', title_hi:'पीठ झुकाव अनुक्रम', desc_en:'Cobra to bow to wheel — built carefully.', desc_hi:'भुजंग से धनुष से चक्र — सावधानी से।', min:25, level:4, count:10 },
+      { id:'inversion-prep', theme:'skill', title_en:'Inversion prep', title_hi:'उल्टे आसन की तैयारी', desc_en:'Shoulders, core, and trust — for the first inversion.', desc_hi:'कंधे, कोर, और भरोसा — पहले उल्टे आसन के लिए।', min:20, level:4, count:9 },
+      { id:'hamstring-series', theme:'mobility', title_en:'Hamstring series', title_hi:'पिछली जंघा क्रम', desc_en:'Forward folds with patience and props.', desc_hi:'धैर्य और सहारे के साथ आगे की ओर मोड़।', min:18, level:2, count:8 },
+      { id:'twist-detox', theme:'twist', title_en:'Twist detox', title_hi:'मोड़ शुद्धि', desc_en:'Wring out the spine in seated and supine twists.', desc_hi:'बैठे और लेटे मोड़ों में रीढ़ की सफ़ाई।', min:15, level:2, count:7 },
+      { id:'restorative-surrender', theme:'restore', title_en:'Restorative surrender', title_hi:'पुनर्स्थापना समर्पण', desc_en:'Six postures, long holds, full support.', desc_hi:'छह आसन, लंबी अवधि, पूरा सहारा।', min:35, level:1, count:6 },
+      { id:'pranayama-pair', theme:'breath', title_en:'Pranayama pairing', title_hi:'प्राणायाम संग', desc_en:'A short flow tuned to anulom-vilom.', desc_hi:'अनुलोम-विलोम के साथ बँधा एक छोटा क्रम।', min:15, level:2, count:7 },
+      { id:'vinyasa-basic', theme:'flow', title_en:'Vinyasa basic', title_hi:'विन्यास प्रारंभिक', desc_en:'Breath-linked movement for new practitioners.', desc_hi:'नए साधकों के लिए साँस से जुड़ी गति।', min:20, level:2, count:10 },
+      { id:'hatha-classic', theme:'classic', title_en:'Hatha classic — Rishikesh 12', title_hi:'हठ शास्त्रीय — ऋषिकेश 12', desc_en:'The Sivananda lineage in twelve postures.', desc_hi:'शिवानंद परंपरा — बारह आसनों में।', min:30, level:2, count:12 },
+      { id:'surya-a', theme:'classic', title_en:'Surya Namaskar A', title_hi:'सूर्य नमस्कार अ', desc_en:'Nine postures, one breath, one salutation.', desc_hi:'नौ आसन, एक साँस, एक प्रणाम।', min:8, level:2, count:9 },
+      { id:'surya-b', theme:'classic', title_en:'Surya Namaskar B', title_hi:'सूर्य नमस्कार ब', desc_en:'The longer salutation, with warriors threaded in.', desc_hi:'योद्धाओं के साथ बुना हुआ लंबा प्रणाम।', min:12, level:3, count:12 },
+      { id:'nidra-bookend', theme:'restore', title_en:'Yoga Nidra bookend', title_hi:'योग निद्रा समापन', desc_en:'A short asana opening and a long guided rest.', desc_hi:'छोटा आसन-आरंभ और लंबा निर्देशित विश्राम।', min:30, level:1, count:5 }
+    ];
+
+    var CAT_LABEL = {
+      'standing':{en:'Standing',hi:'खड़े'}, 'seated':{en:'Seated',hi:'बैठे'},
+      'backbend':{en:'Backbend',hi:'पीठ झुकाव'}, 'forward-fold':{en:'Forward fold',hi:'आगे झुकाव'},
+      'twist':{en:'Twist',hi:'मोड़'}, 'inversion':{en:'Inversion',hi:'उल्टा'},
+      'balance':{en:'Balance',hi:'संतुलन'}, 'restorative':{en:'Restorative',hi:'पुनर्स्थापना'},
+      'prone':{en:'Prone',hi:'उल्टा लेटा'}, 'supine':{en:'Supine',hi:'चित्त लेटा'}
+    };
+
+    // ----------------------------------------------------------
+    // Tiny DOM helpers — createElement only, never innerHTML.
+    // ----------------------------------------------------------
+    function el(tag, attrs, children) {
+      var node = doc.createElement(tag);
+      if (attrs) {
+        Object.keys(attrs).forEach(function (k) {
+          var v = attrs[k];
+          if (v == null || v === false) return;
+          if (k === 'class') node.className = v;
+          else if (k === 'text') node.textContent = v;
+          else if (k === 'style') node.setAttribute('style', v);
+          else if (k.indexOf('on') === 0 && typeof v === 'function') {
+            node.addEventListener(k.slice(2).toLowerCase(), v);
+          } else {
+            node.setAttribute(k, v);
+          }
+        });
+      }
+      if (children) {
+        (Array.isArray(children) ? children : [children]).forEach(function (c) {
+          if (c == null) return;
+          node.appendChild(typeof c === 'string' ? doc.createTextNode(c) : c);
+        });
+      }
+      return node;
+    }
+    function clear(node) { while (node.firstChild) node.removeChild(node.firstChild); }
+
+    // ----------------------------------------------------------
+    // LOAD ASANAS — 4 files, merge
+    // ----------------------------------------------------------
+    function loadAsanas() {
+      var files = [1,2,3,4].map(function (n) { return '/content/yoga-asanas-' + n + '.json'; });
+      Promise.all(files.map(function (f) {
+        return fetch(f).then(function (r) { return r.ok ? r.json() : []; }).catch(function () { return []; });
+      })).then(function (groups) {
+        groups.forEach(function (group) {
+          if (Array.isArray(group)) {
+            group.forEach(function (a) {
+              asanas.push(a);
+              asanaById[a.id] = a;
+            });
+          }
+        });
+        afterLoad();
+      });
+    }
+
+    function afterLoad() {
+      renderTodayFlow();
+      renderLibrary();
+      renderBuilderPool();
+      renderSequences();
+    }
+
+    // ----------------------------------------------------------
+    // TODAY'S FLOW — deterministic by day-of-year
+    // ----------------------------------------------------------
+    function dayOfYear() {
+      var d = new Date();
+      var s = new Date(d.getFullYear(), 0, 0);
+      return Math.floor((d - s) / 86400000);
+    }
+    function renderTodayFlow() {
+      var beginner = asanas.filter(function (a) { return a.difficulty <= 2; });
+      if (!beginner.length) return;
+      var day = dayOfYear();
+      var pool = beginner.slice();
+      var start = day % pool.length;
+      var picked = [], seen = {};
+      for (var i = 0; i < 20 && picked.length < 7; i++) {
+        var a = pool[(start + i * 3) % pool.length];
+        if (!seen[a.id]) { seen[a.id] = 1; picked.push(a); }
+      }
+      var listEl = doc.getElementById('today-flow-list');
+      if (listEl) {
+        clear(listEl);
+        picked.forEach(function (a) {
+          listEl.appendChild(el('li', { text: a.devanagari + ' · ' + a.name_en }));
+        });
+      }
+      var startBtn = doc.getElementById('today-flow-start');
+      if (startBtn) {
+        startBtn.onclick = function () { openBuilderFromIds(picked.map(function (a) { return a.id; })); };
+      }
+    }
+
+    // ----------------------------------------------------------
+    // LIBRARY GRID
+    // ----------------------------------------------------------
+    function matches(a) {
+      if (filters.category !== 'all' && a.category !== filters.category) return false;
+      if (filters.difficulty !== 'all' && String(a.difficulty) !== String(filters.difficulty)) return false;
+      if (filters.duration !== 'all') {
+        var s = a.duration_seconds || 30;
+        if (filters.duration === 'short' && s > 30) return false;
+        if (filters.duration === 'medium' && (s < 30 || s > 60)) return false;
+        if (filters.duration === 'long' && s < 60) return false;
+      }
+      return true;
+    }
+
+    function renderLibrary() {
+      var grid = doc.getElementById('library-grid');
+      if (!grid) return;
+      var rows = asanas.filter(matches);
+      clear(grid);
+      if (!rows.length) {
+        grid.appendChild(el('div', {
+          class: 'yg-grid__empty',
+          text: (lang === 'hi') ? 'इन शर्तों से मेल खाने वाला कोई आसन नहीं।' : 'No asanas match these filters.'
+        }));
+        return;
+      }
+      rows.forEach(function (a) {
+        var cat = CAT_LABEL[a.category] || { en: a.category, hi: a.category };
+        var img = a.image_url || '/og/og-meditate.jpg';
+        var benefit = (Array.isArray(a.benefits) && a.benefits[0]) ? a.benefits[0] : '';
+        var benefitHi = (Array.isArray(a.benefits_hi) && a.benefits_hi[0]) ? a.benefits_hi[0] : benefit;
+        var imgDiv = el('div', { class: 'yg-card__img', style: 'background-image: url(' + JSON.stringify(img) + ')' });
+        var catSpan = el('span', { class: 'yg-card__cat', text: (lang === 'hi' ? cat.hi : cat.en) });
+        var diffWrap = el('span', { class: 'yg-card__diff', 'aria-label': 'Level ' + a.difficulty });
+        for (var i = 1; i <= 5; i++) diffWrap.appendChild(el('i', { class: (i <= a.difficulty ? 'on' : '') }));
+        var media = el('div', { class: 'yg-card__media' }, [imgDiv, catSpan, diffWrap]);
+        var body = el('div', { class: 'yg-card__body' }, [
+          el('div', { class: 'yg-card__deva', text: a.devanagari || '' }),
+          el('div', { class: 'yg-card__sanskrit', text: a.sanskrit || '' }),
+          el('div', { class: 'yg-card__name', text: (lang === 'hi' && a.name_hi) ? a.name_hi : a.name_en }),
+          el('div', { class: 'yg-card__benefit', text: (lang === 'hi' ? benefitHi : benefit) })
+        ]);
+        var card = el('button', {
+          class: 'yg-card', type: 'button', role: 'listitem', 'data-asana': a.id
+        }, [media, body]);
+        card.addEventListener('click', function () { openOverlay(a.id); });
+        grid.appendChild(card);
+      });
+    }
+
+    // Filter pills
+    doc.querySelectorAll('[data-filter-group]').forEach(function (group) {
+      var name = group.getAttribute('data-filter-group');
+      group.querySelectorAll('.yg-pill').forEach(function (pill) {
+        pill.addEventListener('click', function () {
+          group.querySelectorAll('.yg-pill').forEach(function (p) { p.setAttribute('aria-pressed', 'false'); });
+          pill.setAttribute('aria-pressed', 'true');
+          filters[name] = pill.getAttribute('data-filter-value');
+          renderLibrary();
+        });
+      });
+    });
+
+    // ----------------------------------------------------------
+    // ASANA DETAIL OVERLAY
+    // ----------------------------------------------------------
+    var overlay = doc.getElementById('asana-overlay');
+
+    function openOverlay(id) {
+      var a = asanaById[id];
+      if (!a) return;
+      currentOverlayId = id;
+      doc.getElementById('overlay-deva').textContent = a.devanagari || '';
+      doc.getElementById('overlay-sanskrit').textContent = a.sanskrit || '';
+      doc.getElementById('overlay-name').textContent = (lang === 'hi' && a.name_hi) ? a.name_hi : a.name_en;
+
+      var chips = doc.getElementById('overlay-chips');
+      clear(chips);
+      var cat = CAT_LABEL[a.category] || { en: a.category, hi: a.category };
+      var diffStars = '★'.repeat(a.difficulty) + '☆'.repeat(5 - a.difficulty);
+      var holdSec = a.duration_seconds || 30;
+      var holdLabel = (lang === 'hi')
+        ? (holdSec >= 60 ? Math.round(holdSec / 60) + ' मिनट' : holdSec + ' सेकंड')
+        : (holdSec >= 60 ? Math.round(holdSec / 60) + ' min hold' : holdSec + 's hold');
+      chips.appendChild(el('span', { class: 'yg-chip yg-chip--accent', text: lang === 'hi' ? cat.hi : cat.en }));
+      chips.appendChild(el('span', { class: 'yg-chip', text: diffStars }));
+      chips.appendChild(el('span', { class: 'yg-chip', text: holdLabel }));
+      if (a.lineage) chips.appendChild(el('span', { class: 'yg-chip', text: a.lineage }));
+
+      stepLang = lang;
+      renderSteps(a);
+
+      var benefitsList = (lang === 'hi' && Array.isArray(a.benefits_hi) && a.benefits_hi.length) ? a.benefits_hi : (a.benefits || []);
+      var bEl = doc.getElementById('overlay-benefits');
+      clear(bEl);
+      benefitsList.forEach(function (b) { bEl.appendChild(el('li', { text: b })); });
+
+      var modsList = (lang === 'hi' && Array.isArray(a.modifications_hi) && a.modifications_hi.length) ? a.modifications_hi : (a.modifications || []);
+      var mEl = doc.getElementById('overlay-modifications');
+      clear(mEl);
+      modsList.forEach(function (m) { mEl.appendChild(el('li', { text: m })); });
+
+      doc.getElementById('overlay-safety').textContent = (lang === 'hi' && a.safety_hi) ? a.safety_hi : (a.safety || '');
+
+      var counterBtn = doc.getElementById('overlay-counter');
+      var counterName = doc.getElementById('overlay-counter-name');
+      if (a.counter_pose_id && asanaById[a.counter_pose_id]) {
+        var cp = asanaById[a.counter_pose_id];
+        counterName.textContent = ' · ' + ((lang === 'hi' && cp.name_hi) ? cp.name_hi : cp.name_en);
+        counterBtn.style.display = '';
+        counterBtn.onclick = function () { openOverlay(cp.id); };
+      } else {
+        counterBtn.style.display = 'none';
+      }
+
+      overlay.classList.add('is-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      doc.body.style.overflow = 'hidden';
+    }
+
+    function renderSteps(a) {
+      var steps = (stepLang === 'hi' && Array.isArray(a.alignment_steps_hi) && a.alignment_steps_hi.length) ? a.alignment_steps_hi : (a.alignment_steps || []);
+      var ol = doc.getElementById('overlay-steps');
+      clear(ol);
+      steps.forEach(function (s) { ol.appendChild(el('li', { text: s })); });
+      doc.querySelectorAll('[data-step-lang]').forEach(function (b) {
+        b.setAttribute('aria-pressed', b.getAttribute('data-step-lang') === stepLang ? 'true' : 'false');
+      });
+    }
+
+    doc.querySelectorAll('[data-step-lang]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        stepLang = b.getAttribute('data-step-lang');
+        if (currentOverlayId && asanaById[currentOverlayId]) renderSteps(asanaById[currentOverlayId]);
+      });
+    });
+
+    doc.getElementById('overlay-close').addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) closeOverlay(); });
+    doc.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('is-open')) closeOverlay();
+    });
+    function closeOverlay() {
+      overlay.classList.remove('is-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      doc.body.style.overflow = '';
+      currentOverlayId = null;
+    }
+
+    // ----------------------------------------------------------
+    // BUILDER POOL
+    // ----------------------------------------------------------
+    function renderBuilderPool() {
+      var pool = doc.getElementById('builder-pool');
+      if (!pool) return;
+      clear(pool);
+      asanas.forEach(function (a) {
+        var check = el('span', { class: 'yg-pool-item__check' });
+        var svg = doc.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        svg.setAttribute('viewBox', '0 0 24 24');
+        svg.setAttribute('fill', 'none');
+        svg.setAttribute('stroke', 'currentColor');
+        svg.setAttribute('stroke-width', '3');
+        svg.setAttribute('stroke-linecap', 'round');
+        svg.setAttribute('stroke-linejoin', 'round');
+        var path = doc.createElementNS('http://www.w3.org/2000/svg', 'path');
+        path.setAttribute('d', 'M5 12l5 5L20 7');
+        svg.appendChild(path);
+        check.appendChild(svg);
+
+        var item = el('button', {
+          class: 'yg-pool-item', type: 'button', role: 'option',
+          'aria-pressed': 'false', 'data-pool-id': a.id
+        }, [
+          check,
+          el('div', { class: 'yg-pool-item__deva', text: a.devanagari || '' }),
+          el('div', { class: 'yg-pool-item__name', text: (lang === 'hi' && a.name_hi) ? a.name_hi : a.name_en })
+        ]);
+        item.addEventListener('click', function () {
+          var idx = selectedIds.indexOf(a.id);
+          if (idx >= 0) {
+            selectedIds.splice(idx, 1);
+            item.setAttribute('aria-pressed', 'false');
+          } else {
+            if (selectedIds.length >= 8) return;
+            selectedIds.push(a.id);
+            item.setAttribute('aria-pressed', 'true');
+          }
+          updateBuilderBar();
+        });
+        pool.appendChild(item);
+      });
+    }
+
+    function openBuilderFromIds(ids) {
+      selectedIds = ids.slice(0, 8);
+      doc.querySelectorAll('.yg-pool-item').forEach(function (it) {
+        it.setAttribute('aria-pressed', selectedIds.indexOf(it.getAttribute('data-pool-id')) >= 0 ? 'true' : 'false');
+      });
+      updateBuilderBar();
+      stitchSequence();
+      var out = doc.getElementById('builder-out');
+      if (out && out.scrollIntoView) out.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function updateBuilderBar() {
+      var c = doc.getElementById('builder-count');
+      if (c) c.querySelector('strong').textContent = selectedIds.length;
+      var stitch = doc.getElementById('builder-stitch');
+      if (stitch) stitch.disabled = (selectedIds.length < 5);
+    }
+
+    doc.getElementById('builder-clear').addEventListener('click', function () {
+      selectedIds = [];
+      doc.querySelectorAll('.yg-pool-item').forEach(function (it) { it.setAttribute('aria-pressed', 'false'); });
+      doc.getElementById('builder-out').classList.remove('is-shown');
+      updateBuilderBar();
+    });
+
+    doc.getElementById('builder-stitch').addEventListener('click', stitchSequence);
+
+    function stitchSequence() {
+      if (selectedIds.length < 5) return;
+      // Pre-arrange by category order: standing/balance → backbend → twist → forward-fold → seated → restorative/supine
+      var order = ['standing','balance','backbend','twist','forward-fold','seated','prone','inversion','supine','restorative'];
+      var arranged = selectedIds.slice().map(function (id) { return asanaById[id]; }).filter(Boolean);
+      arranged.sort(function (a, b) {
+        var ai = order.indexOf(a.category);
+        var bi = order.indexOf(b.category);
+        return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      });
+      var totalSec = 0;
+      arranged.forEach(function (a, i) {
+        totalSec += (a.duration_seconds || 30);
+        if (i < arranged.length - 1) totalSec += 15;
+      });
+      var totalLabel = (lang === 'hi')
+        ? (Math.round(totalSec / 60) + ' मिनट · ' + arranged.length + ' आसन · बीच में 15 सेकंड विश्राम')
+        : ('~' + Math.round(totalSec / 60) + ' min · ' + arranged.length + ' asanas · 15s rest between');
+      var titleLabel = (lang === 'hi') ? 'आपका क्रम' : 'Your sequence';
+
+      var out = doc.getElementById('builder-out');
+      clear(out);
+      out.appendChild(el('h4', { text: titleLabel }));
+      out.appendChild(el('div', { class: 'yg-builder__out__meta', text: totalLabel }));
+      var ol = el('ol', { class: 'yg-builder__steps' });
+      arranged.forEach(function (a, i) {
+        var hold = a.duration_seconds || 30;
+        var holdLabel = hold >= 60 ? (Math.round(hold / 60) + ' min') : (hold + 's');
+        var name = (lang === 'hi' && a.name_hi) ? a.name_hi : a.name_en;
+        var small = el('small', { text: a.sanskrit || '' });
+        var nameDiv = el('div', { class: 'yg-builder__steps__name' });
+        nameDiv.appendChild(doc.createTextNode((a.devanagari || '') + ' · ' + name));
+        nameDiv.appendChild(small);
+        ol.appendChild(el('li', null, [
+          nameDiv,
+          el('div', { class: 'yg-builder__steps__time', text: holdLabel })
+        ]));
+        if (i < arranged.length - 1) {
+          var restName = el('div', { class: 'yg-builder__steps__name', style: 'opacity:0.7;' });
+          restName.appendChild(doc.createTextNode(lang === 'hi' ? 'विश्राम' : 'Rest'));
+          restName.appendChild(el('small', { text: (lang === 'hi') ? 'साँस को बहने दें' : 'breathe quietly' }));
+          ol.appendChild(el('li', { style: 'opacity:0.6;' }, [
+            restName,
+            el('div', { class: 'yg-builder__steps__time', text: '15s' })
+          ]));
+        }
+      });
+      out.appendChild(ol);
+      out.classList.add('is-shown');
+    }
+
+    // ----------------------------------------------------------
+    // SEQUENCES STRIP
+    // ----------------------------------------------------------
+    function renderSequences() {
+      var strip = doc.getElementById('seq-strip');
+      if (!strip) return;
+      clear(strip);
+      SEQUENCES.forEach(function (s) {
+        var min = (lang === 'hi') ? (s.min + ' मिनट') : (s.min + ' min');
+        var lvl = (lang === 'hi') ? ('स्तर ' + s.level) : ('Level ' + s.level);
+        var cnt = (lang === 'hi') ? (s.count + ' आसन') : (s.count + ' asanas');
+        strip.appendChild(el('button', {
+          class: 'yg-seq-card', type: 'button', role: 'listitem', 'data-seq': s.id
+        }, [
+          el('div', { class: 'yg-seq-card__theme', text: s.theme }),
+          el('h3', { class: 'yg-seq-card__title', text: (lang === 'hi') ? s.title_hi : s.title_en }),
+          el('p', { class: 'yg-seq-card__sub', text: (lang === 'hi') ? s.desc_hi : s.desc_en }),
+          el('div', { class: 'yg-seq-card__meta' }, [
+            el('span', { text: min }),
+            el('span', { text: cnt }),
+            el('span', { text: lvl })
+          ])
+        ]));
+      });
+    }
+
+    // ----------------------------------------------------------
+    // Refresh dynamic content on language toggle
+    // ----------------------------------------------------------
+    function refreshDynamic() {
+      renderTodayFlow();
+      renderLibrary();
+      renderBuilderPool();
+      renderSequences();
+      if (currentOverlayId) openOverlay(currentOverlayId);
+    }
+
+    loadAsanas();
+
+  })();
+  </script>
+
+</body>
+</html>
