@@ -37,7 +37,7 @@
         .landing { background: var(--color-bg); z-index: 5; }
         .landing-content { max-width: 400px; }
         .landing-icon { font-size: 2.4rem; margin-bottom: 16px; }
-        .landing h1 { font-family: var(--font-brand); font-size: 1.8rem; margin-bottom: 8px; color: var(--color-text); }
+        .landing h2 { font-family: var(--font-brand); font-size: 1.8rem; margin-bottom: 8px; color: var(--color-text); }
         .landing .sub { color: var(--color-text-sec); font-size: 0.9rem; margin-bottom: 6px; }
         .landing .day-badge { display: inline-block; padding: 4px 14px; border-radius: 100px; background: #D8F3DC; color: var(--color-accent); font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 28px; }
         .begin-btn { padding: 16px 48px; border-radius: var(--radius-md); background: var(--color-accent); color: #fff; border: none; font-size: 1rem; font-weight: 600; cursor: pointer; font-family: var(--font-body); transition: all 0.2s; }
@@ -151,10 +151,19 @@
 
 <!-- ==================== PHASE 0: LANDING ==================== -->
 <div class="phase landing active" id="phaseLanding">
+    <section class="page-hero" style="position:absolute;top:0;left:0;right:0;margin-bottom:0;">
+        <picture class="page-hero-bg">
+            <img src="/og/daily.jpg" alt="Sunrise over rolling hills" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">Daily Sukoon</h1>
+            <p class="page-hero-sub">A new practice every day. Just one.</p>
+        </div>
+    </section>
     <div class="landing-content">
         <div class="landing-icon" id="dayIcon">&#127793;</div>
         <div class="day-badge" id="dayBadge">Monday</div>
-        <h1>Your Daily Sukoon</h1>
+        <h2>Your Daily Sukoon</h2>
         <p class="sub">A 10-minute guided ritual that changes every day</p>
         <button class="begin-btn" id="beginBtn">Begin Today's Session</button>
         <div class="landing-streak" id="streakInfo"></div>

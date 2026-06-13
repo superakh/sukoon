@@ -39,6 +39,57 @@
         /* ===================== SLEEP PAGE ===================== */
         .sleep-page { min-height: 100vh; }
 
+        /* ===================== IMAGE HERO (new) ===================== */
+        .sleep-image-hero {
+            position: relative;
+            width: 100%;
+            height: 36vh;
+            min-height: 280px;
+            max-height: 460px;
+            overflow: hidden;
+            background: #0B1220;
+        }
+        .sleep-image-hero::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(11,18,32,0.30) 0%, rgba(11,18,32,0.55) 60%, rgba(11,18,32,0.85) 100%);
+            z-index: 1;
+        }
+        .sleep-image-hero img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center 40%;
+            opacity: 0;
+            transition: opacity 0.9s ease;
+        }
+        .sleep-image-hero img.loaded { opacity: 1; }
+        .sleep-image-hero-inner {
+            position: relative; z-index: 2;
+            height: 100%;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: flex-end;
+            text-align: center;
+            padding: 0 1.5rem 2.25rem;
+        }
+        .sleep-image-hero-title {
+            font-family: 'DM Serif Display', serif;
+            font-weight: 400;
+            font-size: clamp(2rem, 4.4vw, 3.1rem);
+            line-height: 1.1;
+            letter-spacing: -0.015em;
+            color: #F4ECDC;
+            text-shadow: 0 2px 24px rgba(0,0,0,0.45);
+            margin: 0 0 0.4rem;
+            max-width: 720px;
+        }
+        .sleep-image-hero-sub {
+            font-size: 0.92rem;
+            color: rgba(244,236,220,0.78);
+            max-width: 460px;
+            line-height: 1.6;
+            margin: 0;
+        }
+
         /* ===================== HERO ===================== */
         .sleep-hero {
             padding: 84px 2rem 48px;
@@ -89,6 +140,82 @@
             display: grid; grid-template-columns: 1fr 1fr;
             gap: 1.25rem; margin-bottom: 3.5rem;
         }
+
+        /* Per-story tint overlay applied as inset box-shadow on the thumbnail */
+        .story-thumb {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background-image: url('/og/sleep.jpg');
+            background-size: cover;
+            background-position: center 38%;
+            background-color: #1a2436;
+            box-shadow: inset 0 0 0 2000px rgba(20, 30, 50, 0.30);
+            transition: filter 0.35s ease;
+        }
+        .story-thumb::after {
+            content: '';
+            position: absolute; left: 0; right: 0; bottom: 0;
+            height: 55%;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.40) 100%);
+            pointer-events: none;
+        }
+        .story-card:hover .story-thumb { filter: brightness(1.08); }
+
+        /* Story-specific tints (low-opacity mood washes over the shared hero image) */
+        .story-card[data-story="mountain-lake"]      .story-thumb { box-shadow: inset 0 0 0 2000px rgba(40, 80, 130, 0.35); }
+        .story-card[data-story="spice-market"]       .story-thumb { box-shadow: inset 0 0 0 2000px rgba(180, 90, 40, 0.40); }
+        .story-card[data-story="ocean-lullaby"]      .story-thumb { box-shadow: inset 0 0 0 2000px rgba(30, 60, 120, 0.40); }
+        .story-card[data-story="silk-road"]          .story-thumb { box-shadow: inset 0 0 0 2000px rgba(170, 100, 50, 0.38); }
+        .story-card[data-story="tea-garden"]         .story-thumb { box-shadow: inset 0 0 0 2000px rgba(80, 120, 90, 0.35); }
+        .story-card[data-story="grandmother"]        .story-thumb { box-shadow: inset 0 0 0 2000px rgba(150, 100, 50, 0.42); }
+        .story-card[data-story="northern-lights"]    .story-thumb { box-shadow: inset 0 0 0 2000px rgba(40, 110, 130, 0.40); }
+        .story-card[data-story="sufi-garden"]        .story-thumb { box-shadow: inset 0 0 0 2000px rgba(140, 70, 100, 0.38); }
+        .story-card[data-story="forest-path"]        .story-thumb { box-shadow: inset 0 0 0 2000px rgba(50, 90, 60, 0.40); }
+        .story-card[data-story="night-train"]        .story-thumb { box-shadow: inset 0 0 0 2000px rgba(30, 40, 90, 0.45); }
+        .story-card[data-story="rainy-village"]      .story-thumb { box-shadow: inset 0 0 0 2000px rgba(60, 90, 110, 0.42); }
+        .story-card[data-story="rumi-garden"]        .story-thumb { box-shadow: inset 0 0 0 2000px rgba(160, 110, 50, 0.38); }
+        .story-card[data-story="floating-lanterns"]  .story-thumb { box-shadow: inset 0 0 0 2000px rgba(120, 60, 100, 0.42); }
+
+        /* Tonight's wind-down CTA card (first in grid) */
+        .story-card.story-cta {
+            background: linear-gradient(135deg, #1B4332 0%, #2D6A4F 55%, #40916C 100%);
+            color: #F4ECDC;
+            border-color: rgba(255,255,255,0.06);
+            display: flex; flex-direction: column;
+            min-height: 100%;
+        }
+        .story-card.story-cta .story-cta-thumb {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background:
+                radial-gradient(circle at 70% 30%, rgba(244,236,220,0.18) 0%, rgba(244,236,220,0) 55%),
+                linear-gradient(135deg, #1B4332 0%, #2D6A4F 100%);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .story-card.story-cta .story-cta-moon {
+            font-size: 2.4rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.25));
+        }
+        .story-card.story-cta .story-body {
+            color: #F4ECDC;
+        }
+        .story-card.story-cta .story-cta-tag {
+            display: inline-block;
+            padding: 0.22rem 0.7rem; border-radius: 100px;
+            font-size: 0.65rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.08em;
+            background: rgba(244,236,220,0.16);
+            color: #F4ECDC;
+            margin-bottom: 0.6rem;
+        }
+        .story-card.story-cta .story-card-title { color: #F4ECDC; }
+        .story-card.story-cta .story-desc { color: rgba(244,236,220,0.75); }
+        .story-card.story-cta .story-duration { color: rgba(244,236,220,0.7); }
+        .story-card.story-cta .story-begin {
+            background: #F4ECDC; color: #1B4332;
+        }
+        .story-card.story-cta .story-begin:hover { background: #ffffff; }
+
         .story-card {
             background: #FFFFFF;
             border: 1px solid rgba(0,0,0,0.06);
@@ -112,6 +239,7 @@
         .story-card:nth-child(11) { animation-delay: 0.55s; }
         .story-card:nth-child(12) { animation-delay: 0.6s; }
         .story-card:nth-child(13) { animation-delay: 0.65s; }
+        .story-card:nth-child(14) { animation-delay: 0.7s; }
         @keyframes cardReveal {
             to { opacity: 1; transform: translateY(0); }
         }
@@ -744,6 +872,10 @@
             .stories-grid { grid-template-columns: 1fr; }
             .page-content { padding: 2rem 1.25rem; }
             .sleep-hero { padding: 72px 1.25rem 36px; }
+            .sleep-image-hero { height: 28vh; min-height: 220px; }
+        }
+        @media (max-width: 420px) {
+            .sleep-image-hero { height: 24vh; min-height: 200px; }
             .ai-gen-card { padding: 1.5rem; }
             .ai-gen-form { flex-direction: column; }
             .ai-prompt-input { min-width: 100%; }
@@ -797,6 +929,15 @@
 
 <!-- ===================== MAIN PAGE ===================== -->
 <div class="sleep-page">
+
+    <!-- ===================== IMAGE HERO ===================== -->
+    <section class="sleep-image-hero" aria-label="Sleep stories hero">
+        <img id="sleepHeroImg" alt="Alpine night lake reflecting the Milky Way" loading="lazy" decoding="async">
+        <div class="sleep-image-hero-inner">
+            <h1 class="sleep-image-hero-title">Stories to drift off to.</h1>
+            <p class="sleep-image-hero-sub">Calming bedtime tales, gently narrated to ease you into rest.</p>
+        </div>
+    </section>
 
     <!-- ===================== HERO ===================== -->
     <section class="sleep-hero">
@@ -902,8 +1043,23 @@
 
         <div class="stories-grid" id="storiesGrid">
 
+            <!-- 0. Tonight's wind-down CTA -->
+            <div class="story-card story-cta" data-story="winddown-cta" id="winddownCtaCard">
+                <div class="story-cta-thumb"><span class="story-cta-moon" aria-hidden="true">&#x1F319;</span></div>
+                <div class="story-body">
+                    <span class="story-cta-tag">Tonight</span>
+                    <div class="story-card-title">Tonight's wind-down</div>
+                    <p class="story-desc">A gentle 3-step routine to prepare your mind and body for sleep.</p>
+                    <div class="story-bottom">
+                        <span class="story-duration"><svg viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.2"/><path d="M8 4.5v4l2.5 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg> 8 min</span>
+                        <button class="story-begin">Start</button>
+                    </div>
+                </div>
+            </div>
+
             <!-- 1. The Mountain Lake -->
             <div class="story-card" data-story="mountain-lake">
+                <div class="story-thumb" role="img" aria-label="Mountain lake at sunset"></div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
                     <div class="story-card-title">The Mountain Lake</div>
@@ -917,6 +1073,7 @@
 
             <!-- 2. The Spice Market -->
             <div class="story-card" data-story="spice-market">
+                <div class="story-thumb" role="img" aria-label="Evening spice market in Jaipur"></div>
                 <div class="story-body">
                     <span class="story-genre folklore">Indian Folklore</span>
                     <div class="story-card-title">The Spice Market</div>
@@ -930,6 +1087,7 @@
 
             <!-- 3. Ocean's Lullaby -->
             <div class="story-card" data-story="ocean-lullaby">
+                <div class="story-thumb" role="img" aria-label="Moonlit ocean shore"></div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
                     <div class="story-card-title">Ocean's Lullaby</div>
@@ -943,6 +1101,7 @@
 
             <!-- 4. The Silk Road Traveler -->
             <div class="story-card" data-story="silk-road">
+                <div class="story-thumb" role="img" aria-label="Desert caravan under stars"></div>
                 <div class="story-body">
                     <span class="story-genre travel">Travel</span>
                     <div class="story-card-title">The Silk Road Traveler</div>
@@ -956,6 +1115,7 @@
 
             <!-- 5. The Tea Garden -->
             <div class="story-card" data-story="tea-garden">
+                <div class="story-thumb" role="img" aria-label="Misty tea garden at dawn"></div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
                     <div class="story-card-title">The Tea Garden</div>
@@ -969,6 +1129,7 @@
 
             <!-- 6. Grandmother's Stories -->
             <div class="story-card" data-story="grandmother">
+                <div class="story-thumb" role="img" aria-label="Grandmother by lamplight"></div>
                 <div class="story-body">
                     <span class="story-genre folklore">Indian Folklore</span>
                     <div class="story-card-title">Grandmother's Stories</div>
@@ -982,6 +1143,7 @@
 
             <!-- 7. The Northern Lights -->
             <div class="story-card" data-story="northern-lights">
+                <div class="story-thumb" role="img" aria-label="Aurora borealis over a cabin"></div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
                     <div class="story-card-title">The Northern Lights</div>
@@ -995,6 +1157,7 @@
 
             <!-- 8. The Sufi Garden -->
             <div class="story-card" data-story="sufi-garden">
+                <div class="story-thumb" role="img" aria-label="Mystic garden at dusk"></div>
                 <div class="story-body">
                     <span class="story-genre spiritual">Spiritual</span>
                     <div class="story-card-title">The Sufi Garden</div>
@@ -1008,6 +1171,7 @@
 
             <!-- 9. The Forest Path -->
             <div class="story-card" data-story="forest-path">
+                <div class="story-thumb" role="img" aria-label="Ancient forest path at dusk"></div>
                 <div class="story-body">
                     <span class="story-genre nature">Nature</span>
                     <div class="story-card-title">The Forest Path</div>
@@ -1021,6 +1185,7 @@
 
             <!-- 10. The Night Train -->
             <div class="story-card" data-story="night-train">
+                <div class="story-thumb" role="img" aria-label="Night train through countryside"></div>
                 <div class="story-body">
                     <span class="story-genre travel">Travel</span>
                     <div class="story-card-title">The Night Train</div>
@@ -1034,6 +1199,7 @@
 
             <!-- 11. The Rainy Village -->
             <div class="story-card" data-story="rainy-village">
+                <div class="story-thumb" role="img" aria-label="Monsoon evening in a Himalayan village"></div>
                 <div class="story-body">
                     <span class="story-genre folklore">Indian Folklore</span>
                     <div class="story-card-title">The Rainy Village</div>
@@ -1047,6 +1213,7 @@
 
             <!-- 12. Rumi's Garden -->
             <div class="story-card" data-story="rumi-garden">
+                <div class="story-thumb" role="img" aria-label="Mystic poet's garden glowing at dusk"></div>
                 <div class="story-body">
                     <span class="story-genre spiritual">Spiritual</span>
                     <div class="story-card-title">Rumi's Garden</div>
@@ -1060,6 +1227,7 @@
 
             <!-- 13. The Floating Lanterns -->
             <div class="story-card" data-story="floating-lanterns">
+                <div class="story-thumb" role="img" aria-label="River festival with floating lanterns"></div>
                 <div class="story-body">
                     <span class="story-genre fantasy">Fantasy</span>
                     <div class="story-card-title">The Floating Lanterns</div>
@@ -1221,6 +1389,7 @@
             title: 'The Mountain Lake',
             genre: 'Nature',
             duration: '~15 min',
+            tint: '#28508280',
             paragraphs: [
                 'You stand at the edge of a narrow trail that winds upward through a forest of ancient pines. The air is cool and carries the faint sweetness of cedar. Each step you take is cushioned by a soft carpet of fallen needles, and the sound of your footsteps is almost silent. Somewhere above, the late afternoon sun filters through the canopy in long, golden shafts, warming your shoulders as you climb.',
                 'The trail curves gently around a mossy boulder, and you notice the sound of water somewhere ahead. Not a rush or a roar, but something quieter -- a soft, continuous murmur, like a whisper from the earth itself. The trees begin to thin, and patches of wildflowers appear at the edges of the path. Purple lupines and pale yellow buttercups sway in a breeze so gentle you can barely feel it against your skin.',
@@ -1239,6 +1408,7 @@
             title: 'The Spice Market',
             genre: 'Indian Folklore',
             duration: '~15 min',
+            tint: '#B45A2866',
             paragraphs: [
                 'You walk through an old stone archway into the evening market of Jaipur. The sun has just set, and the sky above the pink sandstone buildings is a deep, warm magenta, fading to indigo at its edges. Lanterns are being lit one by one along the narrow lane, casting pools of golden light onto the worn cobblestones. The air is thick and fragrant -- cardamom, saffron, dried rose petals -- all mingling into something that feels less like a scent and more like a memory.',
                 'The market is quieting now. The afternoon crowds have thinned, and the remaining vendors move slowly, unhurried, arranging their wares for the evening. You pass a stall where a woman sits behind towers of powdered turmeric, bright as sunlight, and deep red chili in perfect pyramids. She looks up and smiles, and the smile reaches her eyes. She does not try to sell you anything. She simply nods, as if welcoming you home.',
@@ -1257,6 +1427,7 @@
             title: "Ocean's Lullaby",
             genre: 'Nature',
             duration: '~15 min',
+            tint: '#1E3C7866',
             paragraphs: [
                 'You walk barefoot along a shore that stretches endlessly in both directions. The sand beneath your feet is fine and cool, still holding the last warmth of the day in its deeper layers. The moon has risen early -- full and luminous, hanging low over the water like a lantern placed there just for you. Its light paints a silver path across the surface of the sea, and the path seems to lead directly to where you stand.',
                 'The waves come in slow, unhurried rolls. They rise gently offshore, their crests catching the moonlight for a brief, shining moment before they curl forward and dissolve into white foam that slides up the sand toward your toes. Each wave arrives with a soft, continuous sigh -- a sound so ancient and so steady that your body begins to match its rhythm without you even trying.',
@@ -1275,6 +1446,7 @@
             title: 'The Silk Road Traveler',
             genre: 'Travel',
             duration: '~15 min',
+            tint: '#AA643261',
             paragraphs: [
                 'You ride on the back of a camel whose steps are slow and swaying, like a boat rocking gently on a calm sea. The desert stretches out in every direction -- vast, golden, and impossibly quiet. The sun has set, leaving behind a sky that glows in layers of peach, rose, and deepening violet. The air is cooling rapidly, and it feels clean and dry against your skin, carrying the faint, mineral scent of ancient sand.',
                 'The caravan moves in a long, unhurried line ahead of you. A dozen camels, their silhouettes dark against the glowing horizon, each one laden with bundles of silk and spice wrapped in cloth. The bells tied to their harnesses make a soft, irregular chiming -- a gentle music that marks each step. The sound carries far in the desert silence, then fades, then returns, like a melody that the wind is learning.',
@@ -1293,6 +1465,7 @@
             title: 'The Tea Garden',
             genre: 'Nature',
             duration: '~15 min',
+            tint: '#50785A59',
             paragraphs: [
                 'You stand at the top of a hill and look out over a landscape of rolling green. The tea garden stretches below you in long, curving rows that follow the contours of the land like lines on a gentle palm. A thin mist hangs over everything, softening the edges of the world. The sun has just risen, but it is still hidden behind the hills, and the light is a pale, silvery gold that makes the dew on the tea leaves glow like tiny jewels.',
                 'You begin to walk down a narrow path between the rows. The tea bushes come up to your waist, their leaves dark and glossy, each one perfectly shaped. The air is cool and damp, and it carries a fresh, green fragrance -- the scent of new growth, of earth after rain, of chlorophyll and morning. You breathe it in deeply, and it fills your lungs with something that feels like the color green itself.',
@@ -1311,6 +1484,7 @@
             title: "Grandmother's Stories",
             genre: 'Indian Folklore',
             duration: '~15 min',
+            tint: '#9664326B',
             paragraphs: [
                 'You are sitting on the cool stone floor of your grandmother\'s veranda, your back against a wooden pillar that has been polished smooth by generations of leaning. The evening is warm and quiet, and the jasmine vine that climbs the railing is in full bloom, its white flowers glowing like tiny moons in the lamplight. Your grandmother sits in her chair -- a low, wide chair with a woven cane seat that creaks softly whenever she shifts her weight.',
                 'She holds a brass oil lamp in her lap, adjusting the wick until the flame is steady and golden. The light it casts is warm and close, illuminating the folds of her white cotton sari and the silver bangles on her wrists. Her face is lined and beautiful, and her eyes hold the kind of quiet brightness that comes from a lifetime of watching the world with patience and love. She looks at you and smiles.',
@@ -1329,6 +1503,7 @@
             title: 'The Northern Lights',
             genre: 'Nature',
             duration: '~15 min',
+            tint: '#286E8266',
             paragraphs: [
                 'You are standing on the porch of a small wooden cabin at the edge of a frozen lake. The air is sharp and clean and carries the smell of pine and wood smoke. You are wrapped in a thick wool blanket, and beneath it you wear a heavy sweater that holds your warmth close against your body. The cabin behind you is glowing with firelight -- the windows are small and amber, and through them you can see the stone fireplace where birch logs are burning with a soft, steady crackle.',
                 'The lake is a vast, white expanse stretching to the tree line on the far shore. The snow on its surface is untouched and smooth, and in the moonlight it glows with a faint, blue-white luminance. The trees beyond are spruce and pine, their dark shapes forming a jagged line against the sky. Everything is perfectly still. The only sound is the occasional settling of snow, a quiet crumpling like a whispered word.',
@@ -1347,6 +1522,7 @@
             title: 'The Sufi Garden',
             genre: 'Spiritual',
             duration: '~15 min',
+            tint: '#8C466461',
             paragraphs: [
                 'You step through an arched doorway of weathered stone and enter a garden that seems to exist outside of time. The walls are high and covered in climbing roses whose petals are the color of old parchment, and their fragrance fills the air with something sweet and ancient. A path of smooth, grey flagstones leads you forward, and each stone is warm beneath your bare feet. Above you, the sky is the deep blue-violet of late dusk, and the first stars are just beginning to appear.',
                 'The garden is arranged in a pattern you cannot quite see from where you stand, but you sense its order -- a geometry of circles and squares, of paths that curve and return, of water channels that divide the space into four equal parts. At the center, you can hear a fountain. Its sound is gentle and continuous, a murmur that is neither loud nor quiet but exactly right, as if the garden has been designed around this single, perfect sound.',
@@ -1365,6 +1541,7 @@
             title: 'The Forest Path',
             genre: 'Nature',
             duration: '~18 min',
+            tint: '#325A3C66',
             paragraphs: [
                 'You step onto a path of packed earth that winds between ancient trees. The forest floor is soft with decades of fallen leaves, and your footsteps are almost silent. The light is the deep gold of late afternoon, filtered through a canopy so high above you that the tops of the trees seem to touch the sky. The air is cool and carries the rich, earthy smell of moss and bark and something sweet, like distant honeysuckle.',
                 'The path curves gently, and you follow it without hurry. On either side, the trunks of oaks and beeches rise like pillars in a cathedral, their bark rough and silver-grey, patterned with lichen in shades of pale green and white. Between them, ferns unfurl their delicate fronds, each one a perfect spiral of bright green that catches the slanting light and holds it.',
@@ -1384,6 +1561,7 @@
             title: 'The Night Train',
             genre: 'Travel',
             duration: '~18 min',
+            tint: '#1E285A73',
             paragraphs: [
                 'You settle into a window seat on the night train. The compartment is small and warm, lined with polished wood that glows in the soft amber light of a reading lamp. Your seat is cushioned in dark blue velvet, and it gives slightly as you lean back, molding to the shape of your body. Through the window, the platform lights slide past, and then the train begins to move, so gently that you barely feel it.',
                 'The rhythm starts immediately, a steady, rocking motion that is deeply soothing. The wheels on the tracks make a sound that is almost musical, a low, repeating pattern that your body begins to match without thinking. Duh-duh-duh-duh. Duh-duh-duh-duh. It is the heartbeat of the journey, and it has been the same on every train, on every track, since the very first locomotive rolled forward.',
@@ -1403,6 +1581,7 @@
             title: 'The Rainy Village',
             genre: 'Indian Folklore',
             duration: '~18 min',
+            tint: '#3C5A6E6B',
             paragraphs: [
                 'The monsoon has arrived. You stand on the covered veranda of a stone cottage in a village nestled in the foothills of the Himalayas. The rain comes down in long, silver threads, steady and warm, filling the air with a sound that is both loud and deeply peaceful. It falls on the tin roofs of the houses around you with a gentle drumming, and it turns the narrow lanes between them into small, rushing streams that catch the last light of the evening.',
                 'The mountains are hidden behind curtains of rain and cloud, but you can feel their presence, vast and patient, surrounding the village like the walls of a great, open room. The air smells of wet earth and pine resin and the sharp, green scent of rain on leaves. It is the smell of the world being washed clean, of everything being renewed.',
@@ -1422,6 +1601,7 @@
             title: "Rumi's Garden",
             genre: 'Spiritual',
             duration: '~18 min',
+            tint: '#A06E3261',
             paragraphs: [
                 'You find yourself walking along a path of white stone, worn smooth by centuries of pilgrims. The path leads through a gate of old wood, its surface carved with flowing script that you cannot read but somehow understand. Beyond the gate, a garden opens before you, and it is unlike any garden you have seen. The flowers here do not grow in rows. They grow wherever they wish, in clusters and waves, as if the garden has been planted by the wind itself.',
                 'The light in this place is different. It is golden but soft, as if the sun is shining through silk. It falls on the flowers and the stone paths and the old walls in a way that makes everything glow from within. The air is warm and still, and it carries a fragrance that changes with every step you take, as if each flower is greeting you personally. Rose, then jasmine, then something unnamed and deeply sweet.',
@@ -1441,6 +1621,7 @@
             title: 'The Floating Lanterns',
             genre: 'Fantasy',
             duration: '~18 min',
+            tint: '#783C646B',
             paragraphs: [
                 'You stand at the edge of a wide, slow river on an evening when the sky is the color of ripe plums. The water moves with a deep, unhurried current, its surface dark and smooth, reflecting the first stars as points of trembling light. In your hands, you hold a lantern made of thin rice paper stretched over a frame of bent bamboo. Inside it, a small candle waits to be lit.',
                 'All along the riverbank, others stand as you do, each one holding their own lantern. They are quiet, patient, gathered here for the festival of wishes. Some lanterns are round, some are shaped like lotus flowers, some are simple squares with painted designs. All of them are beautiful, and all of them are waiting.',
@@ -2505,6 +2686,35 @@
     document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape' && winddownOverlay.classList.contains('open')) closeWinddown();
     });
+
+    /* ============================================================
+       WIND-DOWN CTA CARD (first card in story grid)
+       ============================================================ */
+    var ctaCard = document.getElementById('winddownCtaCard');
+    if (ctaCard) {
+        ctaCard.addEventListener('click', function(e) {
+            // The storiesGrid handler will ignore this card (no entry in stories map),
+            // so this fires the wind-down overlay directly.
+            e.stopPropagation();
+            startWinddown();
+        });
+    }
+
+    /* ============================================================
+       HERO IMAGE — lazy attach src after first paint
+       ============================================================ */
+    var heroImg = document.getElementById('sleepHeroImg');
+    if (heroImg) {
+        var loadHero = function() {
+            heroImg.addEventListener('load', function() { heroImg.classList.add('loaded'); }, { once: true });
+            heroImg.src = '/og/sleep.jpg';
+        };
+        if ('requestIdleCallback' in window) {
+            requestIdleCallback(loadHero, { timeout: 800 });
+        } else {
+            setTimeout(loadHero, 120);
+        }
+    }
 
 })();
 </script>

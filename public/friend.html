@@ -91,48 +91,81 @@
             flex: 1; padding: 24px 20px;
             text-align: center;
             animation: fadeIn 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
         .welcome-state.hidden { display: none; }
+        .welcome-state.hidden .welcome-bg-image { display: none; }
+        .welcome-bg-image {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(8px) brightness(0.55);
+            z-index: 0;
+            pointer-events: none;
+            transform: scale(1.05);
+        }
+        .welcome-state > *:not(.welcome-bg-image) {
+            position: relative;
+            z-index: 1;
+        }
         .welcome-title {
             font-family: 'DM Serif Display', serif;
             font-size: clamp(2rem, 5vw, 2.8rem);
-            color: #1D1D1F; margin-bottom: 2px;
+            color: #FFFFFF; margin-bottom: 2px;
             line-height: 1.15; font-weight: 400;
             letter-spacing: -0.02em;
+            text-shadow: 0 2px 16px rgba(0,0,0,0.45);
         }
         .welcome-title-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
             font-size: clamp(0.9rem, 2.2vw, 1.05rem);
-            color: #2D6A4F; font-weight: 400;
-            margin-bottom: 8px;
+            color: #E8F3EC; font-weight: 400;
+            margin-bottom: 14px;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.4);
         }
         .welcome-subtitle {
-            font-size: 0.9rem; color: #86868B;
-            max-width: 320px; margin-bottom: 32px;
-            line-height: 1.5;
+            font-size: 0.95rem; color: rgba(255,255,255,0.92);
+            max-width: 440px; margin-bottom: 32px;
+            line-height: 1.55;
+            text-shadow: 0 1px 10px rgba(0,0,0,0.5);
+            font-weight: 400;
         }
         .starter-pills {
             display: flex; flex-wrap: wrap; justify-content: center;
-            gap: 10px; max-width: 440px;
+            gap: 10px; max-width: 560px;
         }
         .starter-pill {
             padding: 10px 18px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0,0,0,0.1);
+            background: rgba(255,255,255,0.92);
+            border: 1px solid rgba(255,255,255,0.4);
             border-radius: 50px;
             font-size: 0.84rem; color: #1D1D1F;
             cursor: pointer;
             transition: all 0.2s ease;
             font-family: -apple-system, 'Inter', sans-serif;
             white-space: nowrap;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
         }
         .starter-pill:hover {
-            background: #F5F5F0;
+            background: #FFFFFF;
             border-color: #2D6A4F;
             color: #1B4332;
         }
         .starter-pill:active {
             transform: scale(0.97);
+        }
+        .welcome-disclosure {
+            margin-top: 22px;
+            font-size: 0.72rem;
+            color: rgba(255,255,255,0.78);
+            letter-spacing: 0.04em;
+            max-width: 460px;
+            line-height: 1.55;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.5);
         }
 
         /* ===================== MESSAGES AREA ===================== */
@@ -366,16 +399,19 @@
 
         <!-- WELCOME STATE -->
         <div class="welcome-state" id="welcomeState">
+            <img class="welcome-bg-image" src="/og/friend.jpg" alt="" loading="eager" aria-hidden="true">
             <h1 class="welcome-title">Sukoon</h1>
             <p class="welcome-title-hi" lang="hi">&#2360;&#2369;&#2325;&#2370;&#2344; &#2360;&#2375; &#2348;&#2366;&#2340; &#2325;&#2352;&#2375;&#2306;</p>
-            <p class="welcome-subtitle">A companion for peace of mind. Share what you're feeling -- no judgement, no records.</p>
+            <p class="welcome-subtitle"><strong>Not therapy. Not a chatbot.</strong> A wise friend who listens &mdash; and remembers nothing once you close the tab.</p>
             <div class="starter-pills" id="starterPills">
-                <button class="starter-pill" data-msg="I can't sleep tonight">I can't sleep tonight</button>
-                <button class="starter-pill" data-msg="I'm feeling anxious">I'm feeling anxious</button>
-                <button class="starter-pill" data-msg="I need motivation">I need motivation</button>
-                <button class="starter-pill" data-msg="I want to talk">I want to talk</button>
-                <button class="starter-pill" data-msg="Help me calm down">Help me calm down</button>
+                <button class="starter-pill" data-msg="I had a hard day today and just need to talk it through.">I had a hard day</button>
+                <button class="starter-pill" data-msg="I can't sleep. My mind won't slow down.">I can't sleep</button>
+                <button class="starter-pill" data-msg="I'm grieving someone I lost and I don't know how to carry it.">I'm grieving</button>
+                <button class="starter-pill" data-msg="I feel anxious right now and I'm not sure why.">I feel anxious</button>
+                <button class="starter-pill" data-msg="I feel numb. Nothing really lands lately.">I feel numb</button>
+                <button class="starter-pill" data-msg="I just want to vent. You don't need to fix anything.">I just want to vent</button>
             </div>
+            <p class="welcome-disclosure">Conversations stay on this device. Nothing is sent except your message &mdash; answered by Claude Sonnet, our chosen AI.</p>
         </div>
 
         <!-- MESSAGES AREA -->

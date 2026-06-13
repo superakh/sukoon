@@ -32,7 +32,7 @@
         /* Browse */
         .sos-page { max-width: 600px; margin: 0 auto; padding: calc(var(--topbar-h)+24px) 20px 40px; }
         .sos-hero { text-align: center; margin-bottom: 28px; }
-        .sos-hero h1 { font-family: var(--font-brand); font-size: 1.5rem; margin-bottom: 6px; }
+        .sos-hero h2 { font-family: var(--font-brand); font-size: 1.5rem; margin-bottom: 6px; }
         .sos-hero p { color: var(--color-text-sec); font-size: 0.88rem; }
 
         .emotion-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-bottom: 36px; }
@@ -175,8 +175,17 @@
 
 <!-- ==================== BROWSE ==================== -->
 <div class="sos-page" id="sosPage">
+    <section class="page-hero">
+        <picture class="page-hero-bg">
+            <img src="/og/sos.jpg" alt="Quiet refuge in the storm" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">Crisis support</h1>
+            <p class="page-hero-sub">When the storm hits. We're here.</p>
+        </div>
+    </section>
     <div class="sos-hero">
-        <h1>What's happening?</h1>
+        <h2>What's happening?</h2>
         <p>Choose what you're feeling. We'll guide you through it.</p>
     </div>
 

@@ -30,9 +30,9 @@
         .browse-view { padding: calc(var(--topbar-h) + 16px) 16px 80px; max-width: 720px; margin: 0 auto; }
         @media(min-width:961px){ .browse-view { margin-left: var(--sidebar-w); } }
 
-        .page-hero { text-align: center; margin-bottom: 28px; }
-        .page-hero h1 { font-family: var(--font-brand); font-size: 1.6rem; margin-bottom: 4px; }
-        .page-hero p { color: var(--color-text-sec); font-size: 0.88rem; }
+        .page-intro { text-align: center; margin-bottom: 28px; }
+        .page-intro h1 { font-family: var(--font-brand); font-size: 1.6rem; margin-bottom: 4px; }
+        .page-intro p { color: var(--color-text-sec); font-size: 0.88rem; }
 
         /* Emotion cards */
         .emotion-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 32px; }
@@ -328,7 +328,17 @@
 <!-- ==================== BROWSE VIEW ==================== -->
 <div class="browse-view" id="browseView">
 
-    <div class="page-hero stagger-1">
+    <section class="page-hero">
+        <picture class="page-hero-bg">
+            <img src="/og/meditate.jpg" alt="Calm meditation scene" loading="eager" fetchpriority="high">
+        </picture>
+        <div class="page-hero-content">
+            <h1 class="page-hero-title">Meditate</h1>
+            <p class="page-hero-sub">Guided sessions for body, breath, and mind.</p>
+        </div>
+    </section>
+
+    <div class="page-intro stagger-1">
         <h1>Guided Meditations</h1>
         <p>Voice-guided sessions for every mood</p>
     </div>

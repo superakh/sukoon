@@ -571,3 +571,60 @@ a.card, button.card, [role="button"].card {
 .text-sec { color: var(--color-text-sec); }
 .text-tert { color: var(--color-text-tert); }
 .font-brand { font-family: var(--font-brand); }
+
+/* ===================== UNIVERSAL PAGE HERO STRIP ===================== */
+/* Used on secondary pages: meditate, breathe, sounds, journal, daily, sos,
+   quotes, explore, focus, courses, progress, videos, you, privacy.
+   Insert <section class="page-hero">...</section> at top of main content. */
+.page-hero {
+    position: relative;
+    height: 32vh;
+    min-height: 220px;
+    max-height: 360px;
+    overflow: hidden;
+    margin-bottom: 24px;
+}
+.page-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.page-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+.page-hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.10) 0%, rgba(0,0,0,0.55) 100%);
+}
+.page-hero-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    padding: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    color: #FAFAF7;
+}
+.page-hero-title {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+}
+.page-hero-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(0.92rem, 2vw, 1.05rem);
+    color: rgba(250,250,247,0.85);
+    max-width: 480px;
+    margin: 0;
+}
+@media (max-width: 480px) {
+    .page-hero { height: 26vh; min-height: 180px; }
+}

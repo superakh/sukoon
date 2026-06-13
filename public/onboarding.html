@@ -112,6 +112,54 @@
         .ob-name-input::placeholder { color: var(--color-text-tert); }
         .ob-skip { font-size: 0.8rem; color: var(--color-text-tert); text-align: center; margin-top: 12px; }
 
+        /* Trust micro-copy on welcome */
+        .ob-trust {
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--color-text-tert);
+            text-align: center;
+            margin-top: 18px;
+            line-height: 1.6;
+        }
+
+        /* Step 1 hero background */
+        .ob-screen.s1-hero {
+            position: relative;
+        }
+        .ob-screen.s1-hero::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: url('/og/onboarding.jpg') center/cover no-repeat;
+            opacity: 0.55;
+            z-index: -2;
+        }
+        .ob-screen.s1-hero::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.25) 0%, rgba(0,0,0,0.55) 100%);
+            z-index: -1;
+        }
+        .ob-screen.s1-hero .ob-title,
+        .ob-screen.s1-hero .ob-subtitle,
+        .ob-screen.s1-hero .ob-trust,
+        .ob-screen.s1-hero .ob-leaf,
+        .ob-screen.s1-hero .ob-skip {
+            color: #fff;
+            text-shadow: 0 1px 8px rgba(0,0,0,0.4);
+        }
+        .ob-screen.s1-hero .ob-subtitle,
+        .ob-screen.s1-hero .ob-trust,
+        .ob-screen.s1-hero .ob-skip {
+            color: rgba(255,255,255,0.88);
+        }
+        .ob-screen.s1-hero .ob-name-input {
+            background: rgba(255,255,255,0.92);
+            border-color: rgba(255,255,255,0.5);
+        }
+
         /* Goal cards */
         .ob-goals {
             display: grid;
@@ -320,13 +368,14 @@
     </div>
 
     <!-- SCREEN 1: Welcome -->
-    <div class="ob-screen active" id="s1">
+    <div class="ob-screen active s1-hero" id="s1">
         <div>
             <div class="ob-leaf">&#9752;</div>
             <h1 class="ob-title">Welcome to Sukoon</h1>
             <p class="ob-subtitle">Peace for every soul. Free forever.<br>No account needed. No data collected.</p>
             <input type="text" class="ob-name-input" id="nameInput" placeholder="What should we call you?" maxlength="30" autocomplete="off">
             <p class="ob-skip">Optional — you can skip this</p>
+            <p class="ob-trust">No account · No data leaves your device · You can clear everything anytime</p>
         </div>
     </div>
 
@@ -486,15 +535,15 @@
             <div class="breath-circle" id="breathCircle">
                 <span id="breathLabel">Breathe in...</span>
             </div>
-            <div class="breath-instruction" id="breathInst">Just 60 seconds. You've already begun.</div>
-            <div class="breath-timer" id="breathTimer">1:00</div>
+            <div class="breath-instruction" id="breathInst">Just 30 seconds. You've already begun.</div>
+            <div class="breath-timer" id="breathTimer">0:30</div>
         </div>
     </div>
 
     <!-- Actions -->
     <div class="ob-actions" id="actions">
         <button class="ob-btn ob-btn-primary" id="btnNext">Continue</button>
-        <button class="ob-btn ob-btn-ghost" id="btnSkip">Skip for now</button>
+        <button class="ob-btn ob-btn-ghost" id="btnSkip">Skip — I'll explore on my own</button>
     </div>
 </div>
 
@@ -546,7 +595,7 @@
         } else if (n === 4) {
             btnNext.textContent = 'Begin My Journey';
             btnNext.disabled = !selectedExp;
-            btnSkip.style.display = 'none';
+            btnSkip.style.display = '';
             // Animate score
             var score = calcScore();
             setTimeout(function() {
@@ -558,7 +607,7 @@
             }, 200);
         } else if (n === 5) {
             btnNext.textContent = 'Enter Sukoon';
-            btnSkip.style.display = 'none';
+            btnSkip.style.display = '';
             startBreath();
         }
     }
@@ -641,7 +690,7 @@
         var phases = ['Breathe in...', 'Hold...', 'Breathe out...', 'Hold...'];
         var durations = [4, 4, 4, 4]; // 4-4-4-4 box breathing
         var phase = 0;
-        var secs = 60;
+        var secs = 30;
 
         function tick() {
             label.textContent = phases[phase % 4];
