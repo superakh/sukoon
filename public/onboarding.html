@@ -501,10 +501,12 @@
     var btnSkip = document.getElementById('btnSkip');
 
     // Already onboarded? Go home
-    if (localStorage.getItem('sukoon_onboarded')) {
-        window.location.replace('/');
-        return;
-    }
+    try {
+        if (localStorage.getItem('sukoon_onboarded')) {
+            window.location.replace('/');
+            return;
+        }
+    } catch (e) { /* Safari Private Browsing or storage disabled — skip redirect, render onboarding */ }
 
     function showScreen(n) {
         currentScreen = n;

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>SOS - Sukoon</title>
     <meta name="description" content="Instant calm when you need it most. Guided interventions for panic, grief, overwhelm, insomnia, and anger. You are safe here.">
     <meta name="theme-color" content="#2D6A4F">
@@ -26,11 +26,23 @@
         .emo-card {
             background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
             padding: 20px 16px; text-align: center; cursor: pointer; transition: all 0.2s;
+            font: inherit; color: inherit; width: 100%;
         }
         .emo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+        .emo-card:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
         .emo-icon { font-size: 2rem; margin-bottom: 8px; display: block; }
         .emo-title { font-weight: 600; font-size: 0.88rem; color: var(--color-text); margin-bottom: 2px; }
         .emo-sub { font-size: 0.72rem; color: var(--color-text-tert); }
+        .emo-card.emo-crisis {
+            grid-column: 1 / -1;
+            background: #FFF5EF;
+            border: 1px solid #D97757;
+            box-shadow: 0 2px 8px rgba(217, 119, 87, 0.12);
+        }
+        .emo-card.emo-crisis:hover { box-shadow: 0 4px 14px rgba(217, 119, 87, 0.2); }
+        .emo-card.emo-crisis .emo-title { color: #8B3A1E; font-size: 1rem; }
+        .emo-card.emo-crisis .emo-sub { color: #B85A3A; }
+        .emo-card.emo-crisis .emo-icon { color: #D97757; }
 
         /* Crisis banner */
         .crisis-section { margin-top: 16px; }
@@ -80,6 +92,29 @@
         .so-done { margin-top: 24px; padding: 12px 32px; border-radius: var(--radius-md); background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.2); color: #fff; font-size: 0.88rem; cursor: pointer; display: none; font-family: var(--font-body); }
         .so-done.visible { display: inline-block; }
 
+        /* Crisis call buttons inside session overlay */
+        .so-calls { display: none; flex-direction: column; gap: 10px; margin: 20px auto 0; max-width: 360px; }
+        .so-calls.visible { display: flex; }
+        .so-calls .so-calls-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.7; margin-bottom: 4px; }
+        .so-call-btn {
+            display: flex; align-items: center; gap: 12px; padding: 12px 16px;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+            border-radius: var(--radius-md); color: #fff; text-decoration: none;
+            backdrop-filter: blur(10px); transition: background 0.15s ease, transform 0.15s ease;
+            font-family: var(--font-body); text-align: left;
+        }
+        .so-call-btn:hover, .so-call-btn:focus { background: rgba(255,255,255,0.25); transform: translateY(-1px); }
+        .so-call-btn .so-call-name { font-size: 0.85rem; font-weight: 600; flex: 1; }
+        .so-call-btn .so-call-num { font-size: 0.85rem; font-weight: 600; opacity: 0.95; }
+        .so-friend-cta {
+            display: none; margin: 14px auto 0; padding: 12px 24px; border-radius: var(--radius-md);
+            background: #fff; color: #1B4332; font-weight: 600; font-size: 0.88rem;
+            text-decoration: none; max-width: 360px;
+            font-family: var(--font-body);
+        }
+        .so-friend-cta.visible { display: inline-block; }
+        .so-friend-cta:hover { background: rgba(255,255,255,0.92); }
+
         /* Particles */
         #soParticles { position: absolute; inset: 0; z-index: 1; overflow: hidden; pointer-events: none; }
         .particle { position: absolute; border-radius: 50%; opacity: 0; animation: particleFloat linear infinite; }
@@ -107,6 +142,10 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
         <span>Explore</span>
     </a>
+    <a href="/sos.html" class="nav-item nav-sos active" aria-current="page" aria-label="Crisis support">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <span>SOS</span>
+    </a>
     <a href="/breathe.html" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
         <span>Breathe</span>
@@ -129,36 +168,46 @@
     </div>
 
     <div class="emotion-grid" id="emoGrid">
-        <div class="emo-card" data-emo="panic">
-            <span class="emo-icon">&#128168;</span>
+        <button type="button" class="emo-card emo-crisis" data-emo="suicidal" aria-label="I'm having thoughts of suicide">
+            <span class="emo-icon" aria-hidden="true">&#129505;</span>
+            <div class="emo-title">Suicidal Thoughts</div>
+            <div class="emo-sub">You're not alone — start here</div>
+        </button>
+        <button type="button" class="emo-card" data-emo="panic" aria-label="Panic attack — 3 minute guided calm">
+            <span class="emo-icon" aria-hidden="true">&#128168;</span>
             <div class="emo-title">Panic Attack</div>
             <div class="emo-sub">3 min guided calm</div>
-        </div>
-        <div class="emo-card" data-emo="crying">
-            <span class="emo-icon">&#128167;</span>
+        </button>
+        <button type="button" class="emo-card" data-emo="crying" aria-label="Can't stop crying — 5 minute compassion hold">
+            <span class="emo-icon" aria-hidden="true">&#128167;</span>
             <div class="emo-title">Can't Stop Crying</div>
             <div class="emo-sub">5 min compassion hold</div>
-        </div>
-        <div class="emo-card" data-emo="overwhelm">
-            <span class="emo-icon">&#127754;</span>
+        </button>
+        <button type="button" class="emo-card" data-emo="overwhelm" aria-label="Overwhelmed — 5-4-3-2-1 grounding">
+            <span class="emo-icon" aria-hidden="true">&#127754;</span>
             <div class="emo-title">Overwhelmed</div>
             <div class="emo-sub">5-4-3-2-1 grounding</div>
-        </div>
-        <div class="emo-card" data-emo="insomnia">
-            <span class="emo-icon">&#127769;</span>
+        </button>
+        <button type="button" class="emo-card" data-emo="insomnia" aria-label="Can't sleep — 10 minute relaxation">
+            <span class="emo-icon" aria-hidden="true">&#127769;</span>
             <div class="emo-title">Can't Sleep</div>
             <div class="emo-sub">10 min relaxation</div>
-        </div>
-        <div class="emo-card" data-emo="anger">
-            <span class="emo-icon">&#128293;</span>
+        </button>
+        <button type="button" class="emo-card" data-emo="anger" aria-label="Angry — 3 minute cooling breath">
+            <span class="emo-icon" aria-hidden="true">&#128293;</span>
             <div class="emo-title">Angry</div>
             <div class="emo-sub">3 min cooling breath</div>
-        </div>
-        <div class="emo-card" data-emo="lonely">
-            <span class="emo-icon">&#128156;</span>
+        </button>
+        <button type="button" class="emo-card" data-emo="lonely" aria-label="Lonely — talk to AI Friend">
+            <span class="emo-icon" aria-hidden="true">&#128156;</span>
             <div class="emo-title">Lonely</div>
             <div class="emo-sub">Talk to AI Friend</div>
-        </div>
+        </button>
+        <button type="button" class="emo-card" data-emo="numb" aria-label="I feel numb or dissociated">
+            <span class="emo-icon" aria-hidden="true">&#127787;</span>
+            <div class="emo-title">Numb / Dissociated</div>
+            <div class="emo-sub">Come back to your body</div>
+        </button>
     </div>
 
     <div class="crisis-section">
@@ -179,15 +228,17 @@
 </div>
 
 <!-- ==================== SESSION OVERLAY ==================== -->
-<div class="session-overlay" id="sessionOverlay">
+<div class="session-overlay" id="sessionOverlay" role="dialog" aria-modal="true" aria-labelledby="soTitle">
     <div class="so-bg" id="soBg"></div>
     <div id="soParticles"></div>
-    <button class="so-back" id="soBack"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg></button>
+    <button class="so-back" id="soBack" aria-label="Back to emotion list"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
     <div class="so-content">
         <div class="so-title" id="soTitle"></div>
-        <div class="so-prompt" id="soPrompt">Tap play to begin</div>
-        <button class="so-play" id="soPlay"><svg viewBox="0 0 24 24" id="soIcon"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-        <button class="so-done" id="soDone">I feel better</button>
+        <div class="so-prompt" id="soPrompt" role="status" aria-live="polite">Tap play to begin</div>
+        <div class="so-calls" id="soCalls" aria-label="Crisis support phone lines"></div>
+        <a class="so-friend-cta" id="soFriendCTA" href="/friend.html">Talk to AI Friend now</a>
+        <button class="so-play" id="soPlay" aria-label="Play session"><svg viewBox="0 0 24 24" id="soIcon" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+        <button class="so-done" id="soDone" aria-label="I feel better, close session">I feel better</button>
     </div>
 </div>
 
@@ -279,17 +330,59 @@ var INTERVENTIONS = {
             'One more cooling breath in. Hold. And release.',
             'You are calmer now. Your anger told you something important. When you are ready, listen to its message with a clear mind.'
         ]
+    },
+    suicidal: {
+        title: 'You are not alone',
+        bg: 'linear-gradient(160deg, #2D6A4F 0%, #1B4332 100%)',
+        ambient: 'silence',
+        showCallButtons: true,
+        showFriendCTA: true,
+        duration: 240,
+        callLines: [
+            { name: 'iCall (India)', number: '9152987821', tel: '9152987821' },
+            { name: 'Vandrevala (India)', number: '1860-2662-345', tel: '18602662345' },
+            { name: 'AASRA (India)', number: '9820466726', tel: '9820466726' },
+            { name: '988 Suicide & Crisis (US)', number: '988', tel: '988' },
+            { name: 'Samaritans (UK)', number: '116 123', tel: '116123' }
+        ],
+        prompts: [
+            'You reached out. That took courage. Please stay here with me for a moment.',
+            'You are not alone in this. Right now, the most important thing is to talk to a human who can stay with you. The numbers above are free, confidential, and answer 24/7. Tap any of them now — iCall 9152987821, Vandrevala 1860-2662-345, AASRA 9820466726, US 988, UK Samaritans 116 123.',
+            'If calling feels too hard, the AI Friend button below will open a chat right now. You do not have to explain everything. You can just say "I am not okay."',
+            'While you decide, let us do one slow breath together. Breathe in gently through your nose for 4. 1. 2. 3. 4.',
+            'Hold for 4. 1. 2. 3. 4.',
+            'Out slowly through your mouth for 6. 1. 2. 3. 4. 5. 6.',
+            'One more. In for 4. Hold for 4. Out for 6. Your body is still here. Your breath is still here.',
+            'Is there one person — a friend, a sibling, a neighbor, a teacher — who you could text right now, even just the word "hi"? You do not have to be alone tonight.',
+            'These feelings are real, but they are not the whole truth of you, and they are not permanent. Please reach out using one of the buttons above. You are worth that call.'
+        ]
+    },
+    numb: {
+        title: 'Come back, gently',
+        bg: 'linear-gradient(160deg, #3A506B 0%, #1C2541 100%)',
+        ambient: 'ocean',
+        duration: 180,
+        prompts: [
+            'Feeling numb or far away is your mind protecting you. You are safe. We will come back slowly, together.',
+            'Look around the room. Name five things you can see. A wall. A light. Your hands. Take your time — say each one out loud or in your head.',
+            'Now four things you can hear. Maybe the hum of a fan, a distant voice, your own breath. Just notice four sounds.',
+            'Three things you can touch. Press your fingertips against your leg, the chair, the floor. Feel the texture. Three different sensations.',
+            'Two things you can smell. Breathe in slowly through your nose. Even faint scents count — fabric, air, skin.',
+            'One thing you can taste. Take a small sip of water if you have it, or simply notice the taste already in your mouth.',
+            'Now hum any single note, low and gentle, for ten full seconds. The vibration gently tones your vagus nerve and tells your body it is safe.',
+            'You came back. Your body is here. Your breath is here. You are here. Well done.'
+        ]
     }
 };
 
 /* State */
-var running = false, promptIdx = 0, currentEmo = null, ttsEnabled = true;
+var running = false, promptIdx = 0, currentEmo = null, ttsEnabled = true, originatingEl = null;
 
 /* Audio (compact) */
 var audioCtx=null,ambientGain=null,ambientChannel=null,ambientBufferCache={},CROSSFADE=4;
 function initAC(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();}
 function bell(hz){initAC();var t=audioCtx.currentTime,b=hz||528;[[b,0.25,3.5],[b*2,0.08,2.6],[b*3,0.03,1.8],[b*1.5,0.05,2.2]].forEach(function(h){var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.setValueAtTime(h[0],t);g.gain.setValueAtTime(h[1],t);g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+h[2]);});}
-async function loadBuf(type){if(ambientBufferCache[type])return ambientBufferCache[type];try{var r=await fetch('/audio/'+type+'.wav');var ab=await r.arrayBuffer();var d=await audioCtx.decodeAudioData(ab);ambientBufferCache[type]=d;return d;}catch(e){return null;}}
+async function loadBuf(type){if(ambientBufferCache[type])return ambientBufferCache[type];try{var r=await fetch('/audio/'+type+'.mp3');var ab=await r.arrayBuffer();var d=await audioCtx.decodeAudioData(ab);ambientBufferCache[type]=d;return d;}catch(e){return null;}}
 function startCrossfade(ch,buf,off){var src=audioCtx.createBufferSource();src.buffer=buf;var fg=audioCtx.createGain();fg.gain.setValueAtTime(0,audioCtx.currentTime);src.connect(fg);fg.connect(ch.gain);var dur=buf.duration,ft=Math.min(CROSSFADE,dur*0.4),now=audioCtx.currentTime;src.start(now,off||0);fg.gain.linearRampToValueAtTime(1,now+ft);var fos=now+(dur-(off||0)-ft);if(fos>now+ft){fg.gain.setValueAtTime(1,fos);fg.gain.linearRampToValueAtTime(0,fos+ft);}var nd=(dur-(off||0)-ft)*1000;if(nd<500)nd=500;var timer=setTimeout(function(){if(ambientChannel&&ambientChannel.active)startCrossfade(ch,buf,0);},nd);src.onended=function(){try{fg.disconnect();}catch(e){}};ch.sources.push({src:src,gain:fg,timer:timer});while(ch.sources.length>3){var old=ch.sources.shift();clearTimeout(old.timer);try{old.src.stop();}catch(e){}try{old.gain.disconnect();}catch(e){}}}
 async function startAmbient(type){initAC();killAmbient();if(type==='silence')return;var buf=await loadBuf(type);if(!buf)return;ambientGain=audioCtx.createGain();ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);ambientGain.gain.linearRampToValueAtTime(0.15,audioCtx.currentTime+2);ambientGain.connect(audioCtx.destination);ambientChannel={gain:ambientGain,sources:[],active:true};startCrossfade(ambientChannel,buf,0);setTimeout(function(){if(ambientChannel&&ambientChannel.active)startCrossfade(ambientChannel,buf,0);},(buf.duration/2)*1000);}
 function killAmbient(){if(ambientChannel){ambientChannel.active=false;try{ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value,audioCtx.currentTime);ambientChannel.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.5);var ch=ambientChannel;setTimeout(function(){ch.sources.forEach(function(s){clearTimeout(s.timer);try{s.src.stop();}catch(e){}try{s.gain.disconnect();}catch(e){}});try{ch.gain.disconnect();}catch(e){}},600);}catch(e){}ambientChannel=null;ambientGain=null;}}
@@ -307,9 +400,12 @@ tts.init();
 document.getElementById('emoGrid').addEventListener('click', function(e){
     var card = e.target.closest('.emo-card'); if(!card) return;
     var emo = card.dataset.emo;
+    originatingEl = card;
     if(emo === 'lonely'){ window.location.href='/friend.html'; return; }
     openSession(emo);
 });
+
+function clearChildren(el){ while(el && el.firstChild){ el.removeChild(el.firstChild); } }
 
 function openSession(emo){
     var data = INTERVENTIONS[emo]; if(!data) return;
@@ -319,9 +415,50 @@ function openSession(emo){
     document.getElementById('soPrompt').textContent = 'Tap play when you are ready.';
     document.getElementById('soIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
     document.getElementById('soDone').classList.remove('visible');
+
+    // Crisis call buttons
+    var callsEl = document.getElementById('soCalls');
+    clearChildren(callsEl);
+    callsEl.classList.remove('visible');
+    if(data.showCallButtons && Array.isArray(data.callLines)){
+        var labelEl = document.createElement('div');
+        labelEl.className = 'so-calls-label';
+        labelEl.textContent = 'Talk to a human now';
+        callsEl.appendChild(labelEl);
+        data.callLines.forEach(function(line){
+            var a = document.createElement('a');
+            a.className = 'so-call-btn';
+            a.href = 'tel:' + line.tel;
+            a.setAttribute('aria-label', 'Call ' + line.name + ' at ' + line.number);
+            var nameSpan = document.createElement('span');
+            nameSpan.className = 'so-call-name';
+            nameSpan.textContent = line.name;
+            var numSpan = document.createElement('span');
+            numSpan.className = 'so-call-num';
+            numSpan.textContent = line.number;
+            a.appendChild(nameSpan);
+            a.appendChild(numSpan);
+            callsEl.appendChild(a);
+        });
+        callsEl.classList.add('visible');
+    }
+
+    // AI Friend CTA
+    var friendCTA = document.getElementById('soFriendCTA');
+    if(data.showFriendCTA){ friendCTA.classList.add('visible'); }
+    else { friendCTA.classList.remove('visible'); }
+
     spawnParticles();
     document.getElementById('sessionOverlay').classList.add('active');
     document.body.style.overflow = 'hidden';
+
+    // Accessibility: hide page content, focus the back button
+    var sosPage = document.querySelector('.sos-page');
+    if(sosPage) sosPage.setAttribute('aria-hidden','true');
+    setTimeout(function(){
+        var backBtn = document.getElementById('soBack');
+        if(backBtn) backBtn.focus();
+    }, 0);
 }
 
 function spawnParticles(){
@@ -343,14 +480,30 @@ function closeSession(){
     running = false; tts.stop(); killAmbient();
     document.getElementById('sessionOverlay').classList.remove('active');
     document.body.style.overflow = '';
+
+    // Accessibility: restore page visibility and focus
+    var sosPage = document.querySelector('.sos-page');
+    if(sosPage) sosPage.removeAttribute('aria-hidden');
+    if(originatingEl && typeof originatingEl.focus === 'function'){
+        try { originatingEl.focus(); } catch(e){}
+    }
 }
 
 document.getElementById('soBack').addEventListener('click', closeSession);
 
+// Escape key closes the overlay when active
+document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && document.getElementById('sessionOverlay').classList.contains('active')){
+        closeSession();
+    }
+});
+
 document.getElementById('soPlay').addEventListener('click', function(){
+    var playBtn = document.getElementById('soPlay');
     if(!running){
         running = true; promptIdx = 0;
         document.getElementById('soIcon').innerHTML = '<line x1="10" y1="4" x2="10" y2="20"/><line x1="14" y1="4" x2="14" y2="20"/>';
+        playBtn.setAttribute('aria-label', 'Pause session');
         bell(528);
         var data = INTERVENTIONS[currentEmo];
         startAmbient(data.ambient);
@@ -358,6 +511,7 @@ document.getElementById('soPlay').addEventListener('click', function(){
     } else {
         running = false; tts.stop();
         document.getElementById('soIcon').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+        playBtn.setAttribute('aria-label', 'Play session');
     }
 });
 

@@ -29,7 +29,7 @@
         .daily-label svg { width: 14px; height: 14px; }
         .daily-mark { font-family: 'DM Serif Display', serif; font-size: 3.5rem; color: rgba(45,106,79,0.15); line-height: 1; margin-bottom: 0.2rem; }
         .daily-en { font-family: 'DM Serif Display', serif; font-style: italic; font-size: 1.3rem; color: #1D1D1F; line-height: 1.5; margin-bottom: 0.85rem; max-width: 540px; margin-left: auto; margin-right: auto; }
-        .daily-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.85rem; color: #AEAEB2; margin-bottom: 0.6rem; line-height: 1.6; }
+        .daily-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.85rem; color: var(--color-text-tert); margin-bottom: 0.6rem; line-height: 1.6; }
         .daily-author { font-size: 0.8rem; color: #86868B; font-weight: 500; margin-bottom: 1.25rem; }
         .daily-actions { display: flex; align-items: center; justify-content: center; gap: 0.6rem; flex-wrap: wrap; }
         .daily-btn {
@@ -56,13 +56,13 @@
         /* ===== SEARCH ===== */
         .search-section { max-width: 760px; margin: 0 auto; padding: 0.75rem 1.5rem 0.75rem; }
         .search-wrap { position: relative; }
-        .search-wrap svg { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: #AEAEB2; pointer-events: none; }
+        .search-wrap svg { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 18px; height: 18px; color: var(--color-text-tert); pointer-events: none; }
         .search-input {
             width: 100%; padding: 0.7rem 1rem 0.7rem 2.75rem; border-radius: 10px;
             border: 1px solid rgba(0,0,0,0.08); background: #FFFFFF; color: #1D1D1F;
             font-size: 0.88rem; font-family: -apple-system, 'Inter', sans-serif; outline: none; transition: all 0.25s;
         }
-        .search-input::placeholder { color: #AEAEB2; }
+        .search-input::placeholder { color: var(--color-text-tert); }
         .search-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.08); }
 
         /* ===== FILTER PILLS ===== */
@@ -96,9 +96,9 @@
         .quote-mark { font-family: 'DM Serif Display', serif; font-size: 2.2rem; line-height: 1; color: rgba(45,106,79,0.2); margin-bottom: 0.2rem; }
         .quote-en { font-family: 'DM Serif Display', serif; font-size: 1.02rem; color: #1D1D1F; line-height: 1.55; margin-bottom: 0.75rem; }
         .quote-hi-wrap { border-left: 2px solid rgba(45,106,79,0.2); padding-left: 0.85rem; margin-bottom: 0.75rem; }
-        .quote-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.82rem; color: #AEAEB2; line-height: 1.65; }
+        .quote-hi { font-family: 'Noto Sans Devanagari', sans-serif; font-size: 0.82rem; color: var(--color-text-tert); line-height: 1.65; }
         .quote-author { font-size: 0.78rem; color: #86868B; font-weight: 500; margin-bottom: 0.65rem; display: flex; align-items: center; gap: 0.35rem; }
-        .quote-author::before { content: ''; width: 12px; height: 1px; background: #AEAEB2; }
+        .quote-author::before { content: ''; width: 12px; height: 1px; background: var(--color-text-tert); }
 
         .quote-footer { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; }
         .quote-tags { display: flex; flex-wrap: wrap; gap: 0.25rem; }
@@ -121,10 +121,10 @@
         /* ===== NO RESULTS ===== */
         .no-results { text-align: center; padding: 4rem 1rem; grid-column: 1 / -1; display: none; }
         .no-results.show { display: block; }
-        .no-results-text { font-size: 0.95rem; color: #AEAEB2; }
+        .no-results-text { font-size: 0.95rem; color: var(--color-text-tert); }
 
         /* ===== COUNT ===== */
-        .quote-count { text-align: center; padding: 0.25rem 1.5rem 0.75rem; font-size: 0.73rem; color: #AEAEB2; }
+        .quote-count { text-align: center; padding: 0.25rem 1.5rem 0.75rem; font-size: 0.73rem; color: var(--color-text-tert); }
 
         /* ===== CANVAS OVERLAY ===== */
         .share-overlay {
@@ -162,6 +162,7 @@
     <nav class="bottom-nav" aria-label="Main navigation" role="navigation">
         <a href="/" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg><span>Home</span></a>
         <a href="/explore.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg><span>Explore</span></a>
+        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg><span>SOS</span></a>
         <a href="/meditate.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg><span>Meditate</span></a>
         <a href="/friend.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg><span>AI Friend</span></a>
         <a href="/you.html" class="nav-item"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg><span>You</span></a>
@@ -178,7 +179,7 @@
                 </div>
                 <div class="daily-mark">&ldquo;</div>
                 <p class="daily-en" id="dailyEN"></p>
-                <p class="daily-hi" id="dailyHI"></p>
+                <p class="daily-hi" id="dailyHI" lang="hi"></p>
                 <p class="daily-author" id="dailyAuthor"></p>
                 <div class="daily-actions">
                     <button class="daily-btn" id="dailyRefresh"><svg fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg> Another</button>

@@ -122,9 +122,13 @@
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
         <span>Home</span>
     </a>
-    <a href="/explore.html" class="nav-item active">
+    <a href="/explore.html" class="nav-item active" aria-current="page">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
         <span>Explore</span>
+    </a>
+    <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <span>SOS</span>
     </a>
     <a href="/breathe.html" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
@@ -223,6 +227,7 @@
     <button class="comp-finish" id="compFinish" style="margin-top:20px">Done</button>
 </div>
 
+<script src="/js/sukoon-engine.js"></script>
 <script>
 (function(){
 'use strict';
@@ -355,7 +360,7 @@ var CIRC = 2 * Math.PI * 80;
 var audioCtx=null,ambientGain=null,ambientChannel=null,ambientBufferCache={},CROSSFADE=4;
 function initAC(){ if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)(); if(audioCtx.state==='suspended')audioCtx.resume(); }
 function bell(hz){ initAC();var t=audioCtx.currentTime,base=hz||528;[[base,0.25,3.5],[base*2,0.08,2.6],[base*3,0.03,1.8],[base*1.5,0.05,2.2]].forEach(function(h){var o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type='sine';o.frequency.setValueAtTime(h[0],t);g.gain.setValueAtTime(h[1],t);g.gain.exponentialRampToValueAtTime(0.0001,t+h[2]);o.connect(g);g.connect(audioCtx.destination);o.start(t);o.stop(t+h[2]);}); }
-async function loadBuf(type){ if(ambientBufferCache[type])return ambientBufferCache[type]; try{var r=await fetch('/audio/'+type+'.wav');var ab=await r.arrayBuffer();var d=await audioCtx.decodeAudioData(ab);ambientBufferCache[type]=d;return d;}catch(e){return null;} }
+async function loadBuf(type){ if(ambientBufferCache[type])return ambientBufferCache[type]; try{var r=await fetch('/audio/'+type+'.mp3');var ab=await r.arrayBuffer();var d=await audioCtx.decodeAudioData(ab);ambientBufferCache[type]=d;return d;}catch(e){return null;} }
 function startCrossfade(ch,buf,off){var src=audioCtx.createBufferSource();src.buffer=buf;var fg=audioCtx.createGain();fg.gain.setValueAtTime(0,audioCtx.currentTime);src.connect(fg);fg.connect(ch.gain);var dur=buf.duration,ft=Math.min(CROSSFADE,dur*0.4),now=audioCtx.currentTime;src.start(now,off||0);fg.gain.linearRampToValueAtTime(1,now+ft);var fos=now+(dur-(off||0)-ft);if(fos>now+ft){fg.gain.setValueAtTime(1,fos);fg.gain.linearRampToValueAtTime(0,fos+ft);}var nd=(dur-(off||0)-ft)*1000;if(nd<500)nd=500;var timer=setTimeout(function(){if(ambientChannel&&ambientChannel.active)startCrossfade(ch,buf,0);},nd);src.onended=function(){try{fg.disconnect();}catch(e){}};ch.sources.push({src:src,gain:fg,timer:timer});while(ch.sources.length>3){var old=ch.sources.shift();clearTimeout(old.timer);try{old.src.stop();}catch(e){}try{old.gain.disconnect();}catch(e){}}}
 async function startAmbient(type){initAC();killAmbient();if(type==='silence')return;var buf=await loadBuf(type);if(!buf)return;ambientGain=audioCtx.createGain();ambientGain.gain.setValueAtTime(0,audioCtx.currentTime);ambientGain.gain.linearRampToValueAtTime(0.15,audioCtx.currentTime+2);ambientGain.connect(audioCtx.destination);ambientChannel={gain:ambientGain,sources:[],active:true};startCrossfade(ambientChannel,buf,0);setTimeout(function(){if(ambientChannel&&ambientChannel.active)startCrossfade(ambientChannel,buf,0);},(buf.duration/2)*1000);}
 function killAmbient(){if(ambientChannel){ambientChannel.active=false;try{ambientChannel.gain.gain.cancelScheduledValues(audioCtx.currentTime);ambientChannel.gain.gain.setValueAtTime(ambientChannel.gain.gain.value,audioCtx.currentTime);ambientChannel.gain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+0.5);var ch=ambientChannel;setTimeout(function(){ch.sources.forEach(function(s){clearTimeout(s.timer);try{s.src.stop();}catch(e){}try{s.gain.disconnect();}catch(e){}});try{ch.gain.disconnect();}catch(e){}},600);}catch(e){}ambientChannel=null;ambientGain=null;}}
@@ -383,7 +388,16 @@ document.getElementById('dayBadge').textContent = DAYS[dayIdx];
 document.getElementById('dayIcon').innerHTML = DAY_ICONS[dayIdx];
 
 // Streak
-var streakData = JSON.parse(localStorage.getItem('sukoon_daily_streak')||'{"count":0,"last":""}');
+var streakData;
+try {
+    streakData = JSON.parse(localStorage.getItem('sukoon_daily_streak')||'{"count":0,"last":""}');
+    if (!streakData || typeof streakData !== 'object') throw new Error('bad shape');
+    // Normalize: engine writes `lastDate` (ISO YYYY-MM-DD), legacy used `last`
+    streakData.last = streakData.lastDate || streakData.last || '';
+} catch(e) {
+    streakData = {count:0, last:''};
+    try { localStorage.removeItem('sukoon_daily_streak'); } catch(_) {}
+}
 var yesterday = new Date(today); yesterday.setDate(yesterday.getDate()-1);
 var yk = yesterday.toISOString().slice(0,10);
 if(streakData.last===todayKey){ /* already done today */ }
@@ -528,14 +542,25 @@ document.getElementById('reflectDone').addEventListener('click', function(){
    ================================================================ */
 function finishDaily(){
     document.getElementById('compMinutes').textContent='10';
-    // Update streak
-    streakData.count = (streakData.last===yk||streakData.last===todayKey) ? streakData.count+1 : 1;
-    if(streakData.last===todayKey) streakData.count = Math.max(streakData.count,1); // don't double-count
-    streakData.last=todayKey;
-    localStorage.setItem('sukoon_daily_streak',JSON.stringify(streakData));
+
+    // Track via engine — this is the single source of truth for streak + daily counters
+    if(window.sukoon) sukoon.track('daily', 10, 'Daily Sukoon — '+PRACTICES[dayIdx].title);
+
+    // Re-read streak from engine for UI display (engine writes ISO YYYY-MM-DD now)
+    try {
+        if (window.sukoon && typeof window.sukoon.streak === 'function') {
+            var engineStreak = window.sukoon.streak();
+            streakData.count = engineStreak.count || 0;
+            streakData.last = todayKey;
+        } else {
+            streakData.count = (streakData.last===yk||streakData.last===todayKey) ? streakData.count+1 : 1;
+            if(streakData.last===todayKey) streakData.count = Math.max(streakData.count,1);
+            streakData.last=todayKey;
+        }
+    } catch(e) {}
     document.getElementById('compStreak').textContent=streakData.count;
 
-    // Log activity
+    // Log activity (legacy keys kept in sync for older consumers; engine handles canonical state)
     try{
         var log=JSON.parse(localStorage.getItem('sukoon_activity_log')||'[]');
         log.unshift({type:'meditation',text:'Daily Sukoon — '+PRACTICES[dayIdx].title+' (10 min)',minutes:10,timestamp:new Date().toISOString()});
@@ -545,12 +570,7 @@ function finishDaily(){
         stats.totalMinutes=(stats.totalMinutes||0)+10;
         stats.totalSessions=(stats.totalSessions||0)+1;
         localStorage.setItem('sukoon_progress_stats',JSON.stringify(stats));
-        var dc=parseInt(localStorage.getItem('sukoon_daily_'+todayKey)||'0',10)+1;
-        localStorage.setItem('sukoon_daily_'+todayKey,String(dc));
     }catch(e){}
-
-    // Track via engine
-    if(window.sukoon) sukoon.track('daily', 10, 'Daily Sukoon — '+PRACTICES[dayIdx].title);
 }
 
 // Post mood
@@ -574,7 +594,6 @@ document.getElementById('compFinish').addEventListener('click', function(){
 
 })();
 </script>
-    <script src="/js/sukoon-engine.js"></script>
     <script>if('serviceWorker' in navigator)navigator.serviceWorker.register('/sw.js');</script>
     <script src="/js/shell.js"></script>
 </body>

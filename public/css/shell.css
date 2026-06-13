@@ -10,7 +10,7 @@
     --color-bg:        #FAFAF7;
     --color-text:      #1D1D1F;
     --color-text-sec:  #6E6E73;
-    --color-text-tert: #AEAEB2;
+    --color-text-tert: #6E6E73;
     --color-accent:    #2D6A4F;
     --color-accent-bg: rgba(45,106,79,0.06);
     --color-accent-border: rgba(45,106,79,0.15);
@@ -177,6 +177,12 @@ button { font-family: var(--font-body); }
 
 .bottom-nav a:hover { color: #86868B; }
 .bottom-nav a.active { color: var(--color-accent); }
+
+/* SOS shortcut — urgent accent */
+.bottom-nav a.nav-sos { color: #DC2626; }
+.bottom-nav a.nav-sos:hover { color: #B91C1C; }
+.bottom-nav a.nav-sos.active { color: #B91C1C; }
+.bottom-nav a.nav-sos svg { stroke: currentColor; }
 
 .bottom-nav svg {
     width: 22px; height: 22px;

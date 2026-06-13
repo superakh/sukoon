@@ -57,7 +57,7 @@
             color: #FFFFFF; font-weight: 600;
         }
         .mode-sub {
-            font-size: 0.72rem; color: #AEAEB2; margin-bottom: 1.25rem;
+            font-size: 0.72rem; color: var(--color-text-tert); margin-bottom: 1.25rem;
         }
         .mode-sub span { color: #86868B; font-weight: 500; }
 
@@ -80,7 +80,7 @@
 
         /* Session counter */
         .session-info {
-            font-size: 0.72rem; color: #AEAEB2;
+            font-size: 0.72rem; color: var(--color-text-tert);
             font-weight: 500; margin-bottom: 1.5rem;
         }
         .session-info span.accent { color: #2D6A4F; font-weight: 600; }
@@ -121,7 +121,7 @@
             letter-spacing: -0.04em; line-height: 1;
         }
         .timer-phase {
-            font-size: 0.7rem; color: #AEAEB2;
+            font-size: 0.7rem; color: var(--color-text-tert);
             font-weight: 600; margin-top: 0.5rem;
             text-transform: uppercase; letter-spacing: 0.12em;
         }
@@ -155,7 +155,7 @@
 
         /* ===================== AMBIENT SOUND CARDS ===================== */
         .snd-section-title {
-            font-size: 0.68rem; color: #AEAEB2; font-weight: 600;
+            font-size: 0.68rem; color: var(--color-text-tert); font-weight: 600;
             text-transform: uppercase; letter-spacing: 0.1em;
             margin-bottom: 0.75rem;
         }
@@ -167,7 +167,7 @@
             width: 72px; padding: 0.6rem 0.5rem; border-radius: 10px;
             background: #FFFFFF;
             border: 1px solid rgba(0,0,0,0.06);
-            color: #AEAEB2; cursor: pointer;
+            color: var(--color-text-tert); cursor: pointer;
             transition: all 0.2s;
             display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
             font-family: -apple-system, 'Inter', sans-serif;
@@ -242,7 +242,7 @@
             letter-spacing: -0.03em; margin-bottom: 1.5rem;
         }
         .break-breathe {
-            font-size: 0.72rem; color: #AEAEB2;
+            font-size: 0.72rem; color: var(--color-text-tert);
             font-weight: 600; text-transform: uppercase;
             letter-spacing: 0.12em; margin-bottom: 0.5rem;
         }
@@ -297,7 +297,7 @@
             font-variant-numeric: tabular-nums; line-height: 1.2;
         }
         .stat-lbl {
-            font-size: 0.6rem; color: #AEAEB2; text-transform: uppercase;
+            font-size: 0.6rem; color: var(--color-text-tert); text-transform: uppercase;
             letter-spacing: 0.08em; font-weight: 600; margin-top: 0.25rem;
             text-align: center;
         }
@@ -330,6 +330,10 @@
     <a href="/explore.html" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
         <span>Explore</span>
+    </a>
+    <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <span>SOS</span>
     </a>
     <a href="/breathe.html" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
@@ -473,7 +477,7 @@
 <!-- ===================== BREAK OVERLAY ===================== -->
 <div class="break-overlay" id="breakOverlay">
     <div class="break-msg-en" id="breakMsgEn">Take a break. Rest your eyes.</div>
-    <div class="break-msg-hi" id="breakMsgHi"></div>
+    <div class="break-msg-hi" id="breakMsgHi" lang="hi"></div>
     <div class="break-timer" id="breakTimer">5:00</div>
     <div class="break-breathe">Breathe with the circle</div>
     <div class="breathe-circle"></div>
@@ -710,7 +714,7 @@
     function playAmbient(type) {
         initAC(); killAmbient();
         if (!type) return;
-        var fileMap = { rain: '/audio/rain.wav', ocean: '/audio/ocean.wav', fire: '/audio/fire.wav', lofi: '/audio/creek.wav' };
+        var fileMap = { rain: '/audio/rain.mp3', ocean: '/audio/ocean.mp3', fire: '/audio/fire.mp3', lofi: '/audio/creek.mp3' };
         var file = fileMap[type];
         if (file) {
             fetch(file).then(function(r) { return r.arrayBuffer(); }).then(function(buf) {

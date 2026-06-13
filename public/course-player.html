@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Session - Sukoon</title>
     <meta name="description" content="Guided meditation courses with voice narration. Follow structured programs for mindfulness, sleep, and emotional wellness. Free on Sukoon.">
     <meta name="theme-color" content="#2D6A4F">
@@ -516,7 +516,7 @@
 <div class="phase mood-screen active" id="phaseMoodPre">
     <a class="back-link" href="/courses.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>Back to courses</a>
     <div class="mood-title">How are you feeling?</div>
-    <div class="mood-subtitle">अभी आप कैसा महसूस कर रहे हैं?</div>
+    <div class="mood-subtitle" lang="hi">अभी आप कैसा महसूस कर रहे हैं?</div>
     <div class="mood-faces" id="moodPreFaces">
         <button class="mood-btn" data-mood="1">
             <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M11 25c2-3 10-3 14 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 18 25)"/></svg>
@@ -661,7 +661,7 @@
 <!-- PHASE 4: Post Mood -->
 <div class="phase mood-screen" id="phaseMoodPost">
     <div class="mood-title">How do you feel now?</div>
-    <div class="mood-subtitle">अब आप कैसा महसूस कर रहे हैं?</div>
+    <div class="mood-subtitle" lang="hi">अब आप कैसा महसूस कर रहे हैं?</div>
     <div class="mood-faces" id="moodPostFaces">
         <button class="mood-btn" data-mood="1">
             <svg viewBox="0 0 36 36"><circle cx="18" cy="18" r="17" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1"/><circle cx="12" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><circle cx="24" cy="14" r="1.5" fill="rgba(255,255,255,0.7)"/><path d="M11 25c2-3 10-3 14 0" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 18 25)"/></svg>
@@ -895,7 +895,7 @@ function playTone(freq, dur){
 
 async function loadBuf(type){
     if(ambientBufferCache[type]) return ambientBufferCache[type];
-    try{ var r=await fetch('/audio/'+type+'.wav'); var ab=await r.arrayBuffer();
+    try{ var r=await fetch('/audio/'+type+'.mp3'); var ab=await r.arrayBuffer();
     var d=await audioCtx.decodeAudioData(ab); ambientBufferCache[type]=d; return d; }catch(e){ return null; }
 }
 function startCrossfade(ch, buf, offset){
@@ -1304,10 +1304,6 @@ function endSession(){
         pStats.currentStreak = streakData.count;
         if (!pStats.maxStreak || streakData.count > pStats.maxStreak) pStats.maxStreak = streakData.count;
         localStorage.setItem('sukoon_progress_stats', JSON.stringify(pStats));
-
-        var dailyKey = 'sukoon_daily_' + today;
-        var dailyCount = parseInt(localStorage.getItem(dailyKey) || '0', 10) + 1;
-        localStorage.setItem(dailyKey, String(dailyCount));
     } catch(e) {}
 
     // Save journal if journaling

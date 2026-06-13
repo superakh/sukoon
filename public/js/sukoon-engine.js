@@ -20,6 +20,17 @@
     var STREAK_KEY = 'sukoon_daily_streak';
     var MOOD_KEY = 'sukoon_last_mood';
 
+    /* ====== DATE HELPERS ====== */
+    function isoToday() {
+        var d = new Date();
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+    function isoOffset(days) {
+        var d = new Date();
+        d.setDate(d.getDate() + days);
+        return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    }
+
     /* ====== LEVELS ====== */
     var LEVELS = [
         { name: 'Seedling', emoji: '\uD83C\uDF31', min: 0 },    // 0 min
@@ -37,6 +48,8 @@
 
     function load() {
         try {
+            // Migrate streak schema first so downstream reads see ISO lastDate
+            runStreakMigration();
             var raw = localStorage.getItem(STORAGE_KEY);
             if (raw) {
                 var parsed = JSON.parse(raw);
@@ -45,6 +58,28 @@
             }
             // Migrate from old scattered localStorage keys
             migrateOldData();
+        } catch (e) { /* ignore */ }
+    }
+
+    /**
+     * Migrate STREAK_KEY values whose lastDate was previously stored as a
+     * locale-specific weekday string (e.g. "Fri Jun 13 2026") to the new
+     * ISO YYYY-MM-DD format. Count is preserved; lastDate is cleared so the
+     * next track() resets the cadence cleanly without a false break.
+     */
+    function runStreakMigration() {
+        try {
+            var raw = localStorage.getItem(STREAK_KEY);
+            if (!raw) return;
+            var s = JSON.parse(raw);
+            var ld = s && s.lastDate ? String(s.lastDate) : '';
+            if (!ld) return;
+            // ISO YYYY-MM-DD: exactly 10 chars, only digits and hyphens.
+            var isIso = ld.length === 10 && /^\d{4}-\d{2}-\d{2}$/.test(ld);
+            if (!isIso) {
+                s.lastDate = '';
+                localStorage.setItem(STREAK_KEY, JSON.stringify(s));
+            }
         } catch (e) { /* ignore */ }
     }
 
@@ -111,14 +146,14 @@
         // Update streak
         updateStreak();
 
-        // Also write to old keys for backward compatibility with existing pages
+        // Also write the daily counter as a BARE INTEGER under the ISO date key.
+        // This is the unified schema — all other pages have their direct writes
+        // removed so the engine is the sole writer.
         try {
-            var today = new Date().toDateString();
-            var dailyKey = 'sukoon_daily_' + today.replace(/\s/g, '_');
-            var existing = JSON.parse(localStorage.getItem(dailyKey) || '{"minutes":0,"sessions":0}');
-            existing.minutes += session.minutes;
-            existing.sessions += 1;
-            localStorage.setItem(dailyKey, JSON.stringify(existing));
+            var dailyKey = 'sukoon_daily_' + isoToday();
+            var current = parseInt(localStorage.getItem(dailyKey) || '0', 10);
+            if (isNaN(current)) current = 0;
+            localStorage.setItem(dailyKey, String(current + 1));
         } catch (e) { /* ignore */ }
 
         save();
@@ -178,7 +213,7 @@
             var raw = localStorage.getItem(STREAK_KEY);
             if (!raw) return { count: 0, lastDate: '', isToday: false };
             var s = JSON.parse(raw);
-            var today = new Date().toDateString();
+            var today = isoToday();
             return {
                 count: s.count || 0,
                 lastDate: s.lastDate || '',
@@ -191,8 +226,8 @@
 
     function updateStreak() {
         try {
-            var today = new Date().toDateString();
-            var yesterday = new Date(Date.now() - 86400000).toDateString();
+            var today = isoToday();
+            var yesterday = isoOffset(-1);
             var raw = localStorage.getItem(STREAK_KEY);
             var s = raw ? JSON.parse(raw) : { count: 0, lastDate: '' };
 
@@ -522,14 +557,19 @@
         days = days || 7;
         var result = [];
 
+        // Helper: format an arbitrary Date into ISO YYYY-MM-DD (local time).
+        function toIso(d) {
+            return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        }
+
         for (var i = days - 1; i >= 0; i--) {
             var d = new Date();
             d.setDate(d.getDate() - i);
-            var dateStr = d.toDateString();
+            var dateStr = toIso(d);
             var dayMins = 0;
 
             data.sessions.forEach(function(s) {
-                if (new Date(s.date).toDateString() === dateStr) {
+                if (toIso(new Date(s.date)) === dateStr) {
                     dayMins += s.minutes || 0;
                 }
             });

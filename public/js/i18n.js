@@ -418,6 +418,9 @@
     // Persist
     try { localStorage.setItem('sukoon-lang', lang); } catch (e) { /* private mode */ }
 
+    // Reflect language on <html lang> for screen readers and CSS :lang() selectors
+    document.documentElement.lang = lang;
+
     // RTL handling
     var rtlLangs = ['ar', 'ur'];
     if (rtlLangs.indexOf(lang) !== -1) {

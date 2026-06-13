@@ -140,7 +140,7 @@
             display: flex; align-items: center; justify-content: space-between;
         }
         .story-duration {
-            font-size: 0.72rem; color: #AEAEB2; font-weight: 500;
+            font-size: 0.72rem; color: var(--color-text-tert); font-weight: 500;
             display: flex; align-items: center; gap: 0.3rem;
         }
         .story-duration svg { width: 13px; height: 13px; }
@@ -193,7 +193,7 @@
             font-family: -apple-system, 'Inter', sans-serif;
             outline: none; transition: border-color 0.2s;
         }
-        .ai-prompt-input::placeholder { color: #AEAEB2; }
+        .ai-prompt-input::placeholder { color: var(--color-text-tert); }
         .ai-prompt-input:focus { border-color: #2D6A4F; box-shadow: 0 0 0 3px rgba(45,106,79,0.08); }
         .genre-select {
             flex: 1; min-width: 140px;
@@ -302,7 +302,7 @@
             width: 0%; transition: width 0.5s ease;
         }
         .reader-progress-label {
-            font-size: 0.62rem; color: #AEAEB2;
+            font-size: 0.62rem; color: var(--color-text-tert);
             margin-top: 0.2rem; text-align: center;
         }
         .reader-close {
@@ -337,7 +337,7 @@
         .reader-text p.visible { opacity: 1; transform: translateY(0); }
         .reader-loading {
             text-align: center; padding: 4rem 0;
-            font-size: 0.92rem; color: #AEAEB2; display: none;
+            font-size: 0.92rem; color: var(--color-text-tert); display: none;
         }
         .reader-loading.show { display: block; }
         .reader-loading-dots::after {
@@ -358,7 +358,7 @@
         }
         .reader-controls-group { display: flex; align-items: center; gap: 0.5rem; }
         .reader-controls-label {
-            font-size: 0.62rem; color: #AEAEB2;
+            font-size: 0.62rem; color: var(--color-text-tert);
             text-transform: uppercase; letter-spacing: 0.08em;
             font-weight: 600; margin-right: 0.2rem;
         }
@@ -515,7 +515,7 @@
             background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.08); color: #86868B;
         }
         .sleep-timer-desc {
-            font-size: 0.72rem; color: #AEAEB2;
+            font-size: 0.72rem; color: var(--color-text-tert);
             margin-top: 0.6rem; line-height: 1.5;
         }
 
@@ -771,6 +771,10 @@
     <a href="/explore.html" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
         <span>Explore</span>
+    </a>
+    <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+        <span>SOS</span>
     </a>
     <a href="/breathe.html" class="nav-item">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
@@ -1482,10 +1486,10 @@
     var currentAmbient = 'silence';
 
     var ambientFiles = {
-        rain: '/audio/rain.wav',
-        ocean: '/audio/ocean.wav',
-        crickets: '/audio/crickets.wav',
-        wind: '/audio/wind.wav'
+        rain: '/audio/rain.mp3',
+        ocean: '/audio/ocean.mp3',
+        crickets: '/audio/crickets.mp3',
+        wind: '/audio/wind.mp3'
     };
 
     function initAudioCtx() {
@@ -1727,7 +1731,7 @@
             var text = data.reply || data.content || data.message || '';
             var paragraphs = text.split(/\n\n+/).filter(function(p) { return p.trim().length > 0; });
             if (paragraphs.length === 0) {
-                readerText.innerHTML = '<p class="visible" style="color:#AEAEB2;">Could not generate a story. Please try again.</p>';
+                readerText.innerHTML = '<p class="visible" style="color:var(--color-text-tert);">Could not generate a story. Please try again.</p>';
                 return;
             }
             totalParagraphs = paragraphs.length;

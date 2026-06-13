@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const compression = require('compression');
 const path = require('path');
 const chatRoute = require('./routes/chat');
 const translateRoute = require('./routes/translate');
@@ -8,9 +9,25 @@ const translateRoute = require('./routes/translate');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(compression());
 app.use(cors());
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.json({ limit: '128kb' }));
+
+// Static assets with sane Cache-Control:
+//   - audio, fonts, icons → 1 year immutable (filenames are stable today; revisit if we add hashing)
+//   - CSS/JS → 1 day (changes occasionally, but not per-request)
+//   - HTML → 60s (pages can change anytime; SW handles offline)
+app.use(express.static(path.join(__dirname, 'public'), {
+  setHeaders: (res, filePath) => {
+    if (/\.(wav|mp3|opus|ogg|svg|woff2?|png|jpg|jpeg|webp)$/i.test(filePath)) {
+      res.set('Cache-Control', 'public, max-age=31536000, immutable');
+    } else if (/\.(css|js)$/i.test(filePath)) {
+      res.set('Cache-Control', 'public, max-age=86400');
+    } else if (/\.html?$/i.test(filePath)) {
+      res.set('Cache-Control', 'public, max-age=60');
+    }
+  }
+}));
 
 // API routes
 app.use('/api/chat', chatRoute);

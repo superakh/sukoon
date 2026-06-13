@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>AI Friend - Sukoon</title>
     <meta name="description" content="A compassionate AI companion who listens without judgment. No records, no accounts, just a friend.">
     <meta name="theme-color" content="#2D6A4F">
@@ -330,11 +330,15 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
             <span>Explore</span>
         </a>
+        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>SOS</span>
+        </a>
         <a href="/breathe.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
             <span>Breathe</span>
         </a>
-        <a href="/friend.html" class="nav-item active">
+        <a href="/friend.html" class="nav-item active" aria-current="page">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             <span>AI Friend</span>
         </a>
@@ -350,7 +354,7 @@
         <!-- WELCOME STATE -->
         <div class="welcome-state" id="welcomeState">
             <h1 class="welcome-title">Sukoon</h1>
-            <p class="welcome-title-hi">&#2360;&#2369;&#2325;&#2370;&#2344; &#2360;&#2375; &#2348;&#2366;&#2340; &#2325;&#2352;&#2375;&#2306;</p>
+            <p class="welcome-title-hi" lang="hi">&#2360;&#2369;&#2325;&#2370;&#2344; &#2360;&#2375; &#2348;&#2366;&#2340; &#2325;&#2352;&#2375;&#2306;</p>
             <p class="welcome-subtitle">A companion for peace of mind. Share what you're feeling -- no judgement, no records.</p>
             <div class="starter-pills" id="starterPills">
                 <button class="starter-pill" data-msg="I can't sleep tonight">I can't sleep tonight</button>
@@ -362,8 +366,8 @@
         </div>
 
         <!-- MESSAGES AREA -->
-        <div class="chat-messages" id="chatMessages">
-            <div class="typing-indicator" id="typingIndicator">
+        <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-atomic="false" aria-label="Conversation with AI friend">
+            <div class="typing-indicator" id="typingIndicator" aria-live="polite" aria-label="AI friend is typing">
                 <div class="typing-dot"></div>
                 <div class="typing-dot"></div>
                 <div class="typing-dot"></div>

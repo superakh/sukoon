@@ -72,7 +72,7 @@
         .greeting-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
             font-size: 0.85rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 400;
         }
 
@@ -97,7 +97,7 @@
             font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 600;
             margin-bottom: 16px;
             display: flex;
@@ -124,7 +124,7 @@
         .daily-quote-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
             font-size: 0.88rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             line-height: 1.6;
             font-weight: 300;
             margin-bottom: 20px;
@@ -146,7 +146,7 @@
             font-size: 0.68rem;
             text-transform: uppercase;
             letter-spacing: 0.12em;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 600;
             margin-bottom: 16px;
             padding-left: 2px;
@@ -228,7 +228,7 @@
         .quick-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
             font-size: 0.75rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 400;
         }
 
@@ -253,7 +253,7 @@
         .mood-title-hindi {
             font-family: 'Noto Sans Devanagari', sans-serif;
             font-size: 0.8rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 400;
             margin-bottom: 24px;
         }
@@ -299,7 +299,7 @@
 
         .mood-btn-label {
             font-size: 0.65rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 500;
         }
 
@@ -455,7 +455,7 @@
 
         .continue-arrow {
             margin-left: auto;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
         }
 
         .continue-arrow svg {
@@ -526,7 +526,7 @@
 
         .progress-stat-label {
             font-size: 0.72rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 400;
         }
 
@@ -661,7 +661,7 @@
     </style>
 </head>
 <body>
-    <script>if(!localStorage.getItem('sukoon_onboarded'))window.location.replace('/onboarding.html');</script>
+    <script>try{if(!localStorage.getItem('sukoon_onboarded'))window.location.replace('/onboarding.html');}catch(e){/* Safari Private Browsing or storage disabled — treat as not onboarded but let page render */}</script>
 
     <!-- ==================== TOP HEADER ==================== -->
     <header class="top-header">
@@ -681,7 +681,7 @@
         <section class="greeting-section fade-section">
             <p class="greeting-time" id="greetingText">Good evening</p>
             <p class="greeting-sub" id="greetingSub">Wind down gently</p>
-            <p class="greeting-hindi" id="greetingHindi">धीरे-धीरे विश्राम करें</p>
+            <p class="greeting-hindi" id="greetingHindi" lang="hi">धीरे-धीरे विश्राम करें</p>
         </section>
 
         <!-- ==================== DAILY QUOTE CARD ==================== -->
@@ -692,7 +692,7 @@
                     Today's Reflection
                 </div>
                 <p class="daily-quote" id="dailyQuote">Peace comes from within. Do not seek it without.</p>
-                <p class="daily-quote-hindi" id="dailyQuoteHindi">शांति भीतर से आती है। इसे बाहर मत खोजो।</p>
+                <p class="daily-quote-hindi" id="dailyQuoteHindi" lang="hi">शांति भीतर से आती है। इसे बाहर मत खोजो।</p>
                 <div class="daily-prompt" id="dailyPrompt">What does inner peace mean to you today?</div>
             </div>
         </section>
@@ -710,7 +710,7 @@
                         </svg>
                     </div>
                     <div class="quick-title">Breathe</div>
-                    <div class="quick-hindi">साँस</div>
+                    <div class="quick-hindi" lang="hi">साँस</div>
                 </a>
                 <a href="/meditate.html" class="quick-card" data-feature="meditate">
                     <div class="quick-icon">
@@ -724,7 +724,7 @@
                         </svg>
                     </div>
                     <div class="quick-title">Meditate</div>
-                    <div class="quick-hindi">ध्यान</div>
+                    <div class="quick-hindi" lang="hi">ध्यान</div>
                 </a>
                 <a href="/sleep.html" class="quick-card" data-feature="sleep">
                     <div class="quick-icon">
@@ -735,7 +735,7 @@
                         </svg>
                     </div>
                     <div class="quick-title">Sleep</div>
-                    <div class="quick-hindi">नींद</div>
+                    <div class="quick-hindi" lang="hi">नींद</div>
                 </a>
                 <a href="/sos.html" class="quick-card sos-card" data-feature="sos">
                     <div class="quick-icon">
@@ -744,7 +744,7 @@
                         </svg>
                     </div>
                     <div class="quick-title" style="color: #DC2626;">SOS</div>
-                    <div class="quick-hindi" style="color: #AEAEB2;">मदद</div>
+                    <div class="quick-hindi" style="color: var(--color-text-tert);" lang="hi">मदद</div>
                 </a>
             </div>
         </section>
@@ -752,7 +752,7 @@
         <!-- ==================== MOOD CHECK-IN ==================== -->
         <section class="mood-section fade-section" id="moodSection">
             <h2 class="mood-title">How are you feeling?</h2>
-            <p class="mood-title-hindi">आप कैसा महसूस कर रहे हैं?</p>
+            <p class="mood-title-hindi" lang="hi">आप कैसा महसूस कर रहे हैं?</p>
             <div class="mood-faces" id="moodFaces">
                 <button class="mood-btn" data-mood="awful" aria-label="Awful">
                     <svg viewBox="0 0 48 48" fill="none">
@@ -949,7 +949,7 @@
     <!-- ==================== BOTTOM NAV ==================== -->
     <nav class="bottom-nav" id="bottomNav" aria-label="Main navigation" role="navigation">
         <div class="sidebar-brand" style="display:none;">Sukoon</div>
-        <a href="/" class="nav-item active">
+        <a href="/" class="nav-item active" aria-current="page">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
                 <polyline points="9 22 9 12 15 12 15 22"/>
@@ -962,6 +962,10 @@
                 <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
             </svg>
             <span>Explore</span>
+        </a>
+        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>SOS</span>
         </a>
         <a href="/breathe.html" class="nav-item">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -1093,8 +1097,12 @@
             btn.classList.add('selected');
 
             const mood = btn.getAttribute('data-mood');
-            localStorage.setItem('sukoon_mood_today', mood);
-            localStorage.setItem('sukoon_mood_today_date', todayKey);
+            try {
+                localStorage.setItem('sukoon_mood_today', mood);
+                localStorage.setItem('sukoon_mood_today_date', todayKey);
+            } catch(e) { /* storage may be disabled */ }
+            // Notify the engine so recommendations and mood-aware features stay in sync
+            try { if (window.sukoon && typeof window.sukoon.mood === 'function') window.sukoon.mood(mood); } catch(e) {}
 
             moodThanks.classList.add('visible');
         });
@@ -1210,7 +1218,7 @@
                     var log = window.sukoon.log || [];
                     var weekAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
                     weekCount = log.filter(function(s) {
-                        var t = s && s.timestamp ? new Date(s.timestamp).getTime() : 0;
+                        var t = s ? (s.timestamp ? new Date(s.timestamp).getTime() : (s.date ? new Date(s.date).getTime() : 0)) : 0;
                         return t >= weekAgo;
                     }).length;
                 }

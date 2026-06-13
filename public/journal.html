@@ -55,7 +55,7 @@
         }
         .page-header .subtitle-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.8rem; color: #AEAEB2; margin-top: 4px;
+            font-size: 0.8rem; color: var(--color-text-tert); margin-top: 4px;
         }
 
         /* ===================== MOOD SELECTOR ===================== */
@@ -66,7 +66,7 @@
         }
         .mood-label-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.78rem; color: #AEAEB2;
+            font-size: 0.78rem; color: var(--color-text-tert);
             text-align: center; margin-bottom: 20px;
         }
         .mood-row {
@@ -90,7 +90,7 @@
         }
         .mood-circle svg { width: 26px; height: 26px; }
         .mood-text {
-            font-size: 0.65rem; font-weight: 600; color: #AEAEB2;
+            font-size: 0.65rem; font-weight: 600; color: var(--color-text-tert);
             text-transform: uppercase; letter-spacing: 0.5px;
             transition: color 0.3s ease;
         }
@@ -122,7 +122,7 @@
             transition: border-color 0.3s ease, box-shadow 0.3s ease;
             line-height: 1.7;
         }
-        .journal-textarea::placeholder { color: #AEAEB2; }
+        .journal-textarea::placeholder { color: var(--color-text-tert); }
         .journal-textarea:focus {
             border-color: #2D6A4F;
             box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.1);
@@ -130,7 +130,7 @@
         }
         .char-count {
             text-align: right;
-            font-size: 0.72rem; color: #AEAEB2;
+            font-size: 0.72rem; color: var(--color-text-tert);
             margin-top: 8px;
         }
 
@@ -159,7 +159,7 @@
         }
         .btn-primary:hover { opacity: 0.85; }
         .btn-primary:disabled {
-            background: #AEAEB2;
+            background: var(--color-text-tert);
             color: rgba(255, 255, 255, 0.6);
             cursor: not-allowed;
         }
@@ -187,7 +187,7 @@
         }
         .section-subtitle-hi {
             font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.76rem; color: #AEAEB2;
+            font-size: 0.76rem; color: var(--color-text-tert);
         }
         .chart-header {
             display: flex; justify-content: space-between; align-items: center;
@@ -197,7 +197,7 @@
         .chart-legend { display: flex; gap: 10px; flex-wrap: wrap; }
         .legend-item {
             display: flex; align-items: center; gap: 4px;
-            font-size: 0.65rem; color: #AEAEB2;
+            font-size: 0.65rem; color: var(--color-text-tert);
         }
         .legend-dot { width: 7px; height: 7px; border-radius: 2px; }
         .chart-container {
@@ -225,14 +225,14 @@
         .chart-date-row { display: flex; gap: 3px; padding-top: 6px; }
         .chart-date {
             flex: 1; text-align: center;
-            font-size: 0.55rem; color: #AEAEB2;
+            font-size: 0.55rem; color: var(--color-text-tert);
         }
         .chart-date.today { color: #2D6A4F; font-weight: 700; }
         .chart-empty {
             text-align: center; padding: 36px 20px;
-            color: #AEAEB2; font-size: 0.85rem;
+            color: var(--color-text-tert); font-size: 0.85rem;
         }
-        .chart-empty svg { width: 40px; height: 40px; color: #AEAEB2; margin-bottom: 10px; display: block; margin-inline: auto; }
+        .chart-empty svg { width: 40px; height: 40px; color: var(--color-text-tert); margin-bottom: 10px; display: block; margin-inline: auto; }
 
         /* ===================== ENTRIES ===================== */
         .entries-card {
@@ -281,7 +281,7 @@
         .entry-mood-badge[data-mood="3"] { background: rgba(183, 228, 199, 0.3); color: #52B788; }
         .entry-mood-badge[data-mood="4"] { background: rgba(82, 183, 136, 0.15); color: #2D6A4F; }
         .entry-mood-badge[data-mood="5"] { background: rgba(45, 106, 79, 0.12); color: #1B4332; }
-        .entry-date { font-size: 0.72rem; color: #AEAEB2; }
+        .entry-date { font-size: 0.72rem; color: var(--color-text-tert); }
         .entry-text {
             font-size: 0.84rem; color: #86868B; line-height: 1.6;
             display: -webkit-box;
@@ -292,11 +292,11 @@
         }
         .entries-empty {
             padding: 36px 20px; text-align: center;
-            color: #AEAEB2; font-size: 0.84rem;
+            color: var(--color-text-tert); font-size: 0.84rem;
         }
         .entry-delete {
             background: none; border: none; cursor: pointer;
-            color: #AEAEB2; padding: 4px; border-radius: 6px;
+            color: var(--color-text-tert); padding: 4px; border-radius: 6px;
             transition: all 0.3s ease; margin-left: auto; display: flex;
         }
         .entry-delete:hover { color: #DC2626; background: rgba(220, 38, 38, 0.06); }
@@ -381,13 +381,13 @@
         <div class="page-header fade-in fade-in-d2">
             <h1 data-i18n="journal.title">How are you feeling?</h1>
             <p class="subtitle" data-i18n="journal.subtitle">Track your mood, write your thoughts. Your private space.</p>
-            <p class="subtitle-hi">&#2310;&#2346; &#2325;&#2376;&#2360;&#2366; &#2350;&#2361;&#2360;&#2370;&#2360; &#2325;&#2352; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306;?</p>
+            <p class="subtitle-hi" lang="hi">&#2310;&#2346; &#2325;&#2376;&#2360;&#2366; &#2350;&#2361;&#2360;&#2370;&#2360; &#2325;&#2352; &#2352;&#2361;&#2375; &#2361;&#2376;&#2306;?</p>
         </div>
 
         <!-- MOOD SELECTOR -->
         <div class="card fade-in fade-in-d3">
             <div class="mood-label" data-i18n="journal.how_feeling">Choose your mood</div>
-            <div class="mood-label-hi">&#2309;&#2346;&#2344;&#2366; &#2350;&#2370;&#2337; &#2330;&#2369;&#2344;&#2375;&#2306;</div>
+            <div class="mood-label-hi" lang="hi">&#2309;&#2346;&#2344;&#2366; &#2350;&#2370;&#2337; &#2330;&#2369;&#2344;&#2375;&#2306;</div>
             <div class="mood-row" id="moodRow">
                 <button class="mood-btn" data-mood="1" type="button" aria-label="Awful">
                     <div class="mood-circle">
@@ -474,7 +474,7 @@
             <h2 class="section-title" data-i18n="journal.history">Mood History</h2>
             <p class="section-subtitle">
                 <span data-i18n="journal.history_sub">Your 30-day emotional journey</span>
-                <br><span class="section-subtitle-hi">&#2310;&#2346;&#2325;&#2368; 30 &#2342;&#2367;&#2344;&#2379;&#2306; &#2325;&#2368; &#2349;&#2366;&#2357;&#2344;&#2366;&#2340;&#2381;&#2350;&#2325; &#2351;&#2366;&#2340;&#2381;&#2352;&#2366;</span>
+                <br><span class="section-subtitle-hi" lang="hi">&#2310;&#2346;&#2325;&#2368; 30 &#2342;&#2367;&#2344;&#2379;&#2306; &#2325;&#2368; &#2349;&#2366;&#2357;&#2344;&#2366;&#2340;&#2381;&#2350;&#2325; &#2351;&#2366;&#2340;&#2381;&#2352;&#2366;</span>
             </p>
             <div class="card" style="padding:20px 18px 14px;">
                 <div class="chart-header">
@@ -497,7 +497,7 @@
             <h2 class="section-title" data-i18n="journal.recent">Recent Entries</h2>
             <p class="section-subtitle">
                 <span data-i18n="journal.recent_sub">Your last 5 journal entries</span>
-                <br><span class="section-subtitle-hi">&#2310;&#2346;&#2325;&#2368; &#2346;&#2367;&#2331;&#2354;&#2368; 5 &#2332;&#2352;&#2381;&#2344;&#2354; &#2346;&#2381;&#2352;&#2357;&#2367;&#2359;&#2381;&#2335;&#2367;&#2351;&#2366;&#2305;</span>
+                <br><span class="section-subtitle-hi" lang="hi">&#2310;&#2346;&#2325;&#2368; &#2346;&#2367;&#2331;&#2354;&#2368; 5 &#2332;&#2352;&#2381;&#2344;&#2354; &#2346;&#2381;&#2352;&#2357;&#2367;&#2359;&#2381;&#2335;&#2367;&#2351;&#2366;&#2305;</span>
             </p>
             <div class="entries-card" id="entriesList">
                 <div class="empty-state" id="journalEmptyState">
@@ -520,6 +520,10 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
             <span>Explore</span>
         </a>
+        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>SOS</span>
+        </a>
         <a href="/breathe.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
             <span>Breathe</span>
@@ -528,7 +532,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
             <span>AI Friend</span>
         </a>
-        <a href="/you.html" class="nav-item active">
+        <a href="/you.html" class="nav-item active" aria-current="page">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
             <span>You</span>
         </a>

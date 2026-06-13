@@ -39,7 +39,7 @@
             transform: translateY(-50%);
             width: 18px;
             height: 18px;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             pointer-events: none;
         }
 
@@ -56,7 +56,7 @@
             transition: all 0.3s ease;
         }
 
-        .search-bar input::placeholder { color: #AEAEB2; }
+        .search-bar input::placeholder { color: var(--color-text-tert); }
 
         .search-bar input:focus {
             border-color: rgba(45, 106, 79, 0.4);
@@ -72,7 +72,7 @@
             height: 20px;
             border-radius: 50%;
             border: none;
-            background: #AEAEB2;
+            background: var(--color-text-tert);
             color: #FFFFFF;
             font-size: 12px;
             cursor: pointer;
@@ -319,7 +319,7 @@
 
         .card-meta {
             font-size: 0.7rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             font-weight: 500;
         }
 
@@ -412,7 +412,7 @@
 
         .no-results-text {
             font-size: 0.85rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
         }
 
         /* ===================== DESKTOP LAYOUT ===================== */
@@ -518,7 +518,7 @@
 
         .quick-sub {
             font-size: 0.7rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             margin-top: -4px;
         }
 
@@ -1033,9 +1033,13 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>
             <span>Home</span>
         </a>
-        <a href="/explore.html" class="nav-item active">
+        <a href="/explore.html" class="nav-item active" aria-current="page">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
             <span>Explore</span>
+        </a>
+        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>SOS</span>
         </a>
         <a href="/breathe.html" class="nav-item">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
@@ -1244,14 +1248,18 @@
 
                 if (!progressFill || !progressText) return;
 
-                // Check localStorage for progress
+                // Check localStorage for progress — course-player.html writes:
+                //   sukoon-course-<id>-day         => next-day number (1-based)
+                //   sukoon-course-<id>-day-<n>-done => 'true' when day n is complete
                 var storedProgress = 0;
                 try {
-                    var stored = localStorage.getItem('sukoon_course_' + courseId);
-                    if (stored) {
-                        var data = JSON.parse(stored);
-                        storedProgress = data.completedDays || data.day || 0;
+                    var doneCount = 0;
+                    for (var d = 1; d <= totalDays; d++) {
+                        if (localStorage.getItem('sukoon-course-' + courseId + '-day-' + d + '-done') === 'true') {
+                            doneCount++;
+                        }
                     }
+                    storedProgress = doneCount;
                 } catch(e) {
                     // Ignore localStorage errors
                 }
@@ -1394,22 +1402,24 @@
             try {
                 for (var c = 0; c < courseInfo.length; c++) {
                     var ci = courseInfo[c];
-                    var stored = localStorage.getItem('sukoon_course_' + ci.id);
-                    if (stored) {
-                        var data = JSON.parse(stored);
-                        var day = data.completedDays || data.day || 0;
-                        if (day > 0 && day < ci.total) {
-                            var pct = Math.round((day / ci.total) * 100);
-                            items.push({
-                                href: '/courses.html',
-                                icon: ci.icon,
-                                bg: ci.bg,
-                                title: ci.title,
-                                meta: 'Day ' + day + ' of ' + ci.total,
-                                desc: pct + '% complete',
-                                progress: pct
-                            });
+                    // Real keys are sukoon-course-<id>-day-<n>-done per day
+                    var day = 0;
+                    for (var dn = 1; dn <= ci.total; dn++) {
+                        if (localStorage.getItem('sukoon-course-' + ci.id + '-day-' + dn + '-done') === 'true') {
+                            day++;
                         }
+                    }
+                    if (day > 0 && day < ci.total) {
+                        var pct = Math.round((day / ci.total) * 100);
+                        items.push({
+                            href: '/courses.html',
+                            icon: ci.icon,
+                            bg: ci.bg,
+                            title: ci.title,
+                            meta: 'Day ' + day + ' of ' + ci.total,
+                            desc: pct + '% complete',
+                            progress: pct
+                        });
                     }
                 }
             } catch(e) {}

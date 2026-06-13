@@ -254,7 +254,7 @@
         .info-hindi {
             font-family: 'Noto Sans Devanagari', 'Inter', sans-serif;
             font-size: 0.78rem;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
             line-height: 1.6;
         }
 
@@ -285,7 +285,7 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: #AEAEB2;
+            color: var(--color-text-tert);
         }
 
         /* ===================== RESPONSIVE ===================== */
@@ -332,7 +332,7 @@
             <div class="circle-container">
                 <div class="breath-circle" id="breathCircle">
                     <div class="phase-text" id="phaseText" data-i18n="breathe.ready">Ready</div>
-                    <div class="phase-text-hi" id="phaseHindi">&#2340;&#2376;&#2351;&#2366;&#2352;</div>
+                    <div class="phase-text-hi" id="phaseHindi" lang="hi">&#2340;&#2376;&#2351;&#2366;&#2352;</div>
                 </div>
             </div>
 
@@ -359,7 +359,7 @@
                 <div class="info-label" data-i18n="breathe.technique_label">TECHNIQUE</div>
                 <div class="info-title" id="infoTitle">4-7-8 Calm</div>
                 <div class="info-desc" id="infoDesc">Developed by Dr. Andrew Weil, the 4-7-8 technique is a natural tranquilizer for the nervous system. Inhale for 4 seconds, hold for 7, exhale for 8. Proven to reduce anxiety and promote sleep.</div>
-                <div class="info-hindi" id="infoHindi">4-7-8 &#2340;&#2325;&#2344;&#2368;&#2325; &#2340;&#2306;&#2340;&#2381;&#2352;&#2367;&#2325;&#2366; &#2340;&#2306;&#2340;&#2381;&#2352; &#2325;&#2375; &#2354;&#2367;&#2319; &#2319;&#2325; &#2346;&#2381;&#2352;&#2366;&#2325;&#2371;&#2340;&#2367;&#2325; &#2358;&#2366;&#2306;&#2340;&#2367;&#2325;&#2366;&#2352;&#2325; &#2361;&#2376;&#2404; 4 &#2360;&#2375;&#2325;&#2306;&#2337; &#2358;&#2381;&#2357;&#2366;&#2360; &#2354;&#2375;&#2306;, 7 &#2352;&#2379;&#2325;&#2375;&#2306;, 8 &#2331;&#2379;&#2337;&#2364;&#2375;&#2306;&#2404;</div>
+                <div class="info-hindi" id="infoHindi" lang="hi">4-7-8 &#2340;&#2325;&#2344;&#2368;&#2325; &#2340;&#2306;&#2340;&#2381;&#2352;&#2367;&#2325;&#2366; &#2340;&#2306;&#2340;&#2381;&#2352; &#2325;&#2375; &#2354;&#2367;&#2319; &#2319;&#2325; &#2346;&#2381;&#2352;&#2366;&#2325;&#2371;&#2340;&#2367;&#2325; &#2358;&#2366;&#2306;&#2340;&#2367;&#2325;&#2366;&#2352;&#2325; &#2361;&#2376;&#2404; 4 &#2360;&#2375;&#2325;&#2306;&#2337; &#2358;&#2381;&#2357;&#2366;&#2360; &#2354;&#2375;&#2306;, 7 &#2352;&#2379;&#2325;&#2375;&#2306;, 8 &#2331;&#2379;&#2337;&#2364;&#2375;&#2306;&#2404;</div>
                 <div class="info-timing" id="infoTiming">
                     <div class="timing-item"><div class="timing-number">4s</div><div class="timing-label">Inhale</div></div>
                     <div class="timing-item"><div class="timing-number">7s</div><div class="timing-label">Hold</div></div>
@@ -379,7 +379,11 @@
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" fill="currentColor" stroke="none"/></svg>
             <span>Explore</span>
         </a>
-        <a href="/breathe.html" class="nav-item active">
+        <a href="/sos.html" class="nav-item nav-sos" aria-label="Crisis support">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
+            <span>SOS</span>
+        </a>
+        <a href="/breathe.html" class="nav-item active" aria-current="page">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8"><path stroke-linecap="round" stroke-linejoin="round" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7C14 5 16.09 5.777 17.656 7.343A7.975 7.975 0 0120 13a7.975 7.975 0 01-2.343 5.657z"/><path stroke-linecap="round" stroke-linejoin="round" d="M9.879 16.121A3 3 0 1012.015 11L11 14H9c0 .768.293 1.536.879 2.121z"/></svg>
             <span>Breathe</span>
         </a>
@@ -393,6 +397,7 @@
         </a>
     </nav>
 
+    <script src="/js/sukoon-engine.js"></script>
     <script>
     (function() {
         'use strict';
@@ -635,6 +640,15 @@
                 phaseHindi.textContent = '\u092A\u0942\u0930\u094D\u0923';
                 playTone(528, 0.8);
                 cycleCounter.textContent = cycleCount + ' cycles completed';
+                // Track full-duration completion via the unified engine
+                try {
+                    if (window.sukoon && typeof window.sukoon.track === 'function') {
+                        var techMeta = techniques[currentTechnique];
+                        var techName = techMeta ? techMeta.name : 'Breathing';
+                        var minutes = Math.max(1, Math.round(sessionTimeElapsed / 60));
+                        window.sukoon.track('breathing', minutes, techName);
+                    }
+                } catch (e) { /* ignore tracking errors */ }
             } else {
                 phaseText.textContent = 'Ready';
                 phaseHindi.textContent = '\u0924\u0948\u092F\u093E\u0930';
