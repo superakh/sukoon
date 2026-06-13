@@ -46,40 +46,159 @@
         .emotion-card .em-label { font-size: 0.78rem; font-weight: 500; color: var(--color-text); line-height: 1.3; }
         .emotion-card .em-sub { font-size: 0.65rem; color: var(--color-text-tert); margin-top: 2px; }
 
-        /* Category tabs */
-        .cat-tabs { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; margin-bottom: 20px; }
+        /* Category tabs — use accent-tint active state aligned with Phase 1 tokens */
+        .cat-tabs { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; padding: 2px 0; margin-bottom: 24px; }
         .cat-tabs::-webkit-scrollbar { display: none; }
         .cat-tab {
-            padding: 8px 16px; border-radius: 100px; border: 1px solid var(--color-divider);
-            background: var(--color-surface); color: var(--color-text-sec); font-size: 0.8rem; font-weight: 500;
-            cursor: pointer; white-space: nowrap; transition: all 0.15s; font-family: var(--font-body);
+            padding: 9px 18px; border-radius: var(--radius-pill);
+            border: 1px solid var(--color-divider);
+            background: var(--color-surface); color: var(--color-text-sec);
+            font-size: 0.82rem; font-weight: 500; font-family: var(--font-sans);
+            cursor: pointer; white-space: nowrap;
+            transition: background var(--motion-fast,180ms) var(--ease-out,ease),
+                        color var(--motion-fast,180ms) var(--ease-out,ease),
+                        border-color var(--motion-fast,180ms) var(--ease-out,ease);
         }
-        .cat-tab:hover { border-color: var(--color-accent-border); }
-        .cat-tab.active { background: var(--color-accent); color: #fff; border-color: var(--color-accent); }
+        .cat-tab:hover { border-color: var(--color-accent-border); color: var(--color-text); }
+        .cat-tab.active {
+            background: var(--color-accent-tint);
+            color: var(--color-accent-deep);
+            border-color: var(--color-accent-tint);
+        }
 
-        /* Session cards */
+        /* Session cards — card.card-interactive pattern */
         .session-grid { display: grid; gap: 12px; }
         .session-card {
-            display: flex; align-items: center; gap: 14px; padding: 16px;
-            background: var(--color-surface); border: 1px solid var(--color-divider); border-radius: var(--radius-lg);
-            cursor: pointer; transition: all 0.2s ease;
+            display: flex; align-items: center; gap: 14px;
+            padding: 16px;
+            background: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer; position: relative;
+            transition: transform var(--motion-base,220ms) var(--ease-out,ease),
+                        box-shadow var(--motion-base,220ms) var(--ease-out,ease),
+                        border-color var(--motion-base,220ms) var(--ease-out,ease);
         }
-        .session-card:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+        .session-card:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: var(--color-accent-border);
+        }
         .sess-icon {
-            width: 48px; height: 48px; border-radius: 14px; flex-shrink: 0;
-            display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
+            width: 52px; height: 52px;
+            border-radius: var(--radius-md);
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem;
         }
-        .sess-info { flex: 1; min-width: 0; }
-        .sess-title { font-weight: 600; font-size: 0.9rem; color: var(--color-text); margin-bottom: 2px; }
-        .sess-meta { font-size: 0.75rem; color: var(--color-text-tert); }
-        .sess-desc { font-size: 0.78rem; color: var(--color-text-sec); line-height: 1.4; margin-top: 3px; }
+        .sess-info { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 4px; }
+        .sess-title {
+            font-family: var(--font-brand);
+            font-weight: 500;
+            font-size: 1.1rem;
+            line-height: 1.25;
+            color: var(--color-text);
+            letter-spacing: var(--tracking-tight, -0.01em);
+        }
+        .sess-row {
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+            margin-top: 2px;
+        }
+        .sess-duration {
+            font-size: var(--text-caption, 0.72rem);
+            color: var(--color-text-tert);
+            font-variant-numeric: tabular-nums;
+            letter-spacing: 0.02em;
+        }
+        .sess-cat-badge {
+            display: inline-flex; align-items: center;
+            padding: 3px 10px;
+            border-radius: var(--radius-pill);
+            background: var(--color-bg-elev-2);
+            color: var(--color-text-muted, var(--color-text-tert));
+            font-size: var(--text-micro, 0.65rem);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            line-height: 1.4;
+        }
+        .sess-desc {
+            font-size: 0.8rem;
+            color: var(--color-text-sec);
+            line-height: 1.45;
+            margin-top: 2px;
+        }
         .sess-play {
-            width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-            background: var(--color-accent-bg); border: 1px solid var(--color-accent-border);
-            display: flex; align-items: center; justify-content: center; color: var(--color-accent);
+            width: 40px; height: 40px;
+            border-radius: 50%; flex-shrink: 0;
+            background: var(--color-accent-bg);
+            border: 1px solid var(--color-accent-border);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--color-accent);
+            opacity: 0;
+            transform: translateX(-4px) scale(0.9);
+            transition: opacity var(--motion-base,220ms) var(--ease-out,ease),
+                        transform var(--motion-base,220ms) var(--ease-out,ease),
+                        background var(--motion-fast,180ms) var(--ease-out,ease);
+        }
+        .session-card:hover .sess-play,
+        .session-card:focus-visible .sess-play {
+            opacity: 1;
+            transform: translateX(0) scale(1);
+            background: var(--color-accent);
+            color: #fff;
+            border-color: var(--color-accent);
+        }
+        @media (max-width: 600px) {
+            /* On touch devices the reveal-on-hover never fires; show always */
+            .sess-play { opacity: 1; transform: none; }
         }
 
-        .empty-cat { text-align: center; padding: 40px 20px; color: var(--color-text-tert); font-size: 0.9rem; }
+        /* Empty state — elegant */
+        .empty-cat {
+            text-align: center;
+            padding: 56px 24px;
+            background: var(--color-surface);
+            border: 1px dashed var(--color-divider);
+            border-radius: var(--radius-lg);
+        }
+        .empty-cat .empty-icon {
+            font-size: 2rem;
+            margin-bottom: 12px;
+            opacity: 0.6;
+        }
+        .empty-cat .empty-title {
+            font-family: var(--font-brand);
+            font-size: 1.15rem;
+            color: var(--color-text);
+            margin-bottom: 6px;
+        }
+        .empty-cat .empty-sub {
+            font-size: 0.85rem;
+            color: var(--color-text-sec);
+            margin-bottom: 18px;
+            line-height: 1.5;
+        }
+        .empty-cat .empty-cta {
+            display: inline-flex; align-items: center; justify-content: center;
+            gap: 6px;
+            padding: 10px 20px;
+            background: transparent;
+            color: var(--color-accent);
+            border: 1px solid var(--color-accent-border);
+            border-radius: var(--radius-pill);
+            font-family: var(--font-sans);
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background var(--motion-fast,180ms) var(--ease-out,ease),
+                        border-color var(--motion-fast,180ms) var(--ease-out,ease);
+        }
+        .empty-cat .empty-cta:hover {
+            background: var(--color-accent-bg);
+            border-color: var(--color-accent);
+        }
 
         /* ===================== PLAYER VIEW (immersive fullscreen) ===================== */
         .player-view {
@@ -241,27 +360,58 @@
         .active-player-overlay {
             position: fixed; inset: 0; z-index: 3000;
             display: none; flex-direction: column; align-items: center; justify-content: center;
-            background: linear-gradient(135deg, #1a3a2a 0%, #0d1f17 100%);
-            color: #fff; padding: 20px; text-align: center;
+            color: #fff; padding: 32px 20px 28px; text-align: center;
+            overflow: hidden;
         }
+        /* Soft full-bleed background — calming radial wash on top of accent gradient */
+        .active-player-overlay::before {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background:
+              radial-gradient(circle at 22% 18%, rgba(64,145,108,0.55) 0%, transparent 55%),
+              radial-gradient(circle at 78% 82%, rgba(27,67,50,0.65) 0%, transparent 60%),
+              linear-gradient(135deg, #1a3a2a 0%, #0d1f17 100%);
+        }
+        .active-player-overlay::after {
+            content: '';
+            position: absolute; inset: 0; z-index: 0;
+            background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.06), transparent 60%);
+            pointer-events: none;
+        }
+        .active-player-overlay > * { position: relative; z-index: 1; }
         .active-player-overlay.active { display: flex; }
-        .active-player-icon { font-size: 2.4rem; margin-bottom: 12px; }
-        .active-player-title { font-family: var(--font-brand); font-size: 1.4rem; margin-bottom: 6px; }
-        .active-player-dur { font-size: 0.8rem; opacity: 0.6; margin-bottom: 28px; }
+        .active-player-icon { font-size: 2.4rem; margin-bottom: 14px; opacity: 0.95; }
+        .active-player-title {
+            font-family: var(--font-brand);
+            font-size: var(--text-display, clamp(2.4rem, 6vw, 4rem));
+            font-weight: 400;
+            line-height: 1.05;
+            letter-spacing: var(--tracking-tight, -0.02em);
+            margin-bottom: 8px;
+            max-width: 640px;
+        }
+        .active-player-dur {
+            font-size: var(--text-caption, 0.72rem);
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            opacity: 0.6;
+            margin-bottom: 32px;
+        }
         .active-player-script {
-            font-size: 1rem; line-height: 1.8; max-width: 440px; font-weight: 300;
-            opacity: 0.9; margin-bottom: 32px; min-height: 80px;
+            font-size: 1.05rem; line-height: 1.8;
+            max-width: 480px; font-weight: 300;
+            opacity: 0.92; margin-bottom: 36px; min-height: 80px;
         }
         /* Breathing animation circle */
-        .breath-circle-wrap { position: relative; width: 120px; height: 120px; margin: 0 auto 28px; }
+        .breath-circle-wrap { position: relative; width: 120px; height: 120px; margin: 0 auto 32px; }
         .breath-circle {
             width: 120px; height: 120px; border-radius: 50%;
-            background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.22);
             animation: breathPulse 6s ease-in-out infinite;
         }
         .breath-circle-label {
             position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
-            font-size: 0.72rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.5;
+            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.55;
         }
         @keyframes breathPulse {
             0%, 100% { transform: scale(0.8); opacity: 0.4; }
@@ -271,16 +421,100 @@
             position: fixed; top: 16px; left: 16px; z-index: 10;
             background: rgba(255,255,255,0.12); border: none; border-radius: 50%;
             width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
-            color: rgba(255,255,255,0.8); cursor: pointer; backdrop-filter: blur(10px);
+            color: rgba(255,255,255,0.85); cursor: pointer; backdrop-filter: blur(10px);
+            transition: background 0.15s;
         }
-        .active-player-close:hover { background: rgba(255,255,255,0.2); }
+        .active-player-close:hover { background: rgba(255,255,255,0.22); }
+
+        /* Bottom control row: back 10s · play/pause (large) · forward 10s · end */
+        .active-player-controls {
+            display: flex; align-items: center; justify-content: center;
+            gap: 18px; margin-bottom: 18px;
+        }
+        .ap-ctrl {
+            border: 1px solid rgba(255,255,255,0.16);
+            background: rgba(255,255,255,0.08);
+            color: rgba(255,255,255,0.85);
+            border-radius: 50%;
+            cursor: pointer;
+            display: inline-flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(10px);
+            transition: background 0.15s, transform 0.15s;
+        }
+        .ap-ctrl:hover { background: rgba(255,255,255,0.18); }
+        .ap-ctrl:active { transform: scale(0.96); }
+        .ap-ctrl svg {
+            fill: none; stroke: currentColor; stroke-width: 2;
+            stroke-linecap: round; stroke-linejoin: round;
+        }
+        .ap-ctrl-sm { width: 46px; height: 46px; }
+        .ap-ctrl-sm svg { width: 18px; height: 18px; }
+        .ap-ctrl-main {
+            width: 76px; height: 76px;
+            background: rgba(255,255,255,0.16);
+            border-color: rgba(255,255,255,0.22);
+            color: #fff;
+        }
+        .ap-ctrl-main:hover { background: rgba(255,255,255,0.26); }
+        .ap-ctrl-main svg { width: 30px; height: 30px; }
+        .ap-skip-label {
+            position: absolute;
+            font-size: 0.55rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            pointer-events: none;
+        }
+        .ap-skip { position: relative; }
+
+        /* End session — pill ghost button on dark */
         .active-player-stop {
-            padding: 12px 32px; border-radius: var(--radius-md);
-            background: rgba(255,255,255,0.12); color: #fff; border: 1px solid rgba(255,255,255,0.15);
-            font-size: 0.85rem; font-weight: 500; cursor: pointer; font-family: var(--font-body);
-            backdrop-filter: blur(10px); transition: background 0.15s;
+            padding: 10px 24px; border-radius: var(--radius-pill);
+            background: transparent; color: rgba(255,255,255,0.85);
+            border: 1px solid rgba(255,255,255,0.22);
+            font-size: 0.78rem; font-weight: 600; cursor: pointer;
+            font-family: var(--font-sans);
+            text-transform: uppercase; letter-spacing: 0.08em;
+            transition: background 0.15s, border-color 0.15s, color 0.15s;
         }
-        .active-player-stop:hover { background: rgba(255,255,255,0.2); }
+        .active-player-stop:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.35);
+            color: #fff;
+        }
+
+        /* Ambient mixer mini-control */
+        .ap-ambient-row {
+            display: flex; align-items: center; justify-content: center;
+            gap: 6px; flex-wrap: wrap;
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            max-width: 480px;
+        }
+        .ap-ambient-label {
+            font-size: 0.62rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            opacity: 0.45;
+            margin-right: 4px;
+        }
+        .ap-ambient-pill {
+            padding: 5px 12px;
+            border-radius: var(--radius-pill);
+            font-size: 0.7rem; font-weight: 500;
+            background: rgba(255,255,255,0.06);
+            color: rgba(255,255,255,0.65);
+            border: 1px solid rgba(255,255,255,0.1);
+            cursor: pointer;
+            font-family: var(--font-sans);
+            transition: background 0.15s, color 0.15s, border-color 0.15s;
+        }
+        .ap-ambient-pill:hover { background: rgba(255,255,255,0.14); color: #fff; }
+        .ap-ambient-pill.active {
+            background: rgba(255,255,255,0.22);
+            color: #fff;
+            border-color: rgba(255,255,255,0.32);
+        }
 
         @media(max-width:400px){
             .emotion-grid { grid-template-columns: repeat(2, 1fr); }
@@ -448,14 +682,40 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
     </button>
     <div class="active-player-icon" id="activePlayerIcon"></div>
-    <div class="active-player-title" id="activePlayerTitle"></div>
+    <h1 class="active-player-title text-display" id="activePlayerTitle"></h1>
     <div class="active-player-dur" id="activePlayerDur"></div>
     <div class="breath-circle-wrap">
         <div class="breath-circle"></div>
         <div class="breath-circle-label">breathe</div>
     </div>
     <div class="active-player-script" id="activePlayerScript"></div>
+
+    <!-- Bottom controls: back 10s · play/pause · forward 10s -->
+    <div class="active-player-controls" role="group" aria-label="Playback controls">
+        <button class="ap-ctrl ap-ctrl-sm ap-skip" id="apBack10" aria-label="Back 10 seconds" title="Back 10s">
+            <svg viewBox="0 0 24 24"><polyline points="11 17 6 12 11 7"/><path d="M6 12h9a5 5 0 010 10h-3"/></svg>
+            <span class="ap-skip-label">10</span>
+        </button>
+        <button class="ap-ctrl ap-ctrl-main" id="apPlayPause" aria-label="Pause" title="Pause / Play">
+            <svg viewBox="0 0 24 24" id="apPlayPauseIcon"><line x1="10" y1="5" x2="10" y2="19"/><line x1="14" y1="5" x2="14" y2="19"/></svg>
+        </button>
+        <button class="ap-ctrl ap-ctrl-sm ap-skip" id="apFwd10" aria-label="Forward 10 seconds" title="Forward 10s">
+            <svg viewBox="0 0 24 24"><polyline points="13 17 18 12 13 7"/><path d="M18 12H9a5 5 0 000 10h3"/></svg>
+            <span class="ap-skip-label">10</span>
+        </button>
+    </div>
+
     <button class="active-player-stop" id="activePlayerStop">End Session</button>
+
+    <!-- Ambient sound mixer mini-control -->
+    <div class="ap-ambient-row" role="group" aria-label="Ambient sound">
+        <span class="ap-ambient-label">Ambient</span>
+        <button class="ap-ambient-pill active" data-ap-amb="silence" type="button">Silence</button>
+        <button class="ap-ambient-pill" data-ap-amb="rain" type="button">Rain</button>
+        <button class="ap-ambient-pill" data-ap-amb="ocean" type="button">Ocean</button>
+        <button class="ap-ambient-pill" data-ap-amb="birds" type="button">Birds</button>
+        <button class="ap-ambient-pill" data-ap-amb="fire" type="button">Fire</button>
+    </div>
 </div>
 
 <script>
@@ -1059,19 +1319,97 @@ function renderSessions(cat){
     }
 
     var filtered = cat === 'all' ? SESSIONS : SESSIONS.filter(function(s){ return s.cat === cat; });
-    if(!filtered.length){ sessionGrid.innerHTML = '<div class="empty-cat">No sessions in this category yet.</div>'; return; }
+    if(!filtered.length){
+        var empty = document.createElement('div');
+        empty.className = 'empty-cat';
+        var eIcon = document.createElement('div');
+        eIcon.className = 'empty-icon';
+        eIcon.textContent = '🍃'; // herb / leaf
+        var eTitle = document.createElement('div');
+        eTitle.className = 'empty-title';
+        eTitle.textContent = 'No sessions here yet';
+        var eSub = document.createElement('div');
+        eSub.className = 'empty-sub';
+        eSub.textContent = 'We haven’t added meditations to this category. Browse all sessions to find one that fits your moment.';
+        var eCta = document.createElement('button');
+        eCta.type = 'button';
+        eCta.className = 'empty-cta';
+        eCta.textContent = 'Browse all';
+        eCta.addEventListener('click', function(){
+            var allTab = catTabs.querySelector('[data-cat="all"]');
+            if(allTab) allTab.click();
+        });
+        empty.appendChild(eIcon);
+        empty.appendChild(eTitle);
+        empty.appendChild(eSub);
+        empty.appendChild(eCta);
+        sessionGrid.appendChild(empty);
+        return;
+    }
+    var SVG_NS = 'http://www.w3.org/2000/svg';
     filtered.forEach(function(s){
         var card = document.createElement('div');
-        card.className = 'session-card';
-        card.innerHTML =
-            '<div class="sess-icon" style="background:'+s.iconBg+'">'+s.icon+'</div>'+
-            '<div class="sess-info">'+
-                '<div class="sess-title">'+s.title+'</div>'+
-                '<div class="sess-meta">'+s.duration+' min &middot; '+s.cat.replace('-',' ')+'</div>'+
-                '<div class="sess-desc">'+s.desc+'</div>'+
-            '</div>'+
-            '<div class="sess-play"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>';
+        card.className = 'session-card card card-interactive';
+        card.setAttribute('role','button');
+        card.setAttribute('tabindex','0');
+
+        var iconEl = document.createElement('div');
+        iconEl.className = 'sess-icon';
+        iconEl.style.background = s.iconBg;
+        // s.icon contains HTML entities (e.g. &#128168;) — decode via a temp element
+        var iconDecoder = document.createElement('span');
+        iconDecoder.innerHTML = s.icon; // session data is static, not user input
+        iconEl.textContent = iconDecoder.textContent;
+
+        var info = document.createElement('div');
+        info.className = 'sess-info';
+
+        var titleEl = document.createElement('div');
+        titleEl.className = 'sess-title';
+        titleEl.textContent = s.title;
+
+        var row = document.createElement('div');
+        row.className = 'sess-row';
+        var durEl = document.createElement('span');
+        durEl.className = 'sess-duration';
+        durEl.textContent = s.duration + ' min';
+        var badgeEl = document.createElement('span');
+        badgeEl.className = 'badge badge-muted sess-cat-badge';
+        badgeEl.textContent = s.cat.replace('-',' ');
+        row.appendChild(durEl);
+        row.appendChild(badgeEl);
+
+        var descEl = document.createElement('div');
+        descEl.className = 'sess-desc';
+        descEl.textContent = s.desc;
+
+        info.appendChild(titleEl);
+        info.appendChild(row);
+        info.appendChild(descEl);
+
+        var play = document.createElement('div');
+        play.className = 'sess-play';
+        play.setAttribute('aria-hidden','true');
+        var svg = document.createElementNS(SVG_NS, 'svg');
+        svg.setAttribute('viewBox','0 0 24 24');
+        svg.setAttribute('width','16');
+        svg.setAttribute('height','16');
+        svg.setAttribute('fill','none');
+        svg.setAttribute('stroke','currentColor');
+        svg.setAttribute('stroke-width','2');
+        var poly = document.createElementNS(SVG_NS,'polygon');
+        poly.setAttribute('points','5 3 19 12 5 21 5 3');
+        svg.appendChild(poly);
+        play.appendChild(svg);
+
+        card.appendChild(iconEl);
+        card.appendChild(info);
+        card.appendChild(play);
+
         card.addEventListener('click', function(){ openSessionWithLesson(s); });
+        card.addEventListener('keydown', function(e){
+            if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openSessionWithLesson(s); }
+        });
         sessionGrid.appendChild(card);
     });
 }
@@ -1169,6 +1507,79 @@ function closeActivePlayer(){
 }
 document.getElementById('activePlayerClose').addEventListener('click', closeActivePlayer);
 document.getElementById('activePlayerStop').addEventListener('click', closeActivePlayer);
+
+/* ----- Active player UI controls (pause/play, skip, ambient) -----
+   Note: these are UI affordances only; they do not modify the
+   underlying TTS narration engine — they call existing public APIs
+   (speechSynthesis pause/resume, startAmbient/killAmbient). */
+(function(){
+    var SVG_NS_AP = 'http://www.w3.org/2000/svg';
+    var playPauseBtn = document.getElementById('apPlayPause');
+    var playPauseIcon = document.getElementById('apPlayPauseIcon');
+    var isPaused = false;
+
+    function setIconToPause(){
+        while(playPauseIcon.firstChild) playPauseIcon.removeChild(playPauseIcon.firstChild);
+        var l1 = document.createElementNS(SVG_NS_AP,'line');
+        l1.setAttribute('x1','10'); l1.setAttribute('y1','5'); l1.setAttribute('x2','10'); l1.setAttribute('y2','19');
+        var l2 = document.createElementNS(SVG_NS_AP,'line');
+        l2.setAttribute('x1','14'); l2.setAttribute('y1','5'); l2.setAttribute('x2','14'); l2.setAttribute('y2','19');
+        playPauseIcon.appendChild(l1);
+        playPauseIcon.appendChild(l2);
+    }
+    function setIconToPlay(){
+        while(playPauseIcon.firstChild) playPauseIcon.removeChild(playPauseIcon.firstChild);
+        var poly = document.createElementNS(SVG_NS_AP,'polygon');
+        poly.setAttribute('points','7 4 19 12 7 20 7 4');
+        playPauseIcon.appendChild(poly);
+    }
+
+    if(playPauseBtn){
+        playPauseBtn.addEventListener('click', function(){
+            if(!window.speechSynthesis) return;
+            if(isPaused){
+                window.speechSynthesis.resume();
+                isPaused = false;
+                setIconToPause();
+                playPauseBtn.setAttribute('aria-label','Pause');
+            } else {
+                window.speechSynthesis.pause();
+                isPaused = true;
+                setIconToPlay();
+                playPauseBtn.setAttribute('aria-label','Play');
+            }
+        });
+    }
+
+    // Skip controls are visual affordances; a static TTS script has no
+    // seekable timeline. Provide subtle visual feedback only.
+    function pulse(btn){
+        if(!btn) return;
+        btn.animate(
+            [{ transform:'scale(1)' }, { transform:'scale(1.12)' }, { transform:'scale(1)' }],
+            { duration: 240, easing:'ease-out' }
+        );
+    }
+    var back = document.getElementById('apBack10');
+    var fwd  = document.getElementById('apFwd10');
+    if(back) back.addEventListener('click', function(){ pulse(back); });
+    if(fwd)  fwd.addEventListener('click', function(){ pulse(fwd); });
+
+    // Ambient mixer mini-control inside the active player overlay
+    var ambRow = document.querySelectorAll('.ap-ambient-pill');
+    ambRow.forEach(function(pill){
+        pill.addEventListener('click', function(){
+            ambRow.forEach(function(p){ p.classList.remove('active'); });
+            pill.classList.add('active');
+            var type = pill.getAttribute('data-ap-amb');
+            if(type === 'silence'){
+                if(typeof killAmbient === 'function') killAmbient();
+            } else {
+                if(typeof startAmbient === 'function') startAmbient(type);
+            }
+        });
+    });
+})();
 
 function openSession(session){
     state.currentSession = session;

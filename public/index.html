@@ -27,195 +27,183 @@
     <link rel="stylesheet" href="/css/shell.css">
     <style>
         .hindi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            color: #86868B;
+            font-family: var(--font-hindi);
+            color: var(--color-text-muted);
         }
 
         .container {
-            max-width: 720px;
+            max-width: var(--container-max);
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 var(--space-6);
         }
 
-        /* ===================== ANIMATIONS ===================== */
-        .fade-section {
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
+        /* ===================== HOME SECTIONS — shared rhythm ===================== */
+        .home-section {
+            margin-bottom: var(--space-8);
         }
 
-        .fade-section:nth-child(1) { animation-delay: 0s; }
-        .fade-section:nth-child(2) { animation-delay: 0.1s; }
-        .fade-section:nth-child(3) { animation-delay: 0.15s; }
-        .fade-section:nth-child(4) { animation-delay: 0.2s; }
-        .fade-section:nth-child(5) { animation-delay: 0.25s; }
-        .fade-section:nth-child(6) { animation-delay: 0.3s; }
-        .fade-section:nth-child(7) { animation-delay: 0.35s; }
-        .fade-section:nth-child(8) { animation-delay: 0.4s; }
-        .fade-section:nth-child(9) { animation-delay: 0.45s; }
+        .home-section:last-of-type {
+            margin-bottom: var(--space-9);
+        }
+
+        .home-section-head {
+            margin-bottom: var(--space-4);
+        }
+
+        .home-section-head .section-eyebrow {
+            margin-bottom: var(--space-2);
+        }
+
+        .home-section-title {
+            margin: 0;
+            color: var(--color-text);
+        }
+
+        .home-section-head-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+            flex-wrap: wrap;
+        }
+
+        .home-section-link {
+            font-size: var(--text-body-sm);
+            color: var(--color-accent);
+            font-weight: 500;
+            white-space: nowrap;
+            transition: color var(--motion-fast) var(--ease-out);
+        }
+
+        .home-section-link:hover {
+            color: var(--color-accent-deep);
+        }
 
         /* ===================== GREETING ===================== */
         .greeting-section {
-            padding: 40px 0 8px;
+            display: none;
+            padding: var(--space-8) 0 var(--space-2);
             text-align: left;
         }
 
+        .greeting-section.is-visible {
+            display: block;
+        }
+
         .greeting-time {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 2.2rem;
-            color: #1D1D1F;
-            line-height: 1.2;
-            margin-bottom: 8px;
+            font-family: var(--font-serif);
+            font-size: clamp(1.8rem, 4vw, 2.2rem);
+            line-height: var(--leading-tight);
+            letter-spacing: var(--tracking-tight);
+            color: var(--color-text);
+            margin-bottom: var(--space-2);
         }
 
         .greeting-sub {
-            font-size: 1rem;
-            color: #86868B;
+            font-size: var(--text-body);
+            color: var(--color-text-muted);
             font-weight: 400;
-            margin-bottom: 4px;
+            margin-bottom: var(--space-1);
         }
 
         .greeting-hindi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.85rem;
+            font-family: var(--font-hindi);
+            font-size: var(--text-body-sm);
             color: var(--color-text-tert);
             font-weight: 400;
         }
 
         /* ===================== DAILY QUOTE CARD ===================== */
         .daily-card {
-            margin: 32px 0;
-            border-radius: 12px;
-            padding: 28px 28px 28px 32px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-left: 4px solid #2D6A4F;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-            cursor: pointer;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .daily-card:hover {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.07);
+            position: relative;
+            border-left: 3px solid var(--color-accent);
+            padding-left: var(--space-6);
         }
 
         .daily-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--color-text-tert);
-            font-weight: 600;
-            margin-bottom: 16px;
-            display: flex;
+            display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--space-2);
+            font-size: var(--text-micro);
+            font-weight: 600;
+            letter-spacing: var(--tracking-wider);
+            text-transform: uppercase;
+            color: var(--color-accent);
+            margin-bottom: var(--space-4);
         }
 
         .daily-label-dot {
             width: 6px;
             height: 6px;
             border-radius: 50%;
-            background: #2D6A4F;
+            background: var(--color-accent);
         }
 
         .daily-quote {
-            font-family: 'DM Serif Display', Georgia, serif;
+            font-family: var(--font-serif);
             font-style: italic;
-            font-size: 1.3rem;
+            font-size: clamp(1.15rem, 2.4vw, 1.35rem);
             line-height: 1.5;
-            color: #1D1D1F;
-            margin-bottom: 12px;
+            color: var(--color-text);
+            margin-bottom: var(--space-3);
         }
 
         .daily-quote-hindi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.88rem;
+            font-family: var(--font-hindi);
+            font-size: var(--text-body-sm);
             color: var(--color-text-tert);
-            line-height: 1.6;
+            line-height: 1.65;
             font-weight: 300;
-            margin-bottom: 20px;
+            margin-bottom: var(--space-5);
         }
 
         .daily-prompt {
-            font-size: 0.85rem;
-            color: #86868B;
-            padding: 14px 16px;
-            background: #FAFAF7;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 0, 0, 0.04);
+            font-size: var(--text-body-sm);
+            color: var(--color-text-sec);
+            padding: var(--space-3) var(--space-4);
+            background: var(--color-bg-elev-2);
+            border-radius: var(--radius-sm);
             font-style: italic;
-            line-height: 1.5;
-        }
-
-        /* ===================== SECTION LABEL ===================== */
-        .section-label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--color-text-tert);
-            font-weight: 600;
-            margin-bottom: 16px;
-            padding-left: 2px;
+            line-height: var(--leading-normal);
         }
 
         /* ===================== QUICK ACTIONS ===================== */
         .quick-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-bottom: 48px;
+            gap: var(--space-3);
         }
 
         .quick-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 22px 18px;
-            text-align: center;
-            transition: box-shadow 0.3s ease;
-            cursor: pointer;
             display: block;
-            position: relative;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-        }
-
-        .quick-card::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 16px;
-            right: 16px;
-            height: 2px;
-            background: #2D6A4F;
-            border-radius: 2px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .quick-card:hover {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.07);
-        }
-
-        .quick-card:hover::after {
-            opacity: 1;
-        }
-
-        .quick-card.sos-card::after {
-            background: #DC2626;
+            text-align: left;
+            padding: var(--space-5);
+            min-height: 44px;
         }
 
         .quick-icon {
-            width: 44px;
-            height: 44px;
-            margin: 0 auto 12px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border-radius: 12px;
-            background: #D8F3DC;
+            border-radius: var(--radius-md);
+            background: var(--color-accent-tint);
+            margin-bottom: var(--space-3);
+            transition: background var(--motion-base) var(--ease-out);
+        }
+
+        .quick-card:hover .quick-icon {
+            background: var(--color-accent-bg);
         }
 
         .quick-card.sos-card .quick-icon {
-            background: #FEE2E2;
+            background: var(--color-danger-bg);
+        }
+
+        .quick-card.sos-card:hover .quick-icon {
+            background: rgba(239, 68, 68, 0.12);
         }
 
         .quick-icon svg {
@@ -224,100 +212,119 @@
         }
 
         .quick-title {
-            font-size: 0.92rem;
+            font-size: var(--text-body);
             font-weight: 600;
-            color: #1D1D1F;
-            margin-bottom: 3px;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
+        }
+
+        .quick-card.sos-card .quick-title {
+            color: var(--color-danger);
         }
 
         .quick-hindi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.75rem;
+            font-family: var(--font-hindi);
+            font-size: var(--text-caption);
             color: var(--color-text-tert);
+            letter-spacing: var(--tracking-wide);
             font-weight: 400;
         }
 
         /* ===================== MOOD CHECK-IN ===================== */
         .mood-section {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 28px;
-            margin-bottom: 48px;
+            padding: var(--space-7);
             text-align: center;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
         }
 
         .mood-title {
-            font-size: 1rem;
-            font-weight: 600;
-            color: #1D1D1F;
-            margin-bottom: 2px;
+            font-family: var(--font-serif);
+            font-size: var(--text-h3);
+            font-weight: 400;
+            letter-spacing: var(--tracking-tight);
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
         }
 
         .mood-title-hindi {
-            font-family: 'Noto Sans Devanagari', sans-serif;
-            font-size: 0.8rem;
+            font-family: var(--font-hindi);
+            font-size: var(--text-body-sm);
             color: var(--color-text-tert);
             font-weight: 400;
-            margin-bottom: 24px;
+            margin-bottom: var(--space-6);
         }
 
         .mood-faces {
             display: flex;
             justify-content: center;
-            gap: 12px;
-            margin-bottom: 8px;
+            gap: var(--space-3);
+            margin-bottom: var(--space-2);
         }
 
-        .mood-btn {
-            background: none;
-            border: 2px solid transparent;
+        .mood-card {
+            background: var(--color-surface);
+            border: 1px solid var(--color-divider);
+            border-radius: var(--radius-md);
             cursor: pointer;
-            padding: 8px;
-            border-radius: 50%;
-            transition: all 0.25s ease;
+            padding: var(--space-3) var(--space-2);
+            min-width: 56px;
+            min-height: 88px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: var(--space-2);
+            font: inherit;
+            color: inherit;
+            transition: transform var(--motion-base) cubic-bezier(0.32, 1.5, 0.42, 1),
+                        background var(--motion-base) var(--ease-out),
+                        border-color var(--motion-base) var(--ease-out),
+                        box-shadow var(--motion-base) var(--ease-out);
         }
 
-        .mood-btn svg {
+        .mood-card svg {
             width: 40px;
             height: 40px;
-            transition: transform 0.25s ease;
+            transition: transform var(--motion-base) cubic-bezier(0.32, 1.5, 0.42, 1);
         }
 
-        .mood-btn:hover svg {
-            transform: scale(1.1);
+        .mood-card:hover {
+            transform: scale(1.05);
+            border-color: var(--color-accent-border);
+            box-shadow: var(--shadow-sm);
         }
 
-        .mood-btn.selected {
-            border-color: #2D6A4F;
-            background: rgba(45, 106, 79, 0.04);
+        .mood-card:focus-visible {
+            outline: 2px solid var(--color-focus-ring);
+            outline-offset: 2px;
         }
 
-        .mood-btn.selected svg {
-            transform: scale(1.1);
+        .mood-card.selected {
+            transform: scale(1.08);
+            background: var(--color-accent-tint);
+            border-color: var(--color-accent);
+            box-shadow: var(--shadow-md);
+        }
+
+        .mood-card.selected svg {
+            transform: scale(1.05);
         }
 
         .mood-btn-label {
-            font-size: 0.65rem;
+            font-size: var(--text-micro);
             color: var(--color-text-tert);
-            font-weight: 500;
+            font-weight: 600;
+            letter-spacing: var(--tracking-wider);
+            text-transform: uppercase;
         }
 
-        .mood-btn.selected .mood-btn-label {
-            color: #2D6A4F;
+        .mood-card.selected .mood-btn-label {
+            color: var(--color-accent-deep);
         }
 
         .mood-thanks {
-            font-size: 0.85rem;
-            color: #2D6A4F;
-            margin-top: 12px;
+            font-size: var(--text-body-sm);
+            color: var(--color-accent);
             opacity: 0;
-            transition: opacity 0.4s ease;
+            transition: opacity var(--motion-slow) var(--ease-out);
             height: 0;
             overflow: hidden;
         }
@@ -325,71 +332,54 @@
         .mood-thanks.visible {
             opacity: 1;
             height: auto;
-            padding-top: 4px;
+            padding-top: var(--space-2);
         }
 
-        /* ===================== RECOMMENDED SECTION ===================== */
-        .rec-section {
-            margin-bottom: 48px;
-        }
-
-        .rec-header {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 16px;
-        }
-
-        .rec-time-icon {
-            width: 32px;
-            height: 32px;
-            border-radius: 8px;
-            display: flex;
+        /* ===================== RECOMMENDED ===================== */
+        .rec-header-icon {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            background: rgba(45, 106, 79, 0.12);
+            width: 32px;
+            height: 32px;
+            border-radius: var(--radius-sm);
+            background: var(--color-accent-tint);
+            color: var(--color-accent-deep);
+            margin-right: var(--space-3);
+            vertical-align: middle;
         }
 
-        .rec-time-icon svg {
+        .rec-header-icon svg {
             width: 18px;
             height: 18px;
-            color: #2D6A4F;
         }
 
-        .rec-title {
-            font-family: 'DM Serif Display', Georgia, serif;
-            font-size: 1.2rem;
-            color: #1D1D1F;
+        .rec-title-row {
+            display: flex;
+            align-items: center;
         }
 
         .rec-cards {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+            gap: var(--space-3);
         }
 
         .rec-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 20px 18px;
-            transition: box-shadow 0.3s ease;
             display: block;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-        }
-
-        .rec-card:hover {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.07);
+            text-align: left;
+            padding: var(--space-5);
         }
 
         .rec-card-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 10px;
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 12px;
+            margin-bottom: var(--space-3);
+            background: var(--color-accent-tint);
         }
 
         .rec-card-icon svg {
@@ -398,69 +388,70 @@
         }
 
         .rec-card-title {
-            font-size: 0.9rem;
+            font-size: var(--text-body);
             font-weight: 600;
-            color: #1D1D1F;
-            margin-bottom: 4px;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
         }
 
         .rec-card-desc {
-            font-size: 0.78rem;
-            color: #86868B;
-            line-height: 1.5;
+            font-size: var(--text-body-sm);
+            color: var(--color-text-muted);
+            line-height: var(--leading-normal);
         }
 
-        /* ===================== CONTINUE SECTION ===================== */
+        /* ===================== CONTINUE ===================== */
         .continue-card {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 22px;
-            margin-bottom: 48px;
             display: flex;
             align-items: center;
-            gap: 16px;
-            transition: box-shadow 0.3s ease;
-            cursor: pointer;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-        }
-
-        .continue-card:hover {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.07);
+            gap: var(--space-4);
+            padding: var(--space-5);
         }
 
         .continue-icon {
             width: 48px;
             height: 48px;
             min-width: 48px;
-            border-radius: 12px;
+            border-radius: var(--radius-md);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #D8F3DC;
+            background: var(--color-accent-tint);
+            color: var(--color-accent-deep);
         }
 
         .continue-icon svg {
             width: 22px;
             height: 22px;
-            color: #2D6A4F;
+        }
+
+        .continue-text {
+            flex: 1;
+            min-width: 0;
         }
 
         .continue-text h3 {
-            font-size: 0.9rem;
+            font-size: var(--text-body);
             font-weight: 600;
-            color: #1D1D1F;
-            margin-bottom: 2px;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
         }
 
         .continue-text p {
-            font-size: 0.78rem;
-            color: #86868B;
+            font-size: var(--text-body-sm);
+            color: var(--color-text-muted);
         }
 
         .continue-arrow {
             margin-left: auto;
             color: var(--color-text-tert);
+            transition: transform var(--motion-fast) var(--ease-out),
+                        color var(--motion-fast) var(--ease-out);
+        }
+
+        .continue-card:hover .continue-arrow {
+            transform: translateX(3px);
+            color: var(--color-accent);
         }
 
         .continue-arrow svg {
@@ -468,95 +459,68 @@
             height: 20px;
         }
 
-        /* ===================== PROGRESS STRIP ===================== */
-        .progress-strip {
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 20px 24px;
-            margin-bottom: 48px;
+        /* ===================== PROGRESS STATS ===================== */
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: var(--space-3);
+        }
+
+        .progress-tile {
+            padding: var(--space-6);
             display: flex;
-            align-items: center;
+            flex-direction: column;
+            gap: var(--space-2);
+            min-height: 140px;
             justify-content: space-between;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
         }
 
-        .progress-stats {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .progress-stat {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .progress-stat-icon {
+        .progress-tile-icon {
             width: 36px;
             height: 36px;
-            border-radius: 10px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
+            background: var(--color-accent-tint);
+            color: var(--color-accent-deep);
         }
 
-        .progress-stat-icon svg {
+        .progress-tile-icon svg {
             width: 18px;
             height: 18px;
         }
 
-        .streak-icon {
-            background: rgba(45, 106, 79, 0.12);
-        }
-
-        .streak-icon svg {
-            color: #2D6A4F;
-        }
-
-        .sessions-icon {
-            background: #D8F3DC;
-        }
-
-        .sessions-icon svg {
-            color: #2D6A4F;
-        }
-
-        .progress-stat-num {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #1D1D1F;
-        }
-
-        .progress-stat-label {
-            font-size: 0.72rem;
-            color: var(--color-text-tert);
+        .progress-tile-num {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 5vw, 2.6rem);
+            line-height: 1;
             font-weight: 400;
+            letter-spacing: var(--tracking-tight);
+            color: var(--color-text);
         }
 
-        .progress-link {
-            font-size: 0.78rem;
-            color: #2D6A4F;
-            font-weight: 500;
-            white-space: nowrap;
-            transition: color 0.2s;
+        .progress-tile-label {
+            font-size: var(--text-micro);
+            color: var(--color-text-tert);
+            font-weight: 600;
+            letter-spacing: var(--tracking-wider);
+            text-transform: uppercase;
         }
 
-        .progress-link:hover {
-            color: #1B4332;
+        .progress-foot {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: var(--space-3);
         }
 
-        /* ===================== EXPLORE MORE ===================== */
-        .explore-section {
-            margin-bottom: 48px;
-        }
-
+        /* ===================== EXPLORE ===================== */
         .explore-scroll {
             display: flex;
-            gap: 12px;
+            gap: var(--space-3);
             overflow-x: auto;
-            padding-bottom: 8px;
+            padding: var(--space-1) var(--space-1) var(--space-3);
+            margin: 0 calc(-1 * var(--space-1));
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             scrollbar-width: none;
@@ -567,31 +531,23 @@
         }
 
         .explore-card {
-            min-width: 160px;
-            max-width: 160px;
-            background: #FFFFFF;
-            border: 1px solid rgba(0, 0, 0, 0.06);
-            border-radius: 12px;
-            padding: 20px 16px;
+            min-width: 168px;
+            max-width: 168px;
+            padding: var(--space-5);
             scroll-snap-align: start;
-            transition: box-shadow 0.3s ease;
             display: block;
             flex-shrink: 0;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 6px 16px rgba(0, 0, 0, 0.04);
-        }
-
-        .explore-card:hover {
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06), 0 8px 24px rgba(0, 0, 0, 0.07);
         }
 
         .explore-card-icon {
             width: 40px;
             height: 40px;
-            border-radius: 10px;
+            border-radius: var(--radius-sm);
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 14px;
+            margin-bottom: var(--space-4);
+            background: var(--color-accent-tint);
         }
 
         .explore-card-icon svg {
@@ -600,16 +556,41 @@
         }
 
         .explore-card-title {
-            font-size: 0.88rem;
+            font-size: var(--text-body);
             font-weight: 600;
-            color: #1D1D1F;
-            margin-bottom: 4px;
+            color: var(--color-text);
+            margin-bottom: var(--space-1);
         }
 
         .explore-card-desc {
-            font-size: 0.72rem;
-            color: #86868B;
-            line-height: 1.45;
+            font-size: var(--text-caption);
+            color: var(--color-text-muted);
+            line-height: var(--leading-normal);
+        }
+
+        /* ===================== FOOTER ===================== */
+        .home-footer {
+            margin-top: var(--space-9);
+            padding: var(--space-6) 0 var(--space-4);
+            text-align: center;
+            border-top: 1px solid var(--color-divider);
+        }
+
+        .home-footer p {
+            font-size: var(--text-micro);
+            color: var(--color-text-muted);
+            letter-spacing: var(--tracking-wide);
+            text-transform: uppercase;
+            line-height: var(--leading-loose);
+        }
+
+        .home-footer a {
+            color: var(--color-text-muted);
+            transition: color var(--motion-fast) var(--ease-out);
+        }
+
+        .home-footer a:hover {
+            color: var(--color-accent);
         }
 
         /* ===================== DESKTOP LAYOUT OVERRIDES ===================== */
@@ -635,32 +616,43 @@
                 grid-template-columns: repeat(4, 1fr);
             }
 
+            .progress-grid {
+                grid-template-columns: repeat(2, 1fr);
+                max-width: 560px;
+            }
+
             .container {
-                max-width: 800px;
+                max-width: 880px;
             }
         }
 
         /* ===================== SMALL MOBILE ===================== */
         @media (max-width: 380px) {
             .greeting-time {
-                font-size: 1.7rem;
+                font-size: 1.6rem;
             }
 
             .mood-faces {
-                gap: 8px;
+                gap: var(--space-2);
             }
 
-            .mood-btn svg {
+            .mood-card {
+                min-width: 48px;
+                padding: var(--space-2);
+            }
+
+            .mood-card svg {
                 width: 34px;
                 height: 34px;
             }
 
-            .progress-stats {
-                gap: 16px;
+            .daily-card {
+                padding-left: var(--space-5);
             }
 
-            .daily-card {
-                padding: 22px 22px 22px 26px;
+            .progress-tile {
+                padding: var(--space-5);
+                min-height: 120px;
             }
         }
 
@@ -876,15 +868,15 @@
         </section>
 
         <!-- ==================== GREETING ==================== -->
-        <section class="greeting-section fade-section">
+        <section class="greeting-section" data-show-if-onboarded="1">
             <p class="greeting-time" id="greetingText">Good evening</p>
             <p class="greeting-sub" id="greetingSub">Wind down gently</p>
             <p class="greeting-hindi" id="greetingHindi" lang="hi">धीरे-धीरे विश्राम करें</p>
         </section>
 
         <!-- ==================== DAILY QUOTE CARD ==================== -->
-        <section class="fade-section">
-            <div class="daily-card" id="dailyCard">
+        <section class="home-section">
+            <div class="card card-interactive daily-card" id="dailyCard">
                 <div class="daily-label">
                     <span class="daily-label-dot"></span>
                     Today's Reflection
@@ -896,10 +888,13 @@
         </section>
 
         <!-- ==================== QUICK ACTIONS ==================== -->
-        <section class="fade-section">
-            <div class="section-label">Quick Start</div>
-            <div class="quick-grid">
-                <a href="/breathe.html" class="quick-card" data-feature="breathe">
+        <section class="home-section">
+            <div class="home-section-head">
+                <p class="section-eyebrow">Today</p>
+                <h2 class="text-h2 home-section-title">Quick start</h2>
+            </div>
+            <div class="quick-grid stagger">
+                <a href="/breathe.html" class="card card-interactive quick-card" data-feature="breathe">
                     <div class="quick-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M17.7 7.7A7.1 7.1 0 0 0 6.3 7.7c-1.2 1.6-1.2 4.4 0 6l5.7 6.3 5.7-6.3c1.2-1.6 1.2-4.4 0-6z"/>
@@ -910,7 +905,7 @@
                     <div class="quick-title">Breathe</div>
                     <div class="quick-hindi" lang="hi">साँस</div>
                 </a>
-                <a href="/meditate.html" class="quick-card" data-feature="meditate">
+                <a href="/meditate.html" class="card card-interactive quick-card" data-feature="meditate">
                     <div class="quick-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="6" r="2"/>
@@ -924,7 +919,7 @@
                     <div class="quick-title">Meditate</div>
                     <div class="quick-hindi" lang="hi">ध्यान</div>
                 </a>
-                <a href="/sleep.html" class="quick-card" data-feature="sleep">
+                <a href="/sleep.html" class="card card-interactive quick-card" data-feature="sleep">
                     <div class="quick-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
@@ -935,93 +930,101 @@
                     <div class="quick-title">Sleep</div>
                     <div class="quick-hindi" lang="hi">नींद</div>
                 </a>
-                <a href="/sos.html" class="quick-card sos-card" data-feature="sos">
+                <a href="/sos.html" class="card card-interactive quick-card sos-card" data-feature="sos" aria-label="SOS — crisis support">
                     <div class="quick-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="#DC2626" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
                         </svg>
                     </div>
-                    <div class="quick-title" style="color: #DC2626;">SOS</div>
-                    <div class="quick-hindi" style="color: var(--color-text-tert);" lang="hi">मदद</div>
+                    <div class="quick-title">SOS</div>
+                    <div class="quick-hindi" lang="hi">मदद</div>
                 </a>
             </div>
         </section>
 
         <!-- ==================== MOOD CHECK-IN ==================== -->
-        <section class="mood-section fade-section" id="moodSection">
-            <h2 class="mood-title">How are you feeling?</h2>
-            <p class="mood-title-hindi" lang="hi">आप कैसा महसूस कर रहे हैं?</p>
-            <div class="mood-faces" id="moodFaces">
-                <button class="mood-btn" data-mood="awful" aria-label="Awful">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <circle cx="24" cy="24" r="22" stroke="#DC2626" stroke-width="1.5" fill="none"/>
-                        <circle cx="16" cy="20" r="2" fill="#DC2626"/>
-                        <circle cx="32" cy="20" r="2" fill="#DC2626"/>
-                        <path d="M16 34c2-3 5-5 8-5s6 2 8 5" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 24 31.5)"/>
-                        <path d="M14 15l4 2" stroke="#DC2626" stroke-width="1.2" stroke-linecap="round"/>
-                        <path d="M34 15l-4 2" stroke="#DC2626" stroke-width="1.2" stroke-linecap="round"/>
-                    </svg>
-                    <span class="mood-btn-label">Awful</span>
-                </button>
-                <button class="mood-btn" data-mood="bad" aria-label="Bad">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <circle cx="24" cy="24" r="22" stroke="#C68B59" stroke-width="1.5" fill="none"/>
-                        <circle cx="16" cy="20" r="2" fill="#C68B59"/>
-                        <circle cx="32" cy="20" r="2" fill="#C68B59"/>
-                        <path d="M16 33c2-2 5-3 8-3s6 1 8 3" stroke="#C68B59" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 24 31.5)"/>
-                    </svg>
-                    <span class="mood-btn-label">Bad</span>
-                </button>
-                <button class="mood-btn" data-mood="okay" aria-label="Okay">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <circle cx="24" cy="24" r="22" stroke="#86868B" stroke-width="1.5" fill="none"/>
-                        <circle cx="16" cy="20" r="2" fill="#86868B"/>
-                        <circle cx="32" cy="20" r="2" fill="#86868B"/>
-                        <line x1="16" y1="31" x2="32" y2="31" stroke="#86868B" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span class="mood-btn-label">Okay</span>
-                </button>
-                <button class="mood-btn" data-mood="good" aria-label="Good">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <circle cx="24" cy="24" r="22" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
-                        <circle cx="16" cy="20" r="2" fill="#2D6A4F"/>
-                        <circle cx="32" cy="20" r="2" fill="#2D6A4F"/>
-                        <path d="M16 29c2 2 5 3 8 3s6-1 8-3" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span class="mood-btn-label">Good</span>
-                </button>
-                <button class="mood-btn" data-mood="great" aria-label="Great">
-                    <svg viewBox="0 0 48 48" fill="none">
-                        <circle cx="24" cy="24" r="22" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
-                        <circle cx="16" cy="19" r="2" fill="#2D6A4F"/>
-                        <circle cx="32" cy="19" r="2" fill="#2D6A4F"/>
-                        <path d="M14 28c2 4 5 6 10 6s8-2 10-6" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                    <span class="mood-btn-label">Great</span>
-                </button>
+        <section class="home-section">
+            <div class="card mood-section" id="moodSection">
+                <h2 class="mood-title">How are you feeling?</h2>
+                <p class="mood-title-hindi" lang="hi">आप कैसा महसूस कर रहे हैं?</p>
+                <div class="mood-faces stagger" id="moodFaces" role="group" aria-label="Mood check-in">
+                    <button class="mood-card" data-mood="awful" aria-label="Awful">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="22" stroke="#DC2626" stroke-width="1.5" fill="none"/>
+                            <circle cx="16" cy="20" r="2" fill="#DC2626"/>
+                            <circle cx="32" cy="20" r="2" fill="#DC2626"/>
+                            <path d="M16 34c2-3 5-5 8-5s6 2 8 5" stroke="#DC2626" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 24 31.5)"/>
+                            <path d="M14 15l4 2" stroke="#DC2626" stroke-width="1.2" stroke-linecap="round"/>
+                            <path d="M34 15l-4 2" stroke="#DC2626" stroke-width="1.2" stroke-linecap="round"/>
+                        </svg>
+                        <span class="mood-btn-label">Awful</span>
+                    </button>
+                    <button class="mood-card" data-mood="bad" aria-label="Bad">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="22" stroke="#C68B59" stroke-width="1.5" fill="none"/>
+                            <circle cx="16" cy="20" r="2" fill="#C68B59"/>
+                            <circle cx="32" cy="20" r="2" fill="#C68B59"/>
+                            <path d="M16 33c2-2 5-3 8-3s6 1 8 3" stroke="#C68B59" stroke-width="1.5" stroke-linecap="round" transform="rotate(180 24 31.5)"/>
+                        </svg>
+                        <span class="mood-btn-label">Bad</span>
+                    </button>
+                    <button class="mood-card" data-mood="okay" aria-label="Okay">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="22" stroke="#86868B" stroke-width="1.5" fill="none"/>
+                            <circle cx="16" cy="20" r="2" fill="#86868B"/>
+                            <circle cx="32" cy="20" r="2" fill="#86868B"/>
+                            <line x1="16" y1="31" x2="32" y2="31" stroke="#86868B" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="mood-btn-label">Okay</span>
+                    </button>
+                    <button class="mood-card" data-mood="good" aria-label="Good">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="22" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
+                            <circle cx="16" cy="20" r="2" fill="#2D6A4F"/>
+                            <circle cx="32" cy="20" r="2" fill="#2D6A4F"/>
+                            <path d="M16 29c2 2 5 3 8 3s6-1 8-3" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="mood-btn-label">Good</span>
+                    </button>
+                    <button class="mood-card" data-mood="great" aria-label="Great">
+                        <svg viewBox="0 0 48 48" fill="none">
+                            <circle cx="24" cy="24" r="22" stroke="#2D6A4F" stroke-width="1.5" fill="none"/>
+                            <circle cx="16" cy="19" r="2" fill="#2D6A4F"/>
+                            <circle cx="32" cy="19" r="2" fill="#2D6A4F"/>
+                            <path d="M14 28c2 4 5 6 10 6s8-2 10-6" stroke="#2D6A4F" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                        <span class="mood-btn-label">Great</span>
+                    </button>
+                </div>
+                <div class="mood-thanks" id="moodThanks">Thank you for checking in</div>
             </div>
-            <div class="mood-thanks" id="moodThanks">Thank you for checking in</div>
         </section>
 
         <!-- ==================== RECOMMENDED ==================== -->
-        <section class="rec-section fade-section" id="recSection">
-            <div class="rec-header">
-                <div class="rec-time-icon" id="recIcon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-                    </svg>
+        <section class="home-section" id="recSection">
+            <div class="home-section-head">
+                <p class="section-eyebrow">Picked for you</p>
+                <div class="rec-title-row">
+                    <span class="rec-header-icon" id="recIcon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+                        </svg>
+                    </span>
+                    <h2 class="text-h2 home-section-title" id="recTitle">Evening Wind-Down</h2>
                 </div>
-                <h2 class="rec-title" id="recTitle">Evening Wind-Down</h2>
             </div>
-            <div class="rec-cards" id="recCards">
+            <div class="rec-cards stagger" id="recCards">
                 <!-- Populated by JS -->
             </div>
         </section>
 
         <!-- ==================== CONTINUE WHERE YOU LEFT OFF ==================== -->
-        <section class="fade-section">
-            <div class="section-label">Continue</div>
-            <a id="continueCard" href="/courses.html" class="continue-card">
+        <section class="home-section">
+            <div class="home-section-head">
+                <p class="section-eyebrow">Continue</p>
+                <h2 class="text-h2 home-section-title">Pick up where you left off</h2>
+            </div>
+            <a id="continueCard" href="/courses.html" class="card card-interactive continue-card">
                 <div class="continue-icon" id="continueIcon">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                         <polygon points="5 3 19 12 5 21 5 3"/>
@@ -1039,45 +1042,51 @@
             </a>
         </section>
 
-        <!-- ==================== PROGRESS STRIP ==================== -->
-        <section class="fade-section">
-            <div class="section-label">Your Progress</div>
-            <div class="progress-strip">
-                <div class="progress-stats">
-                    <div class="progress-stat">
-                        <div class="progress-stat-icon streak-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <path d="M12 2c1 4-2 8-2 8s4-1 5 4c1 5-4 8-4 8s2-3 0-6c-1.5 1.5-2 4-2 4s-3-3-1-8c-2 1-3 4-3 4s-1-6 3-10c0 0 2-1 4 2z"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="progress-stat-num" id="streakNum">0</div>
-                            <div class="progress-stat-label">day streak</div>
-                        </div>
+        <!-- ==================== PROGRESS STATS ==================== -->
+        <section class="home-section">
+            <div class="home-section-head-row">
+                <div>
+                    <p class="section-eyebrow">Your Progress</p>
+                    <h2 class="text-h2 home-section-title">A steady practice</h2>
+                </div>
+                <a href="/you.html" class="home-section-link">View all &rarr;</a>
+            </div>
+            <div class="progress-grid stagger">
+                <div class="card progress-tile">
+                    <div class="progress-tile-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2c1 4-2 8-2 8s4-1 5 4c1 5-4 8-4 8s2-3 0-6c-1.5 1.5-2 4-2 4s-3-3-1-8c-2 1-3 4-3 4s-1-6 3-10c0 0 2-1 4 2z"/>
+                        </svg>
                     </div>
-                    <div class="progress-stat">
-                        <div class="progress-stat-icon sessions-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <div class="progress-stat-num" id="sessionsNum">0</div>
-                            <div class="progress-stat-label">this week</div>
-                        </div>
+                    <div>
+                        <div class="progress-tile-num" id="streakNum">0</div>
+                        <div class="progress-tile-label">Day streak</div>
                     </div>
                 </div>
-                <a href="/you.html" class="progress-link">View all &rarr;</a>
+                <div class="card progress-tile">
+                    <div class="progress-tile-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="progress-tile-num" id="sessionsNum">0</div>
+                        <div class="progress-tile-label">Sessions this week</div>
+                    </div>
+                </div>
             </div>
         </section>
 
         <!-- ==================== EXPLORE MORE ==================== -->
-        <section class="explore-section fade-section">
-            <div class="section-label">Explore More</div>
-            <div class="explore-scroll">
-                <a href="/courses.html" class="explore-card" data-feature="courses">
-                    <div class="explore-card-icon" style="background: #D8F3DC;">
+        <section class="home-section">
+            <div class="home-section-head">
+                <p class="section-eyebrow">Explore</p>
+                <h2 class="text-h2 home-section-title">More from Sukoon</h2>
+            </div>
+            <div class="explore-scroll stagger">
+                <a href="/courses.html" class="card card-interactive explore-card" data-feature="courses">
+                    <div class="explore-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
                             <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
@@ -1086,8 +1095,8 @@
                     <div class="explore-card-title">Courses</div>
                     <div class="explore-card-desc">Guided programs for growth and healing</div>
                 </a>
-                <a href="/wisdom.html" class="explore-card" data-feature="wisdom">
-                    <div class="explore-card-icon" style="background: rgba(45, 106, 79, 0.12);">
+                <a href="/wisdom.html" class="card card-interactive explore-card" data-feature="wisdom">
+                    <div class="explore-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                             <path d="M2 17l10 5 10-5"/>
@@ -1097,8 +1106,8 @@
                     <div class="explore-card-title">Wisdom</div>
                     <div class="explore-card-desc">Timeless teachings from Indian traditions</div>
                 </a>
-                <a href="/quotes.html" class="explore-card" data-feature="quotes">
-                    <div class="explore-card-icon" style="background: #D8F3DC;">
+                <a href="/quotes.html" class="card card-interactive explore-card" data-feature="quotes">
+                    <div class="explore-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M3 21c3 0 7-1 7-8V5c0-1.25-.756-2.017-2-2H4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2 1 0 1 0 1 1v1c0 1-1 2-2 2s-1 .008-1 1.031V21z"/>
                             <path d="M15 21c3 0 7-1 7-8V5c0-1.25-.757-2.017-2-2h-4c-1.25 0-2 .75-2 1.972V11c0 1.25.75 2 2 2h.75c0 2.25.25 4-2.75 4v3c0 1 0 1 1 1z"/>
@@ -1107,8 +1116,8 @@
                     <div class="explore-card-title">Quotes</div>
                     <div class="explore-card-desc">Daily inspiration in English and Hindi</div>
                 </a>
-                <a href="/videos.html" class="explore-card" data-feature="videos">
-                    <div class="explore-card-icon" style="background: rgba(45, 106, 79, 0.12);">
+                <a href="/videos.html" class="card card-interactive explore-card" data-feature="videos">
+                    <div class="explore-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <polygon points="5 3 19 12 5 21 5 3"/>
                         </svg>
@@ -1116,8 +1125,8 @@
                     <div class="explore-card-title">Videos</div>
                     <div class="explore-card-desc">Curated wellness talks and practices</div>
                 </a>
-                <a href="/focus.html" class="explore-card" data-feature="focus">
-                    <div class="explore-card-icon" style="background: #D8F3DC;">
+                <a href="/focus.html" class="card card-interactive explore-card" data-feature="focus">
+                    <div class="explore-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <circle cx="12" cy="12" r="10"/>
                             <circle cx="12" cy="12" r="6"/>
@@ -1127,8 +1136,8 @@
                     <div class="explore-card-title">Focus</div>
                     <div class="explore-card-desc">Pomodoro timer with calming sounds</div>
                 </a>
-                <a href="/friend.html" class="explore-card" data-feature="friend">
-                    <div class="explore-card-icon" style="background: rgba(45, 106, 79, 0.12);">
+                <a href="/friend.html" class="card card-interactive explore-card" data-feature="friend">
+                    <div class="explore-card-icon">
                         <svg viewBox="0 0 24 24" fill="none" stroke="#2D6A4F" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                             <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
                             <path d="M8 10h.01"/>
@@ -1141,6 +1150,11 @@
                 </a>
             </div>
         </section>
+
+        <!-- ==================== FOOTER ==================== -->
+        <footer class="home-footer">
+            <p>Sukoon is free, forever. Made in India for the world. &middot; <a href="/privacy.html">Privacy</a> &middot; <a href="/about.html">About</a></p>
+        </footer>
 
     </main>
 
@@ -1186,6 +1200,9 @@
             <span>You</span>
         </a>
     </nav>
+
+    <!-- Greeting visibility — only show to returning users -->
+    <script>try{if(localStorage.getItem('sukoon_onboarded'))document.querySelectorAll('[data-show-if-onboarded="1"]').forEach(function(el){el.classList.add('is-visible');});}catch(e){}</script>
 
     <!-- ==================== JAVASCRIPT ==================== -->
     <script src="/js/sukoon-engine.js"></script>
@@ -1286,10 +1303,10 @@
         }
 
         moodFaces.addEventListener('click', function(e) {
-            const btn = e.target.closest('.mood-btn');
+            const btn = e.target.closest('.mood-card');
             if (!btn) return;
 
-            moodFaces.querySelectorAll('.mood-btn').forEach(function(b) {
+            moodFaces.querySelectorAll('.mood-card').forEach(function(b) {
                 b.classList.remove('selected');
             });
             btn.classList.add('selected');
@@ -1350,7 +1367,7 @@
         recIcon.innerHTML = rec.icon;
 
         recCards.innerHTML = rec.cards.map(function(card) {
-            return '<a href="' + card.link + '" class="rec-card">' +
+            return '<a href="' + card.link + '" class="card card-interactive rec-card">' +
                 '<div class="rec-card-icon" style="background:' + card.bg + ';">' +
                     '<svg viewBox="0 0 24 24" fill="none" stroke="' + card.color + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">' +
                         '<circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/>' +
