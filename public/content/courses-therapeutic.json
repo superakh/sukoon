@@ -1,1 +1,847 @@
-[]
+[
+  {
+    "id": "14-days-for-anxiety",
+    "title_en": "14 Days for Anxiety",
+    "title_hi": "चिंता के लिए 14 दिन",
+    "subtitle_en": "Build your daily anxiety toolkit, one calm tool at a time.",
+    "subtitle_hi": "रोज़ एक शांत औज़ार — चिंता से निपटने का अपना अपना टूलकिट बनाइए।",
+    "days": 14,
+    "level": "beginner",
+    "focus_tag": "anxiety",
+    "intro_en": "Anxiety is not your enemy. It is a body that has forgotten it is safe. Over the next 14 days, you will not fight your anxiety — you will quietly teach your nervous system a different language. Each day adds one small tool: a breath, a posture, a way of paying attention. By Day 14, you will not have one technique, you will have a whole toolkit you can reach for at 3 a.m., before a meeting, or in the middle of a spiral. Twelve minutes a day. No incense, no perfect cushion, no spiritual performance. Just you, your breath, and a body that is slowly learning it can stop bracing. You don't have to believe in this. You only have to show up.",
+    "intro_hi": "चिंता आपकी दुश्मन नहीं है। यह एक ऐसा शरीर है जो भूल गया है कि वह सुरक्षित है। अगले 14 दिनों में आप अपनी चिंता से लड़ेंगे नहीं — आप चुपचाप अपने नर्वस सिस्टम को एक नई भाषा सिखाएँगे। हर दिन एक छोटा औज़ार जुड़ेगा: एक साँस, एक मुद्रा, ध्यान देने का एक तरीका। 14वें दिन तक आपके पास एक तकनीक नहीं, पूरा टूलकिट होगा — जिसे आप रात तीन बजे, मीटिंग से पहले, या किसी भँवर के बीच में उठा सकते हैं। दिन में बारह मिनट। न अगरबत्ती, न परफेक्ट आसन, न आध्यात्मिक दिखावा। बस आप, आपकी साँस, और एक शरीर जो धीरे-धीरे सीख रहा है कि वह तना रहना छोड़ सकता है। आपको इस पर विश्वास करने की ज़रूरत नहीं है। बस आना है।",
+    "estimated_daily_minutes": 12,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Meeting the Breath",
+        "title_hi": "साँस से पहली मुलाक़ात",
+        "intro_en": "Before any technique, we start by noticing. Today you do nothing — you just watch the breath that has been with you your whole life. Anxiety lives in shallow chest breathing. Healing begins the moment you notice it without trying to fix it. This is your first tool: awareness.",
+        "intro_hi": "किसी भी तकनीक से पहले, हम सिर्फ़ देखना शुरू करते हैं। आज आप कुछ नहीं करेंगे — बस उस साँस को देखेंगे जो जीवन भर आपके साथ रही है। चिंता उथली सीने की साँस में रहती है। ठीक उसी क्षण से उपचार शुरू होता है जब आप उसे बिना सुधारे देखते हैं। यही आपका पहला औज़ार है: जागरूकता।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Soft welcome — explain that today is only about noticing, not changing, the breath.", "notes_hi": "कोमल स्वागत — आज सिर्फ़ साँस को देखना है, बदलना नहीं।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 180, "notes_en": "Settle into a supported seated position or lie down with a cushion under the knees. Soft body scan, head to feet.", "notes_hi": "तकिए के सहारे बैठ जाएँ या घुटनों के नीचे तकिया रखकर लेट जाएँ। सिर से पैर तक हल्का बॉडी स्कैन।" },
+          { "type": "meditation", "ref_id": "anxiety-noticing-breath", "duration_sec": 360, "notes_en": "Pure observation of the natural breath at the nostrils — no counting, no lengthening.", "notes_hi": "नथुनों पर प्राकृतिक साँस का शुद्ध अवलोकन — न गिनती, न खींचना।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Closing — name the first tool: 'I can notice my breath.'", "notes_hi": "समापन — पहले औज़ार का नाम लें: 'मैं अपनी साँस को देख सकता/सकती हूँ।'" }
+        ],
+        "reflection_prompt_en": "Where in your body did you first notice the breath today — chest, belly, or somewhere else?",
+        "reflection_prompt_hi": "आज आपको साँस पहले शरीर में कहाँ महसूस हुई — सीने में, पेट में, या कहीं और?"
+      },
+      {
+        "day": 2,
+        "title_en": "The Long Exhale",
+        "title_hi": "लम्बी साँस-बाहर",
+        "intro_en": "Yesterday you watched. Today you nudge — gently. A breath out that is longer than the breath in is the single fastest way to tell your nervous system: we are safe. This is not deep breathing. This is sigh breathing. It works in 90 seconds and it works in any room.",
+        "intro_hi": "कल आपने देखा। आज आप हल्का सा धक्का देंगे — बहुत कोमलता से। साँस-अंदर से लम्बी साँस-बाहर — यह नर्वस सिस्टम को 'हम सुरक्षित हैं' बताने का सबसे तेज़ तरीका है। यह गहरी साँस नहीं है। यह आह की साँस है। नब्बे सेकंड में काम करती है, किसी भी कमरे में।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Recall Day 1 — awareness is still on. Now we add one variable: extending the exhale.", "notes_hi": "पहले दिन को याद करें — जागरूकता बनी हुई है। अब एक चीज़ जोड़ेंगे: साँस-बाहर को लंबा करना।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 240, "notes_en": "Inhale 4 counts, exhale 6 counts through pursed lips. No force. If the count feels hard, just make the out longer than the in.", "notes_hi": "4 गिनती साँस-अंदर, 6 गिनती हल्के होंठों से साँस-बाहर। ज़ोर नहीं। गिनती मुश्किल लगे तो बस बाहर को अंदर से लंबा रखें।" },
+          { "type": "meditation", "ref_id": "anxiety-noticing-breath", "duration_sec": 300, "notes_en": "Drop the count. Sit with what your body feels like after the long exhales.", "notes_hi": "गिनती छोड़ दें। लम्बी साँसों के बाद शरीर कैसा लग रहा है — उसी के साथ बैठें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Tool #2: 'The exhale is my brake pedal.'", "notes_hi": "औज़ार #2: 'साँस-बाहर मेरा ब्रेक है।'" }
+        ],
+        "reflection_prompt_en": "When in the next 24 hours could you use one long exhale? Name a specific moment.",
+        "reflection_prompt_hi": "अगले 24 घंटों में कौन-सा एक पल है जब आप एक लंबी साँस-बाहर ले सकते हैं? कोई एक पल बताइए।"
+      },
+      {
+        "day": 3,
+        "title_en": "Feet on the Floor",
+        "title_hi": "पैर ज़मीन पर",
+        "intro_en": "Anxiety pulls you up — into the head, into the future. Today we drop the centre of gravity back into the body. The floor has been holding you all along. We are only going to feel it. Grounding is not a metaphor. It is a literal physical fact you can borrow from.",
+        "intro_hi": "चिंता आपको ऊपर खींचती है — सिर में, भविष्य में। आज हम आपके केंद्र को वापस शरीर में उतारेंगे। ज़मीन हमेशा आपको सँभाले हुए थी। आज हम बस उसे महसूस करेंगे। ग्राउंडिंग कोई रूपक नहीं है। यह एक सच है — और आप उसे उधार ले सकते हैं।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Why the body, not the mind, is where anxiety releases.", "notes_hi": "चिंता दिमाग से नहीं, शरीर से रिलीज़ होती है — क्यों।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 120, "notes_en": "Two minutes of yesterday's long-exhale breath as warm-up.", "notes_hi": "पिछले दिन की लम्बी साँस — दो मिनट, गर्म-अप के रूप में।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 300, "notes_en": "Seated with feet flat on floor (or lying with feet pressing into mat). Press each part of the foot — heel, outer edge, ball, toes. Feel weight transfer.", "notes_hi": "पैर ज़मीन पर सपाट (या लेटकर पैर चटाई पर दबाएँ)। पैर के हर हिस्से को दबाएँ — एड़ी, बाहरी किनारा, गद्दी, उँगलियाँ। वज़न का बदलाव महसूस करें।" },
+          { "type": "meditation", "ref_id": "grounding-roots", "duration_sec": 180, "notes_en": "5-4-3-2-1 sensory grounding through the feet. Name what you feel through skin.", "notes_hi": "पैरों के ज़रिए 5-4-3-2-1 इंद्रिय ग्राउंडिंग। त्वचा से जो महसूस हो, उसका नाम लें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Tool #3: 'I have feet. They are on the floor.'", "notes_hi": "औज़ार #3: 'मेरे पैर हैं। वे ज़मीन पर हैं।'" }
+        ],
+        "reflection_prompt_en": "Today, did your anxiety feel different when your attention was below your waist? Describe in one line.",
+        "reflection_prompt_hi": "आज जब ध्यान कमर के नीचे था, तो चिंता क्या अलग लगी? एक पंक्ति में लिखें।"
+      },
+      {
+        "day": 4,
+        "title_en": "Box Breath",
+        "title_hi": "बॉक्स साँस",
+        "intro_en": "Today we add structure. The long exhale was emergency relief. Box breathing is daily maintenance — the breath the Navy SEALs use before high-pressure moments, and grandmothers used before they ever heard the word stress. Four equal sides. Anxiety hates structure. Give it some.",
+        "intro_hi": "आज हम संरचना जोड़ेंगे। लम्बी साँस-बाहर आपातकालीन राहत थी। बॉक्स साँस रोज़मर्रा का अभ्यास है — वही जिसे नेवी सील ऊँचे दबाव से पहले इस्तेमाल करते हैं और जो हमारी दादियाँ बिना नाम जाने करती आई हैं। चार बराबर तरफ़। चिंता को संरचना पसंद नहीं — आप उसे दीजिए।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Quick check-in: how did Day 3's grounding land?", "notes_hi": "तीसरे दिन की ग्राउंडिंग कैसी रही — एक छोटी जाँच।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 120, "notes_en": "Settle: feet on floor, hands on belly. Layer of yesterday's grounding before today's breath.", "notes_hi": "बसें: पैर ज़मीन पर, हाथ पेट पर। आज की साँस से पहले कल की ग्राउंडिंग की एक परत।" },
+          { "type": "breath", "ref_id": "anxiety-box-breath", "duration_sec": 420, "notes_en": "Box breath 4-4-4-4. Inhale 4, hold 4, exhale 4, hold 4. Begin with 6 rounds, build to 10. If holds feel tight, drop to 3-3-3-3.", "notes_hi": "बॉक्स साँस 4-4-4-4। 4 अंदर, 4 रोकें, 4 बाहर, 4 रोकें। 6 चक्र से शुरू, 10 तक। होल्ड भारी लगे तो 3-3-3-3 करें।" },
+          { "type": "meditation", "ref_id": "anxiety-noticing-breath", "duration_sec": 90, "notes_en": "Drop the count. Notice the unusual stillness after structured breath.", "notes_hi": "गिनती छोड़ दें। संरचित साँस के बाद की असामान्य शांति को देखें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Tool #4: 'I have a shape for my breath.'", "notes_hi": "औज़ार #4: 'मेरी साँस की एक आकृति है।'" }
+        ],
+        "reflection_prompt_en": "Which side of the box was hardest — the holds or the moving breath? Notice without judgement.",
+        "reflection_prompt_hi": "बॉक्स की कौन-सी तरफ़ सबसे मुश्किल लगी — रुकना या साँस लेना? बिना फैसले के देखें।"
+      },
+      {
+        "day": 5,
+        "title_en": "The Body's First Yes",
+        "title_hi": "शरीर की पहली 'हाँ'",
+        "intro_en": "Anxious bodies live in a permanent 'no.' Jaw clenched. Shoulders up. Belly hard. Today we introduce restorative yoga — three supported postures that ask the body, gently, if it might say yes. The body trusts what it feels, not what it is told.",
+        "intro_hi": "चिंताग्रस्त शरीर हमेशा 'ना' में जीते हैं। जबड़ा जकड़ा, कंधे ऊँचे, पेट सख़्त। आज हम रेस्टोरेटिव योग शुरू करेंगे — तीन सहारे वाले आसन जो शरीर से धीरे-से पूछते हैं कि क्या वह 'हाँ' कह सकता है। शरीर वही मानता है जो महसूस करता है, जो बोला जाए वो नहीं।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Introduce restorative yoga — props are the teacher, not the strain.", "notes_hi": "रेस्टोरेटिव योग का परिचय — सहारा ही शिक्षक है, खिंचाव नहीं।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 90, "notes_en": "Warm-up with the long-exhale breath.", "notes_hi": "लम्बी साँस-बाहर से शुरुआत।" },
+          { "type": "asana_sequence", "ref_id": "restorative-legs-up-wall", "duration_sec": 360, "notes_en": "Viparita Karani / Legs-up-the-wall. 5 minutes with hands on belly. If no wall, lie back with calves on a chair.", "notes_hi": "विपरीत करणी / पैर-दीवार पर। 5 मिनट, हाथ पेट पर। दीवार न हो तो पिंडलियाँ कुर्सी पर रखें।" },
+          { "type": "meditation", "ref_id": "anxiety-body-softening", "duration_sec": 180, "notes_en": "Soft scan — jaw, shoulders, belly, hands. Permission to soften one notch.", "notes_hi": "हल्का स्कैन — जबड़ा, कंधे, पेट, हाथ। एक पायदान नरम पड़ने की अनुमति।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Tool #5: 'I can ask my body to soften.'", "notes_hi": "औज़ार #5: 'मैं अपने शरीर से नरम पड़ने को कह सकता/सकती हूँ।'" }
+        ],
+        "reflection_prompt_en": "Which body part softened today without you forcing it?",
+        "reflection_prompt_hi": "आज कौन-सा अंग बिना ज़ोर के अपने आप नरम पड़ा?"
+      },
+      {
+        "day": 6,
+        "title_en": "Naming the Wave",
+        "title_hi": "लहर को नाम देना",
+        "intro_en": "Anxiety is a wave. It rises, peaks, falls. The trouble is that we fight the rise and never see the fall. Today we learn the oldest mindfulness move: name it to tame it. We are not getting rid of the wave. We are learning to surf it.",
+        "intro_hi": "चिंता एक लहर है। उठती है, चरम पर पहुँचती है, गिरती है। मुश्किल यह कि हम उठान से लड़ते हैं, गिरना देख ही नहीं पाते। आज सबसे पुरानी माइंडफुलनेस सीखेंगे: नाम देंगे, तभी उसे संभाल पाएँगे। लहर को मिटाना नहीं — उस पर सर्फ़ करना सीखना है।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "The wave metaphor — anxiety always has a falling edge.", "notes_hi": "लहर का रूपक — हर चिंता का एक उतार भी होता है।" },
+          { "type": "breath", "ref_id": "anxiety-box-breath", "duration_sec": 180, "notes_en": "Three minutes of box breath to settle.", "notes_hi": "बसने के लिए तीन मिनट बॉक्स साँस।" },
+          { "type": "meditation", "ref_id": "anxiety-naming-thoughts", "duration_sec": 360, "notes_en": "Noting practice: silently name what arises — 'planning', 'fearing', 'remembering', 'judging'. Then return to breath.", "notes_hi": "नोटिंग अभ्यास: जो उठे उसे चुपचाप नाम दें — 'योजना', 'डर', 'याद', 'फ़ैसला'। फिर साँस पर लौटें।" },
+          { "type": "asana_sequence", "ref_id": "restorative-supta-baddha", "duration_sec": 90, "notes_en": "Lie back over a rolled blanket, knees open. Rest 90 seconds.", "notes_hi": "मुड़े कंबल पर पीठ टिकाएँ, घुटने खुले। 90 सेकंड विश्राम।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Tool #6: 'I can name what is happening.'", "notes_hi": "औज़ार #6: 'मैं नाम दे सकता/सकती हूँ कि क्या हो रहा है।'" }
+        ],
+        "reflection_prompt_en": "What was the most frequent name your mind needed today?",
+        "reflection_prompt_hi": "आज दिमाग को सबसे ज़्यादा कौन-सा नाम चाहिए था?"
+      },
+      {
+        "day": 7,
+        "title_en": "Week One — The Toolkit So Far",
+        "title_hi": "पहला सप्ताह — अब तक का टूलकिट",
+        "intro_en": "One week in. You have six tools. Today, no new technique — only practising the toolkit. We rotate through each one, briefly, so your body knows that calm is not a single trick. It is a wardrobe. Today you learn to choose what fits.",
+        "intro_hi": "एक हफ़्ता पूरा। आपके पास छह औज़ार हैं। आज कोई नई तकनीक नहीं — सिर्फ़ टूलकिट का अभ्यास। हम हर औज़ार को बारी-बारी से छुएँगे, ताकि शरीर समझे कि शांति कोई एक करतब नहीं — एक अलमारी है। आज चुनना सीखेंगे।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Quick roll-call of the six tools so far.", "notes_hi": "अब तक के छह औज़ारों की झलक।" },
+          { "type": "meditation", "ref_id": "anxiety-noticing-breath", "duration_sec": 120, "notes_en": "Tool 1: 60 seconds of pure noticing.", "notes_hi": "औज़ार 1: 60 सेकंड शुद्ध अवलोकन।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 120, "notes_en": "Tool 2: 6 long exhales.", "notes_hi": "औज़ार 2: 6 लम्बी साँस-बाहर।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 90, "notes_en": "Tool 3: Feet on the floor, 90 seconds.", "notes_hi": "औज़ार 3: पैर ज़मीन पर, 90 सेकंड।" },
+          { "type": "breath", "ref_id": "anxiety-box-breath", "duration_sec": 180, "notes_en": "Tool 4: 4 rounds box breath.", "notes_hi": "औज़ार 4: 4 चक्र बॉक्स साँस।" },
+          { "type": "asana_sequence", "ref_id": "restorative-legs-up-wall", "duration_sec": 120, "notes_en": "Tool 5: 2 minutes legs-up.", "notes_hi": "औज़ार 5: 2 मिनट पैर-ऊपर।" },
+          { "type": "meditation", "ref_id": "anxiety-naming-thoughts", "duration_sec": 90, "notes_en": "Tool 6: 90 seconds of naming.", "notes_hi": "औज़ार 6: 90 सेकंड नामकरण।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Which tool felt most yours today?", "notes_hi": "आज कौन-सा औज़ार सबसे अपना लगा?" }
+        ],
+        "reflection_prompt_en": "Of the six tools, which one is becoming your go-to? Which one needs more time?",
+        "reflection_prompt_hi": "छह औज़ारों में से कौन सबसे पहले हाथ आता है? किसे और समय चाहिए?"
+      },
+      {
+        "day": 8,
+        "title_en": "Alternate Nostril",
+        "title_hi": "अनुलोम-विलोम",
+        "intro_en": "Today the breath gets ancient. Nadi shodhana — alternate nostril breathing — is the original two-sided medicine. It balances the left brain that plans and worries with the right brain that feels and rests. Five minutes, and the mind stops feeling like a tab with too many windows open.",
+        "intro_hi": "आज साँस प्राचीन हो जाएगी। नाड़ी शोधन — अनुलोम-विलोम — मूल दो-तरफ़ा औषधि है। बाएँ दिमाग की योजना-चिंता और दाएँ दिमाग की भावना-विश्राम को संतुलित करती है। पाँच मिनट — और मन वैसा नहीं लगता जैसे कई टैब खुले हों।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Brief science — why balancing the nostrils balances the nervous system.", "notes_hi": "थोड़ा विज्ञान — नथुनों का संतुलन नर्वस सिस्टम कैसे संतुलित करता है।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 90, "notes_en": "Upright spine — sit against a wall or on a cushion. Right hand in Vishnu mudra.", "notes_hi": "रीढ़ सीधी — दीवार के सहारे या तकिए पर बैठें। दाहिना हाथ विष्णु मुद्रा में।" },
+          { "type": "breath", "ref_id": "anxiety-nadi-shodhana", "duration_sec": 420, "notes_en": "Anuloma viloma without retention. Inhale left, exhale right; inhale right, exhale left. 7 minutes. Equal in and out, no breath holding for beginners.", "notes_hi": "अनुलोम-विलोम बिना रोके। बाएँ से अंदर, दाएँ से बाहर; दाएँ से अंदर, बाएँ से बाहर। 7 मिनट। साँस अंदर-बाहर बराबर, शुरुआत में रोकना नहीं।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 120, "notes_en": "Sit silently — feel the unusual symmetry in the head and chest.", "notes_hi": "चुपचाप बैठें — सिर और सीने की असामान्य समरूपता महसूस करें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Tool #7: 'I can balance the two halves.'", "notes_hi": "औज़ार #7: 'मैं दोनों आधे हिस्सों को संतुलित कर सकता/सकती हूँ।'" }
+        ],
+        "reflection_prompt_en": "After alternate nostril, is your mind quieter, busier, or just different? Describe without judgment.",
+        "reflection_prompt_hi": "अनुलोम-विलोम के बाद मन शांत है, ज़्यादा व्यस्त है, या बस अलग है? बिना फैसले के लिखें।"
+      },
+      {
+        "day": 9,
+        "title_en": "The Anxious Chest Opens",
+        "title_hi": "चिंतित सीने का खुलना",
+        "intro_en": "Anxiety lives in a collapsed chest — shoulders inward, ribs gripping, heart hidden. Today we add a supported chest opener. Not power yoga. Not Instagram backbends. Just a folded blanket under the spine — and a quiet revolution in how you breathe afterwards.",
+        "intro_hi": "चिंता एक ढहे हुए सीने में रहती है — कंधे अंदर, पसलियाँ जकड़ी, दिल छिपा। आज एक सहारे वाला छाती-खोलने वाला आसन जोड़ेंगे। न पावर योग, न इंस्टाग्राम बैकबेंड। बस रीढ़ के नीचे एक तह किया हुआ कंबल — और उसके बाद साँस लेने का तरीक़ा चुपचाप बदल जाता है।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Why chest-opening changes anxiety: more lung volume, less fight-or-flight.", "notes_hi": "सीना खुलने से चिंता क्यों बदलती है — फेफड़े का आयतन ज़्यादा, लड़ाई-भागो कम।" },
+          { "type": "breath", "ref_id": "anxiety-nadi-shodhana", "duration_sec": 180, "notes_en": "3 minutes of yesterday's alternate nostril as primer.", "notes_hi": "तैयारी के तौर पर कल का 3 मिनट अनुलोम-विलोम।" },
+          { "type": "asana_sequence", "ref_id": "restorative-supported-fish", "duration_sec": 360, "notes_en": "Supported fish: rolled blanket lengthwise under spine from mid-back to head. Arms open. 6 minutes.", "notes_hi": "सहारे वाला मत्स्यासन: मुड़ा कंबल रीढ़ के नीचे, मध्य पीठ से सिर तक। हाथ खुले। 6 मिनट।" },
+          { "type": "meditation", "ref_id": "anxiety-body-softening", "duration_sec": 90, "notes_en": "Notice the breath now — likely deeper without effort.", "notes_hi": "अब साँस को देखें — बिना कोशिश गहरी हो गई होगी।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Tool #8: 'My chest can rest open.'", "notes_hi": "औज़ार #8: 'मेरा सीना खुला रह सकता है।'" }
+        ],
+        "reflection_prompt_en": "Where in your day do you collapse your chest most? Driving, screens, scrolling?",
+        "reflection_prompt_hi": "दिन में सीना सबसे ज़्यादा कब झुकता है? गाड़ी चलाते, स्क्रीन पर, स्क्रॉल करते?"
+      },
+      {
+        "day": 10,
+        "title_en": "Anchor Phrase",
+        "title_hi": "लंगर वाक्य",
+        "intro_en": "By now, the body has six tools. The mind needs one too. Today we choose a single anchor phrase — short, true, and yours — that you will pair with the breath. Not a positive affirmation. A truth. Something the body can feel.",
+        "intro_hi": "अब तक शरीर के पास छह औज़ार हैं। मन को भी एक चाहिए। आज हम एक लंगर वाक्य चुनेंगे — छोटा, सच्चा, आपका अपना — जिसे साँस के साथ जोड़ेंगे। कोई 'पॉज़िटिव अफ़र्मेशन' नहीं। एक सच — जिसे शरीर महसूस कर सके।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Three sample anchors: 'I am here.' / 'This will pass.' / 'I am breathing.' Pick one or write your own.", "notes_hi": "तीन उदाहरण: 'मैं यहाँ हूँ।' / 'यह भी बीत जाएगा।' / 'मैं साँस ले रहा/रही हूँ।' एक चुनें या अपना बनाएँ।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 120, "notes_en": "Settle with two minutes long exhale.", "notes_hi": "दो मिनट लम्बी साँस-बाहर से बसें।" },
+          { "type": "meditation", "ref_id": "anxiety-anchor-phrase", "duration_sec": 480, "notes_en": "Inhale, silently say first half of phrase ('I am'). Exhale, second half ('here'). Eight minutes. When mind wanders, just return to the phrase.", "notes_hi": "साँस-अंदर पर वाक्य का पहला हिस्सा ('मैं'), साँस-बाहर पर दूसरा ('यहाँ हूँ')। आठ मिनट। मन भटके तो फिर वाक्य पर।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Tool #9: 'I have one true line to come back to.'", "notes_hi": "औज़ार #9: 'मेरे पास लौटने के लिए एक सच्ची पंक्ति है।'" }
+        ],
+        "reflection_prompt_en": "Write your anchor phrase here. Read it back. Does your body believe it?",
+        "reflection_prompt_hi": "अपना लंगर वाक्य यहाँ लिखें। पढ़ें। क्या शरीर इसे मानता है?"
+      },
+      {
+        "day": 11,
+        "title_en": "The 3 a.m. Toolkit",
+        "title_hi": "तीन बजे का टूलकिट",
+        "intro_en": "Anxiety has favourite hours — 3 a.m., 7 a.m. Sunday, the gap before a meeting. Today's session is built like a night-time emergency: lying down, eyes closed, no fancy props. We rehearse so the toolkit is in muscle memory before you need it.",
+        "intro_hi": "चिंता के पसंदीदा घंटे होते हैं — रात तीन बजे, रविवार सात बजे, मीटिंग से पहले की खाली पल। आज का अभ्यास रात की आपात स्थिति की तरह बनाया गया है: लेटकर, आँखें बंद, बिना ख़ास सहारा। टूलकिट को मांसपेशियों की याद में बैठाएँगे — ताकि ज़रूरत पर तुरंत मिले।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Frame: today is rehearsal for the moment you can't reach for a mat.", "notes_hi": "ढाँचा: आज उस पल का अभ्यास, जब चटाई तक पहुँचना मुमकिन न हो।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 60, "notes_en": "Lie on back. One hand belly, one hand chest. That's the whole posture.", "notes_hi": "पीठ के बल लेटें। एक हाथ पेट पर, एक छाती पर। बस यही पूरा आसन।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 180, "notes_en": "Three minutes of long exhale — the first thing you reach for at 3 a.m.", "notes_hi": "तीन मिनट लम्बी साँस-बाहर — रात तीन बजे का पहला सहारा।" },
+          { "type": "breath", "ref_id": "anxiety-box-breath", "duration_sec": 180, "notes_en": "Three minutes box breath — when long exhale isn't enough.", "notes_hi": "तीन मिनट बॉक्स साँस — जब लम्बी साँस-बाहर काफ़ी न लगे।" },
+          { "type": "meditation", "ref_id": "anxiety-anchor-phrase", "duration_sec": 240, "notes_en": "Four minutes of yesterday's anchor phrase with breath.", "notes_hi": "साँस के साथ कल का लंगर वाक्य — चार मिनट।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Tool #10: 'My toolkit works lying in bed.'", "notes_hi": "औज़ार #10: 'मेरा टूलकिट बिस्तर पर भी काम करता है।'" }
+        ],
+        "reflection_prompt_en": "If anxiety wakes you tonight, what is the first tool you will reach for? Decide now, not then.",
+        "reflection_prompt_hi": "रात को चिंता जगा दे तो पहले कौन-सा औज़ार उठाएँगे? अभी तय कर लें, तब नहीं।"
+      },
+      {
+        "day": 12,
+        "title_en": "Self-Compassion Breath",
+        "title_hi": "आत्म-करुणा की साँस",
+        "intro_en": "Anxious people are often kind to everyone but themselves. Today the breath turns inward. We borrow from metta — a practice that aims kindness not outward into the world, but into the body that has been holding so much. This is not weakness. It is fuel.",
+        "intro_hi": "चिंतित लोग सबके प्रति दयालु होते हैं, अपने प्रति नहीं। आज साँस अंदर की ओर मुड़ेगी। हम मेत्ता से उधार लेंगे — एक अभ्यास जो दया बाहर नहीं, उस शरीर की ओर मोड़ता है जिसने इतना सहा है। यह कमज़ोरी नहीं — ईंधन है।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 90, "notes_en": "Why self-compassion is the missing tool in most anxiety work.", "notes_hi": "ज़्यादातर चिंता-कार्य में आत्म-करुणा क्यों छूट जाती है।" },
+          { "type": "asana_sequence", "ref_id": "restorative-supta-baddha", "duration_sec": 180, "notes_en": "Supta baddha konasana with hands on heart and belly.", "notes_hi": "सुप्त बद्ध कोणासन — एक हाथ दिल पर, एक पेट पर।" },
+          { "type": "meditation", "ref_id": "self-compassion-hand-heart", "duration_sec": 420, "notes_en": "Inhale: 'May I be safe.' Exhale: 'May I be soft.' Move through: safe, soft, kind, easy. Seven minutes.", "notes_hi": "साँस-अंदर: 'मैं सुरक्षित रहूँ।' साँस-बाहर: 'मैं नरम रहूँ।' क्रम: सुरक्षित, नरम, दयालु, सहज। सात मिनट।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 60, "notes_en": "Close with two slow long exhales.", "notes_hi": "दो धीमी लम्बी साँस-बाहर से समापन।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Tool #11: 'I can include myself in my own kindness.'", "notes_hi": "औज़ार #11: 'अपनी दया में मैं भी शामिल हूँ।'" }
+        ],
+        "reflection_prompt_en": "Which of the four phrases — safe, soft, kind, easy — was the hardest to mean?",
+        "reflection_prompt_hi": "चार वाक्यों में से — सुरक्षित, नरम, दयालु, सहज — कौन सबसे मुश्किल से कहा गया?"
+      },
+      {
+        "day": 13,
+        "title_en": "Choosing Your Tool",
+        "title_hi": "अपना औज़ार चुनना",
+        "intro_en": "By now, you don't need to be told what to do. You have eleven tools. Today, instead of following the session, you build it. Five minutes to choose: which breath, which posture, which meditation does your body need right now? Anxiety has spent years choosing for you. Today, you choose back.",
+        "intro_hi": "अब आपको बताने की ज़रूरत नहीं कि क्या करना है। आपके पास ग्यारह औज़ार हैं। आज सत्र को पालन नहीं करेंगे — आप बनाएँगे। पाँच मिनट चुनने के: कौन-सी साँस, कौन-सा आसन, कौन-सा ध्यान आपके शरीर को अभी चाहिए? चिंता बरसों से आपकी जगह चुनती आई है। आज आप वापस चुनिए।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Walk through the eleven tools as a menu. Ask: what does my body need today — calming, grounding, or opening?", "notes_hi": "ग्यारह औज़ारों को मेन्यू की तरह दोहराएँ। पूछें: आज शरीर को क्या चाहिए — शांति, ज़मीन, या खुलाव?" },
+          { "type": "meditation", "ref_id": "anxiety-noticing-breath", "duration_sec": 120, "notes_en": "Two minutes of pure listening — let the body tell you.", "notes_hi": "दो मिनट सिर्फ़ सुनना — शरीर को बताने दें।" },
+          { "type": "breath", "ref_id": null, "duration_sec": 240, "notes_en": "Self-chosen: long exhale, box breath, or alternate nostril. Four minutes.", "notes_hi": "आपकी पसंद: लम्बी साँस-बाहर, बॉक्स साँस, या अनुलोम-विलोम। चार मिनट।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 240, "notes_en": "Self-chosen: legs-up-wall, supported fish, or supta baddha. Four minutes.", "notes_hi": "आपकी पसंद: पैर-दीवार, सहारे वाला मत्स्य, या सुप्त बद्ध। चार मिनट।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 90, "notes_en": "Self-chosen meditation — naming, anchor phrase, or self-compassion.", "notes_hi": "आपकी पसंद का ध्यान — नामकरण, लंगर वाक्य, या आत्म-करुणा।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 30, "notes_en": "Tool #12: 'I know what I need.'", "notes_hi": "औज़ार #12: 'मुझे पता है मुझे क्या चाहिए।'" }
+        ],
+        "reflection_prompt_en": "What did you choose today, and what did your body say after?",
+        "reflection_prompt_hi": "आज क्या चुना, और बाद में शरीर ने क्या कहा?"
+      },
+      {
+        "day": 14,
+        "title_en": "The Toolkit Is Yours",
+        "title_hi": "टूलकिट अब आपका है",
+        "intro_en": "Fourteen days. Twelve tools. One quieter nervous system. Today is not a goodbye — it is the day the training wheels come off. We move through the entire toolkit one last time, gently, so your body has the whole map in one frame. Tomorrow, you continue alone. But you are not really alone — you carry the toolkit in your body now.",
+        "intro_hi": "चौदह दिन। बारह औज़ार। एक शांत नर्वस सिस्टम। आज अलविदा नहीं — आज वो दिन है जब सहायक पहिए उतरते हैं। पूरे टूलकिट से एक बार और गुज़रेंगे, धीरे से — ताकि शरीर के पास पूरा नक़्शा एक फ्रेम में रहे। कल से आप अकेले बढ़ेंगे। पर आप अकेले नहीं हैं — टूलकिट अब आपके शरीर में है।",
+        "duration_min": 12,
+        "components": [
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Acknowledge: you have shown up 13 times. That is the practice.", "notes_hi": "स्वीकार करें: आप 13 बार आए। यही अभ्यास है।" },
+          { "type": "meditation", "ref_id": "anxiety-noticing-breath", "duration_sec": 60, "notes_en": "Tool 1: Notice the breath.", "notes_hi": "औज़ार 1: साँस को देखें।" },
+          { "type": "breath", "ref_id": "anxiety-physiological-sigh", "duration_sec": 90, "notes_en": "Tool 2: Three long exhales.", "notes_hi": "औज़ार 2: तीन लम्बी साँस-बाहर।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 60, "notes_en": "Tool 3: Feet pressing the floor.", "notes_hi": "औज़ार 3: पैर ज़मीन पर।" },
+          { "type": "breath", "ref_id": "anxiety-box-breath", "duration_sec": 120, "notes_en": "Tool 4: Two rounds box breath.", "notes_hi": "औज़ार 4: दो चक्र बॉक्स साँस।" },
+          { "type": "asana_sequence", "ref_id": "restorative-legs-up-wall", "duration_sec": 120, "notes_en": "Tool 5: Two minutes legs-up.", "notes_hi": "औज़ार 5: दो मिनट पैर-ऊपर।" },
+          { "type": "meditation", "ref_id": "anxiety-naming-thoughts", "duration_sec": 60, "notes_en": "Tool 6: One minute of naming.", "notes_hi": "औज़ार 6: एक मिनट नामकरण।" },
+          { "type": "breath", "ref_id": "anxiety-nadi-shodhana", "duration_sec": 120, "notes_en": "Tool 7: Two minutes alternate nostril.", "notes_hi": "औज़ार 7: दो मिनट अनुलोम-विलोम।" },
+          { "type": "asana_sequence", "ref_id": "restorative-supported-fish", "duration_sec": 90, "notes_en": "Tool 8: 90 seconds supported fish.", "notes_hi": "औज़ार 8: 90 सेकंड सहारे वाला मत्स्य।" },
+          { "type": "meditation", "ref_id": "self-compassion-hand-heart", "duration_sec": 120, "notes_en": "Tools 9, 11, 12: Your anchor phrase + self-compassion + your choice.", "notes_hi": "औज़ार 9, 11, 12: लंगर वाक्य + आत्म-करुणा + आपकी पसंद।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "The toolkit is yours. Twelve tools. One body. Many ways home.", "notes_hi": "टूलकिट अब आपका है। बारह औज़ार। एक शरीर। घर के कई रास्ते।" }
+        ],
+        "reflection_prompt_en": "Write one line to the person you were on Day 1. What does this person already know?",
+        "reflection_prompt_hi": "पहले दिन वाले आपको एक पंक्ति लिखें। आज वाले आप क्या जानते हैं जो उन्हें नहीं पता था?"
+      }
+    ],
+    "closing_en": "Fourteen days ago, you had anxiety. Today you still have anxiety. The difference is that anxiety no longer has all of you. You have twelve tools — a breath for the elevator, a posture for the bed, a phrase for the bad nights, a hand on your own heart for the hard mornings. Don't stop. Pick three tools and use them daily — not because you must, but because your body now knows what to ask for. Anxiety will return. It is human. But it will return to a different house — one with the lights on, the windows open, the floor felt under the feet. You built that house. Keep living in it.",
+    "closing_hi": "चौदह दिन पहले आपको चिंता थी। आज भी है। फ़र्क़ बस इतना कि अब वह आपको पूरा नहीं घेरती। आपके पास बारह औज़ार हैं — लिफ्ट के लिए एक साँस, बिस्तर के लिए एक आसन, बुरी रातों के लिए एक वाक्य, मुश्किल सुबहों के लिए अपने दिल पर एक हाथ। रुकिए मत। तीन औज़ार चुनिए और रोज़ इस्तेमाल कीजिए — मजबूरी से नहीं, क्योंकि अब शरीर जानता है उसे क्या माँगना है। चिंता लौटेगी। यह मानवीय है। पर वह एक अलग घर में लौटेगी — जिसकी बत्तियाँ जलती हैं, खिड़कियाँ खुलती हैं, पैर ज़मीन को महसूस करते हैं। यह घर आपने बनाया है। उसमें रहते रहिए।",
+    "recommended_next_course_id": "21-days-for-sleep"
+  },
+  {
+    "id": "7-nights-to-better-sleep",
+    "title_en": "7 Nights to Better Sleep",
+    "title_hi": "7 raaton mein behtar neend",
+    "subtitle_en": "A week of slow, soft evenings that teach the body how to rest again.",
+    "subtitle_hi": "Saat shaamen jo dheere-dheere shareer ko phir se aaram karna sikhaati hain.",
+    "days": 7,
+    "level": "beginner",
+    "focus_tag": "sleep",
+    "intro_en": "Sleep is not something you achieve. It is something you allow. For most people who cannot sleep, the problem is not the body — it is a nervous system that has forgotten how to come down. Seven nights is not a magic number, but it is enough time for the body to begin trusting that the day is actually over. This course pairs three old, patient traditions: yin yoga to soften the connective tissue, yoga nidra to drop you below thinking, and quiet breath to slow the heart. Twenty minutes, in bed or beside it. No achievement, no perfection. Each night goes a little deeper than the one before. By night seven, you will not be fighting sleep — you will be giving in to it. That is the whole technique. The rest is just practice.",
+    "intro_hi": "Neend ek kaam nahi hai jo aap karte hain. Yeh ek izaazat hai jo aap dete hain. Jin logon ko neend nahi aati, unka shareer kharaab nahi hai — bas unka nervous system bhool gaya hai ki neeche kaise utarte hain. Saat raat koi jaadui ginti nahi hai, lekin itna samay kaafi hai ki shareer ko yakeen ho jaaye ki din sach mein khatam ho gaya hai. Is course mein teen puraani, sabar wali paramparayein milti hain: yin yoga jo shareer ke andar ki perten naram karta hai, yoga nidra jo aapko soch ke neeche le jaata hai, aur dheemi saans jo dil ki dhadkan ko shaant karti hai. Bees minute, bistar par ya uske paas. Koi haasil karna nahi, koi sahi galat nahi. Har raat pichli raat se thodi aur gehri hoti hai. Saatvi raat tak aap neend se ladenge nahi — aap usmein gir jaayenge. Bas yahi pura tareeka hai. Baaki sab abhyaas hai.",
+    "estimated_daily_minutes": 20,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Putting the day down",
+        "title_hi": "Din ko utar dena",
+        "intro_en": "Tonight is about one thing: telling the body the day is over. Not solving sleep. Just creating a small, repeatable signal — dim the lights, sit on the bed, soften the shoulders. We start with a long exhale practice that flips the switch from doing to undoing. Most of sleep loss is a transition problem, not a sleep problem. Tonight we practice the transition.",
+        "intro_hi": "Aaj raat ek hi kaam hai: shareer ko bataana ki din khatam ho gaya hai. Neend laana nahi. Bas ek chhota sa ishara banaana — battiyaan dheemi karein, bistar par baithein, kandhe naram karein. Hum ek lambi exhale wali saans se shuru karte hain jo karne se rukne par switch karti hai. Neend na aana asal mein transition ka masla hai. Aaj raat hum wahi abhyaas karte hain.",
+        "duration_min": 20,
+        "components": [
+          { "type": "breath", "ref_id": "breath-extended-exhale-4-8", "duration_sec": 360, "notes_en": "Inhale four, exhale eight. The slow exhale is the signal. Do not push — let the breath get long on its own.", "notes_hi": "Char par saans andar, aath par baahar. Lambi exhale hi ishara hai. Zor mat lagaayein — saans apne aap lambi hone dein." },
+          { "type": "asana_sequence", "ref_id": "yin-bed-supported-butterfly", "duration_sec": 420, "notes_en": "Supported butterfly with a pillow under each knee. Just lie there. The pose does the work.", "notes_hi": "Dono ghutnon ke neeche takiya rakh kar titli aasan. Bas lete rahein. Aasan apna kaam khud karega." },
+          { "type": "meditation", "ref_id": "meditation-body-scan-feet-to-head", "duration_sec": 420, "notes_en": "A simple scan from feet upward. If you fall asleep partway, that is success.", "notes_hi": "Pairon se shuru karke upar ki taraf scan. Beech mein neend aa jaaye to yahi kaamyaabi hai." }
+        ],
+        "reflection_prompt_en": "What was the first thing the body did when you finally lay down tonight?",
+        "reflection_prompt_hi": "Aaj jab aap antim mein lete, to shareer ne sabse pehle kya kiya?"
+      },
+      {
+        "day": 2,
+        "title_en": "The shoulders, the jaw, the day",
+        "title_hi": "Kandhe, jabda, aur sara din",
+        "intro_en": "Most of the day is stored in three places: the shoulders, the jaw, and the breath. Tonight we visit each one. You may notice the jaw tense even now, reading this. That is fine — noticing is half the work. We will do a slower yin opening tonight, and a yoga nidra style body sweep. Deeper than last night, by a little.",
+        "intro_hi": "Sara din teen jagah jama hota hai: kandhe, jabda, aur saans. Aaj raat hum teenon par jaayenge. Shayad abhi padhte hue bhi aapka jabda saxht ho. Koi baat nahi — dekhna hi aadha kaam hai. Aaj hum kal se thoda dheema yin karenge, aur yoga nidra waala shareer ka safar. Kal se zara aur gehra.",
+        "duration_min": 20,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "yin-melting-heart-supported", "duration_sec": 360, "notes_en": "Melting heart pose with chest on a pillow. Lets the shoulders fall forward, not the other way around.", "notes_hi": "Chati ke neeche takiya rakh kar pighalta hua dil. Kandhe aage gir jaate hain, peechhe nahi." },
+          { "type": "breath", "ref_id": "breath-soft-belly-6-count", "duration_sec": 300, "notes_en": "Six-count belly breath. Hand on the stomach. If the chest is moving more than the belly, slow down further.", "notes_hi": "Chai gintipar pet wali saans. Haath pet par. Agar chati pet se zyada hil rahi hai, to aur dheema kar dein." },
+          { "type": "meditation", "ref_id": "meditation-yoga-nidra-short-rotation", "duration_sec": 540, "notes_en": "A short nidra rotation — naming each body part silently. You are not relaxing, you are noticing. Relaxation follows.", "notes_hi": "Chhoti nidra — har ang ka naam man mein lena. Aap aaram nahi kar rahe, aap dekh rahe hain. Aaram apne aap ata hai." }
+        ],
+        "reflection_prompt_en": "Where in your body did today's last meeting still live when you began?",
+        "reflection_prompt_hi": "Jab aap shuru hue, to aaj ki aakhri meeting shareer mein kahaan baith ke baithi thi?"
+      },
+      {
+        "day": 3,
+        "title_en": "The doorway between awake and asleep",
+        "title_hi": "Jaagne aur sone ke beech ka darwaza",
+        "intro_en": "There is a place between awake and asleep that most adults rush through without noticing. Tonight we slow down inside it. This is the real territory of yoga nidra — not sleep, not thought, the soft hallway between. The first two nights prepared the body. Tonight the mind starts to follow.",
+        "intro_hi": "Jaagne aur sone ke beech ek jagah hoti hai jise bade log bina dekhe paar kar jaate hain. Aaj raat hum wahin dheere chalenge. Yoga nidra ka asli ilaaqa yahi hai — na neend, na soch, beech ka naram raasta. Pehli do raaton mein shareer tayyar hua. Aaj raat man uske peechhe chalna shuru karta hai.",
+        "duration_min": 20,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "yin-legs-up-wall", "duration_sec": 360, "notes_en": "Legs up the wall, or up the headboard. Five minutes is enough to start dropping the blood pressure.", "notes_hi": "Paer deewar par ya bistar ke piche ke takhte par. Paanch minute mein hi blood pressure girna shuru ho jaata hai." },
+          { "type": "breath", "ref_id": "breath-4-7-8-evening", "duration_sec": 240, "notes_en": "Four in, hold seven, out eight. Just four rounds tonight. Strong medicine — small dose.", "notes_hi": "Char par andar, saat tak rokein, aath par baahar. Aaj sirf char baar. Tez dawa — chhoti khurak." },
+          { "type": "meditation", "ref_id": "meditation-yoga-nidra-hallway", "duration_sec": 600, "notes_en": "A nidra that intentionally hovers in the doorway between waking and sleep. If you cross into sleep, fine. If not, also fine.", "notes_hi": "Yeh nidra jaan-boojhkar jaagne aur neend ke beech ke darwaze par rukti hai. Neend mein chali jaayein to theek. Na jaayein to bhi theek." }
+        ],
+        "reflection_prompt_en": "Did you notice the moment your thinking slowed down, or only that it had?",
+        "reflection_prompt_hi": "Kya aapne dekha ki sochna kab dheema hua, ya bas itna pata chala ki ho gaya?"
+      },
+      {
+        "day": 4,
+        "title_en": "Halfway — and the body remembers",
+        "title_hi": "Aadha raasta — aur shareer ko yaad ata hai",
+        "intro_en": "Four nights in is when something interesting happens — the body starts arriving at the practice already half-relaxed. You may even feel sleepy before we begin. Do not fight that. Tonight is the deepest yin so far, held longer. We move toward the hips, where worry quietly lives.",
+        "intro_hi": "Chauthi raat tak shareer practice par aate hi aadha shaant hone lagta hai. Shuru karne se pehle hi neend aa sakti hai. Usse mat ladiye. Aaj abhi tak ka sabse gehra yin, aur lambe time tak rukenge. Kulhon ki taraf jaayenge, jahaan chinta chupke se rehti hai.",
+        "duration_min": 20,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "yin-sleeping-swan-supported", "duration_sec": 480, "notes_en": "Sleeping swan with the chest on stacked pillows. Four minutes per side. Hips are where the day hides.", "notes_hi": "Chati ke neeche takiyon ka dher rakh kar sote hue hans ki mudra. Char minute har taraf. Kulhe wahi jagah hain jahaan din chhupa hota hai." },
+          { "type": "breath", "ref_id": "breath-sigh-release", "duration_sec": 180, "notes_en": "Audible sighs out through the mouth, six of them. Permission to exhale loudly is itself the practice.", "notes_hi": "Muh se sunaayi dene wali aahein, chai baar. Tez exhale ki ijaazat hi abhyaas hai." },
+          { "type": "meditation", "ref_id": "meditation-yoga-nidra-heavy-body", "duration_sec": 540, "notes_en": "Nidra focused on heaviness — each limb sinking into the bed. The bed is doing the holding now, not you.", "notes_hi": "Bhaariyaan par dhyaan dene waali nidra — har ang bistar mein dhansta hua. Ab bistar pakad raha hai, aap nahi." }
+        ],
+        "reflection_prompt_en": "What does it feel like to let the bed hold you, instead of holding yourself up on it?",
+        "reflection_prompt_hi": "Bistar ko pakadne dena, apne aap ko bistar par tikaane ke bajaaye — kaisa lagta hai?"
+      },
+      {
+        "day": 5,
+        "title_en": "Quieting the inside voice",
+        "title_hi": "Andar ki awaaz ko chup karaana",
+        "intro_en": "By now the body knows what to do. The last thing to settle is the voice in the head — the planner, the rehearser, the worrier. You cannot argue with it. You can only give it something softer to listen to. Tonight a guided sleep meditation with very few words, lots of silence between them. The silences are the medicine.",
+        "intro_hi": "Ab tak shareer samajh chuka hai. Aakhri cheez jo baithni baaki hai woh hai dimaag ki awaaz — yojana banane wali, baar-baar dohraane wali, chinta karne wali. Aap usse behes nahi kar sakte. Aap bas usse kuch naram sunne ko de sakte hain. Aaj raat ek margdarshit neend meditation — bahut kam shabd, beech mein bahut khaamoshi. Khaamoshi hi dawa hai.",
+        "duration_min": 20,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "yin-supine-twist-gentle", "duration_sec": 360, "notes_en": "Gentle lying twist, three minutes each side. Wrings out the spine without effort.", "notes_hi": "Lete hue dheema twist, har taraf teen minute. Reedh ki haddi bina mehnat ke nichod jaati hai." },
+          { "type": "breath", "ref_id": "breath-coherent-5-5", "duration_sec": 300, "notes_en": "Five in, five out. Equal, even, boring. Boring is the goal.", "notes_hi": "Paanch par andar, paanch par baahar. Barabar, samaan, ubaau. Ubaau hi maqsad hai." },
+          { "type": "meditation", "ref_id": "meditation-sleep-sparse-words", "duration_sec": 540, "notes_en": "A sleep meditation with long pauses. Stop trying to follow the words at some point — let them follow you down.", "notes_hi": "Lambi khaamoshiyon waali sleep meditation. Kisi mod par shabdon ka peecha karna chhod dein — unhein apne peechhe aane dein." }
+        ],
+        "reflection_prompt_en": "Which thought tonight tried hardest to keep you up? Just name it, no need to answer it.",
+        "reflection_prompt_hi": "Aaj raat sabse zid wali soch kaunsi thi jo aapko jaga rakhna chahti thi? Bas naam de dein, jawaab dena zaroori nahi."
+      },
+      {
+        "day": 6,
+        "title_en": "Going deeper than yesterday",
+        "title_hi": "Kal se aur gehra",
+        "intro_en": "Tonight is the longest nidra of the course. You have built the foundation. Now we use it. If you fall asleep partway through, do not feel like you missed something — the recording is doing its work below the surface. This is how the old teachers always meant it. Practice that meets you exactly where you are tired.",
+        "intro_hi": "Aaj raat course ki sabse lambi nidra. Aapne neev bana li hai. Ab uska istemaal karte hain. Agar beech mein neend aa jaaye, to yeh mat sochiye ki kuch chhoot gaya — recording neeche neeche apna kaam kar rahi hai. Puraane gurujan yahi chahte the. Aisa abhyaas jo aapko theek wahin milta hai jahaan aap thake hain.",
+        "duration_min": 20,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "yin-childs-pose-extended", "duration_sec": 240, "notes_en": "Long child's pose with arms forward, forehead on a pillow. Four minutes, no goal.", "notes_hi": "Lambi balaasan, haath aage, mathaa takiye par. Char minute, koi lakshya nahi." },
+          { "type": "breath", "ref_id": "breath-natural-watching", "duration_sec": 180, "notes_en": "Three minutes of just watching the breath as it already is. Stop changing it. Trust it.", "notes_hi": "Teen minute saans ko bas waisa dekhna jaisa woh hai. Badalna band karein. Bhrosa karein." },
+          { "type": "meditation", "ref_id": "meditation-yoga-nidra-deep-full", "duration_sec": 780, "notes_en": "Full thirteen-minute nidra — rotation, breath, sensation, then long silence. Recline fully. Cover yourself warmly.", "notes_hi": "Pura terah minute ki nidra — rotation, saans, ehsaas, phir lambi khaamoshi. Aaram se let jaayein. Garam chaadar odh lein." }
+        ],
+        "reflection_prompt_en": "What did you not know your body needed until you stopped tonight?",
+        "reflection_prompt_hi": "Aaj rukne se pehle aapko nahi pata tha ki shareer ko kya chahiye — woh kya tha?"
+      },
+      {
+        "day": 7,
+        "title_en": "Letting sleep come and go",
+        "title_hi": "Neend ko aane aur jaane dena",
+        "intro_en": "Tonight is not a graduation. It is a small handover. You now know how to send your nervous system the signal that the day is done — through the body, the breath, and the soft slow voice. The goal from here is not to need this recording. The goal is for these twenty minutes to become how you naturally walk into night. Sleep will come. It always does, when you stop blocking the door.",
+        "intro_hi": "Aaj raat koi degree nahi mil rahi. Bas ek chhoti si saunpdi hai. Ab aap jaante hain ki apne nervous system ko kaise bataate hain ki din khatam — shareer se, saans se, dheemi naram awaaz se. Yahaan se aage maqsad yeh nahi ki aapko yeh recording chahiye ho. Maqsad yeh hai ki yeh bees minute aapke raat mein utarne ka apna tareeka ban jaayein. Neend aayegi. Woh hamesha aati hai, jab aap darwaaze se hat jaate hain.",
+        "duration_min": 20,
+        "components": [
+          { "type": "talk", "ref_id": "talk-what-sleep-actually-is", "duration_sec": 180, "notes_en": "Three minutes on what sleep really is — a release, not an action. Sets the frame for tonight.", "notes_hi": "Teen minute is baat par ki neend asal mein kya hai — ek chhodna, kuch karna nahi. Aaj raat ka maahol banaata hai." },
+          { "type": "asana_sequence", "ref_id": "yin-bed-self-chosen", "duration_sec": 420, "notes_en": "Seven minutes of yin — you pick the pose that worked best this week. Trust what your body learned.", "notes_hi": "Saat minute ka yin — is hafte jo aasan sabse achchha laga, wahi chuniye. Shareer ne jo seekha, uspar bhrosa karein." },
+          { "type": "breath", "ref_id": "breath-extended-exhale-4-8", "duration_sec": 240, "notes_en": "Returning to night one's breath, full circle. You will notice it goes deeper now without trying.", "notes_hi": "Pehli raat waali saans par lautna, pura chakkar. Aap dekhenge ki ab bina koshish ke yeh aur gehri ho jaati hai." },
+          { "type": "meditation", "ref_id": "meditation-yoga-nidra-letting-go", "duration_sec": 360, "notes_en": "A shorter, softer nidra. The point is not to do more — it is to need less.", "notes_hi": "Chhoti, naram nidra. Maqsad zyada karna nahi — kam mein kaam chal jaana hai." }
+        ],
+        "reflection_prompt_en": "What is one part of these seven nights you want to keep, even after this course ends?",
+        "reflection_prompt_hi": "In saat raaton mein se kaunsi ek cheez aap rakhna chahenge, course khatam hone ke baad bhi?"
+      }
+    ],
+    "closing_en": "You did not fix your sleep in seven nights. Nobody can. What you did was something quieter and more lasting — you taught your body that the day can actually end. That a soft signal, repeated, is more powerful than any pill or app. Sleep is not a skill, but the willingness to let go is. Some nights from now on will still be hard. That is not failure — that is being human. The difference now is you have a way back. Twenty minutes. The same simple sequence. The same patient breath. Come back to it on the hard nights. Come back to it on the good ones too, so the path stays clear. Sukoon means peace that settles in on its own. You just learned how to stop standing in its way.",
+    "closing_hi": "Aapne saat raat mein apni neend theek nahi ki. Koi nahi kar sakta. Aapne jo kiya woh aur chhup-chap aur lamba chalne wala kuch tha — aapne shareer ko sikhaaya ki din sach mein khatam ho sakta hai. Ki ek naram ishara, baar-baar dohraaya gaya, kisi bhi goli ya app se zyada taakatwar hota hai. Neend koi hunar nahi hai, lekin chhodne ki tayyaari ek hunar hai. Aage bhi kuch raatein mushkil rahengi. Yeh haar nahi hai — yeh insaan hona hai. Farq ab itna hai ki aapke paas wapas aane ka raasta hai. Bees minute. Wahi saadha sa kram. Wahi sabar wali saans. Mushkil raaton mein wapas aaiye. Achchhi raaton mein bhi aaiye, taaki raasta saaf rahe. Sukoon ka matlab hai woh shanti jo apne aap baith jaati hai. Aap bas uske raaste mein khada hona band karna seekh gaye hain.",
+    "recommended_next_course_id": "calming-anxious-mind-foundations"
+  },
+  {
+    "id": "21-days-of-self-compassion",
+    "title_en": "21 Days of Self-Compassion",
+    "title_hi": "आत्म-करुणा के 21 दिन",
+    "subtitle_en": "Learn to hold yourself the way you hold the people you love.",
+    "subtitle_hi": "खुद को वैसे थामना सीखें जैसे आप अपने प्रियजनों को थामते हैं।",
+    "days": 21,
+    "level": "beginner",
+    "focus_tag": "self-compassion",
+    "intro_en": "Most of us are kinder to strangers on the road than to ourselves at three in the morning. We have a voice inside that arrived a long time ago — maybe to keep us safe, maybe to keep us trying — and over the years it forgot how to soften. This course is twenty-one days of slowly, patiently teaching that voice a different way of speaking. We will use the oldest gesture of comfort humans have — a hand on the heart. We will use breath. We will use gentle backbends to open the chest, because the body holds self-criticism in the chest more than anywhere else. We will use loving-kindness practice, called metta, which has been used for two and a half thousand years to widen the circle of who deserves our care — starting, always, with the self. Fifteen minutes a day. No incense, no special clothes. Just you, willing to try.",
+    "intro_hi": "हम में से अधिकांश लोग सड़क पर मिले अजनबियों के साथ उतनी दयालुता से पेश आते हैं जितनी रात तीन बजे खुद के साथ नहीं। हमारे भीतर एक आवाज़ है जो बहुत पहले आई थी — शायद हमें सुरक्षित रखने के लिए, शायद हमें कोशिश करते रहने के लिए — और वर्षों में वह नरम होना भूल गई। यह पाठ्यक्रम इक्कीस दिनों का है, धीरे-धीरे, धैर्य से, उस आवाज़ को बात करने का एक अलग तरीका सिखाने का। हम मनुष्यों का सबसे पुराना सांत्वना-स्पर्श उपयोग करेंगे — दिल पर हाथ। हम सांस का सहारा लेंगे। हम कोमल पीछे झुकने वाले आसन करेंगे, क्योंकि शरीर आत्म-आलोचना को सबसे ज़्यादा छाती में जमा करता है। हम मेत्ता का अभ्यास करेंगे — ढाई हज़ार साल पुरानी प्रथा जो हमारे ध्यान-दायरे को विस्तार देती है, हमेशा खुद से शुरू करते हुए। दिन में पंद्रह मिनट। कोई धूप-अगरबत्ती नहीं, कोई विशेष कपड़े नहीं। बस आप, कोशिश करने को तैयार।",
+    "estimated_daily_minutes": 15,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "The First Hand",
+        "title_hi": "पहला हाथ",
+        "intro_en": "Today is not about feeling anything in particular. It is about putting a hand on your own chest and noticing that you are the only person who has been with you every single day of your life. That is the person we are learning to be kinder to.",
+        "intro_hi": "आज कुछ विशेष महसूस करने के बारे में नहीं है। आज सिर्फ़ अपनी छाती पर हाथ रखने के बारे में है, और यह नोटिस करने के बारे में कि आप ही वह एक व्यक्ति हैं जो आपके जीवन के हर एक दिन आपके साथ रहे हैं। हम उसी व्यक्ति के साथ नर्म होना सीख रहे हैं।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Three minutes of natural breathing through the nose. Notice the breath without changing it.", "notes_hi": "तीन मिनट नाक से सहज सांस। सांस को बदले बिना सिर्फ़ नोटिस करें।" },
+          { "type": "meditation", "ref_id": "med-sc-001", "duration_sec": 480, "notes_en": "The Hand on Heart meditation. This is the gesture we will return to all 21 days.", "notes_hi": "हृदय पर हाथ का ध्यान। यही स्पर्श हम पूरे 21 दिन दोहराएँगे।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 240, "notes_en": "Sit quietly with the journal prompt. Don't overthink — write the first honest sentence.", "notes_hi": "जर्नल के सवाल के साथ चुपचाप बैठें। ज़्यादा सोचें नहीं — पहला सच्चा वाक्य लिखें।" }
+        ],
+        "reflection_prompt_en": "Finish this sentence in your journal: 'If I spoke to a friend the way I speak to myself, they would feel ___.'",
+        "reflection_prompt_hi": "अपनी डायरी में यह वाक्य पूरा करें: 'अगर मैं किसी दोस्त से वैसे बात करूँ जैसे मैं खुद से करता/करती हूँ, तो उन्हें महसूस होगा ___।'"
+      },
+      {
+        "day": 2,
+        "title_en": "Where the Critic Lives",
+        "title_hi": "आलोचक कहाँ रहता है",
+        "intro_en": "Yesterday you placed a hand on your heart. Today we find out where in the body the inner critic actually lives — the jaw, the chest, the belly. You cannot soften what you cannot locate.",
+        "intro_hi": "कल आपने दिल पर हाथ रखा। आज हम पता लगाएँगे कि आंतरिक आलोचक शरीर में असल में कहाँ बसता है — जबड़े में, छाती में, या पेट में। जिसे आप ढूँढ नहीं सकते, उसे नरम भी नहीं कर सकते।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Box breathing — in for four, hold for four, out for four, hold for four. Three rounds.", "notes_hi": "बॉक्स ब्रीदिंग — चार गिनती श्वास अंदर, चार रोकें, चार बाहर, चार रोकें। तीन चक्र।" },
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 300, "notes_en": "Cat-cow on hands and knees, ten slow rounds. Let the spine wake up. End in child's pose for a minute.", "notes_hi": "हाथों-घुटनों पर मार्जरी-बिटिल आसन, दस धीमे चक्र। रीढ़ को जागने दें। एक मिनट बालासन में समाप्त करें।" },
+          { "type": "meditation", "ref_id": "med-sc-004", "duration_sec": 420, "notes_en": "Softening the Voice — scan body for tension, soften jaw and shoulders specifically.", "notes_hi": "आवाज़ को नरम करना — शरीर में तनाव खोजें, खासकर जबड़ा और कंधे ढीले करें।" }
+        ],
+        "reflection_prompt_en": "Where in your body does the critic live? Describe it in physical terms — temperature, weight, shape.",
+        "reflection_prompt_hi": "आपके शरीर में आलोचक कहाँ बसता है? उसे भौतिक रूप में वर्णित करें — तापमान, भार, आकार।"
+      },
+      {
+        "day": 3,
+        "title_en": "May I Be Well",
+        "title_hi": "मैं अच्छा रहूँ",
+        "intro_en": "Today we begin the metta phrases. There are four of them, and they will be your companions for the next nineteen days. Start by addressing yourself — the hardest person to wish well, which is exactly why we begin there.",
+        "intro_hi": "आज से हम मेत्ता के वाक्य शुरू करेंगे। चार वाक्य, और ये अगले उन्नीस दिनों आपके साथी रहेंगे। सबसे पहले खुद को संबोधित करें — जिसके लिए शुभकामना देना सबसे कठिन है, इसीलिए हम वहीं से शुरू करते हैं।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 120, "notes_en": "Two minutes of slow exhales — make the out-breath longer than the in-breath.", "notes_hi": "दो मिनट लंबी साँस छोड़ना — साँस छोड़ना साँस लेने से लंबा रखें।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 660, "notes_en": "Hand on heart. Repeat silently: May I be safe. May I be well. May I be at peace. May I be free from suffering. Slowly, like four small bells. If words feel hollow, just notice that — keep going.", "notes_hi": "दिल पर हाथ। मन में दोहराएँ: मैं सुरक्षित रहूँ। मैं स्वस्थ रहूँ। मैं शांत रहूँ। मैं दुख से मुक्त रहूँ। धीरे-धीरे, चार छोटी घंटियों की तरह। शब्द खोखले लगें तो उसे भी नोटिस करें — रुकें नहीं।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Notice which phrase felt easiest. Notice which felt fake. Both are useful information.", "notes_hi": "देखें कौन सा वाक्य आसान लगा, कौन सा झूठा लगा। दोनों उपयोगी जानकारी हैं।" }
+        ],
+        "reflection_prompt_en": "Which of the four phrases is hardest for you to say to yourself, and what does that tell you?",
+        "reflection_prompt_hi": "इन चार वाक्यों में से कौन सा खुद से कहना आपको सबसे कठिन लगा, और यह क्या बताता है?",
+        "components_count": 3
+      },
+      {
+        "day": 4,
+        "title_en": "Opening the Chest",
+        "title_hi": "छाती को खोलना",
+        "intro_en": "Self-criticism curls us forward — shoulders rounded, chest collapsed, like an animal protecting its soft underside. Today we begin gentle backbends. Not for fitness. For permission to be unguarded.",
+        "intro_hi": "आत्म-आलोचना हमें आगे की ओर मोड़ देती है — कंधे झुके हुए, छाती सिकुड़ी हुई, जैसे कोई जानवर अपना नर्म पेट छिपा रहा हो। आज से हम कोमल पीछे झुकने वाले आसन शुरू करेंगे। फिटनेस के लिए नहीं। बल्कि नर्म होने की अनुमति देने के लिए।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 480, "notes_en": "Lie on your back. Place a folded blanket under your shoulder blades so the chest opens upward. Stay six minutes. Then knees to chest to neutralise.", "notes_hi": "पीठ के बल लेटें। कंधों के पीछे एक मोड़ा हुआ कंबल रखें ताकि छाती ऊपर की ओर खुले। छह मिनट रुकें। फिर घुटनों को छाती से लगाकर तटस्थ करें।" },
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Stay in the supported chest opener. Breathe into the upper ribs — feel them lift on the inhale, settle on the exhale.", "notes_hi": "सहारे वाली स्थिति में ही रहें। ऊपरी पसलियों में सांस भरें — साँस अंदर लेते उठती हैं, छोड़ते बैठती हैं।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 240, "notes_en": "Still lying down, hand on heart, repeat the four metta phrases to yourself.", "notes_hi": "लेटे हुए ही, दिल पर हाथ, खुद को चारों मेत्ता वाक्य दोहराएँ।" }
+        ],
+        "reflection_prompt_en": "After the chest opener, what feels different in your body? Even one word will do.",
+        "reflection_prompt_hi": "छाती खुलने के बाद आपके शरीर में क्या अलग महसूस होता है? एक शब्द भी काफ़ी है।"
+      },
+      {
+        "day": 5,
+        "title_en": "The Mistake",
+        "title_hi": "वह गलती",
+        "intro_en": "Bring to mind one thing you've been hard on yourself about lately. Not the biggest thing — just one real thing. Today we practice meeting that mistake with the same compassion you'd offer a child who broke a cup.",
+        "intro_hi": "हाल में जिस एक बात के लिए आप खुद को कोस रहे हैं, उसे मन में लाएँ। सबसे बड़ी नहीं — बस एक सच्ची। आज हम उस गलती से उसी करुणा से मिलेंगे जो आप एक बच्चे को देते जो कप तोड़ देता।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 120, "notes_en": "Two minutes of natural breath to arrive. Don't skip this even if you're rushed.", "notes_hi": "दो मिनट सहज साँस, यहाँ पहुँचने के लिए। जल्दी में भी इसे न छोड़ें।" },
+          { "type": "meditation", "ref_id": "med-sc-002", "duration_sec": 480, "notes_en": "After the Mistake meditation. Hand on heart throughout.", "notes_hi": "गलती के बाद वाला ध्यान। पूरे समय दिल पर हाथ रखें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 300, "notes_en": "Open your journal while the meditation is still warm in you. Write before the inner critic edits.", "notes_hi": "ध्यान की गर्माहट भीतर रहते हुए डायरी खोलें। आलोचक के संपादन से पहले लिखें।" }
+        ],
+        "reflection_prompt_en": "Write to yourself the way a kind friend would write to you about this mistake. One paragraph.",
+        "reflection_prompt_hi": "इस गलती के बारे में, जैसे कोई दयालु दोस्त आपको लिखता — वैसे खुद को लिखें। एक पैराग्राफ।"
+      },
+      {
+        "day": 6,
+        "title_en": "Common Humanity",
+        "title_hi": "साझा मानवता",
+        "intro_en": "The voice that says you're the only one who feels this way is lying. Today's practice is a quiet remembering — that whatever you are carrying, somewhere in the world, right now, someone else is carrying it too.",
+        "intro_hi": "वह आवाज़ जो कहती है कि सिर्फ़ आप ही ऐसा महसूस करते हैं — वह झूठ बोल रही है। आज का अभ्यास एक शांत याद है — कि जो भी आप उठा रहे हैं, इसी क्षण दुनिया में कहीं कोई और भी वही उठा रहा है।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 300, "notes_en": "Seated cat-cow, then gentle side stretches each side. Loosen the front of the body.", "notes_hi": "बैठ कर मार्जरी-बिटिल, फिर हर तरफ कोमल पार्श्व खिंचाव। शरीर का अग्र भाग ढीला करें।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 480, "notes_en": "Hand on heart. Repeat: Just like me, somewhere right now, someone is tired. Someone is afraid. Someone is trying. Someone is hoping for kindness. Just like me. Just like me.", "notes_hi": "दिल पर हाथ। दोहराएँ: मेरी तरह ही, इसी क्षण कहीं कोई थका है। कोई डरा है। कोई कोशिश कर रहा है। कोई दया की उम्मीद कर रहा है। मेरी तरह ही। मेरी तरह ही।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Sit quietly for the last two minutes. Notice if the room feels less lonely.", "notes_hi": "आखिरी दो मिनट चुपचाप बैठें। देखें क्या कमरा थोड़ा कम सूना लगता है।" }
+        ],
+        "reflection_prompt_en": "Name one struggle you've been treating as uniquely yours. Who else, somewhere, is likely also carrying it?",
+        "reflection_prompt_hi": "एक संघर्ष जो आपको लगता है सिर्फ़ आपका है — नाम लें। दुनिया में कहीं और कौन उसे उठा रहा होगा?"
+      },
+      {
+        "day": 7,
+        "title_en": "End of Week One",
+        "title_hi": "पहले सप्ताह का अंत",
+        "intro_en": "One week. You showed up seven times. The work this week was the hardest work of the course — turning toward yourself. From here we widen the circle. But first, today, we rest and we acknowledge.",
+        "intro_hi": "एक सप्ताह। आप सात बार आए। इस सप्ताह का काम पूरे पाठ्यक्रम का सबसे कठिन काम था — खुद की ओर मुड़ना। यहाँ से हम दायरा बड़ा करेंगे। लेकिन पहले, आज, हम विश्राम करते हैं और स्वीकार करते हैं।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 480, "notes_en": "Supported reclining bound angle pose with bolster or pillow under the spine. Eight minutes. This is rest, not effort.", "notes_hi": "रीढ़ के नीचे तकिये का सहारा रख कर सुप्त बद्धकोणासन। आठ मिनट। यह विश्राम है, प्रयास नहीं।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 360, "notes_en": "Stay in the pose. Repeat the four metta phrases to yourself slowly, with long pauses. No rush.", "notes_hi": "उसी मुद्रा में रहें। चारों मेत्ता वाक्य धीरे-धीरे, लंबे ठहराव के साथ दोहराएँ। कोई जल्दी नहीं।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Acknowledge: I did this. One whole week.", "notes_hi": "स्वीकार करें: मैंने यह किया। पूरा एक सप्ताह।" }
+        ],
+        "reflection_prompt_en": "What is one thing — even tiny — that has shifted in how you talk to yourself this week?",
+        "reflection_prompt_hi": "इस सप्ताह आप खुद से कैसे बात करते हैं — उसमें एक चीज़ — चाहे बहुत छोटी — जो बदली हो?"
+      },
+      {
+        "day": 8,
+        "title_en": "Bringing Someone You Love",
+        "title_hi": "किसी प्रियजन को लाना",
+        "intro_en": "Now we widen the circle. Choose one person you love easily — not a complicated love, the easy kind. A grandparent, a child, a dear friend. We will keep them in mind for the whole week.",
+        "intro_hi": "अब हम दायरा बढ़ाएँगे। एक व्यक्ति चुनें जिनसे प्रेम सहज है — कोई जटिल नहीं, आसान वाला। दादा-दादी, बच्चा, कोई प्रिय मित्र। पूरे सप्ताह हम उन्हें मन में रखेंगे।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 120, "notes_en": "Settle with slow nasal breathing.", "notes_hi": "नाक से धीमी साँस के साथ स्थिर हों।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 660, "notes_en": "Hand on heart. First, offer the four phrases to yourself for two minutes. Then picture your loved one in front of you and offer the same: May you be safe. May you be well. May you be at peace. May you be free from suffering.", "notes_hi": "दिल पर हाथ। पहले दो मिनट खुद को चारों वाक्य दें। फिर सामने अपने प्रियजन की कल्पना करें और वही वाक्य दें: आप सुरक्षित रहें। आप स्वस्थ रहें। आप शांत रहें। आप दुख से मुक्त रहें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Notice how much easier it is to wish them well than yourself. That gap is the work.", "notes_hi": "देखें — उन्हें शुभकामना देना खुद से कितना आसान है। यही अंतर हमारा काम है।" }
+        ],
+        "reflection_prompt_en": "Who did you choose, and why did love feel easy with them?",
+        "reflection_prompt_hi": "आपने किसे चुना, और उनसे प्रेम आसान क्यों लगा?"
+      },
+      {
+        "day": 9,
+        "title_en": "Heart-Opening Bridge",
+        "title_hi": "हृदय खोलने वाला सेतु",
+        "intro_en": "Today the body does the teaching. Bridge pose is a gentle backbend that physically lifts the heart toward the sky. We will hold our loved one in mind while the chest opens.",
+        "intro_hi": "आज शरीर सिखाएगा। सेतुबंधासन एक कोमल पीछे झुकने वाला आसन है जो दिल को आकाश की ओर उठाता है। छाती खुलते समय हम अपने प्रियजन को मन में रखेंगे।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 300, "notes_en": "Three rounds of bridge pose. Hold for five long breaths each round. Rest in between.", "notes_hi": "सेतुबंधासन के तीन चक्र। हर चक्र में पाँच लंबी साँस तक रुकें। बीच में विश्राम।" },
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Lie still on the back. Long, slow breaths into the now-open chest.", "notes_hi": "पीठ के बल चुपचाप लेटें। अब खुली छाती में लंबी, धीमी साँसें।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 420, "notes_en": "Still lying down, hand on heart. Picture your loved one. Send the four phrases. End by including yourself: May we both be well.", "notes_hi": "लेटे रहें, दिल पर हाथ। प्रियजन की कल्पना करें। चारों वाक्य भेजें। अंत में खुद को भी शामिल करें: हम दोनों स्वस्थ रहें।" }
+        ],
+        "reflection_prompt_en": "Did wishing them well unlock anything new for you? Even a small feeling.",
+        "reflection_prompt_hi": "उन्हें शुभकामना देना आपके भीतर कुछ नया खोल गया? बहुत छोटा एहसास भी।"
+      },
+      {
+        "day": 10,
+        "title_en": "When They Are Far Away",
+        "title_hi": "जब वे दूर हों",
+        "intro_en": "The loved one you chose may be far away, or gone, or estranged. Today we practice loving them without needing them to be reachable. Love is not contingent on contact.",
+        "intro_hi": "जिसे आपने चुना, वे दूर हो सकते हैं, या जा चुके हैं, या रिश्ता टूट गया हो। आज हम उन्हें प्रेम करने का अभ्यास करेंगे — बिना यह शर्त रखे कि वे पहुँच में हों। प्रेम संपर्क पर निर्भर नहीं है।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Sit upright. Three minutes of equal inhale and exhale, count of five.", "notes_hi": "सीधे बैठें। तीन मिनट बराबर साँस — पाँच गिनती अंदर, पाँच बाहर।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 600, "notes_en": "Hand on heart. Picture your loved one as if they are sitting across from you. Send the four phrases without rushing. Let the imagined meeting be real for these ten minutes.", "notes_hi": "दिल पर हाथ। प्रियजन की कल्पना करें जैसे वे आपके सामने बैठे हों। चारों वाक्य बिना जल्दी के भेजें। इन दस मिनटों में कल्पना की मुलाक़ात को सच रहने दें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Sit a little longer than feels comfortable. Don't rush back to your phone.", "notes_hi": "जितना आरामदायक लगे उससे थोड़ा ज़्यादा देर बैठें। फोन की तरफ जल्दी न लौटें।" }
+        ],
+        "reflection_prompt_en": "If you could say one thing to this person right now, what would it be?",
+        "reflection_prompt_hi": "अगर अभी आप उन्हें एक बात कह सकते — वह क्या होती?"
+      },
+      {
+        "day": 11,
+        "title_en": "The Loved One's Wellbeing Is Mine",
+        "title_hi": "उनकी कुशलता मेरी ही है",
+        "intro_en": "Yesterday we sent love across distance. Today we notice something quieter — that when we wish a loved one well, something in our own chest also softens. Love is not a one-way pipe.",
+        "intro_hi": "कल हमने दूरी के पार प्रेम भेजा। आज एक और शांत बात नोटिस करें — जब हम किसी प्रियजन के लिए शुभकामना करते हैं, हमारी अपनी छाती में भी कुछ नर्म होता है। प्रेम एक-तरफ़ा पाइप नहीं है।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 360, "notes_en": "Cobra pose, three rounds, holding five breaths each. Gentle — heart lifts before chin lifts.", "notes_hi": "भुजंगासन, तीन चक्र, प्रत्येक में पाँच साँस तक। कोमल — ठोड़ी से पहले हृदय उठे।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 420, "notes_en": "Seated. Hand on heart. Send phrases to your loved one. After each phrase, pause and notice your own body. Often you'll find the same warmth returning.", "notes_hi": "बैठे। दिल पर हाथ। प्रियजन को वाक्य भेजें। हर वाक्य के बाद रुक कर अपना शरीर देखें। अक्सर वही गर्माहट लौटती मिलेगी।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "End with one round of the phrases for yourself. You are not separate from your loved one's circle of care — you are inside it.", "notes_hi": "अंत में एक बार वाक्य खुद को दें। आप अपने प्रियजन के देखभाल-दायरे के बाहर नहीं हैं — आप उसी के भीतर हैं।" }
+        ],
+        "reflection_prompt_en": "When you wished them well today, what happened in your own body?",
+        "reflection_prompt_hi": "आज जब आपने उन्हें शुभकामना दी, आपके अपने शरीर में क्या हुआ?"
+      },
+      {
+        "day": 12,
+        "title_en": "Holding Both",
+        "title_hi": "दोनों को थामना",
+        "intro_en": "Today we practice holding yourself and your loved one in the same circle. Not first one, then the other. Both at once. This is the muscle we are building.",
+        "intro_hi": "आज हम खुद को और प्रियजन को एक ही दायरे में थामेंगे। पहले एक, फिर दूसरा नहीं। दोनों एक साथ। यही मांसपेशी हम बना रहे हैं।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Three minutes of longer exhales — out-breath twice as long as the in-breath if comfortable.", "notes_hi": "तीन मिनट लंबी साँस छोड़ना — अगर आरामदायक लगे, साँस छोड़ना साँस लेने का दुगना रखें।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 540, "notes_en": "Hand on heart. Picture both of you side by side. Send the phrases in the plural: May we be safe. May we be well. May we be at peace. May we be free from suffering.", "notes_hi": "दिल पर हाथ। दोनों को साथ-साथ कल्पना करें। वाक्य बहुवचन में भेजें: हम सुरक्षित रहें। हम स्वस्थ रहें। हम शांत रहें। हम दुख से मुक्त रहें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 180, "notes_en": "Notice that 'we' is easier than 'I.' Use that. Start sentences with 'we' more often this week.", "notes_hi": "देखें — 'हम' कहना 'मैं' से आसान है। इसका उपयोग करें। इस सप्ताह 'हम' से वाक्य ज़्यादा शुरू करें।" }
+        ],
+        "reflection_prompt_en": "Did 'we' feel easier than 'I' today? Why might that be?",
+        "reflection_prompt_hi": "आज 'हम' कहना 'मैं' से आसान लगा? ऐसा क्यों हो सकता है?"
+      },
+      {
+        "day": 13,
+        "title_en": "Gratitude for the Easy Love",
+        "title_hi": "सहज प्रेम के लिए कृतज्ञता",
+        "intro_en": "Before we widen the circle further, pause and notice that easy love is itself a gift. Some people don't have anyone they can picture comfortably. If you do — that is a small grace worth marking.",
+        "intro_hi": "दायरा और बढ़ाने से पहले रुकें और देखें कि सहज प्रेम स्वयं एक उपहार है। कुछ लोगों के पास कोई नहीं होता जिन्हें वे सहजता से याद कर सकें। अगर आपके पास है — यह छोटा-सा आशीर्वाद है, ध्यान देने योग्य।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 360, "notes_en": "Supported fish pose with a bolster or rolled blanket along the spine. Rest with arms wide. Six minutes.", "notes_hi": "रीढ़ की लंबाई में तकिये या मुड़े कंबल के सहारे सहारे वाला मत्स्यासन। बाहें खुली। छह मिनट।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 420, "notes_en": "Stay in the pose. Bring the loved one to mind, and silently thank them — not for what they did, but for being a person you can love easily. End with the four phrases.", "notes_hi": "उसी मुद्रा में रहें। प्रियजन को याद करें, और मन में उनका धन्यवाद करें — किसी काम के लिए नहीं, बल्कि एक ऐसे व्यक्ति होने के लिए जिनसे प्रेम करना सहज है। चारों वाक्यों से समाप्त करें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Slow exit from the pose. Don't sit up suddenly.", "notes_hi": "मुद्रा से धीरे-धीरे बाहर आएँ। एकदम न उठें।" }
+        ],
+        "reflection_prompt_en": "What is one specific thing you are grateful for about this person?",
+        "reflection_prompt_hi": "इस व्यक्ति के बारे में एक विशेष बात जिसके लिए आप कृतज्ञ हैं — क्या है वह?"
+      },
+      {
+        "day": 14,
+        "title_en": "End of Week Two",
+        "title_hi": "दूसरे सप्ताह का अंत",
+        "intro_en": "Two weeks. You learned to wish yourself well, then to widen that wish to someone you love. The circle has grown. Tomorrow we will try to grow it further. Today, we rest.",
+        "intro_hi": "दो सप्ताह। आपने खुद को शुभकामना देना सीखा, फिर उस शुभकामना को किसी प्रियजन तक फैलाया। दायरा बढ़ा है। कल हम उसे और बढ़ाएँगे। आज, विश्राम।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 540, "notes_en": "Long savasana with a blanket over the body and an eye cover if available. Nine minutes. Do nothing.", "notes_hi": "लंबा शवासन — शरीर पर कंबल, और अगर हो तो आँखों पर पट्टी। नौ मिनट। कुछ न करें।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 300, "notes_en": "In savasana, repeat slowly: May I be well. May the one I love be well. May we both be at peace. As many times as you need.", "notes_hi": "शवासन में, धीरे-धीरे दोहराएँ: मैं स्वस्थ रहूँ। मेरा प्रियजन स्वस्थ रहे। हम दोनों शांत रहें। जितनी बार ज़रूरी हो।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Slowly return. Notice you completed two weeks.", "notes_hi": "धीरे-धीरे लौटें। दो सप्ताह पूरे करने को याद करें।" }
+        ],
+        "reflection_prompt_en": "Two weeks in — what is feeling different in how you move through your days?",
+        "reflection_prompt_hi": "दो सप्ताह बाद — आप अपने दिन कैसे जीते हैं, उसमें क्या अलग लग रहा है?"
+      },
+      {
+        "day": 15,
+        "title_en": "The Difficult Person",
+        "title_hi": "कठिन व्यक्ति",
+        "intro_en": "Now the hard part. Bring to mind someone you find difficult. Not the most difficult person — start moderate. Maybe a colleague who irritates you, a relative who criticises. Today we begin not by forgiving, but by simply seeing them as human.",
+        "intro_hi": "अब कठिन हिस्सा। एक व्यक्ति को मन में लाएँ जो आपको कठिन लगते हैं। सबसे कठिन नहीं — मध्यम स्तर का चुनें। शायद कोई सहकर्मी जो परेशान करते हैं, कोई रिश्तेदार जो आलोचना करते हैं। आज हम क्षमा से नहीं शुरू करेंगे, बस उन्हें एक मनुष्य के रूप में देखेंगे।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Three minutes of slow breath. You will need the ground steady for what's next.", "notes_hi": "तीन मिनट धीमी साँस। आगे के लिए ज़मीन स्थिर चाहिए।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 480, "notes_en": "Hand on heart. Picture the difficult person. Don't force love. Just acknowledge: they were a child once. They have people they love. They are afraid of things, like you are. Sit with this until it becomes a little real.", "notes_hi": "दिल पर हाथ। कठिन व्यक्ति को कल्पना करें। प्रेम ज़बरदस्ती न करें। बस स्वीकार करें: वे कभी बच्चे थे। उनके भी प्रियजन हैं। उन्हें भी चीज़ों से डर लगता है, आपकी तरह। इसे थोड़ा सच लगने तक थामे रहें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 240, "notes_en": "End by returning to yourself — hand on heart, four phrases. Always close on yourself after difficult work.", "notes_hi": "अंत में खुद पर लौटें — दिल पर हाथ, चारों वाक्य। कठिन काम के बाद हमेशा खुद पर समापन करें।" }
+        ],
+        "reflection_prompt_en": "What did you notice when you tried to see this person as also human?",
+        "reflection_prompt_hi": "जब आपने इस व्यक्ति को भी एक मनुष्य के रूप में देखने की कोशिश की — क्या नोटिस किया?"
+      },
+      {
+        "day": 16,
+        "title_en": "Not Approval — Just Wishing",
+        "title_hi": "स्वीकृति नहीं — बस शुभकामना",
+        "intro_en": "Wishing someone well is not the same as approving of what they do. You can wish a difficult person peace and still hold a firm boundary with them. Today we practice that distinction.",
+        "intro_hi": "किसी के लिए शुभकामना देना उनके कामों को स्वीकार करना नहीं है। आप किसी कठिन व्यक्ति की शांति की कामना कर सकते हैं, और साथ ही उनके साथ दृढ़ सीमा भी रख सकते हैं। आज हम यह भेद अभ्यास करेंगे।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 300, "notes_en": "Standing — mountain pose, then gentle backbend with hands on lower back. Feel the spine strong and the chest open at once.", "notes_hi": "खड़े होकर — ताड़ासन, फिर कमर पर हाथ रख कर कोमल पीछे झुकें। रीढ़ मज़बूत और छाती खुली, एक साथ।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 480, "notes_en": "Seated. Picture the difficult person. Try: May you be free from suffering. (Not because they are good. Because no one becomes kinder while in pain.) End with two minutes for yourself.", "notes_hi": "बैठे। कठिन व्यक्ति को कल्पना करें। कहें: आप दुख से मुक्त हों। (इसलिए नहीं कि वे अच्छे हैं। बल्कि इसलिए कि दुख में कोई दयालु नहीं बनता।) अंत में दो मिनट खुद के लिए।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Notice — wishing them well did not require agreement with their behaviour.", "notes_hi": "देखें — उन्हें शुभकामना देने के लिए उनके व्यवहार से सहमत होना ज़रूरी नहीं था।" }
+        ],
+        "reflection_prompt_en": "What is the boundary you need to hold with this person — separate from wishing them well?",
+        "reflection_prompt_hi": "इस व्यक्ति के साथ आपको कौन सी सीमा रखनी है — उनकी शुभकामना से अलग?"
+      },
+      {
+        "day": 17,
+        "title_en": "RAIN on the Resentment",
+        "title_hi": "नाराज़गी पर RAIN",
+        "intro_en": "Difficult people stir up something old in us. Today we use the RAIN practice — Recognise, Allow, Investigate, Nurture — to meet the resentment in our body without arguing with it.",
+        "intro_hi": "कठिन लोग हमारे भीतर कुछ पुराना छेड़ देते हैं। आज हम RAIN अभ्यास का उपयोग करेंगे — पहचानें, स्वीकारें, जाँचें, सहलाएँ — शरीर में बैठी नाराज़गी से बहस किए बिना उससे मिलने के लिए।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 120, "notes_en": "Two minutes natural breath to arrive.", "notes_hi": "दो मिनट सहज साँस, यहाँ पहुँचने के लिए।" },
+          { "type": "meditation", "ref_id": "med-sc-003", "duration_sec": 600, "notes_en": "RAIN on Your Inner Critic — but today apply it to the resentment you feel about the difficult person.", "notes_hi": "RAIN ऑन योर इनर क्रिटिक — लेकिन आज इसे उस नाराज़गी पर लागू करें जो कठिन व्यक्ति के बारे में है।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 180, "notes_en": "Close by sending the four phrases to yourself. The resentment was protecting something tender in you.", "notes_hi": "अंत में खुद को चारों वाक्य भेजें। नाराज़गी आपके भीतर किसी कोमल चीज़ की रक्षा कर रही थी।" }
+        ],
+        "reflection_prompt_en": "What was the resentment protecting? Look underneath the anger — there's usually hurt.",
+        "reflection_prompt_hi": "नाराज़गी किस चीज़ की रक्षा कर रही थी? गुस्से के नीचे देखें — आमतौर पर वहाँ चोट होती है।"
+      },
+      {
+        "day": 18,
+        "title_en": "All Four — Self, Loved One, Difficult, Stranger",
+        "title_hi": "चारों — स्वयं, प्रियजन, कठिन, अजनबी",
+        "intro_en": "Today we widen the circle one more step — to a stranger. The person who made your coffee, the one who passed you on the road, someone whose name you don't know. Today the circle is large.",
+        "intro_hi": "आज हम दायरा एक और कदम बढ़ाएँगे — एक अजनबी तक। जिसने आपकी चाय बनाई, जो सड़क पर पास से गुज़रा, कोई जिसका नाम आप नहीं जानते। आज दायरा बड़ा है।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 300, "notes_en": "Camel pose modified — kneel, hands on lower back, gentle lift of chest. Don't go further than feels safe.", "notes_hi": "उष्ट्रासन सरल रूप में — घुटने टेकें, हाथ कमर पर, छाती कोमलता से उठाएँ। जितना सुरक्षित लगे उतना ही।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 540, "notes_en": "Seated. Send the four phrases in sequence: to yourself, to your loved one, to the difficult person, to a stranger. Two minutes each. Keep your hand on your heart throughout.", "notes_hi": "बैठे। चारों वाक्य क्रम से भेजें: खुद को, प्रियजन को, कठिन व्यक्ति को, अजनबी को। प्रत्येक को दो मिनट। पूरे समय दिल पर हाथ।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 60, "notes_en": "Notice — your capacity for care is larger than it was three weeks ago.", "notes_hi": "देखें — आपकी देखभाल की क्षमता तीन सप्ताह पहले से बड़ी है।" }
+        ],
+        "reflection_prompt_en": "Which of the four people felt easiest today, and which was hardest?",
+        "reflection_prompt_hi": "आज इन चारों में से किसके लिए शुभकामना आसान लगी, और किसके लिए कठिन?"
+      },
+      {
+        "day": 19,
+        "title_en": "All Beings",
+        "title_hi": "सभी प्राणी",
+        "intro_en": "Today the widest circle. Every person you have ever passed on the street. Every person reading something difficult right now. Every person born this hour. The phrases hold all of them.",
+        "intro_hi": "आज सबसे बड़ा दायरा। हर एक व्यक्ति जिनके पास से आप कभी गुज़रे हैं। हर एक जो इस क्षण कुछ कठिन पढ़ रहा है। हर एक जो इस घंटे जन्मा है। वाक्य उन सबको थामते हैं।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Three minutes of expansive breathing — feel the breath fill not just chest, but as if it fills the whole room.", "notes_hi": "तीन मिनट विस्तृत साँस — साँस सिर्फ़ छाती नहीं, मानो पूरा कमरा भर रही है।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 600, "notes_en": "Hand on heart. Send the four phrases outward: May all beings be safe. May all beings be well. May all beings be at peace. May all beings be free from suffering. Let the words radiate without needing to picture anyone in particular.", "notes_hi": "दिल पर हाथ। चारों वाक्य बाहर भेजें: सभी प्राणी सुरक्षित हों। सभी प्राणी स्वस्थ हों। सभी प्राणी शांत हों। सभी प्राणी दुख से मुक्त हों। शब्दों को विकीर्ण होने दें, किसी विशेष को कल्पना किए बिना।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Return finally to yourself. You are one of all beings. Include yourself in the prayer you just sent.", "notes_hi": "अंत में खुद पर लौटें। आप भी सभी प्राणियों में से एक हैं। जो प्रार्थना अभी भेजी, उसमें खुद को भी शामिल करें।" }
+        ],
+        "reflection_prompt_en": "Did 'all beings' feel abstract, or did it feel real? Either is fine.",
+        "reflection_prompt_hi": "'सभी प्राणी' अमूर्त लगा या सच्चा? दोनों ठीक हैं।"
+      },
+      {
+        "day": 20,
+        "title_en": "Holding the Whole Circle",
+        "title_hi": "पूरे दायरे को थामना",
+        "intro_en": "Second to last day. Today we hold the whole circle at once — self, loved one, difficult person, stranger, all beings — without sequence. Just one big embrace.",
+        "intro_hi": "अंतिम से एक पहले। आज पूरे दायरे को एक साथ थामेंगे — स्वयं, प्रियजन, कठिन, अजनबी, सभी प्राणी — बिना क्रम के। बस एक बड़ा आलिंगन।",
+        "duration_min": 15,
+        "components": [
+          { "type": "asana_sequence", "ref_id": null, "duration_sec": 360, "notes_en": "Supported chest opener with bolster — six minutes of receiving. Let the body be wide.", "notes_hi": "तकिये के सहारे छाती खोलने वाली मुद्रा — छह मिनट सिर्फ़ ग्रहण करने के। शरीर को चौड़ा होने दें।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 420, "notes_en": "Still lying down. Picture all the people in your life as one wide circle around you, and you in it. Send: May we all be safe. May we all be well. May we all be at peace. May we all be free from suffering.", "notes_hi": "लेटे रहें। अपने जीवन के सभी लोगों को एक चौड़े दायरे के रूप में चारों ओर कल्पना करें, और खुद को उसमें। भेजें: हम सब सुरक्षित रहें। हम सब स्वस्थ रहें। हम सब शांत रहें। हम सब दुख से मुक्त रहें।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Slow exit. You are part of the circle you just blessed.", "notes_hi": "धीरे-धीरे बाहर आएँ। जिस दायरे को अभी आशीर्वाद दिया, आप उसी का हिस्सा हैं।" }
+        ],
+        "reflection_prompt_en": "How is the relationship with yourself different today than it was on Day 1?",
+        "reflection_prompt_hi": "आज खुद से आपका रिश्ता पहले दिन से कैसे अलग है?"
+      },
+      {
+        "day": 21,
+        "title_en": "What You Carry Forward",
+        "title_hi": "आगे जो आप ले जाते हैं",
+        "intro_en": "Twenty-first day. The course doesn't end — it just stops having a number. Today we name what we will take with us. The hand on the heart is yours now. The phrases are yours. Use them at the bus stop, in the middle of an argument, at three in the morning.",
+        "intro_hi": "इक्कीसवाँ दिन। पाठ्यक्रम समाप्त नहीं होता — बस उसकी संख्या रुक जाती है। आज हम नाम लेंगे कि क्या साथ ले जा रहे हैं। दिल पर हाथ अब आपका है। वाक्य अब आपके हैं। बस स्टॉप पर, बहस के बीच में, रात तीन बजे — उनका उपयोग करें।",
+        "duration_min": 15,
+        "components": [
+          { "type": "breath", "ref_id": null, "duration_sec": 180, "notes_en": "Three minutes of slow breathing. Settle as you have settled twenty times before.", "notes_hi": "तीन मिनट धीमी साँस। जैसे बीस बार पहले स्थिर हुए, वैसे ही।" },
+          { "type": "meditation", "ref_id": null, "duration_sec": 600, "notes_en": "Hand on heart. The full sequence one last time as a course: self, loved one, difficult person, stranger, all beings. Two minutes each. End at home — with yourself.", "notes_hi": "दिल पर हाथ। पूरा क्रम एक आख़िरी बार पाठ्यक्रम के रूप में: स्वयं, प्रियजन, कठिन, अजनबी, सभी प्राणी। प्रत्येक को दो मिनट। घर पर समाप्त करें — खुद के साथ।" },
+          { "type": "talk", "ref_id": null, "duration_sec": 120, "notes_en": "Sit for one final minute. Thank yourself for showing up twenty-one times. That is real.", "notes_hi": "एक आख़िरी मिनट बैठें। इक्कीस बार आने के लिए खुद का धन्यवाद करें। यह असली है।" }
+        ],
+        "reflection_prompt_en": "Write a letter to yourself from twenty-one days ago. Tell that person what they were about to learn.",
+        "reflection_prompt_hi": "इक्कीस दिन पहले के अपने आप को एक पत्र लिखें। उन्हें बताएँ कि वे क्या सीखने वाले थे।"
+      }
+    ],
+    "closing_en": "You showed up twenty-one times. That alone is the practice — not the perfect meditation, not the deep insight, but the returning. You learned a gesture: hand on heart. You learned four phrases. You learned to widen the circle of who deserves your care, until even a difficult person, even a stranger, even all beings were inside it — and you, always, still inside it too. From here, the practice is not on the calendar. It is at red lights, in waiting rooms, before sleep, after a hard conversation. The hand goes to the heart. The phrases come. You don't have to do twenty-one days again. You just have to remember, once a day, that you are someone worth being kind to. And then, slowly, the rest of the world becomes worth being kind to as well. Welcome home to yourself.",
+    "closing_hi": "आप इक्कीस बार आए। यही अभ्यास है — सिद्ध ध्यान नहीं, गहरी अनुभूति नहीं, बल्कि बार-बार लौटना। आपने एक स्पर्श सीखा: दिल पर हाथ। आपने चार वाक्य सीखे। आपने सीखा कि अपनी देखभाल के दायरे को कैसे बढ़ाना है, जब तक एक कठिन व्यक्ति भी, एक अजनबी भी, सभी प्राणी भी उसमें आ गए — और आप, हमेशा, अब भी उसी के भीतर। यहाँ से अभ्यास कैलेंडर पर नहीं है। यह लाल बत्ती पर है, प्रतीक्षालय में है, सोने से पहले है, कठिन बातचीत के बाद है। हाथ दिल पर जाता है। वाक्य आते हैं। आपको इक्कीस दिन फिर से नहीं करने हैं। आपको बस दिन में एक बार याद रखना है कि आप दया के योग्य हैं। और फिर, धीरे-धीरे, बाकी दुनिया भी दया के योग्य लगने लगती है। अपने घर वापसी की बधाई।",
+    "recommended_next_course_id": null
+  },
+  {
+    "id": "7-days-for-grief",
+    "title_en": "7 Days for Grief",
+    "title_hi": "शोक के लिए 7 दिन",
+    "subtitle_en": "Not a path through grief. A way to sit beside it.",
+    "subtitle_hi": "शोक से निकलने का रास्ता नहीं। उसके पास बैठने का तरीका।",
+    "days": 7,
+    "level": "beginner",
+    "focus_tag": "grief",
+    "intro_en": "Grief is not a problem to solve. It is love that has nowhere to go. This week is not about feeling better, moving on, or finding closure. Those words belong to people who do not understand. This week is about learning to keep breathing while your heart is broken. Each day you will lie on the floor for a few minutes. You will breathe slowly. You will sit with what is here. Some days will feel small. Some days the weight will press hard. Both are part of it. The body holds grief in the throat, in the chest, in the back of the eyes. We will give it gentle room. Nothing here will rush you. You do not have to be okay. You only have to show up for ten minutes. That is enough.",
+    "intro_hi": "शोक कोई समस्या नहीं है जिसे हल किया जाए। यह वह प्यार है जिसके पास जाने को कोई जगह नहीं बची। यह हफ़्ता बेहतर महसूस करने के बारे में नहीं है, न ही आगे बढ़ने या किसी अंत तक पहुँचने के बारे में। ये शब्द उन लोगों के हैं जो समझते नहीं। यह हफ़्ता टूटे दिल के साथ साँस लेते रहना सीखने के बारे में है। हर दिन आप कुछ मिनट ज़मीन पर लेटेंगे। धीरे साँस लेंगे। जो है उसके साथ बैठेंगे। कुछ दिन छोटे लगेंगे। कुछ दिन वज़न ज़्यादा दबाएगा। दोनों इसी का हिस्सा हैं। शरीर शोक को गले में, छाती में, आँखों के पीछे रखता है। हम उसे धीरे से जगह देंगे। यहाँ कुछ भी आपको जल्दी नहीं कराएगा। आपको ठीक होने की ज़रूरत नहीं है। बस दस मिनट के लिए आना है। इतना काफ़ी है।",
+    "estimated_daily_minutes": 10,
+    "sessions": [
+      {
+        "day": 1,
+        "title_en": "Arrival",
+        "title_hi": "आगमन",
+        "intro_en": "Today you are not trying to feel anything in particular. You are only arriving. You are saying to your own body: I am here, and what happened, happened. That sentence is enough work for one day. Lie down. Breathe. Let the floor hold you.",
+        "intro_hi": "आज आप कुछ ख़ास महसूस करने की कोशिश नहीं कर रहे। आप बस आ रहे हैं। आप अपने शरीर से कह रहे हैं: मैं यहाँ हूँ, और जो हुआ, वह हुआ। एक दिन के लिए यह वाक्य ही काफ़ी काम है। लेट जाइए। साँस लीजिए। ज़मीन को सँभालने दीजिए।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "supported-savasana-grief", "duration_sec": 240, "notes_en": "Lie on your back with a folded blanket under the knees and a small cushion under the head. No stretching. Just landing.", "notes_hi": "पीठ के बल लेट जाइए, घुटनों के नीचे मुड़ा कंबल और सिर के नीचे छोटा तकिया रखिए। कोई खिंचाव नहीं। बस उतरना है।" },
+          { "type": "breath", "ref_id": "natural-breath-noticing", "duration_sec": 180, "notes_en": "No counting, no shaping. Just notice that the breath is still happening on its own. That is today's whole job.", "notes_hi": "कोई गिनती नहीं, कोई आकार नहीं। बस ध्यान दीजिए कि साँस अब भी अपने आप चल रही है। आज का पूरा काम यही है।" },
+          { "type": "meditation", "ref_id": "sitting-with-what-is-here", "duration_sec": 180, "notes_en": "A short guided sitting. The instruction is: whatever arrives, let it arrive. Tears, numbness, nothing at all. All of it is welcome.", "notes_hi": "एक छोटा निर्देशित बैठना। निर्देश है: जो भी आए, आने दीजिए। आँसू, सुन्नता, या कुछ भी नहीं। सब का स्वागत है।" }
+        ],
+        "reflection_prompt_en": "Write one sentence: who or what are you grieving? Just naming it. No more.",
+        "reflection_prompt_hi": "एक वाक्य लिखिए: आप किस को या किसके लिए शोक मना रहे हैं? बस नाम। और कुछ नहीं।"
+      },
+      {
+        "day": 2,
+        "title_en": "The Body Remembers",
+        "title_hi": "शरीर याद रखता है",
+        "intro_en": "Yesterday you arrived. Today we listen to where grief is living in the body. The throat that swallows it. The chest that carries it. The shoulders that hold it up. We are not trying to release anything. We are only noticing.",
+        "intro_hi": "कल आप आए। आज हम सुनते हैं कि शोक शरीर में कहाँ रह रहा है। गला जो उसे निगलता है। छाती जो उसे ढोती है। कंधे जो उसे थामे रखते हैं। हम कुछ छोड़ने की कोशिश नहीं कर रहे। बस ध्यान दे रहे हैं।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "gentle-supine-twist-grief", "duration_sec": 240, "notes_en": "Lying on your back, knees fall slowly to one side, then the other. Two minutes each side. Let the chest open without forcing.", "notes_hi": "पीठ के बल लेटे हुए, घुटने धीरे से एक तरफ़ गिराइए, फिर दूसरी तरफ़। हर तरफ़ दो मिनट। छाती को बिना ज़ोर लगाए खुलने दीजिए।" },
+          { "type": "breath", "ref_id": "extended-exhale-grief", "duration_sec": 180, "notes_en": "Breathe in for four. Out for six. The longer exhale tells the nervous system: you do not have to fight right now.", "notes_hi": "चार तक साँस लीजिए। छह तक छोड़िए। लंबी साँस तंत्रिका तंत्र से कहती है: अभी लड़ने की ज़रूरत नहीं है।" },
+          { "type": "meditation", "ref_id": "body-scan-with-tenderness", "duration_sec": 180, "notes_en": "Scan slowly from throat to belly. Wherever it feels tight or heavy, place a hand there. No fixing. Just a hand.", "notes_hi": "गले से पेट तक धीरे-धीरे जाइए। जहाँ भी कसाव या भारीपन लगे, वहाँ हाथ रखिए। ठीक करने की कोशिश नहीं। बस एक हाथ।" }
+        ],
+        "reflection_prompt_en": "Where in your body did grief sit today? Throat, chest, eyes, somewhere else?",
+        "reflection_prompt_hi": "आज शोक आपके शरीर में कहाँ बैठा था? गला, छाती, आँखें, कहीं और?"
+      },
+      {
+        "day": 3,
+        "title_en": "Permission to Cry, Permission Not To",
+        "title_hi": "रोने की और न रोने की अनुमति",
+        "intro_en": "Some days grief comes out as tears. Some days it is just heaviness, with nothing to show. Both are real. Today there is no expectation either way. You will breathe, you will move a little, and whatever happens will happen.",
+        "intro_hi": "कुछ दिन शोक आँसुओं की तरह निकलता है। कुछ दिन बस भारीपन रहता है, कुछ दिखाने को नहीं। दोनों सच हैं। आज किसी भी तरफ़ कोई अपेक्षा नहीं है। आप साँस लेंगे, थोड़ा हिलेंगे, और जो होगा वह होगा।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "child-pose-supported-grief", "duration_sec": 240, "notes_en": "Wide-knee child pose with a bolster or stacked pillows under the chest. The forehead rests. The heart is held by the bolster.", "notes_hi": "घुटने चौड़े करके बालासन, छाती के नीचे बोलस्टर या तकिए। माथा टिकता है। दिल को बोलस्टर थामता है।" },
+          { "type": "breath", "ref_id": "sighing-breath", "duration_sec": 120, "notes_en": "Inhale through the nose, exhale audibly through the mouth like a sigh. Six rounds. Let the body do what it needs.", "notes_hi": "नाक से साँस लीजिए, मुँह से आह की तरह आवाज़ के साथ छोड़िए। छह बार। शरीर को जो चाहिए वह करने दीजिए।" },
+          { "type": "talk", "ref_id": "tears-are-not-weakness", "duration_sec": 240, "notes_en": "A short reflection: tears are how love asks to be witnessed. There is nothing to apologise for. Nothing to manage.", "notes_hi": "एक छोटा विचार: आँसू वह तरीक़ा हैं जिनसे प्यार देखे जाने को कहता है। माफ़ी माँगने जैसा कुछ नहीं। सँभालने जैसा कुछ नहीं।" }
+        ],
+        "reflection_prompt_en": "Did you cry today, or not? Either way, write one line about how that landed.",
+        "reflection_prompt_hi": "आज रोए या नहीं? दोनों में से जो भी हुआ, एक पंक्ति लिखिए कि वह कैसा लगा।"
+      },
+      {
+        "day": 4,
+        "title_en": "The Hardest Middle",
+        "title_hi": "सबसे कठिन बीच",
+        "intro_en": "Day four is often the day people stop. The newness is gone, the end is not in sight, and the weight is just there. This is normal. This is not failure. Today we do less, not more. We only breathe and let the floor hold us. Showing up today is the whole win.",
+        "intro_hi": "चौथा दिन वह दिन है जब लोग अक्सर रुक जाते हैं। नयापन ख़त्म, अंत दिख नहीं रहा, और बस वज़न है। यह सामान्य है। यह असफलता नहीं है। आज हम कम करते हैं, ज़्यादा नहीं। बस साँस लेते हैं और ज़मीन को थामने देते हैं। आज आना ही पूरी जीत है।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "legs-up-the-wall-grief", "duration_sec": 360, "notes_en": "Legs up the wall or up on a chair seat. Six minutes. Long, restorative, deeply held. You are doing nothing and that is the practice.", "notes_hi": "पैर दीवार पर या कुर्सी की सीट पर ऊपर। छह मिनट। लंबा, बहाल करने वाला, गहरा। आप कुछ नहीं कर रहे और यही अभ्यास है।" },
+          { "type": "breath", "ref_id": "hand-on-heart-breath", "duration_sec": 120, "notes_en": "One hand on heart, one on belly. Breathe under your hands. Feel that you are still here, still breathing, on the hardest day.", "notes_hi": "एक हाथ दिल पर, एक पेट पर। हाथों के नीचे साँस लीजिए। महसूस कीजिए कि आप अब भी यहाँ हैं, अब भी साँस ले रहे हैं, सबसे कठिन दिन भी।" },
+          { "type": "meditation", "ref_id": "this-is-the-hardest-part", "duration_sec": 120, "notes_en": "A whispered phrase: this is the hardest part, and I am still here. Repeated softly. Not to fix anything. Just truth.", "notes_hi": "एक फुसफुसाया वाक्य: यह सबसे कठिन हिस्सा है, और मैं अब भी यहाँ हूँ। धीरे से दोहराइए। ठीक करने को नहीं। बस सच।" }
+        ],
+        "reflection_prompt_en": "What is one thing you have not let yourself feel because it seems too big?",
+        "reflection_prompt_hi": "एक बात क्या है जो आपने अपने आप को महसूस नहीं करने दी क्योंकि वह बहुत बड़ी लगती है?"
+      },
+      {
+        "day": 5,
+        "title_en": "What Remains",
+        "title_hi": "जो बचा है",
+        "intro_en": "When someone leaves, or something ends, not everything goes with them. The voice in your head that they put there. The way they laughed. The recipe. The song. Today we sit quietly with what remains. Not to be grateful. Just to notice it is still here.",
+        "intro_hi": "जब कोई जाता है, या कुछ ख़त्म होता है, तो सब कुछ उनके साथ नहीं जाता। आपके दिमाग़ में उनकी आवाज़। उनकी हँसी का तरीक़ा। वह व्यंजन। वह गीत। आज हम चुपचाप उसके साथ बैठते हैं जो बचा है। आभारी होने को नहीं। बस यह देखने को कि वह अब भी यहाँ है।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "reclining-bound-angle-grief", "duration_sec": 240, "notes_en": "Reclining bound angle pose with bolster under the spine and blocks under the knees. Heart open to the ceiling. Deeply held.", "notes_hi": "लेटा हुआ बद्ध कोणासन, रीढ़ के नीचे बोलस्टर और घुटनों के नीचे ब्लॉक। दिल छत की तरफ़ खुला। गहराई से थामा हुआ।" },
+          { "type": "breath", "ref_id": "soft-belly-breathing", "duration_sec": 180, "notes_en": "Let the belly be soft. Breathe low. Not deep, not shaped. Just soft. The grief can stay; the belly can soften anyway.", "notes_hi": "पेट को नरम रहने दीजिए। नीचे साँस लीजिए। गहरी नहीं, बनी हुई नहीं। बस नरम। शोक रह सकता है; पेट फिर भी नरम हो सकता है।" },
+          { "type": "meditation", "ref_id": "what-they-left-behind", "duration_sec": 180, "notes_en": "Bring to mind one specific thing they gave you: a phrase, a habit, a way of seeing. Sit with it. That is yours now.", "notes_hi": "एक ख़ास चीज़ याद कीजिए जो उन्होंने आपको दी: एक वाक्य, एक आदत, देखने का एक तरीक़ा। उसके साथ बैठिए। वह अब आपका है।" }
+        ],
+        "reflection_prompt_en": "Name one thing they gave you that you still carry.",
+        "reflection_prompt_hi": "एक चीज़ का नाम लीजिए जो उन्होंने आपको दी और जो अब भी आपके पास है।"
+      },
+      {
+        "day": 6,
+        "title_en": "Tenderness Toward Yourself",
+        "title_hi": "अपने प्रति कोमलता",
+        "intro_en": "Grieving people are tired. Not lazy. Not weak. Tired in a way that sleep does not fix. Today we turn the same softness we would offer a hurt friend toward our own self. Not as a treat. As a basic need.",
+        "intro_hi": "शोक मनाने वाले थके होते हैं। आलसी नहीं। कमज़ोर नहीं। उस तरह थके जिसे नींद ठीक नहीं करती। आज वही कोमलता जो हम किसी दुखी दोस्त को देते, अपने आप की तरफ़ मोड़ते हैं। तोहफ़े की तरह नहीं। ज़रूरत की तरह।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "self-hug-side-lying-rest", "duration_sec": 240, "notes_en": "Lie on your side, knees bent, a pillow between knees, one arm wrapping yourself. Held position. Your own arms holding you.", "notes_hi": "करवट लेकर लेटिए, घुटने मुड़े, घुटनों के बीच तकिया, एक हाथ अपने को लपेटे हुए। थमी हुई स्थिति। आपके अपने हाथ आपको थामे।" },
+          { "type": "breath", "ref_id": "loving-kindness-breath", "duration_sec": 180, "notes_en": "On the inhale: may I be held. On the exhale: I am held. Six rounds. The words can feel awkward. Say them anyway.", "notes_hi": "साँस लेते हुए: मुझे थामा जाए। छोड़ते हुए: मैं थमा हुआ हूँ। छह बार। शब्द अजीब लग सकते हैं। फिर भी कहिए।" },
+          { "type": "meditation", "ref_id": "what-a-friend-would-say", "duration_sec": 180, "notes_en": "Imagine your kindest friend sitting with you, knowing everything. What would they say, softly? Hear it. Let it land.", "notes_hi": "कल्पना कीजिए आपका सबसे दयालु दोस्त आपके साथ बैठा है, सब कुछ जानते हुए। वह धीरे से क्या कहता? सुनिए। उसे उतरने दीजिए।" }
+        ],
+        "reflection_prompt_en": "Write the one sentence that kindest friend would say to you tonight.",
+        "reflection_prompt_hi": "वह एक वाक्य लिखिए जो वह सबसे दयालु दोस्त आज रात आपसे कहता।"
+      },
+      {
+        "day": 7,
+        "title_en": "Carrying It Gently Forward",
+        "title_hi": "धीरे से आगे ले जाना",
+        "intro_en": "We do not finish grief in seven days. We do not finish it ever, really. What changes is how we carry it. Today we practice walking back into our life with this weight, not pretending it is gone. You are not the same person you were a week ago. You are not supposed to be.",
+        "intro_hi": "हम सात दिनों में शोक ख़त्म नहीं करते। सच कहें तो इसे कभी ख़त्म नहीं करते। बदलता यह है कि हम इसे कैसे ढोते हैं। आज हम इस वज़न के साथ अपनी ज़िंदगी में वापस लौटने का अभ्यास करते हैं, यह नाटक किए बिना कि वह चला गया। आप एक हफ़्ते पहले वाले व्यक्ति नहीं हैं। आपको होना भी नहीं चाहिए।",
+        "duration_min": 10,
+        "components": [
+          { "type": "asana_sequence", "ref_id": "seated-easy-pose-grounded", "duration_sec": 180, "notes_en": "Sit upright, easy pose or on a chair, feet flat. Spine long but not stiff. The posture of someone who is here, still standing.", "notes_hi": "सीधे बैठिए, सुखासन में या कुर्सी पर, पैर सपाट। रीढ़ लंबी पर अकड़ी हुई नहीं। उस इंसान की मुद्रा जो यहाँ है, अब भी खड़ा है।" },
+          { "type": "breath", "ref_id": "balanced-breath-grief", "duration_sec": 180, "notes_en": "Inhale four, exhale four. Even, steady. Not to feel calm. To feel capable of walking back into the day.", "notes_hi": "चार तक साँस लीजिए, चार तक छोड़िए। बराबर, स्थिर। शांत महसूस करने को नहीं। दिन में लौट जाने लायक़ महसूस करने को।" },
+          { "type": "meditation", "ref_id": "i-take-them-with-me", "duration_sec": 240, "notes_en": "A closing reflection: I do not leave them behind. I do not move on from them. I carry them gently, with me, into whatever comes next.", "notes_hi": "एक समापन विचार: मैं उन्हें पीछे नहीं छोड़ता। मैं उनसे आगे नहीं बढ़ता। मैं उन्हें धीरे से, अपने साथ, जो भी आगे आए उसमें ले जाता हूँ।" }
+        ],
+        "reflection_prompt_en": "What is one small thing from your old life you are ready to step gently back into?",
+        "reflection_prompt_hi": "अपनी पुरानी ज़िंदगी की एक छोटी चीज़ क्या है जिसमें आप धीरे से वापस क़दम रखने को तैयार हैं?"
+      }
+    ],
+    "closing_en": "You came here for seven days while your heart was breaking. That is not nothing. That is something most people will not do. You did not fix grief. Grief is not fixable. What you did was harder. You stayed with it. You let your body lie down on the floor and breathe next to it. You learned that grief and breath can share the same chest. Carry this with you. On the days the wave comes back, and it will, you know what to do. Lie down. Breathe slowly. Place a hand on your heart. You have done this before. You can do it again. And when one day you find yourself laughing without guilt, know this: that is also grief. That is grief grown gentle enough to make room for both. We will see you when you are ready.",
+    "closing_hi": "आप यहाँ सात दिनों के लिए आए जब आपका दिल टूट रहा था। यह कुछ नहीं नहीं है। यह वह चीज़ है जो ज़्यादातर लोग नहीं करेंगे। आपने शोक को ठीक नहीं किया। शोक ठीक होने वाली चीज़ नहीं है। आपने जो किया वह कठिन था। आप उसके साथ रुके रहे। आपने अपने शरीर को ज़मीन पर लेटने दिया और उसके बग़ल में साँस लेने दी। आपने सीखा कि शोक और साँस एक ही छाती में रह सकते हैं। इसे अपने साथ ले जाइए। जिन दिनों लहर वापस आएगी, और वह आएगी, आप जानते हैं क्या करना है। लेट जाइए। धीरे साँस लीजिए। दिल पर हाथ रखिए। आप यह पहले कर चुके हैं। फिर कर सकते हैं। और जिस दिन आप ख़ुद को बिना अपराध-बोध के हँसते पाएँगे, यह जानिए: वह भी शोक है। वह शोक है जो दोनों के लिए जगह बनाने जितना कोमल हो गया है। जब आप तैयार हों, हम मिलेंगे।",
+    "recommended_next_course_id": "7-days-for-self-compassion"
+  }
+]
