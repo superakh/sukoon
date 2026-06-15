@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Sukoon — A sanctuary for the heavy moments.</title>
-    <meta name="description" content="No signup. No tracking. Tell Sukoon what's heavy — it will quietly take you to the right place.">
+    <title>Sukoon — A quieter place to be.</title>
+    <meta name="description" content="India's largest free wellness sanctuary. No signup. No tracking. 102 meditations, 50 sleep stories, 60 yoga asanas, 25 breath patterns, 12 courses. Bilingual. Forever free.">
     <meta name="theme-color" content="#0F1B3D">
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icons/icon-192.svg" type="image/svg+xml">
@@ -12,8 +12,8 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Sukoon">
     <meta property="og:url" content="https://sukoon.cloud/">
-    <meta property="og:title" content="Sukoon — A sanctuary for the heavy moments.">
-    <meta property="og:description" content="Tell Sukoon what's heavy. It will quietly take you where your heart needs to go.">
+    <meta property="og:title" content="Sukoon — A quieter place to be.">
+    <meta property="og:description" content="India's largest free wellness sanctuary. Tell Sukoon what's heavy — it will quietly take you where your heart needs to go.">
     <meta property="og:image" content="https://sukoon.cloud/og/home.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -31,23 +31,22 @@
     <script src="/js/sukoon-router.js" defer></script>
 
     <style>
-    /* ─── ENTRY DIALOGUE — minimal, cinematic, mobile-first ─────────────── */
+    /* ─── HERO ENTRY — preserved from the original homepage ───────────────── */
     :root {
         --ink: #F5E9D3;
         --ink-soft: rgba(245, 233, 211, 0.72);
         --ink-faint: rgba(245, 233, 211, 0.42);
         --glow: rgba(245, 233, 211, 0.14);
-        --glow-strong: rgba(245, 233, 211, 0.28);
         --crisis: #C9B4FF;
         --safe-top: env(safe-area-inset-top, 0px);
         --safe-bottom: env(safe-area-inset-bottom, 0px);
     }
-    html, body { margin: 0; padding: 0; background: #050810; color: var(--ink); font-family: 'Fraunces', Georgia, serif; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
-    body.page-entry { min-height: 100vh; min-height: 100dvh; overflow: hidden; }
+    html, body { margin: 0; padding: 0; background: #050810; color: var(--ink); font-family: 'Fraunces', Georgia, serif; -webkit-font-smoothing: antialiased; }
+    body.page-home { overflow-x: hidden; }
 
-    /* ── Cinematic backdrop ── */
+    /* Hero cinematic backdrop — confined to the hero only */
     .sk-stage {
-        position: fixed; inset: 0; z-index: 0;
+        position: absolute; inset: 0; z-index: 0;
         overflow: hidden; background: #050810;
     }
     .sk-stage__video {
@@ -63,89 +62,80 @@
             linear-gradient(to bottom, rgba(5,8,16,0.55) 0%, rgba(5,8,16,0.15) 35%, rgba(5,8,16,0.78) 100%);
         pointer-events: none;
     }
-    html[data-tod="dusk"] .sk-stage__veil { background:
-        radial-gradient(ellipse at 50% 25%, rgba(214,148,90,0.10) 0%, rgba(5,8,16,0.45) 55%, rgba(5,8,16,0.85) 100%),
-        linear-gradient(to bottom, rgba(20,12,30,0.55) 0%, rgba(5,8,16,0.20) 40%, rgba(5,8,16,0.82) 100%);
-    }
-    html[data-tod="night"] .sk-stage__veil { background:
-        radial-gradient(ellipse at 50% 25%, rgba(80,98,180,0.10) 0%, rgba(5,8,16,0.55) 55%, rgba(5,8,16,0.88) 100%),
-        linear-gradient(to bottom, rgba(5,8,16,0.70) 0%, rgba(5,8,16,0.30) 40%, rgba(5,8,16,0.88) 100%);
-    }
 
-    /* ── Crisis bar (persistent, top) ── */
+    /* Crisis bar */
     .sk-crisis-bar {
         position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-        padding: calc(var(--safe-top) + 9px) 16px 9px;
+        padding: calc(var(--safe-top) + 8px) 16px 8px;
         background: rgba(15, 12, 30, 0.55);
         backdrop-filter: blur(14px) saturate(1.2);
         -webkit-backdrop-filter: blur(14px) saturate(1.2);
         border-bottom: 1px solid rgba(201, 180, 255, 0.18);
-        text-align: center;
         font: 500 12.5px/1.35 'Inter Tight', system-ui, sans-serif;
         letter-spacing: 0.01em;
         color: var(--crisis);
-        text-decoration: none;
-        display: flex; align-items: center; justify-content: center; gap: 8px;
+        display: flex; align-items: center; justify-content: center; gap: 12px;
         transition: background 0.3s ease;
     }
     .sk-crisis-bar:hover { background: rgba(25, 20, 50, 0.72); }
+    .sk-crisis-bar__link {
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+        color: var(--crisis); text-decoration: none; flex: 0 1 auto;
+        text-align: center;
+    }
     .sk-crisis-bar__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--crisis); box-shadow: 0 0 10px rgba(201,180,255,0.7); animation: skPulseDot 2.4s ease-in-out infinite; }
     .sk-crisis-bar__text strong { font-weight: 600; }
     .sk-crisis-bar__arrow { opacity: 0.7; margin-left: 2px; }
+    .sk-crisis-bar__hi { display: none; font: 400 12px/1.3 'Tiro Devanagari Hindi', serif; opacity: 0.78; }
+    html[lang="hi"] .sk-crisis-bar__en { display: none; }
+    html[lang="hi"] .sk-crisis-bar__hi { display: inline; }
+    .sk-crisis-bar__sos {
+        display: none;
+        align-items: center; gap: 5px;
+        background: linear-gradient(135deg, #C9B4FF 0%, #8A6FE6 100%);
+        color: #1A0F3D;
+        font: 700 11px/1 'Inter Tight', system-ui, sans-serif;
+        letter-spacing: 0.10em; text-transform: uppercase;
+        padding: 6px 10px; border-radius: 999px;
+        text-decoration: none; flex: 0 0 auto;
+        box-shadow: 0 4px 12px rgba(138,111,230,0.40);
+    }
+    .sk-crisis-bar__sos:hover { transform: translateY(-1px); }
+    .sk-crisis-bar__sos svg { display: block; }
+    @media (max-width: 767px) {
+        .sk-crisis-bar__sos { display: inline-flex; }
+    }
     @keyframes skPulseDot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(0.85); } }
 
-    /* ── Lang toggle, top-right ── */
-    .sk-lang {
-        position: fixed; top: calc(var(--safe-top) + 44px); right: 14px; z-index: 40;
-        background: rgba(15,12,30,0.4); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-        border: 1px solid rgba(245,233,211,0.14);
-        border-radius: 999px; padding: 6px 14px;
-        font: 500 11.5px/1 'Inter Tight', system-ui, sans-serif; color: var(--ink-soft);
-        letter-spacing: 0.04em; text-transform: uppercase;
-        cursor: pointer; appearance: none; -webkit-appearance: none;
-    }
-    .sk-lang:focus { outline: none; border-color: rgba(245,233,211,0.36); }
-
-    /* ── Brand mark, top-left ── */
-    .sk-brand {
-        position: fixed; top: calc(var(--safe-top) + 44px); left: 18px; z-index: 40;
-        font: 400 19px/1 'Fraunces', Georgia, serif;
-        color: var(--ink); letter-spacing: 0.10em; text-decoration: none;
-        text-transform: lowercase; opacity: 0.92;
-    }
-    .sk-brand::before { content: '✦'; margin-right: 8px; opacity: 0.7; }
-
-    /* ── Entry dialogue centerpiece ── */
+    /* Hero entry block */
     .sk-entry {
         position: relative; z-index: 10;
         min-height: 100vh; min-height: 100dvh;
         display: flex; flex-direction: column;
         align-items: center; justify-content: center;
-        padding: calc(var(--safe-top) + 88px) 22px calc(var(--safe-bottom) + 112px);
+        padding: calc(var(--safe-top) + 140px) 22px 140px;
         text-align: center;
     }
-    .sk-entry__inner { width: 100%; max-width: 620px; }
+    .sk-entry__inner { width: 100%; max-width: 720px; }
 
     .sk-prompt {
-        font: 300 clamp(26px, 5.2vw, 40px)/1.28 'Fraunces', Georgia, serif;
-        color: var(--ink); letter-spacing: -0.005em;
-        margin: 0 0 10px;
+        font: 300 clamp(40px, 8vw, 96px)/1.04 'Fraunces', Georgia, serif;
+        color: var(--ink); letter-spacing: -0.02em;
+        margin: 0 0 12px;
         opacity: 0; transform: translateY(14px);
         animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 0.2s forwards;
     }
-    .sk-prompt__bullet { display: inline-block; margin: 0 8px; color: var(--ink-faint); font-size: 0.78em; vertical-align: middle; }
     .sk-prompt__hi {
-        display: block; margin-top: 8px;
-        font: 400 clamp(17px, 3.4vw, 22px)/1.4 'Tiro Devanagari Hindi', 'Hind', serif;
+        display: block; margin-top: 14px;
+        font: 400 clamp(22px, 4vw, 44px)/1.4 'Tiro Devanagari Hindi', 'Hind', serif;
         color: var(--ink-soft); letter-spacing: 0.005em;
     }
     @keyframes skFadeUp { to { opacity: 1; transform: translateY(0); } }
 
-    /* ── Input field ── */
     .sk-entry__form {
-        position: relative; margin: 32px auto 0; width: 100%;
+        position: relative; margin: 36px auto 0; width: 100%;
         opacity: 0; transform: translateY(14px);
-        animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 0.6s forwards;
+        animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 0.8s forwards;
     }
     .sk-input-wrap {
         position: relative;
@@ -175,7 +165,6 @@
         0%, 100% { box-shadow: 0 0 0 1px rgba(245,233,211,0.04), 0 20px 60px rgba(0,0,0,0.45), 0 0 0 0 rgba(245,233,211,0); }
         50%      { box-shadow: 0 0 0 1px rgba(245,233,211,0.08), 0 20px 60px rgba(0,0,0,0.45), 0 0 36px rgba(245,233,211,0.06); }
     }
-
     .sk-input {
         flex: 1; min-width: 0;
         background: transparent; border: 0; outline: none;
@@ -184,7 +173,6 @@
         caret-color: var(--ink);
     }
     .sk-input::placeholder { color: var(--ink-faint); font-style: italic; font-weight: 300; }
-
     .sk-iconbtn {
         flex: 0 0 auto;
         width: 46px; height: 46px;
@@ -200,7 +188,6 @@
     .sk-iconbtn svg { width: 18px; height: 18px; }
     .sk-iconbtn--send { background: rgba(245,233,211,0.92); color: #0F1B3D; border-color: rgba(245,233,211,1); }
     .sk-iconbtn--send:hover { background: #fff; color: #0F1B3D; }
-    .sk-iconbtn--send:disabled { opacity: 0.45; cursor: default; }
     .sk-iconbtn--mic.is-listening {
         background: rgba(201,180,255,0.22); border-color: rgba(201,180,255,0.5); color: var(--crisis);
         animation: skMicPulse 1.4s ease-in-out infinite;
@@ -209,11 +196,9 @@
         0%,100% { box-shadow: 0 0 0 0 rgba(201,180,255,0.45); }
         50%     { box-shadow: 0 0 0 10px rgba(201,180,255,0); }
     }
-
-    /* ── Quick chips ── */
     .sk-chips {
-        margin: 22px auto 0;
-        display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+        margin: 24px auto 0;
+        display: flex; flex-wrap: wrap; justify-content: center; gap: 10px;
         opacity: 0; transform: translateY(10px);
         animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 1.0s forwards;
     }
@@ -226,17 +211,17 @@
         color: var(--ink-soft); cursor: pointer;
         letter-spacing: 0.01em;
         transition: all 0.2s ease;
+        text-decoration: none; display: inline-block;
     }
     .sk-chip:hover { background: rgba(245,233,211,0.12); color: var(--ink); border-color: rgba(245,233,211,0.32); transform: translateY(-1px); }
-    .sk-chip:active { transform: translateY(0); }
-
     .sk-hint {
         margin: 18px 0 0;
-        font: 400 12.5px/1.4 'Inter Tight', system-ui, sans-serif;
+        font: 400 12.5px/1.5 'Inter Tight', system-ui, sans-serif;
         color: var(--ink-faint); letter-spacing: 0.02em;
     }
+    .sk-hint__hi { display: block; margin-top: 3px; font: 400 11.5px/1.4 'Tiro Devanagari Hindi', serif; opacity: 0.78; }
 
-    /* ── Listening / routing state ── */
+    /* Listening overlay */
     .sk-listening {
         position: fixed; inset: 0; z-index: 90;
         display: none; align-items: center; justify-content: center;
@@ -254,36 +239,47 @@
         0%,100% { transform: scale(0.85); opacity: 0.55; }
         50%     { transform: scale(1.15); opacity: 1; }
     }
-    .sk-listening__text {
-        font: 300 19px/1.4 'Fraunces', Georgia, serif;
-        color: var(--ink); letter-spacing: 0.01em;
-    }
-    .sk-listening__hi {
-        display: block; margin-top: 4px;
-        font: 400 15px/1.4 'Tiro Devanagari Hindi', serif;
-        color: var(--ink-soft);
-    }
+    .sk-listening__text { font: 300 19px/1.4 'Fraunces', Georgia, serif; color: var(--ink); letter-spacing: 0.01em; }
+    .sk-listening__hi { display: block; margin-top: 4px; font: 400 15px/1.4 'Tiro Devanagari Hindi', serif; color: var(--ink-soft); }
 
-    /* ── Pulse ticker (bottom, above nav) ── */
-    .sk-pulse {
-        position: fixed; left: 0; right: 0;
-        bottom: calc(72px + var(--safe-bottom) + 8px);
-        z-index: 20;
-        display: flex; align-items: center; justify-content: center; gap: 8px;
+    /* Pulse ticker — inline inside hero */
+    .sk-pulse--inline {
+        position: relative; left: auto; right: auto; bottom: auto;
+        z-index: 1;
+        margin: 18px auto 0;
+        display: inline-flex; align-items: center; justify-content: center; gap: 8px;
         font: 400 12px/1 'Inter Tight', system-ui, sans-serif;
         color: var(--ink-faint); letter-spacing: 0.04em;
         text-transform: lowercase;
-        pointer-events: none;
-        opacity: 0; animation: skFadeUp 2s ease 1.4s forwards;
+        opacity: 0; transform: translateY(8px);
+        animation: skFadeUp 1.6s cubic-bezier(.2,.7,.2,1) 0.7s forwards;
     }
-    .sk-pulse__dot {
-        width: 6px; height: 6px; border-radius: 50%; background: var(--ink-soft);
-        box-shadow: 0 0 12px rgba(245,233,211,0.45);
-        animation: skPulseDot 3.2s ease-in-out infinite;
-    }
+    .sk-pulse__dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ink-soft); box-shadow: 0 0 12px rgba(245,233,211,0.45); animation: skPulseDot 3.2s ease-in-out infinite; display: inline-block; }
     .sk-pulse__count { color: var(--ink-soft); font-weight: 500; }
 
-    /* ── Bottom nav (5 tabs + floating SOS) ── */
+    /* Inline ambient button in top nav */
+    .sk-ambient--inline {
+        position: relative; right: auto; bottom: auto;
+        width: auto; height: auto; border-radius: 999px;
+        padding: 7px 14px 7px 12px; gap: 6px;
+        display: inline-flex; align-items: center;
+        background: rgba(15, 12, 30, 0.4);
+        backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(245, 233, 211, 0.18);
+        color: rgba(245, 233, 211, 0.85);
+        font: 500 11.5px/1 'Inter Tight', system-ui, sans-serif;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+    }
+    .sk-ambient--inline .sk-ambient__icon { font-size: 14px; line-height: 1; }
+    .sk-ambient--inline .sk-ambient__label { display: inline; }
+    .sk-ambient--inline.is-playing { color: #E8A552; border-color: rgba(232,165,82,0.55); }
+    @media (max-width: 520px) {
+        .sk-ambient--inline .sk-ambient__label { display: none; }
+        .sk-ambient--inline { padding: 7px 10px; }
+    }
+
+    /* Bottom nav (mobile only via media query in sukoon-revolution.css) */
     .sk-bottom-nav {
         position: fixed; left: 0; right: 0; bottom: 0; z-index: 30;
         padding: 8px 4px calc(var(--safe-bottom) + 8px);
@@ -303,10 +299,6 @@
     }
     .sk-bottom-nav__item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.6; }
     .sk-bottom-nav__item:hover, .sk-bottom-nav__item.is-active { color: var(--ink); }
-    .sk-bottom-nav__item.is-active::after {
-        content: ''; position: absolute; transform: translateY(28px);
-        width: 4px; height: 4px; border-radius: 50%; background: var(--ink);
-    }
 
     .sk-sos-float {
         position: fixed; right: 18px; bottom: calc(86px + var(--safe-bottom));
@@ -319,121 +311,990 @@
         box-shadow: 0 12px 32px rgba(138,111,230,0.45), 0 0 0 0 rgba(201,180,255,0.7);
         animation: skSosPulse 2.6s ease-in-out infinite;
         transition: transform 0.2s ease;
+        font-size: 18px;
     }
     .sk-sos-float:hover { transform: scale(1.06); }
-    .sk-sos-float svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
+    @media (max-width: 767px) {
+        .sk-sos-float { display: none; }
+    }
     @keyframes skSosPulse {
         0%,100% { box-shadow: 0 12px 32px rgba(138,111,230,0.45), 0 0 0 0 rgba(201,180,255,0.55); }
         50%     { box-shadow: 0 12px 32px rgba(138,111,230,0.45), 0 0 0 14px rgba(201,180,255,0); }
     }
 
-    /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
     }
-
-    /* ── Tight phones ── */
-    @media (max-height: 640px) {
-        .sk-entry { padding-top: calc(var(--safe-top) + 72px); }
-        .sk-prompt { font-size: 22px; }
-        .sk-entry__form { margin-top: 22px; }
-        .sk-chips { margin-top: 16px; }
-    }
     </style>
 </head>
-<body class="page-entry" data-experience="entry">
+<body class="page-home" data-experience="entry">
 
-    <!-- ════════════════════════════════════════════════════════════════
-         CRISIS BAR  (persistent on every page)
-         ════════════════════════════════════════════════════════════════ -->
-    <a class="sk-crisis-bar" href="/now.html" aria-label="Crisis support — go to Sukoon Now">
-        <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
-        <span class="sk-crisis-bar__text">If this hour is heavy, <strong>sukoon.cloud/now</strong> is one tap away.</span>
-        <span class="sk-crisis-bar__arrow" aria-hidden="true">→</span>
-    </a>
-
-    <!-- Brand mark + language toggle -->
-    <a href="/" class="sk-brand" aria-label="Sukoon">sukoon</a>
-    <select class="sk-lang" id="skLang" aria-label="Language">
-        <option value="en">EN · HI</option>
-        <option value="hi">HI · EN</option>
-        <option value="en-only">English</option>
-        <option value="hi-only">हिंदी</option>
-    </select>
-
-    <!-- ════════════════════════════════════════════════════════════════
-         CINEMATIC BACKDROP (time-of-day aware)
-         ════════════════════════════════════════════════════════════════ -->
-    <div class="sk-stage" aria-hidden="true">
-        <video class="sk-stage__video" id="skVidDay"   src="/video/hero-day.mp4"   muted playsinline loop preload="metadata"></video>
-        <video class="sk-stage__video" id="skVidDusk"  src="/video/hero-dusk.mp4"  muted playsinline loop preload="metadata"></video>
-        <video class="sk-stage__video" id="skVidNight" src="/video/hero-night.mp4" muted playsinline loop preload="metadata"></video>
-        <video class="sk-stage__video" id="skVidHome"  src="/video/hero-home.mp4"  muted playsinline loop preload="metadata"></video>
-        <div class="sk-stage__veil"></div>
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 0 — CRISIS BAR (persistent, EN + HI, with SOS button)
+         ═══════════════════════════════════════════════════════════════ -->
+    <div class="sk-crisis-bar sk-crisis-bar--with-sos" role="region" aria-label="Crisis support">
+        <a class="sk-crisis-bar__link" href="/now.html" aria-label="Crisis support — go to Sukoon Now">
+            <span class="sk-crisis-bar__dot" aria-hidden="true"></span>
+            <span class="sk-crisis-bar__text sk-crisis-bar__en">If this hour is heavy — <strong>sukoon.cloud/now</strong> is one tap away.</span>
+            <span class="sk-crisis-bar__text sk-crisis-bar__hi" lang="hi">अगर अभी मन भारी है — <strong>sukoon.cloud/now</strong> एक टैप दूर है।</span>
+            <span class="sk-crisis-bar__arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="sk-crisis-bar__sos" href="/now.html" aria-label="SOS — crisis help">
+            <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            <span>SOS</span>
+        </a>
     </div>
 
-    <!-- ════════════════════════════════════════════════════════════════
-         ENTRY DIALOGUE
-         ════════════════════════════════════════════════════════════════ -->
-    <main class="sk-entry">
-        <div class="sk-entry__inner">
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 0.5 — TOP NAV
+         ═══════════════════════════════════════════════════════════════ -->
+    <nav class="sk-topnav" id="skTopnav" aria-label="Primary">
+        <a href="/" class="sk-topnav__brand" aria-label="Sukoon — home">sukoon</a>
+        <div class="sk-topnav__center">
+            <a href="/today.html" class="sk-topnav__link">Today<span class="sk-topnav__link__hi" lang="hi">आज</span></a>
+            <a href="/sit.html" class="sk-topnav__link">Sit<span class="sk-topnav__link__hi" lang="hi">ध्यान</span></a>
+            <a href="/rest.html" class="sk-topnav__link">Rest<span class="sk-topnav__link__hi" lang="hi">नींद</span></a>
+            <a href="/breathe.html" class="sk-topnav__link">Breathe<span class="sk-topnav__link__hi" lang="hi">सांस</span></a>
+            <a href="/be-with-me.html" class="sk-topnav__link">Listen<span class="sk-topnav__link__hi" lang="hi">सुनें</span></a>
+        </div>
+        <div class="sk-topnav__right">
+            <button class="sk-ambient sk-ambient--inline" id="skAmbient" aria-label="Toggle ambient music" type="button">
+                <span class="sk-ambient__icon" aria-hidden="true">♫</span>
+                <span class="sk-ambient__label">unmute</span>
+            </button>
+            <select class="sk-topnav__lang" id="skLang" aria-label="Language">
+                <option value="en">EN · HI</option>
+                <option value="hi">HI · EN</option>
+                <option value="en-only">English</option>
+                <option value="hi-only">हिंदी</option>
+            </select>
+            <a href="#skInput" class="sk-topnav__cta" id="skBeginCta">Begin →</a>
+        </div>
+    </nav>
 
-            <h1 class="sk-prompt" id="skPrompt">
-                <span id="skPromptEn">Welcome. <span class="sk-prompt__bullet">✦</span> What's heavy right now?</span>
-                <span class="sk-prompt__hi" lang="hi" id="skPromptHi">आइए · अभी मन पर क्या भारी है?</span>
-            </h1>
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 1 — HERO  (time-of-day video backdrop)
+         ═══════════════════════════════════════════════════════════════ -->
+    <header class="sk-section" style="background: #050810; padding: 0; min-height: 100vh; min-height: 100dvh;">
+        <div class="sk-stage" aria-hidden="true">
+            <video class="sk-stage__video" id="skVidDay"   src="/video/hero-day.mp4"   poster="/og/posters/day.jpg"   muted playsinline loop preload="metadata"></video>
+            <video class="sk-stage__video" id="skVidDusk"  src="/video/hero-dusk.mp4"  poster="/og/posters/dusk.jpg"  muted playsinline loop preload="metadata"></video>
+            <video class="sk-stage__video" id="skVidNight" src="/video/hero-night.mp4" poster="/og/posters/night.jpg" muted playsinline loop preload="metadata"></video>
+            <video class="sk-stage__video" id="skVidHome"  src="/video/hero-home.mp4"  poster="/og/posters/home.jpg"  muted playsinline loop preload="metadata"></video>
+            <div class="sk-stage__veil"></div>
+        </div>
 
-            <form class="sk-entry__form" id="skForm" autocomplete="off" novalidate>
-                <div class="sk-input-wrap">
-                    <input
-                        class="sk-input"
-                        id="skInput"
-                        type="text"
-                        name="phrase"
-                        inputmode="text"
-                        autocapitalize="sentences"
-                        spellcheck="false"
-                        placeholder="Say anything. A word is enough."
-                        aria-label="Tell Sukoon what's heavy"
-                    >
-                    <button type="button" class="sk-iconbtn sk-iconbtn--mic" id="skMic" aria-label="Speak instead of typing" title="Tap to speak">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="9" y="3" width="6" height="11" rx="3"/>
-                            <path d="M5 11a7 7 0 0 0 14 0"/>
-                            <line x1="12" y1="18" x2="12" y2="22"/>
-                            <line x1="9" y1="22" x2="15" y2="22"/>
-                        </svg>
-                    </button>
-                    <button type="submit" class="sk-iconbtn sk-iconbtn--send" id="skSend" aria-label="Listen to me" title="Listen">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                            <line x1="5" y1="12" x2="19" y2="12"/>
-                            <polyline points="13 6 19 12 13 18"/>
-                        </svg>
-                    </button>
+        <main class="sk-entry">
+            <div class="sk-entry__inner">
+                <p class="sk-hero-eyebrow">WELCOME · आइए</p>
+
+                <h1 class="sk-prompt" id="skPrompt">
+                    <span id="skPromptEn">A quieter place to be.</span>
+                    <span class="sk-prompt__hi" lang="hi" id="skPromptHi">थोड़ा ठहराव।</span>
+                </h1>
+
+                <p class="sk-hero-sub">
+                    India's largest free wellness sanctuary. No signup. No tracking. Just tell Sukoon what's heavy — it will quietly take you to the right place.
+                    <span class="sk-hero-sub__hi" lang="hi">भारत का सबसे बड़ा निःशुल्क मानसिक स्वास्थ्य आश्रय। कोई साइन-अप नहीं। कोई ट्रैकिंग नहीं।</span>
+                </p>
+
+                <p class="sk-pulse sk-pulse--inline" id="skPulse" role="status" aria-live="polite">
+                    <span class="sk-pulse__dot" aria-hidden="true"></span>
+                    <span><span class="sk-pulse__count" id="skPulseCount">—</span>&nbsp;souls in sukoon right now</span>
+                </p>
+
+                <a class="sk-hero-tonight" href="/rest.html?id=story-in-en-001" aria-label="Tonight's sleep story: The Night Train to the Mountains">
+                    <span class="sk-hero-tonight__thumb" aria-hidden="true" style="background-image: url('/og/stories/night-train-to-the-mountains.jpg');"></span>
+                    <span class="sk-hero-tonight__text">
+                        <span class="sk-hero-tonight__label">Tonight</span>
+                        <span class="sk-hero-tonight__title">'The Night Train to the Mountains' · 15 min · narrated by Vikram S</span>
+                    </span>
+                    <span class="sk-hero-tonight__arrow" aria-hidden="true">→</span>
+                </a>
+
+                <form class="sk-entry__form" id="skForm" autocomplete="off" novalidate>
+                    <div class="sk-input-wrap">
+                        <input
+                            class="sk-input"
+                            id="skInput"
+                            type="text"
+                            name="phrase"
+                            inputmode="text"
+                            autocapitalize="sentences"
+                            spellcheck="false"
+                            placeholder="Say anything. A word is enough. · कुछ भी कहें।"
+                            aria-label="Tell Sukoon what's heavy"
+                        >
+                        <button type="button" class="sk-iconbtn sk-iconbtn--mic" id="skMic" aria-label="Speak instead of typing" title="Tap to speak">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="3" width="6" height="11" rx="3"/>
+                                <path d="M5 11a7 7 0 0 0 14 0"/>
+                                <line x1="12" y1="18" x2="12" y2="22"/>
+                                <line x1="9" y1="22" x2="15" y2="22"/>
+                            </svg>
+                        </button>
+                        <button type="submit" class="sk-iconbtn sk-iconbtn--send" id="skSend" aria-label="Listen to me" title="Listen">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="13 6 19 12 13 18"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
+                <div class="sk-chips" role="group" aria-label="Content shortcuts">
+                    <a class="sk-chip" href="/rest.html" data-chip-link="tonights-story">Tonight's story →</a>
+                    <a class="sk-chip" href="/today.html" data-chip-link="todays-mantra">Today's mantra →</a>
+                    <a class="sk-chip" href="/breathe.html" data-chip-link="begin-with-breath">Begin with breath →</a>
                 </div>
-            </form>
 
-            <div class="sk-chips" role="group" aria-label="Quick feelings">
-                <button type="button" class="sk-chip" data-chip="Just anxious">Just anxious</button>
-                <button type="button" class="sk-chip" data-chip="Can't sleep">Can't sleep</button>
-                <button type="button" class="sk-chip" data-chip="Sad">Sad</button>
+                <p class="sk-hint" id="skHint">
+                    No signup. No account. Sukoon doesn't remember.
+                    <span class="sk-hint__hi" lang="hi">कोई खाता नहीं।</span>
+                </p>
             </div>
 
-            <p class="sk-hint" id="skHint">No signup. No account. Sukoon doesn't remember.</p>
+            <a href="#proof" class="sk-scroll-cue" aria-label="Scroll to next section">
+                <span>Browse · देखें</span>
+                <span class="sk-scroll-cue__chev" aria-hidden="true">⌄</span>
+            </a>
+        </main>
+    </header>
+
+    <!-- Ambient audio (auto-mounted by SukoonExperience.AmbientAudio) -->
+    <audio id="ambient" src="/audio/ambient-home.mp3" loop preload="none"></audio>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 2 — PROOF / TRUST BAND
+         ═══════════════════════════════════════════════════════════════ -->
+    <section id="proof" class="sk-section sk-section--paper">
+        <div class="sk-section__inner">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center">WHY SUKOON IS DIFFERENT · सुकून अलग क्यों है</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    Free, forever. No signup. Made in India.
+                    <span class="sk-h2__hi" lang="hi">निःशुल्क, हमेशा के लिए। कोई खाता नहीं। भारत में बना।</span>
+                </h2>
+            </div>
+
+            <div class="sk-proof-grid reveal-up">
+                <article class="sk-proof-col">
+                    <div class="sk-proof-col__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36">
+                            <path d="M18 6c-3 4-3 8 0 12 3-4 3-8 0-12z"/>
+                            <path d="M18 30c-4-3-8-3-12 0 3 4 8 4 12 0z"/>
+                            <path d="M18 30c4-3 8-3 12 0-3 4-8 4-12 0z"/>
+                            <path d="M6 18c4-3 8-3 12 0-4 3-8 3-12 0z"/>
+                            <path d="M30 18c-4-3-8-3-12 0 4 3 8 3 12 0z"/>
+                            <circle cx="18" cy="18" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="sk-proof-col__title">Free, forever<span class="sk-proof-col__title__hi" lang="hi">निःशुल्क</span></h3>
+                    <p class="sk-proof-col__body">648 meditations, sleep stories, breath patterns, yoga sessions and mantras. No paywall. Not a trial. Not a teaser. Free because mental health should be.</p>
+                </article>
+
+                <article class="sk-proof-col">
+                    <div class="sk-proof-col__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36">
+                            <rect x="9" y="16" width="18" height="14" rx="2"/>
+                            <path d="M13 16v-4a5 5 0 0 1 10 0v4"/>
+                            <circle cx="18" cy="23" r="1.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="sk-proof-col__title">No tracking<span class="sk-proof-col__title__hi" lang="hi">कोई ट्रैकिंग नहीं</span></h3>
+                    <p class="sk-proof-col__body">No signup. No account. No cookies that follow you. Sukoon doesn't remember who you are between sessions. The only thing stored locally is your streak — and only on your device.</p>
+                </article>
+
+                <article class="sk-proof-col">
+                    <div class="sk-proof-col__icon" aria-hidden="true">
+                        <svg viewBox="0 0 36 36">
+                            <path d="M18 4c-5 0-9 4-9 9 0 7 9 19 9 19s9-12 9-19c0-5-4-9-9-9z"/>
+                            <circle cx="18" cy="13" r="3"/>
+                        </svg>
+                    </div>
+                    <h3 class="sk-proof-col__title">Made in India<span class="sk-proof-col__title__hi" lang="hi">भारत में बना</span></h3>
+                    <p class="sk-proof-col__body">Built by Indians, for Indians. Bilingual from the first line of code. Sanskrit mantras, Indian sleep stories, festival-aware. A sanctuary that knows where it lives.</p>
+                </article>
+            </div>
+
+            <p class="sk-proof-pull reveal-up">
+                A library, not a funnel.
+                <span class="sk-proof-pull__hi" lang="hi">पुस्तकालय, फ़नल नहीं।</span>
+            </p>
         </div>
-    </main>
+    </section>
 
-    <!-- ════════════════════════════════════════════════════════════════
-         LIVE PULSE TICKER
-         ════════════════════════════════════════════════════════════════ -->
-    <div class="sk-pulse" id="skPulse" role="status" aria-live="polite">
-        <span class="sk-pulse__dot" aria-hidden="true"></span>
-        <span><span class="sk-pulse__count" id="skPulseCount">—</span> &nbsp;hearts finding sukoon right now</span>
-    </div>
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 2.5 — CREDIBILITY STRIP
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-credibility sk-section--paper" aria-label="Built with care">
+        <div class="sk-credibility__inner reveal-up">
+            <p class="sk-eyebrow sk-eyebrow--center">BUILT WITH CARE · सावधानी से बना</p>
+            <ul class="sk-credibility__badges" role="list">
+                <li class="sk-credibility__badge">
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.04 1.53 1.04.9 1.52 2.34 1.08 2.92.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/>
+                    </svg>
+                    <span>Open source · github.com/superakh/sukoon</span>
+                </li>
+                <li class="sk-credibility__badge">
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 3l8 5v8l-8 5-8-5V8l8-5z"/>
+                        <path d="M12 3v18"/>
+                    </svg>
+                    <span>Powered by Anthropic Claude</span>
+                </li>
+                <li class="sk-credibility__badge">
+                    <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.91.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                    <span>Crisis helplines integrated · iCall · Vandrevala · AASRA</span>
+                </li>
+            </ul>
+        </div>
+    </section>
 
-    <!-- ════════════════════════════════════════════════════════════════
-         LISTENING / ROUTING OVERLAY
-         ════════════════════════════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 3 — TODAY'S SUKOON
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--cream-saff">
+        <div class="sk-section__inner">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center" id="todayEyebrow">TONIGHT · आज शाम</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    <span id="todayHeadlineEn">Tonight, Sukoon suggests…</span>
+                    <span class="sk-h2__hi" lang="hi" id="todayHeadlineHi">आज रात, सुकून सुझाता है…</span>
+                </h2>
+            </div>
+
+            <div class="sk-today-grid reveal-up">
+                <!-- Mantra card -->
+                <article class="sk-mantra">
+                    <div class="sk-mantra__inner">
+                        <p class="sk-mantra__eyebrow">MANTRA · मंत्र</p>
+                        <p class="sk-mantra__sanskrit">Lokah samastah sukhino bhavantu.</p>
+                        <p class="sk-mantra__deva" lang="hi">लोकाः समस्ताः सुखिनो भवन्तु।</p>
+                        <p class="sk-mantra__trans">May all beings everywhere be happy and free.</p>
+                        <p class="sk-mantra__attr">— Sanskrit prayer · वैदिक परंपरा</p>
+                    </div>
+                </article>
+
+                <!-- Featured meditation card -->
+                <a class="sk-featured-card" href="/sit.html?id=med-anxiety-morning-en" style="background-image: linear-gradient(135deg, rgba(43,31,74,0.4), rgba(15,27,61,0.2)), url('/og/meditations/before-the-day-begins.jpg');">
+                    <span class="sk-featured-card__pill">5 MIN · 5 मिनट</span>
+                    <h3 class="sk-featured-card__title">
+                        Before the Day Begins
+                        <span class="sk-featured-card__title__hi" lang="hi">दिन शुरू होने से पहले</span>
+                    </h3>
+                    <p class="sk-featured-card__meta">Meditation · for morning anxiety · EN + HI</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 4 — MOOD PICKER (5 portrait tiles)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--dark">
+        <div class="sk-section__inner">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center">HOW ARE YOU · आप कैसे हैं</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    Tell Sukoon how you feel.
+                    <span class="sk-h2__hi" lang="hi">सुकून को बताइए कैसा महसूस हो रहा है।</span>
+                </h2>
+                <p class="sk-sub sk-sub--center sk-sub--italic">
+                    Sukoon will pick a meditation, a story, a breath, or a friend — whatever you need now.
+                    <span class="sk-sub__hi" lang="hi">सुकून आपके लिए कुछ चुन लेगा — ध्यान, कहानी, साँस, या एक दोस्त।</span>
+                </p>
+            </div>
+
+            <div class="sk-mood-grid reveal-up" role="list">
+                <a class="sk-mood-tile" role="listitem" href="/sit.html?mood=anxiety" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.3), rgba(15,27,61,0.1)), url('/og/moods/anxious.jpg');">
+                    <span class="sk-mood-tile__arrow" aria-hidden="true">→</span>
+                    <div class="sk-mood-tile__label">
+                        <p class="sk-mood-tile__en">Anxious</p>
+                        <span class="sk-mood-tile__hi" lang="hi">चिंतित</span>
+                    </div>
+                </a>
+                <a class="sk-mood-tile" role="listitem" href="/rest.html" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.3), rgba(15,27,61,0.1)), url('/og/moods/wired.jpg');">
+                    <span class="sk-mood-tile__arrow" aria-hidden="true">→</span>
+                    <div class="sk-mood-tile__label">
+                        <p class="sk-mood-tile__en">Sleepless</p>
+                        <span class="sk-mood-tile__hi" lang="hi">नींद नहीं</span>
+                    </div>
+                </a>
+                <a class="sk-mood-tile" role="listitem" href="/be-with-me.html" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.3), rgba(15,27,61,0.1)), url('/og/moods/sad.jpg');">
+                    <span class="sk-mood-tile__arrow" aria-hidden="true">→</span>
+                    <div class="sk-mood-tile__label">
+                        <p class="sk-mood-tile__en">Sad</p>
+                        <span class="sk-mood-tile__hi" lang="hi">उदास</span>
+                    </div>
+                </a>
+                <a class="sk-mood-tile" role="listitem" href="/sit.html?mood=loneliness" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.3), rgba(15,27,61,0.1)), url('/og/moods/lonely.jpg');">
+                    <span class="sk-mood-tile__arrow" aria-hidden="true">→</span>
+                    <div class="sk-mood-tile__label">
+                        <p class="sk-mood-tile__en">Lonely</p>
+                        <span class="sk-mood-tile__hi" lang="hi">अकेला</span>
+                    </div>
+                </a>
+                <a class="sk-mood-tile" role="listitem" href="/be-with-me.html" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.3), rgba(15,27,61,0.1)), url('/og/moods/curious.jpg');">
+                    <span class="sk-mood-tile__arrow" aria-hidden="true">→</span>
+                    <div class="sk-mood-tile__label">
+                        <p class="sk-mood-tile__en">Just here</p>
+                        <span class="sk-mood-tile__hi" lang="hi">बस यूँ ही</span>
+                    </div>
+                </a>
+            </div>
+
+            <p class="sk-mood-hint reveal-up">Or just type how you feel above. ↑ · ऊपर लिखिए कैसा लग रहा है।</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 5 — MEDITATIONS ROW
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--dark-soft">
+        <div class="sk-section__inner sk-section__inner--wide">
+            <div class="sk-row-head reveal-up">
+                <div class="sk-row-head__left">
+                    <p class="sk-eyebrow">MEDITATIONS · ध्यान</p>
+                    <h2 class="sk-h2">
+                        102 meditations. Pick a voice.
+                        <span class="sk-h2__hi" lang="hi">102 ध्यान। एक आवाज़ चुनिए।</span>
+                    </h2>
+                    <p class="sk-sub">
+                        From 60-second resets to 30-minute journeys. In English and in Hindi. Picked by humans, not algorithms.
+                        <span class="sk-sub__hi" lang="hi">60 सेकंड से 30 मिनट तक। अंग्रेज़ी और हिंदी में।</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sk-row-scroll__wrap reveal-up">
+            <div class="sk-row-scroll" role="list" aria-label="Featured meditations">
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-morning-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/before-the-day-begins.jpg');">
+                    <span class="sk-card-portrait__pill">5 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN · HI</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Before the Day Begins<span class="sk-card-portrait__title__hi" lang="hi">दिन शुरू होने से पहले</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Ananya R · For morning anxiety</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-work-meeting-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/before-you-walk-in.jpg');">
+                    <span class="sk-card-portrait__pill">3 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Before You Walk In<span class="sk-card-portrait__title__hi" lang="hi">कमरे में जाने से पहले</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Vikram S · Pre-meeting reset</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-health-result-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/waiting-for-the-answer.jpg');">
+                    <span class="sk-card-portrait__pill">10 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Waiting for the Answer<span class="sk-card-portrait__title__hi" lang="hi">उत्तर की प्रतीक्षा</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Priya M · Anticipatory anxiety</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-decision-paralysis-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/when-every-option-feels-wrong.jpg');">
+                    <span class="sk-card-portrait__pill">8 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">When Every Option Feels Wrong<span class="sk-card-portrait__title__hi" lang="hi">जब हर रास्ता ग़लत लगे</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Arjun K · Decision paralysis</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-social-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/after-the-group.jpg');">
+                    <span class="sk-card-portrait__pill">5 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">After the Group<span class="sk-card-portrait__title__hi" lang="hi">सब के जाने के बाद</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Meera D · Post-social recovery</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-future-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/the-worry-about-what-has-not-happened-yet.jpg');">
+                    <span class="sk-card-portrait__pill">10 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The Worry About What Has Not Happened Yet<span class="sk-card-portrait__title__hi" lang="hi">जो अभी हुआ नहीं उसकी चिंता</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Rohan T · Future-tense anxiety</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-panic-onset-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/right-now-in-this-moment.jpg');">
+                    <span class="sk-card-portrait__pill">5 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN · HI</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Right Now, In This Moment<span class="sk-card-portrait__title__hi" lang="hi">अभी, इसी पल</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Lakshmi V · When panic begins</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-health-worry-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/the-body-you-are-afraid-of.jpg');">
+                    <span class="sk-card-portrait__pill">8 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The Body You Are Afraid Of<span class="sk-card-portrait__title__hi" lang="hi">वह शरीर जिससे आप डरते हैं</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Sameer J · Health-related worry</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-new-place-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/finding-your-footing-here.jpg');">
+                    <span class="sk-card-portrait__pill">8 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Finding Your Footing Here<span class="sk-card-portrait__title__hi" lang="hi">यहाँ अपनी जगह खोजना</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Ananya R · New place, new role</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait" role="listitem" href="/sit.html?id=med-anxiety-interview-en" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.5)), url('/og/meditations/you-have-done-the-preparation.jpg');">
+                    <span class="sk-card-portrait__pill">5 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">You Have Done the Preparation<span class="sk-card-portrait__title__hi" lang="hi">तैयारी हो चुकी है</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Karthik B · Before the interview</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--see-all" role="listitem" href="/sit.html">
+                    <div class="sk-card-portrait__foot">
+                        <div class="sk-card-portrait__title">See all 102 →</div>
+                        <div class="sk-card-portrait__meta">All meditations</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 6 — SLEEP STORIES (purple-shift transition)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--aubergine">
+        <div class="sk-section__inner sk-section__inner--wide">
+            <div class="sk-row-head reveal-up">
+                <div class="sk-row-head__left">
+                    <p class="sk-eyebrow">SLEEP STORIES · नींद की कहानियाँ</p>
+                    <h2 class="sk-h2">
+                        50 stories. To take you somewhere.
+                        <span class="sk-h2__hi" lang="hi">50 कहानियाँ। जो आपको कहीं ले जाएँ।</span>
+                    </h2>
+                    <p class="sk-sub sk-sub--italic">
+                        India and the far places. Nature and nostalgia. Long enough to fall asleep. Soft enough to not finish.
+                        <span class="sk-sub__hi" lang="hi">भारत की और दूर देशों की। प्रकृति की और यादों की।</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="sk-row-scroll__wrap reveal-up">
+            <div class="sk-row-scroll" role="list" aria-label="Featured sleep stories">
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-001" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/night-train-to-the-mountains.jpg');">
+                    <span class="sk-card-portrait__pill">15 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN · HI</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The Night Train to the Mountains<span class="sk-card-portrait__title__hi" lang="hi">पहाड़ों की ओर रात की रेलगाड़ी</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Vikram S · India · sleepy, nostalgic</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-003" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/monsoon-on-a-tin-roof.jpg');">
+                    <span class="sk-card-portrait__pill">13 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Monsoon on a Tin Roof<span class="sk-card-portrait__title__hi" lang="hi">टिन की छत पर बारिश</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Priya M · India · rain, memory</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-004" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/monastery-garden-in-sikkim.jpg');">
+                    <span class="sk-card-portrait__pill">16 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The Monastery Garden in Sikkim<span class="sk-card-portrait__title__hi" lang="hi">सिक्किम का मठ-उद्यान</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Arjun K · India · stillness, prayer</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-nature-en-001" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/the-mist-between-the-pines.jpg');">
+                    <span class="sk-card-portrait__pill">15 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The Mist Between the Pines<span class="sk-card-portrait__title__hi" lang="hi">देवदार के बीच की धुंध</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Meera D · Nature · forest, dusk</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-nature-en-002" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/the-river-at-golden-hour.jpg');">
+                    <span class="sk-card-portrait__pill">15 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The River at Golden Hour<span class="sk-card-portrait__title__hi" lang="hi">सुनहरी घड़ी की नदी</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Rohan T · Nature · water, dusk</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-005" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/the-lighthouse-keeper-in-mumbai.jpg');">
+                    <span class="sk-card-portrait__pill">14 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">The Lighthouse Keeper in Mumbai<span class="sk-card-portrait__title__hi" lang="hi">मुंबई का प्रकाशस्तंभ रक्षक</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Lakshmi V · India · sea, solitude</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-007" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/banaras-ghats-at-sunset.jpg');">
+                    <span class="sk-card-portrait__pill">16 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN · HI</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Banaras Ghats at Sunset<span class="sk-card-portrait__title__hi" lang="hi">बनारस के घाट सूर्यास्त में</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Sameer J · India · river, ritual</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-nature-en-004" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/snowfall-on-the-quiet-cabin.jpg');">
+                    <span class="sk-card-portrait__pill">15 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Snowfall on the Quiet Cabin<span class="sk-card-portrait__title__hi" lang="hi">शांत झोपड़ी पर बर्फ़बारी</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Ananya R · Nature · winter, hush</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-008" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/kerala-backwaters-boat.jpg');">
+                    <span class="sk-card-portrait__pill">13 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Kerala Backwaters Boat<span class="sk-card-portrait__title__hi" lang="hi">केरल की नौका</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Karthik B · India · water, drift</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--night" role="listitem" href="/rest.html?id=story-in-en-010" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.4), rgba(15,27,61,0.6)), url('/og/stories/old-delhi-at-dusk.jpg');">
+                    <span class="sk-card-portrait__pill">15 MIN</span>
+                    <span class="sk-card-portrait__pill sk-card-portrait__pill--right">EN · HI</span>
+                    <div class="sk-card-portrait__foot">
+                        <h3 class="sk-card-portrait__title">Old Delhi at Dusk<span class="sk-card-portrait__title__hi" lang="hi">शाम की पुरानी दिल्ली</span></h3>
+                        <p class="sk-card-portrait__meta">Narrated by Nisha P · India · lanes, lamplight</p>
+                    </div>
+                </a>
+                <a class="sk-card-portrait sk-card-portrait--see-all" role="listitem" href="/rest.html">
+                    <div class="sk-card-portrait__foot">
+                        <div class="sk-card-portrait__title">See all 50 →</div>
+                        <div class="sk-card-portrait__meta">All sleep stories</div>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <div class="sk-section__inner sk-section__inner--wide">
+            <div class="sk-row-foot reveal-up">
+                <p class="sk-row-foot__quote">Just press play and drift away. · बस चलाइए और बह जाइए।</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 7 — BREATH BAND (tulsi green)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--tulsi">
+        <div class="sk-section__inner">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center">BREATH · प्राण</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    Six ways to breathe.
+                    <span class="sk-h2__hi" lang="hi">छह तरह की साँसें।</span>
+                </h2>
+                <p class="sk-sub sk-sub--center">
+                    Box. 4-7-8. Bhramari. Coherent. Three-part. Physiological sigh. Each one is a minute. Each one changes how you feel.
+                    <span class="sk-sub__hi" lang="hi">हर साँस एक मिनट। हर साँस कुछ बदलती है।</span>
+                </p>
+            </div>
+
+            <div class="sk-breath-grid reveal-up" role="list">
+                <a class="sk-breath-tile" role="listitem" href="/breathe.html?p=478" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.45), rgba(15,27,61,0.55)), url('/og/breath/4-7-8.jpg'); background-size: cover; background-position: center;">
+                    <div class="sk-breath-tile__ball" aria-hidden="true"></div>
+                    <h3 class="sk-breath-tile__name">4-7-8 Breath<span class="sk-breath-tile__name__hi" lang="hi">4-7-8 साँस</span></h3>
+                    <p class="sk-breath-tile__ratio">4 · 7 · 8</p>
+                    <p class="sk-breath-tile__purpose">Calm. Sleep. Anxiety release.</p>
+                </a>
+                <a class="sk-breath-tile" role="listitem" href="/breathe.html?p=box" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.45), rgba(15,27,61,0.55)), url('/og/breath/box.jpg'); background-size: cover; background-position: center;">
+                    <div class="sk-breath-tile__ball" aria-hidden="true"></div>
+                    <h3 class="sk-breath-tile__name">Box Breathing<span class="sk-breath-tile__name__hi" lang="hi">बॉक्स ब्रीदिंग</span></h3>
+                    <p class="sk-breath-tile__ratio">4 · 4 · 4 · 4</p>
+                    <p class="sk-breath-tile__purpose">Focus. Steadiness. Control.</p>
+                </a>
+                <a class="sk-breath-tile" role="listitem" href="/breathe.html?p=sigh" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.45), rgba(15,27,61,0.55)), url('/og/breath/physiological-sigh.jpg'); background-size: cover; background-position: center;">
+                    <div class="sk-breath-tile__ball" aria-hidden="true"></div>
+                    <h3 class="sk-breath-tile__name">Physiological Sigh<span class="sk-breath-tile__name__hi" lang="hi">शारीरिक आह</span></h3>
+                    <p class="sk-breath-tile__ratio">2 · 1 · long</p>
+                    <p class="sk-breath-tile__purpose">Fastest known stress reset.</p>
+                </a>
+                <a class="sk-breath-tile" role="listitem" href="/breathe.html?p=coherent" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.45), rgba(15,27,61,0.55)), url('/og/breath/coherent.jpg'); background-size: cover; background-position: center;">
+                    <div class="sk-breath-tile__ball" aria-hidden="true"></div>
+                    <h3 class="sk-breath-tile__name">Coherent Breathing<span class="sk-breath-tile__name__hi" lang="hi">सुसंगत श्वास</span></h3>
+                    <p class="sk-breath-tile__ratio">5 · 5</p>
+                    <p class="sk-breath-tile__purpose">Heart-rate variability.</p>
+                </a>
+                <a class="sk-breath-tile" role="listitem" href="/breathe.html?p=nadi" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.45), rgba(15,27,61,0.55)), url('/og/breath/nadi-shodhana.jpg'); background-size: cover; background-position: center;">
+                    <div class="sk-breath-tile__ball" aria-hidden="true"></div>
+                    <h3 class="sk-breath-tile__name">Nadi Shodhana<span class="sk-breath-tile__name__hi" lang="hi">नाड़ी शोधन</span></h3>
+                    <p class="sk-breath-tile__ratio">4 · 4 · 4</p>
+                    <p class="sk-breath-tile__purpose">Alternate nostril balance.</p>
+                </a>
+                <a class="sk-breath-tile" role="listitem" href="/breathe.html?p=bhramari" style="background-image: linear-gradient(160deg, rgba(43,31,74,0.45), rgba(15,27,61,0.55)), url('/og/breath/bhramari.jpg'); background-size: cover; background-position: center;">
+                    <div class="sk-breath-tile__ball" aria-hidden="true"></div>
+                    <h3 class="sk-breath-tile__name">Bhramari<span class="sk-breath-tile__name__hi" lang="hi">भ्रामरी</span></h3>
+                    <p class="sk-breath-tile__ratio">4 · 8 · hum</p>
+                    <p class="sk-breath-tile__purpose">Humming bee. Inner quiet.</p>
+                </a>
+            </div>
+
+            <div class="sk-breath-cta reveal-up">
+                <a href="/breathe.html">Open the breath room → · साँस कक्ष खोलें →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 8 — YOGA GRID (paper, 8 squares)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--paper">
+        <div class="sk-section__inner">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center">YOGA · योग</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    60 asanas. 12 sequences. No mat required.
+                    <span class="sk-h2__hi" lang="hi">60 आसन। 12 अनुक्रम।</span>
+                </h2>
+            </div>
+
+            <div class="sk-yoga-grid reveal-up" role="list">
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=tadasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/tadasana.jpg');">
+                    <span class="sk-card-square__pill">30 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Mountain · Tadasana<span class="sk-card-square__title__hi" lang="hi">ताडासन</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=vrksasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/vrksasana.jpg');">
+                    <span class="sk-card-square__pill">30 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Tree · Vrikshasana<span class="sk-card-square__title__hi" lang="hi">वृक्षासन</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=trikonasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/trikonasana.jpg');">
+                    <span class="sk-card-square__pill">45 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Triangle · Trikonasana<span class="sk-card-square__title__hi" lang="hi">त्रिकोणासन</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=virabhadrasana-ii" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/virabhadrasana-ii.jpg');">
+                    <span class="sk-card-square__pill">45 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Warrior II · Virabhadrasana II<span class="sk-card-square__title__hi" lang="hi">वीरभद्रासन २</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=balasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/balasana.jpg');">
+                    <span class="sk-card-square__pill">60 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Child's Pose · Balasana<span class="sk-card-square__title__hi" lang="hi">बालासन</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=adho-mukha-svanasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/adho-mukha-svanasana.jpg');">
+                    <span class="sk-card-square__pill">45 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Downward Dog<span class="sk-card-square__title__hi" lang="hi">अधोमुखश्वानासन</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=setu-bandhasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/setu-bandhasana.jpg');">
+                    <span class="sk-card-square__pill">45 s</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Bridge · Setu Bandhasana<span class="sk-card-square__title__hi" lang="hi">सेतुबंधासन</span></h3>
+                    </div>
+                </a>
+                <a class="sk-card-square" role="listitem" href="/yoga.html?id=savasana" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 40%, rgba(15,27,61,0.7) 100%), url('/og/asanas/savasana.jpg');">
+                    <span class="sk-card-square__pill">5 min</span>
+                    <div class="sk-card-square__foot">
+                        <h3 class="sk-card-square__title">Corpse · Savasana<span class="sk-card-square__title__hi" lang="hi">शवासन</span></h3>
+                    </div>
+                </a>
+            </div>
+
+            <div class="sk-yoga-cta reveal-up">
+                <a href="/yoga.html">Browse all 60 → · सभी देखें →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 9 — COURSES BAND (cream-saffron)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--cream-saff">
+        <div class="sk-section__inner sk-section__inner--wide">
+            <div class="reveal-up">
+                <p class="sk-eyebrow">BEGIN A JOURNEY · यात्रा शुरू करें</p>
+                <h2 class="sk-h2">
+                    Twelve courses. Each one a different way to begin.
+                    <span class="sk-h2__hi" lang="hi">बारह पाठ्यक्रम। शुरू करने के बारह रास्ते।</span>
+                </h2>
+                <p class="sk-sub sk-sub--italic">
+                    Foundational. Specialized. Therapeutic. Designed in India, taught by Indian teachers, available in English and Hindi. Free, forever.
+                    <span class="sk-sub__hi" lang="hi">भारत में डिज़ाइन। हमेशा निःशुल्क।</span>
+                </p>
+            </div>
+
+            <div class="sk-courses-grid reveal-up" role="list">
+                <a class="sk-course-card" role="listitem" href="/courses.html?id=7-days-of-sukoon" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(15,27,61,0.85) 100%), url('/og/courses/seven-days-sukoon.jpg');">
+                    <span class="sk-course-card__pill">7 DAYS · COURSE</span>
+                    <h3 class="sk-course-card__title">7 Days of Sukoon<span class="sk-course-card__title__hi" lang="hi">सुकून के सात दिन</span></h3>
+                    <p class="sk-course-card__meta">7 sessions · 10 min each · EN + HI</p>
+                    <p class="sk-course-card__preview">A gentle first week for anyone who has never meditated or practised yoga. Day one is just sitting still and noticing the breath. That is the whole practice.</p>
+                </a>
+                <a class="sk-course-card" role="listitem" href="/courses.html?id=21-day-morning-practice" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(15,27,61,0.85) 100%), url('/og/courses/21-day-morning-practice.jpg');">
+                    <span class="sk-course-card__pill">21 DAYS · COURSE</span>
+                    <h3 class="sk-course-card__title">21-Day Morning Practice<span class="sk-course-card__title__hi" lang="hi">इक्कीस दिन का प्रभात अभ्यास</span></h3>
+                    <p class="sk-course-card__meta">21 sessions · 15 min · EN + HI</p>
+                    <p class="sk-course-card__preview">Build a sunrise habit — Surya Namaskar progressively learned, morning intention deeply set. By week three, the day knows how to begin.</p>
+                </a>
+                <a class="sk-course-card" role="listitem" href="/courses.html?id=30-day-foundations" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(15,27,61,0.85) 100%), url('/og/courses/30-day-foundations.jpg');">
+                    <span class="sk-course-card__pill">30 DAYS · COURSE</span>
+                    <h3 class="sk-course-card__title">30-Day Foundations<span class="sk-course-card__title__hi" lang="hi">तीस दिन की नींव</span></h3>
+                    <p class="sk-course-card__meta">30 sessions · 20 min · EN + HI</p>
+                    <p class="sk-course-card__preview">The complete Sukoon journey — meditation, breath, and yoga woven into one living practice. The course you can build the rest of your life on.</p>
+                </a>
+                <a class="sk-course-card" role="listitem" href="/courses.html?id=14-days-of-patanjali" style="background-image: linear-gradient(180deg, rgba(0,0,0,0.0) 30%, rgba(15,27,61,0.85) 100%), url('/og/courses/14-days-patanjali.jpg');">
+                    <span class="sk-course-card__pill">14 DAYS · COURSE</span>
+                    <h3 class="sk-course-card__title">14 Days of Patanjali<span class="sk-course-card__title__hi" lang="hi">पतंजलि के चौदह दिन</span></h3>
+                    <p class="sk-course-card__meta">14 sessions · 12 min · EN + HI</p>
+                    <p class="sk-course-card__preview">One sutra per day — applied philosophy paired with the practice it illuminates. The Yoga Sutras as a daily companion, not as a textbook.</p>
+                </a>
+            </div>
+
+            <div class="sk-courses-cta reveal-up">
+                <a href="/courses.html">See all 12 courses → · सभी 12 पाठ्यक्रम देखें →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 10 — AI FRIEND (full-bleed video)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-friend-band" style="padding: 0;">
+        <video class="sk-friend-band__video" src="/video/hero-friend.mp4" muted loop playsinline autoplay preload="none" aria-hidden="true"></video>
+        <div class="sk-friend-band__veil" aria-hidden="true"></div>
+        <div class="sk-friend-band__inner reveal-up">
+            <p class="sk-eyebrow sk-eyebrow--center" style="color: #E8A552;">WHEN YOU NEED A FRIEND · जब किसी की ज़रूरत हो</p>
+            <h2 class="sk-h2 sk-h2--center">
+                Talk to someone who listens.
+                <span class="sk-h2__hi" lang="hi">किसी से बात कीजिए जो सुनता है।</span>
+            </h2>
+            <p class="sk-sub sk-sub--center sk-sub--italic">
+                Sukoon's friend doesn't fix you. Doesn't analyze you. Doesn't try to flip your feelings. It listens. In your language. At 2am. For as long as you need.
+                <span class="sk-sub__hi" lang="hi">सुकून का दोस्त आपको ठीक नहीं करता। बस सुनता है।</span>
+            </p>
+            <a href="/be-with-me.html" class="sk-friend-cta">Begin a conversation · बातचीत शुरू करें</a>
+            <p class="sk-friend-note">Anonymous. Not recorded. Not used to train anything.</p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 11 — SCIENCE / TEACHING STRIP
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--paper">
+        <div class="sk-section__inner sk-section__inner--narrow">
+            <div class="reveal-up">
+                <p class="sk-eyebrow">WHY WE BUILT SUKOON · क्यों बनाया</p>
+                <h2 class="sk-h2">
+                    India has 1.4 billion people. And one psychiatrist for every 100,000 of them.
+                    <span class="sk-h2__hi" lang="hi">भारत में 1.4 अरब लोग हैं। और हर 1 लाख पर सिर्फ़ एक मनोचिकित्सक।</span>
+                </h2>
+                <p class="sk-sub">
+                    Mental health in India isn't a feature gap. It's a public-health crisis. Sukoon is not therapy. It is not a doctor. But it is a free, private, bilingual sanctuary that anyone with a phone can open at 2am — without a signup, without a credit card, without telling anyone.
+                    <span class="sk-sub__hi" lang="hi">सुकून थेरपी नहीं है। डॉक्टर नहीं है। लेकिन यह एक मुफ़्त, निजी, द्विभाषी आश्रय है — रात 2 बजे एक टैप दूर।</span>
+                </p>
+            </div>
+
+            <div class="sk-science-quotes reveal-up">
+                <p class="sk-science-quote">Not a chatbot pretending to be a therapist.</p>
+                <p class="sk-science-quote">Not a wellness app pretending to be free.</p>
+                <p class="sk-science-quote">A library. Quietly built. Quietly given away.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 12 — FESTIVAL BANNER (conditional — populated by JS)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--festival" id="festivalBanner" hidden>
+        <div class="sk-section__inner sk-section__inner--narrow" style="position: relative; text-align: center;">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center">TONIGHT IS · आज है</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    <span id="festivalNameEn">Festival</span>
+                    <span class="sk-h2__hi" lang="hi" id="festivalNameHi">त्योहार</span>
+                </h2>
+                <p class="sk-sub sk-sub--center sk-sub--italic" id="festivalSub">A practice for tonight.</p>
+                <a href="#" class="sk-festival-cta" id="festivalCta">A 3-minute meditation for tonight · आज रात के लिए →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 13 — CRISIS SECTION (3 helplines, mid-page)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--crisis">
+        <div class="sk-section__inner" style="position: relative;">
+            <div class="reveal-up">
+                <p class="sk-eyebrow sk-eyebrow--center">IF THIS HOUR IS HEAVY · अगर यह घड़ी भारी है</p>
+                <h2 class="sk-h2 sk-h2--center">
+                    You are not alone. Someone will pick up.
+                    <span class="sk-h2__hi" lang="hi">आप अकेले नहीं हैं। कोई उठाएगा।</span>
+                </h2>
+            </div>
+
+            <div class="sk-helplines reveal-up" role="list">
+                <a class="sk-helpline-tile" role="listitem" href="tel:9152987821">
+                    <h3 class="sk-helpline-tile__name">iCall</h3>
+                    <p class="sk-helpline-tile__phone">9152987821</p>
+                    <p class="sk-helpline-tile__hours">Mon–Sat · 8am–10pm</p>
+                    <p class="sk-helpline-tile__note">Free, multilingual counseling.</p>
+                </a>
+                <a class="sk-helpline-tile" role="listitem" href="tel:18602662345">
+                    <h3 class="sk-helpline-tile__name">Vandrevala Foundation</h3>
+                    <p class="sk-helpline-tile__phone">1860-2662-345</p>
+                    <p class="sk-helpline-tile__hours">24 / 7 · सब समय</p>
+                    <p class="sk-helpline-tile__note">Free, confidential, all languages.</p>
+                </a>
+                <a class="sk-helpline-tile" role="listitem" href="tel:9820466726">
+                    <h3 class="sk-helpline-tile__name">AASRA</h3>
+                    <p class="sk-helpline-tile__phone">9820466726</p>
+                    <p class="sk-helpline-tile__hours">24 / 7 · सब समय</p>
+                    <p class="sk-helpline-tile__note">Suicide prevention. Confidential.</p>
+                </a>
+            </div>
+
+            <p class="sk-crisis-note reveal-up">
+                Sukoon is not a crisis service. If you are in immediate danger, please call one of the numbers above or go to your nearest hospital.
+                <span class="sk-crisis-note__hi" lang="hi">सुकून आपातकालीन सेवा नहीं है। आपात स्थिति में कृपया ऊपर दिए नंबरों पर कॉल करें या नज़दीकी अस्पताल जाएँ।</span>
+            </p>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 14 — FAQ (the SEO body)
+         ═══════════════════════════════════════════════════════════════ -->
+    <section class="sk-section sk-section--paper">
+        <div class="sk-section__inner sk-section__inner--narrow">
+            <div class="reveal-up">
+                <h2 class="sk-h2 sk-h2--center">
+                    Questions
+                    <span class="sk-h2__hi" lang="hi">सवाल</span>
+                </h2>
+            </div>
+
+            <div class="sk-faq reveal-up">
+                <details class="sk-faq-panel">
+                    <summary>What is Sukoon · सुकून क्या है</summary>
+                    <div class="sk-faq-panel__body">
+                        <p>Sukoon is a free, bilingual sanctuary for difficult moments. Quiet <a href="/sit.html">meditations</a> for anxiety, panic, grief and ordinary heaviness. <a href="/rest.html">Sleep stories</a> from Indian places and the natural world. <a href="/breathe.html">Breath practices</a> with on-screen guidance. Yoga sequences and Patanjali sutras. A patient AI friend who listens when no human is awake. All free. All forever.</p>
+                    </div>
+                </details>
+
+                <details class="sk-faq-panel">
+                    <summary>Is it really free · क्या यह सच में मुफ़्त है</summary>
+                    <div class="sk-faq-panel__body">
+                        <p>Yes. Forever. There is no paid tier. No premium content locked. No "pro" upgrade. Sukoon is funded as a public-interest project, not as a business. Free, the way a public park is free.</p>
+                    </div>
+                </details>
+
+                <details class="sk-faq-panel">
+                    <summary>Does Sukoon store my data · क्या सुकून मेरा डेटा रखता है</summary>
+                    <div class="sk-faq-panel__body">
+                        <p>No account. No login. The only thing stored is your streak count, and only on your device. Sukoon's servers do not know who you are. Read the full <a href="/privacy.html">privacy posture</a>.</p>
+                    </div>
+                </details>
+
+                <details class="sk-faq-panel">
+                    <summary>Is this therapy · क्या यह थेरपी है</summary>
+                    <div class="sk-faq-panel__body">
+                        <p>No. Sukoon is a wellness sanctuary, not a clinical service. If you need therapy, please see a registered mental health professional. The crisis helplines above — iCall, Vandrevala Foundation, AASRA — can also help you find one.</p>
+                    </div>
+                </details>
+
+                <details class="sk-faq-panel">
+                    <summary>Who built Sukoon · सुकून किसने बनाया</summary>
+                    <div class="sk-faq-panel__body">
+                        <p>A small team in India. We do not put our faces on this site because Sukoon is not about us. If you want to know more, write to <a href="mailto:hello@sukoon.cloud">hello@sukoon.cloud</a>.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SECTION 15 — FOOTER
+         ═══════════════════════════════════════════════════════════════ -->
+    <footer class="sk-footer" role="contentinfo">
+        <div class="sk-footer__inner">
+            <div class="sk-footer__top">
+                <div>
+                    <a href="/" class="sk-footer__brand" aria-label="Sukoon — home">sukoon</a>
+                    <p class="sk-footer__tag">A quieter place to be. · थोड़ा ठहराव।</p>
+                </div>
+                <div class="sk-footer__cols">
+                    <div>
+                        <h3 class="sk-footer__col-head">EXPLORE · खोजें</h3>
+                        <ul class="sk-footer__list">
+                            <li><a href="/today.html">Today</a></li>
+                            <li><a href="/sit.html">Sit</a></li>
+                            <li><a href="/rest.html">Rest</a></li>
+                            <li><a href="/breathe.html">Breathe</a></li>
+                            <li><a href="/be-with-me.html">Listen</a></li>
+                            <li><a href="/yoga.html">Yoga</a></li>
+                            <li><a href="/courses.html">Courses</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="sk-footer__col-head">SUKOON · सुकून</h3>
+                        <ul class="sk-footer__list">
+                            <li><a href="/be-with-me.html">Friend</a></li>
+                            <li><a href="/quotes.html">Mantras</a></li>
+                            <li><a href="/daily.html">Daily</a></li>
+                            <li><a href="/journal.html">Journal</a></li>
+                            <li><a href="/wisdom.html">Wisdom</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="sk-footer__col-head">CRISIS · संकट</h3>
+                        <ul class="sk-footer__list">
+                            <li><a href="tel:9152987821">iCall</a></li>
+                            <li><a href="tel:18602662345">Vandrevala</a></li>
+                            <li><a href="tel:9820466726">AASRA</a></li>
+                            <li><a href="/now.html">Now</a></li>
+                            <li><a href="/sos.html">SOS</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="sk-footer__col-head">ABOUT · हमारे बारे में</h3>
+                        <ul class="sk-footer__list">
+                            <li><a href="/privacy.html">Privacy</a></li>
+                            <li><a href="mailto:hello@sukoon.cloud">Contact</a></li>
+                            <li><a href="/onboarding.html">First time?</a></li>
+                            <li><a href="/progress.html">Your progress</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sk-footer__bottom">
+                <p class="sk-footer__fineprint">© 2026 Sukoon · Made with care in India · प्रेम से भारत में निर्मित</p>
+                <div class="sk-footer__socials" aria-label="Social links">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+                    </a>
+                    <a href="#" aria-label="Twitter X">
+                        <svg viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20"/></svg>
+                    </a>
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="3"/><polygon points="10 9 16 12 10 15" fill="currentColor" stroke="none"/></svg>
+                    </a>
+                </div>
+            </div>
+
+            <p class="sk-footer__sign">Free, forever. No signup. No tracking. — sukoon.cloud · सुकून.क्लाउड</p>
+        </div>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         GLOBAL UI — listening overlay, SOS, bottom nav
+         ═══════════════════════════════════════════════════════════════ -->
     <div class="sk-listening" id="skListening" aria-hidden="true">
         <div class="sk-listening__inner">
             <div class="sk-breath-orb" aria-hidden="true"></div>
@@ -444,18 +1305,10 @@
         </div>
     </div>
 
-    <!-- ════════════════════════════════════════════════════════════════
-         FLOATING SOS BUTTON
-         ════════════════════════════════════════════════════════════════ -->
     <a class="sk-sos-float" href="/now.html" aria-label="Crisis support — tap for help">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21.23l8.84-8.84a5.5 5.5 0 0 0 0-7.78z"/>
-        </svg>
+        <svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="#fff"/></svg>
     </a>
 
-    <!-- ════════════════════════════════════════════════════════════════
-         BOTTOM NAV — 5 tabs (Today, Breathe, Sit, Rest, Listen)
-         ════════════════════════════════════════════════════════════════ -->
     <nav class="sk-bottom-nav" aria-label="Sanctuary">
         <a href="/" class="sk-bottom-nav__item is-active" aria-current="page">
             <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg>
@@ -466,7 +1319,7 @@
             <span>Breathe</span>
         </a>
         <a href="/sit.html" class="sk-bottom-nav__item">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6"/><path d="M8 15l-2 4M16 15l2 4"/></svg>
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="7" r="3"/><path d="M5 21c1-4 4-6 7-6s6 2 7 6"/></svg>
             <span>Sit</span>
         </a>
         <a href="/rest.html" class="sk-bottom-nav__item">
@@ -479,51 +1332,49 @@
         </a>
     </nav>
 
-    <!-- ════════════════════════════════════════════════════════════════
-         ENTRY DIALOGUE LOGIC
-         ════════════════════════════════════════════════════════════════ -->
+    <!-- ═══════════════════════════════════════════════════════════════
+         HOMEPAGE LOGIC — hero video, lang toggle, scroll nav, festivals, today eyebrow, reveal-on-scroll, ambient audio, mood-router, hero input
+         ═══════════════════════════════════════════════════════════════ -->
     <script>
     (function () {
         'use strict';
 
-        // ─── Time-of-day backdrop ──────────────────────────────────────
+        // ── Time-of-day backdrop ──────────────────────────────────────
         function pickTod() {
             var h = new Date().getHours();
-            if (h >= 5 && h < 17) return 'day';
+            if (h >= 5 && h < 8) return 'dawn';
+            if (h >= 8 && h < 17) return 'day';
             if (h >= 17 && h < 20) return 'dusk';
             return 'night';
         }
         var tod = pickTod();
         document.documentElement.setAttribute('data-tod', tod);
+        document.body.classList.add('is-' + tod);
 
         var vidDay   = document.getElementById('skVidDay');
         var vidDusk  = document.getElementById('skVidDusk');
         var vidNight = document.getElementById('skVidNight');
         var vidHome  = document.getElementById('skVidHome');
-        var byTod = { day: vidDay, dusk: vidDusk, night: vidNight };
+        var byTod = { dawn: vidDay, day: vidDay, dusk: vidDusk, night: vidNight };
         var chosen = byTod[tod] || vidHome;
 
         function activate(v) {
             if (!v) return;
             v.classList.add('is-active');
             var play = v.play();
-            if (play && typeof play.catch === 'function') play.catch(function () { /* autoplay denied; static frame is fine */ });
+            if (play && typeof play.catch === 'function') play.catch(function () {});
         }
-        // Try the time-matched video; if its source fails, fall back to /video/hero-home.mp4
         chosen.addEventListener('loadeddata', function () { activate(chosen); }, { once: true });
         chosen.addEventListener('error', function () { activate(vidHome); }, { once: true });
-        // Kick metadata load
         try { chosen.load(); } catch (_) {}
-        // Safety: if neither fires within 1.4s, just activate something
         setTimeout(function () {
-            if (!chosen.classList.contains('is-active') && !vidHome.classList.contains('is-active')) {
-                activate(vidHome);
-            }
+            if (!chosen.classList.contains('is-active') && !vidHome.classList.contains('is-active')) activate(vidHome);
         }, 1400);
 
-        // ─── Pulse ticker  (graceful fallback) ─────────────────────────
+        // ── Pulse ticker ──────────────────────────────────────────────
         var pulseEl = document.getElementById('skPulseCount');
         function fmt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+        pulseEl.textContent = fmt(170 + Math.floor(Math.random() * 40));
         function fetchPulse() {
             fetch('/api/pulse', { headers: { 'accept': 'application/json' }, cache: 'no-store' })
                 .then(function (r) { return r.ok ? r.json() : null; })
@@ -532,14 +1383,12 @@
                     var n = (j.count != null ? j.count : (j.pulse != null ? j.pulse : j.souls));
                     if (typeof n === 'number' && isFinite(n)) pulseEl.textContent = fmt(n);
                 })
-                .catch(function () { /* offline / dev — show a soft default */ });
+                .catch(function () {});
         }
-        // Soft default while fetching
-        pulseEl.textContent = fmt(170 + Math.floor(Math.random() * 40));
         fetchPulse();
         setInterval(fetchPulse, 18000);
 
-        // ─── Language toggle (persisted to localStorage) ───────────────
+        // ── Language toggle ────────────────────────────────────────────
         var langSel = document.getElementById('skLang');
         var promptHi = document.getElementById('skPromptHi');
         var promptEn = document.getElementById('skPromptEn');
@@ -557,78 +1406,131 @@
         applyLang();
         langSel.addEventListener('change', applyLang);
 
-        // ─── Entry form + router ───────────────────────────────────────
+        // ── Top nav scroll state ──────────────────────────────────────
+        var topnav = document.getElementById('skTopnav');
+        function onScroll() {
+            if (window.scrollY > 80) topnav.classList.add('is-scrolled');
+            else topnav.classList.remove('is-scrolled');
+        }
+        onScroll();
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Begin CTA → focus the hero input
+        var beginCta = document.getElementById('skBeginCta');
+        beginCta.addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            setTimeout(function () { try { document.getElementById('skInput').focus(); } catch (_) {} }, 600);
+        });
+
+        // ── Today eyebrow — adjust by hour ────────────────────────────
+        var todayEy = document.getElementById('todayEyebrow');
+        var todayHe = document.getElementById('todayHeadlineEn');
+        var todayHh = document.getElementById('todayHeadlineHi');
+        var hr = new Date().getHours();
+        if (hr >= 5 && hr < 12) { todayEy.textContent = 'THIS MORNING · आज सुबह'; todayHe.textContent = 'This morning, Sukoon suggests…'; todayHh.textContent = 'आज सुबह, सुकून सुझाता है…'; }
+        else if (hr >= 12 && hr < 17) { todayEy.textContent = 'THIS AFTERNOON · आज दोपहर'; todayHe.textContent = 'This afternoon, Sukoon suggests…'; todayHh.textContent = 'आज दोपहर, सुकून सुझाता है…'; }
+        else if (hr >= 17 && hr < 20) { todayEy.textContent = 'THIS EVENING · आज शाम'; todayHe.textContent = 'This evening, Sukoon suggests…'; todayHh.textContent = 'आज शाम, सुकून सुझाता है…'; }
+        else { todayEy.textContent = 'TONIGHT · आज रात'; todayHe.textContent = 'Tonight, Sukoon suggests…'; todayHh.textContent = 'आज रात, सुकून सुझाता है…'; }
+
+        // ── Reveal on scroll ──────────────────────────────────────────
+        if ('IntersectionObserver' in window) {
+            var io = new IntersectionObserver(function (entries) {
+                entries.forEach(function (e) {
+                    if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
+                });
+            }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+            document.querySelectorAll('.reveal-up').forEach(function (el) { io.observe(el); });
+        } else {
+            document.querySelectorAll('.reveal-up').forEach(function (el) { el.classList.add('is-in'); });
+        }
+
+        // ── Ambient audio pill ────────────────────────────────────────
+        var ambient = document.getElementById('ambient');
+        var ambientBtn = document.getElementById('skAmbient');
+        if (ambient && ambientBtn) {
+            ambient.volume = 0.35;
+            ambientBtn.addEventListener('click', function () {
+                if (ambient.paused) {
+                    try { ambient.load(); } catch (_) {}
+                    var p = ambient.play();
+                    if (p && p.then) p.then(function(){ ambientBtn.classList.add('is-playing'); }).catch(function(){});
+                } else {
+                    ambient.pause();
+                    ambientBtn.classList.remove('is-playing');
+                }
+            });
+        }
+
+        // ── Festival banner (conditional, ±3 days) ─────────────────────
+        fetch('/content/festivals.json', { cache: 'no-store' })
+            .then(function (r) { return r.ok ? r.json() : null; })
+            .then(function (fests) {
+                if (!fests || !fests.length) return;
+                var today = new Date();
+                var match = null, bestDelta = 999;
+                fests.forEach(function (f) {
+                    var d = f.dates_2026 || f.date || null;
+                    if (!d) return;
+                    var fd = new Date(d + 'T00:00:00');
+                    var delta = Math.round((fd - today) / 86400000);
+                    if (Math.abs(delta) <= 3 && Math.abs(delta) < bestDelta) { match = f; bestDelta = Math.abs(delta); }
+                });
+                if (!match) return;
+                document.getElementById('festivalNameEn').textContent = match.festival_name_en || 'Festival';
+                document.getElementById('festivalNameHi').textContent = match.festival_name_hi || '';
+                var subEl = document.getElementById('festivalSub');
+                subEl.textContent = match.practice_title_en || 'A practice for tonight.';
+                document.getElementById('festivalCta').setAttribute('href', '/sit.html?festival=' + (match.festival_id || ''));
+                document.getElementById('festivalBanner').hidden = false;
+            })
+            .catch(function () {});
+
+        // ── Hero form + router ────────────────────────────────────────
         var form     = document.getElementById('skForm');
         var input    = document.getElementById('skInput');
         var micBtn   = document.getElementById('skMic');
-        var sendBtn  = document.getElementById('skSend');
         var listenEl = document.getElementById('skListening');
         var listenText = document.getElementById('skListeningText');
 
-        // Desktop autofocus only (avoid surprising the mobile keyboard)
         if (window.matchMedia && window.matchMedia('(pointer: fine)').matches) {
             setTimeout(function () { try { input.focus({ preventScroll: true }); } catch (_) { input.focus(); } }, 900);
         }
-
-        // Quick chips → prefill input (do NOT auto-submit; user re-affirms)
-        document.querySelectorAll('.sk-chip').forEach(function (chip) {
+        document.querySelectorAll('.sk-chip[data-chip]').forEach(function (chip) {
             chip.addEventListener('click', function () {
                 input.value = chip.getAttribute('data-chip') || chip.textContent.trim();
                 input.focus();
             });
         });
 
-        // ─── Routing destinations (used when /api/route is unavailable) ─
         var SAFE_FALLBACKS = {
-            anxious:  '/breathe.html?p=478',
-            anxiety:  '/breathe.html?p=478',
-            panic:    '/breathe.html?p=478',
-            sleep:    '/rest.html',
-            sleepless:'/rest.html',
-            tired:    '/rest.html',
-            insomnia: '/rest.html',
-            sad:      '/be-with-me.html',
-            lonely:   '/be-with-me.html',
-            heavy:    '/be-with-me.html',
-            angry:    '/breathe.html?p=478',
-            calm:     '/sit.html',
-            quiet:    '/sit.html',
-            focus:    '/sit.html',
-            stress:   '/breathe.html?p=478',
-            grief:    '/be-with-me.html'
+            anxious:'/breathe.html?p=478', anxiety:'/breathe.html?p=478', panic:'/breathe.html?p=478',
+            sleep:'/rest.html', sleepless:'/rest.html', tired:'/rest.html', insomnia:'/rest.html',
+            sad:'/be-with-me.html', lonely:'/be-with-me.html', heavy:'/be-with-me.html',
+            angry:'/breathe.html?p=478', calm:'/sit.html', quiet:'/sit.html', focus:'/sit.html',
+            stress:'/breathe.html?p=478', grief:'/be-with-me.html'
         };
         function localGuess(phrase) {
             var s = (phrase || '').toLowerCase();
-            // simple keyword spotter as last-resort fallback
             var keys = Object.keys(SAFE_FALLBACKS);
-            for (var i = 0; i < keys.length; i++) {
-                if (s.indexOf(keys[i]) !== -1) return SAFE_FALLBACKS[keys[i]];
-            }
-            // default: a conversation with Friend
+            for (var i = 0; i < keys.length; i++) if (s.indexOf(keys[i]) !== -1) return SAFE_FALLBACKS[keys[i]];
             return '/be-with-me.html';
         }
-
         function showListening(open) {
             listenEl.classList.toggle('is-open', !!open);
             listenEl.setAttribute('aria-hidden', open ? 'false' : 'true');
         }
-
         function setListeningCopy(en, hi) {
             listenText.innerHTML = en + '<span class="sk-listening__hi" lang="hi">' + hi + '</span>';
         }
-
         function navigateTo(href, phrase) {
             var url = href;
             if (phrase) {
-                // pass phrase via hash so back/forward + server stays clean
                 var hash = '#q=' + encodeURIComponent(phrase);
                 url = href.indexOf('#') === -1 ? (href + hash) : (href + '&' + hash.slice(1));
             }
-            // brief breath, then go
             setTimeout(function () { window.location.href = url; }, 700);
         }
-
-        // Wire router if available; otherwise local fallback
         var router = null;
         function ensureRouter() {
             if (router) return router;
@@ -655,29 +1557,19 @@
             }
             return router;
         }
-
-        // ─── Submit ──────────────────────────────────────────────────
         form.addEventListener('submit', function (ev) {
             ev.preventDefault();
             var phrase = (input.value || '').trim();
             if (!phrase) { input.focus(); return; }
-
-            // Track for resume / continuity (not for tracking — local only)
             try { sessionStorage.setItem('sukoon_entry_phrase', phrase); } catch (_) {}
-
-            // Show breath while routing
             setListeningCopy('Sukoon is listening…', 'सुकून सुन रहा है…');
             showListening(true);
-
             var r = ensureRouter();
-            if (r && typeof r.route === 'function') {
-                try { r.route(phrase); return; } catch (_) {}
-            }
-            // Local guess if router missing
+            if (r && typeof r.route === 'function') { try { r.route(phrase); return; } catch (_) {} }
             setTimeout(function () { navigateTo(localGuess(phrase), phrase); }, 600);
         });
 
-        // ─── Mic (Web Speech API) ────────────────────────────────────
+        // ── Mic (Web Speech) ─────────────────────────────────────────
         var SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
         var recognizer = null;
         var listening = false;
@@ -695,36 +1587,20 @@
                 recognizer.interimResults = true;
                 recognizer.maxAlternatives = 1;
                 recognizer.continuous = false;
-
-                recognizer.onstart = function () {
-                    listening = true;
-                    micBtn.classList.add('is-listening');
-                    micBtn.setAttribute('aria-label', 'Stop listening');
-                };
-                recognizer.onresult = function (e) {
-                    var txt = '';
-                    for (var i = 0; i < e.results.length; i++) txt += e.results[i][0].transcript;
-                    input.value = txt;
-                };
-                recognizer.onerror = function () { /* graceful */ };
+                recognizer.onstart = function () { listening = true; micBtn.classList.add('is-listening'); micBtn.setAttribute('aria-label', 'Stop listening'); };
+                recognizer.onresult = function (e) { var txt = ''; for (var i = 0; i < e.results.length; i++) txt += e.results[i][0].transcript; input.value = txt; };
+                recognizer.onerror = function () {};
                 recognizer.onend = function () {
                     listening = false;
                     micBtn.classList.remove('is-listening');
                     micBtn.setAttribute('aria-label', 'Speak instead of typing');
                     var v = (input.value || '').trim();
-                    if (v.length > 1) {
-                        // small pause for the user to read what was heard, then submit
-                        setTimeout(function () { form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true })); }, 350);
-                    }
+                    if (v.length > 1) setTimeout(function () { form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true })); }, 350);
                 };
                 recognizer.start();
             } catch (_) { listening = false; micBtn.classList.remove('is-listening'); }
         });
-
-        // Enter submits, Esc clears
-        input.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') { input.value = ''; }
-        });
+        input.addEventListener('keydown', function (e) { if (e.key === 'Escape') input.value = ''; });
 
     })();
     </script>

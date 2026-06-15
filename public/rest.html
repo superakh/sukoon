@@ -1074,6 +1074,17 @@
         <button class="rest-filter" type="button" data-filter-set="far-places" aria-pressed="false"
                 data-en="Far Places" data-hi="दूर देश">Far Places</button>
         <span class="rest-filter__group-sep" aria-hidden="true"></span>
+        <button class="rest-filter" type="button" data-filter-duration="all" aria-pressed="true"
+                data-en="Any length" data-hi="कोई भी लंबाई">Any length</button>
+        <button class="rest-filter" type="button" data-filter-duration="5-10" aria-pressed="false"
+                data-en="5–10 min" data-hi="५–१० मिनट">5–10 min</button>
+        <button class="rest-filter" type="button" data-filter-duration="10-15" aria-pressed="false"
+                data-en="10–15 min" data-hi="१०–१५ मिनट">10–15 min</button>
+        <button class="rest-filter" type="button" data-filter-duration="15-20" aria-pressed="false"
+                data-en="15–20 min" data-hi="१५–२० मिनट">15–20 min</button>
+        <button class="rest-filter" type="button" data-filter-duration="20+" aria-pressed="false"
+                data-en="20+ min" data-hi="२०+ मिनट">20+ min</button>
+        <span class="rest-filter__group-sep" aria-hidden="true"></span>
         <button class="rest-filter" type="button" data-filter-lang="all" aria-pressed="true"
                 data-en="Any language" data-hi="कोई भी ज़बान">Any language</button>
         <button class="rest-filter" type="button" data-filter-lang="en" aria-pressed="false">English</button>
@@ -1450,7 +1461,17 @@
     ];
     var stories = [];
     var storiesById = {};
-    var activeFilter = { set: 'all', lang: 'all' };
+    var activeFilter = { set: 'all', lang: 'all', duration: 'all' };
+
+    function matchesDuration(mins, bucket) {
+      var m = mins || 15;
+      if (bucket === 'all') return true;
+      if (bucket === '5-10')  return m >= 5  && m < 10;
+      if (bucket === '10-15') return m >= 10 && m < 15;
+      if (bucket === '15-20') return m >= 15 && m < 20;
+      if (bucket === '20+')   return m >= 20;
+      return true;
+    }
 
     function normalizeStory(raw, set) {
       var s = {
@@ -1501,6 +1522,7 @@
       return stories.filter(function (s) {
         if (activeFilter.set !== 'all' && s.set !== activeFilter.set) return false;
         if (activeFilter.lang !== 'all' && s.lang !== activeFilter.lang) return false;
+        if (!matchesDuration(s.duration_min, activeFilter.duration)) return false;
         return true;
       });
     }
@@ -1659,6 +1681,15 @@
       btn.addEventListener('click', function () {
         activeFilter.lang = btn.getAttribute('data-filter-lang');
         doc.querySelectorAll('.rest-filter[data-filter-lang]').forEach(function (b) {
+          b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+        });
+        renderStories();
+      });
+    });
+    doc.querySelectorAll('.rest-filter[data-filter-duration]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        activeFilter.duration = btn.getAttribute('data-filter-duration');
+        doc.querySelectorAll('.rest-filter[data-filter-duration]').forEach(function (b) {
           b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
         });
         renderStories();
