@@ -1,6 +1,7 @@
 [
   {
     "id": "med-anxiety-morning-en",
+    "still": "/og/meditations/before-the-day-begins.jpg",
     "title_en": "Before the Day Begins",
     "mood_tags": ["anxiety", "morning-dread", "anticipatory-worry", "overwhelm"],
     "duration_min": 5,
@@ -27,6 +28,7 @@
   },
   {
     "id": "med-anxiety-work-meeting-en",
+    "still": "/og/meditations/before-you-walk-in.jpg",
     "title_en": "Before You Walk In",
     "mood_tags": ["anxiety", "work-anxiety", "pre-meeting", "performance-pressure", "dread"],
     "duration_min": 3,
@@ -51,6 +53,7 @@
   },
   {
     "id": "med-anxiety-health-result-en",
+    "still": "/og/meditations/waiting-for-the-answer.jpg",
     "title_en": "Waiting for the Answer",
     "mood_tags": ["anxiety", "health-anxiety", "uncertainty", "waiting", "fear"],
     "duration_min": 10,
@@ -79,6 +82,7 @@
   },
   {
     "id": "med-anxiety-decision-paralysis-en",
+    "still": "/og/meditations/when-every-option-feels-wrong.jpg",
     "title_en": "When Every Option Feels Wrong",
     "mood_tags": ["anxiety", "decision-paralysis", "overthinking", "stuck", "choice-overload"],
     "duration_min": 8,
@@ -105,6 +109,7 @@
   },
   {
     "id": "med-anxiety-social-en",
+    "still": "/og/meditations/after-the-group.jpg",
     "title_en": "After the Group",
     "mood_tags": ["anxiety", "social-anxiety", "post-social-exhaustion", "replay", "self-doubt"],
     "duration_min": 5,
@@ -129,6 +134,7 @@
   },
   {
     "id": "med-anxiety-future-en",
+    "still": "/og/meditations/the-worry-about-what-has-not-happened-yet.jpg",
     "title_en": "The Worry About What Has Not Happened Yet",
     "mood_tags": ["anxiety", "future-anxiety", "catastrophizing", "worry", "uncertainty"],
     "duration_min": 10,
@@ -156,6 +162,7 @@
   },
   {
     "id": "med-anxiety-panic-onset-en",
+    "still": "/og/meditations/right-now-in-this-moment.jpg",
     "title_en": "Right Now, In This Moment",
     "mood_tags": ["anxiety", "panic", "panic-onset", "heart-racing", "acute-distress"],
     "duration_min": 5,
@@ -181,6 +188,7 @@
   },
   {
     "id": "med-anxiety-health-worry-en",
+    "still": "/og/meditations/the-body-you-are-afraid-of.jpg",
     "title_en": "The Body You Are Afraid Of",
     "mood_tags": ["anxiety", "health-anxiety", "body-worry", "hypochondria-adjacent", "somatic"],
     "duration_min": 8,
@@ -207,6 +215,7 @@
   },
   {
     "id": "med-anxiety-new-place-en",
+    "still": "/og/meditations/finding-your-footing-here.jpg",
     "title_en": "Finding Your Footing Here",
     "mood_tags": ["anxiety", "new-place-anxiety", "relocation", "unfamiliar", "displacement", "adjustment"],
     "duration_min": 8,
@@ -279,6 +288,7 @@
   },
   {
     "id": "med-anxiety-interview-en",
+    "still": "/og/meditations/you-have-done-the-preparation.jpg",
     "title_en": "You Have Done the Preparation",
     "mood_tags": ["anxiety", "interview-anxiety", "performance-anxiety", "job-interview", "evaluation"],
     "duration_min": 5,

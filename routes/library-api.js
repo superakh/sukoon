@@ -29,7 +29,7 @@ router.post('/', (req, res) => {
       });
     }
 
-    const limit = Math.max(1, Math.min(50, Number(body.limit) || 20));
+    const limit = Math.max(1, Math.min(200, Number(body.limit) || 20));
     const items = filterLibrary({
       kind: body.kind,
       tags: body.tags,

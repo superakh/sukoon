@@ -1202,11 +1202,11 @@ img, video { display: block; max-width: 100%; }
         });
         if (state.lastItems) renderGrid(state.lastItems);
         if (state.today) renderToday(state.today);
+        annotateAllChips();
     }
     document.querySelectorAll('.sk-lang button').forEach(function (b) {
         b.addEventListener('click', function () { applyLang(b.getAttribute('data-lang-set')); });
     });
-    applyLang(lang);
 
     // ---------- State ----------
     var state = {
@@ -1215,6 +1215,9 @@ img, video { display: block; max-width: 100%; }
         today: null,
         filters: { mood: 'all', lang: 'both', duration: 'all' }
     };
+
+    // Apply saved language now that `state` exists — applyLang() reads state.lastItems/today.
+    applyLang(lang);
 
     // ---------- Filter chips ----------
     document.querySelectorAll('[data-filter-group]').forEach(function (group) {
@@ -1252,7 +1255,7 @@ img, video { display: block; max-width: 100%; }
         return fetch('/api/library', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ kind: 'meditations', limit: 50 }),
+            body: JSON.stringify({ kind: 'meditations', limit: 200 }),
             credentials: 'same-origin'
         }).then(function (r) {
             if (!r.ok) throw new Error('api-library ' + r.status);
@@ -1333,6 +1336,35 @@ img, video { display: block; max-width: 100%; }
             return bothA - bothB;
         });
         renderGrid(filtered);
+    }
+
+    // ---------- Chip counts (badge how many meditations match; dim empties) ----------
+    function annotateChips(groupSelector, matchFn) {
+        var group = document.querySelector(groupSelector);
+        if (!group) return;
+        group.querySelectorAll('.sk-chip').forEach(function (chip) {
+            var val = chip.getAttribute('data-filter-value');
+            var isAll = (val === 'all' || val === 'both');
+            var n = isAll ? state.all.length
+                          : state.all.filter(function (it) { return matchFn(it, val); }).length;
+            var prev = chip.querySelector('.sk-chip__count');
+            if (prev) prev.parentNode.removeChild(prev);
+            var badge = el('span', { class: 'sk-chip__count', 'aria-hidden': 'true' });
+            badge.textContent = String(n);
+            chip.appendChild(badge);
+            if (n === 0 && !isAll) {
+                chip.setAttribute('data-empty', 'true');
+                chip.setAttribute('disabled', '');
+            } else {
+                chip.removeAttribute('data-empty');
+                chip.removeAttribute('disabled');
+            }
+        });
+    }
+    function annotateAllChips() {
+        if (!state.all.length) return;
+        annotateChips('[data-filter-group="mood"]', itemMatchesMood);
+        annotateChips('[data-filter-group="duration"]', itemMatchesDuration);
     }
 
     // ---------- Helpers ----------
@@ -1423,9 +1455,14 @@ img, video { display: block; max-width: 100%; }
                 'aria-label': titleOf(item) + ', ' + fmtDuration(item.duration_min || item.duration_minutes)
             });
 
-            // Art
+            // Art — bespoke still when the record has one; glyph fallback otherwise.
             var art = el('div', { class: 'sk-track-card__art' });
             art.appendChild(svgGlyph(GLYPH_FIGURE));
+            if (item.still) {
+                art.style.backgroundImage =
+                    "linear-gradient(160deg, rgba(43,31,74,0.30), rgba(15,27,61,0.45)), url('" + item.still + "')";
+                art.setAttribute('data-has-still', 'true');
+            }
             card.appendChild(art);
 
             // Body
@@ -1482,6 +1519,23 @@ img, video { display: block; max-width: 100%; }
     function renderToday(item) {
         if (!item) return;
         state.today = item;
+
+        // Bespoke still behind the today-card when the meditation has one.
+        var todayCard = document.querySelector('.sk-today');
+        if (todayCard) {
+            var still = todayCard.querySelector('.sk-today__still');
+            if (item.still) {
+                if (!still) {
+                    still = el('div', { class: 'sk-today__still', 'aria-hidden': 'true' });
+                    todayCard.insertBefore(still, todayCard.firstChild);
+                }
+                still.style.backgroundImage = "url('" + item.still + "')";
+                still.style.display = '';
+            } else if (still) {
+                still.style.display = 'none';
+            }
+        }
+
         var title = document.getElementById('todayTitle');
         var titleHi = document.getElementById('todayTitleHi');
         var meta = document.getElementById('todayMeta');
@@ -1659,6 +1713,7 @@ img, video { display: block; max-width: 100%; }
     loadLibrary().then(function (items) {
         state.all = Array.isArray(items) ? items.slice(0, 200) : [];
         applyFilters();
+        annotateAllChips();
 
         loadToday().then(function (daily) {
             var matched = null;
