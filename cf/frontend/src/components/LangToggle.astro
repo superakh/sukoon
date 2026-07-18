@@ -1,0 +1,105 @@
+---
+/**
+ * LangToggle.astro
+ * -----------------------------------------------------------------------------
+ * Top-right EN / HI switch. Pure client-side, no auth, no cookies, no
+ * server round-trip. The user's preference is persisted in localStorage
+ * under the key `sk-lang` (values: "en" | "hi").
+ *
+ * On load we read localStorage, set document.documentElement.lang, and
+ * mirror the state to a `data-sk-lang` attribute on <html> so CSS can
+ * key off it (e.g. hide EN nodes when lang="hi" and vice versa).
+ *
+ * We keep everything inline and unstyled by any framework so it works
+ * regardless of what Snowpeak ships.
+ */
+---
+
+<div class="sk-lang" role="group" aria-label="Language / भाषा">
+  <button type="button" class="sk-lang__btn" data-lang="en" aria-pressed="false">EN</button>
+  <span class="sk-lang__sep" aria-hidden="true">/</span>
+  <button type="button" class="sk-lang__btn" data-lang="hi" aria-pressed="false" lang="hi">
+    <span class="sk-hindi">हि</span>
+  </button>
+</div>
+
+<style>
+  .sk-lang {
+    position: fixed;
+    top: 8px;
+    right: 12px;
+    z-index: 110;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 8px;
+    background: color-mix(in oklab, var(--sk-night) 85%, black);
+    border: 1px solid var(--sk-border);
+    border-radius: 999px;
+    font-family: var(--sk-font-sans);
+    font-size: 12px;
+    color: color-mix(in oklab, var(--sk-cream) 70%, transparent);
+  }
+  .sk-lang__btn {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    padding: 2px 6px;
+    cursor: pointer;
+    font: inherit;
+    border-radius: 999px;
+    letter-spacing: 0.04em;
+  }
+  .sk-lang__btn[aria-pressed="true"] {
+    background: var(--sk-tulsi-sage);
+    color: var(--sk-night);
+    font-weight: 600;
+  }
+  .sk-lang__btn:focus-visible {
+    outline: 2px solid var(--sk-tulsi-sage);
+    outline-offset: 2px;
+  }
+  .sk-lang__sep {
+    opacity: 0.4;
+  }
+
+  /* Crisis bar sits at top with z-index 100, and takes some vertical space.
+     Offset the toggle downward on small screens so it doesn't overlap. */
+  @media (max-width: 640px) {
+    .sk-lang { top: 6px; right: 8px; font-size: 11px; }
+  }
+</style>
+
+<script is:inline>
+  // is:inline so it runs before hydration and sets <html lang> in time
+  // for typography rules that key off html[lang="hi"].
+  (() => {
+    const KEY = 'sk-lang';
+    const valid = (v) => v === 'en' || v === 'hi';
+
+    const stored = (() => {
+      try { return localStorage.getItem(KEY); } catch { return null; }
+    })();
+    const initial = valid(stored) ? stored : 'en';
+
+    const apply = (lang) => {
+      document.documentElement.lang = lang;
+      document.documentElement.setAttribute('data-sk-lang', lang);
+      document.querySelectorAll('.sk-lang__btn').forEach((b) => {
+        b.setAttribute('aria-pressed', b.getAttribute('data-lang') === lang ? 'true' : 'false');
+      });
+      try { localStorage.setItem(KEY, lang); } catch {}
+    };
+
+    apply(initial);
+
+    document.addEventListener('click', (e) => {
+      const target = e.target;
+      if (!(target instanceof Element)) return;
+      const btn = target.closest('.sk-lang__btn');
+      if (!btn) return;
+      const lang = btn.getAttribute('data-lang');
+      if (valid(lang)) apply(lang);
+    });
+  })();
+</script>

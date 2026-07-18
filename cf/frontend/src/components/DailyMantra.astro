@@ -1,0 +1,139 @@
+---
+/**
+ * DailyMantra.astro
+ * -----------------------------------------------------------------------------
+ * Server-side rendered card showing today's mantra. Fetched from our own
+ * Cloudflare Pages function at /api/daily. The API is expected to return:
+ *
+ *   {
+ *     sanskrit: string,        // Latin transliteration, e.g. "Sarve bhavantu sukhinah"
+ *     devanagari: string,      // "सर्वे भवन्तु सुखिनः"
+ *     translation_en: string,  // "May all beings be happy."
+ *     translation_hi: string,  // "सभी प्राणी सुखी हों।"
+ *     attribution: string      // "Brihadaranyaka Upanishad 1.4.14"
+ *   }
+ *
+ * ROUND-3 LESSON (do not undo):
+ * - The card sits on a STILL cream surface. No animated background,
+ *   no gradient, no heatmap, no ambient particles. The mantra is the
+ *   sacred content; anything moving underneath cheapens it.
+ * - No hover shimmer. No auto-rotate. This is a place to rest the eyes.
+ *
+ * If the API fails, we fall back to the Peace Mantra so the page never
+ * shows an empty sacred space.
+ */
+
+const FALLBACK = {
+  sanskrit: 'Om shanti shanti shanti',
+  devanagari: 'ॐ शान्तिः शान्तिः शान्तिः',
+  translation_en: 'Peace, peace, peace — in body, in mind, in spirit.',
+  translation_hi: 'शांति, शांति, शांति — तन में, मन में, आत्मा में।',
+  attribution: 'Traditional peace invocation',
+};
+
+type Mantra = typeof FALLBACK;
+
+let mantra: Mantra = FALLBACK;
+try {
+  // Astro.url is available during SSR. Use it to resolve the API origin
+  // so the fetch works in `astro dev`, in preview, and on Cloudflare Pages.
+  const apiUrl = new URL('/api/daily', Astro.url);
+  const res = await fetch(apiUrl.toString(), {
+    headers: { accept: 'application/json' },
+  });
+  if (res.ok) {
+    const data = (await res.json()) as Partial<Mantra>;
+    mantra = {
+      sanskrit: data.sanskrit ?? FALLBACK.sanskrit,
+      devanagari: data.devanagari ?? FALLBACK.devanagari,
+      translation_en: data.translation_en ?? FALLBACK.translation_en,
+      translation_hi: data.translation_hi ?? FALLBACK.translation_hi,
+      attribution: data.attribution ?? FALLBACK.attribution,
+    };
+  }
+} catch {
+  // Silent fallback — sacred content should never render an error state.
+}
+---
+
+<section class="sk-mantra sk-sacred-surface" aria-labelledby="sk-mantra-title">
+  <p class="sk-eyebrow sk-mantra__eyebrow" id="sk-mantra-title">
+    <span data-en>Today's Mantra</span>
+    <span data-hi lang="hi" class="sk-hindi">आज का मंत्र</span>
+  </p>
+
+  <p class="sk-mantra-sanskrit sk-mantra__devanagari" lang="sa">
+    {mantra.devanagari}
+  </p>
+
+  <p class="sk-mantra__latin">
+    {mantra.sanskrit}
+  </p>
+
+  <hr class="sk-mantra__rule" aria-hidden="true" />
+
+  <p class="sk-mantra__translation" data-en>
+    {mantra.translation_en}
+  </p>
+  <p class="sk-mantra__translation sk-hindi" data-hi lang="hi">
+    {mantra.translation_hi}
+  </p>
+
+  <p class="sk-mantra__attr">
+    — {mantra.attribution}
+  </p>
+</section>
+
+<style>
+  .sk-mantra {
+    /* STILL surface. No gradient, no animation. See header comment. */
+    max-width: 640px;
+    margin: 32px auto;
+    padding: 40px 28px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 1px 0 color-mix(in oklab, var(--sk-night) 10%, transparent);
+  }
+  .sk-mantra__eyebrow {
+    color: color-mix(in oklab, var(--sk-night) 55%, transparent);
+    margin: 0 0 20px;
+  }
+  .sk-mantra__devanagari {
+    color: var(--sk-night);
+    margin: 0 0 12px;
+  }
+  .sk-mantra__latin {
+    font-family: var(--sk-font-display);
+    font-style: italic;
+    font-size: clamp(18px, 2vw, 22px);
+    line-height: 1.4;
+    color: color-mix(in oklab, var(--sk-night) 75%, transparent);
+    margin: 0 0 24px;
+  }
+  .sk-mantra__rule {
+    border: 0;
+    border-top: 1px solid color-mix(in oklab, var(--sk-night) 15%, transparent);
+    width: 40px;
+    margin: 0 auto 24px;
+  }
+  .sk-mantra__translation {
+    font-family: var(--sk-font-sans);
+    font-size: var(--sk-size-body);
+    line-height: 1.55;
+    color: color-mix(in oklab, var(--sk-night) 80%, transparent);
+    margin: 0 0 8px;
+    max-width: 46ch;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sk-mantra__attr {
+    margin-top: 20px;
+    font-size: var(--sk-size-small);
+    color: color-mix(in oklab, var(--sk-night) 55%, transparent);
+    font-style: italic;
+  }
+
+  /* Language-aware visibility. LangToggle sets html[data-sk-lang]. */
+  :root:not([data-sk-lang="hi"]) [data-hi] { display: none; }
+  :root[data-sk-lang="hi"] [data-en] { display: none; }
+</style>

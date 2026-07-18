@@ -1,0 +1,13 @@
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+
+# Editor / OS clutter
+.DS_Store
+*.log
+.vscode/
+.idea/
+
+# Wrangler-generated types
+worker-configuration.d.ts

@@ -1,0 +1,90 @@
+/* =============================================================================
+   sukoon-palette.css — Indian-dusk color system (overlay on Snowpeak)
+   -----------------------------------------------------------------------------
+   Discipline (from round-3 review):
+   - This is a MENTAL WELLNESS product. Warm accents must READ AS DUSK, not
+     as decoration. That means: night navy dominates, saffron is used
+     sparingly for warmth, tulsi sage for growth/CTAs. Nothing else.
+   - NO rose. NO marigold. NO gold. NO extra warm accents. Every additional
+     warm color pushes the palette toward "wedding invitation" and away
+     from "sacred calm". If you feel the urge to add one, add whitespace
+     instead.
+   - Crisis surfaces are a SEPARATE, protected palette (plum + lavender).
+     They must never blend into the dusk theme — a person in crisis needs
+     the crisis bar to feel distinct and reachable.
+   - Snowpeak likely ships its own palette. We override at :root and via
+     Tailwind v4 @theme so Snowpeak's utility classes pick up our tokens
+     without editing Snowpeak's own files.
+   ============================================================================= */
+
+:root {
+  /* ---- Canonical Indian-dusk palette ---- */
+  --sk-night: #0F1B3D;              /* Deep navy — primary background */
+  --sk-saffron: #E8A552;            /* Warm accent — use SPARINGLY */
+  --sk-tulsi-sage: #6FA286;         /* Sage green — CTAs, growth, calm */
+  --sk-cream: #F5EFE2;              /* Warm cream — cards, sacred surfaces */
+
+  /* ---- Crisis-only palette (protected) ---- */
+  --sk-crisis-plum: #1A0F3D;        /* Crisis bar background */
+  --sk-crisis-lavender: #C9B4FF;    /* Crisis bar text/links */
+
+  /* ---- Derived neutrals (do not add new hues; only tints of night) ---- */
+  --sk-night-90: color-mix(in oklab, var(--sk-night) 90%, white);
+  --sk-night-70: color-mix(in oklab, var(--sk-night) 70%, white);
+  --sk-night-40: color-mix(in oklab, var(--sk-night) 40%, white);
+  --sk-night-15: color-mix(in oklab, var(--sk-night) 15%, white);
+  --sk-cream-dim: color-mix(in oklab, var(--sk-cream) 92%, var(--sk-night) 8%);
+
+  /* ---- Semantic aliases (what Snowpeak components will consume) ---- */
+  --sk-bg: var(--sk-night);
+  --sk-surface: var(--sk-night-90);
+  --sk-surface-sacred: var(--sk-cream);        /* mantra card, quotes */
+  --sk-text: var(--sk-cream);
+  --sk-text-dim: var(--sk-night-40);
+  --sk-text-on-cream: var(--sk-night);
+  --sk-accent-warm: var(--sk-saffron);          /* only for eyebrow/highlight */
+  --sk-accent-calm: var(--sk-tulsi-sage);       /* primary CTA */
+  --sk-border: color-mix(in oklab, var(--sk-cream) 12%, transparent);
+  --sk-focus-ring: var(--sk-tulsi-sage);
+}
+
+/* Tailwind v4 @theme overrides — Snowpeak's Tailwind classes will resolve
+   to these tokens without touching Snowpeak's own config. */
+@theme {
+  --color-sk-night: #0F1B3D;
+  --color-sk-saffron: #E8A552;
+  --color-sk-tulsi: #6FA286;
+  --color-sk-cream: #F5EFE2;
+  --color-sk-crisis-plum: #1A0F3D;
+  --color-sk-crisis-lavender: #C9B4FF;
+
+  /* Semantic Tailwind names Snowpeak may already use — remap to Sukoon */
+  --color-background: var(--color-sk-night);
+  --color-foreground: var(--color-sk-cream);
+  --color-primary: var(--color-sk-tulsi);
+  --color-accent: var(--color-sk-saffron);
+  --color-muted: #1A2547;
+  --color-card: #F5EFE2;
+}
+
+/* Body defaults — applied when Snowpeak's own body styles don't win. */
+html, body {
+  background-color: var(--sk-bg);
+  color: var(--sk-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Sacred-surface helper for the mantra/quote cards. NO gradient, NO
+   animation — a still cream page. */
+.sk-sacred-surface {
+  background-color: var(--sk-surface-sacred);
+  color: var(--sk-text-on-cream);
+}
+
+/* Focus ring — sage, never saffron. Crisis has its own. */
+:where(a, button, [role="button"], input, textarea, select):focus-visible {
+  outline: 2px solid var(--sk-focus-ring);
+  outline-offset: 2px;
+  border-radius: 4px;
+}

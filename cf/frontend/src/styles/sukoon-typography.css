@@ -1,0 +1,134 @@
+/* =============================================================================
+   sukoon-typography.css — Fraunces + Inter Tight + Tiro Devanagari Hindi
+   -----------------------------------------------------------------------------
+   Discipline:
+   - Fraunces (display serif) for sacred moments and hero lines — never for
+     body copy. Warm, humanist, calming; feels hand-set, not corporate.
+   - Inter Tight for body/UI. Tight tracking keeps interface calm.
+   - Tiro Devanagari Hindi for all Devanagari script (mantra + Hindi UI).
+     Do NOT render Devanagari in Inter Tight or Fraunces — the glyph
+     coverage is poor and the rendering looks wrong to native readers.
+   - Devanagari optically reads smaller than Latin at the same em. Rule:
+     for Devanagari text in the same visual context as Latin, scale it
+     to ~80% of the Latin size and give it ~1.6 line-height (Devanagari
+     needs more vertical breathing room because of matras above and below).
+   ============================================================================= */
+
+/* Google Fonts — request only the weights we actually use. */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600&family=Tiro+Devanagari+Hindi&display=swap');
+
+:root {
+  /* ---- Font stacks ---- */
+  --sk-font-display: 'Fraunces', 'Cormorant Garamond', 'Georgia', serif;
+  --sk-font-sans: 'Inter Tight', 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --sk-font-hindi: 'Tiro Devanagari Hindi', 'Noto Sans Devanagari', serif;
+
+  /* ---- Fluid Latin sizes (clamp min, preferred, max) ---- */
+  --sk-size-display-xl: clamp(64px, 8vw, 96px);
+  --sk-size-h1: clamp(40px, 5vw, 56px);
+  --sk-size-h2: clamp(32px, 4vw, 40px);
+  --sk-size-h3: clamp(24px, 3vw, 30px);
+  --sk-size-body: clamp(16px, 1.05vw, 17px);
+  --sk-size-small: clamp(13px, 0.9vw, 14px);
+  --sk-size-eyebrow: clamp(11px, 0.8vw, 13px);
+
+  /* ---- Line heights ---- */
+  --sk-lh-display: 1.05;
+  --sk-lh-heading: 1.2;
+  --sk-lh-body: 1.6;
+  --sk-lh-devanagari: 1.6;   /* matras need room; do not go below 1.55 */
+}
+
+/* Body default — Inter Tight, calm tracking. */
+html, body {
+  font-family: var(--sk-font-sans);
+  font-size: var(--sk-size-body);
+  line-height: var(--sk-lh-body);
+  letter-spacing: -0.005em;
+}
+
+/* Display / hero text — Fraunces, tight leading. */
+.sk-display-xl {
+  font-family: var(--sk-font-display);
+  font-size: var(--sk-size-display-xl);
+  line-height: var(--sk-lh-display);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.sk-h1 {
+  font-family: var(--sk-font-display);
+  font-size: var(--sk-size-h1);
+  line-height: var(--sk-lh-heading);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+}
+
+.sk-h2 {
+  font-family: var(--sk-font-display);
+  font-size: var(--sk-size-h2);
+  line-height: var(--sk-lh-heading);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+.sk-h3 {
+  font-family: var(--sk-font-sans);
+  font-size: var(--sk-size-h3);
+  line-height: var(--sk-lh-heading);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.sk-body {
+  font-family: var(--sk-font-sans);
+  font-size: var(--sk-size-body);
+  line-height: var(--sk-lh-body);
+}
+
+.sk-small {
+  font-family: var(--sk-font-sans);
+  font-size: var(--sk-size-small);
+  line-height: 1.5;
+}
+
+/* Eyebrow — uppercase caps, wide tracking. Use sparingly above hero lines. */
+.sk-eyebrow {
+  font-family: var(--sk-font-sans);
+  font-size: var(--sk-size-eyebrow);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+/* --- Devanagari-specific rules ---
+   Apply .sk-hindi to any element containing Devanagari text. It swaps the
+   font, adds line-height, and scales down to ~80% of the surrounding Latin
+   size so the visual rhythm matches (Devanagari looks larger at the same
+   nominal em because of matras). Use as an inline utility, e.g.:
+     <p class="sk-body">Peace <span lang="hi" class="sk-hindi">शांति</span></p>
+*/
+.sk-hindi,
+[lang="hi"],
+[lang="sa"] {
+  font-family: var(--sk-font-hindi);
+  line-height: var(--sk-lh-devanagari);
+  font-size: 0.8em;               /* ~80% of surrounding Latin */
+  letter-spacing: 0;              /* Devanagari has no tracking */
+}
+
+/* When the WHOLE PAGE is Hindi (html[lang="hi"]) we don't want the 0.8em
+   shrink — that would make body copy tiny. Reset to 1em in that case. */
+html[lang="hi"] .sk-hindi,
+html[lang="hi"] [lang="hi"] {
+  font-size: 1em;
+}
+
+/* Mantra typography helper — larger, centered, generous leading. */
+.sk-mantra-sanskrit {
+  font-family: var(--sk-font-hindi);
+  font-size: clamp(24px, 3.2vw, 36px);
+  line-height: 1.7;
+  text-align: center;
+  font-weight: 400;
+}

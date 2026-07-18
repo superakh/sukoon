@@ -1,0 +1,155 @@
+---
+/**
+ * CrisisBar.astro
+ * -----------------------------------------------------------------------------
+ * Always-visible bilingual (EN + HI) crisis helpline strip at the top of every
+ * page. Dismissible for the current page-view only — it reappears on every
+ * page reload and every navigation. We NEVER persist the dismissal to
+ * localStorage or cookies, because a person in crisis tomorrow should not be
+ * denied the number today's user dismissed.
+ *
+ * Colors: crisis-plum background + crisis-lavender text (protected palette).
+ * These do NOT blend into the dusk theme — that separation is intentional.
+ *
+ * Numbers used are India-primary mental-health lines. Do not replace with a
+ * generic international number: the user needs a line that answers in Hindi.
+ */
+---
+
+<aside
+  id="sk-crisis-bar"
+  role="region"
+  aria-label="Crisis support helplines / संकट सहायता हेल्पलाइन"
+  class="sk-crisis-bar"
+>
+  <div class="sk-crisis-bar__inner">
+    <div class="sk-crisis-bar__lines">
+      <span class="sk-crisis-bar__label" aria-hidden="true">Need to talk now?</span>
+      <a class="sk-crisis-bar__link" href="tel:+919152987821">
+        iCall <span class="sk-crisis-bar__num">9152987821</span>
+      </a>
+      <a class="sk-crisis-bar__link" href="tel:+919999666555">
+        Vandrevala <span class="sk-crisis-bar__num">9999666555</span>
+      </a>
+      <a class="sk-crisis-bar__link" href="tel:+919820466726">
+        AASRA <span class="sk-crisis-bar__num">9820466726</span>
+      </a>
+    </div>
+
+    <div class="sk-crisis-bar__lines" lang="hi">
+      <span class="sk-crisis-bar__label sk-hindi" aria-hidden="true">अभी बात करनी है?</span>
+      <a class="sk-crisis-bar__link" href="tel:+919152987821">
+        <span class="sk-hindi">आईकॉल</span> <span class="sk-crisis-bar__num">9152987821</span>
+      </a>
+      <a class="sk-crisis-bar__link" href="tel:+919999666555">
+        <span class="sk-hindi">वंद्रेवाला</span> <span class="sk-crisis-bar__num">9999666555</span>
+      </a>
+      <a class="sk-crisis-bar__link" href="tel:+919820466726">
+        <span class="sk-hindi">आसरा</span> <span class="sk-crisis-bar__num">9820466726</span>
+      </a>
+    </div>
+
+    <button
+      type="button"
+      id="sk-crisis-dismiss"
+      class="sk-crisis-bar__close"
+      aria-label="Hide until next page reload / अगले रीलोड तक छिपाएँ"
+    >
+      <svg viewBox="0 0 20 20" width="16" height="16" aria-hidden="true">
+        <path d="M5 5 L15 15 M15 5 L5 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" fill="none"/>
+      </svg>
+    </button>
+  </div>
+</aside>
+
+<style>
+  .sk-crisis-bar {
+    background-color: var(--sk-crisis-plum);
+    color: var(--sk-crisis-lavender);
+    padding: 8px 16px;
+    font-size: var(--sk-size-small);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid color-mix(in oklab, var(--sk-crisis-lavender) 20%, transparent);
+  }
+  .sk-crisis-bar__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 8px 20px;
+    position: relative;
+  }
+  .sk-crisis-bar__lines {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 16px;
+  }
+  .sk-crisis-bar__label {
+    opacity: 0.75;
+    font-weight: 500;
+  }
+  .sk-crisis-bar__link {
+    color: var(--sk-crisis-lavender);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    border-bottom: 1px dotted color-mix(in oklab, var(--sk-crisis-lavender) 50%, transparent);
+    padding-bottom: 1px;
+  }
+  .sk-crisis-bar__link:hover,
+  .sk-crisis-bar__link:focus-visible {
+    border-bottom-style: solid;
+    outline: none;
+  }
+  .sk-crisis-bar__link:focus-visible {
+    outline: 2px solid var(--sk-crisis-lavender);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+  .sk-crisis-bar__num {
+    font-variant-numeric: tabular-nums;
+    letter-spacing: 0.02em;
+  }
+  .sk-crisis-bar__close {
+    background: transparent;
+    border: 1px solid color-mix(in oklab, var(--sk-crisis-lavender) 30%, transparent);
+    color: var(--sk-crisis-lavender);
+    width: 28px;
+    height: 28px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-left: auto;
+  }
+  .sk-crisis-bar__close:hover {
+    background: color-mix(in oklab, var(--sk-crisis-lavender) 12%, transparent);
+  }
+  @media (max-width: 640px) {
+    .sk-crisis-bar {
+      font-size: 12px;
+      padding: 6px 10px;
+    }
+    .sk-crisis-bar__lines { gap: 4px 10px; }
+    .sk-crisis-bar__label { display: none; }
+  }
+</style>
+
+<script>
+  // Session-only dismissal: cleared on every page navigation / reload.
+  // We intentionally do NOT use localStorage — the crisis bar must return.
+  (() => {
+    const bar = document.getElementById('sk-crisis-bar');
+    const btn = document.getElementById('sk-crisis-dismiss');
+    if (!bar || !btn) return;
+    btn.addEventListener('click', () => {
+      bar.style.display = 'none';
+    });
+  })();
+</script>

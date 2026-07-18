@@ -1,0 +1,74 @@
+# ------------------------------------------------------------------
+# Sukoon — Cloudflare Worker configuration
+# ------------------------------------------------------------------
+# Edge-first mental wellness backend. Hono handles routing on top of
+# the Workers runtime; D1 stores content, R2 stores audio/imagery,
+# KV powers rate-limiting, and a Durable Object counts the live pulse.
+#
+# Secrets (NEVER commit these):
+#   wrangler secret put ANTHROPIC_API_KEY
+#   wrangler secret put ELEVENLABS_API_KEY
+#
+# One-time setup:
+#   wrangler d1 create sukoon-content            -> paste id below
+#   wrangler r2 bucket create sukoon-assets
+#   wrangler kv:namespace create RATE_LIMIT      -> paste id below
+# ------------------------------------------------------------------
+
+name = "sukoon"
+main = "src/index.ts"
+compatibility_date = "2026-06-01"
+compatibility_flags = ["nodejs_compat"]
+
+# Non-secret runtime configuration. Anything sensitive belongs in
+# `wrangler secret put`, not here.
+[vars]
+NODE_ENV = "production"
+CF_AI_GATEWAY_URL = "https://gateway.ai.cloudflare.com/v1/{account}/sukoon-ai/anthropic"
+
+# ------------------------------------------------------------------
+# D1 — content library, chat transcripts, crisis events
+# ------------------------------------------------------------------
+[[d1_databases]]
+binding = "SUKOON_DB"
+database_name = "sukoon-content"
+database_id = "PENDING"  # Mustafa: fill after `wrangler d1 create sukoon-content`
+
+# ------------------------------------------------------------------
+# R2 — meditations, sleep stories, breathwork audio, imagery
+# ------------------------------------------------------------------
+[[r2_buckets]]
+binding = "SUKOON_ASSETS"
+bucket_name = "sukoon-assets"
+
+# ------------------------------------------------------------------
+# KV — rate-limit counters (IP/user -> window bucket)
+# ------------------------------------------------------------------
+[[kv_namespaces]]
+binding = "RATE_LIMIT"
+id = "PENDING"  # Mustafa: fill after `wrangler kv:namespace create RATE_LIMIT`
+
+# ------------------------------------------------------------------
+# Durable Object — the shared "pulse" counter (people breathing now)
+# ------------------------------------------------------------------
+[[durable_objects.bindings]]
+name = "PULSE"
+class_name = "PulseCounter"
+script_name = "sukoon"
+
+[[migrations]]
+tag = "v1"
+new_classes = ["PulseCounter"]
+
+# ------------------------------------------------------------------
+# AI Gateway
+# ------------------------------------------------------------------
+# All Anthropic traffic is wrapped through Cloudflare AI Gateway for
+# caching, cost caps, and observability. The runtime reads
+# CF_AI_GATEWAY_URL from [vars] and uses ANTHROPIC_API_KEY from
+# secrets. Endpoint pattern:
+#   https://gateway.ai.cloudflare.com/v1/{account}/sukoon-ai/anthropic
+[ai_gateway]
+account = "PENDING"      # Mustafa: your Cloudflare account id
+gateway = "sukoon-ai"
+provider = "anthropic"
